@@ -1,5 +1,7 @@
 package com.robinmc.ublisk;
 
+import java.io.File;
+
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,6 +23,8 @@ public class Main extends JavaPlugin {
 		registerCommands();
 		
 		Tasks.start();
+		
+		createConfig();
 	}
 	
 	@Override
@@ -41,5 +45,21 @@ public class Main extends JavaPlugin {
 	private void registerCommands(){
 		Console.sendMessage("[Ublisk] Registering commands...");
 		getCommand("menu").setExecutor(new Menu());
+	}
+	
+	public void createConfig(){
+		try {
+			File file = new File(getDataFolder(), "config.yml");
+			if (!getDataFolder().exists())
+				getDataFolder().mkdirs();
+			if (!file.exists()){
+				getLogger().info("Config.yml not found, creating!");
+				saveConfig();
+			} else {
+				getLogger().info("Config.yml found, loading!");
+			}
+		} catch (Exception e){
+			System.out.println("Config already exists, a new one was not created!");
+		}
 	}
 }
