@@ -33,13 +33,13 @@ public class Main extends JavaPlugin {
 	}
 	
 	private void registerListeners(){
-		Console.sendMessage("Registering listeners...");
+		Console.sendMessage("[Ublisk] Registering listeners...");
 		PluginManager pman = Bukkit.getServer().getPluginManager();
 		pman.registerEvents(new PlayerJoin(), this);
 	}
 	
 	private void registerCommands(){
-		Console.sendMessage("Registering commands...");
+		Console.sendMessage("[Ublisk] Registering commands...");
 		getCommand("menu").setExecutor(new Menu());
 	}
 }
