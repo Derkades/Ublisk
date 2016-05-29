@@ -7,6 +7,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.robinmc.ublisk.commands.Menu;
+import com.robinmc.ublisk.listeners.PlayerInteractEntity;
 import com.robinmc.ublisk.listeners.PlayerJoin;
 import com.robinmc.ublisk.listeners.SongEnd;
 import com.robinmc.ublisk.utils.Console;
@@ -42,6 +43,7 @@ public class Main extends JavaPlugin {
 		PluginManager pman = Bukkit.getServer().getPluginManager();
 		pman.registerEvents(new PlayerJoin(), this);
 		pman.registerEvents(new SongEnd(), this);
+		pman.registerEvents(new PlayerInteractEntity(), this);
 	}
 	
 	private void registerCommands(){
