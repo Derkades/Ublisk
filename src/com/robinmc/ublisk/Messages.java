@@ -20,4 +20,8 @@ public class Messages {
 		return ChatColor.GOLD + "Menu" + ChatColor.GRAY + " >> " + ChatColor.RED + "An unexpected error has occured. Please report this error and the steps you took to get this error at the forums.";
 	}
 	
+	public static String cantEat(String pn){
+		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.RED + pn + " Eating food is not allowed on this server";
+	}
+	
 }
