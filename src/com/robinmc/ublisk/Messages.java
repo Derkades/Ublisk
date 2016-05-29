@@ -11,5 +11,9 @@ public class Messages {
 	public static String songEnded(){
 		return ChatColor.GOLD + "Your music has ended. Please select a new song using /music";
 	}
-
+	
+	public static String playerJoin(String pn){
+		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " > " + ChatColor.YELLOW + pn + " has joined!";
+	}
+	
 }
