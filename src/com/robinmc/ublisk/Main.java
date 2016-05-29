@@ -10,6 +10,7 @@ import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.listeners.PlayerInteractEntity;
 import com.robinmc.ublisk.listeners.PlayerJoin;
 import com.robinmc.ublisk.listeners.SongEnd;
+import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 
 
@@ -26,7 +27,7 @@ public class Main extends JavaPlugin {
 		
 		Tasks.start();
 		
-		createConfig();
+		Config.create();
 	}
 	
 	@Override
@@ -49,21 +50,5 @@ public class Main extends JavaPlugin {
 	private void registerCommands(){
 		Console.sendMessage("[Ublisk] Registering commands...");
 		getCommand("menu").setExecutor(new Menu());
-	}
-	
-	public void createConfig(){
-		try {
-			File file = new File(getDataFolder(), "config.yml");
-			if (!getDataFolder().exists())
-				getDataFolder().mkdirs();
-			if (!file.exists()){
-				getLogger().info("Config.yml not found, creating!");
-				saveConfig();
-			} else {
-				getLogger().info("Config.yml found, loading!");
-			}
-		} catch (Exception e){
-			System.out.println("Config already exists, a new one was not created!");
-		}
 	}
 }
