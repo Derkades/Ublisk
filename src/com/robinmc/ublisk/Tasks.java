@@ -47,10 +47,10 @@ public class Tasks {
 			public void run(){
 				for (Player player: Bukkit.getOnlinePlayers()){
 					int xp = Exp.get(player);
-					player.setExp(xp);
+					player.setTotalExperience(xp);
 				}
 			}
-		}, 0, 5*20);
+		}, 0, 5);
 	}
 
 }
