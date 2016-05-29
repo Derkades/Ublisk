@@ -22,7 +22,7 @@ public class Tasks {
 					Time.add(5L);
 				}
 			}
-		}, 0, 5);
+		}, 0, 2);
 	}
 
 }
