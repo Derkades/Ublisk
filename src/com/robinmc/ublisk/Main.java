@@ -4,7 +4,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.listeners.PlayerJoin;
+
 
 public class Main extends JavaPlugin {
 	
@@ -33,6 +35,6 @@ public class Main extends JavaPlugin {
 	}
 	
 	private void registerCommands(){
-		//FIXME: Register /menu
+		getCommand("menu").setExecutor(new Menu());
 	}
 }
