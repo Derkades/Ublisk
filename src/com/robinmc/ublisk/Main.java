@@ -18,6 +18,8 @@ public class Main extends JavaPlugin {
 		
 		registerListeners();
 		registerCommands();
+		
+		Tasks.start();
 	}
 	
 	@Override
