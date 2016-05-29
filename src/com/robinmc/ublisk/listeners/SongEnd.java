@@ -11,7 +11,7 @@ public class SongEnd implements Listener {
 	
 	@EventHandler
 	public void musicStopped(SongEndEvent event){
-		Player player = (Player) event.getSongPlayer();
+		Player player = (Player) event.getSongPlayer(); //FIXME: This doesn't work, find a solution
 		player.sendMessage(Messages.songEnded());
 	}
 }
