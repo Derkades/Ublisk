@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.robinmc.ublisk.commands.Debug;
 import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.listeners.PlayerInteractEntity;
 import com.robinmc.ublisk.listeners.PlayerJoin;
@@ -48,5 +49,6 @@ public class Main extends JavaPlugin {
 	private void registerCommands(){
 		Console.sendMessage("[Ublisk] Registering commands...");
 		getCommand("menu").setExecutor(new Menu());
+		getCommand("debug").setExecutor(new Debug());
 	}
 }
