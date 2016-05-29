@@ -1,0 +1,5 @@
+name: Ublisk
+main: com.robinmc.ublisk.Main
+version: 1.0.0
+author: RobinMCDev
+description: Ublisk plugin
