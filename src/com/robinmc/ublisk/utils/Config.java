@@ -4,7 +4,7 @@ import java.io.File;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-import com.robinmc.minigames.Main;
+import com.robinmc.ublisk.Main;
 
 public class Config {
 	
