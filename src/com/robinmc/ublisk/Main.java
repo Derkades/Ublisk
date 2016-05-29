@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.listeners.PlayerJoin;
+import com.robinmc.ublisk.listeners.SongEnd;
 import com.robinmc.ublisk.utils.Console;
 
 
@@ -40,6 +41,7 @@ public class Main extends JavaPlugin {
 		Console.sendMessage("[Ublisk] Registering listeners...");
 		PluginManager pman = Bukkit.getServer().getPluginManager();
 		pman.registerEvents(new PlayerJoin(), this);
+		pman.registerEvents(new SongEnd(), this);
 	}
 	
 	private void registerCommands(){
