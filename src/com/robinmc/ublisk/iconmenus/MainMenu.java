@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 
@@ -25,6 +26,7 @@ public class MainMenu {
 	}, Main.getInstance());
 	
 	public static void open(Player player){
+		Console.sendMessage("[Menus] MainMenu has been opened for " + player.getName());
 		fillMenu();
 		menu.open(player);
 	}

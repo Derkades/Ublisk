@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.listeners.PlayerJoin;
+import com.robinmc.ublisk.utils.Console;
 
 
 public class Main extends JavaPlugin {
@@ -32,11 +33,13 @@ public class Main extends JavaPlugin {
 	}
 	
 	private void registerListeners(){
+		Console.sendMessage("Registering listeners...");
 		PluginManager pman = Bukkit.getServer().getPluginManager();
 		pman.registerEvents(new PlayerJoin(), this);
 	}
 	
 	private void registerCommands(){
+		Console.sendMessage("Registering commands...");
 		getCommand("menu").setExecutor(new Menu());
 	}
 }
