@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.robinmc.ublisk.Messages;
 import com.robinmc.ublisk.iconmenus.MainMenu;
 
 public class Menu implements CommandExecutor {
@@ -16,7 +17,7 @@ public class Menu implements CommandExecutor {
 			MainMenu.open(player); //Open menu
 			return true;
 		} else {
-			//TODO: No player msg
+			sender.sendMessage(Messages.noPlayer());
 			return true;
 		}
 	}
