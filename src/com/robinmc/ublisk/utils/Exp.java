@@ -6,10 +6,12 @@ public class Exp {
 	
 	public static void set(Player player, int n){
 		Config.set("xp." + player.getUniqueId(), n);
+		Config.save();
 	}
 	
 	public static void add(Player player, int n){
 		Config.set("xp." + player.getUniqueId(), n + get(player));
+		Config.save();
 	}
 	
 	public static int get(Player player){
