@@ -1,6 +1,7 @@
 package com.robinmc.ublisk;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Time;
@@ -12,6 +13,7 @@ public class Tasks {
 	public static void start(){
 		Console.sendMessage("[Tasks] Starting all tasks...");
 		fastNight();
+		regenerateHunger();
 	}
 	
 	private static void fastNight(){
@@ -23,6 +25,18 @@ public class Tasks {
 				}
 			}
 		}, 0, 2);
+	}
+	
+	private static void regenerateHunger(){
+		Console.sendMessage("[Tasks] RegenerateHunger has been started!");
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
+			public void run(){
+				for (Player player: Bukkit.getOnlinePlayers()){
+					int hunger = player.getFoodLevel();
+					player.setFoodLevel(hunger + 1);
+				}
+			}
+		}, 0, 5*20);
 	}
 
 }
