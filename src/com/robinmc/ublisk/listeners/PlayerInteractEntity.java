@@ -8,7 +8,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 import com.robinmc.ublisk.iconmenus.weaponmerchant.WeaponMerchant;
-import com.robinmc.ublisk.utils.Console;
 
 public class PlayerInteractEntity implements Listener {
 	

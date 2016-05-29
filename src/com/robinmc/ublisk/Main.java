@@ -1,7 +1,5 @@
 package com.robinmc.ublisk;
 
-import java.io.File;
-
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
