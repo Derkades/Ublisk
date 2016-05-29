@@ -13,7 +13,7 @@ public class Messages {
 	}
 	
 	public static String playerJoin(String pn){
-		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " > " + ChatColor.YELLOW + pn + " has joined!";
+		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.YELLOW + pn + " has joined";
 	}
 	
 }
