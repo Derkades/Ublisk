@@ -13,7 +13,12 @@ public class Exp {
 	}
 	
 	public static int get(Player player){
-		return Config.getInteger("xp." + player.getUniqueId());
+		try {
+			return Config.getInteger("xp." + player.getUniqueId());
+		} catch (Exception e){ //If cannot get xp player doens't have value set in config yet
+			set(player, 0);
+			return 0;
+		}
 	}
 
 }
