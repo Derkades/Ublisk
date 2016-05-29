@@ -16,4 +16,8 @@ public class Messages {
 		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.YELLOW + pn + " has joined";
 	}
 	
+	public static String menuErrorWrongItem(){
+		return ChatColor.GOLD + "Menu" + ChatColor.GRAY + " >> " + ChatColor.RED + "An unexpected error has occured. Please report this error and the steps you took to get this error at the forums.";
+	}
+	
 }

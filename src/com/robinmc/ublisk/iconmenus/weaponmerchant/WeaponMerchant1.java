@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Messages;
 import com.robinmc.ublisk.Music;
 import com.robinmc.ublisk.Songs;
 import com.robinmc.ublisk.utils.Console;
@@ -21,10 +22,9 @@ public class WeaponMerchant1 {
 			final Player player = event.getPlayer();
 			if (name.contains("song")){
 				Console.sendMessage("Debug!");
-				Music.play(player, Songs.BouncyBalls);
-				
+				Music.play(player, Songs.BouncyBalls);	
 			} else {
-				//error
+				player.sendMessage(Messages.menuErrorWrongItem());
 			}
 		}
 	}, Main.getInstance());
