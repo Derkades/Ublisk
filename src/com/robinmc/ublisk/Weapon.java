@@ -10,9 +10,9 @@ public enum Weapon {
 	//Format: "minecraft:stone 1 0 {AttributeModifiers:[{Attrib...IDLeast:138836}]}"
 	//So, remove the /give @p
 	//Put a \ before every "
-	OLD_WOODEN_SWORD("minecraft:diamond_sword 1 0 {AttributeModifiers:[{AttributeName:\"generic.movementSpeed\",Name:\"generic.movementSpeed\",Amount:1,Operation:0,UUIDMost:79614,UUIDLeast:150804}]}"),
-	OLD_STONE_SWORD("soaidcmsa"),
-	OLD_IRON_SWORD("asdicnascd");
+	OLD_WOODEN_SWORD("minecraft:wooden_sword 1 0 {HideFlags:2,display:{Name:\"Old Wooden Sword\",Lore:[\"Attack Damage: 1\"]},AttributeModifiers:[{AttributeName:\"generic.attackDamage\",Name:\"generic.attackDamage\",Amount:1,Operation:0,UUIDMost:64262,UUIDLeast:178260}]}"),
+	OLD_STONE_SWORD("minecraft:stone_sword 1 0 {HideFlags:2,display:{Name:\"Old Stone Sword\",Lore:[\"Attack Damage: 2\"]},AttributeModifiers:[{AttributeName:\"generic.attackDamage\",Name:\"generic.attackDamage\",Amount:2,Operation:0,UUIDMost:64262,UUIDLeast:178260}]}"),
+	OLD_IRON_SWORD("minecraft:iron_sword 1 0 {HideFlags:2,display:{Name:\"Old Iron Sword\",Lore:[\"Attack Damage: 3\"]},AttributeModifiers:[{AttributeName:\"generic.attackDamage\",Name:\"generic.attackDamage\",Amount:3,Operation:0,UUIDMost:64262,UUIDLeast:178260}]}");
 	
 	private String cmd;
 	

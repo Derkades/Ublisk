@@ -21,6 +21,10 @@ public class WeaponMerchant1 {
 			final Player player = event.getPlayer();
 			if (name.contains("wooden")){
 				Weapon.giveWeapon(player, Weapon.OLD_WOODEN_SWORD);
+			} else if (name.contains("stone")){
+				Weapon.giveWeapon(player, Weapon.OLD_STONE_SWORD);
+			} else if (name.contains("iron")){
+				Weapon.giveWeapon(player, Weapon.OLD_IRON_SWORD);
 			} else {
 				player.sendMessage(Messages.menuErrorWrongItem());
 			}
