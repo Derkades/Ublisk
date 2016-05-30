@@ -6,7 +6,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.robinmc.ublisk.commands.Debug;
 import com.robinmc.ublisk.commands.Menu;
+import com.robinmc.ublisk.listeners.EntityDeath;
 import com.robinmc.ublisk.listeners.PlayerInteractEntity;
+import com.robinmc.ublisk.listeners.PlayerItemConsume;
 import com.robinmc.ublisk.listeners.PlayerJoin;
 import com.robinmc.ublisk.listeners.SongEnd;
 import com.robinmc.ublisk.utils.Config;
@@ -36,14 +38,17 @@ public class Main extends JavaPlugin {
 	
 	public static Main getInstance(){
 		return instance;
-	}
+	}	
 	
 	private void registerListeners(){
 		Console.sendMessage("[Ublisk] Registering listeners...");
 		PluginManager pman = Bukkit.getServer().getPluginManager();
+		pman.registerEvents(new EntityDeath(), this);
+		pman.registerEvents(new PlayerInteractEntity(), this);
+		pman.registerEvents(new PlayerItemConsume(), this);
 		pman.registerEvents(new PlayerJoin(), this);
 		pman.registerEvents(new SongEnd(), this);
-		pman.registerEvents(new PlayerInteractEntity(), this);
+		
 	}
 	
 	private void registerCommands(){

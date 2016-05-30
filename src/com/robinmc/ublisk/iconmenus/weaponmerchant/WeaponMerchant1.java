@@ -6,8 +6,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Messages;
-import com.robinmc.ublisk.Music;
-import com.robinmc.ublisk.Songs;
+import com.robinmc.ublisk.Weapon;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
@@ -20,9 +19,8 @@ public class WeaponMerchant1 {
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
 			final Player player = event.getPlayer();
-			if (name.contains("song")){
-				Console.sendMessage("Debug!");
-				Music.play(player, Songs.BouncyBalls);	
+			if (name.contains("wooden")){
+				Weapon.giveWeapon(player, Weapon.OLD_WOODEN_SWORD);
 			} else {
 				player.sendMessage(Messages.menuErrorWrongItem());
 			}
