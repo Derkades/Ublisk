@@ -55,5 +55,6 @@ public class Main extends JavaPlugin {
 		Console.sendMessage("[Ublisk] Registering commands...");
 		getCommand("menu").setExecutor(new Menu());
 		getCommand("debug").setExecutor(new Debug());
+		getCommand("music").setExecutor(new com.robinmc.ublisk.commands.Music());
 	}
 }

@@ -7,8 +7,11 @@ depend: [NoteBlockAPI, ActionBarAPI]
 
 commands:
     menu:
-        description: Opens the Main menu
+        description: Opens the main menu
         usage: /<command>
     debug:
         description: Debugging command
         usage: </command> [args] [args]
+    music:
+        description: Opens a music selection menu
+        usage: </command>
