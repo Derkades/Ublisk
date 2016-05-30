@@ -10,9 +10,9 @@ public enum Weapon {
 	//Format: "minecraft:stone 1 0 {AttributeModifiers:[{Attrib...IDLeast:138836}]}"
 	//So, remove the /give @p
 	//Put a \ before every "
-	OldWoodenSword("minecraft:diamond_sword 1 0 {AttributeModifiers:[{AttributeName:\"generic.movementSpeed\",Name:\"generic.movementSpeed\",Amount:1,Operation:0,UUIDMost:79614,UUIDLeast:150804}]}"),
-	OldStoneSword("soaidcmsa"),
-	OldIronSword("asdicnascd");
+	OLD_WOODEN_SWORD("minecraft:diamond_sword 1 0 {AttributeModifiers:[{AttributeName:\"generic.movementSpeed\",Name:\"generic.movementSpeed\",Amount:1,Operation:0,UUIDMost:79614,UUIDLeast:150804}]}"),
+	OLD_STONE_SWORD("soaidcmsa"),
+	OLD_IRON_SWORD("asdicnascd");
 	
 	private String cmd;
 	

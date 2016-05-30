@@ -13,7 +13,7 @@ import com.xxmicloxx.NoteBlockAPI.SongPlayer;
 public class Music {
 	
 	public static void play(Player player, Songs song){
-		if (song == Songs.BouncyBalls){
+		if (song == Songs.BOUNCY_BALLS){
 			Song s = NBSDecoder.parse(new File(Main.getInstance().getDataFolder(), "BouncyBalls.nbs"));
 			startSong(player, s);
 		}		
