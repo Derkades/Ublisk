@@ -9,7 +9,7 @@ public class Messages {
 	}
 	
 	public static String songEnded(){
-		return ChatColor.GOLD + "Music" + ChatColor.GRAY + " >> " + ChatColor.YELLOW + "MusicYour music has ended. Please select a new song using /music";
+		return ChatColor.GOLD + "Music" + ChatColor.GRAY + " >> " + ChatColor.YELLOW + "Your song has ended. Please select a new song using /music";
 	}
 	
 	public static String playerJoin(String pn){
