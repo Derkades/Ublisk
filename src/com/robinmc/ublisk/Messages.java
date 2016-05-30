@@ -24,4 +24,12 @@ public class Messages {
 		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.RED + pn + " Eating food is not allowed on this server";
 	}
 	
+	public static String startSong(String song){
+		return ChatColor.GOLD + "Music" + ChatColor.GRAY + " >> " + ChatColor.YELLOW + "You are now playing " + song;
+	}
+	
+	public static String wrongUsage(){
+		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.RED + "Wrong usage! Type /help for help"; //TODO: /help
+	}
+	
 }

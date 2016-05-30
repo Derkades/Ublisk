@@ -20,11 +20,11 @@ public class Debug implements CommandExecutor {
 					Exp.set(player, xp);
 					return true;
 				} else {
-					//TODO: Wrong usage message
+					player.sendMessage(Messages.wrongUsage());
 					return true;
 				}
 			} else {
-				//TODO: Wrong usage message
+				player.sendMessage(Messages.wrongUsage());
 				return true;
 			}
 		} else {

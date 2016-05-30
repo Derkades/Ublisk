@@ -21,10 +21,13 @@ public class MusicMenu {
 			String name = event.getName().toLowerCase();
 			Player player = event.getPlayer();
 			if (name.contains("bouncy")){
+				player.sendMessage(Messages.startSong("Bouncy Balls"));
 				Music.play(player, Songs.BOUNCY_BALLS);
 			} else if (name.contains("comptine")){
+				player.sendMessage(Messages.startSong("Comptine D'un Autre Été"));
 				Music.play(player, Songs.COMPTINE_DUN_AUTRE_ETE);
 			} else if (name.contains("magic")){
+				player.sendMessage(Messages.startSong("A Kind Of Magic"));
 				Music.play(player, Songs.KIND_OF_MAGIC);
 			} else {
 				player.sendMessage(Messages.menuErrorWrongItem());
