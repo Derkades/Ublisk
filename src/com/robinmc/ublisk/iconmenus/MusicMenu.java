@@ -22,6 +22,10 @@ public class MusicMenu {
 			final Player player = event.getPlayer();
 			if (name.contains("bouncy")){
 				Music.play(player, Songs.BOUNCY_BALLS);
+			} else if (name.contains("comptine")){
+				Music.play(player, Songs.COMPTINE_DUN_AUTRE_ETE);
+			} else if (name.contains("magic")){
+				Music.play(player, Songs.KIND_OF_MAGIC);
 			} else {
 				player.sendMessage(Messages.menuErrorWrongItem());
 			}
@@ -36,6 +40,8 @@ public class MusicMenu {
 	
 	private static void fillMenu(){
 		menu.setOption(0, new ItemStack(Material.SLIME_BALL), "Bouncy balls");
+		menu.setOption(1, new ItemStack(Material.SAPLING), "Comptine d'un autre été");
+		menu.setOption(2, new ItemStack(Material.POTION), "A kind of magic");
 	}
 
 }
