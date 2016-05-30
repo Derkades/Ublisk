@@ -21,7 +21,6 @@ public class MainMenu {
 			String name = event.getName().toLowerCase();
 			final Player player = event.getPlayer();
 			if (name.contains("song")){
-				Console.sendMessage("Debug!");
 				Music.play(player, Songs.BOUNCY_BALLS);
 			} else {
 				player.sendMessage(Messages.menuErrorWrongItem());
