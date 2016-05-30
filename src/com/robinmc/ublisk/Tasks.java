@@ -16,6 +16,7 @@ public class Tasks {
 		fastNight();
 		regenerateHunger();
 		setExp();
+		clearWeather();
 	}
 	
 	private static void fastNight(){
@@ -54,6 +55,15 @@ public class Tasks {
 				}
 			}
 		}, 0, 5*20);
+	}
+	
+	private static void clearWeather(){
+		Console.sendMessage("[Tasks] ClearWeather has been started!");
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
+			public void run(){
+				Console.sendCommand("weather clear 1000000");
+			}
+		}, 0, 60*20);
 	}
 
 }
