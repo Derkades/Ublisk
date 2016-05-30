@@ -19,7 +19,7 @@ public class MusicMenu {
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
-			final Player player = event.getPlayer();
+			Player player = event.getPlayer();
 			if (name.contains("bouncy")){
 				Music.play(player, Songs.BOUNCY_BALLS);
 			} else if (name.contains("comptine")){
