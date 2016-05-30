@@ -20,7 +20,7 @@ public class PlayerJoin implements Listener {
 		
 		Console.sendCommand("scoreboard teams join all " + pn); //Join team "all". This team disables 1.9 collision
 		
-		event.setJoinMessage(Messages.playerJoin(pn));
+		event.setJoinMessage(Messages.playerJoin(pn)); //TODO: Custom quit message
 	}
 	
 }
