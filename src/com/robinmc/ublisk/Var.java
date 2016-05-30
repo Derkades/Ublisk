@@ -6,7 +6,7 @@ import org.bukkit.World;
 public class Var {
 	
 	public static World world(){
-		return Bukkit.getWorld("world");
+		return Bukkit.getWorld("ublisk");
 	}
 
 }
