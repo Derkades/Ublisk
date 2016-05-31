@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.utils.Console;
-import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Time;
 
 public class Tasks {
@@ -15,7 +14,6 @@ public class Tasks {
 		Console.sendMessage("[Tasks] Starting all tasks...");
 		fastNight();
 		regenerateHunger();
-		setExp();
 		clearWeather();
 	}
 	
@@ -37,21 +35,6 @@ public class Tasks {
 				for (Player player: Bukkit.getOnlinePlayers()){
 					int hunger = player.getFoodLevel();
 					player.setFoodLevel(hunger + 1);
-				}
-			}
-		}, 0, 5*20);
-	}
-	
-	private static void setExp(){
-		Console.sendMessage("[Tasks] SetExp has been started!");
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
-			public void run(){
-				for (Player player: Bukkit.getOnlinePlayers()){
-					int xp = Exp.get(player);
-				    player.setExp(0);
-				    player.setLevel(0);
-				    player.setTotalExperience(0);  
-				    player.giveExp(xp);
 				}
 			}
 		}, 0, 5*20);

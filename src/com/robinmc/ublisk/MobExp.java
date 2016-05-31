@@ -13,6 +13,15 @@ public class MobExp {
 		ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + mob.getName() + " and got " + mob.getExp() + " XP", 2*10);
 		Exp.add(player, mob.getExp());
 		Console.sendMessage("[MobExp] Given " + player.getName() + " " + mob.getExp() + " for killing a " + mob.getName());
+		refreshExp(player);
+	}
+	
+	public static void refreshExp(Player player){
+		int xp = Exp.get(player);
+		player.setExp(0);
+	    player.setLevel(0);
+	    player.setTotalExperience(0);  
+	    player.giveExp(xp);
 	}
 
 }
