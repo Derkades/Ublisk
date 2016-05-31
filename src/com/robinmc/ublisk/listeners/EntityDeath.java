@@ -21,15 +21,19 @@ public class EntityDeath implements Listener {
 		Player player = entity.getKiller();
 		if (entity instanceof Chicken){
 			MobExp.giveExp(player, Mob.CHICKEN);
-			Console.sendMessage("Chicken!");
 		} else if (entity instanceof Zombie){
 			CraftZombie zombie = (CraftZombie) entity;
 			if (zombie.getHandle().isVillager()){
 				if (zombie.getName().equals("Zombified Merchant")){
-					Console.sendMessage("Zombified merchant!");
 					MobExp.giveExp(player, Mob.ZOMBIFIED_MERCHANT);
+				} else {
+					return;
 				}
+			} else {
+				return;
 			}
+		} else {
+			return;
 		}
 	}
 
