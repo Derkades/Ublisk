@@ -32,4 +32,12 @@ public class Messages {
 		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.RED + "Wrong usage! Type /help for help"; //TODO: /help
 	}
 	
+	public static String tntDetect(){
+		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.RED + "TNT has been detected in your inventory. Using it will result in a 30s temp-ban";
+	}
+	
+	public static String tntBan(){
+		return ChatColor.RED + "You have been banned for using TNT. You will be unbanned automatically in 30 seconds.";
+	}
+	
 }

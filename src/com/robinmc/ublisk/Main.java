@@ -1,12 +1,14 @@
 package com.robinmc.ublisk;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.robinmc.ublisk.commands.Debug;
 import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.listeners.EntityDeath;
+import com.robinmc.ublisk.listeners.EntityExplode;
 import com.robinmc.ublisk.listeners.PlayerInteractEntity;
 import com.robinmc.ublisk.listeners.PlayerItemConsume;
 import com.robinmc.ublisk.listeners.PlayerJoin;
@@ -44,6 +46,7 @@ public class Main extends JavaPlugin {
 		Console.sendMessage("[Ublisk] Registering listeners...");
 		PluginManager pman = Bukkit.getServer().getPluginManager();
 		pman.registerEvents(new EntityDeath(), this);
+		pman.registerEvents(new EntityExplode(), this);
 		pman.registerEvents(new PlayerInteractEntity(), this);
 		pman.registerEvents(new PlayerItemConsume(), this);
 		pman.registerEvents(new PlayerJoin(), this);
@@ -56,5 +59,17 @@ public class Main extends JavaPlugin {
 		getCommand("menu").setExecutor(new Menu());
 		getCommand("debug").setExecutor(new Debug());
 		getCommand("music").setExecutor(new com.robinmc.ublisk.commands.Music());
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static void tempBan(final Player player, final int time){
+		player.setBanned(true);
+		Console.sendMessage("[Banning] " + player.getName() + " has been banned for " + time + " seconds.");
+		Bukkit.getScheduler().scheduleSyncDelayedTask(getInstance(), new Runnable(){
+			public void run(){
+				player.setBanned(false);
+				Console.sendMessage("[Banning] " + player.getName() + " has been unbanned after " + time + " seconds.");
+			}
+		}, time * 20);
 	}
 }

@@ -1,7 +1,9 @@
 package com.robinmc.ublisk;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Time;
@@ -15,6 +17,7 @@ public class Tasks {
 		fastNight();
 		regenerateHunger();
 		clearWeather();
+		checkTnt();
 	}
 	
 	private static void fastNight(){
@@ -47,6 +50,24 @@ public class Tasks {
 				Console.sendCommand("weather clear 1000000");
 			}
 		}, 0, 60*20);
+	}
+	
+	private static void checkTnt(){
+		Console.sendMessage("[Tasks] CheckTnt has been started!");
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
+			public void run(){
+				for (Player player: Bukkit.getOnlinePlayers()){
+					ItemStack[] inv = player.getInventory().getContents();
+					for (ItemStack item:inv){
+						if (!(item == null)){
+							if (item.getType() == Material.TNT){
+								player.sendMessage(Messages.tntDetect());
+							}
+						}
+					}
+				}
+			}
+		}, 0, 2*20);	
 	}
 
 }
