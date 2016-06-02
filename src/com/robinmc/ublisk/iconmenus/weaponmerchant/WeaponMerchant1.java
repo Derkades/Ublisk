@@ -21,10 +21,6 @@ public class WeaponMerchant1 {
 			final Player player = event.getPlayer();
 			if (name.contains("wooden")){
 				Weapon.giveWeapon(player, Weapon.OLD_WOODEN_SWORD);
-			} else if (name.contains("stone")){
-				Weapon.giveWeapon(player, Weapon.OLD_STONE_SWORD);
-			} else if (name.contains("iron")){
-				Weapon.giveWeapon(player, Weapon.OLD_IRON_SWORD);
 			} else {
 				player.sendMessage(Messages.menuErrorWrongItem());
 			}
@@ -38,9 +34,7 @@ public class WeaponMerchant1 {
 	}
 	
 	private static void fillMenu(){
-		menu.setOption(2, new ItemStack(Material.WOOD_SWORD), "Old Wooden Sword");
-		menu.setOption(4, new ItemStack(Material.STONE_SWORD), "Old Stone Sword");
-		menu.setOption(6, new ItemStack(Material.IRON_SWORD), "Old Iron Sword");
+		menu.setOption(4, new ItemStack(Material.WOOD_SWORD), "Old Wooden Sword");
 	}
 
 }
