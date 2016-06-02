@@ -6,6 +6,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.robinmc.ublisk.commands.Debug;
+import com.robinmc.ublisk.commands.Help;
 import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.listeners.EntityDeath;
 import com.robinmc.ublisk.listeners.EntityExplode;
@@ -56,8 +57,9 @@ public class Main extends JavaPlugin {
 	
 	private void registerCommands(){
 		Console.sendMessage("[Ublisk] Registering commands...");
-		getCommand("menu").setExecutor(new Menu());
 		getCommand("debug").setExecutor(new Debug());
+		getCommand("help").setExecutor(new Help());
+		getCommand("menu").setExecutor(new Menu());
 		getCommand("music").setExecutor(new com.robinmc.ublisk.commands.Music());
 	}
 	

@@ -15,3 +15,6 @@ commands:
     music:
         description: Opens a music selection menu
         usage: </command>
+    help:
+        description: Provides help
+        usage: </command> [catagory]
