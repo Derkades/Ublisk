@@ -72,7 +72,7 @@ public class Tasks {
 	}
 	
 	private static void randomTip(){
-		Console.sendMessage("[Tasks] ClearWeather has been started!");
+		Console.sendMessage("[Tasks] RandomTips has been started!");
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
 				Bukkit.broadcastMessage(Tip.getRandom());
