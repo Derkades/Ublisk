@@ -18,6 +18,7 @@ public class Tasks {
 		regenerateHunger();
 		clearWeather();
 		checkTnt();
+		randomTip();
 	}
 	
 	private static void fastNight(){
@@ -68,6 +69,15 @@ public class Tasks {
 				}
 			}
 		}, 0, 2*20);	
+	}
+	
+	private static void randomTip(){
+		Console.sendMessage("[Tasks] ClearWeather has been started!");
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
+			public void run(){
+				Bukkit.broadcastMessage(Tip.getRandom());
+			}
+		}, 0, 60*20);
 	}
 
 }
