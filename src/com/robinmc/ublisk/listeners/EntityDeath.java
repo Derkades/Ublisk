@@ -18,22 +18,26 @@ public class EntityDeath implements Listener {
 	@EventHandler
 	public void entityDeath(EntityDeathEvent event){		
 		LivingEntity entity = event.getEntity();
-		Player player = entity.getKiller();
-		if (entity instanceof Chicken){
-			MobExp.giveExp(player, Mob.CHICKEN);
-		} else if (entity instanceof Zombie){
-			CraftZombie zombie = (CraftZombie) entity;
-			if (zombie.getHandle().isVillager()){
-				if (zombie.getName().equals("Zombified Merchant")){
-					MobExp.giveExp(player, Mob.ZOMBIFIED_MERCHANT);
+		try {
+			Player player = entity.getKiller();
+			if (entity instanceof Chicken){
+				MobExp.giveExp(player, Mob.CHICKEN);
+			} else if (entity instanceof Zombie){
+				CraftZombie zombie = (CraftZombie) entity;
+				if (zombie.getHandle().isVillager()){
+					if (zombie.getName().equals("Zombified Merchant")){
+						MobExp.giveExp(player, Mob.ZOMBIFIED_MERCHANT);
+					} else {
+						return;
+					}
 				} else {
 					return;
 				}
 			} else {
 				return;
 			}
-		} else {
-			return;
+		} catch (Exception e){
+			Console.sendMessage("[MobExp] Mob was not killed by player");
 		}
 	}
 
