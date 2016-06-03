@@ -18,3 +18,6 @@ commands:
     help:
         description: Provides help
         usage: </command> [catagory]
+    credits:
+        description: Credits
+        usage: </command> [arguments]

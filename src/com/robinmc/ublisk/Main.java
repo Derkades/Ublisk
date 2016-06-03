@@ -5,11 +5,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.robinmc.ublisk.commands.Credits;
 import com.robinmc.ublisk.commands.Debug;
 import com.robinmc.ublisk.commands.Help;
 import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.listeners.EntityDeath;
 import com.robinmc.ublisk.listeners.EntityExplode;
+import com.robinmc.ublisk.listeners.NPCClick;
 import com.robinmc.ublisk.listeners.PlayerInteractEntity;
 import com.robinmc.ublisk.listeners.PlayerItemConsume;
 import com.robinmc.ublisk.listeners.PlayerJoin;
@@ -48,6 +50,7 @@ public class Main extends JavaPlugin {
 		PluginManager pman = Bukkit.getServer().getPluginManager();
 		pman.registerEvents(new EntityDeath(), this);
 		pman.registerEvents(new EntityExplode(), this);
+		pman.registerEvents(new NPCClick(), this);
 		pman.registerEvents(new PlayerInteractEntity(), this);
 		pman.registerEvents(new PlayerItemConsume(), this);
 		pman.registerEvents(new PlayerJoin(), this);
@@ -57,6 +60,7 @@ public class Main extends JavaPlugin {
 	
 	private void registerCommands(){
 		Console.sendMessage("[Ublisk] Registering commands...");
+		getCommand("credits").setExecutor(new Credits());
 		getCommand("debug").setExecutor(new Debug());
 		getCommand("help").setExecutor(new Help());
 		getCommand("menu").setExecutor(new Menu());
