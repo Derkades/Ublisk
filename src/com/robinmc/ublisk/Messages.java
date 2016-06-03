@@ -40,4 +40,12 @@ public class Messages {
 		return ChatColor.RED + "You have been banned for using TNT. You will be unbanned automatically in 30 seconds.";
 	}
 	
+	public static String removeMobsWarning(int sec){
+		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.YELLOW + "Clearing all mobs and items in " + sec + " seconds!";
+	}
+	
+	public static String removedMobs(){
+		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.YELLOW + "All mobs and items have been cleared!";
+	}
+	
 }
