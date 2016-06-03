@@ -6,8 +6,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.utils.EntityUtils;
 import com.robinmc.ublisk.utils.Exp;
 
 public class Debug implements CommandExecutor {
@@ -27,7 +27,7 @@ public class Debug implements CommandExecutor {
 				}
 			} else if (args.length == 1){
 				if (args[0].equalsIgnoreCase("kill")){
-					Main.removeMobs();
+					EntityUtils.removeMobs();
 					Bukkit.broadcastMessage(Messages.removedMobs());
 					return true;
 				} else {

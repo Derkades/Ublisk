@@ -24,7 +24,7 @@ public class PlayerJoin implements Listener {
 		
 		Console.sendCommand("scoreboard teams join all " + pn); //Join team "all". This team disables 1.9 collision
 		
-		event.setJoinMessage(Messages.playerJoin(pn)); //TODO: Custom quit message
+		event.setJoinMessage(Messages.playerJoin(pn));
 		
 		player.sendMessage(Messages.sendingPack());
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){

@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.EntityUtils;
 import com.robinmc.ublisk.utils.Time;
 
 public class Tasks {
@@ -91,7 +92,7 @@ public class Tasks {
 						Bukkit.broadcastMessage(Messages.removeMobsWarning(5));
 						Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 							public void run(){
-								Main.removeMobs();
+								EntityUtils.removeMobs();
 								Bukkit.broadcastMessage(Messages.removedMobs());
 							}
 						}, 5*20);

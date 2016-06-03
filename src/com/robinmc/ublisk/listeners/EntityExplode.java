@@ -9,8 +9,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.utils.BanUtils;
 
 public class EntityExplode implements Listener {
 
@@ -24,7 +24,7 @@ public class EntityExplode implements Listener {
 				for (Entity e : entities) {
 					if (e.getType().equals(EntityType.PLAYER)) {
 						Player player = (Player) e;
-						Main.tempBan(player, 30);
+						BanUtils.tempBan(player, 30);
 						player.kickPlayer(Messages.tntBan());
 						found = true;
 						break;
