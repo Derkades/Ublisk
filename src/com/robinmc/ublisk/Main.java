@@ -1,6 +1,8 @@
 package com.robinmc.ublisk;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -77,5 +79,13 @@ public class Main extends JavaPlugin {
 				Console.sendMessage("[Banning] " + player.getName() + " has been unbanned after " + time + " seconds.");
 			}
 		}, time * 20);
+	}
+	
+	public static void removeMobs(){
+		for (Entity entity: Var.world().getEntities()){
+			if (entity.getType() == EntityType.CHICKEN || entity.getType() == EntityType.SHEEP){
+				entity.remove();
+			}
+		}
 	}
 }
