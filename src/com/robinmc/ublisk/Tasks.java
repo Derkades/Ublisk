@@ -78,7 +78,7 @@ public class Tasks {
 			public void run(){
 				Bukkit.broadcastMessage(Tip.getRandom());
 			}
-		}, 0, 60*20);
+		}, 0, 5*60*20);
 	}
 	
 	private static void removeMobs(){
