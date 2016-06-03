@@ -23,6 +23,8 @@ import com.robinmc.ublisk.utils.Console;
 
 public class Main extends JavaPlugin {
 	
+	//TODO: Clean up main class
+	
 	public static Main instance;
 	
 	@Override
