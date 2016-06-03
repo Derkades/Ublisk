@@ -16,6 +16,7 @@ import com.robinmc.ublisk.listeners.EntityExplode;
 import com.robinmc.ublisk.listeners.PlayerInteractEntity;
 import com.robinmc.ublisk.listeners.PlayerItemConsume;
 import com.robinmc.ublisk.listeners.PlayerJoin;
+import com.robinmc.ublisk.listeners.PlayerQuit;
 import com.robinmc.ublisk.listeners.PlayerResourcePackStatus;
 import com.robinmc.ublisk.listeners.SongEnd;
 import com.robinmc.ublisk.utils.Config;
@@ -57,6 +58,7 @@ public class Main extends JavaPlugin {
 		pman.registerEvents(new PlayerInteractEntity(), this);
 		pman.registerEvents(new PlayerItemConsume(), this);
 		pman.registerEvents(new PlayerJoin(), this);
+		pman.registerEvents(new PlayerQuit(), this);
 		pman.registerEvents(new PlayerResourcePackStatus(), this);
 		pman.registerEvents(new SongEnd(), this);
 		

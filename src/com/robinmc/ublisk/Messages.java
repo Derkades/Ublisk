@@ -64,4 +64,8 @@ public class Messages {
 		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.YELLOW + "Sending you our resource pack...";
 	}
 	
+	public static String quit(String pn){
+		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.YELLOW + pn + "has left";
+	}
+	
 }
