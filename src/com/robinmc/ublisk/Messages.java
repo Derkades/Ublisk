@@ -73,4 +73,8 @@ public class Messages {
 		return gold + "Ublisk" + gray + " >> " + yellow + pn + "has left";
 	}
 	
+	public static String userNotFound(String user){
+		return gold + "Ublisk" + gray + " >> " + red + "No additional information was found for user " + user;
+	}
+	
 }

@@ -43,7 +43,7 @@ public class Credits implements CommandExecutor {
 					sender.sendMessage(gold + "Custom link" + gray + ": " + yellow + custom);
 					return true;
 				} catch (Exception e){
-					sender.sendMessage(Messages.wrongUsage());
+					sender.sendMessage(Messages.userNotFound(args[0]));
 					return true;
 				}
 			}
