@@ -4,6 +4,7 @@ import org.bukkit.craftbukkit.v1_9_R1.entity.CraftZombie;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Sheep;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -33,6 +34,8 @@ public class EntityDeath implements Listener {
 				} else {
 					return;
 				}
+			} else if (entity instanceof Sheep){
+				MobExp.giveExp(player, Mob.SHEEP);
 			} else {
 				return;
 			}
