@@ -29,7 +29,7 @@ public class Messages {
 	}
 	
 	public static String wrongUsage(){
-		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.RED + "Wrong usage! Type /help for help"; //TODO: /help
+		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.RED + "Wrong usage! Type /help for help";
 	}
 	
 	public static String tntDetect(){
