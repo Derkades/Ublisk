@@ -48,4 +48,20 @@ public class Messages {
 		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.YELLOW + "All mobs and items have been cleared!";
 	}
 	
+	public static String declinedPack(){
+		return ChatColor.RED + "Please enable server resource packs and join again";
+	}
+	
+	public static String packFailedDownload(){
+		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.RED + "We failed in sending you our resource pack. You'll have to play without. Please report this issue at the forums.";
+	}
+	
+	public static String packLoaded(){
+		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.YELLOW + "The resource pack has been successfully loaded";
+	}
+	
+	public static String sendingPack(){
+		return ChatColor.GOLD + "Ublisk" + ChatColor.GRAY + " >> " + ChatColor.YELLOW + "Sending you our resource pack...";
+	}
+	
 }

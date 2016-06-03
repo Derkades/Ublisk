@@ -8,5 +8,9 @@ public class Var {
 	public static World world(){
 		return Bukkit.getWorld("ublisk");
 	}
+	
+	public static String pack(){
+		return "http://robinmc.com/files/Ublisk_Pack.zip";
+	}
 
 }

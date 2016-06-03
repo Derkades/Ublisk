@@ -3,7 +3,8 @@ package com.robinmc.ublisk;
 public enum Helper {
 	
 	ROBINMC("RobinMC", "https://goo.gl/Aay9Ry", ""),
-	CHASPYR("Chaspyr", "", "");
+	CHASPYR("Chaspyr", "", ""),
+	GLITCHERDOTBE("GlitcherDOTbe", "https://www.youtube.com/user/TheGlitcherDOTbe", "http://www.planetminecraft.com/texture_pack/glitchs-3d-addons-pack-19/");
 	
 	private String ign;
 	private String yt;

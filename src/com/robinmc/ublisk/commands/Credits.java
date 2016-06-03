@@ -20,7 +20,7 @@ public class Credits implements CommandExecutor {
 			sender.sendMessage(gold + "Plugin development" + gray + ":" + yellow + " RobinMC");
 			sender.sendMessage(gold + "Building" + gray + ":" + yellow + " See /credits map");
 			sender.sendMessage(gold + "Weapons" + gray + ":" + yellow + " Chaspyr");
-			sender.sendMessage(gold + "Textures" + gray + ":" + yellow + " N/A");
+			sender.sendMessage(gold + "Textures" + gray + ":" + yellow + " GlitcherDOTbe");
 			sender.sendMessage("");
 			sender.sendMessage(gray + "Type /credits [user] for more information on a user");
 			return true;
