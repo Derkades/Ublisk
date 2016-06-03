@@ -69,7 +69,7 @@ public class Tasks {
 					}
 				}
 			}
-		}, 0, 2*20);	
+		}, 0, 5*20);	
 	}
 	
 	private static void randomTip(){
