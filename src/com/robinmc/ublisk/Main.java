@@ -83,7 +83,9 @@ public class Main extends JavaPlugin {
 	
 	public static void removeMobs(){
 		for (Entity entity: Var.world().getEntities()){
-			if (entity.getType() == EntityType.CHICKEN || entity.getType() == EntityType.SHEEP){
+			if (entity.getType() == EntityType.CHICKEN ||
+					entity.getType() == EntityType.SHEEP ||
+					entity.getType() == EntityType.DROPPED_ITEM){
 				entity.remove();
 			}
 		}
