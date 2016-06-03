@@ -19,6 +19,7 @@ public class Tasks {
 		clearWeather();
 		checkTnt();
 		randomTip();
+		removeMobs();
 	}
 	
 	private static void fastNight(){
@@ -78,6 +79,26 @@ public class Tasks {
 				Bukkit.broadcastMessage(Tip.getRandom());
 			}
 		}, 0, 60*20);
+	}
+	
+	private static void removeMobs(){
+		Console.sendMessage("[Tasks] RemoveMobs has been started!");
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
+			public void run(){
+				Bukkit.broadcastMessage(Messages.removeMobsWarning(30));
+				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
+					public void run(){
+						Bukkit.broadcastMessage(Messages.removeMobsWarning(5));
+						Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
+							public void run(){
+								Main.removeMobs();
+								Bukkit.broadcastMessage(Messages.removedMobs());
+							}
+						}, 5*20);
+					}
+				}, 25*20);
+			}
+		}, 0, 15*60*20);
 	}
 
 }
