@@ -13,7 +13,6 @@ import com.robinmc.ublisk.commands.Help;
 import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.listeners.EntityDeath;
 import com.robinmc.ublisk.listeners.EntityExplode;
-import com.robinmc.ublisk.listeners.NPCClick;
 import com.robinmc.ublisk.listeners.PlayerInteractEntity;
 import com.robinmc.ublisk.listeners.PlayerItemConsume;
 import com.robinmc.ublisk.listeners.PlayerJoin;
@@ -52,7 +51,6 @@ public class Main extends JavaPlugin {
 		PluginManager pman = Bukkit.getServer().getPluginManager();
 		pman.registerEvents(new EntityDeath(), this);
 		pman.registerEvents(new EntityExplode(), this);
-		pman.registerEvents(new NPCClick(), this);
 		pman.registerEvents(new PlayerInteractEntity(), this);
 		pman.registerEvents(new PlayerItemConsume(), this);
 		pman.registerEvents(new PlayerJoin(), this);

@@ -5,6 +5,5 @@
 	<classpathentry kind="lib" path="C:/Jars/craftbukkit-1.9.jar"/>
 	<classpathentry kind="lib" path="C:/Jars/NoteBlockAPI.jar"/>
 	<classpathentry kind="lib" path="C:/Jars/ActionBarAPI-1.4.2.jar"/>
-	<classpathentry kind="lib" path="C:/Jars/citizensapi-2.0.18-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
