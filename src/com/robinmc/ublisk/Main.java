@@ -8,6 +8,10 @@ import com.robinmc.ublisk.utils.Listeners;
 
 public class Main extends JavaPlugin {
 	
+	//Todo section:
+	//TODO: /report (sends link to forums)
+	//TODO: /suggest (sends link to forums)
+	
 	public static Main instance;
 	
 	@Override
