@@ -1,0 +1,51 @@
+{
+"__comment": "Designed by Glitcherdotbe with BDcraft Cubik PRO 0.95 Beta - http://bdcraft.net",
+"textures": {
+    "particle": "blocks/bed_feet_top",
+    "texture2": "blocks/bed_feet_side",
+    "texture3": "blocks/bed_feet_end",
+    "texture4": "blocks/planks_oak",
+    "texture1": "blocks/bed_feet_top"
+},
+"elements": [ 
+{
+    "__comment": "Leg",
+    "from": [ 13, 0, 0 ],
+    "to": [ 16, 3, 3 ],
+    "faces": {
+        "down":  { "uv": [ 3, 16, 0, 13 ], "rotation": 270, "texture": "#texture2" },
+        "up":    { "uv": [ 0, 13, 3, 16 ], "rotation": 90, "texture": "#texture2" },
+        "north": { "uv": [ 0, 13, 3, 16 ], "texture": "#texture3" },
+        "south": { "uv": [ 0, 13, 3, 16 ], "texture": "#texture3" },
+        "west":  { "uv": [ 0, 13, 3, 16 ], "texture": "#texture2" },
+        "east":  { "uv": [ 3, 13, 0, 16 ], "texture": "#texture2" }
+    }
+},
+{
+    "__comment": "Leg",
+    "from": [ 0, 0, 0 ],
+    "to": [ 3, 3, 3 ],
+    "faces": {
+        "down":  { "uv": [ 3, 16, 0, 13 ], "rotation": 270, "texture": "#texture2" },
+        "up":    { "uv": [ 0, 13, 3, 16 ], "rotation": 90, "texture": "#texture2" },
+        "north": { "uv": [ 0, 13, 3, 16 ], "texture": "#texture3" },
+        "south": { "uv": [ 0, 13, 3, 16 ], "texture": "#texture3" },
+        "west":  { "uv": [ 0, 13, 3, 16 ], "texture": "#texture2" },
+        "east":  { "uv": [ 0, 13, 3, 16 ], "texture": "#texture2" }
+    }
+},
+{
+    "__comment": "Bed",
+    "from": [ 0, 3, 0 ],
+    "to": [ 16, 9, 16 ],
+    "faces": {
+        "down":  { "uv": [ 16, 16, 0, 0 ], "rotation": 270, "texture": "#texture4" },
+        "up":    { "uv": [ 0, 16, 16, 0 ], "rotation": 90, "texture": "#texture1" },
+        "north": { "uv": [ 0, 7, 16, 13 ], "texture": "#texture3" },
+        "south": { "uv": [ 0, 7, 16, 13 ], "texture": "#particle" },
+        "west":  { "uv": [ 0, 7, 16, 13 ], "texture": "#texture2" },
+        "east":  { "uv": [ 16, 7, 0, 13 ], "texture": "#texture2" }
+    }
+}
+]
+}
