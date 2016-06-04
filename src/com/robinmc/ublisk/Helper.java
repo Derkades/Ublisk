@@ -4,7 +4,8 @@ public enum Helper {
 	
 	ROBINMC("RobinMC", "https://goo.gl/Aay9Ry", ""),
 	CHASPYR("Chaspyr", "", ""),
-	GLITCHERDOTBE("GlitcherDOTbe", "https://www.youtube.com/user/TheGlitcherDOTbe", "http://www.planetminecraft.com/texture_pack/glitchs-3d-addons-pack-19/");
+	GLITCHERDOTBE("GlitcherDOTbe", "https://www.youtube.com/user/TheGlitcherDOTbe", "http://www.planetminecraft.com/texture_pack/glitchs-3d-addons-pack-19/"),
+	ROTTENNUGGET("RottenNugget", "", "https://www.reddit.com/r/Minecraft/comments/2922fb/3d_models_resource_pack/");
 	
 	private String ign;
 	private String yt;
