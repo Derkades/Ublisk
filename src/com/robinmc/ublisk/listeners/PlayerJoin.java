@@ -11,6 +11,7 @@ import org.inventivetalent.rpapi.ResourcePackAPI;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Messages;
 import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 
 public class PlayerJoin implements Listener {
@@ -32,6 +33,9 @@ public class PlayerJoin implements Listener {
 				ResourcePackAPI.setResourcepack(player, Var.pack());
 			}
 		}, 1*20);
+		
+		Config.set("uuid.uuid." + pn, player.getUniqueId().toString());
+		Config.set("uuid.name." + player.getUniqueId(), pn);
 	}
 	
 }
