@@ -16,7 +16,7 @@ public class Messages {
 	}	
 	
 	public static String quit(String pn){
-		return gold + "Ublisk" + gray + " >> " + yellow + pn + "has left";
+		return gold + "Ublisk" + gray + " >> " + yellow + pn + " has left";
 	}
 	
 	//----------------------------- Commands -----------------------------//
