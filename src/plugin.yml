@@ -3,7 +3,7 @@ main: com.robinmc.ublisk.Main
 version: 1.0.0
 author: RobinMCDev
 description: Ublisk plugin
-depend: [NoteBlockAPI, ActionBarAPI, Citizens]
+depend: [NoteBlockAPI, ActionBarAPI]
 
 commands:
     menu:
@@ -15,9 +15,14 @@ commands:
     music:
         description: Opens a music selection menu
         usage: </command>
+        aliases: [song, playsong, playmusic, songs]
     help:
         description: Provides help
         usage: </command> [catagory]
     credits:
         description: Credits
         usage: </command> [arguments]
+    report:
+        aliases: [reporthacker, reportplayer, rpplayer, rphacker, rp]
+    suggest:
+        aliases: [suggestfeature, newfeature, features, newfeatures, suggestfeatures, suggestion, suggestions]
