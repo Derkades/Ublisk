@@ -21,6 +21,11 @@ public class Debug implements CommandExecutor {
 					int xp = Integer.parseInt(args[1]);
 					Exp.set(player, xp);
 					return true;
+				} if (args[0].equalsIgnoreCase("hunger")){
+					@SuppressWarnings("deprecation")
+					Player player2 = Bukkit.getPlayer(args[1]);
+					player.sendMessage("Food: " + player2.getFoodLevel());
+					return true;
 				} else {
 					player.sendMessage(Messages.wrongUsage());
 					return true;
