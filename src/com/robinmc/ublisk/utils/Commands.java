@@ -5,6 +5,8 @@ import com.robinmc.ublisk.commands.Credits;
 import com.robinmc.ublisk.commands.Debug;
 import com.robinmc.ublisk.commands.Help;
 import com.robinmc.ublisk.commands.Menu;
+import com.robinmc.ublisk.commands.Report;
+import com.robinmc.ublisk.commands.Suggest;
 
 public class Commands {
 	
@@ -16,6 +18,8 @@ public class Commands {
 		plugin.getCommand("help").setExecutor(new Help());
 		plugin.getCommand("menu").setExecutor(new Menu());
 		plugin.getCommand("music").setExecutor(new com.robinmc.ublisk.commands.Music());
+		plugin.getCommand("report").setExecutor(new Report());
+		plugin.getCommand("suggest").setExecutor(new Suggest());
 	}
 
 }

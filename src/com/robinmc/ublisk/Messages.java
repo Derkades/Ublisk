@@ -33,6 +33,14 @@ public class Messages {
 		return gold + "Ublisk" + gray + " >> " + red + "No additional information was found for user " + user;
 	}
 	
+	public static String reportForums(){
+		return gold + "Ublisk" + gray + " >> " + yellow + "Please report hackers and staff abusers over at http://robinmc.com";
+	}
+	
+	public static String suggestFeature(){
+		return gold + "Ublisk" + gray + " >> " + yellow + "Please suggest new features over at http://robinmc.com";
+	}
+	
 	//----------------------------- Music -----------------------------//
 	
 	public static String songEnded(){
