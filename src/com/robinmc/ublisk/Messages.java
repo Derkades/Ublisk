@@ -68,7 +68,7 @@ public class Messages {
 	}
 	
 	public static String cantEat(String pn){
-		return gold + "Ublisk" + gray + " >> " + red + pn + " Eating food is not allowed on this server";
+		return gold + "Ublisk" + gray + " >> " + red + pn + " Eating food is not allowed on this server. Please use a recycler";
 	}
 	
 	public static String tntDetect(){
