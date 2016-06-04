@@ -40,7 +40,9 @@ public class Tasks {
 			public void run(){
 				for (Player player: Bukkit.getOnlinePlayers()){
 					int hunger = player.getFoodLevel();
-					player.setFoodLevel(hunger + 1);
+					if (hunger < 20){
+						player.setFoodLevel(hunger + 1);
+					}
 				}
 			}
 		}, 0, 5*20);
