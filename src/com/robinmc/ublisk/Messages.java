@@ -103,4 +103,8 @@ public class Messages {
 		return gold + "Ublisk" + gray + " >> " + yellow + "All mobs and items have been cleared!";
 	}
 	
+	public static String npcMsg(String npc, String message){
+		return  gold + npc + gray + " >> " + yellow + message;
+	}
+	
 }
