@@ -26,7 +26,9 @@ public class PlayerJoin implements Listener {
 		final Player player = event.getPlayer();
 		String pn = player.getName();
 		
-		player.setGameMode(GameMode.ADVENTURE); //Set player gamemode to adventure
+		if (!player.isOp()){
+			player.setGameMode(GameMode.ADVENTURE); //If player is not opped, set player gamemode to adventure
+		}
 		
 		Console.sendCommand("scoreboard teams join all " + pn); //Join team "all". This team disables 1.9 collision
 		
@@ -54,7 +56,7 @@ public class PlayerJoin implements Listener {
 			public void run(){
 				NPCs.spawnAll();
 			}
-		}, 1*20);
+		}, 10);
 	}
 	
 }
