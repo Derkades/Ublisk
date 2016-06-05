@@ -26,3 +26,5 @@ commands:
         aliases: [reporthacker, reportplayer, rpplayer, rphacker, rp]
     suggest:
         aliases: [suggestfeature, newfeature, features, newfeatures, suggestfeatures, suggestion, suggestions]
+    afk:
+        aliases: [away, brb, awayfromkeyboard, back]
