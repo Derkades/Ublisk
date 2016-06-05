@@ -3,9 +3,7 @@ package com.robinmc.ublisk;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
@@ -21,7 +19,6 @@ public class Tasks {
 		fastNight();
 		regenerateHunger();
 		clearWeather();
-		checkTnt();
 		randomTip();
 		removeMobs();
 		checkTown();
@@ -62,24 +59,6 @@ public class Tasks {
 		}, 0, 60*20);
 	}
 	
-	private static void checkTnt(){
-		Console.sendMessage("[Tasks] CheckTnt has been started!");
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
-			public void run(){
-				for (Player player: Bukkit.getOnlinePlayers()){
-					ItemStack[] inv = player.getInventory().getContents();
-					for (ItemStack item:inv){
-						if (!(item == null)){
-							if (item.getType() == Material.TNT){
-								player.sendMessage(Messages.tntDetect());
-							}
-						}
-					}
-				}
-			}
-		}, 0, 5*20);	
-	}
-	
 	private static void randomTip(){
 		Console.sendMessage("[Tasks] RandomTips has been started!");
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
@@ -106,7 +85,7 @@ public class Tasks {
 					}
 				}, 25*20);
 			}
-		}, 0, 15*60*20);
+		}, 5*60*20, 15*60*20);
 	}
 	
 	private static void checkTown(){
