@@ -48,9 +48,7 @@ public class PlayerJoin implements Listener {
 		
 		HashMaps.addPlayerToMaps(player);
 		
-		for (NPC npc: NPCLib.getNPCs(Var.world())){
-			npc.despawn();
-		}
+		NPCs.despawnAll();
 		
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 			public void run(){
