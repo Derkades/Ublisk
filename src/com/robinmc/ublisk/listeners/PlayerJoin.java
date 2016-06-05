@@ -16,9 +16,6 @@ import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 
-import de.inventivegames.npc.NPC;
-import de.inventivegames.npc.NPCLib;
-
 public class PlayerJoin implements Listener {
 	
 	@EventHandler
