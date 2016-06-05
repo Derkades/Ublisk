@@ -28,12 +28,14 @@ public class PlayerJoin implements Listener {
 		event.setJoinMessage(Messages.playerJoin(pn));
 		
 		player.sendMessage(Messages.sendingPack());
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){ 
+			//For some reason sending the pack has to be delayed, otherwise the client won't get the message
 			public void run(){
 				ResourcePackAPI.setResourcepack(player, Var.pack());
 			}
 		}, 1*20);
 		
+		//Cache player uuid and name for later use
 		Config.set("uuid.uuid." + pn, player.getUniqueId().toString());
 		Config.set("uuid.name." + player.getUniqueId(), pn);
 	}
