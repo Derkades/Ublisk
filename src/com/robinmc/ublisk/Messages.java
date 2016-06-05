@@ -41,6 +41,14 @@ public class Messages {
 		return gold + "Ublisk" + gray + " >> " + yellow + "Please suggest new features over at http://robinmc.com";
 	}
 	
+	public static String nowAfk(String name){
+		return gold + "Ublisk" + gray + " >> " + yellow + name + " is now AFK";
+	}
+	
+	public static String noLongerAfk(String name){
+		return gold + "Ublisk" + gray + " >> " + yellow + name + " is no longer AFK";
+	}
+	
 	//----------------------------- Music -----------------------------//
 	
 	public static String songEnded(){
