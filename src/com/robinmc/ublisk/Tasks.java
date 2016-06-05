@@ -25,6 +25,7 @@ public class Tasks {
 		randomTip();
 		removeMobs();
 		checkTown();
+		respawnNpcs();
 	}
 	
 	private static void fastNight(){
@@ -109,6 +110,7 @@ public class Tasks {
 	}
 	
 	private static void checkTown(){
+		Console.sendMessage("[Tasks] CheckTown has been started!");
 		//x > 100 && x < 190 && x < 17 && x > -120
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			@SuppressWarnings("deprecation")
@@ -131,5 +133,20 @@ public class Tasks {
 			}
 		}, 0, 2*20);
 	}
+	
+	private static void respawnNpcs(){
+		Console.sendMessage("[Tasks] RespawnNPCs has been started!");
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
+			public void run(){
+				NPCs.despawnAll();
+				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
+					public void run(){
+						NPCs.spawnAll();
+					}
+				}, 10);
+			}
+		}, 0, 5*60*20);
+	}
+	
 
 }
