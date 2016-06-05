@@ -7,6 +7,11 @@ import com.robinmc.ublisk.Main;
 
 public class BanUtils {
 	
+	/**
+	 * Bans a player for a given amount of time
+	 * @param player
+	 * @param time Time in seconds
+	 */
 	@SuppressWarnings("deprecation")
 	public static void tempBan(final Player player, final int time){
 		player.setBanned(true);
