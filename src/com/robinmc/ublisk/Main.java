@@ -20,6 +20,8 @@ public class Main extends JavaPlugin {
 		Tasks.start();
 		
 		Config.create();
+		
+		HashMaps.resetAllPlayers();
 	}
 	
 	@Override

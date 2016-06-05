@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.inventivetalent.rpapi.ResourcePackAPI;
 
+import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Messages;
 import com.robinmc.ublisk.Var;
@@ -38,6 +39,8 @@ public class PlayerJoin implements Listener {
 		//Cache player uuid and name for later use
 		Config.set("uuid.uuid." + pn, player.getUniqueId().toString());
 		Config.set("uuid.name." + player.getUniqueId(), pn);
+		
+		HashMaps.addPlayerToMaps(player);
 	}
 	
 }
