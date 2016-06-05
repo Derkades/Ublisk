@@ -11,9 +11,13 @@ import org.inventivetalent.rpapi.ResourcePackAPI;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.NPCs;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
+
+import de.inventivegames.npc.NPC;
+import de.inventivegames.npc.NPCLib;
 
 public class PlayerJoin implements Listener {
 	
@@ -41,6 +45,16 @@ public class PlayerJoin implements Listener {
 		Config.set("uuid.name." + player.getUniqueId(), pn);
 		
 		HashMaps.addPlayerToMaps(player);
+		
+		for (NPC npc: NPCLib.getNPCs(Var.world())){
+			npc.despawn();
+		}
+		
+		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+			public void run(){
+				NPCs.spawnAll();
+			}
+		}, 1*20);
 	}
 	
 }

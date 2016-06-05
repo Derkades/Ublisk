@@ -22,6 +22,8 @@ public class Main extends JavaPlugin {
 		Config.create();
 		
 		HashMaps.resetAllPlayers();
+		
+		NPCs.spawnAll();
 	}
 	
 	@Override
