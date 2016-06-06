@@ -22,7 +22,6 @@ public class MainMenu {
 			if (name.equals("music")){
 				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 					public void run(){
-						MusicMenu.open(player);
 					}
 				}, 1);
 			} else {
@@ -38,7 +37,7 @@ public class MainMenu {
 	}
 	
 	private static void fillMenu(){
-		menu.setOption(0, new ItemStack(Material.JUKEBOX), "Music");
+		menu.setOption(0, new ItemStack(Material.STONE_BUTTON), "Nothing here!");
 	}
 
 }
