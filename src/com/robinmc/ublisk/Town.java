@@ -5,7 +5,8 @@ public enum Town {
 	//(x < ..., x > ..., z < ..., z > ...
 	//x < 100 x > 22 z < -10 z > 90
 	INTRODUCTION("Introduction", 100, 22, -10, -90),
-	GLEANOR("Glaenor", 190, 100, 17, -120);
+	GLEANOR("Glaenor", 190, 100, 17, -120),
+	RHOCUS("Rhocus", 200, 100, 400, 240);
 	
 	private String name;
 	private int x;
