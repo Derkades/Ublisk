@@ -13,7 +13,8 @@ import com.xxmicloxx.NoteBlockAPI.SongPlayer;
 public enum Music {
 	
 	COMPTINE_DUN_AUTRE_ETE("Introduction", "ComptineDunAutreEte.nbs"),
-	GLAENOR("Glaenor", "Glaenor.nbs");
+	GLAENOR("Glaenor", "Glaenor.nbs"),
+	RHOCUS("Rhocus", "Rhocus.nbs");
 	
 	private String town;
 	private String path;
