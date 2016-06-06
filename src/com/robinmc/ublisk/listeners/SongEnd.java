@@ -5,7 +5,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Music;
+import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 import com.xxmicloxx.NoteBlockAPI.SongEndEvent;
 
@@ -17,10 +18,11 @@ public class SongEnd implements Listener {
 		    for (String playername : event.getSongPlayer().getPlayerList()){
 		        @SuppressWarnings("deprecation")
 				Player player = Bukkit.getServer().getPlayer(playername);
-		        player.sendMessage(Messages.songEnded());
+		        String town = Config.getString("last-town." + player.getUniqueId());
+		        Music.playSong(player, town);
 		    }
 		} catch (Exception e) {
-			Console.sendMessage("[Music] Tried to send music stopped message but player has already logged out");
+			Console.sendMessage("[Music] Tried to play new song but player has already logged out");
 		}
 	}
 }

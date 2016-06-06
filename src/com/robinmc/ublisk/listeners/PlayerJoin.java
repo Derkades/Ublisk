@@ -11,6 +11,7 @@ import org.inventivetalent.rpapi.ResourcePackAPI;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Music;
 import com.robinmc.ublisk.NPCs;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.Config;
@@ -52,6 +53,10 @@ public class PlayerJoin implements Listener {
 				NPCs.spawnAll();
 			}
 		}, 10);
+		
+		String town = Config.getString("last-town." + player.getUniqueId());
+		Console.sendMessage(town);
+        Music.playSong(player, town);
 	}
 	
 }
