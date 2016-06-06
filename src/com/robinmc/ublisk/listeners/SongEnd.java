@@ -18,8 +18,17 @@ public class SongEnd implements Listener {
 		    for (String playername : event.getSongPlayer().getPlayerList()){
 		        @SuppressWarnings("deprecation")
 				Player player = Bukkit.getServer().getPlayer(playername);
-		        String town = Config.getString("last-town." + player.getUniqueId());
-		        Music.playSong(player, town);
+		        try {
+		        	if (Config.getBoolean("settings.music." + player.getUniqueId())){
+		        		String town = Config.getString("last-town." + player.getUniqueId());
+		 		        Music.playSong(player, town);
+		        	} else {
+		        		return;
+		        	}
+		        } catch (Exception e){
+		        	 String town = Config.getString("last-town." + player.getUniqueId());
+				     Music.playSong(player, town);
+		        }	       
 		    }
 		} catch (Exception e) {
 			Console.sendMessage("[Music] Tried to play new song but player has already logged out");

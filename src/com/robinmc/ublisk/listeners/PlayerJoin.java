@@ -54,9 +54,17 @@ public class PlayerJoin implements Listener {
 			}
 		}, 10);
 		
-		String town = Config.getString("last-town." + player.getUniqueId());
-		Console.sendMessage(town);
-        Music.playSong(player, town);
+        try {
+        	if (Config.getBoolean("settings.music." + player.getUniqueId())){
+        		String town = Config.getString("last-town." + player.getUniqueId());
+ 		        Music.playSong(player, town);
+        	} else {
+        		return;
+        	}
+        } catch (Exception e){
+        	 String town = Config.getString("last-town." + player.getUniqueId());
+		     Music.playSong(player, town);
+        }	       
 	}
 	
 }

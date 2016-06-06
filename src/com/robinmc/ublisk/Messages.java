@@ -59,6 +59,14 @@ public class Messages {
 		return gold + "Music" + gray + " >> " + yellow + "You are now playing " + song;
 	}
 	
+	public static String musicDisabled(){
+		return gold + "Music" + gray + " >> " + yellow + "Music has been disabled. After this song no more songs will play.";
+	}
+	
+	public static String musicEnabled(){
+		return gold + "Music" + gray + " >> " + yellow + "Music has been re-enabled";
+	}
+	
 	//----------------------------- Resource pack -----------------------------//
 	
 	public static String declinedPack(){
