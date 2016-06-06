@@ -19,7 +19,6 @@ public class Commands {
 		plugin.getCommand("debug").setExecutor(new Debug());
 		plugin.getCommand("help").setExecutor(new Help());
 		plugin.getCommand("menu").setExecutor(new Menu());
-		plugin.getCommand("music").setExecutor(new com.robinmc.ublisk.commands.Music());
 		plugin.getCommand("report").setExecutor(new Report());
 		plugin.getCommand("suggest").setExecutor(new Suggest());
 	}
