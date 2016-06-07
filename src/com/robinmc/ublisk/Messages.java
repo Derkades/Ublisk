@@ -49,6 +49,10 @@ public class Messages {
 		return gold + "Ublisk" + gray + " >> " + yellow + name + " is no longer AFK";
 	}
 	
+	public static String noPermission(String rank){
+		return gold + "Ublisk" + gray + " >> " + red + "You don't have permission to execute this command, you need at least rank " + rank + ".";
+	}
+	
 	//----------------------------- Music -----------------------------//
 	
 	public static String songEnded(){
