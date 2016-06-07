@@ -9,10 +9,11 @@ public class EntityUtils {
 	
 	public static void removeMobs(){
 		for (Entity entity: Var.world().getEntities()){
-			if (entity.getType() == EntityType.CHICKEN ||
-					entity.getType() == EntityType.SHEEP ||
-					entity.getType() == EntityType.DROPPED_ITEM ||
-					entity.getType() == EntityType.EXPERIENCE_ORB){
+			EntityType type = entity.getType();
+			if (type == EntityType.CHICKEN ||
+					type == EntityType.SHEEP ||
+					type == EntityType.DROPPED_ITEM ||
+					type == EntityType.EXPERIENCE_ORB){
 				entity.remove();
 			}
 		}
