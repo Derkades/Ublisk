@@ -14,10 +14,13 @@ public class PlayerCommandPreprocess implements Listener {
 	@EventHandler
 	public void onCommand(PlayerCommandPreprocessEvent event){
 		String cmd = event.getMessage();
-		String pn = event.getPlayer().getName();
+		Player sender = event.getPlayer();
+		String pn = sender.getName();
 		for (Player player: Bukkit.getOnlinePlayers()){
 			if (player.hasPermission(Perms.COMMAND_LOG.getPerm())){
-				player.sendMessage(Messages.commandLog(pn, cmd));
+				if (!(player == sender)){
+					player.sendMessage(Messages.commandLog(pn, cmd));
+				}
 			}
 		}
 	}
