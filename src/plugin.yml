@@ -12,10 +12,6 @@ commands:
     debug:
         description: Debugging command
         usage: </command> [args] [args]
-    music:
-        description: Opens a music selection menu
-        usage: </command>
-        aliases: [song, playsong, playmusic, songs]
     help:
         description: Provides help
         usage: </command> [catagory]
