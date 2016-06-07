@@ -115,4 +115,8 @@ public class Messages {
 		return  gold + npc + gray + " >> " + yellow + message;
 	}
 	
+	public static String commandLog(String pn, String cmd){
+		return gold + "CommandLog" + gray + " >> " + yellow + pn + " : " + cmd;
+	}
+	
 }

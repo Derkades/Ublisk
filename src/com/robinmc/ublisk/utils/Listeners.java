@@ -8,6 +8,7 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.listeners.EntityDeath;
 import com.robinmc.ublisk.listeners.EntityExplode;
 import com.robinmc.ublisk.listeners.NPCInteract;
+import com.robinmc.ublisk.listeners.PlayerCommandPreprocess;
 import com.robinmc.ublisk.listeners.PlayerInteractEntity;
 import com.robinmc.ublisk.listeners.PlayerItemConsume;
 import com.robinmc.ublisk.listeners.PlayerJoin;
@@ -22,6 +23,7 @@ public class Listeners {
 		registerListener(new EntityDeath());
 		registerListener(new EntityExplode());
 		registerListener(new NPCInteract());
+		registerListener(new PlayerCommandPreprocess());
 		registerListener(new PlayerInteractEntity());
 		registerListener(new PlayerItemConsume());
 		registerListener(new PlayerJoin());
