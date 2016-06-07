@@ -21,9 +21,7 @@ public class NPCInteract implements Listener {
 	public void npcInteract(NPCInteractEvent event){
 		Player player = event.getPlayer();
 		final UUID uuid = player.getUniqueId();
-		Console.sendMessage("Trigger!");
 		if (!HashMaps.cooldownnpc.get(uuid)){
-			Console.sendMessage("Cooldown!");
 			InteractType type = event.getType();
 			if (type == InteractType.RIGHT_CLICK){
 				HashMaps.cooldownnpc.put(uuid, true);
@@ -34,7 +32,7 @@ public class NPCInteract implements Listener {
 					public void run(){
 						HashMaps.cooldownnpc.put(uuid, false);
 					}
-				}, 5*20);
+				}, 2*20);
 				
 				if (name == "Merek"){
 					Merek.merek(player);
