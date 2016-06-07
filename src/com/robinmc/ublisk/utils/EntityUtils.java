@@ -11,7 +11,8 @@ public class EntityUtils {
 		for (Entity entity: Var.world().getEntities()){
 			if (entity.getType() == EntityType.CHICKEN ||
 					entity.getType() == EntityType.SHEEP ||
-					entity.getType() == EntityType.DROPPED_ITEM){
+					entity.getType() == EntityType.DROPPED_ITEM ||
+					entity.getType() == EntityType.EXPERIENCE_ORB){
 				entity.remove();
 			}
 		}
