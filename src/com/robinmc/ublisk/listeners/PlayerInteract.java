@@ -26,7 +26,10 @@ public class PlayerInteract implements Listener {
 					player.sendMessage(Messages.wrongWeapon());
 					event.setCancelled(true);
 				}
+			} else if (item == Material.END_CRYSTAL){
+				player.openInventory(player.getEnderChest());
 			}
+			
 		}
 	}
 

@@ -7,7 +7,7 @@ import org.bukkit.ChatColor;
 public enum Tip {
 	
 	ONE("Change class using /class (Note: you can only switch class every 15 minutes)"),
-	TWO("Tip two");
+	TWO("Please set your in-game language to US English to enable custom item names");
 	
 	private String tip;
 	
