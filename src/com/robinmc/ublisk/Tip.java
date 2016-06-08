@@ -6,7 +6,7 @@ import org.bukkit.ChatColor;
 
 public enum Tip {
 	
-	ONE("Tip one"),
+	ONE("Change class using /class (Note: you can only switch class every 15 minutes)"),
 	TWO("Tip two");
 	
 	private String tip;

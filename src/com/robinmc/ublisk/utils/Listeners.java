@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.listeners.EntityDamageByEntity;
 import com.robinmc.ublisk.listeners.EntityDeath;
 import com.robinmc.ublisk.listeners.EntityExplode;
 import com.robinmc.ublisk.listeners.NPCInteract;
@@ -21,11 +22,12 @@ public class Listeners {
 	
 	public static void register(){
 		Console.sendMessage("[Ublisk] Registering listeners...");
+		registerListener(new EntityDamageByEntity());
 		registerListener(new EntityDeath());
 		registerListener(new EntityExplode());
-		registerListener(new PlayerInteract());
 		registerListener(new NPCInteract());
 		registerListener(new PlayerCommandPreprocess());
+		registerListener(new PlayerInteract());
 		registerListener(new PlayerInteractEntity());
 		registerListener(new PlayerItemConsume());
 		registerListener(new PlayerJoin());

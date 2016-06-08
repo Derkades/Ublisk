@@ -16,7 +16,7 @@ import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 
 public class ClassMenu {
 	
-	private static IconMenu menu = new IconMenu("Main menu", 1*9, new IconMenu.OptionClickEventHandler(){
+	private static IconMenu menu = new IconMenu("Class menu (you can change class later)", 1*9, new IconMenu.OptionClickEventHandler(){
 
 		@Override
 		public void onOptionClick(OptionClickEvent event) {

@@ -24,3 +24,5 @@ commands:
         aliases: [suggestfeature, newfeature, features, newfeatures, suggestfeatures, suggestion, suggestions]
     afk:
         aliases: [away, brb, awayfromkeyboard, back]
+    class:
+        usage: </command>

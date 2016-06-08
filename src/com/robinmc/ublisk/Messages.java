@@ -96,7 +96,11 @@ public class Messages {
 	}
 	
 	public static String classCooldown(){
-		return gold + "Ublisk" + gray + " >> " + yellow + "You have to wait 15 minutes before you can change class again!";
+		return gold + "Ublisk" + gray + " >> " + yellow + "You have to wait 15 minutes before you can change class again";
+	}
+	
+	public static String wrongWeapon(){
+		return gold + "Ublisk" + gray + " >> " + yellow + "This weapon is not for your class";
 	}
 	
 	//----------------------------- Miscellaneous -----------------------------//

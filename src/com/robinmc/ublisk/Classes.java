@@ -1,5 +1,9 @@
 package com.robinmc.ublisk;
 
+import org.bukkit.entity.Player;
+
+import com.robinmc.ublisk.utils.Config;
+
 public enum Classes {
 	
 	SWORDSMAN("Swordsman"),
@@ -22,6 +26,12 @@ public enum Classes {
 			}
 		}
 		return null;
+	}
+	
+	public static Classes getClass(Player player){
+		String name = Config.getString("class." + player.getUniqueId());
+		Classes c = fromString(name);
+		return c;
 	}
 
 }

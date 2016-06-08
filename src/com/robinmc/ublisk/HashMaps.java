@@ -24,6 +24,7 @@ public class HashMaps {
 		UUID uuid = player.getUniqueId();
 		afk.put(uuid, false);
 		cooldownnpc.put(uuid, false);
+		cooldownclass.put(uuid, false);
 	}
 	
 }
