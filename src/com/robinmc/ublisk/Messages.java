@@ -89,6 +89,16 @@ public class Messages {
 		return gold + "Ublisk" + gray + " >> " + yellow + "Sending you our resource pack...";
 	}
 	
+	//----------------------------- Classes ----------------------------- //
+	
+	public static String changedClass(String c){
+		return gold + "Ublisk" + gray + " >> " + yellow + "You have changed your class to " + c;
+	}
+	
+	public static String classCooldown(){
+		return gold + "Ublisk" + gray + " >> " + yellow + "You have to wait 15 minutes before you can change class again!";
+	}
+	
 	//----------------------------- Miscellaneous -----------------------------//
 	
 	public static String menuErrorWrongItem(){
