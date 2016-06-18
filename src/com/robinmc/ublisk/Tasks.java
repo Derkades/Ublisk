@@ -120,6 +120,7 @@ public class Tasks {
 				NPCs.despawnAll();
 				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 					public void run(){
+						Console.sendMessage("[NPC] All NPCs have been removed and spawned back in");
 						NPCs.spawnAll();
 					}
 				}, 10);
