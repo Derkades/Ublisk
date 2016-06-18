@@ -9,8 +9,8 @@ import org.bukkit.event.Listener;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.npc.Merek;
 import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.NPCUtils;
 
 import de.inventivegames.npc.event.NPCInteractEvent;
 import de.inventivegames.npc.event.NPCInteractEvent.InteractType;
@@ -34,10 +34,7 @@ public class NPCInteract implements Listener {
 					}
 				}, 2*20);
 				
-				if (name == "Merek"){
-					Merek.merek(player);
-				}
-				
+				new NPCUtils().open(player, name);
 			}
 		}
 	}

@@ -113,14 +113,6 @@ public class Messages {
 		return gold + "Ublisk" + gray + " >> " + red + pn + " Eating food is not allowed on this server. Please use a recycler";
 	}
 	
-	public static String tntDetect(){
-		return gold + "Ublisk" + gray + " >> " + red + "TNT has been detected in your inventory. Using it will result in a 30s temp-ban";
-	}
-	
-	public static String tntBan(){
-		return red + "You have been banned for using TNT. You will be unbanned automatically in 30 seconds.";
-	}
-	
 	public static String removeMobsWarning(int sec){
 		return gold + "Ublisk" + gray + " >> " + yellow + "Clearing all mobs and items in " + sec + " seconds!";
 	}
@@ -135,6 +127,10 @@ public class Messages {
 	
 	public static String commandLog(String pn, String cmd){
 		return gold + "CommandLog" + gray + " >> " + yellow + pn + " : " + cmd;
+	}
+	
+	public static String npcNotFound(String name){
+		return gold + "NPC" + gray + " >> " + red + "No dialog could be found for an npc with name " + name + " please report this error.";
 	}
 	
 }

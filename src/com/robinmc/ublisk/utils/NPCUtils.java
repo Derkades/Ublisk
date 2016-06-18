@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Messages;
 import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.npc.Merek;
 
 import de.inventivegames.npc.NPCLib;
 
@@ -40,6 +41,14 @@ public class NPCUtils {
 	
 	public void msg(Player player, String npc, String msg){
 		player.sendMessage(Messages.npcMsg(npc, msg));
+	}
+	
+	public void open(Player player, String name){
+		if (name == "Merek"){
+			Merek.merek(player);
+		} else {
+			player.sendMessage(Messages.npcNotFound(name));
+		}
 	}
 
 }
