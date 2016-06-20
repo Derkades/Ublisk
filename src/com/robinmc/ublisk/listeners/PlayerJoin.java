@@ -1,5 +1,8 @@
 package com.robinmc.ublisk.listeners;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -58,13 +61,51 @@ public class PlayerJoin implements Listener {
         	if (Config.getBoolean("settings.music." + player.getUniqueId())){
         		String town = Config.getString("last-town." + player.getUniqueId());
  		        Music.playSong(player, town);
-        	} else {
-        		return;
         	}
         } catch (Exception e){
         	 String town = Config.getString("last-town." + player.getUniqueId());
 		     Music.playSong(player, town);
-        }	       
+        }
+        
+        Main.openConnection();
+        try {
+        	int logins = 0;
+        	
+        	if (Main.playerDataContainsPlayer(player)){
+        		PreparedStatement sql = Main.connection.prepareStatement("SELECT count FROM `login_count` WHERE uuid=?;");
+        		sql.setString(1, player.getUniqueId().toString());
+        		
+        		ResultSet result = sql.executeQuery();
+        		result.next();
+        		
+        		logins = result.getInt("count");
+        		
+        		PreparedStatement newlogins = Main.connection.prepareStatement("UPDATE `login_count` SET count=? WHERE uuid=?;");
+        		newlogins.setInt(1, logins + 1);
+        		newlogins.setString(2, player.getUniqueId().toString());
+        		newlogins.executeUpdate();
+        		
+        		PreparedStatement name = Main.connection.prepareStatement("UPDATE `login_count` SET name=? where uuid=?;");
+        		name.setString(1, player.getName());
+        		name.setString(2, player.getUniqueId().toString());
+        		name.executeUpdate();
+        		
+        		name.close();
+        		newlogins.close();
+        		sql.close();
+        		result.close();
+        	} else {
+        		PreparedStatement newplayer = Main.connection.prepareStatement("INSERT INTO `login_count` values(?, 1, ?);");
+        		newplayer.setString(1, player.getUniqueId().toString());
+        		newplayer.setString(2, player.getName());
+        		newplayer.execute();
+        		newplayer.close();
+        	}
+        } catch (Exception e){
+        	e.printStackTrace();
+        } finally {
+        	Main.closeConnection();
+        }
 	}
 	
 }
