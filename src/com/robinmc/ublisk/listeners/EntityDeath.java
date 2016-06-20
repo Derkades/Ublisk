@@ -8,18 +8,18 @@ import org.bukkit.entity.Sheep;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 import com.robinmc.ublisk.Mob;
 import com.robinmc.ublisk.MobExp;
-import com.robinmc.ublisk.utils.Console;
 
 public class EntityDeath implements Listener {
 	
 	@EventHandler
 	public void entityDeath(EntityDeathEvent event){		
 		LivingEntity entity = event.getEntity();
-		try {
+		if (entity.getLastDamageCause().getCause() == DamageCause.ENTITY_ATTACK){
 			Player player = entity.getKiller();
 			if (entity instanceof Chicken){
 				MobExp.giveExp(player, Mob.CHICKEN);
@@ -39,8 +39,6 @@ public class EntityDeath implements Listener {
 			} else {
 				return;
 			}
-		} catch (Exception e){
-			Console.sendMessage("[MobExp] Mob was not killed by player");
 		}
 	}
 
