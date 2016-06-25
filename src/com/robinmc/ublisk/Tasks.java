@@ -96,7 +96,6 @@ public class Tasks {
 	
 	private static void checkTown(){
 		Console.sendMessage("[Tasks] CheckTown has been started!");
-		//x > 100 && x < 190 && x < 17 && x > -120
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			@SuppressWarnings("deprecation")
 			public void run(){
