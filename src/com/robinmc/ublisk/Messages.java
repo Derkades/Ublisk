@@ -133,4 +133,8 @@ public class Messages {
 		return gold + "NPC" + gray + " >> " + red + "No dialog could be found for an npc with name " + name + " please report this error.";
 	}
 	
+	public static String generalError(){
+		return gold + "Ublisk" + gray + " >> " + red + "An unexpected error has occured. Please report this error and the steps you took to get this error at the forums.";
+	}
+	
 }
