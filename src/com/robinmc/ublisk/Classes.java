@@ -7,7 +7,9 @@ import com.robinmc.ublisk.utils.Config;
 public enum Classes {
 	
 	SWORDSMAN("Swordsman"),
-	ARCHER("Archer");
+	ARCHER("Archer"),
+	PALADIN("Paladin"),
+	SORCERER("Sorcerer");
 	
 	private String name;
 	
