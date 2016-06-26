@@ -16,7 +16,7 @@ public class Ulric {
 		PlayerInventory inv = player.getInventory();
 		
 		if (	inv.containsAtLeast(new ItemStack(Material.LOG), 10) &&
-				inv.containsAtLeast(new ItemStack(Material.STRING), 10) &&
+				inv.containsAtLeast(new ItemStack(Material.STRING), 16) &&
 				inv.containsAtLeast(new ItemStack(Material.GOLD_NUGGET), 10)){
 			//player has required materials
 			Classes c = Classes.getClass(player);
