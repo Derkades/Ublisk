@@ -28,12 +28,18 @@ public class ClassMenu {
 				return;
 			} else {
 				Cooldown.chooseClassStart(player);
-				if (name.contains("swordsman")){
+				if (name.equals("swordsman")){
 					Config.set("class." + uuid, "Swordsman");
 					player.sendMessage(Messages.changedClass("Swordsman"));
-				} else if (name.contains("archer")){
+				} else if (name.equals("archer")){
 					Config.set("class." + uuid, "Archer");
 					player.sendMessage(Messages.changedClass("Archer"));
+				} else if (name.equals("sorcerer")){
+					Config.set("class." + uuid, "Sorcerer");
+					player.sendMessage(Messages.changedClass("Sorceer"));
+				} else if (name.equals("Paladin")){
+					Config.set("class." + uuid, "Paladin");
+					player.sendMessage(Messages.changedClass("Paladin"));
 				} else {
 					player.sendMessage(Messages.menuErrorWrongItem());
 				}
@@ -48,8 +54,10 @@ public class ClassMenu {
 	}
 	
 	private static void fillMenu(){
-		menu.setOption(0, new ItemStack(Material.DIAMOND_SWORD), "Swordsman");
-		menu.setOption(1, new ItemStack(Material.BOW), "Archer");
+		menu.setOption(0, new ItemStack(Material.DIAMOND_SWORD), "Swordsman", "Damage: ■■■■", "Defence: ■■□□", "Magic: □□□□", "Walk speed: ■■□□");
+		menu.setOption(1, new ItemStack(Material.BOW), "Archer", "Damage: ■■□□", "Defence: ■□□□", "Magic: ■□□□", "Walk speed: ■■■■");
+		menu.setOption(2, new ItemStack(Material.STICK), "Sorcerer", "Damage: ■□□□", "Defence: ■□□□", "Magic: ■■■■", "Walk speed: ■■□□");
+		menu.setOption(3, new ItemStack(Material.SHIELD), "Paladin", "Damage: ■■■□", "Defence: ■■■■", "Magic: □□□□", "Walk speed: □□□□");
 	}
 
 }
