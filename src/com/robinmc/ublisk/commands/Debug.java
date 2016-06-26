@@ -1,19 +1,15 @@
 package com.robinmc.ublisk.commands;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.NPCs;
 import com.robinmc.ublisk.Perms;
-import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.Exp;
-
-import de.inventivegames.npc.NPC;
-import de.inventivegames.npc.NPCLib;
 
 public class Debug implements CommandExecutor {
 	
@@ -38,14 +34,12 @@ public class Debug implements CommandExecutor {
 					}
 				} else if (args.length == 1){
 					if (args[0].equalsIgnoreCase("kill")){
-//						EntityUtils.removeMobs();
 						Bukkit.broadcastMessage(Messages.removedMobs());
 						return true;
-					} else if (args[0].equalsIgnoreCase("npc")){
-						@SuppressWarnings("deprecation")
-						NPC npc = NPCLib.spawnNPC(new Location(Var.world(), 128, 68, -21), "LeukeNaam", "rle");
-						npc.setInvulnerable(true);
-						npc.setFrozen(true);
+					} else if (args[0].equalsIgnoreCase("npcrespawn")){
+						NPCs.despawnAll();
+						NPCs.spawnAll();
+						player.sendMessage("All NPCs have been respawned!");
 						return true;
 					} else {
 						player.sendMessage(Messages.wrongUsage());
