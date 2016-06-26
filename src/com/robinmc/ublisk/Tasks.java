@@ -7,7 +7,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
@@ -29,6 +31,7 @@ public class Tasks {
 		checkTown();
 		respawnNpcs();
 		updateExp();
+		checkShield();
 	}
 	
 	private static void fastNight(){
@@ -181,6 +184,21 @@ public class Tasks {
 		        }
 			}
 		}, 5*20, 1*60*20);
+	}
+	
+	private static void checkShield(){
+		Console.sendMessage("[Tasks] CheckShield has been started!");
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
+			public void run(){
+				for (Player player : Bukkit.getOnlinePlayers()){
+					PlayerInventory inv = player.getInventory();
+					if (inv.getItemInOffHand().getType() == Material.SHIELD && !(Classes.getClass(player) == Classes.PALADIN)){
+						player.sendMessage(Messages.wrongWeapon());
+						player.setHealth(0.5);
+					}
+				}
+			}
+		}, 5*20, 5*20);
 	}
 
 }
