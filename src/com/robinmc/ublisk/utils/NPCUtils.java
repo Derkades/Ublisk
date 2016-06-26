@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Messages;
 import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.npc.Arzhur;
 import com.robinmc.ublisk.npc.Merek;
 import com.robinmc.ublisk.npc.Ulric;
 
@@ -49,6 +50,8 @@ public class NPCUtils {
 			Merek.merek(player);
 		} else if (name == "Ulric"){
 			Ulric.ulric(player);
+		} else if (name == "Arzhur"){
+			Arzhur.arzhur(player);
 		} else {
 			player.sendMessage(Messages.npcNotFound(name));
 		}

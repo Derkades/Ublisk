@@ -2,6 +2,8 @@ package com.robinmc.ublisk.utils;
 
 import org.bukkit.entity.Player;
 
+import com.robinmc.ublisk.MobExp;
+
 public class Exp {
 	
 	public static void set(Player player, int n){
@@ -19,6 +21,10 @@ public class Exp {
 			set(player, 0);
 			return 0;
 		}
+	}
+	
+	public static void update(Player player){
+		MobExp.refreshExp(player);
 	}
 
 }

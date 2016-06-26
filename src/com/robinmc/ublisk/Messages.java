@@ -103,6 +103,12 @@ public class Messages {
 		return gold + "Ublisk" + gray + " >> " + yellow + "This weapon is not for your class";
 	}
 	
+	//----------------------------- Quests -----------------------------//
+	
+	public static String questCompleted(String quest, int xp){
+		return gold + "Ublisk" + gray + " >> " + yellow + "You have completed quest " + ChatColor.BOLD + quest + ChatColor.RESET + yellow + " and got " + xp + " XP!";
+	}
+	
 	//----------------------------- Miscellaneous -----------------------------//
 	
 	public static String menuErrorWrongItem(){
