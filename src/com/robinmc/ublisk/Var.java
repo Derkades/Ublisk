@@ -10,7 +10,7 @@ public class Var {
 	}
 	
 	public static String pack(){
-		return "http://robinmc.com/files/textures.zip";
+		return "http://ublisk.robinmc.com/textures.zip";
 	}
 
 }
