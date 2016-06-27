@@ -7,6 +7,7 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Classes;
 import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Weapon;
 import com.robinmc.ublisk.utils.NPCUtils;
 
 public class Ulric {
@@ -21,9 +22,9 @@ public class Ulric {
 			//player has required materials
 			Classes c = Classes.getClass(player);
 			if (c == Classes.ARCHER){
-				//TODO: Give player bow
+				player.sendMessage("Bows are not implemented yet. Please choose another class");
 			} else if (c == Classes.SWORDSMAN){
-				//TODO: Give player sword
+				Weapon.giveWeapon(player, Weapon.OLD_WOODEN_SWORD);
 			} else {
 				player.sendMessage(Messages.generalError());
 			}
