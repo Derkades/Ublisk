@@ -21,12 +21,20 @@ public class PlayerInteract implements Listener {
 			PlayerInventory inv = player.getInventory();
 			Material item = inv.getItemInMainHand().getType();
 			Material offhand = inv.getItemInOffHand().getType();
+			
 			if (item == Material.BOW || offhand == Material.BOW){
 				if (!(Classes.getClass(player) == Classes.ARCHER)){
 					player.sendMessage(Messages.wrongWeapon());
 					event.setCancelled(true);
 				}
-			} else if (item == Material.END_CRYSTAL){
+			} else if (item == Material.STICK || offhand == Material.STICK){
+				if (!(Classes.getClass(player) == Classes.SORCERER)){
+					player.sendMessage(Messages.wrongWeapon());
+					event.setCancelled(true);
+				}
+			}
+			
+			if (item == Material.END_CRYSTAL){
 				player.openInventory(player.getEnderChest());
 			}
 			
