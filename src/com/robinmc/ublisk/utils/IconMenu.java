@@ -75,7 +75,6 @@ public class IconMenu implements Listener {
         optionIcons = null;
     }
  
-    @SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.HIGHEST)
     void onInventoryClick(InventoryClickEvent event) {
         if (event.getInventory().getTitle().equals(name) && (player == null || event.getWhoClicked() == player)) {

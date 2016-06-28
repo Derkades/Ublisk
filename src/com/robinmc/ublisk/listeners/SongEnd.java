@@ -16,7 +16,6 @@ public class SongEnd implements Listener {
 	public void musicStopped(SongEndEvent event){
 		try {
 		    for (String playername : event.getSongPlayer().getPlayerList()){
-		        @SuppressWarnings("deprecation")
 				Player player = Bukkit.getServer().getPlayer(playername);
 		        try {
 		        	if (Config.getBoolean("settings.music." + player.getUniqueId())){
