@@ -18,6 +18,9 @@ public class Main extends JavaPlugin {
 	//Todo area
 	//TODO: /friends
 	//TODO: /friends xp [player]
+	//TODO: /party
+	//TODO: Shows party member's health in bossbar
+	//TODO: /info [player] shows player info
 	
 	public static Main instance;
 	
