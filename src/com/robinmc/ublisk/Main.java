@@ -15,6 +15,10 @@ import com.robinmc.ublisk.utils.Listeners;
 
 public class Main extends JavaPlugin {
 	
+	//Todo area
+	//TODO: /friends
+	//TODO: /friends xp [player]
+	
 	public static Main instance;
 	
 	public static Connection connection;
@@ -33,6 +37,9 @@ public class Main extends JavaPlugin {
 		HashMaps.resetAllPlayers();
 		
 		NPCs.spawnAll();
+		
+		HashMaps.doublexp.put("hi", false);
+		HashMaps.doublexptime.put("hi", Var.doubleExpTime());
 	}
 	
 	@Override

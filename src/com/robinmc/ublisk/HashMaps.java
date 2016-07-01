@@ -14,6 +14,8 @@ public class HashMaps {
 	public static Map<UUID, Boolean> afk = new HashMap<UUID, Boolean>();
 	public static Map<UUID, Boolean> cooldownnpc = new HashMap<UUID, Boolean>();
 	public static Map<UUID, Boolean> cooldownclass = new HashMap<UUID, Boolean>();
+	public static Map<String, Boolean> doublexp = new HashMap<String, Boolean>();
+	public static Map<String, Integer> doublexptime = new HashMap<String, Integer>();
 	
 	static void resetAllPlayers(){
 		for (Player p: Bukkit.getOnlinePlayers()) HashMaps.addPlayerToMaps(p);

@@ -10,12 +10,16 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
+import org.inventivetalent.bossbar.BossBar;
+import org.inventivetalent.bossbar.BossBarAPI;
 
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.EntityUtils;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Time;
+
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class Tasks {
 	
@@ -32,6 +36,8 @@ public class Tasks {
 		respawnNpcs();
 		updateExp();
 		checkShield();
+		checkDoubleExp();
+		updateDoubleExpBossBar();
 	}
 	
 	private static void fastNight(){
@@ -74,7 +80,7 @@ public class Tasks {
 			public void run(){
 				Bukkit.broadcastMessage(Tip.getRandom());
 			}
-		}, 0, 5*60*20);
+		}, 20*20, 5*60*20);
 	}
 	
 	private static void removeMobs(){
@@ -199,6 +205,103 @@ public class Tasks {
 				}
 			}
 		}, 5*20, 5*20);
+	}
+	
+	private static void checkDoubleExp(){
+		Console.sendMessage("[Tasks] CheckDoubleExp has been started!");
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
+			public void run(){
+				try {
+					Main.openConnection();
+					PreparedStatement sql = Main.connection.prepareStatement("SELECT state FROM `bonus` WHERE type='doublexp_1';");
+					ResultSet rs = sql.executeQuery();
+					rs.next();
+	    			boolean doublexp = rs.getBoolean(1);
+	    			Console.sendMessage("" + doublexp);
+	    			sql.close();
+	    			if (doublexp && !(HashMaps.doublexp.get("hi"))){ //If doublexp is true in database and not yet active
+	    				HashMaps.doublexp.put("hi", true); //Enable double xp. The task below will take care of the rest
+	    			}
+				} catch (Exception e){
+					e.printStackTrace();
+				} finally {
+					Main.closeConnection();
+				}
+			}
+		}, 10*20, 10*20);
+	}
+	
+	private static void updateDoubleExpBossBar(){
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
+			public void run(){
+				try {
+					if (HashMaps.doublexp.get("hi")){
+						int left = HashMaps.doublexptime.get("hi");
+						for (final Player player : Bukkit.getOnlinePlayers()){
+							//double n = ((left * (10 / 6)) / 100); //Converts a range of 0-60 to 0-1
+							//Console.sendMessage(left + "");
+							//Console.sendMessage((left * (10 / 6)) / 100 + "");
+							//BigDecimal bd = new BigDecimal(Double.toString((left * (10 / 6)) / 100));
+					        //bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+							//float progress = bd.floatValue();
+							//float progress = (float) n;
+							//Console.sendMessage(progress + "");
+							
+							//As you can see from the mess above converting a 0-60 double to 0.0-1.0 float was too hard for me. I left this here in case I want to do this properly later. Doin' it the messy way, sorry fellow coders :(
+							float p = 1.0f;
+							if (left > 54){
+								p = 1.0f;
+							} else if (left > 48){
+								p = 0.9f;
+							} else if (left > 42){
+								p = 0.8f;
+							} else if (left > 36){
+								p = 0.7f;
+							} else if (left > 30){
+								p = 0.6f;
+							} else if (left > 24){
+								p = 0.5f;
+							} else if (left > 18){
+								p = 0.4f;
+							} else if (left > 12){
+								p = 0.3f;
+							} else if (left > 6){
+								p = 0.2f;
+							} else if (left > 1){
+								p = 0.1f;
+							} else {
+								p = 0.0f;
+							}
+							final BossBar bossBar = BossBarAPI.addBar(player, new TextComponent("Double XP for 1 minute"), BossBarAPI.Color.GREEN, BossBarAPI.Style.PROGRESS, p, 20, 40);
+							Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
+								public void run(){
+									bossBar.removePlayer(player);
+								}
+							}, 1*20);
+						}
+						int left2 = left - 1;
+						if (left2 == 0){
+							left2 = Var.doubleExpTime();
+							HashMaps.doublexp.put("hi", false);
+							//Now we need to set it to false in database as well
+							try {
+								Main.openConnection();
+								PreparedStatement sql = Main.connection.prepareStatement("UPDATE bonus SET state=false WHERE type='doublexp_1'");
+								sql.executeUpdate();
+								sql.close();
+							} catch (Exception e){
+								e.printStackTrace();
+							} finally {
+								Main.closeConnection();
+							}
+						}
+						HashMaps.doublexptime.put("hi", left2);
+					}
+				} catch (NullPointerException e){
+					HashMaps.doublexp.put("hi", false);
+				}
+			}
+		}, 1*20, 1*20);
 	}
 
 }
