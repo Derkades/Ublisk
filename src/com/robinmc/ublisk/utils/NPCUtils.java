@@ -24,6 +24,7 @@ public class NPCUtils {
 	public void spawnNPC(int x, int y, int z, String name, String skin){
 		Location loc = new Location(Var.world(), x, y, z);
 		NPCLib.spawnPlayerNPC(loc, name, skin);
+		
 	}
 	
 	/**
