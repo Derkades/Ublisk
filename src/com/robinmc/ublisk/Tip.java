@@ -8,9 +8,10 @@ public enum Tip {
 	
 	ONE("Change class using /class (Note: you can only switch class every 15 minutes)"),
 	TWO("Please set your in-game language to US English to enable custom item names"),
-	THREE("Support the server and activate double XP for one minute for free, by clicking this link: http://ublisk.robinmc.com/double-xp"),
+	THREE("Support the server and activate double XP for one minute for free: http://ublisk.robinmc.com/double-xp (adfly)"),
 	FOUR("Check out our map over at http://maps.robinmc.com"),
-	FIVE("Download our android app! http://ublisk.robinmc.com/ublisk.apk");
+	FIVE("Download our android app! http://ublisk.robinmc.com/ublisk.apk"),
+	SIX("Found a bug? Please report http://ublisk.robinmc.com/report-bug");
 	
 	private String tip;
 	
