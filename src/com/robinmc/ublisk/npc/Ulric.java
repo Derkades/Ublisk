@@ -7,7 +7,6 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Classes;
 import com.robinmc.ublisk.Messages;
-import com.robinmc.ublisk.Weapon;
 import com.robinmc.ublisk.utils.NPCUtils;
 
 public class Ulric {

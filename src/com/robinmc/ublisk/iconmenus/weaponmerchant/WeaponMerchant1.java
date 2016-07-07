@@ -6,7 +6,6 @@ import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Messages;
-import com.robinmc.ublisk.Weapon;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
