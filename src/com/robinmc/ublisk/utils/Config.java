@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.utils;
 
+import java.util.List;
 import java.io.File;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -33,6 +34,10 @@ public class Config {
 		main.reloadConfig(); //Reload the config. Pretty simple :D
 	}
 	
+	public static void save(){
+		Main.getInstance().saveConfig();
+	}
+	
 	/**
 	 * Adds a string to the config file
 	 * @param path Path in config file
@@ -58,10 +63,6 @@ public class Config {
 		save();
 	}
 	
-	public static void save(){
-		Main.getInstance().saveConfig();
-	}
-	
 	public static String getString(String path){
 		return config.getString(path);
 	}
@@ -77,5 +78,20 @@ public class Config {
 	public static double getDouble(String path){
 		return config.getDouble(path);
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	public static List<String> getList(String path){
+		return (List<String>) config.getList(path);
+	}
+	
+	public static void addToList(String path, String string){
+		List<String> list = getList(path);
+		list.add(string);
+		save();
+	}
+	
+	public static void clearList(String path){
+		List<String> list = getList(path);
+		list.clear();
+	}
 }
