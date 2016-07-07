@@ -5,10 +5,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Messages;
 import com.robinmc.ublisk.NPCs;
 import com.robinmc.ublisk.Perms;
+import com.robinmc.ublisk.Weapon;
 import com.robinmc.ublisk.utils.Exp;
 
 public class Debug implements CommandExecutor {
@@ -39,6 +41,10 @@ public class Debug implements CommandExecutor {
 						NPCs.despawnAll();
 						NPCs.spawnAll();
 						player.sendMessage("All NPCs have been respawned!");
+						return true;
+					} else if (args[0].equalsIgnoreCase("sword")){
+						PlayerInventory inv = player.getInventory();
+						inv.addItem(Weapon.oldWoodenSword());
 						return true;
 					} else {
 						player.sendMessage(Messages.wrongUsage());
