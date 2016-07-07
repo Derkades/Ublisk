@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
+import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Messages;
 import com.robinmc.ublisk.Perms;
 
@@ -19,7 +20,9 @@ public class PlayerCommandPreprocess implements Listener {
 		for (Player player: Bukkit.getOnlinePlayers()){
 			if (player.hasPermission(Perms.COMMAND_LOG.getPerm())){
 				if (!(player == sender)){
-					player.sendMessage(Messages.commandLog(pn, cmd));
+					if (!(HashMaps.disableCommandLog.get(player.getUniqueId()))){
+						player.sendMessage(Messages.commandLog(pn, cmd));
+					}
 				}
 			}
 		}

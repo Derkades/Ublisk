@@ -1,5 +1,7 @@
 package com.robinmc.ublisk.commands;
 
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -7,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
+import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Messages;
 import com.robinmc.ublisk.NPCs;
 import com.robinmc.ublisk.Perms;
@@ -45,6 +48,16 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equalsIgnoreCase("sword")){
 						PlayerInventory inv = player.getInventory();
 						inv.addItem(Weapon.oldWoodenSword());
+						return true;
+					} else if (args[0].equalsIgnoreCase("cmd")){
+						UUID uuid = player.getUniqueId();
+						if (HashMaps.disableCommandLog.get(uuid)){
+							player.sendMessage("Enabled!");
+							HashMaps.disableCommandLog.put(uuid, false);
+						} else {
+							player.sendMessage("Disabled!");
+							HashMaps.disableCommandLog.put(uuid, true);
+						}
 						return true;
 					} else {
 						player.sendMessage(Messages.wrongUsage());
