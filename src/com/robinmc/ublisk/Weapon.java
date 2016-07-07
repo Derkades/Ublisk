@@ -1,7 +1,6 @@
 package com.robinmc.ublisk;
 
-import static net.md_5.bungee.api.ChatColor.GRAY;
-import static net.md_5.bungee.api.ChatColor.GREEN;
+import static net.md_5.bungee.api.ChatColor.*;
 
 import java.util.ArrayList;
 
