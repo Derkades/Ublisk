@@ -54,8 +54,7 @@ public class Weapon {
 		meta.spigot().setUnbreakable(true);
 		item.setItemMeta(meta);
 		NBTItem nbt = new NBTItem(item);
-		nbt.setInteger("HideFlags", 1);
-		nbt.setString("AttributeModifiers", "[{AttributeName:\"generic.attackDamage\",Name:\"generic.attackDamage\",Amount:1,Operation:0,UUIDMost:64262,UUIDLeast:178260}]");
+		nbt.setInteger("HideFlags", 2);
 		return nbt.getItem();
 	}
 
