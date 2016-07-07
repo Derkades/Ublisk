@@ -20,7 +20,7 @@ public class Merek {
 		} else if (inv.containsAtLeast(new ItemStack(Material.STRING), 16) && inv.containsAtLeast(new ItemStack(Material.GOLD_NUGGET), 10)){
 			npc.msg(player, "Merek", "Finally get 10 wood logs at the saw");
 		} else if (inv.containsAtLeast(new ItemStack(Material.WOOL), 4) && inv.containsAtLeast(new ItemStack(Material.GOLD_NUGGET), 10)){
-			npc.msg(player, "Merek", "Great job, now please break down your wool into string by using the windmill.");
+			npc.msg(player, "Merek", "Great job, now please break down your wool into 16 string by using the windmill.");
 		} else if (inv.containsAtLeast(new ItemStack(Material.GOLD_NUGGET), 10)){
 			npc.msg(player, "Merek", "Now bring me 4 wool by killing sheep.");
 		} else {
