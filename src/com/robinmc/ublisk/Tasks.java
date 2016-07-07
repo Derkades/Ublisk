@@ -217,7 +217,6 @@ public class Tasks {
 					ResultSet rs = sql.executeQuery();
 					rs.next();
 	    			boolean doublexp = rs.getBoolean(1);
-	    			Console.sendMessage("" + doublexp);
 	    			sql.close();
 	    			if (doublexp && !(HashMaps.doublexp.get("hi"))){ //If doublexp is true in database and not yet active
 	    				HashMaps.doublexp.put("hi", true); //Enable double xp. The task below will take care of the rest
