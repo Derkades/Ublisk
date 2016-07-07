@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.utils;
 
 import org.bukkit.Location;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Messages;
@@ -37,9 +38,16 @@ public class NPCUtils {
 	 * @param name Name of NPC as will appear floating above it
 	 * @param skin In-game name of the skin this NPC will have
 	 */
+	@Deprecated
 	public void spawnNPC(double x, int y, double z, int pitch, int yaw, String name, String skin){
 		Location loc = new Location(Var.world(), x, y, z, pitch, yaw);
 		NPCLib.spawnPlayerNPC(loc, name, skin);
+	}
+	
+	public void spawnNPC(double x, int y, double z, int pitch, int yaw, String name){
+		Location loc = new Location(Var.world(), x, y, z, pitch, yaw);
+		//NPCLib.spawnPlayerNPC(loc, name, skin);
+		NPCLib.spawnNPC(EntityType.VILLAGER, loc, name);
 	}
 	
 	public void msg(Player player, String npc, String msg){
