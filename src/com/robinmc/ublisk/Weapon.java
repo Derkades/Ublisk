@@ -1,12 +1,20 @@
 package com.robinmc.ublisk;
 
-import org.bukkit.entity.Player;
+import static net.md_5.bungee.api.ChatColor.GRAY;
+import static net.md_5.bungee.api.ChatColor.GREEN;
 
-import com.robinmc.ublisk.utils.Console;
+import java.util.ArrayList;
 
-public enum Weapon {
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import de.tr7zw.itemnbtapi.NBTItem;
+import net.md_5.bungee.api.ChatColor;
+
+public class Weapon {
 	
-	
+	/*
 	//Format: "minecraft:stone 1 0 {AttributeModifiers:[{Attrib...IDLeast:138836}]}"
 	//So, remove the /give @p
 	//Put a \ before every "
@@ -32,6 +40,23 @@ public enum Weapon {
 	
 	public static void giveWeapon(Player player, Weapon weapon){
 		Console.sendCommand("give " + player.getName() + " " + weapon.getCmd());
+	}
+	*/
+	
+	public static ItemStack oldWoodenSword(){
+		ItemStack item = new ItemStack(Material.WOOD_SWORD, 1);
+		ItemMeta meta = item.getItemMeta();
+		meta.setDisplayName(GRAY + "Old Wooden Sword");
+		ArrayList<String> lore = new ArrayList<String>();
+		lore.add(ChatColor.RESET + "Line 1!");
+		lore.add(GREEN + "Line 2");
+		meta.setLore(lore);
+		meta.spigot().setUnbreakable(true);
+		item.setItemMeta(meta);
+		NBTItem nbt = new NBTItem(item);
+		nbt.setInteger("HideFlags", 1);
+		nbt.setString("AttributeModifiers", "[{AttributeName:\"generic.attackDamage\",Name:\"generic.attackDamage\",Amount:1,Operation:0,UUIDMost:64262,UUIDLeast:178260}]");
+		return nbt.getItem();
 	}
 
 }

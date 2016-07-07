@@ -20,7 +20,7 @@ public class WeaponMerchant1 {
 			String name = event.getName().toLowerCase();
 			final Player player = event.getPlayer();
 			if (name.contains("wooden")){
-				Weapon.giveWeapon(player, Weapon.OLD_WOODEN_SWORD);
+				//Weapon.giveWeapon(player, Weapon.OLD_WOODEN_SWORD);
 			} else {
 				player.sendMessage(Messages.menuErrorWrongItem());
 			}

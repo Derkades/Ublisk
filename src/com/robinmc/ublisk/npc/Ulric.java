@@ -24,7 +24,7 @@ public class Ulric {
 			if (c == Classes.ARCHER){
 				player.sendMessage("Bows are not implemented yet. Please choose another class");
 			} else if (c == Classes.SWORDSMAN){
-				Weapon.giveWeapon(player, Weapon.OLD_WOODEN_SWORD);
+				//Weapon.giveWeapon(player, Weapon.OLD_WOODEN_SWORD);
 			} else {
 				player.sendMessage(Messages.generalError());
 			}
