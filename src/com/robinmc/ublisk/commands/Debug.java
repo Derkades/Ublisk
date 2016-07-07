@@ -14,6 +14,7 @@ import com.robinmc.ublisk.Messages;
 import com.robinmc.ublisk.NPCs;
 import com.robinmc.ublisk.Perms;
 import com.robinmc.ublisk.Weapon;
+import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
 
 public class Debug implements CommandExecutor {
@@ -58,6 +59,9 @@ public class Debug implements CommandExecutor {
 							player.sendMessage("Disabled!");
 							HashMaps.disableCommandLog.put(uuid, true);
 						}
+						return true;
+					} else if (args[0].equals("reload")){
+						Config.reload();
 						return true;
 					} else {
 						player.sendMessage(Messages.wrongUsage());
