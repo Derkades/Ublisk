@@ -103,10 +103,14 @@ public class Messages {
 		return gold + "Ublisk" + gray + " >> " + yellow + "This weapon is not for your class";
 	}
 	
-	//----------------------------- Quests -----------------------------//
+	//----------------------------- Quests and NPC -----------------------------//
 	
 	public static String questCompleted(String quest, int xp){
 		return gold + "Ublisk" + gray + " >> " + yellow + "You have completed quest " + ChatColor.BOLD + quest + ChatColor.RESET + yellow + " and got " + xp + " XP!";
+	}
+	
+	public static String npcNotFound(String name){
+		return gold + "NPC" + gray + " >> " + red + "No dialog could be found for an npc with name " + name + " please report this error.";
 	}
 	
 	//----------------------------- Miscellaneous -----------------------------//
@@ -133,10 +137,6 @@ public class Messages {
 	
 	public static String commandLog(String pn, String cmd){
 		return gold + "CommandLog" + gray + " >> " + yellow + pn + " : " + cmd;
-	}
-	
-	public static String npcNotFound(String name){
-		return gold + "NPC" + gray + " >> " + red + "No dialog could be found for an npc with name " + name + " please report this error.";
 	}
 	
 	public static String generalError(){
