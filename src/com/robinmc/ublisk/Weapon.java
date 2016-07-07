@@ -46,10 +46,9 @@ public class Weapon {
 	public static ItemStack oldWoodenSword(){
 		ItemStack item = new ItemStack(Material.WOOD_SWORD, 1);
 		ItemMeta meta = item.getItemMeta();
-		meta.setDisplayName(GRAY + "Old Wooden Sword");
+		meta.setDisplayName(GRAY + "Basic Wooden Sword");
 		ArrayList<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.RESET + "Line 1!");
-		lore.add(GREEN + "Line 2");
+		lore.add(ChatColor.RESET + "No text here yet!");
 		meta.setLore(lore);
 		meta.spigot().setUnbreakable(true);
 		item.setItemMeta(meta);
