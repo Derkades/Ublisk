@@ -4,7 +4,7 @@ public enum Mob {
 	
 	CHICKEN(1, "Chicken"),
 	ZOMBIFIED_MERCHANT(5, "Zombified Merchant"),
-	SHEEP(2, "Sheep");
+	SHEEP(1, "Sheep");
 	
 	private Integer xp;
 	private String name;
