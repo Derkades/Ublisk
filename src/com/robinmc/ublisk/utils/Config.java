@@ -87,11 +87,28 @@ public class Config {
 	public static void addToList(String path, String string){
 		List<String> list = getList(path);
 		list.add(string);
+		config.set(path, list);
 		save();
 	}
 	
 	public static void clearList(String path){
 		List<String> list = getList(path);
 		list.clear();
+		config.set(path, list);
+		save();
+	}
+	
+	public static void removeFromList(String path, int index){
+		List<String> list = getList(path);
+		list.remove(index);
+		config.set(path, list);
+		save();
+	}
+	
+	public static void removeFromList(String path, Object object){
+		List<String> list = getList(path);
+		list.remove(object);
+		config.set(path, list);
+		save();
 	}
 }
