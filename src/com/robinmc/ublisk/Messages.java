@@ -9,48 +9,50 @@ public class Messages {
 	static ChatColor red = ChatColor.RED;
 	static ChatColor yellow = ChatColor.YELLOW;
 	
+	private static String prefix = gold + "Ublisk" + gray + " >> ";
+	
 	//----------------------------- Join and quit -----------------------------//
 	
 	public static String playerJoin(String pn){
-		return gold + "Ublisk" + gray + " >> " + yellow + pn + " has joined";
+		return prefix + yellow + pn + " has joined";
 	}	
 	
 	public static String quit(String pn){
-		return gold + "Ublisk" + gray + " >> " + yellow + pn + " has left";
+		return prefix + yellow + pn + " has left";
 	}
 	
 	//----------------------------- Commands -----------------------------//
 	
 	public static String noPlayer(){
-		return gold + "Ublisk" + gray + " >> " + red + "You must be a player in order to execute this command!";
+		return prefix + red + "You must be a player in order to execute this command!";
 	}
 	
 	public static String wrongUsage(){
-		return gold + "Ublisk" + gray + " >> " + red + "Wrong usage! Type /help for help";
+		return prefix + red + "Wrong usage! Type /help for help";
 	}
 		
 	public static String userNotFound(String user){
-		return gold + "Ublisk" + gray + " >> " + red + "No additional information was found for user " + user;
+		return prefix + red + "No additional information was found for user " + user;
 	}
 	
 	public static String reportForums(){
-		return gold + "Ublisk" + gray + " >> " + yellow + "Please report hackers and staff abusers over at http://robinmc.com";
+		return prefix + yellow + "Please report hackers and staff abusers over at http://robinmc.com";
 	}
 	
 	public static String suggestFeature(){
-		return gold + "Ublisk" + gray + " >> " + yellow + "Please suggest new features over at http://robinmc.com";
+		return prefix + yellow + "Please suggest new features over at http://robinmc.com";
 	}
 	
 	public static String nowAfk(String name){
-		return gold + "Ublisk" + gray + " >> " + yellow + name + " is now AFK";
+		return prefix + yellow + name + " is now AFK";
 	}
 	
 	public static String noLongerAfk(String name){
-		return gold + "Ublisk" + gray + " >> " + yellow + name + " is no longer AFK";
+		return prefix + yellow + name + " is no longer AFK";
 	}
 	
 	public static String noPermission(String rank){
-		return gold + "Ublisk" + gray + " >> " + red + "You don't have permission to execute this command, you need at least rank " + rank + ".";
+		return prefix + red + "You don't have permission to execute this command, you need at least rank " + rank + ".";
 	}
 	
 	//----------------------------- Music -----------------------------//
@@ -78,35 +80,35 @@ public class Messages {
 	}
 	
 	public static String packFailedDownload(){
-		return gold + "Ublisk" + gray + " >> " + red + "We failed in sending you our resource pack. You'll have to play without. Please report this issue at the forums.";
+		return prefix + red + "We failed in sending you our resource pack. You'll have to play without. Please report this issue at the forums.";
 	}
 	
 	public static String packLoaded(){
-		return gold + "Ublisk" + gray + " >> " + yellow + "The resource pack has been successfully loaded";
+		return prefix + yellow + "The resource pack has been successfully loaded";
 	}
 	
 	public static String sendingPack(){
-		return gold + "Ublisk" + gray + " >> " + yellow + "Sending you our resource pack...";
+		return prefix + yellow + "Sending you our resource pack...";
 	}
 	
 	//----------------------------- Classes ----------------------------- //
 	
 	public static String changedClass(String c){
-		return gold + "Ublisk" + gray + " >> " + yellow + "You have changed your class to " + c;
+		return prefix + yellow + "You have changed your class to " + c;
 	}
 	
 	public static String classCooldown(){
-		return gold + "Ublisk" + gray + " >> " + yellow + "You have to wait 15 minutes before you can change class again";
+		return prefix + yellow + "You have to wait 15 minutes before you can change class again";
 	}
 	
 	public static String wrongWeapon(){
-		return gold + "Ublisk" + gray + " >> " + yellow + "This weapon is not for your class";
+		return prefix + yellow + "This weapon is not for your class";
 	}
 	
 	//----------------------------- Quests and NPC -----------------------------//
 	
 	public static String questCompleted(String quest, int xp){
-		return gold + "Ublisk" + gray + " >> " + yellow + "You have completed quest " + ChatColor.BOLD + quest + ChatColor.RESET + yellow + " and got " + xp + " XP!";
+		return prefix + yellow + "You have completed quest " + ChatColor.BOLD + quest + ChatColor.RESET + yellow + " and got " + xp + " XP!";
 	}
 	
 	public static String npcNotFound(String name){
@@ -120,15 +122,15 @@ public class Messages {
 	}
 	
 	public static String cantEat(String pn){
-		return gold + "Ublisk" + gray + " >> " + red + pn + " Eating food is not allowed on this server. Please use a recycler";
+		return prefix + red + pn + " Eating food is not allowed on this server. Please use a recycler";
 	}
 	
 	public static String removeMobsWarning(int sec){
-		return gold + "Ublisk" + gray + " >> " + yellow + "Clearing all mobs and items in " + sec + " seconds!";
+		return prefix + yellow + "Clearing all mobs and items in " + sec + " seconds!";
 	}
 	
 	public static String removedMobs(){
-		return gold + "Ublisk" + gray + " >> " + yellow + "All mobs and items have been cleared!";
+		return prefix + yellow + "All mobs and items have been cleared!";
 	}
 	
 	public static String npcMsg(String npc, String message){
@@ -140,7 +142,7 @@ public class Messages {
 	}
 	
 	public static String generalError(){
-		return gold + "Ublisk" + gray + " >> " + red + "An unexpected error has occured. Please report this error and the steps you took to get this error at the forums.";
+		return prefix + red + "An unexpected error has occured. Please report this error and the steps you took to get this error at the forums.";
 	}
 	
 }
