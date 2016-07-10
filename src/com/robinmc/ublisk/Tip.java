@@ -11,7 +11,8 @@ public enum Tip {
 	THREE("Support the server and activate double XP for one minute for free: http://ublisk.robinmc.com/double-xp (adfly)"),
 	FOUR("Check out our map over at http://maps.robinmc.com"),
 	FIVE("Download our android app! http://ublisk.robinmc.com/ublisk.apk"),
-	SIX("Found a bug? Please report http://ublisk.robinmc.com/report-bug");
+	SIX("Found a bug? Please report http://ublisk.robinmc.com/report-bug"),
+	SEVEN("Enable or disable music in /menu");
 	
 	private String tip;
 	
