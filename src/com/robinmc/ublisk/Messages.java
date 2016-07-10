@@ -138,7 +138,7 @@ public class Messages {
 	}
 	
 	public static String commandLog(String pn, String cmd){
-		return gold + "CommandLog" + gray + " >> " + yellow + pn + " : " + cmd;
+		return gold + "CommandLog" + gray + " >> " + yellow + pn + ": " + cmd;
 	}
 	
 	public static String generalError(){
