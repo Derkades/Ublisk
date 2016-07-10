@@ -29,7 +29,8 @@ public class Credits implements CommandExecutor {
 			if (args[0].equals("building") || args[0].equals("map")){
 				sender.sendMessage("");
 				sender.sendMessage(gold + "Introduction" + gray + ":" + yellow + " RobinMC, Jerrijn, Chaspyr, EpicC4Build, SenpaiSander");
-				sender.sendMessage(gold + "Gleanor" + gray + ":" + yellow + " N/A");
+				sender.sendMessage(gold + "Gleanor" + gray + ":" + yellow + " Jerrijn, Chaspyr, SenpaiSander");
+				sender.sendMessage(gold + "Desert area" + gray + ":" + yellow + " LarissaMC, MrParkerl11, RobinMC, SenpaiSander");
 				return true;
 			} else {
 				try {
