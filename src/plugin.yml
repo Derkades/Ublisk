@@ -26,3 +26,5 @@ commands:
         aliases: [away, brb, awayfromkeyboard, back]
     class:
         usage: </command>
+    friends:
+        aliases: [friend, f, friendlist, friendslist]

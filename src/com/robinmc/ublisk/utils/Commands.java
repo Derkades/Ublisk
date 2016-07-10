@@ -5,6 +5,7 @@ import com.robinmc.ublisk.commands.Afk;
 import com.robinmc.ublisk.commands.ClassCommand;
 import com.robinmc.ublisk.commands.Credits;
 import com.robinmc.ublisk.commands.Debug;
+import com.robinmc.ublisk.commands.FriendsCommand;
 import com.robinmc.ublisk.commands.Help;
 import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.commands.Report;
@@ -19,6 +20,7 @@ public class Commands {
 		plugin.getCommand("class").setExecutor(new ClassCommand());
 		plugin.getCommand("credits").setExecutor(new Credits());
 		plugin.getCommand("debug").setExecutor(new Debug());
+		plugin.getCommand("friends").setExecutor(new FriendsCommand());
 		plugin.getCommand("help").setExecutor(new Help());
 		plugin.getCommand("menu").setExecutor(new Menu());
 		plugin.getCommand("report").setExecutor(new Report());
