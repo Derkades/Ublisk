@@ -112,7 +112,7 @@ public class Messages {
 	}
 	
 	public static String npcNotFound(String name){
-		return gold + "NPC" + gray + " >> " + red + "No dialog could be found for an npc with name " + name + " please report this error.";
+		return gold + "NPC" + gray + " >> " + red + "No dialog could be found for an npc with name " + name + ", please report this error.";
 	}
 	
 	//----------------------------- Miscellaneous -----------------------------//
