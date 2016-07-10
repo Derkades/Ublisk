@@ -13,6 +13,7 @@ public class NPCs {
 		npc.spawnNPC(33, 67, -38, -70, 0, "Merek", "MrCaMeRoOn_01");
 		npc.spawnNPC(38.5, 67, -26.5, -145, 0, "Ulric", "Chaspyr");
 		npc.spawnNPC(111.5, 68, -103.5, -20, 0, "Arzhur", "Notch"); //FIXME: Arzhur skin
+		npc.spawnNPC(449.3, 70, -10.5, 75, 5, "Asher", "MrParkerl11"); //FIXME: Asher skin
 		
 		
 		/*
