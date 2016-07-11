@@ -27,7 +27,7 @@ public class FriendsMenu {
 	}, Main.getInstance());
 	
 	public static void open(Player player){
-		Console.sendMessage("[Menus] MainMenu has been opened for " + player.getName());
+		Console.sendMessage("[Menus] FriendsMenu has been opened for " + player.getName());
 		fillMenu(player);
 		menu.open(player);
 	}
