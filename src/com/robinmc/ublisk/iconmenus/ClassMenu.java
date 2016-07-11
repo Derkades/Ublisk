@@ -48,7 +48,7 @@ public class ClassMenu {
 	}, Main.getInstance());
 	
 	public static void open(Player player){
-		Console.sendMessage("[Menus] MainMenu has been opened for " + player.getName());
+		Console.sendMessage("[Menus] ClassMenu has been opened for " + player.getName());
 		fillMenu();
 		menu.open(player);
 	}
