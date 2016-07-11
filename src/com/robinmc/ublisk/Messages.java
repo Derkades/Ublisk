@@ -11,6 +11,10 @@ public class Messages {
 	
 	private static String prefix = gold + "Ublisk" + gray + " >> ";
 	
+	private static String prefix(String string){
+		return gold + string + gray + " >> ";
+	}
+	
 	//----------------------------- Join and quit -----------------------------//
 	
 	public static String playerJoin(String pn){
@@ -113,6 +117,24 @@ public class Messages {
 	
 	public static String npcNotFound(String name){
 		return gold + "NPC" + gray + " >> " + red + "No dialog could be found for an npc with name " + name + ", please report this error.";
+	}
+	
+	//----------------------------- Friends -----------------------------//
+	
+	public static String friendAdded(String pn){
+		return prefix("Friends") + pn + " has been added to your friends list";
+	}
+	
+	public static String friendRemoved(String pn){
+		return prefix("Friends") + pn + " has been removed from your friends list";
+	}
+	
+	public static String friendNotExist(){
+		return prefix("Friends") + red + " the friend you tried to remove does not exist";
+	}
+	
+	public static String friendAddNotOnline(){
+		return prefix("Friends") + red + " the friend you tried to add is not online";
 	}
 	
 	//----------------------------- Miscellaneous -----------------------------//
