@@ -16,10 +16,8 @@ import com.robinmc.ublisk.utils.Listeners;
 public class Main extends JavaPlugin {
 	
 	//Todo area
-	//TODO: /friends
+	//TODO: If online show friend's health in boss bar
 	//TODO: /friends xp [player]
-	//TODO: /party
-	//TODO: Shows party member's health in bossbar
 	//TODO: /info [player] shows player info
 	
 	public static Main instance;
