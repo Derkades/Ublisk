@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.listeners.AsyncPlayerChat;
 import com.robinmc.ublisk.listeners.EntityDamageByEntity;
 import com.robinmc.ublisk.listeners.EntityDeath;
 import com.robinmc.ublisk.listeners.EntityExplode;
@@ -22,22 +23,22 @@ public class Listeners {
 	
 	public static void register(){
 		Console.sendMessage("[Ublisk] Registering listeners...");
-		registerListener(new EntityDamageByEntity());
-		registerListener(new EntityDeath());
-		registerListener(new EntityExplode());
-		registerListener(new NPCInteract());
-		registerListener(new PlayerCommandPreprocess());
-		registerListener(new PlayerInteract());
-		registerListener(new PlayerInteractEntity());
-		registerListener(new PlayerItemConsume());
-		registerListener(new PlayerJoin());
-		registerListener(new PlayerQuit());
-		registerListener(new PlayerResourcePackStatus());
-		registerListener(new SongEnd());
-		
+		register(new AsyncPlayerChat());
+		register(new EntityDamageByEntity());
+		register(new EntityDeath());
+		register(new EntityExplode());
+		register(new NPCInteract());
+		register(new PlayerCommandPreprocess());
+		register(new PlayerInteract());
+		register(new PlayerInteractEntity());
+		register(new PlayerItemConsume());
+		register(new PlayerJoin());
+		register(new PlayerQuit());
+		register(new PlayerResourcePackStatus());
+		register(new SongEnd());
 	}
 	
-	private static void registerListener(Listener listener){
+	private static void register(Listener listener){
 		Main plugin = Main.getInstance();
 		PluginManager pman = Bukkit.getServer().getPluginManager();
 		pman.registerEvents(listener, plugin);
