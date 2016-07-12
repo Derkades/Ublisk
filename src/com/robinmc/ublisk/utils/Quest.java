@@ -5,9 +5,25 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.robinmc.ublisk.Quest;
-
-public class Quests {
+public enum Quest {
+	
+	WATER_PROBLEM("Problem with the water", 1000); //FIXME: Fix level
+	
+	private String name;
+	private int level;
+	
+	Quest(String name, int level){
+		this.name = name;
+		this.level = level;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public int getLevel(){
+		return level;
+	}
 	
 	public static void saveProgress(Player player, Quest quest, String data){
 		Config.set("quests." + player.getUniqueId() + "." + quest.getName(), true);
@@ -57,5 +73,5 @@ public class Quests {
 	public static NPCUtils getNPCApi(){
 		return new NPCUtils();
 	}
-	
+
 }
