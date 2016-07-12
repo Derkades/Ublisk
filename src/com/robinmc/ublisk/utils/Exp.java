@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.utils;
 
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.MobExp;
@@ -25,6 +26,22 @@ public class Exp {
 	
 	public static void update(Player player){
 		MobExp.refreshExp(player);
+	}
+	
+	/**
+	 * This will return a value of 0 if player is not in gamemode 2/0 or not online
+	 * @param player
+	 * @return Player level
+	 */
+	public static int getLevel(Player player){
+		GameMode gm = player.getGameMode();
+		int level = 0;
+		
+		if (gm == GameMode.SURVIVAL || gm == GameMode.ADVENTURE){
+			level = player.getLevel();
+		}
+		
+		return level;
 	}
 
 }
