@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="C:/Jars/BossBarAPI_v2.4.1.jar"/>
 	<classpathentry kind="lib" path="C:/Jars/spigot-1.9.jar"/>
 	<classpathentry kind="lib" path="C:/Jars/Item-NBT-API.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/PermissionsEx-1.23.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
