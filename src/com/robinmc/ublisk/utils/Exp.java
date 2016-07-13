@@ -1,6 +1,5 @@
 package com.robinmc.ublisk.utils;
 
-import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.MobExp;
@@ -34,14 +33,7 @@ public class Exp {
 	 * @return Player level
 	 */
 	public static int getLevel(Player player){
-		GameMode gm = player.getGameMode();
-		int level = 0;
-		
-		if (gm == GameMode.SURVIVAL || gm == GameMode.ADVENTURE){
-			level = player.getLevel();
-		}
-		
-		return level;
+		return player.getLevel();
 	}
 
 }
