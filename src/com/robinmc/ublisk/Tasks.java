@@ -9,7 +9,9 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.inventivetalent.bossbar.BossBar;
 import org.inventivetalent.bossbar.BossBarAPI;
 
@@ -38,6 +40,7 @@ public class Tasks {
 		checkShield();
 		checkDoubleExp();
 		updateDoubleExpBossBar();
+		updateBackpackName();
 	}
 	
 	private static void fastNight(){
@@ -301,6 +304,26 @@ public class Tasks {
 				}
 			}
 		}, 1*20, 1*20);
+	}
+	
+	public static void updateBackpackName(){
+		Console.sendMessage("[Tasks] UpdateBackpackName has been started!");
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
+			public void run(){
+				for (Player player : Bukkit.getOnlinePlayers()){
+					PlayerInventory inv = player.getInventory();
+					if (inv.getItemInMainHand().getType() == Material.END_CRYSTAL){
+						inv.remove(Material.END_CRYSTAL);
+						ItemStack item = new ItemStack(Material.END_CRYSTAL);
+						ItemMeta meta = item.getItemMeta();
+						meta.setDisplayName(ChatColor.BLUE + "" + ChatColor.BOLD + "Backpack");
+						item.setItemMeta(meta);			
+						int slot = inv.getHeldItemSlot();
+						inv.setItem(slot, item);
+					}
+				}
+			}
+		}, 5*20, 5*20);
 	}
 
 }
