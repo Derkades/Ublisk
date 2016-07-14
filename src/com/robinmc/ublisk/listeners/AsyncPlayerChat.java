@@ -19,9 +19,9 @@ public class AsyncPlayerChat implements Listener {
 		Player player = event.getPlayer();
 		PermissionUser pu = PermissionsEx.getUser(player);
 		@SuppressWarnings("deprecation")
-		String prefix = pu.getGroups()[0].getPrefix().replace("&", "#");
-		int level = Exp.get(player);
-		String format = DARK_GRAY + "[" + GRAY + level + DARK_GRAY + "] " + prefix + " " + player.getName() + DARK_GRAY + ": ";
+		String prefix = pu.getGroups()[0].getPrefix().replace("&", "§");
+		int level = Exp.getLevel(player);
+		String format = DARK_GRAY + "[" + GRAY + level + DARK_GRAY + "] " + prefix + " " + player.getName() + DARK_GRAY + ": " + WHITE + event.getMessage();
 		event.setFormat(format);
 	}
 
