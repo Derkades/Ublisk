@@ -137,12 +137,12 @@ public class Tasks {
 				NPCs.despawnAll();
 				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 					public void run(){
-						Console.sendMessage("[NPC] All NPCs have been removed and spawned back in");
+						Console.sendMessage("[NPC] All NPCs have been respawned!");
 						NPCs.spawnAll();
 					}
 				}, 10);
 			}
-		}, 0, 5*60*20);
+		}, 5*60*20, 5*60*20);
 	}
 	
 	private static void updateExp(){
