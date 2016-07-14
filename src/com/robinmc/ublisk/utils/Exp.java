@@ -13,6 +13,7 @@ public class Exp {
 	
 	public static void add(Player player, int n){
 		Config.set("xp." + player.getUniqueId(), n + get(player));
+		update(player);
 	}
 	
 	public static int get(OfflinePlayer player){
