@@ -74,7 +74,7 @@ public class Tasks {
 			public void run(){
 				Console.sendCommand("weather clear 1000000");
 			}
-		}, 0, 60*20);
+		}, 60*20, 5*60*20);
 	}
 	
 	private static void randomTip(){
