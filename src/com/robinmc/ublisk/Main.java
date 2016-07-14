@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -41,6 +42,12 @@ public class Main extends JavaPlugin {
 		
 		HashMaps.doublexp.put("hi", false);
 		HashMaps.doublexptime.put("hi", Var.doubleExpTime());
+		
+		Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
+			public void run(){
+				Loot.removeLoot();
+			}
+		}, 5*20);
 	}
 	
 	@Override

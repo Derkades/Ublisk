@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Messages;
 import com.robinmc.ublisk.NPCs;
 import com.robinmc.ublisk.Perms;
@@ -62,6 +63,12 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("reload")){
 						Config.reload();
+						return true;
+					} else if (args[0].equals("loot")){
+						Loot.spawnRandomLoot();
+						return true;
+					} else if (args[0].equals("removeloot")){
+						Loot.removeLoot();
 						return true;
 					} else {
 						player.sendMessage(Messages.wrongUsage());

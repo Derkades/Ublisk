@@ -9,10 +9,10 @@ public class Messages {
 	static ChatColor red = ChatColor.RED;
 	static ChatColor yellow = ChatColor.YELLOW;
 	
-	private static String prefix = gold + "Ublisk" + gray + " >> ";
+	private static String prefix = gold + "Ublisk" + gray + " >> " + yellow;
 	
 	private static String prefix(String string){
-		return gold + string + gray + " >> ";
+		return gold + string + gray + " >> " + yellow;
 	}
 	
 	//----------------------------- Join and quit -----------------------------//
@@ -156,7 +156,7 @@ public class Messages {
 	}
 	
 	public static String npcMsg(String npc, String message){
-		return  gold + npc + gray + " >> " + yellow + message;
+		return gold + npc + gray + " >> " + yellow + message;
 	}
 	
 	public static String commandLog(String pn, String cmd){
@@ -165,6 +165,10 @@ public class Messages {
 	
 	public static String generalError(){
 		return prefix + red + "An unexpected error has occured. Please report this error and the steps you took to get this error at the forums.";
+	}
+	
+	public static String lootSpawned(int x, int y, int z){
+		return prefix("Loot") + "A loot chest has been spawned at " + gold + "" + ChatColor.BOLD + x + " " + y + " " + z + ChatColor.RESET + yellow + "!";
 	}
 	
 }
