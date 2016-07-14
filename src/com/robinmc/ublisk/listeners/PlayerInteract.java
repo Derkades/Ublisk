@@ -1,8 +1,10 @@
 package com.robinmc.ublisk.listeners;
 
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -40,5 +42,59 @@ public class PlayerInteract implements Listener {
 			
 		}
 	}
+	/*
+	 * Taken from http://dev.bukkit.org/bukkit-plugins/anticroptrample/. 
+	 * Changed old deprecated methods of getting blocks by id to the new system.
+	 * All original code is not deleted but commented out.
+	 */
+	
+	
+	@SuppressWarnings("deprecation")
+	@EventHandler(priority=EventPriority.MONITOR)
+	public void onTrample(PlayerInteractEvent event){
+	    if (event.isCancelled()){
+	      return;
+	    }
+	    
+	    if (event.getAction() == Action.PHYSICAL){
+	      Block block = event.getClickedBlock();
+	      if (block == null) {
+	        return;
+	      }
+	      //int blockType = block.getTypeId();
+	      Material material = block.getType();
+	      //if (blockType == Material.getMaterial(59).getId()){
+	      if (material == Material.WHEAT){
+	        //event.setUseInteractedBlock(Event.Result.DENY);
+	    	event.setUseInteractedBlock(PlayerInteractEvent.Result.DENY);
+	        event.setCancelled(true);
+
+	        //block.setTypeId(blockType);
+	        block.setType(Material.WHEAT);
+	        block.setData(block.getData());
+	      }
+	    }
+	    
+	    if (event.getAction() == Action.PHYSICAL){
+	      Block block = event.getClickedBlock();
+	      if (block == null){
+	        return;
+	      }
+	      
+	      //int blockType = block.getTypeId();
+	      Material material = block.getType();
+	      
+	      //if (blockType == Material.getMaterial(60).getId()){
+	      if (material == Material.SOIL){
+	        //event.setUseInteractedBlock(Event.Result.DENY);
+	        event.setUseInteractedBlock(PlayerInteractEvent.Result.DENY);
+	        event.setCancelled(true);
+	        
+	        //block.setType(Material.getMaterial(60));
+	        block.setType(Material.SOIL);
+	        block.setData(block.getData());
+	      }
+	    }
+	  }
 
 }
