@@ -8,6 +8,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -72,7 +73,9 @@ public class Tasks {
 		Console.sendMessage("[Tasks] ClearWeather has been started!");
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
-				Console.sendCommand("weather clear 1000000");
+				World world = Var.world();
+				world.setThundering(false);
+				world.setStorm(false);
 			}
 		}, 60*20, 5*60*20);
 	}
