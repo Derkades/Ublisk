@@ -16,13 +16,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
  
 public class IconMenu implements Listener {
-	
-	/*
-	 * This code is provided by kennethbgoodin on youtube
-	 * Thanks for letting me use this!
-	 * 
-	 * :D
-	 */
  
     private String name;
     private int size;
