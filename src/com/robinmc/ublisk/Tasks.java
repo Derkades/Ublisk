@@ -84,7 +84,9 @@ public class Tasks {
 		Console.sendMessage("[Tasks] RandomTips has been started!");
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
-				Bukkit.broadcastMessage(Tip.getRandom());
+				for (Player player : Bukkit.getOnlinePlayers()){
+					player.sendMessage(Tip.getRandom());
+				}
 			}
 		}, 20*20, 5*60*20);
 	}
