@@ -12,7 +12,7 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 import com.robinmc.ublisk.Mob;
-import com.robinmc.ublisk.MobExp;
+import com.robinmc.ublisk.utils.Exp;
 
 public class EntityDeath implements Listener {
 	
@@ -22,12 +22,12 @@ public class EntityDeath implements Listener {
 		if (entity.getLastDamageCause().getCause() == DamageCause.ENTITY_ATTACK){
 			Player player = entity.getKiller();
 			if (entity instanceof Chicken){
-				MobExp.giveExp(player, Mob.CHICKEN);
+				Exp.giveMobExp(player, Mob.CHICKEN);
 			} else if (entity instanceof Zombie){
 				CraftZombie zombie = (CraftZombie) entity;
 				if (zombie.getHandle().isVillager()){
 					if (zombie.getName().equals("Zombified Merchant")){
-						MobExp.giveExp(player, Mob.ZOMBIFIED_MERCHANT);
+						Exp.giveMobExp(player, Mob.ZOMBIFIED_MERCHANT);
 					} else {
 						return;
 					}
@@ -35,7 +35,7 @@ public class EntityDeath implements Listener {
 					return;
 				}
 			} else if (entity instanceof Sheep){
-				MobExp.giveExp(player, Mob.SHEEP);
+				Exp.giveMobExp(player, Mob.SHEEP);
 			} else {
 				return;
 			}
