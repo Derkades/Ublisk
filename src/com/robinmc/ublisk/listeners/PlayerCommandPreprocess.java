@@ -14,6 +14,11 @@ public class PlayerCommandPreprocess implements Listener {
 	
 	@EventHandler
 	public void onCommand(PlayerCommandPreprocessEvent event){
+		
+		if (event.isCancelled()){
+			return;
+		}
+		
 		String cmd = event.getMessage();
 		Player sender = event.getPlayer();
 		String pn = sender.getName();

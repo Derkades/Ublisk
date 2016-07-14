@@ -17,6 +17,11 @@ public class PlayerInteract implements Listener {
 	
 	@EventHandler
 	public void onInteract(PlayerInteractEvent event){
+		
+		if (event.isCancelled()){
+			return;
+		}
+		
 		Player player = event.getPlayer();
 		Action action = event.getAction();
 		if (action == Action.RIGHT_CLICK_BLOCK || action == Action.RIGHT_CLICK_AIR){

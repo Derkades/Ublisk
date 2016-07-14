@@ -12,6 +12,11 @@ public class PlayerInteractEntity implements Listener {
 	
 	@EventHandler
 	public void onPlayerInteractEntityEvent(PlayerInteractEntityEvent event) {
+		
+		if (event.isCancelled()){
+			return;
+		}
+		
 		Entity entity = event.getRightClicked();
 		Player player = event.getPlayer();
 		/*

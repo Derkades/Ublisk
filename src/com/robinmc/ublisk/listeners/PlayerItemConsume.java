@@ -11,6 +11,11 @@ public class PlayerItemConsume implements Listener {
 	
 	@EventHandler
 	public void eat(PlayerItemConsumeEvent event){
+		
+		if (event.isCancelled()){
+			return;
+		}
+		
 		Player player = event.getPlayer();
 		player.sendMessage(Messages.cantEat(player.getName()));
 		event.setCancelled(true);

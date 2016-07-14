@@ -8,6 +8,11 @@ public class EntityExplode implements Listener {
 
 	@EventHandler
 	public void onEntityExplode(EntityExplodeEvent event){
+		
+		if (event.isCancelled()){
+			return;
+		}
+		
 		event.setCancelled(true);
 		/*
 		Entity entity = event.getEntity();

@@ -15,7 +15,12 @@ import static org.bukkit.ChatColor.*;
 public class AsyncPlayerChat implements Listener {
 	
 	@EventHandler
-	public void onChat(AsyncPlayerChatEvent event){
+	public void onChat(AsyncPlayerChatEvent event){		
+		
+		if (event.isCancelled()){
+			return;
+		}
+		
 		Player player = event.getPlayer();
 		PermissionUser pu = PermissionsEx.getUser(player);
 		@SuppressWarnings("deprecation")

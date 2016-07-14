@@ -19,6 +19,11 @@ public class NPCInteract implements Listener {
 	
 	@EventHandler
 	public void npcInteract(NPCInteractEvent event){
+		
+		if (event.isCancelled()){
+			return;
+		}
+		
 		Player player = event.getPlayer();
 		final UUID uuid = player.getUniqueId();
 		if (!HashMaps.cooldownnpc.get(uuid)){
