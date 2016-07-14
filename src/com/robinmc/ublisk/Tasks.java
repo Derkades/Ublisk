@@ -48,7 +48,7 @@ public class Tasks {
 		Console.sendMessage("[Tasks] FastNight has been started!");
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
-				if (!Time.day()){
+				if (!Time.isDay()){
 					Time.add(5L);
 				}
 			}

@@ -4,7 +4,7 @@ import com.robinmc.ublisk.Var;
 
 	public class Time {
 	
-	public static boolean day() {
+	public static boolean isDay() {
 	    long time = Var.world().getTime();	 
 	    if(time > 0 && time < 12300) {
 	        return true;
