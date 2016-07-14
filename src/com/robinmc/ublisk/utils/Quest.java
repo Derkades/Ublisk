@@ -5,24 +5,26 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
+import com.robinmc.ublisk.Messages;
+
 public enum Quest {
 	
 	WATER_PROBLEM("Problem with the water", 1000); //FIXME: Fix level
 	
 	private String name;
-	private int level;
+	private int xp;
 	
 	Quest(String name, int level){
 		this.name = name;
-		this.level = level;
+		this.xp = level;
 	}
 	
 	public String getName(){
 		return name;
 	}
 	
-	public int getLevel(){
-		return level;
+	public int getExp(){
+		return xp;
 	}
 	
 	public static void saveProgress(Player player, Quest quest, String data){
@@ -54,8 +56,28 @@ public enum Quest {
 		return playerHasItem(player, material, 1);
 	}
 	
-	public static int getLevel(Quest quest, int level){
-		return quest.getLevel();
+	public static boolean playerHasItems(Player player, Material... items){
+		boolean hasItems = true;
+		for (Material item : items){
+			if (!playerHasItem(player, item)){
+				hasItems = false;
+			}
+		}
+		return hasItems;
+	}
+	
+	public static boolean playerHasItems(Player player, ItemStack... items){
+		boolean hasItems = true;
+		for (ItemStack item : items){
+			if (!player.getInventory().containsAtLeast(item, item.getAmount())){
+				hasItems = false;
+			}
+		}
+		return hasItems;
+	}
+	
+	public static int getExp(Quest quest, int level){
+		return quest.getExp();
 	}
 	
 	public static String getName(Quest quest){
@@ -72,6 +94,24 @@ public enum Quest {
 	
 	public static NPCUtils getNPCApi(){
 		return new NPCUtils();
+	}
+	
+	public static void removeItem(Player player, ItemStack item){
+		player.getInventory().remove(item);
+	}
+	
+	public static void removeItems(Player player, ItemStack... stacks){
+		for (ItemStack item : stacks){
+			removeItem(player, item);
+		}
+	}
+	
+	public static void completeQuest(Player player, Quest quest){
+		int xp = quest.getExp();
+		String name = quest.getName();
+		Exp.add(player, xp);
+		player.sendMessage(Messages.questCompleted(name, xp));
+		setQuestCompleted(player, quest, true);
 	}
 
 }
