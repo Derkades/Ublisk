@@ -9,7 +9,7 @@ import com.robinmc.ublisk.Messages;
 
 public enum Quest {
 	
-	WATER_PROBLEM("Problem with the water", 1000); //FIXME: Fix level
+	WATER_PROBLEM("Problem with the water", 5);
 	
 	private String name;
 	private int xp;
@@ -112,6 +112,12 @@ public enum Quest {
 		Exp.add(player, xp);
 		player.sendMessage(Messages.questCompleted(name, xp));
 		setQuestCompleted(player, quest, true);
+	}
+	
+	public static boolean playerEnoughExp(Player player, Quest quest){
+		int level = Exp.getLevel(player);
+		int levelRequired = quest.getExp();
+		return level >= levelRequired;
 	}
 
 }
