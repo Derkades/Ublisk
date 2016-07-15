@@ -22,6 +22,14 @@ public class PlayerCommandPreprocess implements Listener {
 		String cmd = event.getMessage();
 		Player sender = event.getPlayer();
 		String pn = sender.getName();
+		
+		if (cmd.startsWith("/time set")){
+			sender.sendMessage("Please do not use /time set. This command has been cancelled");
+			event.setCancelled(true);
+			return;
+		}
+		
+		
 		for (Player player: Bukkit.getOnlinePlayers()){
 			if (player.hasPermission(Perms.COMMAND_LOG.getPerm())){
 				if (!(player == sender)){
