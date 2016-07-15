@@ -26,7 +26,7 @@ public class FriendsMenu {
 			String name = event.getName();
 			if (name.contains("friend's health")){
 				if (Setting.FRIENDS_SHOW_HEALTH.get(player)){
-					Setting.FRIENDS_SHOW_HEALTH.set(player, false); //FIXME: Messages for enabling and disabling
+					Setting.FRIENDS_SHOW_HEALTH.set(player, false);
 					player.sendMessage("disabled");
 				} else {
 					Setting.FRIENDS_SHOW_HEALTH.set(player, true);
