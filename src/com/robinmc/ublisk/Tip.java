@@ -12,7 +12,10 @@ public enum Tip {
 	FOUR("Check out our map over at http://maps.robinmc.com"),
 	FIVE("Download our android app! http://ublisk.robinmc.com/ublisk.apk"),
 	SIX("Found a bug? Please report http://ublisk.robinmc.com/report-bug"),
-	SEVEN("Enable or disable music in /menu");
+	SEVEN("Enable or disable music in /menu"),
+	EIGHT("Toggle showing friend's health in the friends menu"),
+	NINE("Add a friend using /friend add [player]"),
+	TEN("Open your friends menu using /friend");
 	
 	private String tip;
 	
