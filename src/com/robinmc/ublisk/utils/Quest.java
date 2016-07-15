@@ -5,11 +5,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.CMessage;
 
 public enum Quest {
 	
-	WATER_PROBLEM("Problem with the water", 5);
+	WATER_PROBLEM("Problem with the water", 5),
+	HAY_TRANSPORT("Hay transportation", 10),
+	CHICKEN_HUNT("Chicken hunt", 10),
+	SEARCH_MEAT("Search for meat", 12),
+	BEYOND_GLAENOR("Beyond glaenor", 15),
+	ORE_SHORTAGE("Shortage of ores", 20),
+	KING_ORDER("Order of the king", 25),
+	SUSPICIOUS_MOVEMENTS("Suspicious movements", 30);
 	
 	private String name;
 	private int xp;
@@ -110,7 +117,7 @@ public enum Quest {
 		int xp = quest.getExp();
 		String name = quest.getName();
 		Exp.add(player, xp);
-		player.sendMessage(Messages.questCompleted(name, xp));
+		player.sendMessage(CMessage.questCompleted(name, xp));
 		setQuestCompleted(player, quest, true);
 	}
 	
