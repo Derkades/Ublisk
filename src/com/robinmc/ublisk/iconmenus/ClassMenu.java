@@ -37,7 +37,7 @@ public class ClassMenu {
 				} else if (name.equals("sorcerer")){
 					Config.set("class." + uuid, "Sorcerer");
 					player.sendMessage(Messages.changedClass("Sorceer"));
-				} else if (name.equals("Paladin")){
+				} else if (name.equals("paladin")){
 					Config.set("class." + uuid, "Paladin");
 					player.sendMessage(Messages.changedClass("Paladin"));
 				} else {
