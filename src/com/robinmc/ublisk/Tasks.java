@@ -22,6 +22,7 @@ import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.EntityUtils;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Friends;
+import com.robinmc.ublisk.utils.Setting;
 import com.robinmc.ublisk.utils.Time;
 import com.robinmc.ublisk.utils.UUIDUtils;
 
@@ -340,6 +341,10 @@ public class Tasks {
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
 				for (final Player player : Bukkit.getOnlinePlayers()){
+					if (!Setting.FRIENDS_SHOW_HEALTH.get(player)){
+						return;
+					}
+					
 					for (String s : Friends.get(player)){
 						OfflinePlayer friend = UUIDUtils.getPlayerFromName(UUIDUtils.getNameFromIdString(s));
 						if (friend.isOnline()){

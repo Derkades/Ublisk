@@ -23,8 +23,10 @@ public enum Message {
 	CLASS_WRONG_WEAPON(prefix() + "This weapon is not for your class"),
 	CLASS_JOIN(prefix() + "Please choose a class. You can always change class later without losing anything"),
 	
-	FRIEND_NOT_EXIST(prefix("Friends") + RED + " the friend you tried to remove does not exist"),
-	FRIEND_OFFLINE(prefix("Friends") + RED + " the friend you tried to add is not online"),
+	FRIEND_NOT_EXIST(prefix("Friends") + RED + "The friend you tried to remove does not exist"),
+	FRIEND_OFFLINE(prefix("Friends") + RED + "The friend you tried to add is not online"),
+	FRIEND_HEALTH_DISABLED(prefix("Friends") + "You will no longer see your friend's health"),
+	FRIEND_HEALTH_ENABLED(prefix("Friends") + "You will now see your friend's health at the top of your screen"),
 	
 	ERROR_MENU(prefix("Menu") + RED + "An unexpected error has occured. Please report this error and the steps you took to get this error at the forums."),
 	ERROR_GENERAL(prefix() + RED + "An unexpected error has occured. Please report this error and the steps you took to get this error at the forums."),
