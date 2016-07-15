@@ -7,7 +7,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.CMessage;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.iconmenus.FriendsMenu;
 import com.robinmc.ublisk.utils.Friends;
 import com.robinmc.ublisk.utils.UUIDUtils;
@@ -24,26 +25,26 @@ public class FriendsCommand implements CommandExecutor {
 				if (args[0].equals("add")){
 					Player newFriend = Bukkit.getPlayer(args[1]);
 					if (Friends.addFriend(player, newFriend)){
-						player.sendMessage(Messages.friendAdded(newFriend.getName()));
+						player.sendMessage(CMessage.friendAdded(newFriend.getName()));
 					} else {
-						player.sendMessage(Messages.friendAddNotOnline());
+						player.sendMessage(Message.FRIEND_OFFLINE.get());
 					}
 				} else if (args[0].equals("remove") || args[0].equals("delete")){
 					OfflinePlayer friend = UUIDUtils.getPlayerFromName(args[1]);
 					if (Friends.removeFriend(player, friend)){
-						player.sendMessage(Messages.friendRemoved(friend.getName()));
+						player.sendMessage(CMessage.friendRemoved(friend.getName()));
 					} else {
-						player.sendMessage(Messages.friendNotExist());
+						player.sendMessage(Message.FRIEND_NOT_EXIST.get());
 					}
 					//TODO: Add ability to remove friend by index
 				} else {
-					player.sendMessage(Messages.wrongUsage());
+					player.sendMessage(Message.WRONG_USAGE.get());
 				}
 			} else {
-				player.sendMessage(Messages.wrongUsage());
+				player.sendMessage(Message.WRONG_USAGE.get());
 			}
 		} else {
-			sender.sendMessage(Messages.noPlayer());
+			sender.sendMessage(Message.NOT_A_PLAYER.get());
 		}
 		return true;
 	}

@@ -6,9 +6,10 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import com.robinmc.ublisk.CMessage;
 import com.robinmc.ublisk.Cooldown;
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.IconMenu;
@@ -24,24 +25,24 @@ public class ClassMenu {
 			Player player = event.getPlayer();
 			UUID uuid = player.getUniqueId();
 			if (Cooldown.chooseClass(player)){
-				player.sendMessage(Messages.classCooldown());
+				player.sendMessage(Message.CLASS_COOLDOWN.get());
 				return;
 			} else {
 				Cooldown.chooseClassStart(player);
 				if (name.equals("swordsman")){
 					Config.set("class." + uuid, "Swordsman");
-					player.sendMessage(Messages.changedClass("Swordsman"));
+					player.sendMessage(CMessage.changedClass("Swordsman"));
 				} else if (name.equals("archer")){
 					Config.set("class." + uuid, "Archer");
-					player.sendMessage(Messages.changedClass("Archer"));
+					player.sendMessage(CMessage.changedClass("Archer"));
 				} else if (name.equals("sorcerer")){
 					Config.set("class." + uuid, "Sorcerer");
-					player.sendMessage(Messages.changedClass("Sorceer"));
+					player.sendMessage(CMessage.changedClass("Sorceer"));
 				} else if (name.equals("paladin")){
 					Config.set("class." + uuid, "Paladin");
-					player.sendMessage(Messages.changedClass("Paladin"));
+					player.sendMessage(CMessage.changedClass("Paladin"));
 				} else {
-					player.sendMessage(Messages.menuErrorWrongItem());
+					player.sendMessage(Message.ERROR_MENU.get());
 				}
 			}
 		}

@@ -9,7 +9,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Classes;
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Message;
 
 public class EntityDamageByEntity implements Listener {
 	
@@ -31,7 +31,7 @@ public class EntityDamageByEntity implements Listener {
 					item == Material.GOLD_SWORD ||
 					item == Material.IRON_SWORD){
 				if (!(Classes.getClass(player) == Classes.SWORDSMAN)){
-					player.sendMessage(Messages.wrongWeapon());
+					player.sendMessage(Message.CLASS_WRONG_WEAPON.get());
 					event.setCancelled(true);
 				}
 			}

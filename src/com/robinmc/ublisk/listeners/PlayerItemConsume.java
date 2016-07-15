@@ -5,7 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Message;
 
 public class PlayerItemConsume implements Listener {
 	
@@ -17,7 +17,7 @@ public class PlayerItemConsume implements Listener {
 		}
 		
 		Player player = event.getPlayer();
-		player.sendMessage(Messages.cantEat(player.getName()));
+		player.sendMessage(Message.CANT_EAT.get());
 		event.setCancelled(true);
 	}
 

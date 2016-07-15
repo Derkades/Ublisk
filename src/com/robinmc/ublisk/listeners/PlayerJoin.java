@@ -11,12 +11,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.inventivetalent.rpapi.ResourcePackAPI;
 
+import com.robinmc.ublisk.CMessage;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Music;
 import com.robinmc.ublisk.NPCs;
 import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.iconmenus.ClassMenu;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 
@@ -33,9 +35,9 @@ public class PlayerJoin implements Listener {
 		
 		Console.sendCommand("scoreboard teams join all " + pn); //Join team "all". This team disables 1.9 collision
 		
-		event.setJoinMessage(Messages.playerJoin(pn));
+		event.setJoinMessage(CMessage.playerJoin(pn));
 		
-		player.sendMessage(Messages.sendingPack());
+		player.sendMessage(Message.PACK_SENDING.get());
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){ 
 			//For some reason sending the pack has to be delayed, otherwise the client won't get the message
 			public void run(){
@@ -106,6 +108,14 @@ public class PlayerJoin implements Listener {
         } finally {
         	Main.closeConnection();
         }
+        
+        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+        	public void run(){
+        		ClassMenu.open(player);
+        	}
+        }, 2*20);
+        
+        
 	}
 	
 }

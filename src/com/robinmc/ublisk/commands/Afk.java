@@ -8,8 +8,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.robinmc.ublisk.CMessage;
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Message;
 
 public class Afk implements CommandExecutor {
 	
@@ -21,16 +22,16 @@ public class Afk implements CommandExecutor {
 			String name = player.getName();
 			
 			if (HashMaps.afk.get(uuid)){ //If player is already afk
-				Bukkit.broadcastMessage(Messages.noLongerAfk(name)); //Set as no longer afk
+				Bukkit.broadcastMessage(CMessage.noLongerAfk(name)); //Set as no longer afk
 				HashMaps.afk.put(uuid, false);
 				return true;
 			} else { //If player is not AFK
-				Bukkit.broadcastMessage(Messages.nowAfk(name)); //Set as afk
+				Bukkit.broadcastMessage(CMessage.nowAfk(name)); //Set as afk
 				HashMaps.afk.put(uuid, true);
 				return true;
 			}
 		} else {
-			sender.sendMessage(Messages.noPlayer());
+			sender.sendMessage(Message.NOT_A_PLAYER.get());
 			return true;
 		}
 	}

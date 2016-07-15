@@ -5,14 +5,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.CMessage;
 
 public class PlayerQuit implements Listener {
 	
 	@EventHandler
 	public void onQuit(PlayerQuitEvent event){
 		Player player = event.getPlayer();
-		event.setQuitMessage(Messages.quit(player.getName()));
+		event.setQuitMessage(CMessage.quit(player.getName()));
 	}
 
 }

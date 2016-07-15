@@ -5,8 +5,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import com.robinmc.ublisk.CMessage;
 import com.robinmc.ublisk.Helper;
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Message;
 
 public class Credits implements CommandExecutor {
 	
@@ -44,12 +45,12 @@ public class Credits implements CommandExecutor {
 					sender.sendMessage(gold + "Custom link" + gray + ": " + yellow + custom);
 					return true;
 				} catch (Exception e){
-					sender.sendMessage(Messages.userNotFound(args[0]));
+					sender.sendMessage(CMessage.userNotFound(args[0]));
 					return true;
 				}
 			}
 		} else {
-			sender.sendMessage(Messages.wrongUsage());
+			sender.sendMessage(Message.WRONG_USAGE.get());
 			return true;
 		}
 	}

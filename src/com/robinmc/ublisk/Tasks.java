@@ -99,14 +99,14 @@ public class Tasks {
 		Console.sendMessage("[Tasks] RemoveMobs has been started!");
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
-				Bukkit.broadcastMessage(Messages.removeMobsWarning(30));
+				Bukkit.broadcastMessage(CMessage.removeMobsWarning(30));
 				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 					public void run(){
-						Bukkit.broadcastMessage(Messages.removeMobsWarning(5));
+						Bukkit.broadcastMessage(CMessage.removeMobsWarning(5));
 						Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 							public void run(){
 								EntityUtils.removeMobs();
-								Bukkit.broadcastMessage(Messages.removedMobs());
+								Bukkit.broadcastMessage(Message.ENTITIES_REMOVED.get());
 							}
 						}, 5*20);
 					}
@@ -211,7 +211,7 @@ public class Tasks {
 				for (Player player : Bukkit.getOnlinePlayers()){
 					PlayerInventory inv = player.getInventory();
 					if (inv.getItemInOffHand().getType() == Material.SHIELD && !(Classes.getClass(player) == Classes.PALADIN)){
-						player.sendMessage(Messages.wrongWeapon());
+						player.sendMessage(Message.CLASS_WRONG_WEAPON.get());
 						player.setHealth(0.5);
 					}
 				}

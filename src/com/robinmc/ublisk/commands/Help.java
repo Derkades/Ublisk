@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import com.robinmc.ublisk.HelpMessages;
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Message;
 
 public class Help implements CommandExecutor {
 	
@@ -22,7 +22,7 @@ public class Help implements CommandExecutor {
 			} else if (args[0].equals("2") || args[0].equalsIgnoreCase("commands")){
 				return msg.commands(sender);
 			} else {
-				sender.sendMessage(Messages.wrongUsage());
+				sender.sendMessage(Message.WRONG_USAGE.get());
 				return true;
 			}
 		} else if (args.length == 2){
@@ -32,7 +32,7 @@ public class Help implements CommandExecutor {
 				} else if (args[1].equals("2") || args[1].equalsIgnoreCase("commands")){
 					return msg.faqPlugins(sender);
 				} else {
-					sender.sendMessage(Messages.wrongUsage());
+					sender.sendMessage(Message.WRONG_USAGE.get());
 					return true;
 				}
 			} else if (args[0].equalsIgnoreCase("command") || args[0].equals("2") || args[0].equalsIgnoreCase("command")){
@@ -47,11 +47,11 @@ public class Help implements CommandExecutor {
 					return true;
 				}
 			} else {
-				sender.sendMessage(Messages.wrongUsage());
+				sender.sendMessage(Message.WRONG_USAGE.get());
 				return true;
 			}
 		} else {
-			sender.sendMessage(Messages.wrongUsage());
+			sender.sendMessage(Message.WRONG_USAGE.get());
 			return true;
 		}
 	}

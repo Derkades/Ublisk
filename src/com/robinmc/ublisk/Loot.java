@@ -64,7 +64,7 @@ public enum Loot {
 			public void run(){
 				Block block = loc.getBlock();
 				block.setType(Material.CHEST);
-				Bukkit.broadcastMessage(Messages.lootSpawned(x, y, z));
+				Bukkit.broadcastMessage(CMessage.lootSpawned(x, y, z));
 			}
 		}, 70);
 	}

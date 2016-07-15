@@ -4,13 +4,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Message;
 
 public class Suggest implements CommandExecutor {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
-		sender.sendMessage(Messages.suggestFeature());
+		sender.sendMessage(Message.SUGGEST_FEATURE.get());
 		return true;
 	}
 

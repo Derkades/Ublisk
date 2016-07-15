@@ -4,7 +4,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.CMessage;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.npc.Arzhur;
 import com.robinmc.ublisk.npc.Merek;
@@ -50,7 +50,7 @@ public class NPCUtils {
 	}
 	
 	public void msg(Player player, String npc, String msg){
-		player.sendMessage(Messages.npcMsg(npc, msg));
+		player.sendMessage(CMessage.npcMsg(npc, msg));
 	}
 	
 	public void open(Player player, String name){
@@ -61,7 +61,7 @@ public class NPCUtils {
 		} else if (name == "Arzhur"){
 			Arzhur.arzhur(player);
 		} else {
-			player.sendMessage(Messages.npcNotFound(name));
+			player.sendMessage(CMessage.npcNotFound(name));
 		}
 	}
 

@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Classes;
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.NPCUtils;
 
 public class Ulric {
@@ -25,7 +25,7 @@ public class Ulric {
 			} else if (c == Classes.SWORDSMAN){
 				//Weapon.giveWeapon(player, Weapon.OLD_WOODEN_SWORD);
 			} else {
-				player.sendMessage(Messages.generalError());
+				player.sendMessage(Message.ERROR_GENERAL.get());
 			}
 		} else {
 			npc.msg(player, "Ulric", "I can make a weapon for you if you bring me the required materials.");

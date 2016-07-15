@@ -11,7 +11,7 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Loot;
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.NPCs;
 import com.robinmc.ublisk.Perms;
 import com.robinmc.ublisk.Weapon;
@@ -35,12 +35,12 @@ public class Debug implements CommandExecutor {
 						player.sendMessage("Food: " + player2.getFoodLevel());
 						return true;
 					} else {
-						player.sendMessage(Messages.wrongUsage());
+						player.sendMessage(Message.WRONG_USAGE.get());
 						return true;
 					}
 				} else if (args.length == 1){
 					if (args[0].equalsIgnoreCase("kill")){
-						Bukkit.broadcastMessage(Messages.removedMobs());
+						Bukkit.broadcastMessage(Message.ENTITIES_REMOVED.get());
 						return true;
 					} else if (args[0].equalsIgnoreCase("npcrespawn")){
 						NPCs.despawnAll();
@@ -74,20 +74,20 @@ public class Debug implements CommandExecutor {
 						player.sendMessage(player.getHealth() + "");
 						return true;
 					} else {
-						player.sendMessage(Messages.wrongUsage());
+						player.sendMessage(Message.WRONG_USAGE.get());
 						return true;
 					}
 				} else {
-					player.sendMessage(Messages.wrongUsage());
+					player.sendMessage(Message.WRONG_USAGE.get());
 					return true;
 				}
 			} else {
-				player.sendMessage(Messages.noPermission("developer"));
+				player.sendMessage(Message.NO_PERMISSION.get());
 				return true;
 			}
 			
 		} else {
-			sender.sendMessage(Messages.noPlayer());
+			sender.sendMessage(Message.NOT_A_PLAYER.get());
 			return true;
 		}
 	}

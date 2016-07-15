@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Classes;
-import com.robinmc.ublisk.Messages;
+import com.robinmc.ublisk.Message;
 
 public class PlayerInteract implements Listener {
 	
@@ -31,12 +31,12 @@ public class PlayerInteract implements Listener {
 			
 			if (item == Material.BOW || offhand == Material.BOW){
 				if (!(Classes.getClass(player) == Classes.ARCHER)){
-					player.sendMessage(Messages.wrongWeapon());
+					player.sendMessage(Message.CLASS_WRONG_WEAPON.get());
 					event.setCancelled(true);
 				}
 			} else if (item == Material.STICK || offhand == Material.STICK){
 				if (!(Classes.getClass(player) == Classes.SORCERER)){
-					player.sendMessage(Messages.wrongWeapon());
+					player.sendMessage(Message.CLASS_WRONG_WEAPON.get());
 					event.setCancelled(true);
 				}
 			}
