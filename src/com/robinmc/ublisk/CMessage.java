@@ -44,24 +44,6 @@ public class CMessage { //If you're wondering "Why CMessage?", it's stands for C
 		return prefix("Friends") + pn + " has been removed from your friends list";
 	}
 	
-	//----------------------------- Miscellaneous -----------------------------//
-	
-	public static String removeMobsWarning(int sec){
-		return prefix + "Clearing all mobs and items in " + sec + " seconds!";
-	}
-	
-	public static String npcMsg(String npc, String message){
-		return prefix(npc) + message;
-	}
-	
-	public static String commandLog(String pn, String cmd){
-		return prefix("CommandLog") + pn + ": " + cmd;
-	}
-	
-	public static String lootSpawned(int x, int y, int z){
-		return prefix("Loot") + "A loot chest has been spawned at " + GOLD + "" + BOLD + x + " " + y + " " + z + RESET + YELLOW + "!";
-	}
-	
 	//----------------------------- Music -----------------------------//
 	
 	public static String startSong(String song){
@@ -82,6 +64,24 @@ public class CMessage { //If you're wondering "Why CMessage?", it's stands for C
 	
 	public static String npcNotFound(String name){
 		return prefix("NPC") + RED + "No dialog could be found for an npc with name " + name + ", please report this error.";
+	}	
+	
+	public static String npcMsg(String npc, String message){
+		return prefix(npc) + message;
+	}
+	
+	//----------------------------- Miscellaneous -----------------------------//
+	
+	public static String removeMobsWarning(int sec){
+		return prefix + "Clearing all mobs and items in " + sec + " seconds!";
+	}
+	
+	public static String commandLog(String pn, String cmd){
+		return prefix("CommandLog") + pn + ": " + cmd;
+	}
+	
+	public static String lootSpawned(int x, int y, int z){
+		return prefix("Loot") + "A loot chest has been spawned at " + GOLD + "" + BOLD + x + " " + y + " " + z + RESET + YELLOW + "!";
 	}
 
 }
