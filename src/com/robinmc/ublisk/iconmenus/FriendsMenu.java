@@ -26,19 +26,17 @@ public class FriendsMenu {
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
 			Player player = event.getPlayer();
-			String name = event.getName();
+			Material item = event.getItem().getType();
 			OfflinePlayer friend = event.getFriend();
-			
-			if (name.contains("friend's health")){
+			if (item == Material.SPECKLED_MELON){
 				if (Setting.FRIENDS_SHOW_HEALTH.get(player)){
 					Setting.FRIENDS_SHOW_HEALTH.set(player, false);
-					player.sendMessage("disabled");
+					player.sendMessage(Message.FRIEND_HEALTH_DISABLED.get());
 				} else {
 					Setting.FRIENDS_SHOW_HEALTH.set(player, true);
-					player.sendMessage("enabled");
+					player.sendMessage(Message.FRIEND_HEALTH_ENABLED.get());
 				}
 			} else {
-				player.sendMessage(Message.ERROR_MENU.get());
 				player.sendMessage("");
 				player.sendMessage(GOLD + "Information for your friend " + YELLOW + BOLD + friend.getName());
 				player.sendMessage("");

@@ -150,7 +150,13 @@ public class IconMenu implements Listener {
         }
         
         public OfflinePlayer getFriend(){
-        	return UUIDUtils.getPlayerFromName(name);
+        	OfflinePlayer friend;
+        	try {
+        		friend = UUIDUtils.getPlayerFromName(name);
+        	} catch (NullPointerException e){
+        		friend = null;
+        	}
+        	return friend;
         }
     }
  
