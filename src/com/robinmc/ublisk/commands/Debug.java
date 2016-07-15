@@ -70,6 +70,9 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("removeloot")){
 						Loot.removeLoot();
 						return true;
+					} else if (args[0].equals("health")){
+						player.sendMessage(player.getHealth() + "");
+						return true;
 					} else {
 						player.sendMessage(Messages.wrongUsage());
 						return true;

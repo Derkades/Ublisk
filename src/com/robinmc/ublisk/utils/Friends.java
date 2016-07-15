@@ -16,6 +16,7 @@ public class Friends {
 		} else {
 			list.add(newFriend.getUniqueId().toString());
 			Main.getInstance().getConfig().set("friends." + player.getUniqueId(), list);
+			Config.save();
 			return true;
 		}
 	}
@@ -26,6 +27,7 @@ public class Friends {
 		if (list.size() >= index){
 			list.remove(index);
 			Main.getInstance().getConfig().set("friends." + player.getUniqueId(), list);
+			Config.save();
 			return true;
 		} else {
 			return false;
@@ -38,6 +40,7 @@ public class Friends {
 		if (list.contains(friendToRemove.getUniqueId().toString())){			
 			list.remove(friendToRemove.getUniqueId().toString());
 			Main.getInstance().getConfig().set("friends." + player.getUniqueId(), list);
+			Config.save();
 			return true;
 		} else {
 			return false;
