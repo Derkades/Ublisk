@@ -32,7 +32,7 @@ public class FriendsMenu {
 		menu.open(player);
 	}
 	
-	private static void fillMenu(Player player){			
+	private static void fillMenu(Player player){
 		int i = 0;
 		for (String string : Friends.get(player)){
 			String pn = UUIDUtils.getNameFromIdString(string);
@@ -46,6 +46,11 @@ public class FriendsMenu {
 			menu.setOption(i, head, pn);
 			
 			i++;
+			
+			if (i > 18){
+				break;
+			}
+			
 		}
 		
 	}
