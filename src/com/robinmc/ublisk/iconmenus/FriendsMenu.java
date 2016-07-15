@@ -1,12 +1,15 @@
 package com.robinmc.ublisk.iconmenus;
 
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import static org.bukkit.ChatColor.*;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Friends;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.Setting;
@@ -24,6 +27,8 @@ public class FriendsMenu {
 		public void onOptionClick(OptionClickEvent event) {
 			Player player = event.getPlayer();
 			String name = event.getName();
+			OfflinePlayer friend = event.getFriend();
+			
 			if (name.contains("friend's health")){
 				if (Setting.FRIENDS_SHOW_HEALTH.get(player)){
 					Setting.FRIENDS_SHOW_HEALTH.set(player, false);
@@ -34,7 +39,11 @@ public class FriendsMenu {
 				}
 			} else {
 				player.sendMessage(Message.ERROR_MENU.get());
-				//TODO: Action for clicking on a friend
+				player.sendMessage("");
+				player.sendMessage(GOLD + "Information for your friend " + YELLOW + BOLD + friend.getName());
+				player.sendMessage("");
+				player.sendMessage(GOLD + "XP" + GRAY + ": " + YELLOW + Exp.get(friend));
+				player.sendMessage(GOLD + "More info coming soon!");
 			}
 		}
 	}, Main.getInstance());

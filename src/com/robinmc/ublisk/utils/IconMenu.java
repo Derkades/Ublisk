@@ -3,6 +3,7 @@ package com.robinmc.ublisk.utils;
 import java.util.Arrays;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -146,6 +147,10 @@ public class IconMenu implements Listener {
  
         public ItemStack getItem() {
             return item;
+        }
+        
+        public OfflinePlayer getFriend(){
+        	return UUIDUtils.getPlayerFromName(name);
         }
     }
  
