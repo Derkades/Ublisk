@@ -18,12 +18,13 @@ public class Weapon {
 		ItemMeta meta = item.getItemMeta();
 		meta.setDisplayName(GRAY + "Basic Wooden Sword");
 		ArrayList<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.RESET + "No text here yet!");
+		lore.add(ChatColor.RESET + "Hi");
 		meta.setLore(lore);
 		meta.spigot().setUnbreakable(true);
 		item.setItemMeta(meta);
 		NBTItem nbt = new NBTItem(item);
-		nbt.setInteger("HideFlags", 2);
+		//nbt.setInteger("HideFlags", 2);
+		nbt.setString("AttributeModifiers", "[{Slot:\"mainhand\",AttributeName:\"generic.attackDamage\",Name:\"generic.attackDamage\",Amount:20,Operation:0,UUIDLeast:1,UUIDMost:1}]");
 		return nbt.getItem();
 	}
 
