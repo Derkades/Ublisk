@@ -25,6 +25,10 @@ import com.robinmc.ublisk.utils.Friends;
 import com.robinmc.ublisk.utils.Setting;
 import com.robinmc.ublisk.utils.Time;
 import com.robinmc.ublisk.utils.UUIDUtils;
+import com.robinmc.ublisk.utils.quest.QuestCharacter;
+import com.robinmc.ublisk.utils.variable.CMessage;
+import com.robinmc.ublisk.utils.variable.Message;
+import com.robinmc.ublisk.utils.variable.Var;
 
 import net.md_5.bungee.api.chat.TextComponent;
 
@@ -144,11 +148,11 @@ public class Tasks {
 		Console.sendMessage("[Tasks] RespawnNPCs has been started!");
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
-				NPCs.despawnAll();
+				QuestCharacter.despawnAll();
 				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 					public void run(){
 						Console.sendMessage("[NPC] All NPCs have been respawned!");
-						NPCs.spawnAll();
+						QuestCharacter.spawnAll();
 					}
 				}, 10);
 			}

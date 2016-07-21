@@ -7,13 +7,13 @@ import org.bukkit.inventory.ItemStack;
 import static org.bukkit.ChatColor.*;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Friends;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.Setting;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
+import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.UUIDUtils;
 
 import de.tr7zw.itemnbtapi.NBTItem;

@@ -4,7 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.utils.variable.Message;
 
 public class Report implements CommandExecutor {
 	

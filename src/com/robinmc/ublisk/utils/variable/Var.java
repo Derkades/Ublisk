@@ -1,4 +1,4 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.utils.variable;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;

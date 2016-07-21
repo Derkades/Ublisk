@@ -10,7 +10,7 @@ import org.bukkit.event.Listener;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Console;
-import com.robinmc.ublisk.utils.NPCUtils;
+import com.robinmc.ublisk.utils.quest.NPCUtils;
 
 import de.inventivegames.npc.event.NPCInteractEvent;
 import de.inventivegames.npc.event.NPCInteractEvent.InteractType;

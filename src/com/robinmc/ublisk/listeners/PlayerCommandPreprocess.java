@@ -6,9 +6,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
-import com.robinmc.ublisk.CMessage;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Perms;
+import com.robinmc.ublisk.utils.variable.CMessage;
 
 public class PlayerCommandPreprocess implements Listener {
 	

@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Classes;
-import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.utils.variable.Message;
 
 public class PlayerInteract implements Listener {
 	

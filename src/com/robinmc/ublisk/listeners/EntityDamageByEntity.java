@@ -9,7 +9,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Classes;
-import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.utils.variable.Message;
 
 public class EntityDamageByEntity implements Listener {
 	

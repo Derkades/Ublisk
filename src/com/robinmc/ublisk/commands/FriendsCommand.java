@@ -7,11 +7,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.CMessage;
-import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.iconmenus.FriendsMenu;
 import com.robinmc.ublisk.utils.Friends;
 import com.robinmc.ublisk.utils.UUIDUtils;
+import com.robinmc.ublisk.utils.variable.CMessage;
+import com.robinmc.ublisk.utils.variable.Message;
 
 public class FriendsCommand implements CommandExecutor {
 	

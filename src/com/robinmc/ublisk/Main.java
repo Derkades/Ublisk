@@ -13,6 +13,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.robinmc.ublisk.utils.Commands;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Listeners;
+import com.robinmc.ublisk.utils.quest.QuestCharacter;
+import com.robinmc.ublisk.utils.variable.Var;
 
 public class Main extends JavaPlugin {
 	
@@ -38,7 +40,7 @@ public class Main extends JavaPlugin {
 		
 		HashMaps.resetAllPlayers();
 		
-		NPCs.spawnAll();
+		QuestCharacter.spawnAll();
 		
 		HashMaps.doublexp.put("hi", false);
 		HashMaps.doublexptime.put("hi", Var.doubleExpTime());

@@ -11,12 +11,12 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Loot;
-import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.NPCs;
 import com.robinmc.ublisk.Perms;
 import com.robinmc.ublisk.Weapon;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
+import com.robinmc.ublisk.utils.quest.QuestCharacter;
+import com.robinmc.ublisk.utils.variable.Message;
 
 public class Debug implements CommandExecutor {
 	
@@ -43,8 +43,8 @@ public class Debug implements CommandExecutor {
 						Bukkit.broadcastMessage(Message.ENTITIES_REMOVED.get());
 						return true;
 					} else if (args[0].equalsIgnoreCase("npcrespawn")){
-						NPCs.despawnAll();
-						NPCs.spawnAll();
+						QuestCharacter.despawnAll();
+						QuestCharacter.spawnAll();
 						player.sendMessage("All NPCs have been respawned!");
 						return true;
 					} else if (args[0].equalsIgnoreCase("sword")){

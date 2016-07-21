@@ -1,11 +1,13 @@
-package com.robinmc.ublisk.utils;
+package com.robinmc.ublisk.utils.quest;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.robinmc.ublisk.CMessage;
+import com.robinmc.ublisk.utils.Config;
+import com.robinmc.ublisk.utils.Exp;
+import com.robinmc.ublisk.utils.variable.CMessage;
 
 public enum Quest {
 	
@@ -125,6 +127,10 @@ public enum Quest {
 		int level = Exp.getLevel(player);
 		int levelRequired = quest.getExp();
 		return level >= levelRequired;
+	}
+	
+	public @interface QuestHandler {
+		public Quest quest();
 	}
 
 }

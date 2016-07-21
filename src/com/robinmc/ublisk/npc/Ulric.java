@@ -6,12 +6,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Classes;
-import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.utils.NPCUtils;
+import com.robinmc.ublisk.utils.quest.NPCUtils;
+import com.robinmc.ublisk.utils.variable.Message;
 
 public class Ulric {
 	
-	public static void ulric(Player player){
+	public void main(Player player){
 		NPCUtils npc = new NPCUtils();
 		PlayerInventory inv = player.getInventory();
 		

@@ -1,6 +1,6 @@
 package com.robinmc.ublisk.utils;
 
-import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.utils.variable.Var;
 
 	public class Time {
 	

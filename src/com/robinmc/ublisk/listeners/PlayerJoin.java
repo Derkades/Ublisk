@@ -11,16 +11,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.inventivetalent.rpapi.ResourcePackAPI;
 
-import com.robinmc.ublisk.CMessage;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Music;
-import com.robinmc.ublisk.NPCs;
-import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.iconmenus.ClassMenu;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.quest.QuestCharacter;
+import com.robinmc.ublisk.utils.variable.CMessage;
+import com.robinmc.ublisk.utils.variable.Message;
+import com.robinmc.ublisk.utils.variable.Var;
 
 public class PlayerJoin implements Listener {
 	
@@ -51,11 +51,11 @@ public class PlayerJoin implements Listener {
 		
 		HashMaps.addPlayerToMaps(player);
 		
-		NPCs.despawnAll();
+		QuestCharacter.despawnAll();
 		
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 			public void run(){
-				NPCs.spawnAll();
+				QuestCharacter.spawnAll();
 			}
 		}, 10);
 		

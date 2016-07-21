@@ -4,12 +4,12 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.utils.NPCUtils;
-import com.robinmc.ublisk.utils.Quest;	
+import com.robinmc.ublisk.utils.quest.NPCUtils;
+import com.robinmc.ublisk.utils.quest.Quest;	
 
 public class Merek {
 	
-	public static void merek(Player player){
+	public static void main(Player player){
 		NPCUtils npc = Quest.getNPCApi();
 		//if (Quest.playerHasItem(player, Material.LOG, 10) 
 		//		&& Quest.playerHasItem(player, Material.STRING, 16)
@@ -24,7 +24,7 @@ public class Merek {
 		//		&& Quest.playerHasItem(player, Material.GOLD_NUGGET, 10)){
 		} else if (Quest.playerHasItems(player, new ItemStack(Material.WOOL, 4), new ItemStack(Material.GOLD_NUGGET, 10))){
 			npc.msg(player, "Merek", "Great job, now please break down your wool into 16 string by using the windmill.");
-		} else if (Quest.playerHasItem(player, Material.GOLD_NUGGET)){
+		} else if (Quest.playerHasItem(player, Material.GOLD_NUGGET, 10)){
 			npc.msg(player, "Merek", "Now bring me 4 wool by killing sheep.");
 		} else {
 			npc.msg(player, "Merek", "What are you doing out here? You don’t even have a weapon yet! I’ll tell you what you’ll need to make a weapon. First, get 10 golden nuggets by killing animals.");

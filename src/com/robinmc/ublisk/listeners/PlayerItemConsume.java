@@ -5,7 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 
-import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.utils.variable.Message;
 
 public class PlayerItemConsume implements Listener {
 	

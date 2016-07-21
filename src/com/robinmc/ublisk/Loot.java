@@ -10,6 +10,8 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 
 import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.variable.CMessage;
+import com.robinmc.ublisk.utils.variable.Var;
 
 public enum Loot {
 	

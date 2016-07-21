@@ -3,7 +3,7 @@ package com.robinmc.ublisk.utils;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
-import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.utils.variable.Var;
 
 public class EntityUtils {
 	
