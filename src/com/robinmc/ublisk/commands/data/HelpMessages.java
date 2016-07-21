@@ -1,4 +1,4 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.commands.data;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
