@@ -1,4 +1,4 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.utils.enums;
 
 import java.security.SecureRandom;
 
@@ -9,6 +9,7 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Var;

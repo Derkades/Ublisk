@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils;
+package com.robinmc.ublisk.utils.third_party;
 
 import java.util.Arrays;
 
@@ -15,6 +15,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
+
+import com.robinmc.ublisk.utils.UUIDUtils;
+import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
  
 public class IconMenu implements Listener {
  
@@ -152,10 +155,12 @@ public class IconMenu implements Listener {
         public OfflinePlayer getFriend(){
         	OfflinePlayer friend;
         	try {
-        		friend = UUIDUtils.getPlayerFromName(name);
+        		friend = UUIDUtils.getOfflinePlayerFromName(name);
         	} catch (NullPointerException e){
         		friend = null;
-        	}
+        	} catch (PlayerNotFoundException e) {
+				friend = null;
+			}
         	return friend;
         }
     }

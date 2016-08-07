@@ -9,13 +9,6 @@ public class Console {
 	 * @param msg Message to be sent
 	 */
 	public static void sendMessage(String msg){
-		/*
-		try {
-			Bukkit.getServer().getConsoleSender().sendMessage(msg);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		*/
 		System.out.println(msg);
 	}
 	

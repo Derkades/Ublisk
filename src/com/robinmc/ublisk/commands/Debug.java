@@ -10,12 +10,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.Loot;
-import com.robinmc.ublisk.Perms;
 import com.robinmc.ublisk.Weapon;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
-import com.robinmc.ublisk.utils.quest.QuestCharacter;
+import com.robinmc.ublisk.utils.enums.Loot;
+import com.robinmc.ublisk.utils.enums.Perms;
+import com.robinmc.ublisk.utils.enums.Tracker;
+import com.robinmc.ublisk.utils.quest.NPCUtils;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class Debug implements CommandExecutor {
@@ -24,7 +25,7 @@ public class Debug implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (sender instanceof Player){
 			Player player = (Player) sender;
-			if (player.hasPermission(Perms.DEBUG_COMMAND.getPerm())){
+			if (player.hasPermission(Perms.COMMAND_DEBUG.getPerm())){
 				if (args.length == 2){
 					if (args[0].equalsIgnoreCase("xp")){
 						int xp = Integer.parseInt(args[1]);
@@ -43,8 +44,9 @@ public class Debug implements CommandExecutor {
 						Bukkit.broadcastMessage(Message.ENTITIES_REMOVED.get());
 						return true;
 					} else if (args[0].equalsIgnoreCase("npcrespawn")){
-						QuestCharacter.despawnAll();
-						QuestCharacter.spawnAll();
+						NPCUtils api = new NPCUtils();
+						api.spawnAll();
+						api.despawnAll();
 						player.sendMessage("All NPCs have been respawned!");
 						return true;
 					} else if (args[0].equalsIgnoreCase("sword")){
@@ -72,6 +74,9 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("health")){
 						player.sendMessage(player.getHealth() + "");
+						return true;
+					} else if (args[0].equals("sync")){
+						Tracker.syncAll();
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());

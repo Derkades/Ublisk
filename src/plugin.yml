@@ -1,6 +1,6 @@
 name: Ublisk
 main: com.robinmc.ublisk.Main
-version: 1.0.0
+version: 6.9
 author: RobinMCDev
 description: Ublisk plugin
 depend: [NoteBlockAPI, ActionBarAPI, NPCLib, ResourcePackApi, BossBarAPI, ItemNBTAPI, PermissionsEx]
@@ -15,6 +15,7 @@ commands:
     help:
         description: Provides help
         usage: </command> [catagory]
+        aliases: [support]
     credits:
         description: Credits
         usage: </command> [arguments]
@@ -28,3 +29,5 @@ commands:
         usage: </command>
     friends:
         aliases: [friend, f, friendlist, friendslist]
+    mute:
+        aliases: [holdyourbekpls]

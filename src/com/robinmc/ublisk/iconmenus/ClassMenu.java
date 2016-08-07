@@ -10,8 +10,8 @@ import com.robinmc.ublisk.Cooldown;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
-import com.robinmc.ublisk.utils.IconMenu;
-import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
+import com.robinmc.ublisk.utils.third_party.IconMenu;
+import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 

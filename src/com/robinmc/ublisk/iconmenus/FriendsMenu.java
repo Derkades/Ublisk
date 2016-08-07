@@ -1,22 +1,26 @@
 package com.robinmc.ublisk.iconmenus;
 
+import static org.bukkit.ChatColor.BOLD;
+import static org.bukkit.ChatColor.GOLD;
+import static org.bukkit.ChatColor.GRAY;
+import static org.bukkit.ChatColor.YELLOW;
+
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import static org.bukkit.ChatColor.*;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Friends;
-import com.robinmc.ublisk.utils.IconMenu;
-import com.robinmc.ublisk.utils.Setting;
-import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.UUIDUtils;
+import com.robinmc.ublisk.utils.enums.Setting;
+import com.robinmc.ublisk.utils.third_party.IconMenu;
+import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
+import com.robinmc.ublisk.utils.variable.Message;
 
-import de.tr7zw.itemnbtapi.NBTItem;
 import net.md_5.bungee.api.ChatColor;
 
 public class FriendsMenu {
@@ -53,23 +57,16 @@ public class FriendsMenu {
 	}
 	
 	private static void fillMenu(Player player){
-		int i = 0;
-		for (String string : Friends.get(player)){
-			String pn = UUIDUtils.getNameFromIdString(string);
-			
+		
+		if (Friends.get(player).isEmpty()){
 			ItemStack head = new ItemStack(Material.SKULL_ITEM, 1);
 			head.setDurability((short) 3); //Durability value 3 is to get a human head instead of a skeleton head
-			NBTItem nbt = new NBTItem(head);
-			nbt.setString("SkullOwner", pn); //Uses the friend's name as skull owner
-			head = nbt.getItem();
-			
-			menu.setOption(i, head, pn);
-			
-			i++;
-			
-			if (i > 17){
-				break;
-			}	
+			SkullMeta meta = (SkullMeta) head.getItemMeta();
+			meta.setOwner("RobinMC");
+			head.setItemMeta(meta);
+			menu.setOption(0, head, ChatColor.GOLD + "You don't have any friends!");
+		} else {
+			addFriendsToMenu(player);
 		}
 		
 		String displayName = "error";
@@ -82,6 +79,28 @@ public class FriendsMenu {
 		
 		ItemStack friendsHealth = new ItemStack(Material.SPECKLED_MELON, 1);
 		menu.setOption(18, friendsHealth, displayName);
+	}
+	
+	private static void addFriendsToMenu(Player player){
+		int i = 0;
+		for (String string : Friends.get(player)){
+			String pn = UUIDUtils.getNameFromIdString(string);
+			Console.sendMessage(player.getName() + "      "  + string + "            " + pn);
+			
+			ItemStack head = new ItemStack(Material.SKULL_ITEM, 1);
+			head.setDurability((short) 3); //Durability value 3 is to get a human head instead of a skeleton head
+			SkullMeta meta = (SkullMeta) head.getItemMeta();
+			meta.setOwner(pn);
+			head.setItemMeta(meta);
+			
+			menu.setOption(i, head, pn);
+			
+			i++;
+			
+			if (i > 17){
+				break;
+			}	
+		}
 	}
 
 }

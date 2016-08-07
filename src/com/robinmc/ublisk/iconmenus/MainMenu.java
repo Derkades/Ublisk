@@ -5,11 +5,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.Music;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
-import com.robinmc.ublisk.utils.IconMenu;
-import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
+import com.robinmc.ublisk.utils.enums.Music;
+import com.robinmc.ublisk.utils.enums.Setting;
+import com.robinmc.ublisk.utils.third_party.IconMenu;
+import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class MainMenu {
@@ -21,18 +22,22 @@ public class MainMenu {
 			String name = event.getName().toLowerCase();
 			final Player player = event.getPlayer();
 			if (name.contains("music")){
-				try { //TODO: Update code with new settings api
-					if (Config.getBoolean("settings.music." + player.getUniqueId())){
-						Config.set("settings.music." + player.getUniqueId(), false);
+				try {
+					//if (Config.getBoolean("settings.music." + player.getUniqueId())){
+					if (Setting.PLAY_MUSIC.get(player)){
+						//Config.set("settings.music." + player.getUniqueId(), false);
+						Setting.PLAY_MUSIC.set(player, false);
 						player.sendMessage(Message.MUSIC_DISABLED.get());
 					} else {
-						Config.set("settings.music." + player.getUniqueId(), true);
+						//Config.set("settings.music." + player.getUniqueId(), true);
+						Setting.PLAY_MUSIC.set(player, true);
 						player.sendMessage(Message.MUSIC_ENABLED.get());
 						String town = Config.getString("last-town." + player.getUniqueId());
 				        Music.playSong(player, town);
 					}
 				} catch (Exception e){
-					Config.set("settings.music." + player.getUniqueId(), false);
+					//Config.set("settings.music." + player.getUniqueId(), false);
+					Setting.PLAY_MUSIC.set(player, false);
 					player.sendMessage(Message.MUSIC_DISABLED.get());
 				}
 			} else {

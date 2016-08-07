@@ -1,16 +1,20 @@
 package com.robinmc.ublisk.listeners;
 
+import static org.bukkit.ChatColor.DARK_GRAY;
+import static org.bukkit.ChatColor.GRAY;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.utils.Exp;
+import com.robinmc.ublisk.utils.enums.Tracker;
 
+import net.md_5.bungee.api.ChatColor;
 import ru.tehkode.permissions.PermissionUser;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
-
-import static org.bukkit.ChatColor.*;
 
 public class AsyncPlayerChat implements Listener {
 	
@@ -22,12 +26,26 @@ public class AsyncPlayerChat implements Listener {
 		}
 		
 		Player player = event.getPlayer();
+		
+		if (HashMaps.isMuted.get(player.getUniqueId())){
+			event.setCancelled(true);
+			return;
+		}
+		
+		ChatColor chatColor = ChatColor.WHITE;
+		if (HashMaps.isSoftMuted.get(player.getUniqueId())){
+			chatColor = ChatColor.GRAY;
+		}
+		
 		PermissionUser pu = PermissionsEx.getUser(player);
 		@SuppressWarnings("deprecation")
 		String prefix = pu.getGroups()[0].getPrefix().replace("&", "§");
 		int level = Exp.getLevel(player);
-		String format = DARK_GRAY + "[" + GRAY + level + DARK_GRAY + "] " + prefix + " " + player.getName() + DARK_GRAY + ": " + WHITE + event.getMessage();
+		String format = DARK_GRAY + "[" + GRAY + level + DARK_GRAY + "] " + prefix + " " + player.getName() + DARK_GRAY + ": " + chatColor + event.getMessage();
 		event.setFormat(format);
+		
+		Tracker.CHAT_MESSAGES.add(player);
+		
 	}
 
 }

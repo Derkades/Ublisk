@@ -1,9 +1,10 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.utils.enums;
 
 import java.io.File;
 
 import org.bukkit.entity.Player;
 
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Console;
 import com.xxmicloxx.NoteBlockAPI.NBSDecoder;
 import com.xxmicloxx.NoteBlockAPI.RadioSongPlayer;

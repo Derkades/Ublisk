@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 import com.connorlinfoot.actionbarapi.ActionBarAPI;
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.Mob;
+import com.robinmc.ublisk.utils.enums.Mob;
 
 public class Exp {
 	

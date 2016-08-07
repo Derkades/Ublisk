@@ -7,8 +7,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.Perms;
+import com.robinmc.ublisk.utils.enums.Perms;
 import com.robinmc.ublisk.utils.variable.CMessage;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class PlayerCommandPreprocess implements Listener {
 	
@@ -28,7 +30,13 @@ public class PlayerCommandPreprocess implements Listener {
 			event.setCancelled(true);
 			return;
 		}
-		
+		if (cmd.length() >= 4){
+			if (cmd.substring(0, 4).equals("/op ")){
+				sender.sendMessage(ChatColor.AQUA + "How about you don't!");
+				event.setCancelled(true);
+				return;
+			}
+		}
 		
 		for (Player player: Bukkit.getOnlinePlayers()){
 			if (player.hasPermission(Perms.COMMAND_LOG.getPerm())){

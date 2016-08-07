@@ -1,6 +1,8 @@
-package com.robinmc.ublisk.utils;
+package com.robinmc.ublisk.utils.enums;
 
 import org.bukkit.entity.Player;
+
+import com.robinmc.ublisk.utils.Config;
 
 public enum Setting {
 	

@@ -7,6 +7,7 @@ import org.bukkit.plugin.PluginManager;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.listeners.AsyncPlayerChat;
 import com.robinmc.ublisk.listeners.BreakBlock;
+import com.robinmc.ublisk.listeners.CharacterTalk;
 import com.robinmc.ublisk.listeners.EntityDamageByEntity;
 import com.robinmc.ublisk.listeners.EntityDeath;
 import com.robinmc.ublisk.listeners.EntityExplode;
@@ -26,6 +27,7 @@ public class Listeners {
 		Console.sendMessage("[Ublisk] Registering listeners...");
 		register(new AsyncPlayerChat());
 		register(new BreakBlock());
+		register(new CharacterTalk());
 		register(new EntityDamageByEntity());
 		register(new EntityDeath());
 		register(new EntityExplode());

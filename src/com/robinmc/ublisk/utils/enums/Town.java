@@ -1,4 +1,8 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.utils.enums;
+
+import org.bukkit.entity.Player;
+
+import com.robinmc.ublisk.utils.Config;
 
 public enum Town {
 	
@@ -40,6 +44,27 @@ public enum Town {
 	
 	public int moreZ(){
 		return z2;
+	}
+	
+	public static Town getLastTown(Player player){
+		String town = Config.getString("last-town." + player.getUniqueId());
+		return fromString(town);
+		
+	}
+	
+	public static Town fromString(String text) throws IllegalArgumentException {
+		if (text == null) {
+			throw new IllegalArgumentException();
+		}
+		
+		for (Town town: Town.values()) {
+			if (text.equalsIgnoreCase(town.name)) {
+				return town;
+			}
+		}
+		
+		throw new IllegalArgumentException();
+		
 	}
 	
 }

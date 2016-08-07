@@ -65,13 +65,13 @@ public class HelpMessages {
 		return true;
 	}
 	
-	public boolean commandsMenu(CommandSender sender){ //TODO: /menu help
+	public boolean commandsMenu(CommandSender sender){ // XXX /menu help
 		sender.sendMessage("");
 		sender.sendMessage(gray + "Coming soon!");
 		return true;
 	}
 	
-	public boolean commandsMusic(CommandSender sender){ //TODO: /music help
+	public boolean commandsMusic(CommandSender sender){ // XXX /music help
 		sender.sendMessage("");
 		sender.sendMessage(gray + "Coming soon!");
 		return true;

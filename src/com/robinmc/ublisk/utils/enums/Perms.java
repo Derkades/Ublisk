@@ -1,9 +1,10 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.utils.enums;
 
 public enum Perms {
 	
 	COMMAND_LOG("ublisk.commandlog"),
-	DEBUG_COMMAND("ublisk.commands.debug");
+	COMMAND_DEBUG("ublisk.commands.debug"),
+	COMMAND_MUTE("ublisk.commands.mute");
 	
 	private String perm;
 	

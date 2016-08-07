@@ -8,15 +8,15 @@ import org.bukkit.entity.Player;
 public class Cooldown {
 	
 	public static boolean chooseClass(Player player){
-		return HashMaps.cooldownclass.get(player.getUniqueId());
+		return HashMaps.cooldownClass.get(player.getUniqueId());
 	}
 	
 	public static void chooseClassStart(Player player){
 		final UUID uuid = player.getUniqueId();
-		HashMaps.cooldownclass.put(uuid, true);
+		HashMaps.cooldownClass.put(uuid, true);
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 			public void run(){
-				HashMaps.cooldownclass.put(uuid, false);
+				HashMaps.cooldownClass.put(uuid, false);
 			}
 		}, 14*60*20); //14 minutes to account for lag (average TPS on server is 19.5)
 	}

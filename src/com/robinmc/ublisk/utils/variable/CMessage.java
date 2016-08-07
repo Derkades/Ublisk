@@ -1,6 +1,11 @@
 package com.robinmc.ublisk.utils.variable;
 
-import static org.bukkit.ChatColor.*;
+import static org.bukkit.ChatColor.BOLD;
+import static org.bukkit.ChatColor.GOLD;
+import static org.bukkit.ChatColor.GRAY;
+import static org.bukkit.ChatColor.RED;
+import static org.bukkit.ChatColor.RESET;
+import static org.bukkit.ChatColor.YELLOW;
 
 public class CMessage { //If you're wondering "Why CMessage?", it's stands for Complicated Message. By this I mean a message that needs additional input
 	
@@ -32,6 +37,38 @@ public class CMessage { //If you're wondering "Why CMessage?", it's stands for C
 	
 	public static String noLongerAfk(String name){
 		return prefix + YELLOW + name + " is no longer AFK";
+	}
+	
+	public static String mutedOther(String pn){
+		return prefix("Chat") + pn + " has been muted.";
+	}
+	
+	public static String unMutedOther(String pn){
+		return prefix("Chat") + pn + " has been unmuted.";
+	}
+	
+	public static String muted(String pn){
+		return prefix("Chat") + "You have been muted by " + pn;
+	}
+	
+	public static String unMuted(String pn){
+		return prefix("Chat") + "You have been unmuted by " + pn;
+	}
+	
+	public static String softMutedOther(String pn){
+		return prefix("Chat") + pn + " has been softmuted.";
+	}
+	
+	public static String unSoftMutedOther(String pn){
+		return prefix("Chat") + pn + " has been un-soft-muted.";
+	}
+	
+	public static String softMuted(String pn){
+		return prefix("Chat") + "You have been soft-muted by " + pn;
+	}
+	
+	public static String unSoftMuted(String pn){
+		return prefix("Chat") + "You have been un-soft-muted by " + pn;
 	}
 	
 	//----------------------------- Friends -----------------------------//

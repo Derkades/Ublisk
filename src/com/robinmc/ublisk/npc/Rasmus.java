@@ -2,17 +2,18 @@ package com.robinmc.ublisk.npc;
 
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.utils.quest.NPCUtils;
 import com.robinmc.ublisk.utils.quest.Quest;
+import com.robinmc.ublisk.utils.quest.QuestCharacter;
+import com.robinmc.ublisk.utils.quest.QuestCharacterClass;
+import com.robinmc.ublisk.utils.quest.QuestParticipant;
+import com.robinmc.ublisk.utils.quest.QuestProgress;
 
-public class Rasmus {
+public class Rasmus implements QuestCharacterClass {
 	
-	private	static NPCUtils api = Quest.getNPCApi();
-	private static String npc = "Rasmus";
-	
-	public void main(Player player){
-		if (Quest.getQuestCompleted(player, Quest.HAY_TRANSPORT)){
-			//When player has completed this quest, do quest "Chicken Hunt" next.
+	public void talk(Player player){
+		QuestParticipant qp = new QuestParticipant(player, Quest.HAY_TRANSPORT, QuestCharacter.RASMUS);
+		if (qp.getQuestCompleted()){
+			//If player has completed 'Hay Transportation', do quest 'Chicken Hunt'.
 			chickenHunt(player);
 		} else {
 			hayTransportation(player);
@@ -20,13 +21,16 @@ public class Rasmus {
 	}
 	
 	private void chickenHunt(Player player){
-		//Quest quest = Quest.CHICKEN_HUNT;
-		api.msg(player, npc, "");
+		//TODO: Chicken hunt quest
 	}
 	
 	private void hayTransportation(Player player){
-		//Quest quest = Quest.HAY_TRANSPORT;
-		api.msg(player, npc, "");
+		QuestParticipant qp = new QuestParticipant(player, Quest.HAY_TRANSPORT, QuestCharacter.RASMUS);
+		if (qp.getProgress(QuestProgress.HAY_DELIVERED)){
+			qp.msg("There you are! That took you a while, didn’t it. Anyway, thanks for helping.");
+		} else {
+			qp.msg("I see you have fixed the water issue, well done! Can you maybe help me too? There is a big pile of hay that needs to be transported to a cart just outside of Glaenor. You should give it to Zoltar, he’ll pay you for the job.");
+		}	
 	}
 
 }

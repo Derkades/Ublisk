@@ -5,9 +5,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import com.robinmc.ublisk.Music;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.enums.Music;
 import com.xxmicloxx.NoteBlockAPI.SongEndEvent;
 
 public class SongEnd implements Listener {

@@ -1,6 +1,9 @@
 package com.robinmc.ublisk.utils.variable;
 
-import static org.bukkit.ChatColor.*;
+import static org.bukkit.ChatColor.GOLD;
+import static org.bukkit.ChatColor.GRAY;
+import static org.bukkit.ChatColor.RED;
+import static org.bukkit.ChatColor.YELLOW;
 
 public enum Message {
 	
@@ -9,6 +12,7 @@ public enum Message {
 	REPORT_FORUMS(prefix() + "Please report hackers and staff abusers over at http://ublisk.robinmc.com"),
 	SUGGEST_FEATURE(prefix() + "Please suggest new features over at http://ublisk.robinmc.com"),
 	NO_PERMISSION(prefix() + RED + "You don't have the required permissions to execute this command"),
+	PLAYER_NOT_FOUND(prefix() + RED + "This player could not be found."),
 	
 	//SONG_ENDED(GOLD + "Music" + GRAY + " >> " + "Your song has ended. Please select a new song using /music"),
 	MUSIC_DISABLED(/* GOLD + "Music" + GRAY + " >> " */ prefix("Music") + "Music has been disabled. After this song no more songs will play."),

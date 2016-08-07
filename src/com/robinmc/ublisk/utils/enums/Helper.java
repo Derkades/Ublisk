@@ -1,4 +1,4 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.utils.enums;
 
 public enum Helper {
 	

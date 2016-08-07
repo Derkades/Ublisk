@@ -3,22 +3,24 @@ package com.robinmc.ublisk.npc;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 
-import com.robinmc.ublisk.Classes;
-import com.robinmc.ublisk.utils.quest.NPCUtils;
+import com.robinmc.ublisk.utils.enums.Classes;
+import com.robinmc.ublisk.utils.inventory.BetterInventory;
+import com.robinmc.ublisk.utils.quest.Quest;
+import com.robinmc.ublisk.utils.quest.QuestCharacter;
+import com.robinmc.ublisk.utils.quest.QuestCharacterClass;
+import com.robinmc.ublisk.utils.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.variable.Message;
 
-public class Ulric {
+public class Ulric implements QuestCharacterClass {
 	
-	public void main(Player player){
-		NPCUtils npc = new NPCUtils();
-		PlayerInventory inv = player.getInventory();
+	public void talk(Player player){
+		QuestParticipant qp = new QuestParticipant(player, Quest.INTRODUCTION, QuestCharacter.ULRIC);
+		BetterInventory inv = qp.getInventory();
 		
-		if (	inv.containsAtLeast(new ItemStack(Material.LOG), 10) &&
-				inv.containsAtLeast(new ItemStack(Material.STRING), 16) &&
-				inv.containsAtLeast(new ItemStack(Material.GOLD_NUGGET), 10)){
-			//player has required materials
+		if (inv.contains(new ItemStack(Material.LOG, 10),
+			new ItemStack(Material.STRING, 16),
+			new ItemStack(Material.GOLD_NUGGET, 10))){
 			Classes c = Classes.getClass(player);
 			if (c == Classes.ARCHER){
 				player.sendMessage("Bows are not implemented yet. Please choose another class");
@@ -28,7 +30,7 @@ public class Ulric {
 				player.sendMessage(Message.ERROR_GENERAL.get());
 			}
 		} else {
-			npc.msg(player, "Ulric", "I can make a weapon for you if you bring me the required materials.");
+			qp.msg("I can make a weapon for you if you bring me the required materials.");
 		}
 	}
 
