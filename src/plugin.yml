@@ -31,3 +31,5 @@ commands:
         aliases: [friend, f, friendlist, friendslist]
     mute:
         aliases: [holdyourbekpls]
+    msg:
+        aliases: [w,write,tell,pm,mail,m,msg,message,privatem,pmessage,t]

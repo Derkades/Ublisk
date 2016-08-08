@@ -12,10 +12,6 @@ import com.robinmc.ublisk.utils.variable.Message;
 
 public class MsgCommand implements CommandExecutor {
 	
-	// TODO Register command
-	// TODO Command in plugin.yml
-	// TODO Aliases
-	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		if (!(sender instanceof Player)){

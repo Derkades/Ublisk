@@ -9,6 +9,7 @@ import com.robinmc.ublisk.commands.Debug;
 import com.robinmc.ublisk.commands.FriendsCommand;
 import com.robinmc.ublisk.commands.Help;
 import com.robinmc.ublisk.commands.Menu;
+import com.robinmc.ublisk.commands.MsgCommand;
 import com.robinmc.ublisk.commands.MuteCommand;
 import com.robinmc.ublisk.commands.Report;
 import com.robinmc.ublisk.commands.Suggest;
@@ -22,6 +23,7 @@ public enum Command {
 	FRIENDS("friends", new FriendsCommand()),
 	HELP("help", new Help()),
 	MENU("menu", new Menu()),
+	MSG("msg", new MsgCommand()),
 	MUTE("mute", new MuteCommand()),
 	REPORT("report", new Report()),
 	SUGGEST("suggest", new Suggest());
