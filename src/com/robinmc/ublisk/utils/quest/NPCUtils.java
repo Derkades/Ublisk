@@ -13,11 +13,15 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.exception.NPCNotFoundException;
 import com.robinmc.ublisk.utils.variable.Var;
 
+import javassist.ClassPool;
+import javassist.LoaderClassPath;
+
 public class NPCUtils {
 	
 	private static NPCRegistry api;
 	
 	public void spawnNPC(QuestCharacter npc){
+		ClassPool.getDefault().insertClassPath(new LoaderClassPath(CustomEntityInterface.class.getClassLoader()));
 		GameProfileWrapper gpw = new GameProfileWrapper(null, npc.getName());
 		CustomClassNPC customNPC = api.spawnPlayerNPC(npc.getLocation().getBukkitLocation(), CustomClassNPC.class, gpw);
 		customNPC.setSkin(npc.getSkin());
