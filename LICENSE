@@ -1,7 +1,8 @@
 Copyright (C) RobinMC Network - All Rights Reserved
 
-This should be treated as closed source. The only reason why this is online, is easy collaborating and the ability for players to create pull requests.
+This should be treated as closed source. The only reason why this is online, is easy collaborating and the ability for users to create pull requests to improve this server's plugin.
 DO NOT COPY AND/OR USE ANY OF THIS CODE FOR ANY PURPOSE, COMMERCIALLY BUT ALSO PRIVATE USE.
-Exceptions: IconMenu class
+Exceptions: IconMenu, UUIDFetcher
 
 Written by Robin Slot <robin@robinmc.com>
+Huge thanks to inventivetalent (http://inventivetalent.org) for providing most of the libraries I am using
