@@ -10,6 +10,7 @@ import com.robinmc.ublisk.utils.enums.Loot;
 import com.robinmc.ublisk.utils.enums.Tasks;
 import com.robinmc.ublisk.utils.quest.NPCUtils;
 import com.robinmc.ublisk.utils.sql.MySQL;
+import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.utils.variable.Var;
 
 public class Main extends JavaPlugin {
@@ -29,13 +30,12 @@ public class Main extends JavaPlugin {
 		int delay = Command.registerAll();
 		
 		Tasks.start(delay);
-		
 		NPCUtils.createNPCRegistry();
-		
 		Config.create();
 		
-		HashMaps.resetAllPlayers();
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);
 		
+		HashMaps.resetAllPlayers();
 		HashMaps.doublexp.put("hi", false);
 		HashMaps.doubleExpTime.put("hi", Var.doubleExpTime());
 		
