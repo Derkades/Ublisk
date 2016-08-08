@@ -16,9 +16,7 @@ import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.enums.Loot;
 import com.robinmc.ublisk.utils.enums.Perms;
 import com.robinmc.ublisk.utils.enums.Tracker;
-import com.robinmc.ublisk.utils.exception.NPCNotFoundException;
 import com.robinmc.ublisk.utils.quest.NPCUtils;
-import com.robinmc.ublisk.utils.quest.QuestCharacter;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class Debug implements CommandExecutor {
@@ -36,13 +34,6 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equalsIgnoreCase("hunger")){
 						Player player2 = Bukkit.getPlayer(args[1]);
 						player.sendMessage("Food: " + player2.getFoodLevel());
-						return true;
-					} else if (args[0].equals("quest")){
-						try {
-							new NPCUtils().talk(player, QuestCharacter.valueOf(args[1]));
-						} catch (NPCNotFoundException e) {
-							player.sendMessage("NPC not found");
-						}
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
