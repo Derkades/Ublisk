@@ -1,16 +1,13 @@
 package com.robinmc.ublisk.task;
 
-import org.bukkit.Bukkit;
-
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Task;
-import com.robinmc.ublisk.utils.quest.NPCUtils;
 
 public class RespawnNPC implements Task {
 
 	@Override
 	public void task(final Main plugin) {
+		/*
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
 				final NPCUtils api = new NPCUtils();
@@ -23,6 +20,7 @@ public class RespawnNPC implements Task {
 				}, 10);
 			}
 		}, 5*60*20, 5*60*20);
+		*/
 	}
 
 }

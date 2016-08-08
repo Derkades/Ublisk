@@ -54,7 +54,10 @@ public class Main extends JavaPlugin {
 		
 		HashMaps.resetAllPlayers();
 		
+		/*
+		new NPCUtils().despawnAll();
 		new NPCUtils().spawnAll();
+		*/
 		
 		HashMaps.doublexp.put("hi", false);
 		HashMaps.doubleExpTime.put("hi", Var.doubleExpTime());

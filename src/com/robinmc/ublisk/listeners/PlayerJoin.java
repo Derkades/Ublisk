@@ -17,7 +17,6 @@ import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.enums.Music;
 import com.robinmc.ublisk.utils.enums.Tracker;
-import com.robinmc.ublisk.utils.quest.NPCUtils;
 import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
@@ -52,6 +51,7 @@ public class PlayerJoin implements Listener {
 		
 		HashMaps.addPlayerToMaps(player);
 		
+		/*
 		final NPCUtils npcApi = new NPCUtils();
 		npcApi.despawnAll();
 		
@@ -59,7 +59,8 @@ public class PlayerJoin implements Listener {
 			public void run(){
 				npcApi.spawnAll();;
 			}
-		}, 10);
+		}, 10)
+		*/
 		
 		if (Main.getInstance().getConfig().isSet("settings.music." + uuid)){
 	        if (Config.getBoolean("settings.music." + uuid)){
