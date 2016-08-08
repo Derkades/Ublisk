@@ -24,7 +24,7 @@ public class Dianh implements QuestCharacterClass {
 			inv.remove(Material.ROTTEN_FLESH, 20);
 			inv.add(Material.GRILLED_PORK, 10);
 		} else {
-			// TODO [Sander] Missing text
+			searchMeat.msg("Hello dear, what ya looking at?!");
 		}
 		
 	}
