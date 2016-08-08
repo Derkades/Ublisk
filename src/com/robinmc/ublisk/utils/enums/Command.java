@@ -51,7 +51,7 @@ public enum Command {
 		int delay = 30;
 		Console.sendMessage("[Ublisk] Registering commands...");
 		for (final Command cmd : Command.values()){
-			delay = delay + 5;
+			delay = delay + 3;
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 				public void run(){
 					Console.sendMessage("[Ublisk] Registered command with class " + cmd.getExecutor().getClass().getSimpleName());
