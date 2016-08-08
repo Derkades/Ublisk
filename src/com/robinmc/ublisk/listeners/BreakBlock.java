@@ -26,12 +26,16 @@ public class BreakBlock implements Listener {
 					block.setType(Material.IRON_ORE);
 				}
 			}, 30*20);
-		} else if (event.getPlayer().getGameMode() == GameMode.CREATIVE){
-			return;
-		} else {
+		} else if (block.getType() == Material.HAY_BLOCK){
+			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+				public void run(){
+					block.setType(Material.HAY_BLOCK);
+				}
+			}, 10*20);
+		} else if (!(event.getPlayer().getGameMode() == GameMode.CREATIVE)){
 			event.setCancelled(true);
+			
 		}
-	
 	}
 
 }
