@@ -12,7 +12,7 @@ import com.robinmc.ublisk.utils.quest.QuestProgress;
 
 public class Rasmus implements QuestCharacterClass {
 	
-	public void talk2(Player player){
+	public void talk(Player player){
 		QuestParticipant qp = new QuestParticipant(player, Quest.HAY_TRANSPORT, QuestCharacter.RASMUS);
 		if (qp.getQuestCompleted()){
 			//If player has completed 'Hay Transportation', do quest 'Chicken Hunt'.
