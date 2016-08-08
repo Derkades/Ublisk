@@ -1,5 +1,8 @@
 package com.robinmc.ublisk.utils.quest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.robinmc.ublisk.npc.Arzhur;
 import com.robinmc.ublisk.npc.Dianh;
 import com.robinmc.ublisk.npc.Merek;
@@ -42,6 +45,29 @@ public enum QuestCharacter {
 	
 	public NPCLocation getLocation(){
 		return loc;
+	}
+	
+	public static QuestCharacter fromString(String text) throws IllegalArgumentException {
+		if (text == null) {
+			throw new IllegalArgumentException();
+		}
+		
+		for (QuestCharacter npc : QuestCharacter.values()) {
+			if (text.equalsIgnoreCase(npc.name)) {
+				return npc;
+			}
+		}
+		
+		throw new IllegalArgumentException();
+		
+	}
+	
+	public static List<String> getAllNames(){
+		List<String> list = new ArrayList<String>();
+		for (QuestCharacter npc : QuestCharacter.values()){
+			list.add(npc.getName());
+		}
+		return list;
 	}
 	
 }
