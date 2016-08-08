@@ -2,6 +2,7 @@ package com.robinmc.ublisk.utils.quest;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.UUID;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -13,17 +14,14 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.exception.NPCNotFoundException;
 import com.robinmc.ublisk.utils.variable.Var;
 
-import javassist.ClassPool;
-import javassist.LoaderClassPath;
-
 public class NPCUtils {
 	
 	private static NPCRegistry api;
 	
 	public void spawnNPC(QuestCharacter npc){
-		ClassPool.getDefault().insertClassPath(new LoaderClassPath(CustomEntityInterface.class.getClassLoader()));
-		GameProfileWrapper gpw = new GameProfileWrapper(null, npc.getName());
-		CustomClassNPC customNPC = api.spawnPlayerNPC(npc.getLocation().getBukkitLocation(), CustomClassNPC.class, gpw);
+		//ClassPool.getDefault().insertClassPath(new LoaderClassPath(CustomEntityInterface.class.getClassLoader()));
+		GameProfileWrapper gpw = new GameProfileWrapper(UUID.randomUUID(), npc.getName());
+		NPCPlayer customNPC = api.spawnPlayerNPC(npc.getLocation().getBukkitLocation(), NPCPlayer.class, gpw);
 		customNPC.setSkin(npc.getSkin());
 	}
 	
@@ -57,7 +55,7 @@ public class NPCUtils {
 			throw new NPCNotFoundException();
 		}
 	}
-	
+
 	public static void createNPCRegistry(){
 		api = org.inventivetalent.npclib.NPCLib.createRegistry(Main.getInstance());
 	}
