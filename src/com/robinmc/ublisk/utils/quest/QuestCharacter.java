@@ -5,6 +5,7 @@ import com.robinmc.ublisk.npc.Dianh;
 import com.robinmc.ublisk.npc.Merek;
 import com.robinmc.ublisk.npc.Rasmus;
 import com.robinmc.ublisk.npc.Ulric;
+import com.robinmc.ublisk.npc.Zoltar;
 
 public enum QuestCharacter {
 	
@@ -13,7 +14,8 @@ public enum QuestCharacter {
 	ARZHUR(new Arzhur(), "Arzhur", "Notch", new NPCLocation(111.5, 68, -103.5, -20, 0)), // TODO Arzhur skin
 	ASHER(null, "Asher", "MrParkerl11", new NPCLocation(449.3, 70, -10.5, 75, 5)), // TODO Asher skin
 	RASMUS(new Rasmus(), "Rasmus", "RobinMC", new NPCLocation(1, 1, 1, 1, 1)), // TODO Rasmus skin TODO Rasmus coordinates
-	DIANH(new Dianh(), "Dianh", ":D", new NPCLocation(1, 1, 1, 1, 1));// TODO coordinaten en skin van Dianh
+	DIANH(new Dianh(), "Dianh", ":D", new NPCLocation(1, 1, 1, 1, 1)),// TODO coordinaten en skin van Dianh
+	ZOLTAR(new Zoltar(), "Zoltar", ":D", new NPCLocation(1, 1, 1, 1, 1));// TODO coordinaten en skin van Zoltar
 	
 	private QuestCharacterClass qcc;
 	private String name;
