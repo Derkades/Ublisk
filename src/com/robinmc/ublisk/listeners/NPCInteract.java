@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.listeners;
 
+import java.util.Locale;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -36,7 +37,7 @@ public class NPCInteract implements Listener {
 		}
 			
 		String name = event.getNpc().getName();
-		CharacterTalkEvent talkEvent = new CharacterTalkEvent(player, QuestCharacter.valueOf(name));
+		CharacterTalkEvent talkEvent = new CharacterTalkEvent(player, QuestCharacter.valueOf(name.toUpperCase(Locale.ENGLISH)));
 		Bukkit.getServer().getPluginManager().callEvent(talkEvent);
 		
 		if (talkEvent.isCancelled()){
