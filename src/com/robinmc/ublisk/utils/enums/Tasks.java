@@ -51,7 +51,7 @@ public enum Tasks {
 	public static void start(int delay){
 		Console.sendMessage("[Tasks] Starting all tasks...");
 		for (final Tasks tasks : Tasks.values()){
-			delay = delay + 5;
+			delay = delay + 2;
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 				public void run(){
 					boolean success = true;
