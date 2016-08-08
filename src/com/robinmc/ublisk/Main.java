@@ -14,13 +14,11 @@ import com.robinmc.ublisk.utils.variable.Var;
 
 public class Main extends JavaPlugin {
 	
-	//Todo area
+	// Todo area
 	// XXX /info [player] shows player info
 	// TODO Message if player tries to send chat message while muted
 	
 	public static Main instance;
-	
-	//public static Connection connection;
 	
 	@Override
 	public void onEnable(){
