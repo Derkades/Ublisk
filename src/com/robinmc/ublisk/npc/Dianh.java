@@ -23,6 +23,8 @@ public class Dianh implements QuestCharacterClass {
 			searchMeat.msg("Hi there! I am Dianh, do you have anything for me to purify? I do this daily, people come up to me and want me to purify water and food to make sure it is healthy. Also you can turn your items back into 50% of the costs such as weapons and armor or in this case food! Well anyway, let’s start the purification.");
 			inv.remove(Material.ROTTEN_FLESH, 20);
 			inv.add(Material.GRILLED_PORK, 10);
+		} else {
+			// TODO [Sander] Missing text
 		}
 		
 	}
