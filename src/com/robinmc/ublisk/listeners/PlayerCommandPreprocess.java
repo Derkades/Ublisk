@@ -30,12 +30,27 @@ public class PlayerCommandPreprocess implements Listener {
 			event.setCancelled(true);
 			return;
 		}
+		
 		if (cmd.length() >= 4){
-			if (cmd.substring(0, 4).equals("/op ")){
+			if (cmd.substring(0, 4).equalsIgnoreCase("/op ") || cmd.substring(0, 4).equalsIgnoreCase("/rl ")){
 				sender.sendMessage(ChatColor.AQUA + "How about you don't!");
 				event.setCancelled(true);
 				return;
 			}
+		}
+		
+		if (cmd.length() >= 8){
+			if (cmd.substring(0, 8).equalsIgnoreCase("/reload ")){
+				sender.sendMessage(ChatColor.AQUA + "How about you don't!");
+				event.setCancelled(true);
+				return;
+			}
+		}
+		
+		if (cmd.equalsIgnoreCase("/rl") || cmd.equalsIgnoreCase("/reload")){
+			sender.sendMessage(ChatColor.AQUA + "How about you don't!");
+			event.setCancelled(true);
+			return;
 		}
 		
 		for (Player player: Bukkit.getOnlinePlayers()){
