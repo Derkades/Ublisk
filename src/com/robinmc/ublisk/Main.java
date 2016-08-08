@@ -20,7 +20,6 @@ public class Main extends JavaPlugin {
 	// XXX /info [player] shows player info
 	// TODO Message if player tries to send chat message while muted
 	// TODO Cancel /msg if player is muted (not if soft muted)
-	// TODO Add lifecrystal system
 	
 	public static Main instance;
 	
