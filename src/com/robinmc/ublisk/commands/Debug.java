@@ -78,6 +78,9 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("sync")){
 						Tracker.syncAll();
 						return true;
+					} else if (args[0].equals("despawnallnpc")){
+						new NPCUtils().despawnAll();
+						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
 						return true;
