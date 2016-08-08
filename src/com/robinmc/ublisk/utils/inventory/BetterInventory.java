@@ -2,32 +2,32 @@ package com.robinmc.ublisk.utils.inventory;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.quest.QuestParticipant;
 
 public class BetterInventory {
 	
-	private Player player;
-	private Inventory inv;
+	private PlayerInventory inv;
 	
 	public BetterInventory(Player player){
-		this.player = player;
 		this.inv = player.getInventory();
 	}
 	
-	public Player getPlayer(){
-		return player;
+	public BetterInventory(PlayerInventory inv){
+		this.inv = inv;
+	}
+	
+	public BetterInventory(QuestParticipant qp){
+		this.inv = qp.getBukkitInventory();
 	}
 	
 	public PlayerInventory getBukkitInventory(){
-		return player.getInventory();
+		return inv;
 	}
 	
 	public void add(Material item, int amount){
-		PlayerInventory inv = player.getInventory();
 		inv.addItem(new ItemStack(item, amount));
 	}
 	
@@ -66,17 +66,11 @@ public class BetterInventory {
 	public boolean contains(ItemStack... items){
 		boolean hasItems = true;
 		for (ItemStack item : items){
-			if (!player.getInventory().containsAtLeast(item, item.getAmount())){
+			if (!inv.containsAtLeast(item, item.getAmount())){
 				hasItems = false;
 			}
 		}
 		return hasItems;
-	}
-	
-	public void clear(){
-		String pn = player.getName();
-		Console.sendCommand("clear " + pn);
-		//Because inv.clear(player); doesn't clear armour slots
 	}
 
 }
