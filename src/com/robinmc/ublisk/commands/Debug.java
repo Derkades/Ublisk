@@ -17,6 +17,7 @@ import com.robinmc.ublisk.utils.enums.Loot;
 import com.robinmc.ublisk.utils.enums.Perms;
 import com.robinmc.ublisk.utils.enums.Tracker;
 import com.robinmc.ublisk.utils.quest.NPCUtils;
+import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class Debug implements CommandExecutor {
@@ -80,6 +81,9 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("despawnallnpc")){
 						new NPCUtils().despawnAll();
+						return true;
+					} else if (args[0].equals("lag")){
+						player.sendMessage("TPS: " + Lag.getTPS());
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
