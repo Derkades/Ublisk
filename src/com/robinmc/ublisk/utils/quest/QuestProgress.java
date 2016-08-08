@@ -9,6 +9,8 @@ public enum QuestProgress {
 	
 	CHICKENHUNT_TALK_TO_RASMUS,
 	CHICKEN_HUNT_TALK_TO_ARZHUR,
+	
+	SEARCH_FOR_MEAT_TALK_TO_ARZHUR,
 	;
 	
 	public static QuestProgress fromString(String s){

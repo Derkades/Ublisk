@@ -17,6 +17,19 @@ public class Arzhur implements QuestCharacterClass {
 		QuestParticipant waterProblem = new QuestParticipant(player, Quest.WATER_PROBLEM, QuestCharacter.ARZHUR);
 		BetterInventory inv = waterProblem.getInventory();
 		QuestParticipant chickenhunt = new QuestParticipant(player, Quest.CHICKEN_HUNT, QuestCharacter.ARZHUR);
+		QuestParticipant searchMeat = new QuestParticipant(player, Quest.SEARCH_MEAT, QuestCharacter.ARZHUR);
+		if (inv.contains(Material.GRILLED_PORK, 10))
+		{
+			searchMeat.msg("Thank you very much for helping us. We will be alright for a while! Here is something that will help you survive in the fields.");
+			inv.remove(Material.GRILLED_PORK, 10);
+			//TODO Add lifecrystals
+		}
+		if (chickenhunt.getQuestCompleted())	
+			{
+			searchMeat.msg("We are having a shortage of food here in town. Meat in particular. can you maybe go and get some Zombie Flesh by slaying some Zombies at the Ruins. Go to Dianh, she can purify the meat so we can eat it.");
+			searchMeat.saveProgress(QuestProgress.SEARCH_FOR_MEAT_TALK_TO_ARZHUR);
+			}
+			
 		if (chickenhunt.getProgress(QuestProgress.CHICKENHUNT_TALK_TO_RASMUS))
 		{	
 			chickenhunt.msg("You were sent by Rasmus, weren’t you? That old man always bothers himself of the so called monsters in his farm. Just between you and me, he has gotten a little crazy over the last few years and now thinks that the chickens in his farm are monsters! Here take this. It will help you to scare those chickens away.");
