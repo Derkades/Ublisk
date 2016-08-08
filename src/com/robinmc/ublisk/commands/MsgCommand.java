@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.utils.MessageTarget;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
@@ -20,6 +21,12 @@ public class MsgCommand implements CommandExecutor {
 		}
 		
 		Player player = (Player) sender;
+		
+		//If player is muted don't send private message
+		if (HashMaps.isMuted.get(player.getUniqueId())){
+			player.sendMessage(Message.CANT_PM_MUTED.get());
+			return true;
+		}
 		
 		if (args.length >= 2){
 			MessageTarget target;

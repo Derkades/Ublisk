@@ -19,7 +19,6 @@ public class Main extends JavaPlugin {
 	//Todo area
 	// XXX /info [player] shows player info
 	// TODO Message if player tries to send chat message while muted
-	// TODO Cancel /msg if player is muted (not if soft muted)
 	
 	public static Main instance;
 	
