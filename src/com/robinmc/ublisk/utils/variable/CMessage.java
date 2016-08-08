@@ -100,7 +100,7 @@ public class CMessage { //If you're wondering "Why CMessage?", it's stands for C
 	}
 	
 	public static String npcNotFound(String name){
-		return prefix("NPC") + RED + "No dialog could be found for an npc with name " + name + ", please report this error.";
+		return prefix("NPC") + RED + "No dialogue could be found for an npc with name " + name + ", please report this error.";
 	}	
 	
 	public static String npcMsg(String npc, String message){
