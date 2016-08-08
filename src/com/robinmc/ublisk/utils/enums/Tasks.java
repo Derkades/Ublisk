@@ -50,7 +50,6 @@ public enum Tasks {
 	
 	public static void start(int delay){
 		Console.sendMessage("[Tasks] Starting all tasks...");
-		Console.sendMessage("[Ublisk] Registering commands...");
 		for (final Tasks tasks : Tasks.values()){
 			delay = delay + 5;
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
