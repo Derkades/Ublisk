@@ -1,11 +1,9 @@
 package com.robinmc.ublisk;
 
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.robinmc.ublisk.utils.Config;
-import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Listeners;
 import com.robinmc.ublisk.utils.enums.Command;
 import com.robinmc.ublisk.utils.enums.Loot;
@@ -30,19 +28,7 @@ public class Main extends JavaPlugin {
 		
 		Listeners.register();
 		
-		int delay = 30;
-		Console.sendMessage("[Ublisk] Registering commands...");
-		for (final Command cmd : Command.values()){
-			delay = delay + 5;
-			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
-				public void run(){
-					Console.sendMessage("[Ublisk] Registered command with class " + cmd.getExecutor().getClass().getSimpleName());
-					String command = cmd.getCommand();
-					CommandExecutor executor = cmd.getExecutor();
-					getCommand(command).setExecutor(executor);
-				}
-			}, delay);
-		}
+		int delay = Command.registerAll();
 		
 		Tasks.start(delay);
 		
@@ -51,11 +37,6 @@ public class Main extends JavaPlugin {
 		Config.create();
 		
 		HashMaps.resetAllPlayers();
-		
-		/*
-		new NPCUtils().despawnAll();
-		new NPCUtils().spawnAll();
-		*/
 		
 		HashMaps.doublexp.put("hi", false);
 		HashMaps.doubleExpTime.put("hi", Var.doubleExpTime());
@@ -71,39 +52,10 @@ public class Main extends JavaPlugin {
 	public void onDisable(){
 		instance = null;
 		MySQL.onDisable();
-		/*
-		try {
-			if (connection != null && connection.isClosed()){
-				connection.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		*/
 	}
 	
 	public static Main getInstance(){
 		return instance;
 	}
-	
-	/*
-	public synchronized static void openConnection(){
-		try {
-			connection = DriverManager.getConnection("jdbc:mysql://192.168.0.125:3306/ublisk", "ublisk", "UJpwZBuEpw5C8MUv");
-		} catch (Exception e){
-			e.printStackTrace();
-		}
-	}
-	*/
-	
-	/*
-	public synchronized static void closeConnection(){
-		try {
-			connection.close();
-		} catch (Exception e){
-			e.printStackTrace();
-		}
-	}
-	*/	
 	
 }
