@@ -1,10 +1,12 @@
 package com.robinmc.ublisk.utils.quest;
 
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.LifeCrystalPlayer;
+import com.robinmc.ublisk.utils.enums.Town;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
 import com.robinmc.ublisk.utils.variable.CMessage;
 
@@ -84,6 +86,14 @@ public class QuestParticipant {
 	
 	public LifeCrystalPlayer getLifeCrystalPlayer(){
 		return new LifeCrystalPlayer(player);
+	}
+	
+	public Town getLastTown(){
+		return Town.getLastTown(player);
+	}
+	
+	public PlayerInventory getBukkitInventory(){
+		return player.getInventory();
 	}
 
 }
