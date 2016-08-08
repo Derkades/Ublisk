@@ -99,6 +99,10 @@ public class CMessage { //If you're wondering "Why CMessage?", it's stands for C
 		return prefix + "You have completed quest " + BOLD + quest + RESET + YELLOW + " and got " + xp + " XP!";
 	}
 	
+	public static String questCompleted(String quest, int xp, int lifeCrystals){
+		return prefix + "You have completed quest " + BOLD + quest + RESET + YELLOW + " and got " + xp + " XP and " + lifeCrystals + " Life Crystals!";
+	}
+	
 	public static String npcNotFound(String name){
 		return prefix("NPC") + RED + "No dialogue could be found for an npc with name " + name + ", please report this error.";
 	}	

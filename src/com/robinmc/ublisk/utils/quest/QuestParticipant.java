@@ -81,7 +81,11 @@ public class QuestParticipant {
 	}
 	
 	public void sendCompletedMessage(){
-		player.sendMessage(CMessage.questCompleted(quest.getName(), quest.getRewardExp()));
+		if (quest.noLifeReward()){
+			player.sendMessage(CMessage.questCompleted(quest.getName(), quest.getRewardExp()));
+		} else {
+			player.sendMessage(CMessage.questCompleted(quest.getName(), quest.getRewardExp(), quest.getLifeCrystalReward()));
+		}
 	}
 	
 	public LifeCrystalPlayer getLifeCrystalPlayer(){
