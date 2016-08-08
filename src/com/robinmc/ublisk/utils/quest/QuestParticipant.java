@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
+import com.robinmc.ublisk.utils.LifeCrystalPlayer;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
 import com.robinmc.ublisk.utils.variable.CMessage;
 
@@ -79,6 +80,10 @@ public class QuestParticipant {
 	
 	public void sendCompletedMessage(){
 		player.sendMessage(CMessage.questCompleted(quest.getName(), quest.getRewardExp()));
+	}
+	
+	public LifeCrystalPlayer getLifeCrystalPlayer(){
+		return new LifeCrystalPlayer(player);
 	}
 
 }
