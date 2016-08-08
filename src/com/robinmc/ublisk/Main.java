@@ -18,6 +18,8 @@ public class Main extends JavaPlugin {
 	// Todo area
 	// XXX /info [player] shows player info
 	// TODO Message if player tries to send chat message while muted
+	// TODO New XP system
+	// TODO Double XP cooldown (10 minutes)
 	
 	public static Main instance;
 	
