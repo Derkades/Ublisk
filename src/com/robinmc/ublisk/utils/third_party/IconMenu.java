@@ -21,6 +21,8 @@ import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
  
 public class IconMenu implements Listener {
  
+	//Please note that this is slightly modified by me
+	
     private String name;
     private int size;
     private OptionClickEventHandler handler;
