@@ -10,33 +10,59 @@ import com.robinmc.ublisk.utils.enums.Mob;
 
 public class Exp {
 	
+	/**
+	 * Set a player's experience points
+	 * @param Player
+	 * @param Number of experience points
+	 */
 	public static void set(OfflinePlayer player, int n){
 		Config.set("xp." + player.getUniqueId(), n);
 	}
 	
+	/**
+	 * Adds experience points
+	 * @param player
+	 * @param Number of experience points
+	 */
 	public static void add(Player player, int n){
 		Config.set("xp." + player.getUniqueId(), n + get(player));
 		refresh(player);
 	}
 	
+	/**
+	 * Gets a player's XP as stored in configuration
+	 * @param Player
+	 * @return XP (not level!)
+	 */
 	public static int get(OfflinePlayer player){
-		try {
+		if (Config.getConfig().isSet("xp." + player.getUniqueId())){
 			return Config.getInteger("xp." + player.getUniqueId());
-		} catch (Exception e){ //If cannot get xp player doens't have value set in config yet
+		} else { //If XP is not yet set in config set it to 0
 			set(player, 0);
+			
+			if (player.isOnline()){
+				Player online = (Player) player;
+				refresh(online);
+			}
+			
 			return 0;
 		}
 	}
 	
 	/**
-	 * This will return a value of 0 if player is not in gamemode 2/0 or not online
-	 * @param player
-	 * @return Player level
+	 * Get a player's level
+	 * @param A player
+	 * @return Player's level
 	 */
 	public static int getLevel(Player player){
 		return player.getLevel();
 	}
 	
+	/**
+	 * Gives the player the amount of XP that is rewarded when the specified mob is killed
+	 * @param Player
+	 * @param Mob type
+	 */
 	public static void giveMobExp(Player player, Mob mob){
 		int xp = 0;
 		if (HashMaps.doublexp.get("hi")){ //If double XP is active
@@ -54,6 +80,10 @@ public class Exp {
 		}		
 	}
 	
+	/**
+	 * Refreshes a player's xp from config to XP bar.
+	 * @param Player
+	 */
 	public static void refresh(Player player){
 		int xp = Exp.get(player);
 		player.setExp(0);

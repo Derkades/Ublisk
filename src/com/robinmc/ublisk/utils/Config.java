@@ -78,6 +78,10 @@ public class Config {
 		return config.getDouble(path);
 	}
 	
+	public static FileConfiguration getConfig(){
+		return config;
+	}
+	
 	/*	
 	public static List<String> getList(String path){
 		return config.getStringList(path);
