@@ -1,7 +1,5 @@
 package com.robinmc.ublisk.utils.quest;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.UUID;
 
 import org.bukkit.entity.Entity;
@@ -11,7 +9,13 @@ import org.inventivetalent.npclib.npc.living.human.NPCPlayer;
 import org.inventivetalent.npclib.registry.NPCRegistry;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.exception.NPCNotFoundException;
+import com.robinmc.ublisk.npc.Arzhur;
+import com.robinmc.ublisk.npc.Dianh;
+import com.robinmc.ublisk.npc.Merek;
+import com.robinmc.ublisk.npc.Rasmus;
+import com.robinmc.ublisk.npc.Ulric;
+import com.robinmc.ublisk.npc.Zoltar;
+import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Var;
 
 public class NPCUtils {
@@ -39,20 +43,23 @@ public class NPCUtils {
 		}
 	}
 	
-	public void talk(Player player, QuestCharacter npc) throws NPCNotFoundException{
-		if (npc.getQuestCharacterClass() == null){
-			throw new NPCNotFoundException();
-		}
-		try {
-			Method m = npc.getQuestCharacterClass().getClass().getMethod("talk", Player.class);
-			m.invoke(player);
-		} catch (IllegalAccessException 
-				| IllegalArgumentException 
-				| InvocationTargetException 
-				| SecurityException e){
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			throw new NPCNotFoundException();
+	public void talk(Player player, QuestCharacter npc){
+		// XXX: Better solution than this
+		String name = npc.getName();
+		if (npc.getName().equals("Merek")){
+			new Merek().talk(player);
+		} else if (name.equals("Ulric")){
+			new Ulric().talk(player);
+		} else if (name.equals("Arzhur")){
+			new Arzhur().talk(player);
+		} else if (name.equals("Asher")){
+			player.sendMessage(CMessage.npcNotFound(name));
+		} else if (name.equals("Rasmus")){
+			new Rasmus().talk(player);
+		} else if (name == "Dianh"){
+			new Dianh().talk(player);
+		} else if (name == "Zoltar"){
+			new Zoltar().talk(player);
 		}
 	}
 
