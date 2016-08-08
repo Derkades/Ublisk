@@ -15,7 +15,7 @@ public class Arzhur implements QuestCharacterClass {
 	@Override
 	public void talk(Player player) {
 		if (new QuestParticipant(player, Quest.SEARCH_MEAT, QuestCharacter.ARZHUR).getQuestCompleted()){
-			// TODO [Sander] Message if all quests are complete
+			new QuestParticipant(player, Quest.SEARCH_MEAT, QuestCharacter.ARZHUR).msg("Nice work! I wish you the best of luck and we will meet again. Soon!");
 		} else if (new QuestParticipant(player, Quest.CHICKEN_HUNT, QuestCharacter.ARZHUR).getQuestCompleted()){
 			searchMeat(player);
 		} else if (new QuestParticipant(player, Quest.WATER_PROBLEM, QuestCharacter.ARZHUR).getQuestCompleted()){
@@ -49,7 +49,7 @@ public class Arzhur implements QuestCharacterClass {
 			qp.msg("You were sent by Rasmus, weren’t you? That old man always bothers himself of the so called monsters in his farm. Just between you and me, he has gotten a little crazy over the last few years and now thinks that the chickens in his farm are monsters! Here take this. It will help you to scare those chickens away.");
 			qp.saveProgress(QuestProgress.CHICKEN_HUNT_TALK_TO_ARZHUR);
 		} else {
-			// TODO [Sander] Message missing
+			qp.msg("Hey there. Nice work on the dam, See ya!");
 		}
 	}
 	
