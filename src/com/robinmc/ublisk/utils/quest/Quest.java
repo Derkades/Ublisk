@@ -6,7 +6,6 @@ public enum Quest {
 	
 	UNKNOWN("Unknown", 0, 0, "unknown"),
 	//FIXME: Fix reward xp
-	//FIXME: Fix config thing
 	INTRODUCTION("Introduction", 0, 0, "introduction"),
 	WATER_PROBLEM("Problem with the water", 5, 1, "water-problem"),
 	HAY_TRANSPORT("Hay transportation", 10, 1, "hay-transport"),
