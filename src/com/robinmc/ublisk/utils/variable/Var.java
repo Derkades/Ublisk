@@ -11,6 +11,6 @@ public class Var {
 	
 	public static int doubleExpTime = 60;
 	
-	public static int xpDivision = 50;
+	public static int xpDivision = 20;
 
 }
