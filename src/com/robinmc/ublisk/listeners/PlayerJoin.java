@@ -41,7 +41,7 @@ public class PlayerJoin implements Listener {
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){ 
 			//For some reason sending the pack has to be delayed, otherwise the client won't get the message
 			public void run(){
-				ResourcePackAPI.setResourcepack(player, Var.pack());
+				ResourcePackAPI.setResourcepack(player, Var.packURL);
 			}
 		}, 1*20);
 		

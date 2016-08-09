@@ -39,7 +39,7 @@ public class Main extends JavaPlugin {
 		
 		HashMaps.resetAllPlayers();
 		HashMaps.doublexp.put(HashMaps.placeHolder(), false);
-		HashMaps.doubleExpTime.put(HashMaps.placeHolder(), Var.doubleExpTime());
+		HashMaps.doubleExpTime.put(HashMaps.placeHolder(), Var.doubleExpTime);
 		HashMaps.doubleExpCooldown.put(HashMaps.placeHolder(), false);
 		
 		Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){

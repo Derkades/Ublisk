@@ -55,13 +55,13 @@ public enum Loot {
     }
 	
 	public static void spawnRandomLoot(){
+		World world = Var.world;
 		Loot loot = randomEnum(Loot.class);
 		final int x = loot.getX();
 		final int y = loot.getY();
 		final int z = loot.getZ();
-		final Location loc = new Location(Var.world(), x, y, z);
-		Location shulkerBullet = new Location(Var.world(), x + 0.5, y + 100, z + 0.5);
-		World world = Var.world();
+		final Location loc = new Location(world, x, y, z);
+		Location shulkerBullet = new Location(world, x + 0.5, y + 100, z + 0.5);
 		world.spawnEntity(shulkerBullet, EntityType.SHULKER_BULLET);
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 			public void run(){
@@ -75,7 +75,7 @@ public enum Loot {
 	public static void removeLoot(){
 		Console.sendMessage("[Loot] Removed all loot chests!");
 		for (Loot loot : Loot.values()){
-			Block block = new Location(Var.world(), loot.getX(), loot.getY(), loot.getZ()).getBlock();
+			Block block = new Location(Var.world, loot.getX(), loot.getY(), loot.getZ()).getBlock();
 			block.setType(Material.AIR);
 		}
 	}

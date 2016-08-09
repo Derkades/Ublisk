@@ -37,7 +37,7 @@ public class NPCUtils {
 	}
 	
 	public void despawnAll(){
-		for (Entity entity : Var.world().getEntitiesByClasses(NPCPlayer.class)){
+		for (Entity entity : Var.world.getEntitiesByClasses(NPCPlayer.class)){
 			NPCPlayer npc = (NPCPlayer) entity;
 			npc.despawn();
 		}

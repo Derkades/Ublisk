@@ -8,7 +8,7 @@ import com.robinmc.ublisk.utils.variable.Var;
 public class EntityUtils {
 	
 	public static void removeMobs(){
-		for (Entity entity: Var.world().getEntities()){
+		for (Entity entity: Var.world.getEntities()){
 			EntityType type = entity.getType();
 			if (type == EntityType.CHICKEN ||
 					type == EntityType.SHEEP ||

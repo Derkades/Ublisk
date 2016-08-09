@@ -5,16 +5,12 @@ import org.bukkit.World;
 
 public class Var {
 	
-	public static World world(){
-		return Bukkit.getWorld("ublisk");
-	}
+	public static World world = Bukkit.getWorld("ublisk");
 	
-	public static String pack(){
-		return "http://ublisk.robinmc.com/textures.zip";
-	}
+	public static String packURL = "http://ublisk.robinmc.com/textures.zip";
 	
-	public static int doubleExpTime(){
-		return 60;
-	}
+	public static int doubleExpTime = 60;
+	
+	public static int xpDevision = 50;
 
 }

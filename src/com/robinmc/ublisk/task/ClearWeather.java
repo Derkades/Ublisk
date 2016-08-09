@@ -13,7 +13,7 @@ public class ClearWeather implements Task {
 	public void task(Main plugin) {
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
-				World world = Var.world();
+				World world = Var.world;
 				world.setThundering(false);
 				world.setStorm(false);
 			}

@@ -69,7 +69,7 @@ public class UpdateDoubleExpBar implements Task {
 						}
 						int left2 = left - 1;
 						if (left2 == 0){
-							left2 = Var.doubleExpTime();
+							left2 = Var.doubleExpTime;
 							HashMaps.doublexp.put("hi", false);
 							//Now we need to set it to false in database as well
 							try {

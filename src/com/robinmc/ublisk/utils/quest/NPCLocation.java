@@ -41,7 +41,7 @@ public class NPCLocation {
 	}
 	
 	public Location getBukkitLocation(){
-		return new Location(Var.world(), 
+		return new Location(Var.world, 
 				getX(), 
 				getY(), 
 				getZ(), 
