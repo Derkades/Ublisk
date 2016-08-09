@@ -38,8 +38,9 @@ public class Main extends JavaPlugin {
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);
 		
 		HashMaps.resetAllPlayers();
-		HashMaps.doublexp.put("hi", false);
-		HashMaps.doubleExpTime.put("hi", Var.doubleExpTime());
+		HashMaps.doublexp.put(HashMaps.placeHolder(), false);
+		HashMaps.doubleExpTime.put(HashMaps.placeHolder(), Var.doubleExpTime());
+		HashMaps.doubleExpCooldown.put(HashMaps.placeHolder(), false);
 		
 		Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
 			public void run(){

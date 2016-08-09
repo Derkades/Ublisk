@@ -1,43 +1,45 @@
 package com.robinmc.ublisk;
 
+import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.enums.Tracker;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-
-import com.robinmc.ublisk.utils.Console;
-import com.robinmc.ublisk.utils.enums.Tracker;
-
 public class HashMaps {
 
-	public static Map<UUID, Boolean> afk = new HashMap<UUID, Boolean>();
-	public static Map<UUID, Boolean> disableCommandLog = new HashMap<UUID, Boolean>();
+	public static Map<UUID, Boolean> afk = new HashMap<>();
+	public static Map<UUID, Boolean> disableCommandLog = new HashMap<>();
 	
-	public static Map<UUID, Boolean> cooldownNpc = new HashMap<UUID, Boolean>();
-	public static Map<UUID, Boolean> cooldownClass = new HashMap<UUID, Boolean>();
+	public static Map<UUID, Boolean> cooldownNpc = new HashMap<>();
+	public static Map<UUID, Boolean> cooldownClass = new HashMap<>();
 	
-	public static Map<String, Boolean> doublexp = new HashMap<String, Boolean>();
-	public static Map<String, Integer> doubleExpTime = new HashMap<String, Integer>();
+	public static Map<String, Boolean> doublexp = new HashMap<>();
+	public static Map<String, Integer> doubleExpTime = new HashMap<>();
+	public static Map<String, Boolean> doubleExpCooldown = new HashMap<>();
 	
-	public static Map<UUID, Boolean> isMuted = new HashMap<UUID, Boolean>();
-	public static Map<UUID, Boolean> isSoftMuted = new HashMap<UUID, Boolean>();
+	public static Map<UUID, Boolean> isMuted = new HashMap<>();
+	public static Map<UUID, Boolean> isSoftMuted = new HashMap<>();
 	
-	public static Map<Player, Player> lastMessageSender = new HashMap<Player, Player>();
-	
+	public static Map<Player, Player> lastMessageSender = new HashMap<>();
+
 	//Tracker HashMaps. These will be added to the database every 5 minutes and reset to 0.
-	public static Map<UUID, Integer> rightClicked = new HashMap<UUID, Integer>();
-	public static Map<UUID, Integer> leftClicked = new HashMap<UUID, Integer>();
-	public static Map<UUID, Integer> mobKills = new HashMap<UUID, Integer>();
-	public static Map<UUID, Integer> lootFound = new HashMap<UUID, Integer>();
-	public static Map<UUID, Integer> loggedIn = new HashMap<UUID, Integer>();
-	public static Map<UUID, Integer> chatMessages = new HashMap<UUID, Integer>();
+	public static Map<UUID, Integer> rightClicked = new HashMap<>();
+	public static Map<UUID, Integer> leftClicked = new HashMap<>();
+	public static Map<UUID, Integer> mobKills = new HashMap<>();
+	public static Map<UUID, Integer> lootFound = new HashMap<>();
+	public static Map<UUID, Integer> loggedIn = new HashMap<>();
+	public static Map<UUID, Integer> chatMessages = new HashMap<>();
 	
 	static void resetAllPlayers(){
-		for (Player p: Bukkit.getOnlinePlayers()) HashMaps.addPlayerToMaps(p);
+		for (Player player : Bukkit.getOnlinePlayers()){
+			addPlayerToMaps(player);
+		}
 	}
-	
+
 	public static void addPlayerToMaps(Player player){
 		Console.sendMessage("[HashMaps] " + player.getName() + "'s maps have been reset");
 		UUID uuid = player.getUniqueId();
@@ -53,6 +55,10 @@ public class HashMaps {
 			Map<UUID, Integer> map = tracker.getMap();
 			map.put(uuid, 0);
 		}
+	}
+	
+	public static String placeHolder(){
+		return "hi";
 	}
 	
 }
