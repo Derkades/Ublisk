@@ -20,6 +20,7 @@ import com.robinmc.ublisk.utils.enums.Tracker;
 import com.robinmc.ublisk.utils.quest.NPCUtils;
 import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.utils.variable.Message;
+import com.robinmc.ublisk.utils.variable.Var;
 
 public class Debug implements CommandExecutor {
 	
@@ -36,6 +37,13 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equalsIgnoreCase("hunger")){
 						Player player2 = Bukkit.getPlayer(args[1]);
 						player.sendMessage("Food: " + player2.getFoodLevel());
+						return true;
+					} else if (args[0].equals("refreshxp")){
+						Player target = Bukkit.getPlayer(args[1]);
+						player.sendMessage("XP refreshed!");
+						player.sendMessage("Config XP: " + Exp.get(target));
+						player.sendMessage("With division: " + Math.round(Exp.get(player) / Var.xpDivision));
+						player.sendMessage("Bukkit level: " + Exp.getLevel(player));
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
