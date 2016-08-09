@@ -8,15 +8,15 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 import com.robinmc.ublisk.utils.Exp;
-import com.robinmc.ublisk.utils.enums.Mob;
 import com.robinmc.ublisk.utils.enums.Tracker;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
+import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class EntityDeath implements Listener {
 	
 	@EventHandler
-	public void entityDeath(EntityDeathEvent event){		
+	public void entityDeath(EntityDeathEvent event){
 		LivingEntity entity = event.getEntity();
 		if (entity.getLastDamageCause().getCause() == DamageCause.ENTITY_ATTACK){
 			Player player = entity.getKiller();
@@ -40,12 +40,11 @@ public class EntityDeath implements Listener {
 				return;
 			}
 			*/
-			
+
 			try {
-				Mob mob = Mob.getMob(entity);
-				Exp.giveMobExp(player, mob);
+				Exp.giveMobExp(player, entity);
 				Tracker.MOB_KILLS.add(player);
-			} catch (MobNotFoundException e) {
+			} catch (MobNotFoundException | UnknownAreaException e) {
 				player.sendMessage(Message.ERROR_GENERAL.get());
 			}
 		}

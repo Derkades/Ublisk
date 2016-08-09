@@ -2,11 +2,17 @@ package com.robinmc.ublisk.utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import com.connorlinfoot.actionbarapi.ActionBarAPI;
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.utils.enums.Mob;
+import com.robinmc.ublisk.utils.exception.MobNotFoundException;
+import com.robinmc.ublisk.utils.exception.UnknownAreaException;
+import com.robinmc.ublisk.utils.mob.Mob;
+import com.robinmc.ublisk.utils.mob.MobArea;
+import com.robinmc.ublisk.utils.mob.MobInfo;
+import com.robinmc.ublisk.utils.variable.Message;
 
 public class Exp {
 	
@@ -62,22 +68,37 @@ public class Exp {
 	 * Gives the player the amount of XP that is rewarded when the specified mob is killed
 	 * @param Player
 	 * @param Mob type
+	 * @throws MobNotFoundException If the entity specified could not be associated with a Mob.
+	 * @throws UnknownAreaException If the entity specified is not in an area
 	 */
-	public static void giveMobExp(Player player, Mob mob){
+	public static void giveMobExp(Player player, Entity entity) throws MobNotFoundException, UnknownAreaException{
+		if (!Mob.containsEntity(entity)){
+			player.sendMessage(Message.ERROR_GENERAL.get());
+			return;
+		}
+		
+		MobArea area = Mob.getArea(entity);
 		int xp = 0;
-		if (HashMaps.doublexp.get("hi")){ //If double XP is active
-			xp = 2 * mob.getExp();
-			ActionBarAPI.sendActionBar(player, ChatColor.GOLD + "You have killed a " + mob.getName() + " and got " + xp + " XP", 2*10);
-			Exp.add(player, xp);
-			Console.sendMessage("[MobExp] Given " + player.getName() + " " + mob.getExp() + " for killing a " + mob.getName());
-			refresh(player);
+		String name = "error";
+		for (MobInfo info : area.getMobInfo()){
+			if (entity.getType() == info.getEntityType()){
+				xp = info.getXP();
+				name = info.getName();
+			}
+			
+			throw new MobNotFoundException();
+		}
+		
+		if (HashMaps.doublexp.get(HashMaps.placeHolder())){ //If double XP is active
+			ActionBarAPI.sendActionBar(player, ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP", 2*10);
+			Exp.add(player, xp * 2);
+			Console.sendMessage("[MobExp] Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
 		} else {
-			xp = mob.getExp();
-			ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + mob.getName() + " and got " + xp + " XP", 2*10);
+			ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP", 2*10);
 			Exp.add(player, xp);
-			Console.sendMessage("[MobExp] Given " + player.getName() + " " + mob.getExp() + " for killing a " + mob.getName());
-			refresh(player);
-		}		
+			Console.sendMessage("[MobExp] Given " + player.getName() + " " + xp + " for killing a " + name);
+		}	
+		refresh(player);
 	}
 	
 	/**
