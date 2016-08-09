@@ -40,6 +40,7 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("refreshxp")){
 						Player target = Bukkit.getPlayer(args[1]);
+						Exp.refresh(player);
 						player.sendMessage("XP refreshed!");
 						player.sendMessage("Config XP: " + Exp.get(target));
 						player.sendMessage("With division: " + Math.round(Exp.get(player) / Var.xpDivision));
