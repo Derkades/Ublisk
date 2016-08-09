@@ -13,6 +13,7 @@ import com.robinmc.ublisk.utils.mob.Mob;
 import com.robinmc.ublisk.utils.mob.MobArea;
 import com.robinmc.ublisk.utils.mob.MobInfo;
 import com.robinmc.ublisk.utils.variable.Message;
+import com.robinmc.ublisk.utils.variable.Var;
 
 public class Exp {
 	
@@ -110,7 +111,7 @@ public class Exp {
 		player.setExp(0);
 	    player.setLevel(0);
 	    player.setTotalExperience(0);  
-	    player.giveExp(xp);
+	    player.giveExp(Math.round(xp / Var.xpDivision));
 	}
 
 }
