@@ -11,6 +11,7 @@ import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.enums.Tracker;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
+import com.robinmc.ublisk.utils.mob.Mob;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class EntityDeath implements Listener {
@@ -20,32 +21,13 @@ public class EntityDeath implements Listener {
 		LivingEntity entity = event.getEntity();
 		if (entity.getLastDamageCause().getCause() == DamageCause.ENTITY_ATTACK){
 			Player player = entity.getKiller();
-			/*
-			if (entity instanceof Chicken){
-				Exp.giveMobExp(player, Mob.CHICKEN);
-			} else if (entity instanceof Zombie){
-				CraftZombie zombie = (CraftZombie) entity;
-				if (zombie.getHandle().isVillager()){
-					if (zombie.getName().equals("Zombified Merchant")){
-						Exp.giveMobExp(player, Mob.ZOMBIFIED_MERCHANT);
-					} else {
-						return;
-					}
-				} else {
-					return;
-				}
-			} else if (entity instanceof Sheep){
-				Exp.giveMobExp(player, Mob.SHEEP);
-			} else {
-				return;
-			}
-			*/
-
-			try {
-				Exp.giveMobExp(player, entity);
+			if (Mob.containsEntity(entity)){
 				Tracker.MOB_KILLS.add(player);
-			} catch (MobNotFoundException | UnknownAreaException e) {
-				player.sendMessage(Message.ERROR_GENERAL.get());
+				try {
+					Exp.giveMobExp(player, entity);
+				} catch (MobNotFoundException | UnknownAreaException e) {
+					player.sendMessage(Message.ERROR_GENERAL.get());
+				}
 			}
 		}
 	}
