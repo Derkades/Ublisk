@@ -15,6 +15,7 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.iconmenus.ClassMenu;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.enums.Music;
 import com.robinmc.ublisk.utils.enums.Tracker;
 import com.robinmc.ublisk.utils.variable.CMessage;
@@ -149,5 +150,7 @@ public class PlayerJoin implements Listener {
         String ip = player.getAddress().toString();
         ip.replace("/", "");
         Config.set("data.ip." + uuid, ip);
+        
+        Exp.refresh(player);
 	}
 }
