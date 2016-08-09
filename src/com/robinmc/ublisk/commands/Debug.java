@@ -12,6 +12,7 @@ import org.bukkit.inventory.PlayerInventory;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Weapon;
 import com.robinmc.ublisk.utils.Config;
+import com.robinmc.ublisk.utils.EntityUtils;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.enums.Loot;
 import com.robinmc.ublisk.utils.enums.Perms;
@@ -43,6 +44,7 @@ public class Debug implements CommandExecutor {
 				} else if (args.length == 1){
 					if (args[0].equalsIgnoreCase("kill")){
 						Bukkit.broadcastMessage(Message.ENTITIES_REMOVED.get());
+						EntityUtils.removeMobs();
 						return true;
 					} else if (args[0].equalsIgnoreCase("npcrespawn")){
 						NPCUtils api = new NPCUtils();
