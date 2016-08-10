@@ -28,7 +28,7 @@ public class UpdateFriendsHealthBar implements Task {
 					}
 					
 					if (player.getGameMode() == GameMode.CREATIVE){
-						
+						return;
 					}
 					
 					for (String s : Friends.get(player)){
