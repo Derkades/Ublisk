@@ -10,7 +10,7 @@ import com.robinmc.ublisk.task.CheckDoubleExp;
 import com.robinmc.ublisk.task.CheckShield;
 import com.robinmc.ublisk.task.CheckTown;
 import com.robinmc.ublisk.task.ClearWeather;
-import com.robinmc.ublisk.task.FastNight;
+import com.robinmc.ublisk.task.FastDayNight;
 import com.robinmc.ublisk.task.RandomTips;
 import com.robinmc.ublisk.task.RegenerateHunger;
 import com.robinmc.ublisk.task.RemoveMobs;
@@ -28,7 +28,7 @@ public enum Tasks {
 	CHECK_SHIELD(new CheckShield()),
 	CHECK_TOWN(new CheckTown()),
 	CLEAR_WEATHER(new ClearWeather()),
-	FAST_NIGHT(new FastNight()),
+	FAST_DAY_NIGHT(new FastDayNight()),
 	RANDOM_TIPS(new RandomTips()),
 	REGENERATE_HUNGER(new RegenerateHunger()),
 	REMOVE_MOBS(new RemoveMobs()),

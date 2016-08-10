@@ -6,13 +6,15 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Task;
 import com.robinmc.ublisk.utils.Time;
 
-public class FastNight implements Task {
+public class FastDayNight implements Task {
 
 	@Override
 	public void task(Main plugin) {
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
-				if (!Time.isDay()){
+				if (Time.isDay()){
+					Time.add(5L);
+				} else {
 					Time.add(5L);
 				}
 			}
