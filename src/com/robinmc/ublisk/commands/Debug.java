@@ -105,7 +105,7 @@ public class Debug implements CommandExecutor {
 							for (MobInfo info : area.getMobInfo()){
 								player.sendMessage("EntityType: " + info.getEntityType());
 								player.sendMessage("Name: " + info.getName());
-								player.sendMessage("Health :" + info.getHealth());
+								player.sendMessage("Health: " + info.getHealth());
 								player.sendMessage("XP: " + info.getXP());
 								player.sendMessage("Level: " + info.getLevel());
 								player.sendMessage("");
