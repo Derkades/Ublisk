@@ -17,7 +17,6 @@ import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.enums.Loot;
 import com.robinmc.ublisk.utils.enums.Perms;
 import com.robinmc.ublisk.utils.enums.Tracker;
-import com.robinmc.ublisk.utils.quest.NPCUtils;
 import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
