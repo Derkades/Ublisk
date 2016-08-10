@@ -20,18 +20,24 @@ public class Credits implements CommandExecutor {
 			sender.sendMessage("");
 			sender.sendMessage(gold + "Plugin development" + gray + ":" + yellow + " RobinMC");
 			sender.sendMessage(gold + "Building" + gray + ":" + yellow + " See /credits map");
-			sender.sendMessage(gold + "Weapons" + gray + ":" + yellow + " Chaspyr");
-			sender.sendMessage(gold + "Textures" + gray + ":" + yellow + " GlitcherDOTbe, RobinMC, RottenNugget");
+			sender.sendMessage(gold + "Weapons" + gray + ":" + yellow + " N/A");
+			sender.sendMessage(gold + "Textures" + gray + ":" + yellow + " GlitcherDOTbe, RobinMC, RottenNugget, SenpaiSander");
 			sender.sendMessage(gold + "Music" + gray + ":" + yellow + " RobinMC");
+			sender.sendMessage(gold + "Quests " + gray + ":" + yellow + "SenpaiSander, RobinMC");
 			sender.sendMessage("");
 			sender.sendMessage(gray + "Type /credits [user] for more information on a user");
 			return true;
 		} else if (args.length == 1){
 			if (args[0].equals("building") || args[0].equals("map")){
 				sender.sendMessage("");
-				sender.sendMessage(gold + "Introduction" + gray + ":" + yellow + " RobinMC, Jerrijn, Chaspyr, EpicC4Build, SenpaiSander");
-				sender.sendMessage(gold + "Gleanor" + gray + ":" + yellow + " Jerrijn, Chaspyr, SenpaiSander");
-				sender.sendMessage(gold + "Desert area" + gray + ":" + yellow + " LarissaMC, MrParkerl11, RobinMC, SenpaiSander");
+				sender.sendMessage(gold + "All builders (in order of date):" + gray + ": " + yellow + "RobinMC, Chaspyr, Sander_Gaming, Jerrijn, SenpaiSander, EpicC4Build, LarissaMC, MrParkerl11");
+				sender.sendMessage("");
+				sender.sendMessage(gold + "Non-town areas" + gray + ": " + yellow + "RobinMC, LarissaMC, SenpaiSander, Sander_Gaming, Jerrijn");
+				sender.sendMessage(gold + "Landscaping" + gray + ": " + yellow + "RobinMC, LarissaMC, Jerrijn, SenpaiSander");
+				sender.sendMessage(gold + "Introduction" + gray + ": " + yellow + "RobinMC, Jerrijn, Chaspyr, EpicC4Build, SenpaiSander");
+				sender.sendMessage(gold + "Gleanor" + gray + ": " + yellow + "Jerrijn, Chaspyr, SenpaiSander");
+				sender.sendMessage(gold + "Rhocus" + gray + ": " + yellow + "Jerrijn, RobinMC, EpicC4Build, LarissaMC");
+				sender.sendMessage(gold + "Desert area" + gray + ": " + yellow + "LarissaMC, MrParkerl11, RobinMC, SenpaiSander");
 				return true;
 			} else {
 				try {
