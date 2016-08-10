@@ -34,7 +34,7 @@ public class MuteCommand implements CommandExecutor {
 		if (args.length == 1){
 			Player target;
 			try {
-				target = UUIDUtils.getPlayerFromName(args[1]);
+				target = UUIDUtils.getPlayerFromName(args[0]);
 			} catch (PlayerNotFoundException e) {
 				player.sendMessage(Message.PLAYER_NOT_FOUND.get());
 				return true;
