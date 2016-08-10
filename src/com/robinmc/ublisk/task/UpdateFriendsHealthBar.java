@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.task;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.inventivetalent.bossbar.BossBar;
@@ -24,6 +25,10 @@ public class UpdateFriendsHealthBar implements Task {
 				for (final Player player : Bukkit.getOnlinePlayers()){
 					if (!Setting.FRIENDS_SHOW_HEALTH.get(player)){
 						return;
+					}
+					
+					if (player.getGameMode() == GameMode.CREATIVE){
+						
 					}
 					
 					for (String s : Friends.get(player)){
