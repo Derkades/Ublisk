@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.listeners;
 
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,6 +20,11 @@ public class EntityDeath implements Listener {
 	@EventHandler
 	public void entityDeath(EntityDeathEvent event){
 		LivingEntity entity = event.getEntity();
+		
+		if (entity.getType() == EntityType.PLAYER){
+			return;
+		}
+		
 		if (entity.getLastDamageCause().getCause() == DamageCause.ENTITY_ATTACK){
 			Player player = entity.getKiller();
 			if (Mob.containsEntity(entity)){
