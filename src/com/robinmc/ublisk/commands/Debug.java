@@ -6,17 +6,23 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Weapon;
+import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.EntityUtils;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.enums.Loot;
 import com.robinmc.ublisk.utils.enums.Perms;
 import com.robinmc.ublisk.utils.enums.Tracker;
+import com.robinmc.ublisk.utils.exception.UnknownAreaException;
+import com.robinmc.ublisk.utils.mob.Mob;
+import com.robinmc.ublisk.utils.mob.MobArea;
+import com.robinmc.ublisk.utils.mob.MobInfo;
 import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
@@ -86,6 +92,34 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("lag")){
 						player.sendMessage("TPS: " + Lag.getTPS());
 						return true;
+					} else if (args[0].equals("mobarea")){
+						try {
+							player.sendMessage("");
+							player.sendMessage("");
+							player.sendMessage("");
+							player.sendMessage("");
+							player.sendMessage("");
+							MobArea area = Mob.getArea(player);
+							player.sendMessage("You are in area " + area.toString());
+							player.sendMessage("");
+							player.sendMessage("This area contains MobInfo:");
+							for (MobInfo info : area.getMobInfo()){
+								player.sendMessage("EntityType: " + info.getEntityType());
+								player.sendMessage("Name: " + info.getName());
+								player.sendMessage("Health :" + info.getHealth());
+								player.sendMessage("XP: " + info.getXP());
+								player.sendMessage("Level: " + info.getLevel());
+								player.sendMessage("");
+							}
+							player.sendMessage("Coordinates:");
+							Area a = area.getArea();
+							player.sendMessage("LessX: " + a.lessX());
+							player.sendMessage("MoreX: " + a.moreX());
+							player.sendMessage("LessZ: " + a.lessZ());
+							player.sendMessage("MoreZ: " + a.moreZ());
+						} catch (UnknownAreaException e) {
+							player.sendMessage("Unknown area!");
+						}
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
 						return true;
