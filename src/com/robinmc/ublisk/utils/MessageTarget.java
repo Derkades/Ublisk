@@ -3,6 +3,9 @@ package com.robinmc.ublisk.utils;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.utils.variable.Message;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class MessageTarget {
 	
@@ -25,8 +28,9 @@ public class MessageTarget {
 	}
 	
 	public void sendMessage(String msg){
-		// TODO Fancy format
-		player.sendMessage(player.getName() + ": " + msg);
+		Player sender = getLastSender(player).getPlayer();
+		player.sendMessage(Message.prefix("Private Message") + sender.getName() + ChatColor.DARK_GRAY + ": " + ChatColor.RESET + ChatColor.BOLD + msg);
+		sender.sendMessage(Message.prefix("Private Message") + ChatColor.AQUA + " -> " + player.getName() + ChatColor.DARK_GRAY + ": " + ChatColor.RESET + ChatColor.BOLD + msg);
 	}
 
 }
