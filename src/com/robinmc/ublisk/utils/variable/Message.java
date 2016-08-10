@@ -37,7 +37,9 @@ public enum Message {
 	ERROR_GENERAL(prefix() + RED + "An unexpected error has occured. Please report this error and the steps you took to get this error at the forums."),
 	
 	CANT_EAT(prefix() + RED + "Eating food is not allowed on this server. Please use a recycler"),
-	ENTITIES_REMOVED(prefix() + YELLOW + "All mobs and items have been cleared!");
+	ENTITIES_REMOVED(prefix() + YELLOW + "All mobs and items have been cleared!"),
+	
+	DOUBLE_XP_COOLDOWN(prefix() + RED + "Hi there, person who tried to activate double xp, there's a cooldown to prevent people like you from abusing the system!");
 	
 	private String msg;
 	
@@ -50,10 +52,10 @@ public enum Message {
 	}
 	
 	static String prefix(){
-		return GOLD + "Ublisk" + GRAY + " >> " + YELLOW;
+		return prefix("Ublisk");
 	}
 	
-	static String prefix(String string){
+	public static String prefix(String string){
 		return GOLD + string + GRAY + " >> " + YELLOW;
 	}
 	
