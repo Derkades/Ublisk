@@ -10,6 +10,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.sql.MySQL;
 
 public enum Tracker {
@@ -54,15 +56,21 @@ public enum Tracker {
 	// TODO Call this method in a task every minute
 	
 	public static void syncAll(){
-		for (Player player : Bukkit.getOnlinePlayers()){
-			for (Tracker tracker : Tracker.values()){
-				syncWithDatabase(player, tracker);
-			}
+		int delay = 0;
+		for (final Tracker tracker : Tracker.values()){
+			delay = delay + 50;
+			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+				public void run(){
+					Console.sendMessage("[Tracker] Syncronising tracker " + tracker.toString());
+					for (Player player : Bukkit.getOnlinePlayers()){
+						syncWithDatabase(player, tracker);
+					}
+				}
+			}, delay);
 		}
 	}
 	
 	// TODO Call this method on logout
-	
 	public static void syncWithDatabase(Player player, Tracker tracker){
 		UUID uuid = player.getUniqueId();
 		String tbl = tracker.getTable();
@@ -72,23 +80,13 @@ public enum Tracker {
         	int stat = 0;
         	boolean containsPlayer = false;
         	
-        	try {
-    			PreparedStatement sql = MySQL.prepareStatement("SELECT * FROM `" + tbl + "` WHERE uuid=?;");
-    			sql.setString(1, uuid.toString());
-    			ResultSet resultSet = sql.executeQuery();
-    			containsPlayer = resultSet.next();
+    		PreparedStatement check = MySQL.prepareStatement("SELECT * FROM `" + tbl + "` WHERE uuid=?;");
+    		check.setString(1, uuid.toString());
+    		ResultSet resultSet = check.executeQuery();
+    		containsPlayer = resultSet.next();
     			
-    			sql.close();
-    			resultSet.close();
-    		} catch (SQLException e){
-    			e.printStackTrace();
-    		} finally {
-    			try {
-    				MySQL.closeConnection();
-    			} catch (SQLException e) {
-    				e.printStackTrace();
-    			}
-    		}
+    		check.close();
+    		resultSet.close();
         	
         	if (containsPlayer){
         		PreparedStatement sql = MySQL.prepareStatement("SELECT count FROM `" + tbl + "` WHERE uuid=?;");
@@ -121,6 +119,9 @@ public enum Tracker {
         		newplayer.execute();
         		newplayer.close();
         	}
+        	
+        	tracker.getMap().put(uuid, 0);
+        	
         } catch (Exception e){
         	e.printStackTrace();
         } finally {
@@ -131,7 +132,7 @@ public enum Tracker {
 			}
         }
 		
-		tracker.getMap().put(uuid, 0);
+		
 		
 	}
 
