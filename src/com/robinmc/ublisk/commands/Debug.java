@@ -55,12 +55,6 @@ public class Debug implements CommandExecutor {
 						Bukkit.broadcastMessage(Message.ENTITIES_REMOVED.get());
 						EntityUtils.removeMobs();
 						return true;
-					} else if (args[0].equalsIgnoreCase("npcrespawn")){
-						NPCUtils api = new NPCUtils();
-						api.spawnAll();
-						api.despawnAll();
-						player.sendMessage("All NPCs have been respawned!");
-						return true;
 					} else if (args[0].equalsIgnoreCase("sword")){
 						PlayerInventory inv = player.getInventory();
 						inv.addItem(Weapon.oldWoodenSword());
@@ -89,9 +83,6 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("sync")){
 						Tracker.syncAll();
-						return true;
-					} else if (args[0].equals("despawnallnpc")){
-						new NPCUtils().despawnAll();
 						return true;
 					} else if (args[0].equals("lag")){
 						player.sendMessage("TPS: " + Lag.getTPS());
