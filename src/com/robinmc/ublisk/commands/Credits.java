@@ -45,6 +45,10 @@ public class Credits implements CommandExecutor {
 					String ign = helper.getIgn();
 					String yt = helper.getYT();
 					String custom = helper.getCustom();
+					if (custom == ""){
+						custom = "N/A";
+					}
+					
 					sender.sendMessage("");
 					sender.sendMessage(gold + "IGN" + gray + ": " + yellow + ign);
 					sender.sendMessage(gold + "YouTube" + gray + ": " + yellow + yt);
