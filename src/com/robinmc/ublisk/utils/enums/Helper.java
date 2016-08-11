@@ -6,7 +6,9 @@ public enum Helper {
 	CHASPYR("Chaspyr", "", ""),
 	GLITCHERDOTBE("GlitcherDOTbe", "https://www.youtube.com/user/TheGlitcherDOTbe", "http://www.planetminecraft.com/texture_pack/glitchs-3d-addons-pack-19/"),
 	ROTTENNUGGET("RottenNugget", "", "https://www.reddit.com/r/Minecraft/comments/2922fb/3d_models_resource_pack/"),
-	PARKER("MrParkerl11", "https://goo.gl/WFW9zm", "N/A");
+	PARKER("MrParkerl11", "https://goo.gl/WFW9zm", "N/A"),
+	SANDER("SenpaiSander", "https://www.youtube.com/channel/UC7gVEC704565MNzCB6OS3Ew", ""),
+	SYDAN("SirSydan", "https://www.youtube.com/channel/UCFl5VN9R5uEszEoLrYgTOoA", "");
 	
 	private String ign;
 	private String yt;
