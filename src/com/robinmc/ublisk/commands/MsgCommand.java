@@ -1,11 +1,15 @@
 package com.robinmc.ublisk.commands;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.MessageTarget;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
@@ -37,24 +41,15 @@ public class MsgCommand implements CommandExecutor {
 				return true;
 			}
 			
-			/*
-			 * Send every argument with a space in between. For example:
-			 * /msg RobinMC Hello world
-			 * Will give you:
-			 * Args0 = Hello
-			 * Args1 = world
-			 * 
-			 * Then join these together:
-			 * Hello + space + world (+ space)
-			 */
+			List<String> list = Arrays.asList(args);
+			list.remove(0);
 			
-			String msg = "";
-			for (String word : args){
-				msg = String.join(msg, word + " ");
-			}
+			String msg = String.join(" ", list);
 			
-			target.sendMessage(msg);
+			// TODO Option to turn off sounds
+			Console.sendCommand("execute " + target.getPlayer().getName() + " ~ ~ ~ playsound entity.item.pickup master @p");
 			target.setLastSender(player);
+			target.sendMessage(msg);
 			return true;
 		} else {
 			player.sendMessage(Message.WRONG_USAGE.get());
