@@ -45,6 +45,11 @@ public class Credits implements CommandExecutor {
 					String ign = helper.getIgn();
 					String yt = helper.getYT();
 					String custom = helper.getCustom();
+					
+					if (yt == ""){
+						yt = "N/A";
+					}
+					
 					if (custom == ""){
 						custom = "N/A";
 					}
