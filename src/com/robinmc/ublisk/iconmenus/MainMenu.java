@@ -40,6 +40,15 @@ public class MainMenu {
 					Setting.PLAY_MUSIC.set(player, false);
 					player.sendMessage(Message.MUSIC_DISABLED.get());
 				}
+			} else if (name.contains("pm")){
+				if (Setting.PM_SOUND.get(player)){
+					//TODO: Message for disabling  and enabling PM sound
+					player.sendMessage("disabled");
+					Setting.PM_SOUND.set(player, false);
+				} else {
+					player.sendMessage("enabled");
+					Setting.PM_SOUND.set(player, true);
+				}
 			} else {
 				player.sendMessage(Message.ERROR_MENU.get());
 			}
@@ -54,6 +63,7 @@ public class MainMenu {
 	
 	private static void fillMenu(){
 		menu.setOption(0, new ItemStack(Material.JUKEBOX), "Toggle music");
+		menu.setOption(0, new ItemStack(Material.JUKEBOX), "Toggle PM sounds");
 	}
 
 }

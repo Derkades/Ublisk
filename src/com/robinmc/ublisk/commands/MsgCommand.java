@@ -12,6 +12,7 @@ import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.MessageTarget;
 import com.robinmc.ublisk.utils.UUIDUtils;
+import com.robinmc.ublisk.utils.enums.Setting;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.variable.Message;
 
@@ -46,8 +47,11 @@ public class MsgCommand implements CommandExecutor {
 			
 			String msg = String.join(" ", list);
 			
-			// TODO Option to turn off sounds
-			Console.sendCommand("execute " + target.getPlayer().getName() + " ~ ~ ~ playsound entity.item.pickup master @p");
+			//Play a sound if the target player has enabled it
+			if (Setting.PM_SOUND.get(target.getPlayer())){
+				Console.sendCommand("execute " + target.getPlayer().getName() + " ~ ~ ~ playsound entity.item.pickup master @p");
+			}
+			
 			target.setLastSender(player);
 			target.sendMessage(msg);
 			return true;

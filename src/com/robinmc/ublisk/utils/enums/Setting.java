@@ -7,7 +7,8 @@ import com.robinmc.ublisk.utils.Config;
 public enum Setting {
 	
 	FRIENDS_SHOW_HEALTH("friends-show-health"),
-	PLAY_MUSIC("music");
+	PLAY_MUSIC("music"),
+	PM_SOUND("pm-sound");
 	
 	private String s;
 	
