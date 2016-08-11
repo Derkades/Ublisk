@@ -11,6 +11,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.enums.Tracker;
+import com.robinmc.ublisk.utils.variable.Message;
 
 import net.md_5.bungee.api.ChatColor;
 import ru.tehkode.permissions.PermissionUser;
@@ -28,6 +29,7 @@ public class AsyncPlayerChat implements Listener {
 		Player player = event.getPlayer();
 		
 		if (HashMaps.isMuted.get(player.getUniqueId())){
+			player.sendMessage(Message.CANT_CHAT_MUTED.get());
 			event.setCancelled(true);
 			return;
 		}
