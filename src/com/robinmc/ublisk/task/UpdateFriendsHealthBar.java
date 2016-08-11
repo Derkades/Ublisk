@@ -23,7 +23,7 @@ public class UpdateFriendsHealthBar implements Task {
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
 				for (final Player player : Bukkit.getOnlinePlayers()){
-					if (!Setting.FRIENDS_SHOW_HEALTH.get(player)){
+					if (!Setting.FRIENDS_SHOW_HEALTH.put(player)){
 						return;
 					}
 					

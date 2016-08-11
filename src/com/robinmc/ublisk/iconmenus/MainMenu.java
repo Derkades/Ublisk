@@ -24,7 +24,7 @@ public class MainMenu {
 			if (name.contains("music")){
 				try {
 					//if (Config.getBoolean("settings.music." + player.getUniqueId())){
-					if (Setting.PLAY_MUSIC.get(player)){
+					if (Setting.PLAY_MUSIC.put(player)){
 						//Config.set("settings.music." + player.getUniqueId(), false);
 						Setting.PLAY_MUSIC.set(player, false);
 						player.sendMessage(Message.MUSIC_DISABLED.get());
@@ -41,7 +41,7 @@ public class MainMenu {
 					player.sendMessage(Message.MUSIC_DISABLED.get());
 				}
 			} else if (name.contains("pm")){
-				if (Setting.PM_SOUND.get(player)){
+				if (Setting.PM_SOUND.put(player)){
 					//TODO: Message for disabling  and enabling PM sound
 					player.sendMessage("disabled");
 					Setting.PM_SOUND.set(player, false);

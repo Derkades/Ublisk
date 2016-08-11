@@ -33,7 +33,7 @@ public class FriendsMenu {
 			Material item = event.getItem().getType();
 			OfflinePlayer friend = event.getFriend();
 			if (item == Material.SPECKLED_MELON){
-				if (Setting.FRIENDS_SHOW_HEALTH.get(player)){
+				if (Setting.FRIENDS_SHOW_HEALTH.put(player)){
 					Setting.FRIENDS_SHOW_HEALTH.set(player, false);
 					player.sendMessage(Message.FRIEND_HEALTH_DISABLED.get());
 				} else {
@@ -71,7 +71,7 @@ public class FriendsMenu {
 		
 		String displayName = "error";
 		
-		if (Setting.FRIENDS_SHOW_HEALTH.get(player)){		
+		if (Setting.FRIENDS_SHOW_HEALTH.put(player)){		
 			displayName = ChatColor.GOLD + "Show friend's health: " + ChatColor.GREEN + ChatColor.BOLD + "Enabled";
 		} else {
 			displayName = ChatColor.GOLD + "Show friend's health: " + ChatColor.RED + ChatColor.BOLD + "Disabled";

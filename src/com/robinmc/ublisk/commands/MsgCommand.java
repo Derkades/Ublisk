@@ -48,7 +48,7 @@ public class MsgCommand implements CommandExecutor {
 			String msg = String.join(" ", list);
 			
 			//Play a sound if the target player has enabled it
-			if (Setting.PM_SOUND.get(target.getPlayer())){
+			if (Setting.PM_SOUND.put(target.getPlayer())){
 				Console.sendCommand("execute " + target.getPlayer().getName() + " ~ ~ ~ playsound entity.item.pickup master @p");
 			}
 			

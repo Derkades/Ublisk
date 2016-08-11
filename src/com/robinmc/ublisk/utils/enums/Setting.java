@@ -20,7 +20,7 @@ public enum Setting {
 		return s;
 	}
 	
-	public boolean get(Player player){
+	public boolean put(Player player){
 		try {
 			return Config.getBoolean("settings." + s + "." + player.getUniqueId());
 		} catch (Exception e){
