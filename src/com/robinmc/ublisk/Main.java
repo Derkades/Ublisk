@@ -8,7 +8,6 @@ import com.robinmc.ublisk.utils.Listeners;
 import com.robinmc.ublisk.utils.enums.Command;
 import com.robinmc.ublisk.utils.enums.Loot;
 import com.robinmc.ublisk.utils.enums.Tasks;
-import com.robinmc.ublisk.utils.quest.NPCUtils;
 import com.robinmc.ublisk.utils.sql.MySQL;
 import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.utils.variable.Var;
@@ -19,7 +18,6 @@ public class Main extends JavaPlugin {
 	// XXX /info [player] shows player info
 	// TODO Message if player tries to send chat message while muted
 	// TODO New XP system
-	// TODO Double XP cooldown (10 minutes)
 	
 	public static Main instance;
 	
@@ -32,7 +30,6 @@ public class Main extends JavaPlugin {
 		int delay = Command.registerAll();
 		
 		Tasks.start(delay);
-		NPCUtils.createNPCRegistry();
 		Config.create();
 		
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);
