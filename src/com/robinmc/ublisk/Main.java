@@ -17,7 +17,6 @@ public class Main extends JavaPlugin {
 	// Todo area
 	// XXX /info [player] shows player info
 	// TODO Message if player tries to send chat message while muted
-	// TODO New XP system
 	
 	public static Main instance;
 	
