@@ -14,7 +14,7 @@ public enum Message {
 	NO_PERMISSION(prefix() + RED + "You don't have the required permissions to execute this command"),
 	PLAYER_NOT_FOUND(prefix() + RED + "This player could not be found."),
 	
-	CANT_PM_MUTED(prefix() + RED + "You cannot send private messages while muted."),
+	CANT_PM_MUTED(prefix("Chat") + RED + "You cannot send private messages while muted."),
 	CANT_CHAT_MUTED(prefix("Chat") + RED + "You cannot chat while muted."),
 	
 	//SONG_ENDED(GOLD + "Music" + GRAY + " >> " + "Your song has ended. Please select a new song using /music"),
