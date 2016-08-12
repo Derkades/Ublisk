@@ -51,7 +51,7 @@ public class CreatureSpawn implements Listener {
 			int x = loc.getBlockX();
 			int y = loc.getBlockY();
 			int z = loc.getBlockZ();
-			Console.sendMessage("Mob spawned out of an area - " + entity.getName() + " at " + x + "," + y + "," + z);
+			Console.sendMessage("Mob spawned outside of an area - " + entity.getName() + " at " + x + "," + y + "," + z);
 		} catch (MobNotFoundException e) {
 			e.printStackTrace();
 		}
