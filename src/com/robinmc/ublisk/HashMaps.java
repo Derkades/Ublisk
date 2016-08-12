@@ -20,6 +20,7 @@ public class HashMaps {
 	public static Map<String, Boolean> doublexp = new HashMap<>();
 	public static Map<String, Integer> doubleExpTime = new HashMap<>();
 	public static Map<String, Boolean> doubleExpCooldown = new HashMap<>();
+	public static Map<String, Boolean> doubleExpBarActive = new HashMap<>();
 	
 	public static Map<UUID, Boolean> isMuted = new HashMap<>();
 	public static Map<UUID, Boolean> isSoftMuted = new HashMap<>();
