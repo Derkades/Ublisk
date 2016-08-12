@@ -8,10 +8,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.Weapon;
 import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.EntityUtils;
@@ -59,10 +57,6 @@ public class Debug implements CommandExecutor {
 					if (args[0].equalsIgnoreCase("kill")){
 						Bukkit.broadcastMessage(Message.ENTITIES_REMOVED.get());
 						EntityUtils.removeMobs();
-						return true;
-					} else if (args[0].equalsIgnoreCase("sword")){
-						PlayerInventory inv = player.getInventory();
-						inv.addItem(Weapon.oldWoodenSword());
 						return true;
 					} else if (args[0].equalsIgnoreCase("cmd")){
 						UUID uuid = player.getUniqueId();
