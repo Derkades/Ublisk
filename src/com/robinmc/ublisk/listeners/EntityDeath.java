@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.listeners;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -48,6 +49,10 @@ public class EntityDeath implements Listener {
 					Exp.refresh(player);
 				} catch (MobNotFoundException | UnknownAreaException e) {
 					player.sendMessage(Message.ERROR_GENERAL.get());
+					Location loc = entity.getLocation();
+					player.sendMessage("Entity: " + entity.getType());
+					player.sendMessage("Name: " + entity.getCustomName());
+					player.sendMessage("Location: " + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ());
 				}
 			}
 		}
