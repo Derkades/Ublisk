@@ -33,18 +33,19 @@ public class EntityDeath implements Listener {
 			Player player = entity.getKiller();
 			if (Mob.containsEntity(entity)){
 				Tracker.MOB_KILLS.add(player);
+				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+					public void run(){
+						for (Entity entity : Var.world.getEntities()){
+							if (entity.getType() == EntityType.EXPERIENCE_ORB){
+								entity.remove();
+							}
+						}
+					}
+				}, 2);
+				
 				try {
 					Exp.giveMobExp(player, entity);
 					Exp.refresh(player);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
-						public void run(){
-							for (Entity entity : Var.world.getEntities()){
-								if (entity.getType() == EntityType.EXPERIENCE_ORB){
-									entity.remove();
-								}
-							}
-						}
-					}, 2);
 				} catch (MobNotFoundException | UnknownAreaException e) {
 					player.sendMessage(Message.ERROR_GENERAL.get());
 				}
