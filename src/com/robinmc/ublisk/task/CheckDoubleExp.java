@@ -26,15 +26,21 @@ public class CheckDoubleExp implements Task {
 					rs.next();
 	    			boolean doublexp = rs.getBoolean(1);
 	    			sql.close();
-	    			if (doublexp && !(HashMaps.doublexp.get("hi"))){ //If doublexp is true in database and not yet active
-	    				HashMaps.doublexp.put("hi", true); //Enable double xp. The task below will take care of the rest
-	    			}
 	    			
-	    			if (HashMaps.doubleExpCooldown.get(HashMaps.placeHolder())){
+	    			if (doublexp && HashMaps.doubleExpCooldown.get(HashMaps.placeHolder())){
 	    				Bukkit.broadcastMessage(Message.DOUBLE_XP_COOLDOWN.get());
-	    			} else {
+						PreparedStatement sql1 = MySQL.prepareStatement("UPDATE bonus SET state=false WHERE type='doublexp_1'");
+						sql1.executeUpdate();
+						sql1.close();
+						return;
+	    			} else if (doublexp){
 	    				startCooldown(plugin);
+	    				HashMaps.doublexp.put("hi", true);
+	    				PreparedStatement sql1 = MySQL.prepareStatement("UPDATE bonus SET state=false WHERE type='doublexp_1'");
+						sql1.executeUpdate();
+						sql1.close();
 	    			}
+
 				} catch (SQLException | ConnectionClosedException e){
 					e.printStackTrace();
 				} finally {

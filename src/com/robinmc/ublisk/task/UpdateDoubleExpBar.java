@@ -1,8 +1,5 @@
 package com.robinmc.ublisk.task;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.inventivetalent.bossbar.BossBar;
@@ -11,7 +8,6 @@ import org.inventivetalent.bossbar.BossBarAPI;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Task;
-import com.robinmc.ublisk.utils.sql.MySQL;
 import com.robinmc.ublisk.utils.variable.Var;
 
 import net.md_5.bungee.api.chat.TextComponent;
@@ -23,8 +19,8 @@ public class UpdateDoubleExpBar implements Task {
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
 				try {
-					if (HashMaps.doublexp.get("hi")){
-						int left = HashMaps.doubleExpTime.get("hi");
+					if (HashMaps.doublexp.get(HashMaps.placeHolder())){
+						int left = HashMaps.doubleExpTime.get(HashMaps.placeHolder());
 						for (final Player player : Bukkit.getOnlinePlayers()){
 							//double n = ((left * (10 / 6)) / 100); //Converts a range of 0-60 to 0-1
 							//Console.sendMessage(left + "");
@@ -65,29 +61,14 @@ public class UpdateDoubleExpBar implements Task {
 								public void run(){
 									bossBar.removePlayer(player);
 								}
-							}, 1*20);
+							}, 20);
 						}
 						int left2 = left - 1;
 						if (left2 == 0){
 							left2 = Var.doubleExpTime;
-							HashMaps.doublexp.put("hi", false);
-							//Now we need to set it to false in database as well
-							try {
-								MySQL.openConnection();
-								PreparedStatement sql = MySQL.prepareStatement("UPDATE bonus SET state=false WHERE type='doublexp_1'");
-								sql.executeUpdate();
-								sql.close();
-							} catch (Exception e){
-								e.printStackTrace();
-							} finally {
-								try {
-									MySQL.closeConnection();
-								} catch (SQLException e) {
-									e.printStackTrace();
-								}
-							}
+							HashMaps.doublexp.put(HashMaps.placeHolder(), false);
 						}
-						HashMaps.doubleExpTime.put("hi", left2);
+						HashMaps.doubleExpTime.put(HashMaps.placeHolder(), left2);
 					}
 				} catch (NullPointerException e){
 					HashMaps.doublexp.put("hi", false);
