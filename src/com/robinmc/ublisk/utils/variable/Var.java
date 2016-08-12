@@ -7,7 +7,7 @@ public class Var {
 	
 	public static World world = Bukkit.getWorld("ublisk");
 	
-	public static String packURL = "http://ublisk.robinmc.com/texture/UbliskTextures2.zip";
+	public static String packURL = "http://ublisk.robinmc.com/texture/UbliskTextures3.zip";
 	
 	public static int doubleExpTime = 60;
 	
