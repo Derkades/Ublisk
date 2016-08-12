@@ -17,6 +17,7 @@ import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Friends;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.enums.Setting;
+import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.variable.Message;
@@ -33,12 +34,17 @@ public class FriendsMenu {
 			Material item = event.getItem().getType();
 			OfflinePlayer friend = event.getFriend();
 			if (item == Material.SPECKLED_MELON){
-				if (Setting.FRIENDS_SHOW_HEALTH.put(player)){
-					Setting.FRIENDS_SHOW_HEALTH.set(player, false);
+				try {
+					if (Setting.FRIENDS_SHOW_HEALTH.get(player)){
+						Setting.FRIENDS_SHOW_HEALTH.put(player, false);
+						player.sendMessage(Message.FRIEND_HEALTH_DISABLED.get());
+					} else {
+						Setting.FRIENDS_SHOW_HEALTH.put(player, true);
+						player.sendMessage(Message.FRIEND_HEALTH_ENABLED.get());
+					}
+				} catch (NotSetException e) {
+					Setting.FRIENDS_SHOW_HEALTH.put(player, false);
 					player.sendMessage(Message.FRIEND_HEALTH_DISABLED.get());
-				} else {
-					Setting.FRIENDS_SHOW_HEALTH.set(player, true);
-					player.sendMessage(Message.FRIEND_HEALTH_ENABLED.get());
 				}
 			} else {
 				player.sendMessage("");
@@ -71,10 +77,14 @@ public class FriendsMenu {
 		
 		String displayName = "error";
 		
-		if (Setting.FRIENDS_SHOW_HEALTH.put(player)){		
+		try {
+			if (Setting.FRIENDS_SHOW_HEALTH.get(player)){		
+				displayName = ChatColor.GOLD + "Show friend's health: " + ChatColor.GREEN + ChatColor.BOLD + "Enabled";
+			} else {
+				displayName = ChatColor.GOLD + "Show friend's health: " + ChatColor.RED + ChatColor.BOLD + "Disabled";
+			}
+		} catch (NotSetException e) {
 			displayName = ChatColor.GOLD + "Show friend's health: " + ChatColor.GREEN + ChatColor.BOLD + "Enabled";
-		} else {
-			displayName = ChatColor.GOLD + "Show friend's health: " + ChatColor.RED + ChatColor.BOLD + "Disabled";
 		}
 		
 		ItemStack friendsHealth = new ItemStack(Material.SPECKLED_MELON, 1);

@@ -9,6 +9,7 @@ import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.enums.Music;
 import com.robinmc.ublisk.utils.enums.Setting;
+import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.variable.Message;
@@ -22,32 +23,33 @@ public class MainMenu {
 			String name = event.getName().toLowerCase();
 			final Player player = event.getPlayer();
 			if (name.contains("music")){
-				try {
-					//if (Config.getBoolean("settings.music." + player.getUniqueId())){
-					if (Setting.PLAY_MUSIC.put(player)){
-						//Config.set("settings.music." + player.getUniqueId(), false);
-						Setting.PLAY_MUSIC.set(player, false);
-						player.sendMessage(Message.MUSIC_DISABLED.get());
-					} else {
-						//Config.set("settings.music." + player.getUniqueId(), true);
-						Setting.PLAY_MUSIC.set(player, true);
+					try {
+						if (Setting.PLAY_MUSIC.get(player)){
+							Setting.PLAY_MUSIC.put(player, false);
+							player.sendMessage(Message.MUSIC_DISABLED.get());
+						} else {
+							Setting.PLAY_MUSIC.put(player, true);
+							player.sendMessage(Message.MUSIC_ENABLED.get());
+							String town = Config.getString("last-town." + player.getUniqueId());
+						    Music.playSong(player, town);
+						}
+					} catch (NotSetException e) {
 						player.sendMessage(Message.MUSIC_ENABLED.get());
-						String town = Config.getString("last-town." + player.getUniqueId());
-				        Music.playSong(player, town);
+						Setting.PLAY_MUSIC.put(player, true);
 					}
-				} catch (Exception e){
-					//Config.set("settings.music." + player.getUniqueId(), false);
-					Setting.PLAY_MUSIC.set(player, false);
-					player.sendMessage(Message.MUSIC_DISABLED.get());
-				}
 			} else if (name.contains("pm")){
-				if (Setting.PM_SOUND.put(player)){
-					//TODO: Message for disabling  and enabling PM sound
-					player.sendMessage("disabled");
-					Setting.PM_SOUND.set(player, false);
-				} else {
+				try {
+					if (Setting.PM_SOUND.get(player)){
+						//TODO: Message for disabling  and enabling PM sound
+						player.sendMessage("disabled");
+						Setting.PM_SOUND.put(player, false);
+					} else {
+						player.sendMessage("enabled");
+						Setting.PM_SOUND.put(player, true);
+					}
+				} catch (NotSetException e) {
+					Setting.PM_SOUND.put(player, true);
 					player.sendMessage("enabled");
-					Setting.PM_SOUND.set(player, true);
 				}
 			} else {
 				player.sendMessage(Message.ERROR_MENU.get());

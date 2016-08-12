@@ -3,6 +3,7 @@ package com.robinmc.ublisk.utils.enums;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.utils.Config;
+import com.robinmc.ublisk.utils.exception.NotSetException;
 
 public enum Setting {
 	
@@ -20,15 +21,16 @@ public enum Setting {
 		return s;
 	}
 	
-	public boolean put(Player player){
-		try {
-			return Config.getBoolean("settings." + s + "." + player.getUniqueId());
-		} catch (Exception e){
-			return false;
+	public boolean get(Player player) throws NotSetException{
+		String path = "settings." + s + "." + player.getUniqueId();
+		if (Config.getConfig().isSet(path)){
+			return Config.getBoolean(path);
+		} else {
+			throw new NotSetException();
 		}
 	}
 	
-	public void set(Player player, boolean bool){
+	public void put(Player player, boolean bool){
 		Config.set("settings." + s + "." + player.getUniqueId(), bool);
 	}
 

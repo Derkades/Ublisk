@@ -12,6 +12,7 @@ import com.robinmc.ublisk.utils.Friends;
 import com.robinmc.ublisk.utils.Task;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.enums.Setting;
+import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 
 import net.md_5.bungee.api.chat.TextComponent;
@@ -23,8 +24,12 @@ public class UpdateFriendsHealthBar implements Task {
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
 				for (final Player player : Bukkit.getOnlinePlayers()){
-					if (!Setting.FRIENDS_SHOW_HEALTH.put(player)){
-						return;
+					try {
+						if (!Setting.FRIENDS_SHOW_HEALTH.get(player)){
+							return;
+						}
+					} catch (NotSetException e) {
+						Setting.FRIENDS_SHOW_HEALTH.put(player, true);
 					}
 					
 					if (player.getGameMode() == GameMode.CREATIVE){
