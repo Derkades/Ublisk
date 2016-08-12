@@ -31,6 +31,7 @@ public class EntityDeath implements Listener {
 				Tracker.MOB_KILLS.add(player);
 				try {
 					Exp.giveMobExp(player, entity);
+					Exp.refresh(player);
 				} catch (MobNotFoundException | UnknownAreaException e) {
 					player.sendMessage(Message.ERROR_GENERAL.get());
 				}
