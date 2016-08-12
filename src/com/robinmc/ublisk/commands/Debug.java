@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
@@ -121,6 +122,11 @@ public class Debug implements CommandExecutor {
 							player.sendMessage("Unknown area!");
 							return true;
 						}
+					} else if (args[0].equals("list")){
+						for (Entity entity : Var.world.getEntities()){
+							player.sendMessage(entity.getName() + " : " + entity.getCustomName() + " : " + entity.getLocation().getBlockX() + " : " + entity.getLocation().getBlockZ() + " : " + entity.getLocation().getChunk());
+						}
+						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
 						return true;
