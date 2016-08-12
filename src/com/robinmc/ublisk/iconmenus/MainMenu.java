@@ -65,7 +65,7 @@ public class MainMenu {
 	
 	private static void fillMenu(){
 		menu.setOption(0, new ItemStack(Material.JUKEBOX), "Toggle music");
-		menu.setOption(0, new ItemStack(Material.JUKEBOX), "Toggle PM sounds");
+		menu.setOption(1, new ItemStack(Material.JUKEBOX), "Toggle PM sounds");
 	}
 
 }
