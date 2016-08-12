@@ -26,6 +26,8 @@ public class HashMaps {
 	public static Map<UUID, Boolean> isSoftMuted = new HashMap<>();
 	
 	public static Map<Player, Player> lastMessageSender = new HashMap<>();
+	
+	public static Map<Player, Integer> lastLevel = new HashMap<>();
 
 	//Tracker HashMaps. These will be added to the database every 5 minutes and reset to 0.
 	public static Map<UUID, Integer> rightClicked = new HashMap<>();
@@ -51,6 +53,7 @@ public class HashMaps {
 		isMuted.put(uuid, false);
 		isSoftMuted.put(uuid, false);
 		lastMessageSender.put(player, null);
+		lastLevel.put(player, player.getLevel());
 		
 		for (Tracker tracker : Tracker.values()){
 			Map<UUID, Integer> map = tracker.getMap();

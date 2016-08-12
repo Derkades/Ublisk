@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.utils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Entity;
@@ -7,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import com.connorlinfoot.actionbarapi.ActionBarAPI;
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.mob.Mob;
@@ -112,6 +114,20 @@ public class Exp {
 	    player.setLevel(0);
 	    player.setTotalExperience(0);  
 	    player.giveExp(Math.round(xp / Var.xpDivision));
+	}
+	
+	public static void levelUp(Player player){
+		Bukkit.broadcastMessage("");
+		Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "--------------------------------------------");
+		Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + player.getName() + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " has reached level " + player.getLevel() + "!");
+		Bukkit.broadcastMessage(ChatColor.BLUE + "To celebrate this double XP will be activated in 10 seconds, get ready!");
+		Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "--------------------------------------------");
+		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+			public void run(){
+				HashMaps.doublexp.put("hi", true);
+			}
+		}, 10*20)
+;		
 	}
 
 }
