@@ -8,6 +8,8 @@ import org.bukkit.craftbukkit.v1_10_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class Item {
 		
 	private ItemStack item;
@@ -58,7 +60,7 @@ public class Item {
 	
 	public void setName(String name){
 		ItemMeta meta = item.getItemMeta();
-		meta.setDisplayName(name);
+		meta.setDisplayName(ChatColor.RESET + name);
 		item.setItemMeta(meta);
 	}
 	
