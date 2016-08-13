@@ -19,6 +19,7 @@ import com.robinmc.ublisk.listeners.PlayerItemConsume;
 import com.robinmc.ublisk.listeners.PlayerJoin;
 import com.robinmc.ublisk.listeners.PlayerQuit;
 import com.robinmc.ublisk.listeners.PlayerResourcePackStatus;
+import com.robinmc.ublisk.listeners.ServerListPing;
 import com.robinmc.ublisk.listeners.SongEnd;
 
 public class Listeners {
@@ -39,6 +40,7 @@ public class Listeners {
 		register(new PlayerJoin());
 		register(new PlayerQuit());
 		register(new PlayerResourcePackStatus());
+		register(new ServerListPing());
 		register(new SongEnd());
 	}
 	
