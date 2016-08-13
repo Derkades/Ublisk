@@ -1,5 +1,8 @@
 package com.robinmc.ublisk.utils.inventory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -7,6 +10,8 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.utils.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.weapon.Weapon;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class BetterInventory {
 	
@@ -77,7 +82,9 @@ public class BetterInventory {
 	public void addWeapon(Weapon weapon){
 		Item item = new Item(weapon.getType().getMaterial());
 		item.applyNBT(weapon.getNBT());
-		item.setLore(weapon.getLore());
+		List<String> lore = new ArrayList<String>();
+		for (String s : weapon.getLore()) lore.add(ChatColor.RESET + s);
+		item.setLore(lore);
 		item.setName(weapon.getName());
 		inv.addItem(item.getBukkitItemStack());
 	}
