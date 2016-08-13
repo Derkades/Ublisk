@@ -6,6 +6,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.utils.quest.QuestParticipant;
+import com.robinmc.ublisk.utils.weapon.Weapon;
 
 public class BetterInventory {
 	
@@ -71,6 +72,14 @@ public class BetterInventory {
 			}
 		}
 		return hasItems;
+	}
+	
+	public void addWeapon(Weapon weapon){
+		Item item = new Item(weapon.getType().getMaterial());
+		item.applyNBT(weapon.getNBT());
+		item.setLore(weapon.getLore());
+		item.setName(weapon.getName());
+		inv.addItem(item.getBukkitItemStack());
 	}
 
 }

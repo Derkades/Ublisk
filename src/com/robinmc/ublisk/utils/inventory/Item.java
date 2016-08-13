@@ -1,13 +1,12 @@
 package com.robinmc.ublisk.utils.inventory;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_10_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import de.tr7zw.itemnbtapi.NBTItem;
 
 public class Item {
 		
@@ -17,12 +16,20 @@ public class Item {
 		this.item = item;
 	}
 	
+	public Item(Material material){
+		this.item = new ItemStack(material);
+	}
+	
 	public Material getType(){
 		return item.getType();
 	}
 	
-	public ItemStack getItem(){
-		return item;
+	public void setType(Material type){
+		item.setType(type);
+	}
+	
+	public void setMaterial(Material type){
+		setType(type);
 	}
 	
 	public ItemStack getItemStack(){
@@ -76,14 +83,25 @@ public class Item {
 		setAmount(size);
 	}
 	
+	public int getMaxSize(){
+		return item.getMaxStackSize();
+	}
+	
+	public int getMaxStackSize(){
+		return getMaxSize();
+	}
+	
 	public void setLore(String... lore){
 		ItemMeta meta = item.getItemMeta();
 		
-		ArrayList<String> loreList = new ArrayList<String>();
-		for (String s : lore) loreList.add(s);
+		meta.setLore(Arrays.asList(lore));
 		
-		meta.setLore(loreList);
-		
+		item.setItemMeta(meta);
+	}
+	
+	public void setLore(List<String> lore){
+		ItemMeta meta = item.getItemMeta();	
+		meta.setLore(lore);
 		item.setItemMeta(meta);
 	}
 	
@@ -92,18 +110,12 @@ public class Item {
 		return meta.getLore();
 	}
 	
-	public void hideFlags(){
-		NBTItem nbti = new NBTItem(item);
-		nbti.setInteger("HideFlags", 2);
-	}
-	
-	public boolean flagsHidden(){
-		NBTItem nbti = new NBTItem(item);
-		return nbti.hasKey("HideFlags");
-	}
-	
-	public static Item fromMaterial(Material material){
-		return new Item(new ItemStack(material));
+	public void applyNBT(NBT nbt){
+		net.minecraft.server.v1_10_R1.ItemStack item = CraftItemStack.asNMSCopy(this.item);
+		for (NBTTag tag : nbt.getTags()){
+			item.setTag(tag.getCompound());
+		}
+		this.item = CraftItemStack.asBukkitCopy(item);
 	}
 	
 }
