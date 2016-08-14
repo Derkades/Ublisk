@@ -6,50 +6,22 @@ import com.robinmc.ublisk.utils.enums.Classes;
 
 public enum SwordType implements WeaponType {
 
-	WOOD {
-
-		@Override
-		public Material getMaterial() {
-			return Material.WOOD_SWORD;
-		}
-		
-	},
+	WOOD(Material.WOOD_SWORD),
+	STONE(Material.STONE_SWORD),
+	IRON(Material.IRON_SWORD),
+	GOLD(Material.GOLD_SWORD),
+	DIAMOND(Material.DIAMOND_SWORD);
 	
-	STONE {
-
-		@Override
-		public Material getMaterial() {
-			return Material.STONE_SWORD;
-		}
+	private Material material;	
 		
-	},
+	SwordType(Material material){
+		this.material = material;
+	}
 	
-	IRON {
-
-		@Override
-		public Material getMaterial() {
-			return Material.IRON_SWORD;
-		}
-		
-	},
-	
-	GOLD {
-
-		@Override
-		public Material getMaterial() {
-			return Material.GOLD_SWORD;
-		}
-		
-	},
-	
-	DIAMOND {
-
-		@Override
-		public Material getMaterial() {
-			return Material.DIAMOND_SWORD;
-		}
-		
-	};
+	@Override
+	public Material getMaterial(){
+		return material;
+	}
 
 	@Override
 	public Classes getClass(Classes clazz) {
