@@ -10,12 +10,18 @@ public enum BowType implements WeaponType {
 	/**
 	 * Represents the default bow
 	 */
-	DEFAULT {
-		@Override
-		public Material getMaterial(){
-			return Material.BOW;
-		}
-	};
+	DEFAULT(Material.BOW);
+	
+	private Material material;
+	
+	BowType(Material material){
+		this.material = material;
+	}
+	
+	@Override
+	public Material getMaterial(){
+		return material;
+	}
 	
 	@Override
 	public Classes getClass(Classes clazz) {
