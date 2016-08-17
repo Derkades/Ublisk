@@ -6,6 +6,8 @@ import static org.bukkit.ChatColor.GRAY;
 import static org.bukkit.ChatColor.RED;
 import static org.bukkit.ChatColor.RESET;
 import static org.bukkit.ChatColor.YELLOW;
+import static org.bukkit.ChatColor.DARK_AQUA;
+import static org.bukkit.ChatColor.AQUA;
 
 public class CMessage { //If you're wondering "Why CMessage?", it's stands for Complicated Message. By this I mean a message that needs additional input
 	
@@ -18,11 +20,11 @@ public class CMessage { //If you're wondering "Why CMessage?", it's stands for C
 	//----------------------------- Join and quit -----------------------------//
 	
 	public static String playerJoin(String pn){
-		return prefix + YELLOW + pn + " has joined";
+		return DARK_AQUA + "" + BOLD + pn + RESET + AQUA + " has joined";
 	}	
 	
 	public static String quit(String pn){
-		return prefix + YELLOW + pn + " has left";
+		return DARK_AQUA + "" + BOLD + pn + RESET + AQUA + " has left";
 	}
 	
 	//----------------------------- Commands -----------------------------//
