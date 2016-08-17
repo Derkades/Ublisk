@@ -123,7 +123,9 @@ public class Debug implements CommandExecutor {
 						}
 						return true;
 					} else if (args[0].equals("sword")){
-						new BetterInventory(player).addWeapon(SwordsmanWeapon.TEST_WEAPON.getWeapon());
+						for (SwordsmanWeapon weapon : SwordsmanWeapon.values()){
+							new BetterInventory(player).addWeapon(weapon.getWeapon());
+						}
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
