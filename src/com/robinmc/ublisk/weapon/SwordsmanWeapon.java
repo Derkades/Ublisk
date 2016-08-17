@@ -1,9 +1,9 @@
 package com.robinmc.ublisk.weapon;
 
-import com.robinmc.ublisk.utils.inventory.item.weapon.SwordType;
 import com.robinmc.ublisk.utils.inventory.item.weapon.Weapon;
 import com.robinmc.ublisk.utils.inventory.item.weapon.WeaponInfo;
 import com.robinmc.ublisk.utils.inventory.item.weapon.WeaponRarity;
+import com.robinmc.ublisk.utils.inventory.item.weapon.type.SwordType;
 
 public enum SwordsmanWeapon {
 	

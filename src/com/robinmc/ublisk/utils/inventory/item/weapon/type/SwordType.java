@@ -1,8 +1,9 @@
-package com.robinmc.ublisk.utils.inventory.item.weapon;
+package com.robinmc.ublisk.utils.inventory.item.weapon.type;
 
 import org.bukkit.Material;
 
 import com.robinmc.ublisk.enums.Classes;
+import com.robinmc.ublisk.utils.inventory.item.weapon.WeaponType;
 
 public enum SwordType implements WeaponType {
 
