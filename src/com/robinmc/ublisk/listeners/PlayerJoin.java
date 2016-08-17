@@ -52,17 +52,6 @@ public class PlayerJoin implements Listener {
 		
 		HashMaps.addPlayerToMaps(player);
 		
-		/*
-		final NPCUtils npcApi = new NPCUtils();
-		npcApi.despawnAll();
-		
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
-			public void run(){
-				npcApi.spawnAll();;
-			}
-		}, 10)
-		*/
-		
 		if (Main.getInstance().getConfig().isSet("settings.music." + uuid)){
 	        if (Config.getBoolean("settings.music." + uuid)){
 	        	String town = Config.getString("last-town." + uuid);
@@ -73,71 +62,6 @@ public class PlayerJoin implements Listener {
 			  Config.set("settings.music." + uuid, true);
 			  Music.playSong(player, town);
 		}
-		
-		/*
-        try {
-        	MySQL.openConnection();
-        	int logins = 0;
-        	boolean containsPlayer = false;
-        	
-        	try {
-    			PreparedStatement sql = MySQL.prepareStatement("SELECT * FROM `login_count` WHERE uuid=?;");
-    			sql.setString(1, uuid.toString());
-    			ResultSet resultSet = sql.executeQuery();
-    			containsPlayer = resultSet.next();
-    			
-    			sql.close();
-    			resultSet.close();
-    		} catch (SQLException e){
-    			e.printStackTrace();
-    		} finally {
-    			try {
-    				MySQL.closeConnection();
-    			} catch (SQLException e) {
-    				e.printStackTrace();
-    			}
-    		}
-        	
-        	if (containsPlayer){
-        		PreparedStatement sql = MySQL.prepareStatement("SELECT count FROM `login_count` WHERE uuid=?;");
-        		sql.setString(1, uuid.toString());
-        		
-        		ResultSet result = sql.executeQuery();
-        		result.next();
-        		
-        		logins = result.getInt("count");
-        		
-        		PreparedStatement newlogins = MySQL.prepareStatement("UPDATE `login_count` SET count=? WHERE uuid=?;");
-        		newlogins.setInt(1, logins + 1);
-        		newlogins.setString(2, uuid.toString());
-        		newlogins.executeUpdate();
-        		
-        		PreparedStatement name = MySQL.prepareStatement("UPDATE `login_count` SET name=? where uuid=?;");
-        		name.setString(1, player.getName());
-        		name.setString(2, uuid.toString());
-        		name.executeUpdate();
-        		
-        		name.close();
-        		newlogins.close();
-        		sql.close();
-        		result.close();
-        	} else {
-        		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `login_count` values(?, 1, ?);");
-        		newplayer.setString(1, uuid.toString());
-        		newplayer.setString(2, player.getName());
-        		newplayer.execute();
-        		newplayer.close();
-        	}
-        } catch (Exception e){
-        	e.printStackTrace();
-        } finally {
-        	try {
-				MySQL.closeConnection();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-        }
-        */
 		
 		Tracker.JOINED.add(player);
         
