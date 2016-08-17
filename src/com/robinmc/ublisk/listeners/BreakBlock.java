@@ -7,6 +7,7 @@ import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Main;
 
@@ -20,13 +21,14 @@ public class BreakBlock implements Listener {
 		}
 		
 		final Block block = event.getBlock();
-		if (block.getType() == Material.IRON_ORE){
+		final PlayerInventory inv = event.getPlayer().getInventory();
+		if (block.getType() == Material.IRON_ORE && inv.getItemInMainHand().getType() != Material.BEETROOT){
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 				public void run(){
 					block.setType(Material.IRON_ORE);
 				}
 			}, 30*20);
-		} else if (block.getType() == Material.HAY_BLOCK){
+		} else if (block.getType() == Material.HAY_BLOCK && inv.getItemInMainHand().getType() != Material.BEETROOT){
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 				public void run(){
 					block.setType(Material.HAY_BLOCK);
