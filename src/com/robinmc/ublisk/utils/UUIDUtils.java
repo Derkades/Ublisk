@@ -73,5 +73,12 @@ public class UUIDUtils {
 		
 		return uuidList;
 	}
+	
+	public static void save(Player player){
+		UUID uuid = player.getUniqueId();
+		String pn = player.getName();
+		Config.set("uuid.uuid." + pn, uuid.toString());
+		Config.set("uuid.name." + uuid, pn);
+	}
 
 }

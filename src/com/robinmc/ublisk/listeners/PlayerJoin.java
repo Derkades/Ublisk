@@ -16,6 +16,7 @@ import com.robinmc.ublisk.iconmenus.ClassMenu;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Exp;
+import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.enums.Music;
 import com.robinmc.ublisk.utils.enums.Tracker;
 import com.robinmc.ublisk.utils.variable.CMessage;
@@ -47,8 +48,7 @@ public class PlayerJoin implements Listener {
 		}, 1*20);
 		
 		//Save player uuid and name for later use
-		Config.set("uuid.uuid." + pn, uuid.toString());
-		Config.set("uuid.name." + uuid, pn);
+		UUIDUtils.save(player);
 		
 		HashMaps.addPlayerToMaps(player);
 		
