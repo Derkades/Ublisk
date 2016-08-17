@@ -7,7 +7,7 @@ import org.inventivetalent.bossbar.BossBarAPI;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Task;
+import com.robinmc.ublisk.utils.scheduler.Task;
 import com.robinmc.ublisk.utils.variable.Var;
 
 import net.md_5.bungee.api.chat.TextComponent;

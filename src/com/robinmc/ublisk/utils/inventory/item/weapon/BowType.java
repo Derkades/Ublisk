@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.weapon;
+package com.robinmc.ublisk.utils.inventory.item.weapon;
 
 import org.bukkit.Material;
 

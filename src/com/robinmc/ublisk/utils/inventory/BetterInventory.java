@@ -1,17 +1,16 @@
 package com.robinmc.ublisk.utils.inventory;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
+import com.robinmc.ublisk.utils.inventory.item.Item;
+import com.robinmc.ublisk.utils.inventory.item.weapon.Weapon;
 import com.robinmc.ublisk.utils.quest.QuestParticipant;
-import com.robinmc.ublisk.utils.weapon.Weapon;
 
-import net.md_5.bungee.api.ChatColor;
+import net.minecraft.server.v1_10_R1.NBTTagCompound;
+import net.minecraft.server.v1_10_R1.NBTTagList;
 
 public class BetterInventory {
 	
@@ -81,12 +80,53 @@ public class BetterInventory {
 	
 	public void addWeapon(Weapon weapon){
 		Item item = new Item(weapon.getType().getMaterial());
-		item.applyNBT(weapon.getNBT());
-		List<String> lore = new ArrayList<String>();
-		for (String s : weapon.getLore()) lore.add(ChatColor.RESET + s);
-		item.setLore(lore);
-		item.setName(weapon.getName());
-		inv.addItem(item.getBukkitItemStack());
+		item.setItemInfo(weapon.getItemInfo());
+		
+		NBTTagCompound damage = new NBTTagCompound();
+		damage.setString("AttributeName", "generic.attackDamage");
+		damage.setString("Name", "generic.attackDamage");
+		damage.setDouble("Amount", weapon.getWeaponInfo().getDamage());
+		damage.setInt("Operation", 0);
+		damage.setInt("UUIDLeast", 652);
+		damage.setInt("UUIDMost", 12098);
+		
+		NBTTagCompound speed = new NBTTagCompound();
+		speed.setString("AttributeName", "generic.movementSpeed");
+		speed.setString("Name", "generic.movementSpeed");
+		speed.setDouble("Amount", weapon.getWeaponInfo().getMovementSpeed());
+		speed.setInt("Operation", 0);
+		speed.setInt("UUIDLeast", 652);
+		speed.setInt("UUIDMost", 12098);
+		
+		NBTTagCompound attackSpeed = new NBTTagCompound();
+		attackSpeed.setString("AttributeName", "generic.attackSpeed");
+		attackSpeed.setString("Name", "generic.attackSpeed");
+		attackSpeed.setDouble("Amount", weapon.getWeaponInfo().getAttackSpeed());
+		attackSpeed.setInt("Operation", 0);
+		attackSpeed.setInt("UUIDLeast", 652);
+		attackSpeed.setInt("UUIDMost", 12098);
+		
+		NBTTagCompound knockback = new NBTTagCompound();
+		knockback.setString("AttributeName", "generic.knockbackResistance");
+		knockback.setString("Name", "generic.knockbackResistance");
+		knockback.setDouble("Amount", weapon.getWeaponInfo().getKnockbackResistance());
+		knockback.setInt("Operation", 0);
+		knockback.setInt("UUIDLeast", 652);
+		knockback.setInt("UUIDMost", 12098);
+		
+		NBTTagList modifiers = new NBTTagList();
+		modifiers.add(damage);
+		modifiers.add(speed);
+		modifiers.add(attackSpeed);
+		modifiers.add(knockback);
+		
+		NBTTagCompound compound = item.getCompound();
+		compound.set("AttributeModifiers", modifiers);
+		compound.setInt("HideFlags", 1);
+		compound.setInt("HideFlags", 2);
+		item.setCompound(compound);
+		
+		add(item);
 	}
 
 }

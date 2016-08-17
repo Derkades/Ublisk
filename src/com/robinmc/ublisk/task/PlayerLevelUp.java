@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Exp;
-import com.robinmc.ublisk.utils.Task;
+import com.robinmc.ublisk.utils.scheduler.Task;
 
 public class PlayerLevelUp implements Task {
 

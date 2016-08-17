@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Exp;
-import com.robinmc.ublisk.utils.Task;
+import com.robinmc.ublisk.utils.scheduler.Task;
 import com.robinmc.ublisk.utils.sql.MySQL;
 
 public class UpdateExp implements Task {

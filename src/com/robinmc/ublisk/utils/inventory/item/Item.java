@@ -1,5 +1,6 @@
-package com.robinmc.ublisk.utils.inventory;
+package com.robinmc.ublisk.utils.inventory.item;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import net.md_5.bungee.api.ChatColor;
+import net.minecraft.server.v1_10_R1.NBTTagCompound;
 
 public class Item {
 		
@@ -110,14 +112,23 @@ public class Item {
 	public List<String> getLore(){
 		ItemMeta meta = item.getItemMeta();
 		return meta.getLore();
+	} 
+	
+	public void setCompound(NBTTagCompound compound){
+		net.minecraft.server.v1_10_R1.ItemStack item = CraftItemStack.asNMSCopy(this.item);
+		item.setTag(compound);
+		this.item = CraftItemStack.asBukkitCopy(item);
 	}
 	
-	public void applyNBT(NBT nbt){
-		net.minecraft.server.v1_10_R1.ItemStack item = CraftItemStack.asNMSCopy(this.item);
-		for (NBTTag tag : nbt.getTags()){
-			item.setTag(tag.getCompound());
-		}
-		this.item = CraftItemStack.asBukkitCopy(item);
+	public NBTTagCompound getCompound(){
+		return CraftItemStack.asNMSCopy(item).getTag();
+	}
+	
+	public void setItemInfo(ItemInfo info){
+		List<String> lore = new ArrayList<String>();
+		for (String s : info.getLore()) lore.add(ChatColor.RESET + s);
+		setLore(lore);
+		setName(info.getName());
 	}
 	
 }

@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils;
+package com.robinmc.ublisk.utils.java;
 
 public class NumberUtils {
 	

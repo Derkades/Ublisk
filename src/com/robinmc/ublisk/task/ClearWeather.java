@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Task;
+import com.robinmc.ublisk.utils.scheduler.Task;
 import com.robinmc.ublisk.utils.variable.Var;
 
 public class ClearWeather implements Task {

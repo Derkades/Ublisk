@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.EntityUtils;
-import com.robinmc.ublisk.utils.Task;
+import com.robinmc.ublisk.utils.scheduler.Task;
 import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 

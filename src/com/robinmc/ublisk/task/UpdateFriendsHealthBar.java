@@ -9,11 +9,11 @@ import org.inventivetalent.bossbar.BossBarAPI;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Friends;
-import com.robinmc.ublisk.utils.Task;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.enums.Setting;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
+import com.robinmc.ublisk.utils.scheduler.Task;
 
 import net.md_5.bungee.api.chat.TextComponent;
 

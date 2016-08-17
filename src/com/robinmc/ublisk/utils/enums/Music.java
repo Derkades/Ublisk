@@ -37,7 +37,7 @@ public enum Music {
 		Music song = fromString(town);
 		Song s = NBSDecoder.parse(new File(Main.getInstance().getDataFolder(), song.getPath()));
 		
-		Console.sendMessage("[Music] Playing song to " + player.getName());
+		Console.sendMessage("[Music] Playing " + song + " for town with name " + song.getTown() + " with filename " + song.getPath() + " to " + player.getName());
 		
 		SongPlayer sp = new RadioSongPlayer(s);
 		sp.setAutoDestroy(true);

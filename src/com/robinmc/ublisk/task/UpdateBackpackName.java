@@ -9,7 +9,7 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Task;
+import com.robinmc.ublisk.utils.scheduler.Task;
 
 public class UpdateBackpackName implements Task {
 

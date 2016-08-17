@@ -7,7 +7,7 @@ import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Listeners;
 import com.robinmc.ublisk.utils.enums.Command;
 import com.robinmc.ublisk.utils.enums.Loot;
-import com.robinmc.ublisk.utils.enums.Tasks;
+import com.robinmc.ublisk.utils.scheduler.Tasks;
 import com.robinmc.ublisk.utils.sql.MySQL;
 import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.utils.variable.Var;

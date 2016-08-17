@@ -1,6 +1,9 @@
 package com.robinmc.ublisk.utils;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class Console {
 	
@@ -10,6 +13,11 @@ public class Console {
 	 */
 	public static void sendMessage(String msg){
 		System.out.println(msg);
+		for (Player player : Bukkit.getOnlinePlayers()){
+			if (player.isOp()){
+				player.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Console: " + ChatColor.RESET + msg);
+			}
+		}
 	}
 	
 	/**

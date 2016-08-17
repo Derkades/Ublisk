@@ -6,8 +6,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Task;
 import com.robinmc.ublisk.utils.enums.Classes;
+import com.robinmc.ublisk.utils.scheduler.Task;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class CheckShield implements Task {

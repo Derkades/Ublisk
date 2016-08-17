@@ -1,6 +1,6 @@
 package com.robinmc.ublisk.commands;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -43,8 +43,11 @@ public class MsgCommand implements CommandExecutor {
 				return true;
 			}
 			
-			List<String> list = Arrays.asList(args);
-			list.remove(0);
+			List<String> list = new ArrayList<String>();
+			
+			for (int x = 1; x < args.length; x++){
+				list.add(args[x]);
+			}
 			
 			String msg = String.join(" ", list);
 			
@@ -53,8 +56,7 @@ public class MsgCommand implements CommandExecutor {
 				if (Setting.PM_SOUND.get(target.getPlayer())){
 					Console.sendCommand("execute " + target.getPlayer().getName() + " ~ ~ ~ playsound entity.item.pickup master @p");
 				}
-			} catch (NotSetException e) {
-				// TODO Auto-generated catch block
+			} catch (NotSetException e) {	
 				e.printStackTrace();
 			}
 			

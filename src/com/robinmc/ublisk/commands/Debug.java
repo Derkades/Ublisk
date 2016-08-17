@@ -18,12 +18,14 @@ import com.robinmc.ublisk.utils.enums.Loot;
 import com.robinmc.ublisk.utils.enums.Perms;
 import com.robinmc.ublisk.utils.enums.Tracker;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
+import com.robinmc.ublisk.utils.inventory.BetterInventory;
 import com.robinmc.ublisk.utils.mob.Mob;
 import com.robinmc.ublisk.utils.mob.MobArea;
 import com.robinmc.ublisk.utils.mob.MobInfo;
 import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
+import com.robinmc.ublisk.weapon.SwordsmanWeapon;
 
 public class Debug implements CommandExecutor {
 	
@@ -120,6 +122,9 @@ public class Debug implements CommandExecutor {
 						for (Entity entity : Var.world.getEntities()){
 							player.sendMessage(entity.getName() + " : " + entity.getCustomName() + " : " + entity.getLocation().getBlockX() + " : " + entity.getLocation().getBlockZ() + " : " + entity.getLocation().getChunk());
 						}
+						return true;
+					} else if (args[0].equals("sword")){
+						new BetterInventory(player).addWeapon(SwordsmanWeapon.TEST_WEAPON.getWeapon());
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());

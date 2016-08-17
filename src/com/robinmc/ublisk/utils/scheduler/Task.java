@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils;
+package com.robinmc.ublisk.utils.scheduler;
 
 import com.robinmc.ublisk.Main;
 

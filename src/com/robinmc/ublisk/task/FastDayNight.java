@@ -3,8 +3,8 @@ package com.robinmc.ublisk.task;
 import org.bukkit.Bukkit;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Task;
 import com.robinmc.ublisk.utils.Time;
+import com.robinmc.ublisk.utils.scheduler.Task;
 
 public class FastDayNight implements Task {
 

@@ -8,8 +8,8 @@ import org.bukkit.Bukkit;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Task;
 import com.robinmc.ublisk.utils.exception.ConnectionClosedException;
+import com.robinmc.ublisk.utils.scheduler.Task;
 import com.robinmc.ublisk.utils.sql.MySQL;
 import com.robinmc.ublisk.utils.variable.Message;
 

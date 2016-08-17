@@ -1,7 +1,7 @@
 package com.robinmc.ublisk.task;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Task;
+import com.robinmc.ublisk.utils.scheduler.Task;
 
 public class RespawnNPC implements Task {
 

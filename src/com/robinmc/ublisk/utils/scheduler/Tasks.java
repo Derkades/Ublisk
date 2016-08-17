@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.enums;
+package com.robinmc.ublisk.utils.scheduler;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -21,7 +21,6 @@ import com.robinmc.ublisk.task.UpdateDoubleExpBar;
 import com.robinmc.ublisk.task.UpdateExp;
 import com.robinmc.ublisk.task.UpdateFriendsHealthBar;
 import com.robinmc.ublisk.utils.Console;
-import com.robinmc.ublisk.utils.Task;
 
 public enum Tasks {
 	
