@@ -7,6 +7,9 @@ import com.robinmc.ublisk.utils.inventory.item.weapon.WeaponType;
 
 public enum BowType implements WeaponType {
 
+	/**
+	 * Represents the default bow
+	 */
 	DEFAULT {
 		@Override
 		public Material getMaterial(){
