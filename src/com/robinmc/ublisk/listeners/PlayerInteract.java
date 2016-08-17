@@ -10,8 +10,8 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.robinmc.ublisk.utils.enums.Classes;
-import com.robinmc.ublisk.utils.enums.Tracker;
+import com.robinmc.ublisk.enums.Classes;
+import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class PlayerInteract implements Listener {

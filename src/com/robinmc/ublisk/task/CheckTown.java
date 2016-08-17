@@ -6,9 +6,9 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.enums.Town;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
-import com.robinmc.ublisk.utils.enums.Town;
 import com.robinmc.ublisk.utils.scheduler.Task;
 
 public class CheckTown implements Task {

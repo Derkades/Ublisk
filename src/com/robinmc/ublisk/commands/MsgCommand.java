@@ -9,10 +9,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.enums.Setting;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.MessageTarget;
 import com.robinmc.ublisk.utils.UUIDUtils;
-import com.robinmc.ublisk.utils.enums.Setting;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.variable.Message;

@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.utils.enums.Perms;
+import com.robinmc.ublisk.enums.Perms;
 import com.robinmc.ublisk.utils.variable.CMessage;
 
 import net.md_5.bungee.api.ChatColor;

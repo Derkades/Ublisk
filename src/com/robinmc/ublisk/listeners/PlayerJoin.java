@@ -12,13 +12,13 @@ import org.inventivetalent.rpapi.ResourcePackAPI;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.enums.Music;
+import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.iconmenus.ClassMenu;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.UUIDUtils;
-import com.robinmc.ublisk.utils.enums.Music;
-import com.robinmc.ublisk.utils.enums.Tracker;
 import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;

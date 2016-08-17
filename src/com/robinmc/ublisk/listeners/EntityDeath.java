@@ -12,8 +12,8 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.Exp;
-import com.robinmc.ublisk.utils.enums.Tracker;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.mob.Mob;

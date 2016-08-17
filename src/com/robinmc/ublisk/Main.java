@@ -3,10 +3,10 @@ package com.robinmc.ublisk;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.robinmc.ublisk.enums.Command;
+import com.robinmc.ublisk.enums.Loot;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Listeners;
-import com.robinmc.ublisk.utils.enums.Command;
-import com.robinmc.ublisk.utils.enums.Loot;
 import com.robinmc.ublisk.utils.scheduler.Tasks;
 import com.robinmc.ublisk.utils.sql.MySQL;
 import com.robinmc.ublisk.utils.third_party.Lag;

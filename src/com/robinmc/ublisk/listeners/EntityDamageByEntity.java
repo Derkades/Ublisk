@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.robinmc.ublisk.utils.enums.Classes;
+import com.robinmc.ublisk.enums.Classes;
 import com.robinmc.ublisk.utils.quest.QuestCharacter;
 import com.robinmc.ublisk.utils.variable.Message;
 

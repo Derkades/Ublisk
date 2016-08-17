@@ -4,7 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.utils.enums.Classes;
+import com.robinmc.ublisk.enums.Classes;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
 import com.robinmc.ublisk.utils.quest.Quest;
 import com.robinmc.ublisk.utils.quest.QuestCharacter;

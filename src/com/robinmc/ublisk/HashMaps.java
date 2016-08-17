@@ -1,7 +1,8 @@
 package com.robinmc.ublisk;
 
+import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.Console;
-import com.robinmc.ublisk.utils.enums.Tracker;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.enums.Tip;
+import com.robinmc.ublisk.enums.Tip;
 import com.robinmc.ublisk.utils.scheduler.Task;
 
 public class RandomTips implements Task {

@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.enums;
+package com.robinmc.ublisk.enums;
 
 import java.io.File;
 

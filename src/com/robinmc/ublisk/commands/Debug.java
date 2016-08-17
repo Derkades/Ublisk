@@ -10,13 +10,13 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.enums.Loot;
+import com.robinmc.ublisk.enums.Perms;
+import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.EntityUtils;
 import com.robinmc.ublisk.utils.Exp;
-import com.robinmc.ublisk.utils.enums.Loot;
-import com.robinmc.ublisk.utils.enums.Perms;
-import com.robinmc.ublisk.utils.enums.Tracker;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
 import com.robinmc.ublisk.utils.mob.Mob;
