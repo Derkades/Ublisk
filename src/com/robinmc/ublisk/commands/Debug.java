@@ -15,7 +15,6 @@ import com.robinmc.ublisk.enums.Perms;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.Config;
-import com.robinmc.ublisk.utils.EntityUtils;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
@@ -58,7 +57,7 @@ public class Debug implements CommandExecutor {
 				} else if (args.length == 1){
 					if (args[0].equalsIgnoreCase("kill")){
 						Bukkit.broadcastMessage(Message.ENTITIES_REMOVED.get());
-						EntityUtils.removeMobs();
+						Mob.removeMobs();
 						return true;
 					} else if (args[0].equalsIgnoreCase("cmd")){
 						UUID uuid = player.getUniqueId();

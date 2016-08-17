@@ -10,6 +10,7 @@ import org.bukkit.entity.LivingEntity;
 import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
+import com.robinmc.ublisk.utils.variable.Var;
 
 public enum Mob {
 	
@@ -78,6 +79,18 @@ public enum Mob {
 			}
 		}
 		throw new UnknownAreaException();
+	}
+	
+	public static void removeMobs(){
+		for (Entity entity: Var.world.getEntities()){
+			EntityType type = entity.getType();
+			if (type == EntityType.CHICKEN ||
+					type == EntityType.SHEEP ||
+					type == EntityType.DROPPED_ITEM ||
+					type == EntityType.EXPERIENCE_ORB){
+				entity.remove();
+			}
+		}
 	}
 	
 }

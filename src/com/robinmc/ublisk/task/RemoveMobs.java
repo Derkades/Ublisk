@@ -3,7 +3,7 @@ package com.robinmc.ublisk.task;
 import org.bukkit.Bukkit;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.EntityUtils;
+import com.robinmc.ublisk.utils.mob.Mob;
 import com.robinmc.ublisk.utils.scheduler.Task;
 import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
@@ -20,7 +20,7 @@ public class RemoveMobs implements Task {
 						Bukkit.broadcastMessage(CMessage.removeMobsWarning(5));
 						Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 							public void run(){
-								EntityUtils.removeMobs();
+								Mob.removeMobs();
 								Bukkit.broadcastMessage(Message.ENTITIES_REMOVED.get());
 							}
 						}, 5*20);
