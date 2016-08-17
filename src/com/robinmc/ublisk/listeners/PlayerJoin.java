@@ -46,7 +46,7 @@ public class PlayerJoin implements Listener {
 			}
 		}, 1*20);
 		
-		//Cache player uuid and name for later use
+		//Save player uuid and name for later use
 		Config.set("uuid.uuid." + pn, uuid.toString());
 		Config.set("uuid.name." + uuid, pn);
 		
