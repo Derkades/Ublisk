@@ -69,69 +69,70 @@ public enum Tracker {
 	}
 	
 	// TODO Call this method on logout
-	public static void syncWithDatabase(Player player, Tracker tracker){
-		UUID uuid = player.getUniqueId();
-		String tbl = tracker.getTable();
-		int value = tracker.getMap().get(uuid);
-		try {
-        	MySQL.openConnection();
-        	int stat = 0;
-        	boolean containsPlayer = false;
-        	
-    		PreparedStatement check = MySQL.prepareStatement("SELECT * FROM `" + tbl + "` WHERE uuid=?;");
-    		check.setString(1, uuid.toString());
-    		ResultSet resultSet = check.executeQuery();
-    		containsPlayer = resultSet.next();
-    			
-    		check.close();
-    		resultSet.close();
-        	
-        	if (containsPlayer){
-        		PreparedStatement sql = MySQL.prepareStatement("SELECT count FROM `" + tbl + "` WHERE uuid=?;");
-        		sql.setString(1, uuid.toString());
-        		
-        		ResultSet result = sql.executeQuery();
-        		result.next();
-        		
-        		stat = result.getInt("count");
-        		
-        		PreparedStatement newlogins = MySQL.prepareStatement("UPDATE `" + tbl + "` SET count=? WHERE uuid=?;");
-        		newlogins.setInt(1, stat + value);
-        		newlogins.setString(2, uuid.toString());
-        		newlogins.executeUpdate();
-        		
-        		PreparedStatement name = MySQL.prepareStatement("UPDATE `" + tbl + "` SET name=? where uuid=?;");
-        		name.setString(1, player.getName());
-        		name.setString(2, uuid.toString());
-        		name.executeUpdate();
-        		
-        		name.close();
-        		newlogins.close();
-        		sql.close();
-        		result.close();
-        	} else {
-        		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `" + tbl + "` values(?, ?, ?);");
-        		newplayer.setString(1, uuid.toString());
-        		newplayer.setInt(2, value);
-        		newplayer.setString(3, player.getName());
-        		newplayer.execute();
-        		newplayer.close();
-        	}
-        	
-        	tracker.getMap().put(uuid, 0);
-        	
-        } catch (Exception e){
-        	e.printStackTrace();
-        } finally {
-        	try {
-				MySQL.closeConnection();
-			} catch (SQLException e) {
-				e.printStackTrace();
+	public static void syncWithDatabase(final Player player, final Tracker tracker){
+		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable(){
+			public void run() {
+				UUID uuid = player.getUniqueId();
+				String tbl = tracker.getTable();
+				int value = tracker.getMap().get(uuid);
+				try {
+		        	MySQL.openConnection();
+		        	int stat = 0;
+		        	boolean containsPlayer = false;
+		        	
+		    		PreparedStatement check = MySQL.prepareStatement("SELECT * FROM `" + tbl + "` WHERE uuid=?;");
+		    		check.setString(1, uuid.toString());
+		    		ResultSet resultSet = check.executeQuery();
+		    		containsPlayer = resultSet.next();
+		    			
+		    		check.close();
+		    		resultSet.close();
+		        	
+		        	if (containsPlayer){
+		        		PreparedStatement sql = MySQL.prepareStatement("SELECT count FROM `" + tbl + "` WHERE uuid=?;");
+		        		sql.setString(1, uuid.toString());
+		        		
+		        		ResultSet result = sql.executeQuery();
+		        		result.next();
+		        		
+		        		stat = result.getInt("count");
+		        		
+		        		PreparedStatement newlogins = MySQL.prepareStatement("UPDATE `" + tbl + "` SET count=? WHERE uuid=?;");
+		        		newlogins.setInt(1, stat + value);
+		        		newlogins.setString(2, uuid.toString());
+		        		newlogins.executeUpdate();
+		        		
+		        		PreparedStatement name = MySQL.prepareStatement("UPDATE `" + tbl + "` SET name=? where uuid=?;");
+		        		name.setString(1, player.getName());
+		        		name.setString(2, uuid.toString());
+		        		name.executeUpdate();
+		        		
+		        		name.close();
+		        		newlogins.close();
+		        		sql.close();
+		        		result.close();
+		        	} else {
+		        		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `" + tbl + "` values(?, ?, ?);");
+		        		newplayer.setString(1, uuid.toString());
+		        		newplayer.setInt(2, value);
+		        		newplayer.setString(3, player.getName());
+		        		newplayer.execute();
+		        		newplayer.close();
+		        	}
+		        	
+		        	tracker.getMap().put(uuid, 0);
+		        	
+		        } catch (Exception e){
+		        	e.printStackTrace();
+		        } finally {
+		        	try {
+						MySQL.closeConnection();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+		        }
 			}
-        }
-		
-		
-		
+		});
 	}
 
 }
