@@ -16,6 +16,7 @@ import com.robinmc.ublisk.task.RandomTips;
 import com.robinmc.ublisk.task.RegenerateHunger;
 import com.robinmc.ublisk.task.RemoveMobs;
 import com.robinmc.ublisk.task.RespawnNPC;
+import com.robinmc.ublisk.task.SyncTrackers;
 import com.robinmc.ublisk.task.UpdateBackpackName;
 import com.robinmc.ublisk.task.UpdateDoubleExpBar;
 import com.robinmc.ublisk.task.UpdateExp;
@@ -34,6 +35,7 @@ public enum Tasks {
 	REGENERATE_HUNGER(new RegenerateHunger()),
 	REMOVE_MOBS(new RemoveMobs()),
 	RESPAWN_NPC(new RespawnNPC()),
+	SYNC_TRACKER(new SyncTrackers()),
 	UPDATE_BACKPACK_NAME(new UpdateBackpackName()),
 	UPDATE_DOUBLE_EXP_BAR(new UpdateDoubleExpBar()),
 	UPDATE_EXP(new UpdateExp()),
