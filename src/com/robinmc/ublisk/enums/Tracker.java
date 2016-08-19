@@ -23,7 +23,6 @@ public enum Tracker {
 	 * 'name' with type TEXT
 	 */
 	
-	// FIXME Create missing tables in database
 	RIGHT_CLICKED(HashMaps.rightClicked, "right_click"),
 	LEFT_CLICKED(HashMaps.leftClicked, "left_click"),
 	JOINED(HashMaps.loggedIn, "login_count"),
