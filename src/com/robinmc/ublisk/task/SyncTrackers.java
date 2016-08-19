@@ -14,7 +14,7 @@ public class SyncTrackers implements Task {
 			public void run(){
 				Tracker.syncAll();
 			}
-		}, 1*20, 1*20);
+		}, 1*60*20, 1*60*20);
 		
 	}
 
