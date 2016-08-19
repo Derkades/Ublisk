@@ -53,8 +53,6 @@ public enum Tracker {
 		getMap().put(uuid, previous + 1);
 	}
 	
-	// TODO Call this method in a task every minute
-	
 	public static void syncAll(){
 		int delay = 0;
 		for (final Tracker tracker : Tracker.values()){
