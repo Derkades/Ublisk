@@ -68,7 +68,6 @@ public enum Tracker {
 		}
 	}
 	
-	// TODO Call this method on logout
 	public static void syncWithDatabase(final Player player, final Tracker tracker){
 		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable(){
 			public void run() {
