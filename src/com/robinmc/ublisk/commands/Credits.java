@@ -23,14 +23,14 @@ public class Credits implements CommandExecutor {
 			sender.sendMessage(gold + "Weapons" + gray + ":" + yellow + " N/A");
 			sender.sendMessage(gold + "Textures" + gray + ":" + yellow + " GlitcherDOTbe, RobinMC, RottenNugget, SenpaiSander");
 			sender.sendMessage(gold + "Music" + gray + ":" + yellow + " RobinMC");
-			sender.sendMessage(gold + "Quests " + gray + ":" + yellow + "SenpaiSander, RobinMC");
+			sender.sendMessage(gold + "Quests" + gray + ": " + yellow + "SenpaiSander, RobinMC");
 			sender.sendMessage("");
 			sender.sendMessage(gray + "Type /credits [user] for more information on a user");
 			return true;
 		} else if (args.length == 1){
 			if (args[0].equals("building") || args[0].equals("map")){
 				sender.sendMessage("");
-				sender.sendMessage(gold + "All builders (in order of date):" + gray + ": " + yellow + "RobinMC, Chaspyr, Sander_Gaming, Jerrijn, SenpaiSander, EpicC4Build, LarissaMC, MrParkerl11");
+				sender.sendMessage(gold + "All builders (in order of date)" + gray + ": " + yellow + "RobinMC, Chaspyr, Sander_Gaming, Jerrijn, SenpaiSander, EpicC4Build, LarissaMC, MrParkerl11");
 				sender.sendMessage("");
 				sender.sendMessage(gold + "Non-town areas" + gray + ": " + yellow + "RobinMC, LarissaMC, SenpaiSander, Sander_Gaming, Jerrijn");
 				sender.sendMessage(gold + "Landscaping" + gray + ": " + yellow + "RobinMC, LarissaMC, Jerrijn, SenpaiSander");
