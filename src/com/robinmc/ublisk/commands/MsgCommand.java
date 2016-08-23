@@ -57,7 +57,7 @@ public class MsgCommand implements CommandExecutor {
 					Console.sendCommand("execute " + target.getPlayer().getName() + " ~ ~ ~ playsound entity.item.pickup master @p");
 				}
 			} catch (NotSetException e) {	
-				e.printStackTrace();
+				Setting.PM_SOUND.put(target.getPlayer(), true);
 			}
 			
 			target.setLastSender(player);
