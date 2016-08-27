@@ -58,9 +58,15 @@ public enum Tracker {
 			delay = delay + 50;
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 				public void run(){
-					Console.sendMessage("[Tracker] Syncronising tracker " + tracker.toString());
-					for (Player player : Bukkit.getOnlinePlayers()){
-						syncWithDatabase(player, tracker);
+					int playerDelay = 0;
+					for (final Player player : Bukkit.getOnlinePlayers()){
+						playerDelay = playerDelay + 50;
+						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+							public void run(){
+								Console.sendMessage("[Tracker] Syncronising " + tracker + " for " + player.getName());
+								syncWithDatabase(player, tracker);
+							}
+						}, playerDelay);
 					}
 				}
 			}, delay);
