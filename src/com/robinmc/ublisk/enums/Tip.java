@@ -33,7 +33,7 @@ public enum Tip {
 	public static String getRandom(){
 		Tip tip = randomEnum(Tip.class);
 		String text = tip.getText();
-		return ChatColor.GOLD + "Tip " + ChatColor.GRAY + ">> " + ChatColor.YELLOW + text;
+		return ChatColor.YELLOW + text;
 	}
 
 }
