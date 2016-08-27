@@ -38,7 +38,11 @@ public class LifeCrystalPlayer {
 	}
 	
 	public int getLifeCrystals(){
-		return Config.getInteger("life." + uuid);
+		if (Config.getConfig().isSet("life." + uuid)){
+			return Config.getInteger("life." + uuid);
+		} else {
+			return 0;
+		}
 	}
 
 }
