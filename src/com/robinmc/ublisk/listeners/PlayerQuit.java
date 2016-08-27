@@ -5,7 +5,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.variable.CMessage;
 
 public class PlayerQuit implements Listener {
