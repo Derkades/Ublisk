@@ -9,7 +9,7 @@ import com.robinmc.ublisk.utils.quest.QuestParticipant;
 public class LifeCrystalPlayer {
 	
 	private Player player;
-	private UUID uuid = player.getUniqueId();
+	private UUID uuid;
 	
 	public LifeCrystalPlayer(Player player){
 		this.player = player;
@@ -17,6 +17,7 @@ public class LifeCrystalPlayer {
 	
 	public LifeCrystalPlayer(QuestParticipant qp){
 		this.player = qp.getPlayer();
+		this.uuid = player.getUniqueId();
 	}
 	
 	public Player getPlayer(){
