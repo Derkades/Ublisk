@@ -16,6 +16,7 @@ import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
+import com.robinmc.ublisk.utils.LifeCrystalPlayer;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
 import com.robinmc.ublisk.utils.mob.Mob;
@@ -49,6 +50,10 @@ public class Debug implements CommandExecutor {
 						player.sendMessage("Config XP: " + Exp.get(target));
 						player.sendMessage("With division: " + Math.round(Exp.get(target) / Var.xpDivision));
 						player.sendMessage("Bukkit level: " + Exp.getLevel(target));
+						return true;
+					} else if (args[0].equals("life")){
+						int life = Integer.parseInt(args[1]);
+						new LifeCrystalPlayer(player).setLifeCrystals(life);
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
