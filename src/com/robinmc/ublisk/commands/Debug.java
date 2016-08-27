@@ -47,8 +47,8 @@ public class Debug implements CommandExecutor {
 						Exp.refresh(player);
 						player.sendMessage("XP refreshed!");
 						player.sendMessage("Config XP: " + Exp.get(target));
-						player.sendMessage("With division: " + Math.round(Exp.get(player) / Var.xpDivision));
-						player.sendMessage("Bukkit level: " + Exp.getLevel(player));
+						player.sendMessage("With division: " + Math.round(Exp.get(target) / Var.xpDivision));
+						player.sendMessage("Bukkit level: " + Exp.getLevel(target));
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
