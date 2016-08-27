@@ -15,7 +15,7 @@ import com.robinmc.ublisk.utils.variable.Var;
 public enum Mob {
 	
 	CHICKEN(EntityType.CHICKEN, MobArea.INTRODUCTION),
-	SHEEP(EntityType.SHEEP, MobArea.INTRODUCTION);
+	SHEEP(EntityType.SHEEP, MobArea.INTRODUCTION, MobArea.FAGGOT_LAND);
 	
 	private EntityType type;
 	private List<MobArea> area;
