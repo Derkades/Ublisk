@@ -11,6 +11,7 @@ import com.robinmc.ublisk.task.CheckShield;
 import com.robinmc.ublisk.task.CheckTown;
 import com.robinmc.ublisk.task.ClearWeather;
 import com.robinmc.ublisk.task.FastDayNight;
+import com.robinmc.ublisk.task.LifeCrystalInventory;
 import com.robinmc.ublisk.task.PlayerLevelUp;
 import com.robinmc.ublisk.task.RandomTips;
 import com.robinmc.ublisk.task.RegenerateHunger;
@@ -30,6 +31,7 @@ public enum Tasks {
 	CHECK_TOWN(new CheckTown()),
 	CLEAR_WEATHER(new ClearWeather()),
 	FAST_DAY_NIGHT(new FastDayNight()),
+	LIFE_CRYSTAL_INVENTORY(new LifeCrystalInventory()),
 	LEVEL_UP(new PlayerLevelUp()),
 	RANDOM_TIPS(new RandomTips()),
 	REGENERATE_HUNGER(new RegenerateHunger()),
