@@ -26,7 +26,7 @@ public class LifeCrystalInventory implements Task {
 					item.setLore("You have " + life.getLifeCrystals() + " life crystals");
 					
 					PlayerInventory inv = player.getInventory();
-					inv.setItemInOffHand(item.getBukkitItem());
+					inv.setItem(8, item.getItemStack());
 				}
 			}
 		}, 5*20, 5*20);
