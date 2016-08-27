@@ -95,10 +95,14 @@ public enum Tracker {
 		        		
 		        		stat = result.getInt("count");
 		        		
+		        		result.close();
+		        		sql.close();
+		        		
 		        		PreparedStatement newlogins = MySQL.prepareStatement("UPDATE `" + tbl + "` SET count=? WHERE uuid=?;");
 		        		newlogins.setInt(1, stat + value);
 		        		newlogins.setString(2, uuid.toString());
 		        		newlogins.executeUpdate();
+		        		newlogins.close();
 		        		
 		        		PreparedStatement name = MySQL.prepareStatement("UPDATE `" + tbl + "` SET name=? where uuid=?;");
 		        		name.setString(1, player.getName());
@@ -106,9 +110,6 @@ public enum Tracker {
 		        		name.executeUpdate();
 		        		
 		        		name.close();
-		        		newlogins.close();
-		        		sql.close();
-		        		result.close();
 		        	} else {
 		        		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `" + tbl + "` values(?, ?, ?);");
 		        		newplayer.setString(1, uuid.toString());
