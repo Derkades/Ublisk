@@ -14,9 +14,6 @@ public class PlayerQuit implements Listener {
 	public void onQuit(PlayerQuitEvent event){
 		Player player = event.getPlayer();
 		event.setQuitMessage(CMessage.quit(player.getName()));
-		for (Tracker tracker : Tracker.values()){
-			Tracker.syncWithDatabase(player, tracker);
-		}
 	}
 
 }
