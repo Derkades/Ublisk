@@ -15,7 +15,8 @@ public enum Tip {
 	SEVEN("Enable or disable music in /menu"),
 	EIGHT("Toggle showing friend's health in the friends menu"),
 	NINE("Add a friend using /friend add [player]"),
-	TEN("Open your friends menu using /friend");
+	TEN("Open your friends menu using /friend"),
+	ELEVEN("Please report bugs here: http://goo.gl/UWNaS3");
 	
 	private String tip;
 	
