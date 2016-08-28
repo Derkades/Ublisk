@@ -11,7 +11,8 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.sql.MySQL;
 
 public enum Tracker {
@@ -55,7 +56,7 @@ public enum Tracker {
 	public static void syncAll(){
 		int delay = 0;
 		for (final Tracker tracker : Tracker.values()){
-			delay = delay + 50;
+			delay = delay + 20 + Bukkit.getOnlinePlayers().size() * 50;
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 				public void run(){
 					int playerDelay = 0;
@@ -63,7 +64,7 @@ public enum Tracker {
 						playerDelay = playerDelay + 50;
 						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 							public void run(){
-								Console.sendMessage("[Tracker] Syncronising " + tracker + " for " + player.getName());
+								Logger.log(LogLevel.INFO, "Tracker", "Syncronising " + tracker + " for " + player.getName());
 								syncWithDatabase(player, tracker);
 							}
 						}, playerDelay);
