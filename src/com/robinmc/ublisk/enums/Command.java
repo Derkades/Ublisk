@@ -16,6 +16,8 @@ import com.robinmc.ublisk.commands.MuteCommand;
 import com.robinmc.ublisk.commands.Report;
 import com.robinmc.ublisk.commands.Suggest;
 import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 
 public enum Command {
 	
@@ -49,12 +51,12 @@ public enum Command {
 	
 	public static int registerAll(){
 		int delay = 30;
-		Console.sendMessage("[Ublisk] Registering commands...");
+		Logger.log(LogLevel.INFO, "Commands", "Registering commands...");
 		for (final Command cmd : Command.values()){
 			delay = delay + 3;
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 				public void run(){
-					Console.sendMessage("[Ublisk] Registered command with class " + cmd.getExecutor().getClass().getSimpleName());
+					Logger.log(LogLevel.INFO, "Commands", "Registered command with class " + cmd.getExecutor().getClass().getSimpleName());
 					String command = cmd.getCommand();
 					CommandExecutor executor = cmd.getExecutor();
 					Main.getInstance().getCommand(command).setExecutor(executor);
