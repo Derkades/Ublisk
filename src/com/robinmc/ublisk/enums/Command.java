@@ -15,7 +15,6 @@ import com.robinmc.ublisk.commands.MsgCommand;
 import com.robinmc.ublisk.commands.MuteCommand;
 import com.robinmc.ublisk.commands.Report;
 import com.robinmc.ublisk.commands.Suggest;
-import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 
