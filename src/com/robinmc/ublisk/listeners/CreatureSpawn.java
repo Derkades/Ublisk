@@ -14,6 +14,8 @@ import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.exception.MobInfoMissingException;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.mob.Mob;
 import com.robinmc.ublisk.utils.mob.MobArea;
 import com.robinmc.ublisk.utils.mob.MobInfo;
@@ -41,17 +43,17 @@ public class CreatureSpawn implements Listener {
 				entity.setMaxHealth(health);
 				entity.setHealth(health);
 			} else {
-				Console.sendMessage("Cancelled the spawning of a " + entity.getName() + " at " + entity.getLocation().getBlockX() + "," + entity.getLocation().getBlockZ());
+				Logger.log(LogLevel.INFO, "MobSpawning", "Cancelled the spawning of a " + entity.getName() + " at " + entity.getLocation().getBlockX() + "," + entity.getLocation().getBlockZ());
 				event.setCancelled(true);
 			}
 		} catch (MobInfoMissingException e) {
-			Console.sendMessage("Mob information missing for " + entity.getName());
+			Logger.log(LogLevel.SEVERE, "MobSpawning", "Mob information missing for " + entity.getName());
 		} catch (UnknownAreaException e){
 			Location loc = entity.getLocation();
 			int x = loc.getBlockX();
 			int y = loc.getBlockY();
 			int z = loc.getBlockZ();
-			Console.sendMessage("Mob spawned outside of an area - " + entity.getName() + " at " + x + "," + y + "," + z);
+			Logger.log(LogLevel.WARNING, "MobSpawning", "Mob spawned outside of an area - " + entity.getName() + " at " + x + "," + y + "," + z);
 		} catch (MobNotFoundException e) {
 			e.printStackTrace();
 		}
