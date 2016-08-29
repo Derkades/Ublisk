@@ -7,7 +7,8 @@ import org.bukkit.event.Listener;
 
 import com.robinmc.ublisk.enums.Music;
 import com.robinmc.ublisk.utils.Config;
-import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.xxmicloxx.NoteBlockAPI.SongEndEvent;
 
 public class SongEnd implements Listener {
@@ -30,7 +31,7 @@ public class SongEnd implements Listener {
 		        }	       
 		    }
 		} catch (Exception e) {
-			Console.sendMessage("[Music] Tried to play new song but player has already logged out");
+			Logger.log(LogLevel.WARNING, "Music", "Tried to play new song but player has already logged out");
 		}
 	}
 }

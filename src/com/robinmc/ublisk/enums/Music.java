@@ -5,7 +5,8 @@ import java.io.File;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.xxmicloxx.NoteBlockAPI.NBSDecoder;
 import com.xxmicloxx.NoteBlockAPI.RadioSongPlayer;
 import com.xxmicloxx.NoteBlockAPI.Song;
@@ -37,7 +38,7 @@ public enum Music {
 		Music song = fromString(town);
 		Song s = NBSDecoder.parse(new File(Main.getInstance().getDataFolder(), song.getPath()));
 		
-		Console.sendMessage("[Music] Playing " + song + " for town with name " + song.getTown() + " with filename " + song.getPath() + " to " + player.getName());
+		Logger.log(LogLevel.INFO, "Music", "Playing " + song + " for town with name " + song.getTown() + " with filename " + song.getPath() + " to " + player.getName());
 		
 		SongPlayer sp = new RadioSongPlayer(s);
 		sp.setAutoDestroy(true);
