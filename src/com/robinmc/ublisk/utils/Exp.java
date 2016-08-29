@@ -11,6 +11,8 @@ import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.mob.Mob;
 import com.robinmc.ublisk.utils.mob.MobArea;
 import com.robinmc.ublisk.utils.mob.MobInfo;
@@ -95,11 +97,11 @@ public class Exp {
 		if (HashMaps.doublexp.get(HashMaps.placeHolder())){ //If double XP is active
 			ActionBarAPI.sendActionBar(player, ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP", 3*10);
 			Exp.add(player, xp * 2);
-			Console.sendMessage("[MobExp] Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
+			Logger.log(LogLevel.INFO, "XP", "[MobExp] Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
 		} else {
 			ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP", 3*10);
 			Exp.add(player, xp);
-			Console.sendMessage("[MobExp] Given " + player.getName() + " " + xp + " for killing a " + name);
+			Logger.log(LogLevel.INFO, "XP", "[MobExp] Given " + player.getName() + " " + xp + " for killing a " + name);
 		}	
 		refresh(player);
 	}
