@@ -93,11 +93,11 @@ public class Exp {
 		}
 		
 		if (HashMaps.doublexp.get(HashMaps.placeHolder())){ //If double XP is active
-			ActionBarAPI.sendActionBar(player, ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP", 2*10);
+			ActionBarAPI.sendActionBar(player, ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP", 3*10);
 			Exp.add(player, xp * 2);
 			Console.sendMessage("[MobExp] Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
 		} else {
-			ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP", 2*10);
+			ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP", 3*10);
 			Exp.add(player, xp);
 			Console.sendMessage("[MobExp] Given " + player.getName() + " " + xp + " for killing a " + name);
 		}	
