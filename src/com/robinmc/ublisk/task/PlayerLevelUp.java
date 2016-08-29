@@ -16,9 +16,9 @@ public class PlayerLevelUp implements Task {
 			public void run(){
 				for (Player player : Bukkit.getOnlinePlayers()){
 					int current = player.getLevel();
+					HashMaps.lastLevel.put(player, current);
 					int last = HashMaps.lastLevel.get(player);
 					if (current > last){
-						HashMaps.lastLevel.put(player, current);
 						Exp.levelUp(player);
 					}
 				}
