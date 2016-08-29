@@ -28,6 +28,10 @@ public class PermissionPlayer {
 		}
 	}
 	
+	public void setGroup(PermissionGroup group){
+		Config.set("groups." + player.getUniqueId(), group.getName().toLowerCase());
+	}
+	
 	public boolean hasPermission(Permission perm){
 		return getGroup().hasPermission(perm);
 	}

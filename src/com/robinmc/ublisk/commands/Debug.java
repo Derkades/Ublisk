@@ -16,12 +16,15 @@ import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.LifeCrystalPlayer;
+import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
 import com.robinmc.ublisk.utils.mob.Mob;
 import com.robinmc.ublisk.utils.mob.MobArea;
 import com.robinmc.ublisk.utils.mob.MobInfo;
 import com.robinmc.ublisk.utils.perm.Permission;
+import com.robinmc.ublisk.utils.perm.PermissionGroup;
+import com.robinmc.ublisk.utils.perm.PermissionPlayer;
 import com.robinmc.ublisk.utils.perm.Perms;
 import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.utils.variable.Message;
@@ -35,7 +38,25 @@ public class Debug implements CommandExecutor {
 		if (sender instanceof Player){
 			Player player = (Player) sender;
 			if (Perms.getPermissionPlayer(player).hasPermission(Permission.COMMAND_DEBUG)){
-				if (args.length == 2){
+				if (args.length == 3){
+					if (args[0].equals("group")){
+						PermissionGroup group;
+						try {
+							group = PermissionGroup.fromString(args[2]);
+						} catch (GroupNotFoundException e) {
+							player.sendMessage("unknown group");
+							return true;
+						}
+						PermissionPlayer target = Perms.getPermissionPlayer(Bukkit.getPlayer(args[1]));
+						player.sendMessage("old: " + group.getName());
+						target.setGroup(group);
+						player.sendMessage("group successful: " + target.getGroup().getName());
+						return true;
+					} else {
+						player.sendMessage(Message.WRONG_USAGE.get());
+						return true;
+					}
+				} else if (args.length == 2){
 					if (args[0].equalsIgnoreCase("xp")){
 						int xp = Integer.parseInt(args[1]);
 						Exp.set(player, xp);
