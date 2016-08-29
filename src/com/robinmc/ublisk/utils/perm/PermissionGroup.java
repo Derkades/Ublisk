@@ -9,8 +9,13 @@ public enum PermissionGroup {
 	
 	//TODO: Proper prefixes
 	DEFAULT("Default", "Default: "),
-	MODERATOR("Default", "Moderator: "),
-	ADMIN("Default", "Admin: ", Permission.COMMAND_DEBUG);
+	MODERATOR("Moderator", "Moderator: "),
+	ADMIN("Admin", "Admin: ", Permission.COMMAND_DEBUG),
+	OWNER("Owner", "Owner: ", 
+			Permission.COMMAND_DEBUG, 
+			Permission.COMMAND_MUTE, 
+			Permission.COMMANDLOG
+			);
 	
 	private String name;
 	private String prefix;
