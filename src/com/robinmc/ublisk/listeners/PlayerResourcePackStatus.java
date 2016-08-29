@@ -7,7 +7,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerResourcePackStatusEvent;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class PlayerResourcePackStatus implements Listener {
@@ -22,15 +23,15 @@ public class PlayerResourcePackStatus implements Listener {
 					player.kickPlayer(Message.PACK_DECLINED.get());
 				}
 			});
-			Console.sendMessage("[Resources] " + pn + " has declined the resource pack");
+			Logger.log(LogLevel.WARNING, "Resources", pn + " has declined the resource pack");
 		} else if (event.getStatus() == PlayerResourcePackStatusEvent.Status.FAILED_DOWNLOAD){
 			player.sendMessage(Message.PACK_FAILED_DOWNLOAD.get());
-			Console.sendMessage("[Resources] " + pn + " has failed to download the resource pack");
+			Logger.log(LogLevel.WARNING, "Resources", pn + " has failed to download the resource pack");
 		} else if (event.getStatus() == PlayerResourcePackStatusEvent.Status.ACCEPTED){
-			Console.sendMessage("[Resources] " + pn + " has accepted the resource pack");
+			Logger.log(LogLevel.INFO, "Resources", pn + " has accepted the resource pack");
 		} else if (event.getStatus() == PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED){
 			player.sendMessage(Message.PACK_LOADED.get());
-			Console.sendMessage("[Resources] " + pn + " has successfully loaded the resource pack");
+			Logger.log(LogLevel.INFO, "Resources", pn + " has successfully loaded the resource pack");
 		}
 	}
 
