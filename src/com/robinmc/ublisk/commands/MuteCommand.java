@@ -8,9 +8,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.enums.Perms;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
+import com.robinmc.ublisk.utils.perm.Permission;
+import com.robinmc.ublisk.utils.perm.Perms;
 import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 
@@ -26,7 +27,7 @@ public class MuteCommand implements CommandExecutor {
 		
 		Player player = (Player) sender;
 		
-		if (!(player.hasPermission(Perms.COMMAND_MUTE.getPerm()))){
+		if (!Perms.getPermissionPlayer(player).hasPermission(Permission.COMMAND_MUTE)){
 			player.sendMessage(Message.NO_PERMISSION.get());
 			return true;
 		}

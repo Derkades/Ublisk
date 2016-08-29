@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.enums;
 
+@Deprecated
 public enum Perms {
 	
 	COMMAND_LOG("ublisk.commandlog"),

@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.enums.Loot;
-import com.robinmc.ublisk.enums.Perms;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.Config;
@@ -22,6 +21,8 @@ import com.robinmc.ublisk.utils.inventory.BetterInventory;
 import com.robinmc.ublisk.utils.mob.Mob;
 import com.robinmc.ublisk.utils.mob.MobArea;
 import com.robinmc.ublisk.utils.mob.MobInfo;
+import com.robinmc.ublisk.utils.perm.Permission;
+import com.robinmc.ublisk.utils.perm.Perms;
 import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
@@ -33,7 +34,7 @@ public class Debug implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (sender instanceof Player){
 			Player player = (Player) sender;
-			if (player.hasPermission(Perms.COMMAND_DEBUG.getPerm())){
+			if (Perms.getPermissionPlayer(player).hasPermission(Permission.COMMAND_DEBUG)){
 				if (args.length == 2){
 					if (args[0].equalsIgnoreCase("xp")){
 						int xp = Integer.parseInt(args[1]);
