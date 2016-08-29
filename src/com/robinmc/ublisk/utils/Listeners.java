@@ -11,6 +11,7 @@ import com.robinmc.ublisk.listeners.CreatureSpawn;
 import com.robinmc.ublisk.listeners.EntityDamageByEntity;
 import com.robinmc.ublisk.listeners.EntityDeath;
 import com.robinmc.ublisk.listeners.EntityExplode;
+import com.robinmc.ublisk.listeners.InventoryMoveItem;
 import com.robinmc.ublisk.listeners.NPCInteract;
 import com.robinmc.ublisk.listeners.PlayerCommandPreprocess;
 import com.robinmc.ublisk.listeners.PlayerInteract;
@@ -32,7 +33,7 @@ public class Listeners {
 		register(new EntityDamageByEntity());
 		register(new EntityDeath());
 		register(new EntityExplode());
-		register(new NPCInteract());
+		register(new InventoryMoveItem());
 		register(new PlayerCommandPreprocess());
 		register(new PlayerInteract());
 		register(new PlayerInteractEntity());
