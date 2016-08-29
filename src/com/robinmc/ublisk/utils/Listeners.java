@@ -12,7 +12,6 @@ import com.robinmc.ublisk.listeners.EntityDamageByEntity;
 import com.robinmc.ublisk.listeners.EntityDeath;
 import com.robinmc.ublisk.listeners.EntityExplode;
 import com.robinmc.ublisk.listeners.InventoryMoveItem;
-import com.robinmc.ublisk.listeners.NPCInteract;
 import com.robinmc.ublisk.listeners.PlayerCommandPreprocess;
 import com.robinmc.ublisk.listeners.PlayerInteract;
 import com.robinmc.ublisk.listeners.PlayerInteractEntity;
@@ -22,11 +21,13 @@ import com.robinmc.ublisk.listeners.PlayerQuit;
 import com.robinmc.ublisk.listeners.PlayerResourcePackStatus;
 import com.robinmc.ublisk.listeners.ServerListPing;
 import com.robinmc.ublisk.listeners.SongEnd;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 
 public class Listeners {
 	
 	public static void register(){
-		Console.sendMessage("[Ublisk] Registering listeners...");
+		Logger.log(LogLevel.INFO, "Listeners", "Registering listeners...");
 		register(new AsyncPlayerChat());
 		register(new BreakBlock());
 		register(new CreatureSpawn());
