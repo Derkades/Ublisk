@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.task;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
@@ -24,6 +25,10 @@ public class LifeCrystalInventory implements Task {
 					item.setAmount(life.getLifeCrystals());
 					item.setDisplayName(ChatColor.BLUE + "Life Crystals: " + ChatColor.AQUA + life.getLifeCrystals());
 					item.setLore("You have " + life.getLifeCrystals() + " life crystals");
+					
+					if (player.getGameMode() == GameMode.CREATIVE){
+						item.setMaterial(Material.WOOD_AXE);
+					}
 					
 					PlayerInventory inv = player.getInventory();
 					inv.setItem(8, item.getItemStack());
