@@ -22,7 +22,18 @@ public class Logger {
 	 * @param string A message
 	 */
 	public void log(String string){
-		ChatColor color = logLevel.getColor();
+		ChatColor color = ChatColor.GOLD;
+		
+		if (logLevel == LogLevel.DEBUG){
+			color = ChatColor.WHITE;
+		} else if (logLevel == LogLevel.INFO){
+			color = ChatColor.GREEN;
+		} else if (logLevel == LogLevel.WARNING){
+			color = ChatColor.YELLOW;
+		} else if (logLevel == LogLevel.SEVERE){
+			color = ChatColor.RED;
+		}
+		
 		String msg = color + string;
 		
 		System.out.println(msg);
