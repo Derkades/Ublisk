@@ -10,7 +10,8 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Var;
 
@@ -73,7 +74,7 @@ public enum Loot {
 	}
 	
 	public static void removeLoot(){
-		Console.sendMessage("[Loot] Removed all loot chests!");
+		Logger.log(LogLevel.INFO, "Loot", "Removed all loot chests!");
 		for (Loot loot : Loot.values()){
 			Block block = new Location(Var.world, loot.getX(), loot.getY(), loot.getZ()).getBlock();
 			block.setType(Material.AIR);

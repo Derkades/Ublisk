@@ -22,7 +22,8 @@ import com.robinmc.ublisk.task.UpdateBackpackName;
 import com.robinmc.ublisk.task.UpdateDoubleExpBar;
 import com.robinmc.ublisk.task.UpdateExp;
 import com.robinmc.ublisk.task.UpdateFriendsHealthBar;
-import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 
 public enum Tasks {
 	
@@ -54,7 +55,7 @@ public enum Tasks {
 	}
 	
 	public static void start(int delay){
-		Console.sendMessage("[Tasks] Starting all tasks...");
+		Logger.log(LogLevel.INFO, "Tasks", "Starting all tasks");
 		for (final Tasks tasks : Tasks.values()){
 			delay = delay + 2;
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
@@ -84,9 +85,9 @@ public enum Tasks {
 					String taskName = task.getClass().getSimpleName();
 					
 					if (success){
-						Console.sendMessage("[Tasks] " + taskName + " has been successfully started!");
+						Logger.log(LogLevel.INFO, "Tasks", taskName + " has been successfully started!");
 					} else {
-						Console.sendMessage("[Tasks] An error occured while trying to start " + taskName + "!");
+						Logger.log(LogLevel.SEVERE, "Tasks", "An error occured while trying to start " + taskName + "!");
 					}
 				}
 			}, delay);

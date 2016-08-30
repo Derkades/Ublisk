@@ -1,14 +1,15 @@
 package com.robinmc.ublisk;
 
-import com.robinmc.ublisk.enums.Tracker;
-import com.robinmc.ublisk.utils.Console;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import com.robinmc.ublisk.enums.Tracker;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 
 public class HashMaps {
 
@@ -45,7 +46,7 @@ public class HashMaps {
 	}
 
 	public static void addPlayerToMaps(Player player){
-		Console.sendMessage("[HashMaps] " + player.getName() + "'s maps have been reset");
+		Logger.log(LogLevel.INFO, "HashMaps", player.getName() + "'s maps have been reset");
 		UUID uuid = player.getUniqueId();
 		afk.put(uuid, false);
 		cooldownNpc.put(uuid, false);

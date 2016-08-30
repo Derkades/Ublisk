@@ -9,8 +9,9 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Exp;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.scheduler.Task;
 import com.robinmc.ublisk.utils.sql.MySQL;
 
@@ -24,7 +25,7 @@ public class UpdateExp implements Task {
 		        	MySQL.openConnection();
 		        	for (Player player : Bukkit.getOnlinePlayers()){
 		        		if (player.getGameMode() == GameMode.ADVENTURE){
-			        		Console.sendMessage("[MobExp] Updating XP in database for player " + player.getName());
+			        		Logger.log(LogLevel.INFO, "XP", "Updating XP in database for player " + player.getName());
 			        		
 			        		PreparedStatement sql2 = MySQL.prepareStatement("SELECT * FROM `exp` WHERE uuid=?;");
 			    			sql2.setString(1, player.getUniqueId().toString());

@@ -13,11 +13,12 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.enums.Setting;
-import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Friends;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.NotSetException;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.variable.Message;
@@ -57,7 +58,7 @@ public class FriendsMenu {
 	}, Main.getInstance());
 	
 	public static void open(Player player){
-		Console.sendMessage("[Menus] FriendsMenu has been opened for " + player.getName());
+		Logger.log(LogLevel.INFO, "Menu", "FriendsMenu has been opened for " + player.getName());
 		fillMenu(player);
 		menu.open(player);
 	}
@@ -95,7 +96,7 @@ public class FriendsMenu {
 		int i = 0;
 		for (String string : Friends.get(player)){
 			String pn = UUIDUtils.getNameFromIdString(string);
-			Console.sendMessage(player.getName() + "      "  + string + "            " + pn);
+			Logger.log(LogLevel.DEBUG, "Friends", player.getName() + "      "  + string + "            " + pn);
 			
 			ItemStack head = new ItemStack(Material.SKULL_ITEM, 1);
 			head.setDurability((short) 3); //Durability value 3 is to get a human head instead of a skeleton head

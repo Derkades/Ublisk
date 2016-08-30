@@ -8,8 +8,9 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.enums.Music;
 import com.robinmc.ublisk.enums.Setting;
 import com.robinmc.ublisk.utils.Config;
-import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.exception.NotSetException;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.variable.Message;
@@ -58,7 +59,7 @@ public class MainMenu {
 	}, Main.getInstance());
 	
 	public static void open(Player player){
-		Console.sendMessage("[Menus] MainMenu has been opened for " + player.getName());
+		Logger.log(LogLevel.INFO, "Menu", "MainMenu has been opened for " + player.getName());
 		fillMenu();
 		menu.open(player);
 	}
