@@ -14,9 +14,7 @@ public enum MobArea {
 	//MobInfo: (EntityType) entity type, (int) level, (double) health, (int) xp, (String) name
 	INTRODUCTION(new Area(100, 22, 20, -90), 
 			new MobInfo(EntityType.SHEEP, 1, 1.5, 5, "Sheep"), 
-			new MobInfo(EntityType.CHICKEN, 1, 0.5, 2, "Chicken")),
-	FAGGOT_LAND(new Area(498, 469, 97, 65),
-			new MobInfo(EntityType.SHEEP, 69, 69.5, 100, "MEGA FAGGOT"));
+			new MobInfo(EntityType.CHICKEN, 1, 0.5, 2, "Chicken"));
 	
 	private Area area;
 	private List<MobInfo> info;
