@@ -7,15 +7,15 @@ import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 
 public enum PermissionGroup {
 	
-	//TODO: Proper prefixes
-	DEFAULT("Default", "Default: "),
-	MODERATOR("Moderator", "Moderator: ",
+	DEFAULT("Default", "&7&lMember&8:&6&l"),
+	BUILDER("Builder", "&c&lBuilder&8:&6&l"),
+	MODERATOR("Moderator", "&e&lModerator&8:&6&l",
 			Permission.COMMAND_MUTE),
 	ADMIN("Admin", "Admin: ", 
 			Permission.COMMAND_DEBUG,
 			Permission.COMMAND_MUTE,
 			Permission.COMMANDLOG),
-	OWNER("Owner", "Owner: ", 
+	OWNER("Owner", "&2&lOwner&8:&6&l", 
 			Permission.COMMAND_DEBUG, 
 			Permission.COMMAND_MUTE, 
 			Permission.COMMANDLOG
@@ -36,7 +36,7 @@ public enum PermissionGroup {
 	}
 	
 	public String getPrefix(){
-		return prefix;
+		return prefix.replace("&", "§");
 	}
 	
 	public List<Permission> getPermissions(){
