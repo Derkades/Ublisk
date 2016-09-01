@@ -15,8 +15,6 @@ import com.robinmc.ublisk.utils.perm.Perms;
 import com.robinmc.ublisk.utils.variable.Message;
 
 import net.md_5.bungee.api.ChatColor;
-import ru.tehkode.permissions.PermissionUser;
-import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 public class AsyncPlayerChat implements Listener {
 	
@@ -40,9 +38,6 @@ public class AsyncPlayerChat implements Listener {
 			chatColor = ChatColor.GRAY;
 		}
 		
-		//PermissionUser pu = PermissionsEx.getUser(player);
-		//@SuppressWarnings("deprecation")
-		//String prefix = pu.getGroups()[0].getPrefix().replace("&", "§");
 		int level = Exp.getLevel(player);
 		String prefix = Perms.getPermissionPlayer(player).getGroup().getPrefix();
 		String format = DARK_GRAY + "[" + GRAY + level + DARK_GRAY + "] " + prefix + " " + player.getName() + DARK_GRAY + ": " + chatColor + event.getMessage();
