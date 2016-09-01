@@ -3,7 +3,7 @@ main: com.robinmc.ublisk.Main
 version: 6.9
 author: RobinMCDev
 description: Ublisk plugin
-depend: [NoteBlockAPI, ActionBarAPI, ResourcePackApi, BossBarAPI, ItemNBTAPI, PermissionsEx]
+depend: [NoteBlockAPI, ActionBarAPI, ResourcePackApi, BossBarAPI, ItemNBTAPI]
 
 commands:
     menu:
