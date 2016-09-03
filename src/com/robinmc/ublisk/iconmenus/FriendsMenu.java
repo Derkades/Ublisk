@@ -12,13 +12,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.enums.Setting;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Friends;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.settings.Setting;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.variable.Message;
