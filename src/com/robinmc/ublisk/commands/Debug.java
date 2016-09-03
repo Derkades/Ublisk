@@ -10,10 +10,12 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.enums.Loot;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.Config;
+import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.LifeCrystalPlayer;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
@@ -27,6 +29,7 @@ import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.perm.PermissionPlayer;
 import com.robinmc.ublisk.utils.perm.Perms;
 import com.robinmc.ublisk.utils.third_party.Lag;
+import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
 import com.robinmc.ublisk.weapon.SwordsmanWeapon;
@@ -154,6 +157,27 @@ public class Debug implements CommandExecutor {
 							new BetterInventory(player).addWeapon(weapon.getWeapon());
 						}
 						return true;
+					} else if (args[0].equals("restart")){
+						Bukkit.broadcastMessage(CMessage.serverRestartingWarningMinutes(1));
+						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+							public void run(){
+								Bukkit.broadcastMessage(CMessage.serverRestartingWarningSeconds(30));
+								Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+									public void run(){
+										Bukkit.broadcastMessage(CMessage.serverRestartingWarningSeconds(10));
+										Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+											public void run(){
+												Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+													public void run(){
+														Bukkit.getServer().shutdown();
+													}
+												}, 5*20);
+											}
+										}, 5*20);
+									}
+								}, 20*20);
+							}
+						}, 30*20);
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
 						return true;

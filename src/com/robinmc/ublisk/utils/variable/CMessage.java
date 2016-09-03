@@ -126,5 +126,28 @@ public class CMessage { //If you're wondering "Why CMessage?", it's stands for C
 	public static String lootSpawned(int x, int y, int z){
 		return prefix("Loot") + "A loot chest has been spawned at " + GOLD + "" + BOLD + x + " " + y + " " + z + RESET + YELLOW + "!";
 	}
+	
+	public static String serverRestartingWarningSeconds(int seconds){
+		String suffix;
+		
+		if (seconds == 1){
+			suffix = "second";
+		} else {
+			suffix = "seconds";
+		}
+		
+		return prefix + "The server will restart in " + seconds + " " + suffix + "!";
+	}
+	
+	public static String serverRestartingWarningMinutes(int minutes){
+		String suffix;
+		if (minutes == 1){
+			suffix = "minute";
+		} else {
+			suffix = "minutes";
+		}
+		
+		return prefix + "The server will restart in " + minutes + " " + suffix + "!";
+	}
 
 }
