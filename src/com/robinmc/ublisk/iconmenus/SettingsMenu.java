@@ -10,6 +10,7 @@ import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.java.MiscUtils;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 
@@ -21,7 +22,7 @@ public class SettingsMenu {
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
 			Setting setting = Setting.fromName(name);
-			Player player = event.getPlayer();
+			final Player player = event.getPlayer();
 			
 			//TODO: Message
 			
@@ -31,6 +32,12 @@ public class SettingsMenu {
 			} catch (NotSetException e) {
 				setting.put(player, false);
 			}
+			
+			Scheduler.runTaskLater(1, new Runnable(){
+				public void run(){
+					SettingsMenu.open(player);
+				}
+			});
 		}
 	}, Main.getInstance());
 	
