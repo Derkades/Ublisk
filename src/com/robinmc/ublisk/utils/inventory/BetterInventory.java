@@ -78,6 +78,11 @@ public class BetterInventory {
 		return hasItems;
 	}
 	
+	public void clear(){
+		for (ItemStack item : inv.getContents()) inv.remove(item);
+		for (ItemStack item : inv.getArmorContents()) inv.remove(item);
+	}
+	
 	public void addWeapon(Weapon weapon){
 		Item item = new Item(weapon.getType().getMaterial());
 		item.setItemInfo(weapon.getItemInfo());
