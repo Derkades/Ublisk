@@ -15,7 +15,6 @@ import com.robinmc.ublisk.enums.Loot;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.Config;
-import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.LifeCrystalPlayer;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
@@ -178,6 +177,7 @@ public class Debug implements CommandExecutor {
 								}, 20*20);
 							}
 						}, 30*20);
+						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
 						return true;
