@@ -45,5 +45,14 @@ public enum Setting {
 	public void put(Player player, boolean bool){
 		Config.set("settings." + s + "." + player.getUniqueId(), bool);
 	}
+	
+	public static Setting fromName(String name){
+		for (Setting setting : Setting.values()){
+			if (name.equalsIgnoreCase(setting.getName())){
+				return setting;
+			}
+		}
+		throw new IllegalArgumentException();
+	}
 
 }
