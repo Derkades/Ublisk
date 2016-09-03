@@ -13,6 +13,7 @@ import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
+import com.robinmc.ublisk.utils.variable.Message;
 
 public class SettingsMenu {
 
@@ -20,15 +21,22 @@ public class SettingsMenu {
 
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
-			String name = event.getName().toLowerCase();
+			String name = event.getName();
 			Setting setting = Setting.fromName(name);
 			final Player player = event.getPlayer();
-			
-			//TODO: Message
-			
+		
 			try {
 				//If setting is set to true, set to false and if set to false, set to true
 				setting.put(player, MiscUtils.invertBoolean(setting.get(player)));
+				
+				String enabledDisabled;
+				if (setting.get(player)){
+					enabledDisabled = "enabled";
+				} else {
+					enabledDisabled = "disabled";
+				}
+				
+				player.sendMessage(Message.prefix("Settings") + name + " has been " + enabledDisabled + ".");
 			} catch (NotSetException e) {
 				setting.put(player, false);
 			}
