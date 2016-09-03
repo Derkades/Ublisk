@@ -28,6 +28,18 @@ public class BetterInventory {
 		this.inv = qp.getBukkitInventory();
 	}
 	
+	public static BetterInventory getInventory(Player player){
+		return new BetterInventory(player);
+	}
+	
+	public static BetterInventory getInventory(PlayerInventory inv){
+		return new BetterInventory(inv);
+	}
+	
+	public static BetterInventory getInventory(QuestParticipant qp){
+		return new BetterInventory(qp.getBukkitInventory());
+	}
+	
 	public PlayerInventory getBukkitInventory(){
 		return inv;
 	}
