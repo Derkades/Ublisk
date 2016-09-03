@@ -27,6 +27,7 @@ import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.perm.PermissionPlayer;
 import com.robinmc.ublisk.utils.perm.Perms;
+import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
@@ -158,25 +159,25 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("restart")){
 						Bukkit.broadcastMessage(CMessage.serverRestartingWarningMinutes(1));
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+						Scheduler.runTaskLater(30*20, new Runnable(){
 							public void run(){
 								Bukkit.broadcastMessage(CMessage.serverRestartingWarningSeconds(30));
-								Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+								Scheduler.runTaskLater(20*20, new Runnable(){
 									public void run(){
 										Bukkit.broadcastMessage(CMessage.serverRestartingWarningSeconds(10));
-										Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+										Scheduler.runTaskLater(5*20, new Runnable(){
 											public void run(){
-												Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+												Scheduler.runTaskLater(5*20, new Runnable(){
 													public void run(){
 														Bukkit.getServer().shutdown();
 													}
-												}, 5*20);
+												});
 											}
-										}, 5*20);
+										});
 									}
-								}, 20*20);
+								});
 							}
-						}, 30*20);
+						});
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
