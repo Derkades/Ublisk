@@ -5,12 +5,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.enums.Music;
-import com.robinmc.ublisk.enums.Setting;
-import com.robinmc.ublisk.utils.Config;
-import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.variable.Message;
@@ -23,6 +20,8 @@ public class MainMenu {
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
 			final Player player = event.getPlayer();
+			Logger.log(LogLevel.DEBUG, name);
+			/*
 			if (name.contains("music")){
 					try {
 						if (Setting.PLAY_MUSIC.get(player)){
@@ -52,6 +51,13 @@ public class MainMenu {
 					Setting.PM_SOUND.put(player, true);
 					player.sendMessage("enabled");
 				}
+				*/
+			if (name.equals("settings")){
+				Scheduler.runTaskLater(5, new Runnable(){ 
+					public void run(){ 
+						SettingsMenu.open(player); 
+					}
+				});
 			} else {
 				player.sendMessage(Message.ERROR_MENU.get());
 			}
@@ -65,8 +71,9 @@ public class MainMenu {
 	}
 	
 	private static void fillMenu(){
-		menu.setOption(0, new ItemStack(Material.JUKEBOX), "Toggle music");
-		menu.setOption(1, new ItemStack(Material.JUKEBOX), "Toggle PM sounds");
+		//menu.setOption(0, new ItemStack(Material.JUKEBOX), "Toggle music");
+		//menu.setOption(1, new ItemStack(Material.JUKEBOX), "Toggle PM sounds");
+		menu.setOption(0, new ItemStack(Material.BRICK), "Settings", "Toggle various options on and off");
 	}
 
 }

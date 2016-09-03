@@ -23,6 +23,8 @@ public class SettingsMenu {
 			Setting setting = Setting.fromName(name);
 			Player player = event.getPlayer();
 			
+			//TODO: Message
+			
 			try {
 				//If setting is set to true, set to false and if set to false, set to true
 				setting.put(player, MiscUtils.invertBoolean(setting.get(player)));
