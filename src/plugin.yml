@@ -12,6 +12,7 @@ commands:
     debug:
         description: Debugging command
         usage: </command> [args] [args]
+        aliases: [ublisk]
     help:
         description: Provides help
         usage: </command> [catagory]
