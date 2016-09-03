@@ -41,7 +41,10 @@ public enum Message {
 	CANT_EAT(prefix() + RED + "Eating food is not allowed on this server. Please use a recycler"),
 	ENTITIES_REMOVED(prefix() + YELLOW + "All mobs and items have been cleared!"),
 	
-	DOUBLE_XP_COOLDOWN(prefix() + RED + "Hi there, person who tried to activate double xp, there's a cooldown to prevent people like you from abusing the system!");
+	DOUBLE_XP_COOLDOWN(prefix() + RED + "Hi there, person who tried to activate double xp, there's a cooldown to prevent people like you from abusing the system!"),
+	
+	BUILDER_MODE_ACTIVATED(prefix() + YELLOW + "You are now in builder mode. When you're done, simply type /builder again to exit out of builder mode and get your inventory back."),
+	BUILDER_MODE_DEACTIVATED(prefix() + YELLOW + "You are no longer in builder mode. Enjoy playing!");
 	
 	private String msg;
 	

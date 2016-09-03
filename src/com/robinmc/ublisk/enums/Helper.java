@@ -1,5 +1,14 @@
 package com.robinmc.ublisk.enums;
 
+import java.io.File;
+
+import org.bukkit.GameMode;
+import org.bukkit.entity.Player;
+
+import com.robinmc.ublisk.utils.inventory.BetterInventory;
+import com.robinmc.ublisk.utils.inventory.InvUtils;
+import com.robinmc.ublisk.utils.variable.Message;
+
 public enum Helper {
 	
 	ROBINMC("RobinMC", "https://goo.gl/Aay9Ry", "http://robinmc.com/"),
@@ -53,6 +62,24 @@ public enum Helper {
 			}
 		}
 		return null;
+	}
+	
+	public static void enableBuilderMode(Player player){
+		InvUtils.saveIntentory(player); //Save inventory to file
+		BetterInventory.getInventory(player).clear();		
+		player.setGameMode(GameMode.CREATIVE);		
+		player.sendMessage(Message.BUILDER_MODE_ACTIVATED.get());
+	}
+	
+	public static void disableBuilderMode(Player player){
+		BetterInventory.getInventory(player).clear();
+		InvUtils.restoreInventory(player);
+		player.setGameMode(GameMode.ADVENTURE);
+		player.sendMessage(Message.BUILDER_MODE_DEACTIVATED.get());
+	}
+	
+	public static boolean builderModeEnabled(Player player){
+		return new File(InvUtils.path, player.getName()+".yml").exists();
 	}
 
 }

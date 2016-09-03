@@ -33,3 +33,5 @@ commands:
         aliases: [holdyourbekpls]
     msg:
         aliases: [w,write,tell,pm,mail,m,msg,message,privatem,pmessage,t]
+    builder:
+        usage: </command>

@@ -3,7 +3,6 @@ package com.robinmc.ublisk.listeners;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,6 +11,7 @@ import org.inventivetalent.rpapi.ResourcePackAPI;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.enums.Helper;
 import com.robinmc.ublisk.enums.Music;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.iconmenus.ClassMenu;
@@ -19,6 +19,8 @@ import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.UUIDUtils;
+import com.robinmc.ublisk.utils.perm.PermissionGroup;
+import com.robinmc.ublisk.utils.perm.Perms;
 import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
@@ -30,10 +32,6 @@ public class PlayerJoin implements Listener {
 		final Player player = event.getPlayer();
 		String pn = player.getName();
 		UUID uuid = player.getUniqueId();
-		
-		if (!player.isOp()){
-			player.setGameMode(GameMode.ADVENTURE); //If player is not opped, set player gamemode to adventure
-		}
 		
 		Console.sendCommand("scoreboard teams join all " + pn); //Join team "all". This team disables 1.9 collision
 		
@@ -76,5 +74,14 @@ public class PlayerJoin implements Listener {
         Config.set("data.ip." + uuid, ip);
         
         Exp.refresh(player);
+        
+        //If the player is not a Builder, Moderator or Owner disable builder mode to prevent griefing
+        PermissionGroup group = Perms.getPermissionPlayer(player).getGroup();
+        if (!(	group == PermissionGroup.BUILDER ||
+        		group == PermissionGroup.MODERATOR ||
+        		group == PermissionGroup.OWNER
+        		)){
+        	Helper.disableBuilderMode(player);
+        }
 	}
 }

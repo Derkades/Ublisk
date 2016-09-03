@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.commands.Afk;
+import com.robinmc.ublisk.commands.Builder;
 import com.robinmc.ublisk.commands.ClassCommand;
 import com.robinmc.ublisk.commands.Credits;
 import com.robinmc.ublisk.commands.Debug;
@@ -21,6 +22,7 @@ import com.robinmc.ublisk.utils.logging.Logger;
 public enum Command {
 	
 	AFK("afk", new Afk()),
+	BUILDER("builder", new Builder()),
 	CLASS("class", new ClassCommand()),
 	CREDITS("credits", new Credits()),
 	DEBUG("debug", new Debug()),
