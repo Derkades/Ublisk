@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.utils.MessageTarget;
+import com.robinmc.ublisk.utils.chat.MessageTarget;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class ReplyCommand implements CommandExecutor {
