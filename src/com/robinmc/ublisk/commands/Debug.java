@@ -16,6 +16,7 @@ import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.LifeCrystalPlayer;
+import com.robinmc.ublisk.utils.Time;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
@@ -177,6 +178,14 @@ public class Debug implements CommandExecutor {
 								});
 							}
 						});
+						return true;
+					} else if (args[0].equals("day")){
+						while (true){
+							if (Time.isDay()){
+								break;
+							}
+							Time.add(100);
+						}
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
