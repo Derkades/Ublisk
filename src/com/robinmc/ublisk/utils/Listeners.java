@@ -21,6 +21,7 @@ import com.robinmc.ublisk.listeners.PlayerQuit;
 import com.robinmc.ublisk.listeners.PlayerResourcePackStatus;
 import com.robinmc.ublisk.listeners.ServerListPing;
 import com.robinmc.ublisk.listeners.SongEnd;
+import com.robinmc.ublisk.listeners.Votifier;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 
@@ -44,6 +45,7 @@ public class Listeners {
 		register(new PlayerResourcePackStatus());
 		register(new ServerListPing());
 		register(new SongEnd());
+		register(new Votifier());
 	}
 	
 	private static void register(Listener listener){

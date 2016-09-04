@@ -149,5 +149,9 @@ public class CMessage { //If you're wondering "Why CMessage?", it's stands for C
 		
 		return prefix + "The server will restart in " + minutes + " " + suffix + "!";
 	}
+	
+	public static String vote(String playerName, int points){
+		return prefix + playerName + " has voted and got " + points + " points! Vote at [link here]"; // TODO Voting link
+	}
 
 }

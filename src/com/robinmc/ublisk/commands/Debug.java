@@ -17,6 +17,7 @@ import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.LifeCrystalPlayer;
 import com.robinmc.ublisk.utils.Time;
+import com.robinmc.ublisk.utils.Voting;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
@@ -79,6 +80,10 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("life")){
 						int life = Integer.parseInt(args[1]);
 						new LifeCrystalPlayer(player).setLifeCrystals(life);
+						return true;
+					} else if (args[0].equals("vote")){
+						Player target = Bukkit.getPlayer(args[1]);
+						player.sendMessage("Voting points: " + Voting.getVotingPoints(target));
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
