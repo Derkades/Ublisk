@@ -28,6 +28,11 @@ public class Exp {
 	 */
 	public static void set(OfflinePlayer player, int n){
 		Config.set("xp." + player.getUniqueId(), n);
+		
+		if (player.isOnline()){
+			Player online = (Player) player;
+			refresh(online);
+		}
 	}
 	
 	/**
@@ -35,8 +40,8 @@ public class Exp {
 	 * @param player
 	 * @param Number of experience points
 	 */
-	public static void add(Player player, int n){
-		Config.set("xp." + player.getUniqueId(), n + get(player));
+	public static void add(Player player, int i){
+		set(player, get(player) + i);
 		refresh(player);
 	}
 	
