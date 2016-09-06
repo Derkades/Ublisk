@@ -1,19 +1,7 @@
 package mkremins.fanciful;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonWriter;
-import com.robinmc.ublisk.utils.chat.JSON;
+import static mkremins.fanciful.TextualComponent.rawText;
 
-import net.amoebaman.util.ArrayWrapper;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.bukkit.configuration.serialization.ConfigurationSerialization;
-import org.bukkit.entity.Player;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -24,7 +12,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
-import static mkremins.fanciful.TextualComponent.rawText;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.configuration.serialization.ConfigurationSerialization;
+import org.bukkit.entity.Player;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonWriter;
+import com.robinmc.ublisk.utils.chat.JSON;
+
+import net.amoebaman.util.ArrayWrapper;
 
 /**
  * Represents a formattable message. Such messages can use elements such as colors, formatting codes, hover and click data, and other features provided by the vanilla Minecraft <a href="http://minecraft.gamepedia.com/Tellraw#Raw_JSON_Text">JSON message formatter</a>.
