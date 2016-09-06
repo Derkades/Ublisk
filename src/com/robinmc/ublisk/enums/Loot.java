@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.Chest;
 import org.bukkit.entity.EntityType;
 
 import com.robinmc.ublisk.Main;
@@ -79,6 +80,18 @@ public enum Loot {
 			Block block = new Location(Var.world, loot.getX(), loot.getY(), loot.getZ()).getBlock();
 			block.setType(Material.AIR);
 		}
+	}
+	
+	public static boolean isLoot(Chest chest){
+		Location loc = chest.getLocation();
+		for (Loot loot : Loot.values()){
+			if (	loot.getX() == loc.getBlockX() &&
+					loot.getY() == loc.getBlockY() &&
+					loot.getZ() == loc.getBlockZ()){
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
