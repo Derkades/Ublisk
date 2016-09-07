@@ -22,7 +22,6 @@ public class SettingsMenu {
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName();
-			Setting setting = Setting.fromName(name);
 			final Player player = event.getPlayer();
 		
 			if (name.equalsIgnoreCase("back")){
@@ -33,6 +32,8 @@ public class SettingsMenu {
 				});
 				return;
 			}
+			
+			Setting setting = Setting.fromName(name);
 			
 			try {
 				//If setting is set to true, set to false and if set to false, set to true
