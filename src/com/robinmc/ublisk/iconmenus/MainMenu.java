@@ -54,7 +54,7 @@ public class MainMenu {
 	private static void fillMenu(Player player){
 		menu.setOption(0, new ItemStack(Material.REDSTONE_COMPARATOR), "Settings", "Toggle various options on and off");
 		menu.setOption(1, new ItemStack(Material.PAPER), "Voting", "blah blah blah"); // TODO Lore
-		ItemStack skull = new ItemStack(Material.SKULL);
+		ItemStack skull = new ItemStack(Material.SKULL_ITEM);
 		skull.setDurability((short) 3);
 		SkullMeta meta = (SkullMeta) skull.getItemMeta();
 		meta.setOwner(player.getName());
