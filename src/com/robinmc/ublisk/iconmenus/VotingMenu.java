@@ -24,7 +24,11 @@ public class VotingMenu {
 				if (Voting.isPlayerOpeningBox()){
 					player.sendMessage("someone is already opening box"); // TODO Proper message
 					event.setWillDestroy(false);
+				} else if (!Voting.hasVotingPoints(player, 3)){
+					player.sendMessage("not enough points"); // TODO Proper message
+					event.setWillDestroy(false);
 				} else {
+					Voting.removeVotingPoints(player, 3);
 					Voting.openVotingBox(player);
 				}
 			}
