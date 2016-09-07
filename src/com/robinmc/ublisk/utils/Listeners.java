@@ -12,7 +12,7 @@ import com.robinmc.ublisk.listeners.EntityDamageByEntity;
 import com.robinmc.ublisk.listeners.EntityDeath;
 import com.robinmc.ublisk.listeners.EntityExplode;
 import com.robinmc.ublisk.listeners.InventoryClose;
-import com.robinmc.ublisk.listeners.InventoryMoveItem;
+import com.robinmc.ublisk.listeners.InventoryClick;
 import com.robinmc.ublisk.listeners.PlayerCommandPreprocess;
 import com.robinmc.ublisk.listeners.PlayerInteract;
 import com.robinmc.ublisk.listeners.PlayerInteractEntity;
@@ -37,7 +37,7 @@ public class Listeners {
 		register(new EntityDeath());
 		register(new EntityExplode());
 		register(new InventoryClose());
-		register(new InventoryMoveItem());
+		register(new InventoryClick());
 		register(new PlayerCommandPreprocess());
 		register(new PlayerInteract());
 		register(new PlayerInteractEntity());
