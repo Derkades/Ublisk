@@ -31,6 +31,7 @@ public class SettingsMenu {
 						MainMenu.open(player);
 					}
 				});
+				return;
 			}
 			
 			try {
