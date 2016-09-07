@@ -20,7 +20,6 @@ public class MainMenu {
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
 			final Player player = event.getPlayer();
-			Logger.log(LogLevel.DEBUG, name);
 			/*
 			if (name.contains("music")){
 					try {
