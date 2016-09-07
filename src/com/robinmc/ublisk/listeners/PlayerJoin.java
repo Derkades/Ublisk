@@ -3,10 +3,12 @@ package com.robinmc.ublisk.listeners;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.PlayerInventory;
 import org.inventivetalent.rpapi.ResourcePackAPI;
 
 import com.robinmc.ublisk.HashMaps;
@@ -19,11 +21,14 @@ import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.UUIDUtils;
+import com.robinmc.ublisk.utils.inventory.item.Item;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.perm.Perms;
 import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class PlayerJoin implements Listener {
 	
@@ -82,6 +87,13 @@ public class PlayerJoin implements Listener {
         		group == PermissionGroup.OWNER
         		)){
         	Helper.disableBuilderMode(player);
+        }
+        
+        PlayerInventory inv = player.getInventory();
+        if (!inv.contains(Material.CHEST)){
+        	Item item = new Item(Material.CHEST);
+        	item.setName(ChatColor.RESET + "" + ChatColor.BLUE + "" + ChatColor.BOLD + "Menu");
+        	inv.setItem(7, item.getItemStack());
         }
 	}
 }
