@@ -20,37 +20,6 @@ public class MainMenu {
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
 			final Player player = event.getPlayer();
-			/*
-			if (name.contains("music")){
-					try {
-						if (Setting.PLAY_MUSIC.get(player)){
-							Setting.PLAY_MUSIC.put(player, false);
-							player.sendMessage(Message.MUSIC_DISABLED.get());
-						} else {
-							Setting.PLAY_MUSIC.put(player, true);
-							player.sendMessage(Message.MUSIC_ENABLED.get());
-							String town = Config.getString("last-town." + player.getUniqueId());
-						    Music.playSong(player, town);
-						}
-					} catch (NotSetException e) {
-						player.sendMessage(Message.MUSIC_ENABLED.get());
-						Setting.PLAY_MUSIC.put(player, true);
-					}
-			} else if (name.contains("pm")){
-				try {
-					if (Setting.PM_SOUND.get(player)){
-						//TODO: Message for disabling  and enabling PM sound
-						player.sendMessage("disabled");
-						Setting.PM_SOUND.put(player, false);
-					} else {
-						player.sendMessage("enabled");
-						Setting.PM_SOUND.put(player, true);
-					}
-				} catch (NotSetException e) {
-					Setting.PM_SOUND.put(player, true);
-					player.sendMessage("enabled");
-				}
-				*/
 			if (name.equals("settings")){
 				Scheduler.runTaskLater(5, new Runnable(){ 
 					public void run(){ 
