@@ -36,7 +36,7 @@ public class VotingMenu {
 	}, Main.getInstance());
 	
 	public static void open(Player player){
-		Logger.log(LogLevel.INFO, "Menu", "ClassMenu has been opened for " + player.getName());
+		Logger.log(LogLevel.INFO, "Menu", "Voting has been opened for " + player.getName());
 		fillMenu(player);
 		menu.open(player);
 	}
