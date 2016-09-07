@@ -27,20 +27,33 @@ public class Logger {
 		ChatColor color;
 		
 		switch (logLevel){
-		case DEBUG: color = ChatColor.WHITE;
-		case INFO: color = ChatColor.GREEN;
-		case WARNING: color = ChatColor.YELLOW;
-		case SEVERE: color = ChatColor.RED;
-		default: color = ChatColor.GOLD;
+		case DEBUG: 
+			color = ChatColor.WHITE;
+			break;
+		case INFO: 
+			color = ChatColor.GREEN;
+			break;
+		case WARNING: 
+			color = ChatColor.YELLOW;
+			break;
+		case SEVERE: 
+			color = ChatColor.RED;
+			break;
+		default: 
+			color = ChatColor.GOLD;
+			break;
 		}
 		
 		switch (logLevel){
 		case WARNING:
 			Bukkit.getLogger().log(Level.WARNING, string);
+			break;
 		case SEVERE:
 			Bukkit.getLogger().log(Level.WARNING, string);
+			break;
 		default:
 			Bukkit.getLogger().log(Level.INFO, string);
+			break;
 		}
 
 		String msg = color + string;
