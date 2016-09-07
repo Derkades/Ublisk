@@ -1,13 +1,13 @@
 package com.robinmc.ublisk.utils.variable;
 
+import static org.bukkit.ChatColor.AQUA;
 import static org.bukkit.ChatColor.BOLD;
+import static org.bukkit.ChatColor.DARK_AQUA;
 import static org.bukkit.ChatColor.GOLD;
 import static org.bukkit.ChatColor.GRAY;
 import static org.bukkit.ChatColor.RED;
 import static org.bukkit.ChatColor.RESET;
 import static org.bukkit.ChatColor.YELLOW;
-import static org.bukkit.ChatColor.DARK_AQUA;
-import static org.bukkit.ChatColor.AQUA;
 
 public class CMessage { //If you're wondering "Why CMessage?", it's stands for Complicated Message. By this I mean a message that needs additional input
 	
