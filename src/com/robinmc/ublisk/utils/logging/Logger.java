@@ -1,5 +1,7 @@
 package com.robinmc.ublisk.utils.logging;
 
+import java.util.logging.Level;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -22,21 +24,26 @@ public class Logger {
 	 * @param string A message
 	 */
 	public void log(String string){
-		ChatColor color = ChatColor.GOLD;
+		ChatColor color;
 		
-		if (logLevel == LogLevel.DEBUG){
-			color = ChatColor.WHITE;
-		} else if (logLevel == LogLevel.INFO){
-			color = ChatColor.GREEN;
-		} else if (logLevel == LogLevel.WARNING){
-			color = ChatColor.YELLOW;
-		} else if (logLevel == LogLevel.SEVERE){
-			color = ChatColor.RED;
+		switch (logLevel){
+		case DEBUG: color = ChatColor.WHITE;
+		case INFO: color = ChatColor.GREEN;
+		case WARNING: color = ChatColor.YELLOW;
+		case SEVERE: color = ChatColor.RED;
+		default: color = ChatColor.GOLD;
 		}
 		
+		switch (logLevel){
+		case WARNING:
+			Bukkit.getLogger().log(Level.WARNING, string);
+		case SEVERE:
+			Bukkit.getLogger().log(Level.WARNING, string);
+		default:
+			Bukkit.getLogger().log(Level.INFO, string);
+		}
+
 		String msg = color + string;
-		
-		System.out.println(msg);
 		
 		for (Player player : Bukkit.getOnlinePlayers()){
 			if (player.isOp()){
