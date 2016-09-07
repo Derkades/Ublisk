@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.utils.third_party;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -18,10 +19,12 @@ import org.bukkit.plugin.Plugin;
 
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
+
+import net.md_5.bungee.api.ChatColor;
  
 public class IconMenu implements Listener {
  
-	//Please note that this is slightly modified by me
+	/* MODIFIFACTIONS HAVE BEEN MADE */
 	
     private String name;
     private int size;
@@ -166,11 +169,15 @@ public class IconMenu implements Listener {
         	return friend;
         }
     }
- 
+    
     private ItemStack setItemNameAndLore(ItemStack item, String name, String[] lore) {
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName(name);
-        im.setLore(Arrays.asList(lore));
+        im.setDisplayName(ChatColor.RESET + "" + ChatColor.DARK_AQUA + name);
+        List<String> list = new ArrayList<String>();
+        for (String s : lore){
+        	list.add(ChatColor.RESET + "" + ChatColor.AQUA + s);
+        }
+        im.setLore(list);
         item.setItemMeta(im);
         return item;
     }
