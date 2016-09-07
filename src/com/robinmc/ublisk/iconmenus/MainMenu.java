@@ -58,6 +58,12 @@ public class MainMenu {
 						SettingsMenu.open(player); 
 					}
 				});
+			} else if (name.equals("voting")){
+				Scheduler.runTaskLater(5, new Runnable(){ 
+					public void run(){ 
+						VotingMenu.open(player);
+					}
+				});
 			} else {
 				player.sendMessage(Message.ERROR_MENU.get());
 			}
@@ -73,7 +79,8 @@ public class MainMenu {
 	private static void fillMenu(){
 		//menu.setOption(0, new ItemStack(Material.JUKEBOX), "Toggle music");
 		//menu.setOption(1, new ItemStack(Material.JUKEBOX), "Toggle PM sounds");
-		menu.setOption(0, new ItemStack(Material.BRICK), "Settings", "Toggle various options on and off");
+		menu.setOption(0, new ItemStack(Material.REDSTONE_COMPARATOR), "Settings", "Toggle various options on and off");
+		menu.setOption(1, new ItemStack(Material.PAPER), "Voting", "blah blah blah");
 	}
 
 }

@@ -1,22 +1,44 @@
 package com.robinmc.ublisk.listeners;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.Chest;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.ThrownPotion;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.Vector;
 
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.enums.Classes;
 import com.robinmc.ublisk.enums.Tracker;
+import com.robinmc.ublisk.iconmenus.MainMenu;
+import com.robinmc.ublisk.utils.Exp;
+import com.robinmc.ublisk.utils.LifeCrystalPlayer;
+import com.robinmc.ublisk.utils.Voting;
+import com.robinmc.ublisk.utils.inventory.BetterInventory;
+import com.robinmc.ublisk.utils.inventory.item.Item;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.variable.Message;
+import com.robinmc.ublisk.utils.variable.Var;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class PlayerInteract implements Listener {
 	
-	@EventHandler(ignoreCancelled = true)
+	@EventHandler(ignoreCancelled = false)
 	public void onInteract(PlayerInteractEvent event){
 		Player player = event.getPlayer();
 		Action action = event.getAction();
@@ -35,15 +57,17 @@ public class PlayerInteract implements Listener {
 					player.sendMessage(Message.CLASS_WRONG_WEAPON.get());
 					event.setCancelled(true);
 				}
-			}
-			
-			if (item == Material.END_CRYSTAL){
+			} else if (item == Material.CHEST){
+				MainMenu.open(player);
+				event.setCancelled(true);
+			} else if (item == Material.END_CRYSTAL){
 				player.openInventory(player.getEnderChest());
+				event.setCancelled(true);
 			}
 		}
 	}
 	
-	@EventHandler(priority=EventPriority.LOW)
+	@EventHandler(priority=EventPriority.LOW, ignoreCancelled = false)
 	public void tracker(PlayerInteractEvent event){
 		Player player = event.getPlayer();
 		Action action = event.getAction();
@@ -61,6 +85,83 @@ public class PlayerInteract implements Listener {
 			if (type == Material.CHEST){
 				Tracker.LOOT_FOUND.add(player);
 			}
+		}
+	}
+	
+	@EventHandler(ignoreCancelled = true)
+	public void spellTest(PlayerInteractEvent event){
+		if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+			if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BLAZE_ROD){
+				final Block block = event.getClickedBlock();
+				if (block.getType() == Material.COBBLESTONE){
+					@SuppressWarnings("deprecation")
+					FallingBlock fall = block.getWorld().spawnFallingBlock(block.getLocation(), block.getType(), block.getData());
+					Vector velocity = fall.getVelocity();
+					velocity.setY(velocity.getY() + 1.0);
+					fall.setVelocity(velocity);
+					block.setType(Material.AIR);
+					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+						public void run(){
+							Location loc = block.getLocation();
+							loc.setY(loc.getY() + 1);
+							ThrownPotion potion = (ThrownPotion) Var.world.spawnEntity(loc, EntityType.SPLASH_POTION);
+							PotionEffect effect = new PotionEffect(PotionEffectType.HARM, 1, 2);
+							potion.getEffects().add(effect);
+						}
+					}, 2*20);
+				}
+			}
+		}
+	}
+	
+	@EventHandler(ignoreCancelled = true)
+	public void voteBox(PlayerInteractEvent event){
+		if (event.getAction() != Action.RIGHT_CLICK_BLOCK){
+			return;
+		}
+
+		Block block = event.getClickedBlock();
+		if (Voting.isVotingChest(block)){
+			Chest chest = (Chest) block.getState();
+			Inventory inv = chest.getInventory();
+			
+			int gold = Voting.getRandomGold();
+			int xp = Voting.getRandomXP();
+			int life = Voting.getRandomLife();
+			
+			String reset = "" + ChatColor.RESET; 
+					
+			Item goldItem = new Item(Material.GOLD_NUGGET);
+			goldItem.setAmount(gold);
+			goldItem.setDisplayName(reset + ChatColor.GOLD + "" + ChatColor.BOLD + "Gold: " + gold);
+			
+			Item xpItem = new Item(Material.EMERALD);
+			xpItem.setAmount(xp);
+			xpItem.setDisplayName(reset + ChatColor.GREEN + "" + ChatColor.BOLD + "XP: " + xp);
+			
+			Item lifeItem = new Item(Material.NETHER_STAR);
+			lifeItem.setAmount(life);
+			lifeItem.setDisplayName(reset + ChatColor.BOLD + "Life Crystals: " + life);
+			
+			inv.setItem(12, goldItem.getItemStack());
+			inv.setItem(13, xpItem.getItemStack());
+			inv.setItem(14, lifeItem.getItemStack());
+			
+			Player player = event.getPlayer();
+			
+			if (gold !=0){
+				BetterInventory.getInventory(player).add(Material.GOLD_NUGGET, gold);
+			}
+			
+			if (xp != 0){
+				Exp.add(player, xp);
+			}
+			
+			if (life != 0){
+				new LifeCrystalPlayer(player).addLifeCrystals(life);
+			}
+			
+			Logger.log(LogLevel.DEBUG, "Gold: " + gold + " | XP: " + xp + " | Life: " + life);
 		}
 	}
 	
