@@ -9,6 +9,7 @@ import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.java.MiscUtils;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.settings.Setting;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
@@ -24,6 +25,14 @@ public class SettingsMenu {
 			Setting setting = Setting.fromName(name);
 			final Player player = event.getPlayer();
 		
+			if (name.equalsIgnoreCase("back")){
+				Scheduler.runTaskLater(5, new Runnable(){
+					public void run(){
+						MainMenu.open(player);
+					}
+				});
+			}
+			
 			try {
 				//If setting is set to true, set to false and if set to false, set to true
 				setting.put(player, MiscUtils.invertBoolean(setting.get(player)));
@@ -72,6 +81,8 @@ public class SettingsMenu {
 			
 			slot++;
 		}
+		
+		menu.setOption(8, new ItemStack(Material.BARRIER), "Back");
 	}
 	
 }
