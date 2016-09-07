@@ -14,7 +14,7 @@ import com.robinmc.ublisk.utils.variable.Message;
 
 public class MainMenu {
 	
-	private static IconMenu menu = new IconMenu("Main menu", 3*9, new IconMenu.OptionClickEventHandler(){
+	private static IconMenu menu = new IconMenu("Main menu", 1*9, new IconMenu.OptionClickEventHandler(){
 
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
