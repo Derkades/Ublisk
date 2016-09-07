@@ -3,6 +3,7 @@ package com.robinmc.ublisk.iconmenus;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.logging.LogLevel;
@@ -32,6 +33,12 @@ public class MainMenu {
 						VotingMenu.open(player);
 					}
 				});
+			} else if (name.equals("friends")){
+				Scheduler.runTaskLater(5, new Runnable(){ 
+					public void run(){ 
+						FriendsMenu.open(player);
+					}
+				});
 			} else {
 				player.sendMessage(Message.ERROR_MENU.get());
 			}
@@ -40,13 +47,19 @@ public class MainMenu {
 	
 	public static void open(Player player){
 		Logger.log(LogLevel.INFO, "Menu", "MainMenu has been opened for " + player.getName());
-		fillMenu();
+		fillMenu(player);
 		menu.open(player);
 	}
 	
-	private static void fillMenu(){
+	private static void fillMenu(Player player){
 		menu.setOption(0, new ItemStack(Material.REDSTONE_COMPARATOR), "Settings", "Toggle various options on and off");
 		menu.setOption(1, new ItemStack(Material.PAPER), "Voting", "blah blah blah"); // TODO Lore
+		ItemStack skull = new ItemStack(Material.SKULL);
+		skull.setDurability((short) 3);
+		SkullMeta meta = (SkullMeta) skull.getItemMeta();
+		meta.setOwner(player.getName());
+		skull.setItemMeta(meta);
+		menu.setOption(2, skull, "Friends", "blah blah blah"); // TODO Lore
 	}
 
 }
