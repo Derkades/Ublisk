@@ -9,7 +9,6 @@ import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.java.MiscUtils;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.settings.Setting;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
@@ -41,11 +40,7 @@ public class SettingsMenu {
 				setting.put(player, false);
 			}
 			
-			Scheduler.runTaskLater(1, new Runnable(){
-				public void run(){
-					SettingsMenu.open(player);
-				}
-			});
+			event.setWillClose(true);
 		}
 	}, Main.getInstance());
 	
