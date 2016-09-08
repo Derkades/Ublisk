@@ -19,12 +19,8 @@ public class PlayerInteractEntity implements Listener {
 		
 		Entity entity = event.getRightClicked();
 		Player player = event.getPlayer();
-		/*
-		if (entity instanceof NPC){
-			String name = entity.getName();
-			WeaponMerchant.open(name, player);
-			event.setCancelled(true);
-		} else */ if (entity instanceof ArmorStand && !(player.getGameMode() == GameMode.CREATIVE)){
+		
+		if (entity instanceof ArmorStand && player.getGameMode() != GameMode.CREATIVE){
 			event.setCancelled(true);
 		}
 
