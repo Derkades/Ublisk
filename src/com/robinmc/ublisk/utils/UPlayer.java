@@ -1,6 +1,9 @@
 package com.robinmc.ublisk.utils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,6 +17,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
@@ -371,6 +376,21 @@ public class UPlayer {
 		setBuilderModeEnabled(!isInBuilderMode()); //If player is not in builder mode put player in builder mode and visa versa 
 	}
 	
+	public void refreshLastSeenDate(){
+		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+		Date dateobj = new Date();
+		String date = df.format(dateobj);
+		Config.set("last-played." + player.getUniqueId(), date);
+	}
+	
+	public String getLastSeenDate(){
+		if (Config.getConfig().isSet("last-played." + player.getUniqueId())){
+			return Config.getString("last-played." + player.getUniqueId());
+		} else {
+			return "Never";
+		}
+	}
+	
 	public static UPlayer[] getOnlinePlayers(){
 		List<UPlayer> list = new ArrayList<UPlayer>();
 		for (Player player : Bukkit.getOnlinePlayers()){
@@ -394,5 +414,9 @@ public class UPlayer {
 	public static UPlayer get(AsyncPlayerChatEvent event){ return get(event.getPlayer()); }
 	
 	public static UPlayer get(PlayerInteractEntityEvent event){ return get(event.getPlayer()); }
+	
+	public static UPlayer get(PlayerQuitEvent event){ return get(event.getPlayer()); }
+	
+	public static UPlayer get(PlayerJoinEvent event){ return get(event.getPlayer()); }
 
 }
