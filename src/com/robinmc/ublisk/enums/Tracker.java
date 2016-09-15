@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.sql.MySQL;
@@ -139,6 +140,147 @@ public enum Tracker {
 		        }
 			}
 		});
+	}
+	
+	public static class PlayerInfo {
+		
+		public static void syncExp(UPlayer player){
+			try {
+				MySQL.openConnection();
+				Logger.log(LogLevel.INFO, "PlayerInfo", "Updating XP in database for player " + player.getName());
+	    		
+	    		PreparedStatement sql2 = MySQL.prepareStatement("SELECT * FROM `exp` WHERE uuid=?;");
+				sql2.setString(1, player.getUniqueId().toString());
+				ResultSet resultSet = sql2.executeQuery();
+				boolean containsPlayer = resultSet.next();
+				
+				sql2.close();
+				resultSet.close();
+	        	
+	        	if (containsPlayer){
+	        		int xp = player.getXP();
+	        		PreparedStatement updatexp = MySQL.prepareStatement("UPDATE `exp` SET count=? WHERE uuid=?;");
+	        		updatexp.setInt(1, xp + 1);
+	        		updatexp.setString(2, player.getUniqueId().toString());
+	        		updatexp.executeUpdate();
+	        		
+	        		// XXX Cleanup second PreparedStatement
+	        		PreparedStatement name = MySQL.prepareStatement("UPDATE `exp` SET name=? where uuid=?;");
+	        		name.setString(1, player.getName());
+	        		name.setString(2, player.getUniqueId().toString());
+	        		name.executeUpdate();
+	        		
+	        		name.close();
+	        		updatexp.close();
+	        	} else {
+	        		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `exp` values(?, 0, ?);");
+	        		newplayer.setString(1, player.getUniqueId().toString());
+	        		newplayer.setString(2, player.getName());
+	        		newplayer.execute();
+	        		newplayer.close();
+	        	}
+			} catch (Exception e){
+				e.printStackTrace();
+			} finally {
+				try {
+					MySQL.closeConnection();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		public static void syncGuild(UPlayer player){
+			try {
+				MySQL.openConnection();
+				Logger.log(LogLevel.INFO, "PlayerInfo", "Updating guild in database for player " + player.getName());
+	    		
+	    		PreparedStatement sql2 = MySQL.prepareStatement("SELECT * FROM `playerguild` WHERE uuid=?;");
+				sql2.setString(1, player.getUniqueId().toString());
+				ResultSet resultSet = sql2.executeQuery();
+				boolean containsPlayer = resultSet.next();
+				
+				sql2.close();
+				resultSet.close();
+	        	
+				String guildName;
+				if (player.isInGuild()){
+					guildName = player.getGuild().getName();
+				} else {
+					guildName = "Not in a guild";
+				}
+				
+	        	if (containsPlayer){
+	        		PreparedStatement update = MySQL.prepareStatement("UPDATE `playerguild` SET guild=?,name=? WHERE uuid=?;");
+	        		
+	        		update.setString(1, guildName);
+	        		update.setString(2, player.getName());
+	        		update.setString(3, player.getUniqueId().toString());
+	        		
+	        		update.executeUpdate();
+	        		update.close();
+	        	} else {
+	        		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `playerguild` values(?, ?, ?);");
+	        		newplayer.setString(1, player.getUniqueId().toString());
+	        		newplayer.setString(2, guildName);
+	        		newplayer.setString(3, player.getName());
+	        		newplayer.execute();
+	        		newplayer.close();
+	        	}
+			} catch (Exception e){
+				e.printStackTrace();
+			} finally {
+				try {
+					MySQL.closeConnection();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		public static void syncRank(UPlayer player){
+			try {
+				MySQL.openConnection();
+				Logger.log(LogLevel.INFO, "PlayerInfo", "Updating rank in database for player " + player.getName());
+	    		
+	    		PreparedStatement sql2 = MySQL.prepareStatement("SELECT * FROM `rank` WHERE uuid=?;");
+				sql2.setString(1, player.getUniqueId().toString());
+				ResultSet resultSet = sql2.executeQuery();
+				boolean containsPlayer = resultSet.next();
+				
+				sql2.close();
+				resultSet.close();
+	        	
+				String rank = player.getGroup().getName();
+				
+	        	if (containsPlayer){
+	        		PreparedStatement update = MySQL.prepareStatement("UPDATE `rank` SET rank=?,name=? WHERE uuid=?;");
+	        		
+	        		update.setString(1, rank);
+	        		update.setString(2, player.getName());
+	        		update.setString(3, player.getUniqueId().toString());
+	        		
+	        		update.executeUpdate();
+	        		update.close();
+	        	} else {
+	        		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `rank` values(?, ?, ?);");
+	        		newplayer.setString(1, player.getUniqueId().toString());
+	        		newplayer.setString(2, rank);
+	        		newplayer.setString(3, player.getName());
+	        		newplayer.execute();
+	        		newplayer.close();
+	        	}
+			} catch (Exception e){
+				e.printStackTrace();
+			} finally {
+				try {
+					MySQL.closeConnection();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+			
 	}
 
 }

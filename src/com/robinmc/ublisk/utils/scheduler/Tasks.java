@@ -20,7 +20,7 @@ import com.robinmc.ublisk.task.RespawnNPC;
 import com.robinmc.ublisk.task.SyncTrackers;
 import com.robinmc.ublisk.task.UpdateBackpackName;
 import com.robinmc.ublisk.task.UpdateDoubleExpBar;
-import com.robinmc.ublisk.task.UpdateExp;
+import com.robinmc.ublisk.task.UpdateInfo;
 import com.robinmc.ublisk.task.UpdateFriendsHealthBar;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
@@ -41,7 +41,7 @@ public enum Tasks {
 	SYNC_TRACKER(new SyncTrackers()),
 	UPDATE_BACKPACK_NAME(new UpdateBackpackName()),
 	UPDATE_DOUBLE_EXP_BAR(new UpdateDoubleExpBar()),
-	UPDATE_EXP(new UpdateExp()),
+	UPDATE_EXP(new UpdateInfo()),
 	UPDATE_FRIENDS_HEALTH_BAR(new UpdateFriendsHealthBar());
 	
 	private Task task;
