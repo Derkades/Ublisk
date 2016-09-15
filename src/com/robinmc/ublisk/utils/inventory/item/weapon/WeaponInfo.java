@@ -44,6 +44,9 @@ public class WeaponInfo {
 	 */
 	public WeaponInfo(double damage, double speed, double attackSpeed, double knockback){
 		this.damage = damage;
+		if (speed == 0){
+			speed = 0.7;
+		}
 		this.speed = speed;
 		this.attackSpeed = attackSpeed;
 		this.knockback = knockback;

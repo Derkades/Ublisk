@@ -8,11 +8,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.perm.Permission;
-import com.robinmc.ublisk.utils.perm.Perms;
-import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class MuteCommand implements CommandExecutor {
@@ -25,9 +24,9 @@ public class MuteCommand implements CommandExecutor {
 			return true;
 		}
 		
-		Player player = (Player) sender;
+		UPlayer player = UPlayer.get(sender);
 		
-		if (!Perms.getPermissionPlayer(player).hasPermission(Permission.COMMAND_MUTE)){
+		if (player.hasPermission(Permission.COMMAND_MUTE)){
 			player.sendMessage(Message.NO_PERMISSION.get());
 			return true;
 		}
@@ -45,13 +44,13 @@ public class MuteCommand implements CommandExecutor {
 			String targetName = target.getName();
 			String playerName = player.getName();
 			if (HashMaps.isMuted.get(uuid)){
-				player.sendMessage(CMessage.unMutedOther(targetName));
-				target.sendMessage(CMessage.unMuted(playerName));
+				player.sendMessage(Message.Complicated.Commands.Mute.unMutedOther(targetName));
+				target.sendMessage(Message.Complicated.Commands.Mute.unMuted(playerName));
 				HashMaps.isMuted.put(uuid, false);
 				return true;
 			} else {
-				player.sendMessage(CMessage.mutedOther(targetName));
-				target.sendMessage(CMessage.muted(playerName));
+				player.sendMessage(Message.Complicated.Commands.Mute.mutedOther(targetName));
+				target.sendMessage(Message.Complicated.Commands.Mute.muted(playerName));
 				HashMaps.isMuted.put(uuid, true);
 				return true;
 			}
@@ -69,13 +68,13 @@ public class MuteCommand implements CommandExecutor {
 			String targetName = target.getName();
 			String playerName = player.getName();
 			if (HashMaps.isSoftMuted.get(uuid)){
-				player.sendMessage(CMessage.unSoftMutedOther(targetName));
-				target.sendMessage(CMessage.unSoftMuted(playerName));
+				player.sendMessage(Message.Complicated.Commands.Mute.unSoftMutedOther(targetName));
+				target.sendMessage(Message.Complicated.Commands.Mute.unSoftMuted(playerName));
 				HashMaps.isMuted.put(uuid, false);
 				return true;
 			} else {
-				player.sendMessage(CMessage.softMutedOther(targetName));
-				target.sendMessage(CMessage.softMuted(playerName));
+				player.sendMessage(Message.Complicated.Commands.Mute.softMutedOther(targetName));
+				target.sendMessage(Message.Complicated.Commands.Mute.softMuted(playerName));
 				HashMaps.isMuted.put(uuid, true);
 				return true;
 			}

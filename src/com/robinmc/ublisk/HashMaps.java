@@ -56,7 +56,7 @@ public class HashMaps {
 		isSoftMuted.put(uuid, false);
 		lastMessageSender.put(player, null);
 		lastLevel.put(player, player.getLevel());
-		
+
 		for (Tracker tracker : Tracker.values()){
 			Map<UUID, Integer> map = tracker.getMap();
 			map.put(uuid, 0);

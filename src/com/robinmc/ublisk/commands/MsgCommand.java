@@ -10,8 +10,7 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.utils.Console;
-import com.robinmc.ublisk.utils.UUIDUtils;
-import com.robinmc.ublisk.utils.chat.MessageTarget;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.settings.Setting;
@@ -26,7 +25,7 @@ public class MsgCommand implements CommandExecutor {
 			return true;
 		}
 		
-		Player player = (Player) sender;
+		UPlayer player = UPlayer.get(sender);
 		
 		//If player is muted don't send private message
 		if (HashMaps.isMuted.get(player.getUniqueId())){
@@ -35,11 +34,11 @@ public class MsgCommand implements CommandExecutor {
 		}
 		
 		if (args.length >= 2){
-			MessageTarget target;
+			UPlayer target;
 			try {
-				target = new MessageTarget(UUIDUtils.getPlayerFromName(args[0]));
-			} catch (PlayerNotFoundException e){
-				player.sendMessage(Message.PLAYER_NOT_FOUND.get());
+				target = UPlayer.get(args[0]);
+			} catch (PlayerNotFoundException e1) {
+				// TODO Player not found
 				return true;
 			}
 			
@@ -53,18 +52,19 @@ public class MsgCommand implements CommandExecutor {
 			
 			//Play a sound if the target player has enabled it
 			try {
-				if (Setting.PM_SOUND.get(target.getPlayer())){
+				if (target.getSetting(Setting.PM_SOUND)){
 					Console.sendCommand("execute " + target.getPlayer().getName() + " ~ ~ ~ playsound entity.item.pickup master @p");
 				}
 			} catch (NotSetException e) {	
-				Setting.PM_SOUND.put(target.getPlayer(), true);
+				target.setSetting(Setting.PM_SOUND, true);
 			}
 			
 			target.setLastSender(player);
-			target.sendMessage(msg);
+			
+			target.sendPrivateMessage(player, msg);
 			return true;
 		} else {
-			player.sendMessage(Message.WRONG_USAGE.get());
+			player.sendMessage(Message.WRONG_USAGE);
 			return true;
 		}
 		

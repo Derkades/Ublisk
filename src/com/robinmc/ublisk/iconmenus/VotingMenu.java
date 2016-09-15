@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Voting;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
@@ -17,19 +18,19 @@ public class VotingMenu {
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
-			Player player = event.getPlayer();
+			UPlayer player = UPlayer.get(event.getPlayer());
 			if (name.contains("points")){
 				event.setWillClose(false);
 			} else {
 				if (Voting.isPlayerOpeningBox()){
 					player.sendMessage("someone is already opening box"); // TODO Proper message
 					event.setWillDestroy(false);
-				} else if (!Voting.hasVotingPoints(player, 3)){
+				} else if (!player.hasVotingPoints(3)){
 					player.sendMessage("not enough points"); // TODO Proper message
 					event.setWillDestroy(false);
 				} else {
-					Voting.removeVotingPoints(player, 3);
-					Voting.openVotingBox(player);
+					player.removeVotingPoints(3);
+					Voting.openVotingBox(player.getPlayer());
 				}
 			}
 		}
@@ -42,7 +43,7 @@ public class VotingMenu {
 	}
 	
 	private static void fillMenu(Player player){
-		int points = Voting.getVotingPoints(player);
+		int points = UPlayer.get(player).getVotingPoints();
 		menu.setOption(3, new ItemStack(Material.PAPER, points), 
 				"Voting points", 
 				"You have " + points + " voting points");

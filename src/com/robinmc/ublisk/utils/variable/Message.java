@@ -1,18 +1,30 @@
 package com.robinmc.ublisk.utils.variable;
 
+import static org.bukkit.ChatColor.AQUA;
+import static org.bukkit.ChatColor.BOLD;
+import static org.bukkit.ChatColor.DARK_AQUA;
 import static org.bukkit.ChatColor.GOLD;
 import static org.bukkit.ChatColor.GRAY;
 import static org.bukkit.ChatColor.RED;
+import static org.bukkit.ChatColor.RESET;
 import static org.bukkit.ChatColor.YELLOW;
+
+import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.guilds.Guild;
 
 public enum Message {
 	
 	NOT_A_PLAYER(prefix() + RED + "You must be a player in order to execute this command!"),
 	WRONG_USAGE(prefix() + RED + "Wrong usage! Type /help for help"),
-	REPORT_FORUMS(prefix() + "Please report hackers and staff abusers over at http://ublisk.robinmc.com"),
-	SUGGEST_FEATURE(prefix() + "Please suggest new features over at http://ublisk.robinmc.com"),
+	REPORT(prefix() + "Please report hackers and staff abusers over at http://ublisk.robinmc.com"),
+	SUGGEST_FEATURE(prefix() + "Please suggest new features here: http://goo.gl/EcrBia"),
 	NO_PERMISSION(prefix() + RED + "You don't have the required permissions to execute this command"),
 	PLAYER_NOT_FOUND(prefix() + RED + "This player could not be found."),
+	
+	NOT_IN_GULID(prefix("Guilds") + RED + "You are not in a guild."),
+	ALREADY_IN_GUILD(prefix("Guilds") + RED + "You are already in a guild. Please leave your guild first."),
+	GUILD_NOT_INVITED(prefix("Guilds") + RED + "You are not invited to join a guild."),
+	GUILD_ALREADY_EXISTS(prefix("Guilds") + RED + "This guild already exists!"),
 	
 	CANT_PM_MUTED(prefix("Chat") + RED + "You cannot send private messages while muted."),
 	CANT_CHAT_MUTED(prefix("Chat") + RED + "You cannot chat while muted."),
@@ -44,7 +56,10 @@ public enum Message {
 	DOUBLE_XP_COOLDOWN(prefix() + RED + "Hi there, person who tried to activate double xp, there's a cooldown to prevent people like you from abusing the system!"),
 	
 	BUILDER_MODE_ACTIVATED(prefix() + YELLOW + "You are now in builder mode. When you're done, simply type /builder again to exit out of builder mode and get your inventory back."),
-	BUILDER_MODE_DEACTIVATED(prefix() + YELLOW + "You are no longer in builder mode. Enjoy playing!");
+	BUILDER_MODE_DEACTIVATED(prefix() + YELLOW + "You are no longer in builder mode. Enjoy playing!"),
+	
+	VOTE_BOX_BUSY(prefix("Voting") + RED + "Someone is already opening a voting box. Please try again in a minute."),
+	VOTE_BOX_INSUFFICIENT_POINTS(prefix("Voting") + RED + "You do not have enough voting points. Vote at " + Var.VOTE_URL);
 	
 	private String msg;
 	
@@ -62,6 +77,164 @@ public enum Message {
 	
 	public static String prefix(String string){
 		return GOLD + string + GRAY + " >> " + YELLOW;
+	}
+	
+	public static class Complicated {
+		
+		public static String startSong(String song){
+			return GOLD + "Music" + GRAY + " >> " + "You are now playing " + song;
+		}
+		
+		public static String changedClass(String c){
+			return prefix() + "You have changed your class to " + c;
+		}	
+
+		public static String removeMobsWarning(int sec){
+			return prefix() + "Clearing all mobs and items in " + sec + " seconds!";
+		}
+		
+		public static String commandLog(String pn, String cmd){
+			return prefix("CommandLog") + pn + ": " + cmd;
+		}
+		
+		public static String lootSpawned(int x, int y, int z){
+			return prefix("Loot") + "A loot chest has been spawned at " + GOLD + "" + BOLD + x + " " + y + " " + z + RESET + YELLOW + "!";
+		}
+		
+		public static String serverRestartingWarningSeconds(int seconds){
+			String suffix;
+			
+			if (seconds == 1){
+				suffix = "second";
+			} else {
+				suffix = "seconds";
+			}
+			
+			return prefix() + "The server will restart in " + seconds + " " + suffix + "!";
+		}
+		
+		public static String serverRestartingWarningMinutes(int minutes){
+			String suffix;
+			if (minutes == 1){
+				suffix = "minute";
+			} else {
+				suffix = "minutes";
+			}
+			
+			return prefix() + "The server will restart in " + minutes + " " + suffix + "!";
+		}
+		
+		public static String vote(String playerName, int points){
+			return prefix() + playerName + " has voted and got " + points + " points! Vote at " + Var.VOTE_URL;
+		}
+		
+		public static class Guilds {
+			
+			public static String inviteToGuild(Guild guild, UPlayer player){
+				return prefix("Guilds") + player.getName() + " has invited you to join " + guild.getName() + ". Type " + AQUA + "/guild accept" + YELLOW + " to accept";
+			}
+			
+			public static String joinedGuild(Guild guild){
+				return prefix("Guilds") + "You have joined " + guild.getName();
+			}
+			
+		}
+		
+		public static class JoinQuit {
+			
+			public static String playerJoin(String pn){
+				return DARK_AQUA + "" + BOLD + pn + RESET + AQUA + " has joined";
+			}	
+			
+			public static String quit(String pn){
+				return DARK_AQUA + "" + BOLD + pn + RESET + AQUA + " has left";
+			}
+			
+		}
+		
+		public static class Friends {
+			
+			public static String friendAdded(String pn){
+				return prefix("Friends") + pn + " has been added to your friends list";
+			}
+			
+			public static String friendRemoved(String pn){
+				return prefix("Friends") + pn + " has been removed from your friends list";
+			}
+			
+		}
+		
+		public static class Quests {
+			
+			public static String questCompleted(String quest, int xp){
+				return prefix() + "You have completed quest " + BOLD + quest + RESET + YELLOW + " and got " + xp + " XP!";
+			}
+			
+			public static String questCompleted(String quest, int xp, int lifeCrystals){
+				return prefix() + "You have completed quest " + BOLD + quest + RESET + YELLOW + " and got " + xp + " XP and " + lifeCrystals + " Life Crystals!";
+			}
+			
+			public static String npcNotFound(String name){
+				return prefix("NPC") + RED + "No dialogue could be found for an npc with name " + name + ", please report this error.";
+			}	
+			
+			public static String npcMsg(String npc, String message){
+				return prefix(npc) + message;
+			}
+			
+		}
+		
+		public static class Commands {
+			
+			public static String userNotFound(String user){
+				return prefix() + RED + "No additional information was found for user " + user;
+			}
+			
+			public static String nowAfk(String name){
+				return prefix() + YELLOW + name + " is now AFK";
+			}
+			
+			public static String noLongerAfk(String name){
+				return prefix() + YELLOW + name + " is no longer AFK";
+			}
+			
+			public static class Mute {
+				
+				public static String mutedOther(String pn){
+					return prefix("Chat") + pn + " has been muted.";
+				}
+				
+				public static String unMutedOther(String pn){
+					return prefix("Chat") + pn + " has been unmuted.";
+				}
+				
+				public static String muted(String pn){
+					return prefix("Chat") + "You have been muted by " + pn;
+				}
+				
+				public static String unMuted(String pn){
+					return prefix("Chat") + "You have been unmuted by " + pn;
+				}
+				
+				public static String softMutedOther(String pn){
+					return prefix("Chat") + pn + " has been softmuted.";
+				}
+				
+				public static String unSoftMutedOther(String pn){
+					return prefix("Chat") + pn + " has been un-soft-muted.";
+				}
+				
+				public static String softMuted(String pn){
+					return prefix("Chat") + "You have been soft-muted by " + pn;
+				}
+				
+				public static String unSoftMuted(String pn){
+					return prefix("Chat") + "You have been un-soft-muted by " + pn;
+				}
+				
+			}
+			
+		}
 	}
 	
 }

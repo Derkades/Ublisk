@@ -1,15 +1,13 @@
 package com.robinmc.ublisk.listeners;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.perm.Permission;
-import com.robinmc.ublisk.utils.perm.Perms;
-import com.robinmc.ublisk.utils.variable.CMessage;
+import com.robinmc.ublisk.utils.variable.Message;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -23,7 +21,7 @@ public class PlayerCommandPreprocess implements Listener {
 		}
 		
 		String cmd = event.getMessage();
-		Player sender = event.getPlayer();
+		UPlayer sender = UPlayer.get(event);
 		String pn = sender.getName();
 		
 		if (cmd.startsWith("/time set")){
@@ -54,11 +52,11 @@ public class PlayerCommandPreprocess implements Listener {
 			return;
 		}
 		
-		for (Player player: Bukkit.getOnlinePlayers()){
-			if (Perms.getPermissionPlayer(player).hasPermission(Permission.COMMANDLOG)){
+		for (UPlayer player: UPlayer.getOnlinePlayers()){
+			if (player.hasPermission(Permission.COMMANDLOG)){
 				if (!(player == sender)){
 					if (!(HashMaps.disableCommandLog.get(player.getUniqueId()))){
-						player.sendMessage(CMessage.commandLog(pn, cmd));
+						player.sendMessage(Message.Complicated.commandLog(pn, cmd));
 					}
 				}
 			}

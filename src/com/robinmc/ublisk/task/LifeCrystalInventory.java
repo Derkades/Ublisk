@@ -3,11 +3,10 @@ package com.robinmc.ublisk.task;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.LifeCrystalPlayer;
+import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.inventory.BetterInventory;
 import com.robinmc.ublisk.utils.inventory.item.Item;
 import com.robinmc.ublisk.utils.scheduler.Task;
 
@@ -19,19 +18,18 @@ public class LifeCrystalInventory implements Task {
 	public void task(Main plugin) {
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
-				for (Player player : Bukkit.getOnlinePlayers()){
-					LifeCrystalPlayer life = new LifeCrystalPlayer(player);
+				for (UPlayer player : UPlayer.getOnlinePlayers()){
 					Item item = new Item(Material.NETHER_STAR);
-					item.setAmount(life.getLifeCrystals());
-					item.setDisplayName(ChatColor.BLUE + "Life Crystals: " + ChatColor.AQUA + life.getLifeCrystals());
-					item.setLore("You have " + life.getLifeCrystals() + " life crystals");
+					item.setAmount(player.getLifeCrystals());
+					item.setDisplayName(ChatColor.BLUE + "Life Crystals: " + ChatColor.AQUA + player.getLifeCrystals());
+					item.setLore("You have " + player.getLifeCrystals() + " life crystals");
 					
 					if (player.getGameMode() == GameMode.CREATIVE){
 						item.setMaterial(Material.WOOD_AXE);
 					}
 					
-					PlayerInventory inv = player.getInventory();
-					inv.setItem(8, item.getItemStack());
+					BetterInventory inv = player.getInventory();
+					inv.set(8, item);
 				}
 			}
 		}, 5*20, 5*20);

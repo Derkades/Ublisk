@@ -34,7 +34,7 @@ public class Main extends JavaPlugin {
 		
 		HashMaps.resetAllPlayers();
 		HashMaps.doublexp.put(HashMaps.placeHolder(), false);
-		HashMaps.doubleExpTime.put(HashMaps.placeHolder(), Var.doubleExpTime);
+		HashMaps.doubleExpTime.put(HashMaps.placeHolder(), Var.DOUBLE_XP_TIME);
 		HashMaps.doubleExpCooldown.put(HashMaps.placeHolder(), false);
 		HashMaps.doubleExpBarActive.put(HashMaps.placeHolder(), false);
 		

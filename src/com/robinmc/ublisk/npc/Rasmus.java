@@ -34,7 +34,7 @@ public class Rasmus implements QuestCharacterClass {
 		if (qp.getQuestCompleted()){
 			// TODO Message if player has completed quest
 		} else if (qp.getProgress(QuestProgress.CHICKEN_HUNT_TALK_TO_ARZHUR) && inv.contains(Material.FEATHER, 15)){
-			qp.msg("Thanks for helping! Here is some money for your hard work. Btw you can keep the (something)"); // TODO Tool name
+			qp.msg("Thanks for helping! Here is some money for your hard work. By the way, you can keep the (something)"); // TODO Tool name
 			qp.giveRewardExp();
 			qp.sendCompletedMessage();
 			qp.setQuestCompleted(true);

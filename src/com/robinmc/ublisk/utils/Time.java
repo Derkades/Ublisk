@@ -5,7 +5,7 @@ import com.robinmc.ublisk.utils.variable.Var;
 	public class Time {
 	
 	public static boolean isDay() {
-	    long time = Var.world.getTime();	 
+	    long time = Var.WORLD.getTime();	 
 	    if(time > 0 && time < 12300) {
 	        return true;
 	    } else {
@@ -14,17 +14,17 @@ import com.robinmc.ublisk.utils.variable.Var;
 	}
 	
 	public static void set(long time){
-		Var.world.setTime(time);
+		Var.WORLD.setTime(time);
 	}
 	
 	public static void add(long time){
 		long oldtime = get();
 		long newtime = oldtime + time;
-		Var.world.setTime(newtime);
+		Var.WORLD.setTime(newtime);
 	}
 	
 	public static long get(){
-		return Var.world.getTime();
+		return Var.WORLD.getTime();
 	}
 
 }

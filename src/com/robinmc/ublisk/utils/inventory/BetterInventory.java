@@ -60,6 +60,10 @@ public class BetterInventory {
 		inv.addItem(item.getBukkitItem());
 	}
 	
+	public void set(int slot, Item item){
+		inv.setItem(slot, item.getBukkitItem());
+	}
+	
 	public void remove(ItemStack item){
 		inv.remove(item);
 	}
@@ -70,6 +74,10 @@ public class BetterInventory {
 	
 	public void remove(Material material, int amount){
 		remove(new ItemStack(material, amount));
+	}
+	
+	public boolean contains(Material material) {
+		return inv.contains(material);
 	}
 	
 	public boolean contains(Material material, int amount){

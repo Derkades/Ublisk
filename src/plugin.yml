@@ -3,7 +3,7 @@ main: com.robinmc.ublisk.Main
 version: 6.9
 author: RobinMCDev
 description: Ublisk plugin
-depend: [NoteBlockAPI, ActionBarAPI, ResourcePackApi, BossBarAPI, ItemNBTAPI, Votifier]
+depend: [NoteBlockAPI, ActionBarAPI, ResourcePackApi, BossBarAPI, Votifier]
 
 commands:
     menu:
@@ -12,7 +12,7 @@ commands:
     debug:
         description: Debugging command
         usage: </command> [args] [args]
-        aliases: [ublisk]
+        aliases: [ublisk, u]
     help:
         description: Provides help
         usage: </command> [catagory]
@@ -22,8 +22,8 @@ commands:
         usage: </command> [arguments]
     report:
         aliases: [reporthacker, reportplayer, rpplayer, rphacker, rp]
-    suggest:
-        aliases: [suggestfeature, newfeature, features, newfeatures, suggestfeatures, suggestion, suggestions]
+    contact:
+        aliases: [suggestfeature, newfeature, features, feature, newfeatures, suggestfeatures, suggestion, suggestions, bug, bugs, reportbug, bugreport, admincontact, ownercontant, ask, apply, operatorhelp, ophelp, helpop, askop, askoperator, askmod, askadmin, askowner]
     afk:
         aliases: [away, brb, awayfromkeyboard, back]
     class:
@@ -31,8 +31,11 @@ commands:
     friends:
         aliases: [friend, f, friendlist, friendslist]
     mute:
-        aliases: [holdyourbekpls]
+        aliases: [holdyourbekpls,stfu]
     msg:
-        aliases: [w,write,tell,pm,mail,m,msg,message,privatem,pmessage,t]
+        aliases: [w, write, tell, pm, mail, email, m, msg, message, privatem, pmessage,t]
     builder:
         usage: </command>
+    guild:
+        aliases: [guilds, g]
+        

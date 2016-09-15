@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.enums.Helper;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class Builder implements CommandExecutor {
@@ -22,15 +22,10 @@ public class Builder implements CommandExecutor {
 			return true;
 		}
 		
-		Player player = (Player) sender;
+		UPlayer player = UPlayer.get(sender);
 		
-		if (Helper.builderModeEnabled(player)){
-			Helper.disableBuilderMode(player);
-			return true;
-		} else {
-			Helper.enableBuilderMode(player);
-			return true;
-		}
+		player.toggleBuilderMode();
+		return true;
 	}
 
 }

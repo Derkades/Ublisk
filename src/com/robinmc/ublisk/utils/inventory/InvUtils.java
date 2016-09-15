@@ -22,7 +22,6 @@ public class InvUtils {
 		try {
 			c.save(new File(path, player.getName()+".yml"));
 		} catch (IOException e) {
-			// TODO Deal with exception
 			e.printStackTrace();
 		}
 	}

@@ -32,7 +32,7 @@ public class Arzhur implements QuestCharacterClass {
 		{
 			qp.msg("Thank you very much for helping us. We will be alright for a while! Here is something that will help you survive in the fields.");
 			inv.remove(Material.GRILLED_PORK, 10);
-			qp.getLifeCrystalPlayer().addLifeCrystals(5);
+			qp.getPlayer().addLifeCrystals(5);
 			qp.setQuestCompleted(true);
 			qp.sendCompletedMessage();
 			qp.giveRewardExp();

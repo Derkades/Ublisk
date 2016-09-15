@@ -82,7 +82,7 @@ public enum Mob {
 	}
 	
 	public static void removeMobs(){
-		for (Entity entity: Var.world.getEntities()){
+		for (Entity entity: Var.WORLD.getEntities()){
 			EntityType type = entity.getType();
 			if (type == EntityType.CHICKEN ||
 					type == EntityType.SHEEP ||

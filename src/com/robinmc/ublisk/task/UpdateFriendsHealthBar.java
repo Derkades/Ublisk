@@ -8,7 +8,7 @@ import org.inventivetalent.bossbar.BossBar;
 import org.inventivetalent.bossbar.BossBarAPI;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Friends;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
@@ -23,20 +23,20 @@ public class UpdateFriendsHealthBar implements Task {
 	public void task(final Main plugin) {
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
-				for (final Player player : Bukkit.getOnlinePlayers()){
-					try {
-						if (!Setting.FRIENDS_SHOW_HEALTH.get(player)){
-							return;
-						}
-					} catch (NotSetException e) {
-						Setting.FRIENDS_SHOW_HEALTH.put(player, true);
-					}
-					
+				for (final UPlayer player : UPlayer.getOnlinePlayers()){
 					if (player.getGameMode() == GameMode.CREATIVE){
 						return;
 					}
 					
-					for (String s : Friends.get(player)){
+					try {
+						if (!player.getSetting(Setting.FRIENDS_SHOW_HEALTH)){
+							return;
+						}
+					} catch (NotSetException e) {
+						player.setSetting(Setting.FRIENDS_SHOW_HEALTH, true);
+					}
+					
+					for (String s : player.getFriends()){
 						OfflinePlayer friend = null;
 						try {
 							friend = UUIDUtils.getOfflinePlayerFromName(UUIDUtils.getNameFromIdString(s));
@@ -91,7 +91,7 @@ public class UpdateFriendsHealthBar implements Task {
 							}
 							
 							final BossBar bossBar = BossBarAPI.addBar(
-									player, 
+									player.getPlayer(), 
 									text, 
 									BossBarAPI.Color.RED, 
 									BossBarAPI.Style.NOTCHED_20,
@@ -100,7 +100,7 @@ public class UpdateFriendsHealthBar implements Task {
 									999);
 							Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 								public void run(){
-									bossBar.removePlayer(player);
+									bossBar.removePlayer(player.getPlayer());
 								}
 							}, 2*20); // Remove after 5 seconds to make room for new bar
 						}

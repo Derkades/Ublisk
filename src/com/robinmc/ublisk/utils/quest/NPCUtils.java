@@ -15,7 +15,7 @@ import com.robinmc.ublisk.npc.Merek;
 import com.robinmc.ublisk.npc.Rasmus;
 import com.robinmc.ublisk.npc.Ulric;
 import com.robinmc.ublisk.npc.Zoltar;
-import com.robinmc.ublisk.utils.variable.CMessage;
+import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
 
 public class NPCUtils {
@@ -37,7 +37,7 @@ public class NPCUtils {
 	}
 	
 	public void despawnAll(){
-		for (Entity entity : Var.world.getEntitiesByClasses(NPCPlayer.class)){
+		for (Entity entity : Var.WORLD.getEntitiesByClasses(NPCPlayer.class)){
 			NPCPlayer npc = (NPCPlayer) entity;
 			npc.despawn();
 		}
@@ -53,7 +53,7 @@ public class NPCUtils {
 		} else if (name.equals("Arzhur")){
 			new Arzhur().talk(player);
 		} else if (name.equals("Asher")){
-			player.sendMessage(CMessage.npcNotFound(name));
+			player.sendMessage(Message.Complicated.Quests.npcNotFound(npc.getName()));
 		} else if (name.equals("Rasmus")){
 			new Rasmus().talk(player);
 		} else if (name == "Dianh"){

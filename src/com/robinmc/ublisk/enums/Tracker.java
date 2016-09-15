@@ -64,7 +64,6 @@ public enum Tracker {
 						playerDelay = playerDelay + 50;
 						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 							public void run(){
-								Logger.log(LogLevel.INFO, "Tracker", "Syncronising " + tracker + " for " + player.getName());
 								syncWithDatabase(player, tracker);
 							}
 						}, playerDelay);
@@ -74,7 +73,8 @@ public enum Tracker {
 		}
 	}
 	
-	public static void syncWithDatabase(final Player player, final Tracker tracker){
+	public static synchronized void syncWithDatabase(final Player player, final Tracker tracker){
+		Logger.log(LogLevel.INFO, "Tracker", "Syncronising " + tracker + " for " + player.getName());
 		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable(){
 			public void run() {
 				UUID uuid = player.getUniqueId();

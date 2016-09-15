@@ -6,7 +6,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import com.robinmc.ublisk.enums.Helper;
-import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class Credits implements CommandExecutor {
@@ -60,7 +59,7 @@ public class Credits implements CommandExecutor {
 					sender.sendMessage(gold + "Custom link" + gray + ": " + yellow + custom);
 					return true;
 				} catch (Exception e){
-					sender.sendMessage(CMessage.userNotFound(args[0]));
+					sender.sendMessage(Message.Complicated.Commands.userNotFound(args[0]));
 					return true;
 				}
 			}

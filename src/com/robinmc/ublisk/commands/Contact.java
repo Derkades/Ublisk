@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 
 import com.robinmc.ublisk.utils.variable.Message;
 
-public class Suggest implements CommandExecutor {
+public class Contact implements CommandExecutor {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){

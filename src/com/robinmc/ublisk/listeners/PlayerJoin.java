@@ -20,11 +20,10 @@ import com.robinmc.ublisk.iconmenus.ClassMenu;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.Exp;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.inventory.item.Item;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
-import com.robinmc.ublisk.utils.perm.Perms;
-import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
 
@@ -40,13 +39,13 @@ public class PlayerJoin implements Listener {
 		
 		Console.sendCommand("scoreboard teams join all " + pn); //Join team "all". This team disables 1.9 collision
 		
-		event.setJoinMessage(CMessage.playerJoin(pn));
+		event.setJoinMessage(Message.Complicated.JoinQuit.playerJoin(pn));
 		
 		player.sendMessage(Message.PACK_SENDING.get());
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){ 
 			//For some reason sending the pack has to be delayed, otherwise the client won't get the message
 			public void run(){
-				ResourcePackAPI.setResourcepack(player, Var.packURL);
+				ResourcePackAPI.setResourcepack(player, Var.PACK_URL);
 			}
 		}, 1*20);
 		
@@ -81,7 +80,8 @@ public class PlayerJoin implements Listener {
         Exp.refresh(player);
         
         //If the player is not a Builder, Moderator or Owner disable builder mode to prevent griefing
-        PermissionGroup group = Perms.getPermissionPlayer(player).getGroup();
+        UPlayer uPlayer = new UPlayer(player);
+        PermissionGroup group = uPlayer.getGroup();
         if (!(	group == PermissionGroup.BUILDER ||
         		group == PermissionGroup.MODERATOR ||
         		group == PermissionGroup.OWNER

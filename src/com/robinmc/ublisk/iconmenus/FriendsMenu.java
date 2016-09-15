@@ -1,21 +1,21 @@
 package com.robinmc.ublisk.iconmenus;
 
-import static org.bukkit.ChatColor.BOLD;
-import static org.bukkit.ChatColor.GOLD;
-import static org.bukkit.ChatColor.GRAY;
-import static org.bukkit.ChatColor.YELLOW;
+import static net.md_5.bungee.api.ChatColor.BOLD;
+import static net.md_5.bungee.api.ChatColor.DARK_AQUA;
+import static net.md_5.bungee.api.ChatColor.GOLD;
+import static net.md_5.bungee.api.ChatColor.GREEN;
+import static net.md_5.bungee.api.ChatColor.RED;
 
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.Exp;
-import com.robinmc.ublisk.utils.Friends;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.NotSetException;
+import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.settings.Setting;
@@ -23,7 +23,10 @@ import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.variable.Message;
 
-import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 
 public class FriendsMenu {
 	
@@ -31,28 +34,42 @@ public class FriendsMenu {
 
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
-			Player player = event.getPlayer();
+			UPlayer player = UPlayer.get(event);
 			Material item = event.getItem().getType();
 			OfflinePlayer friend = event.getFriend();
 			if (item == Material.SPECKLED_MELON){
+				event.setWillClose(false);
 				try {
-					if (Setting.FRIENDS_SHOW_HEALTH.get(player)){
-						Setting.FRIENDS_SHOW_HEALTH.put(player, false);
-						player.sendMessage(Message.FRIEND_HEALTH_DISABLED.get());
+					if (player.getSetting(Setting.FRIENDS_SHOW_HEALTH)){
+						player.setSetting(Setting.FRIENDS_SHOW_HEALTH, false);
+						player.sendMessage(Message.FRIEND_HEALTH_DISABLED);
 					} else {
-						Setting.FRIENDS_SHOW_HEALTH.put(player, true);
-						player.sendMessage(Message.FRIEND_HEALTH_ENABLED.get());
+						player.setSetting(Setting.FRIENDS_SHOW_HEALTH, true);
+						player.sendMessage(Message.FRIEND_HEALTH_ENABLED);
 					}
 				} catch (NotSetException e) {
-					Setting.FRIENDS_SHOW_HEALTH.put(player, false);
-					player.sendMessage(Message.FRIEND_HEALTH_DISABLED.get());
+					player.setSetting(Setting.FRIENDS_SHOW_HEALTH, false);
+					player.sendMessage(Message.FRIEND_HEALTH_DISABLED);
 				}
 			} else {
+				BaseComponent[] text = new ComponentBuilder("Click here")
+						.bold(true)
+						.color(DARK_AQUA)
+						.event(new HoverEvent(
+								HoverEvent.Action.SHOW_TEXT,
+								new ComponentBuilder("Click to open website").color(GOLD).create()))
+						.event(new ClickEvent(
+								ClickEvent.Action.OPEN_URL,
+								"http://ublisk.robinmc.com/stats/player.php?player=" + friend.getName()))
+						.create();
+				/*
 				player.sendMessage("");
 				player.sendMessage(GOLD + "Information for your friend " + YELLOW + BOLD + friend.getName());
 				player.sendMessage("");
 				player.sendMessage(GOLD + "XP" + GRAY + ": " + YELLOW + Exp.get(friend));
 				player.sendMessage(GOLD + "More info coming soon!");
+				*/
+				player.sendMessage(text);
 			}
 		}
 	}, Main.getInstance());
@@ -63,15 +80,24 @@ public class FriendsMenu {
 		menu.open(player);
 	}
 	
-	private static void fillMenu(Player player){
+	private static void fillMenu(Player bukkitPlayer){
 		
-		if (Friends.get(player).isEmpty()){
+		UPlayer player = UPlayer.get(bukkitPlayer);
+		
+		if (player.getFriends().isEmpty()){
+			/*
 			ItemStack head = new ItemStack(Material.SKULL_ITEM, 1);
 			head.setDurability((short) 3); //Durability value 3 is to get a human head instead of a skeleton head
 			SkullMeta meta = (SkullMeta) head.getItemMeta();
 			meta.setOwner("RobinMC");
 			head.setItemMeta(meta);
-			menu.setOption(0, head, ChatColor.GOLD + "You don't have any friends!");
+			*/
+			ItemStack head = new ItemBuilder(Material.SKULL_ITEM)
+					.setAmount(1)
+					.setDamage(3) //Damage value 3 is to get a human head instead of a skeleton head
+					.setSkullOwner(player.getName())
+					.getItemStack();
+			menu.setOption(0, head, GOLD + "You don't have any friends!");
 		} else {
 			addFriendsToMenu(player);
 		}
@@ -79,30 +105,37 @@ public class FriendsMenu {
 		String displayName = "error";
 		
 		try {
-			if (Setting.FRIENDS_SHOW_HEALTH.get(player)){		
-				displayName = ChatColor.GOLD + "Show friend's health: " + ChatColor.GREEN + ChatColor.BOLD + "Enabled";
+			if (player.getSetting(Setting.FRIENDS_SHOW_HEALTH)){		
+				displayName = GOLD + "Show friend's health: " + GREEN + BOLD + "Enabled";
 			} else {
-				displayName = ChatColor.GOLD + "Show friend's health: " + ChatColor.RED + ChatColor.BOLD + "Disabled";
+				displayName = GOLD + "Show friend's health: " + RED + BOLD + "Disabled";
 			}
 		} catch (NotSetException e) {
-			displayName = ChatColor.GOLD + "Show friend's health: " + ChatColor.GREEN + ChatColor.BOLD + "Enabled";
+			displayName = GOLD + "Show friend's health: " + GREEN + BOLD + "Enabled";
 		}
 		
 		ItemStack friendsHealth = new ItemStack(Material.SPECKLED_MELON, 1);
 		menu.setOption(18, friendsHealth, displayName);
 	}
 	
-	private static void addFriendsToMenu(Player player){
+	private static void addFriendsToMenu(UPlayer player){
 		int i = 0;
-		for (String string : Friends.get(player)){
+		for (String string : player.getFriends()){
 			String pn = UUIDUtils.getNameFromIdString(string);
-			Logger.log(LogLevel.DEBUG, "Friends", player.getName() + "      "  + string + "            " + pn);
 			
+			/*
 			ItemStack head = new ItemStack(Material.SKULL_ITEM, 1);
 			head.setDurability((short) 3); //Durability value 3 is to get a human head instead of a skeleton head
 			SkullMeta meta = (SkullMeta) head.getItemMeta();
 			meta.setOwner(pn);
 			head.setItemMeta(meta);
+			*/
+			
+			ItemStack head = new ItemBuilder(Material.SKULL_ITEM)
+					.setAmount(1)
+					.setDamage(3) //Damage value 3 is to get a human head instead of a skeleton head
+					.setSkullOwner(pn)
+					.getItemStack();
 			
 			menu.setOption(i, head, pn);
 			

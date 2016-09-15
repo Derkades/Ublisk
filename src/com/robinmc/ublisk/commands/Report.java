@@ -10,7 +10,7 @@ public class Report implements CommandExecutor {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
-		sender.sendMessage(Message.REPORT_FORUMS.get());
+		sender.sendMessage(Message.REPORT.get());
 		return true;
 	}
 

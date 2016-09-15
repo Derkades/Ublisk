@@ -13,7 +13,6 @@ import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class ClassMenu {
@@ -32,16 +31,16 @@ public class ClassMenu {
 				Cooldown.chooseClassStart(player);
 				if (name.equals("swordsman")){
 					Config.set("class." + uuid, "Swordsman");
-					player.sendMessage(CMessage.changedClass("Swordsman"));
+					player.sendMessage(Message.Complicated.changedClass("Swordsman"));
 				} else if (name.equals("archer")){
 					Config.set("class." + uuid, "Archer");
-					player.sendMessage(CMessage.changedClass("Archer"));
+					player.sendMessage(Message.Complicated.changedClass("Archer"));
 				} else if (name.equals("sorcerer")){
 					Config.set("class." + uuid, "Sorcerer");
-					player.sendMessage(CMessage.changedClass("Sorceer"));
+					player.sendMessage(Message.Complicated.changedClass("Sorceer"));
 				} else if (name.equals("paladin")){
 					Config.set("class." + uuid, "Paladin");
-					player.sendMessage(CMessage.changedClass("Paladin"));
+					player.sendMessage(Message.Complicated.changedClass("Paladin"));
 				} else {
 					player.sendMessage(Message.ERROR_MENU.get());
 				}

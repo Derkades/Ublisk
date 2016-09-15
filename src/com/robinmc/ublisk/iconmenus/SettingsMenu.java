@@ -51,7 +51,7 @@ public class SettingsMenu {
 				setting.put(player, false);
 			}
 			
-			event.setWillClose(true);
+			event.setWillClose(false);
 		}
 	}, Main.getInstance());
 	

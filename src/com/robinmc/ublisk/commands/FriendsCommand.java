@@ -8,10 +8,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.iconmenus.FriendsMenu;
-import com.robinmc.ublisk.utils.Friends;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
-import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class FriendsCommand implements CommandExecutor {
@@ -19,22 +18,22 @@ public class FriendsCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (sender instanceof Player){
-			Player player = (Player) sender;
+			UPlayer player = UPlayer.get(sender);
 			if (args.length == 0){
-				FriendsMenu.open(player);
+				FriendsMenu.open(player.getPlayer());
 			} else if (args.length == 2){
 				if (args[0].equals("add")){
 					Player newFriend = Bukkit.getPlayer(args[1]);
-					if (Friends.addFriend(player, newFriend)){
-						player.sendMessage(CMessage.friendAdded(newFriend.getName()));
+					if (player.addFriend(newFriend)){
+						player.sendMessage(Message.Complicated.Friends.friendAdded(newFriend.getName()));
 					} else {
 						player.sendMessage(Message.FRIEND_OFFLINE.get());
 					}
 				} else if (args[0].equals("remove") || args[0].equals("delete")){
 					try {
 						OfflinePlayer friend = UUIDUtils.getOfflinePlayerFromName(args[1]);
-						if (Friends.removeFriend(player, friend)){
-							player.sendMessage(CMessage.friendRemoved(friend.getName()));
+						if (player.removeFriend(friend)){
+							player.sendMessage(Message.Complicated.Friends.friendRemoved(friend.getName()));
 						} else {
 							player.sendMessage(Message.FRIEND_NOT_EXIST.get());
 						}

@@ -7,6 +7,7 @@ import com.robinmc.ublisk.utils.variable.Message;
 
 import net.md_5.bungee.api.ChatColor;
 
+@Deprecated
 public class MessageTarget {
 	
 	private Player player;

@@ -24,10 +24,8 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.enums.Classes;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.iconmenus.MainMenu;
-import com.robinmc.ublisk.utils.Exp;
-import com.robinmc.ublisk.utils.LifeCrystalPlayer;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Voting;
-import com.robinmc.ublisk.utils.inventory.BetterInventory;
 import com.robinmc.ublisk.utils.inventory.item.Item;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
@@ -104,7 +102,7 @@ public class PlayerInteract implements Listener {
 						public void run(){
 							Location loc = block.getLocation();
 							loc.setY(loc.getY() + 1);
-							ThrownPotion potion = (ThrownPotion) Var.world.spawnEntity(loc, EntityType.SPLASH_POTION);
+							ThrownPotion potion = (ThrownPotion) Var.WORLD.spawnEntity(loc, EntityType.SPLASH_POTION);
 							PotionEffect effect = new PotionEffect(PotionEffectType.HARM, 1, 2);
 							potion.getEffects().add(effect);
 						}
@@ -147,18 +145,18 @@ public class PlayerInteract implements Listener {
 			inv.setItem(13, xpItem.getItemStack());
 			inv.setItem(14, lifeItem.getItemStack());
 			
-			Player player = event.getPlayer();
+			UPlayer player = UPlayer.get(event.getPlayer());
 			
 			if (gold !=0){
-				BetterInventory.getInventory(player).add(Material.GOLD_NUGGET, gold);
+				player.getInventory().add(Material.GOLD_NUGGET, gold);
 			}
 			
 			if (xp != 0){
-				Exp.add(player, xp);
+				player.addXP(xp);
 			}
 			
 			if (life != 0){
-				new LifeCrystalPlayer(player).addLifeCrystals(life);
+				player.addLifeCrystals(life);
 			}
 			
 			Logger.log(LogLevel.DEBUG, "Gold: " + gold + " | XP: " + xp + " | Life: " + life);

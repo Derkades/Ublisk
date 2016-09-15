@@ -10,12 +10,13 @@ import com.robinmc.ublisk.commands.ClassCommand;
 import com.robinmc.ublisk.commands.Credits;
 import com.robinmc.ublisk.commands.Debug;
 import com.robinmc.ublisk.commands.FriendsCommand;
+import com.robinmc.ublisk.commands.GuildCommand;
 import com.robinmc.ublisk.commands.Help;
 import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.commands.MsgCommand;
 import com.robinmc.ublisk.commands.MuteCommand;
 import com.robinmc.ublisk.commands.Report;
-import com.robinmc.ublisk.commands.Suggest;
+import com.robinmc.ublisk.commands.Contact;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 
@@ -27,12 +28,13 @@ public enum Command {
 	CREDITS("credits", new Credits()),
 	DEBUG("debug", new Debug()),
 	FRIENDS("friends", new FriendsCommand()),
+	GUILDS("guild", new GuildCommand()),
 	HELP("help", new Help()),
 	MENU("menu", new Menu()),
 	MSG("msg", new MsgCommand()),
 	MUTE("mute", new MuteCommand()),
 	REPORT("report", new Report()),
-	SUGGEST("suggest", new Suggest());
+	CONTACT("contact", new Contact());
 	
 	private String cmd;
 	private CommandExecutor exec;

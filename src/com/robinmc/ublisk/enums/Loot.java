@@ -13,7 +13,7 @@ import org.bukkit.entity.EntityType;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.variable.CMessage;
+import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
 
 public enum Loot {
@@ -57,7 +57,7 @@ public enum Loot {
     }
 	
 	public static void spawnRandomLoot(){
-		World world = Var.world;
+		World world = Var.WORLD;
 		Loot loot = randomEnum(Loot.class);
 		final int x = loot.getX();
 		final int y = loot.getY();
@@ -69,7 +69,7 @@ public enum Loot {
 			public void run(){
 				Block block = loc.getBlock();
 				block.setType(Material.CHEST);
-				Bukkit.broadcastMessage(CMessage.lootSpawned(x, y, z));
+				Bukkit.broadcastMessage(Message.Complicated.lootSpawned(x, y, z));
 			}
 		}, 70);
 	}
@@ -77,7 +77,7 @@ public enum Loot {
 	public static void removeLoot(){
 		Logger.log(LogLevel.INFO, "Loot", "Removed all loot chests!");
 		for (Loot loot : Loot.values()){
-			Block block = new Location(Var.world, loot.getX(), loot.getY(), loot.getZ()).getBlock();
+			Block block = new Location(Var.WORLD, loot.getX(), loot.getY(), loot.getZ()).getBlock();
 			block.setType(Material.AIR);
 		}
 	}

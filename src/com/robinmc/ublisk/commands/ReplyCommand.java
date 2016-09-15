@@ -5,7 +5,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.utils.chat.MessageTarget;
+import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class ReplyCommand implements CommandExecutor {
@@ -17,14 +18,18 @@ public class ReplyCommand implements CommandExecutor {
 			return true;
 		}
 		
-		Player player = (Player) sender;
-		@SuppressWarnings("unused")
-		MessageTarget target = MessageTarget.getLastSender(player);
+		UPlayer player = UPlayer.get(sender);
 		
-		player.sendMessage("hi!");
+		UPlayer target;
+		try {
+			target = player.getLastSender();
+		} catch (LastSenderUnknownException e) {
+			// TODO Last sender unknown message
+			return true;
+		}
 		
-		// FIXME Finish reply command
-		
+		String msg = String.join("", args);
+		target.sendPrivateMessage(player, msg);
 		return true;
 		
 	}

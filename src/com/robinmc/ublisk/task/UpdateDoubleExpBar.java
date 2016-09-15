@@ -31,7 +31,7 @@ public class UpdateDoubleExpBar implements Task {
 						
 						int left2 = left - 1;
 						if (left2 == 0){
-							left2 = Var.doubleExpTime;
+							left2 = Var.DOUBLE_XP_TIME;
 							HashMaps.doublexp.put(HashMaps.placeHolder(), false);
 							HashMaps.doubleExpBarActive.put(HashMaps.placeHolder(), false);
 						}

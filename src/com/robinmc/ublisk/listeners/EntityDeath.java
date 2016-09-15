@@ -36,7 +36,7 @@ public class EntityDeath implements Listener {
 				Tracker.MOB_KILLS.add(player);
 				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 					public void run(){
-						for (Entity entity : Var.world.getEntities()){
+						for (Entity entity : Var.WORLD.getEntities()){
 							if (entity.getType() == EntityType.EXPERIENCE_ORB){
 								entity.remove();
 							}

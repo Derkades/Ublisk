@@ -120,7 +120,7 @@ public class Exp {
 		player.setExp(0);
 	    player.setLevel(0);
 	    player.setTotalExperience(0);  
-	    player.giveExp(Math.round(xp / Var.xpDivision));
+	    player.giveExp(Math.round(xp / Var.XP_DIVISION));
 	}
 	
 	public static void levelUp(Player player){

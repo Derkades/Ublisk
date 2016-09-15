@@ -9,7 +9,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.utils.variable.CMessage;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class Afk implements CommandExecutor {
@@ -22,11 +21,11 @@ public class Afk implements CommandExecutor {
 			String name = player.getName();
 			
 			if (HashMaps.afk.get(uuid)){ //If player is already afk
-				Bukkit.broadcastMessage(CMessage.noLongerAfk(name)); //Set as no longer afk
+				Bukkit.broadcastMessage(Message.Complicated.Commands.noLongerAfk(name)); //Set as no longer afk
 				HashMaps.afk.put(uuid, false);
 				return true;
 			} else { //If player is not AFK
-				Bukkit.broadcastMessage(CMessage.nowAfk(name)); //Set as afk
+				Bukkit.broadcastMessage(Message.Complicated.Commands.nowAfk(name)); //Set as afk
 				HashMaps.afk.put(uuid, true);
 				return true;
 			}

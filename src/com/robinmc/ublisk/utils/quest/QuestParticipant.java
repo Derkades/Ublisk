@@ -6,9 +6,9 @@ import org.bukkit.inventory.PlayerInventory;
 import com.robinmc.ublisk.enums.Town;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
-import com.robinmc.ublisk.utils.LifeCrystalPlayer;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
-import com.robinmc.ublisk.utils.variable.CMessage;
+import com.robinmc.ublisk.utils.variable.Message;
 
 public class QuestParticipant {
 	
@@ -22,8 +22,12 @@ public class QuestParticipant {
 		this.npc = npc;
 	}
 	
-	public Player getPlayer(){
+	public Player getBukkitPlayer(){
 		return player;
+	}
+	
+	public UPlayer getPlayer(){
+		return UPlayer.get(player);
 	}
 	
 	public Quest getQuest(){
@@ -73,7 +77,7 @@ public class QuestParticipant {
 	}
 	
 	public void msg(String msg){
-		player.sendMessage(CMessage.npcMsg(npc.getName(), msg));
+		player.sendMessage(Message.Complicated.Quests.npcMsg(npc.getName(), msg));
 	}
 	
 	public void giveRewardExp(){
@@ -82,14 +86,10 @@ public class QuestParticipant {
 	
 	public void sendCompletedMessage(){
 		if (quest.noLifeReward()){
-			player.sendMessage(CMessage.questCompleted(quest.getName(), quest.getRewardExp()));
+			player.sendMessage(Message.Complicated.Quests.questCompleted(quest.getName(), quest.getRewardExp()));
 		} else {
-			player.sendMessage(CMessage.questCompleted(quest.getName(), quest.getRewardExp(), quest.getLifeCrystalReward()));
+			player.sendMessage(Message.Complicated.Quests.questCompleted(quest.getName(), quest.getRewardExp(), quest.getLifeCrystalReward()));
 		}
-	}
-	
-	public LifeCrystalPlayer getLifeCrystalPlayer(){
-		return new LifeCrystalPlayer(player);
 	}
 	
 	public Town getLastTown(){
