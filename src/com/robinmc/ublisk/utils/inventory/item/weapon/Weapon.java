@@ -41,11 +41,13 @@ public class Weapon {
 		if (rarity == WeaponRarity.COMMON){
 			color = ChatColor.GRAY + "";
 		} else if (rarity == WeaponRarity.UNIQUE){
-			color = ChatColor.GREEN + "" + ChatColor.BOLD;
+			color = ChatColor.GREEN + "";
 		} else if (rarity == WeaponRarity.RARE){
-			color = ChatColor.RED + "" + ChatColor.BOLD;
+			color = ChatColor.DARK_GREEN + "";
+		} else if (rarity == WeaponRarity.EPIC){
+			color = ChatColor.DARK_PURPLE + "" + ChatColor.BOLD;
 		} else if (rarity == WeaponRarity.LEGENDARY){
-			color = ChatColor.DARK_AQUA + "" + ChatColor.BOLD;
+			color = ChatColor.GOLD + "" + ChatColor.BOLD;
 		}
 		
 		String name =  color + this.name;
