@@ -5,6 +5,7 @@ public enum WeaponRarity {
 	COMMON("Common"),
 	UNIQUE("Unique"),
 	RARE("Rare"),
+	EPIC("Epic"),
 	LEGENDARY("Legendary");
 	
 	private String string;
