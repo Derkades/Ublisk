@@ -18,6 +18,8 @@ public class UpdateInfo implements Task {
 				for (final UPlayer player : UPlayer.getOnlinePlayers()){
 					delay = delay + 10*20;
 						
+					player.refreshLastSeenDate();
+					
 					Scheduler.runTaskLater(delay, new Runnable(){
 						public void run(){
 							Tracker.PlayerInfo.syncExp(player);
