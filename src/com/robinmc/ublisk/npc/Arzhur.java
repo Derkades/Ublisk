@@ -66,7 +66,7 @@ public class Arzhur implements QuestCharacterClass {
 			qp.sendCompletedMessage(); //Send a message
 			qp.giveRewardExp(); //Give reward experience
 			qp.setQuestCompleted(true); //Set the quest as completed for this player
-		} else if (qp.getProgress(QuestProgress.CHECKED_DAM)){ //TODO: NPC to go to to obtain "checked-dam" status
+		} else if (qp.getProgress(QuestProgress.CHECKED_DAM)){ 
 			//If the player has checked the dam
 			qp.msg("Oh no, we must fix the dam before it completely breaks. Please collect some wood from the saw and bring it back to me.");
 		} else {

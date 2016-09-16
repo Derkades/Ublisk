@@ -18,7 +18,8 @@ public enum QuestCharacter {
 	ASHER(null, "Asher", "MrParkerl11", new NPCLocation(449.3, 70, -10.5, 75, 5)), // TODO Asher skin
 	RASMUS(new Rasmus(), "Rasmus", "RobinMC", new NPCLocation(1, 1, 1, 1, 1)), // TODO Rasmus skin TODO Rasmus coordinates
 	DIANH(new Dianh(), "Dianh", ":D", new NPCLocation(1, 1, 1, 1, 1)),// TODO coordinaten en skin van Dianh
-	ZOLTAR(new Zoltar(), "Zoltar", ":D", new NPCLocation(1, 1, 1, 1, 1));// TODO coordinaten en skin van Zoltar
+	ZOLTAR(new Zoltar(), "Zoltar", ":D", new NPCLocation(1, 1, 1, 1, 1)),// TODO coordinaten en skin van Zoltar
+	ALVIN(new Alvin(), "Alvin", ":D", new NPCLocation(1, 1, 1, 1, 1));
 	
 	private QuestCharacterClass qcc;
 	private String name;
