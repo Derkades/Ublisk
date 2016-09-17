@@ -1,14 +1,14 @@
-package com.robinmc.ublisk.npc;
+package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
+import com.robinmc.ublisk.quest.Quest;
+import com.robinmc.ublisk.quest.QuestCharacter;
+import com.robinmc.ublisk.quest.QuestCharacterClass;
+import com.robinmc.ublisk.quest.QuestParticipant;
+import com.robinmc.ublisk.quest.QuestProgress;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
-import com.robinmc.ublisk.utils.quest.Quest;
-import com.robinmc.ublisk.utils.quest.QuestCharacter;
-import com.robinmc.ublisk.utils.quest.QuestCharacterClass;
-import com.robinmc.ublisk.utils.quest.QuestParticipant;
-import com.robinmc.ublisk.utils.quest.QuestProgress;
 
 public class Arzhur implements QuestCharacterClass {
 

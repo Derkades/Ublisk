@@ -1,12 +1,12 @@
-package com.robinmc.ublisk.npc;
+package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.utils.quest.Quest;
-import com.robinmc.ublisk.utils.quest.QuestCharacter;
-import com.robinmc.ublisk.utils.quest.QuestCharacterClass;
-import com.robinmc.ublisk.utils.quest.QuestParticipant;
-import com.robinmc.ublisk.utils.quest.QuestProgress;
+import com.robinmc.ublisk.quest.Quest;
+import com.robinmc.ublisk.quest.QuestCharacter;
+import com.robinmc.ublisk.quest.QuestCharacterClass;
+import com.robinmc.ublisk.quest.QuestParticipant;
+import com.robinmc.ublisk.quest.QuestProgress;
 
 public class Alvin implements QuestCharacterClass{
 

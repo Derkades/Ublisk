@@ -3,9 +3,8 @@ package com.robinmc.ublisk.utils.logging;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 
-import net.md_5.bungee.api.ChatColor;
+import com.robinmc.ublisk.utils.Config;
 
 public class Logger {
 	
@@ -23,27 +22,7 @@ public class Logger {
 	 * Sends a message to the console
 	 * @param string A message
 	 */
-	public void log(String string){
-		ChatColor color;
-		
-		switch (logLevel){
-		case DEBUG: 
-			color = ChatColor.WHITE;
-			break;
-		case INFO: 
-			color = ChatColor.GREEN;
-			break;
-		case WARNING: 
-			color = ChatColor.YELLOW;
-			break;
-		case SEVERE: 
-			color = ChatColor.RED;
-			break;
-		default: 
-			color = ChatColor.GOLD;
-			break;
-		}
-		
+	public void log(String string){		
 		switch (logLevel){
 		case WARNING:
 			Bukkit.getLogger().log(Level.WARNING, string);
@@ -52,16 +31,10 @@ public class Logger {
 			Bukkit.getLogger().log(Level.WARNING, string);
 			break;
 		default:
-			Bukkit.getLogger().log(Level.INFO, string);
-			break;
-		}
-
-		String msg = color + string;
-		
-		for (Player player : Bukkit.getOnlinePlayers()){
-			if (player.isOp()){
-				player.sendMessage(msg);
+			if (Config.getBoolean("log")){
+				Bukkit.getLogger().log(Level.INFO, string);
 			}
+			break;
 		}
 	}
 	

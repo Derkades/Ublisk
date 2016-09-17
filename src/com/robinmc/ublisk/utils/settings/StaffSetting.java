@@ -8,7 +8,8 @@ import com.robinmc.ublisk.utils.exception.NotSetException;
 public enum StaffSetting {
 	
 	COMMAND_LOG("Enable command log", "command-log", "See commands players execute."),
-	INFO_MESSAGES("Enable info message", "info-msg", "See info messages (green messages)");
+	INFO_MESSAGES("Enable info messages", "info-msg", "See info messages (green messages)"),
+	DEBUG_MESSAGES("Enable debug messages", "debug-msg", "See debug messages (white messages)");
 	
 	private String s;
 	private String name;

@@ -49,7 +49,7 @@ public class VotingMenu {
 				"You have " + points + " voting points");
 		menu.setOption(5, new ItemStack(Material.CHEST), 
 				"Open vote box", 
-				"Costs 5 voting points. Rewards: ",
+				"Costs 3 voting points. Rewards: ",
 				"- XP (20-100)",
 				"- Gold nugget (0-50)",
 				"- Life crystals (0-2)");

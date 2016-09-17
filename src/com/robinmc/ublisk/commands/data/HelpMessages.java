@@ -3,6 +3,7 @@ package com.robinmc.ublisk.commands.data;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
+@Deprecated
 public class HelpMessages {
 	
 	ChatColor gold = ChatColor.GOLD;

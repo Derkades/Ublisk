@@ -35,7 +35,7 @@ public class UpdateInfo implements Task {
 							});
 							Scheduler.runTaskLater(6*20, new Runnable(){
 								public void run(){
-									//Nothing yet
+									Tracker.PlayerInfo.syncLastSeen(player);
 								}
 							});
 							Scheduler.runTaskLater(8*20, new Runnable(){

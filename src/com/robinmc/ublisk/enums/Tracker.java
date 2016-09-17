@@ -280,6 +280,49 @@ public enum Tracker {
 				}
 			}
 		}
+		
+		public static void syncLastSeen(UPlayer player){
+			try {
+				MySQL.openConnection();
+				Logger.log(LogLevel.INFO, "PlayerInfo", "Updating last seen date in database for player " + player.getName());
+	    		
+	    		PreparedStatement sql2 = MySQL.prepareStatement("SELECT * FROM `last_seen` WHERE uuid=?;");
+				sql2.setString(1, player.getUniqueId().toString());
+				ResultSet resultSet = sql2.executeQuery();
+				boolean containsPlayer = resultSet.next();
+				
+				sql2.close();
+				resultSet.close();
+	        	
+				String date = player.getLastSeenDate();
+				
+	        	if (containsPlayer){
+	        		PreparedStatement update = MySQL.prepareStatement("UPDATE `last_seen` SET date=?,name=? WHERE uuid=?;");
+	        		
+	        		update.setString(1, date);
+	        		update.setString(2, player.getName());
+	        		update.setString(3, player.getUniqueId().toString());
+	        		
+	        		update.executeUpdate();
+	        		update.close();
+	        	} else {
+	        		PreparedStatement insert = MySQL.prepareStatement("INSERT INTO `last_seen` values(?, ?, ?);");
+	        		insert.setString(1, player.getUniqueId().toString());
+	        		insert.setString(2, date);
+	        		insert.setString(3, player.getName());
+	        		insert.execute();
+	        		insert.close();
+	        	}
+			} catch (Exception e){
+				e.printStackTrace();
+			} finally {
+				try {
+					MySQL.closeConnection();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 			
 	}
 

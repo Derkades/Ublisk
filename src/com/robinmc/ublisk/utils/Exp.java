@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import com.connorlinfoot.actionbarapi.ActionBarAPI;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.utils.exception.MobInfoMissingException;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
@@ -80,8 +81,9 @@ public class Exp {
 	 * @param Mob type
 	 * @throws MobNotFoundException If the entity specified could not be associated with a Mob.
 	 * @throws UnknownAreaException If the entity specified is not in an area
+	 * @throws MobInfoMissingException  
 	 */
-	public static void giveMobExp(Player player, Entity entity) throws MobNotFoundException, UnknownAreaException{
+	public static void giveMobExp(Player player, Entity entity) throws MobNotFoundException, UnknownAreaException, MobInfoMissingException {
 		if (!Mob.containsEntity(entity)){
 			player.sendMessage(Message.ERROR_GENERAL.get());
 			return;
@@ -95,8 +97,10 @@ public class Exp {
 				xp = info.getXP();
 				name = info.getName();
 			}
-			
-			throw new MobNotFoundException();
+		}
+		
+		if (xp == 0 || name == "error"){
+			throw new MobInfoMissingException();
 		}
 		
 		if (HashMaps.doublexp.get(HashMaps.placeHolder())){ //If double XP is active

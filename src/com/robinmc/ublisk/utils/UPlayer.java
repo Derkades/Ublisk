@@ -25,8 +25,12 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.enums.Helper;
 import com.robinmc.ublisk.enums.Town;
 import com.robinmc.ublisk.enums.Tracker;
+import com.robinmc.ublisk.quest.Quest;
+import com.robinmc.ublisk.quest.QuestCharacter;
+import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
+import com.robinmc.ublisk.utils.exception.MobInfoMissingException;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
 import com.robinmc.ublisk.utils.exception.NotSetException;
@@ -41,10 +45,8 @@ import com.robinmc.ublisk.utils.mob.Mob;
 import com.robinmc.ublisk.utils.mob.MobArea;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
-import com.robinmc.ublisk.utils.quest.Quest;
-import com.robinmc.ublisk.utils.quest.QuestCharacter;
-import com.robinmc.ublisk.utils.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.settings.Setting;
+import com.robinmc.ublisk.utils.settings.StaffSetting;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
@@ -205,7 +207,7 @@ public class UPlayer {
 		Exp.set(player, xp);
 	}
 	
-	public void giveMobXP(Entity entity) throws MobNotFoundException, UnknownAreaException {
+	public void giveMobXP(Entity entity) throws MobNotFoundException, UnknownAreaException, MobInfoMissingException {
 		Exp.giveMobExp(player, entity);
 	}
 	
@@ -284,6 +286,14 @@ public class UPlayer {
 	}
 	
 	public void setSetting(Setting setting, boolean bool){
+		setting.put(player, bool);
+	}
+	
+	public boolean getStaffSetting(StaffSetting setting) throws NotSetException{
+		return setting.get(player);
+	}
+	
+	public void setStaffSetting(StaffSetting setting, boolean bool){
 		setting.put(player, bool);
 	}
 	

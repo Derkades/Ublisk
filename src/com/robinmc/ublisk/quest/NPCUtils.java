@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.quest;
+package com.robinmc.ublisk.quest;
 
 import java.util.UUID;
 
@@ -9,12 +9,12 @@ import org.inventivetalent.npclib.npc.living.human.NPCPlayer;
 import org.inventivetalent.npclib.registry.NPCRegistry;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.npc.Arzhur;
-import com.robinmc.ublisk.npc.Dianh;
-import com.robinmc.ublisk.npc.Merek;
-import com.robinmc.ublisk.npc.Rasmus;
-import com.robinmc.ublisk.npc.Ulric;
-import com.robinmc.ublisk.npc.Zoltar;
+import com.robinmc.ublisk.quest.npc.Arzhur;
+import com.robinmc.ublisk.quest.npc.Dianh;
+import com.robinmc.ublisk.quest.npc.Merek;
+import com.robinmc.ublisk.quest.npc.Rasmus;
+import com.robinmc.ublisk.quest.npc.Ulric;
+import com.robinmc.ublisk.quest.npc.Zoltar;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
 

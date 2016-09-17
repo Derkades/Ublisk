@@ -10,6 +10,10 @@ public class Scheduler {
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), runnable, delay);
 	}
 	
+	public static void oneTickDelay(Runnable runnable){
+		runTaskLater(1, runnable);
+	}
+	
 	public static void runAsyncRepeatingTask(long start, long delay, Runnable runnable){
 		Bukkit.getScheduler().runTaskTimerAsynchronously(Main.getInstance(), runnable, start, delay);
 	}
@@ -17,5 +21,5 @@ public class Scheduler {
 	public static void runSyncRepeatingTask(long start, long delay, Runnable runnable){
 		Bukkit.getScheduler().runTaskTimer(Main.getInstance(), runnable, start, delay);
 	}
-
+	
 }

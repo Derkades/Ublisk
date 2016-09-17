@@ -85,7 +85,8 @@ public class PlayerJoin implements Listener {
         if (!(	group == PermissionGroup.BUILDER ||
         		group == PermissionGroup.MODERATOR ||
         		group == PermissionGroup.OWNER
-        		)){
+        		) &&
+        		uPlayer.isInBuilderMode()){
         	Helper.disableBuilderMode(player);
         }
         

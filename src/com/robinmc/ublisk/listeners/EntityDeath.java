@@ -14,6 +14,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.Exp;
+import com.robinmc.ublisk.utils.exception.MobInfoMissingException;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.mob.Mob;
@@ -47,12 +48,13 @@ public class EntityDeath implements Listener {
 				try {
 					Exp.giveMobExp(player, entity);
 					Exp.refresh(player);
-				} catch (MobNotFoundException | UnknownAreaException e) {
+				} catch (MobNotFoundException | UnknownAreaException | MobInfoMissingException e) {
 					player.sendMessage(Message.ERROR_GENERAL.get());
 					Location loc = entity.getLocation();
 					player.sendMessage("Entity: " + entity.getType());
 					player.sendMessage("Name: " + entity.getCustomName());
 					player.sendMessage("Location: " + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ());
+					e.printStackTrace();
 				}
 			}
 		}

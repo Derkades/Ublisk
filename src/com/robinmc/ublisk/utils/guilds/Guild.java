@@ -11,6 +11,7 @@ import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.variable.Var;
 
 public class Guild {
 	
@@ -30,7 +31,7 @@ public class Guild {
 	
 	private YamlConfiguration config;
 	
-	private void initializeConfig(){
+	private void openConfig(){
 		Logger.log(LogLevel.DEBUG, "Initialize config");
 		if (getFile().exists()){
 			config = YamlConfiguration.loadConfiguration(getFile());
@@ -54,7 +55,7 @@ public class Guild {
 	
 	public void addPlayer(UPlayer player){
 		Logger.log(LogLevel.DEBUG, "Add player");
-		initializeConfig();
+		openConfig();
 		if (config.contains("players") && config.isSet("players")){
 			Logger.log(LogLevel.DEBUG, "Config contains list");
 			List<String> list = config.getStringList("players");		
@@ -73,7 +74,7 @@ public class Guild {
 	
 	public boolean hasPlayer(UPlayer player){
 		Logger.log(LogLevel.DEBUG, "Has player?");
-		initializeConfig();
+		openConfig();
 		boolean bool = config.getStringList("players").contains(player.getUniqueId().toString());
 		Logger.log(LogLevel.DEBUG, "Has player: " + bool);
 		closeConfig();
@@ -82,7 +83,7 @@ public class Guild {
 	
 	public void removePlayer(UPlayer player) throws NotInGuildException {
 		Logger.log(LogLevel.DEBUG, "Remove player");
-		initializeConfig();
+		openConfig();
 		List<String> list = config.getStringList("players");
 		Logger.log(LogLevel.DEBUG, "List: " + list);
 		if (!list.contains(player.getUniqueId().toString())){
@@ -105,6 +106,41 @@ public class Guild {
 	public void delete(){
 		Logger.log(LogLevel.DEBUG, "File delete");
 		getFile().delete();
+	}
+	
+	public boolean hasReachedPlayerLimit(){
+		openConfig();
+		boolean bool;
+		if (config.contains("players") && config.isSet("players")){
+			List<String> list = config.getStringList("players");
+			bool = list.size() >= Var.GUILD_MEMBER_LIMIT;
+		} else {
+			bool = false;
+		}
+		closeConfig();
+		return bool;
+	}
+	
+	public int getPoints(){
+		openConfig();
+		int points;
+		if (config.contains("points")){
+			points = config.getInt("points");
+		} else {
+			points = 0;
+		}
+		closeConfig();
+		return points;
+	}
+	
+	public void setPoints(int points){
+		openConfig();
+		config.set("points", points);
+		closeConfig();
+	}
+	
+	public boolean hasPoints(int points){
+		return getPoints() >= points;
 	}
 
 }

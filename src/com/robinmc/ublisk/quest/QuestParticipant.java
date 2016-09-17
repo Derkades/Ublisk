@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.quest;
+package com.robinmc.ublisk.quest;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
