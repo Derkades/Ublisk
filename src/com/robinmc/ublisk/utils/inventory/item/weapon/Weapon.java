@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.robinmc.ublisk.utils.inventory.item.ItemInfo;
 
-import net.md_5.bungee.api.ChatColor;
+import static net.md_5.bungee.api.ChatColor.*;
 
 public class Weapon {
 	
@@ -36,18 +36,18 @@ public class Weapon {
 	}
 	
 	public ItemInfo getItemInfo(){
-		String color = ChatColor.WHITE + "";
+		String color = WHITE + "";
 		
 		if (rarity == WeaponRarity.COMMON){
-			color = ChatColor.GRAY + "";
+			color = GRAY + "";
 		} else if (rarity == WeaponRarity.UNIQUE){
-			color = ChatColor.GREEN + "";
+			color = GREEN + "";
 		} else if (rarity == WeaponRarity.RARE){
-			color = ChatColor.DARK_GREEN + "";
+			color = DARK_GREEN + "";
 		} else if (rarity == WeaponRarity.EPIC){
-			color = ChatColor.DARK_PURPLE + "" + ChatColor.BOLD;
+			color = DARK_PURPLE + "" + BOLD;
 		} else if (rarity == WeaponRarity.LEGENDARY){
-			color = ChatColor.GOLD + "" + ChatColor.BOLD;
+			color = GOLD + "" + BOLD;
 		}
 		
 		String name =  color + this.name;
@@ -56,20 +56,17 @@ public class Weapon {
 	
 	private List<String> getWeaponLore(String tag){
 		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.DARK_AQUA + tag);
+		lore.add(DARK_AQUA + tag);
 		lore.add("");
 		
-		lore.add("Damage: " + weaponInfo.getDamage());
+		lore.add(YELLOW + "Damage: " + GOLD + weaponInfo.getDamage());
 		
-		lore.add("Attack speed: " + weaponInfo.getAttackSpeedName());
+		lore.add(YELLOW + "Attack speed: " + GOLD + weaponInfo.getAttackSpeedName());
 		
 		if (weaponInfo.getMovementSpeed() != -1) //If movement speed is not the default value
-			lore.add("Movement speed: " + weaponInfo.getMovementSpeed());
-		if (weaponInfo.getKnockbackResistance() == -1){
-			lore.add("Knockback resistance: default");
-		} else {
-			lore.add("Knockback resistance: " + weaponInfo.getKnockbackResistance());
-		}
+			lore.add(YELLOW + "Movement speed: " + GOLD + weaponInfo.getMovementSpeed());
+		if (weaponInfo.getKnockbackResistance() != -1)
+			lore.add(YELLOW + "Knockback resistance: " + GOLD + weaponInfo.getKnockbackResistance());
 		
 		return lore;
 	}
