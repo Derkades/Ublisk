@@ -175,7 +175,7 @@ public enum Message {
 			}
 			
 			public static String npcNotFound(String name){
-				return prefix("NPC") + RED + "No dialogue could be found for an npc with name " + name + ", please report this error.";
+				return prefix("NPC") + RED + "No dialogue could be found for an npc with name " + name + RED + ", please report this error.";
 			}	
 			
 			public static String npcMsg(String npc, String message){

@@ -103,7 +103,7 @@ public enum QuestCharacter {
 		}
 		
 		for (QuestCharacter npc : QuestCharacter.values()) {
-			if (text.equalsIgnoreCase(npc.name)) {
+			if (text.contains(npc.name)) {
 				return npc;
 			}
 		}
