@@ -98,11 +98,9 @@ public enum Mob {
 		int count = 0;
 		
 		for (LivingEntity entity : Var.WORLD.getLivingEntities()){
-			if (entity.getType() == getEntityType() &&
-					entity.getHealth() == getHealth() &&
-					entity.getName().contains(getName())){
-				count++;
-			}
+			try {
+				if (getMob(entity) == this) count++;
+			} catch (MobNotFoundException e) {}
 		}
 		
 		Logger.log(LogLevel.DEBUG, count + "");
@@ -125,7 +123,7 @@ public enum Mob {
 	public static Mob getMob(Entity entity) throws MobNotFoundException {
 		for (Mob mob : Mob.values()){
 			String name = DARK_AQUA + mob.getName() + DARK_GRAY + " [" + DARK_GREEN + mob.getLevel() + DARK_GRAY + "]";
-			if (mob.getName().equals(name)){
+			if (entity.getName().equals(name)){
 				return mob;
 			}
 		}

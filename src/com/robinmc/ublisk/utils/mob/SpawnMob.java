@@ -4,6 +4,9 @@ import static net.md_5.bungee.api.ChatColor.DARK_AQUA;
 import static net.md_5.bungee.api.ChatColor.DARK_GRAY;
 import static net.md_5.bungee.api.ChatColor.DARK_GREEN;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
@@ -51,9 +54,29 @@ class SpawnMob {
 					}
 					
 					Location loc = new Location(Var.WORLD, x, 255, z);
+
+					List<Material> materials = Arrays.asList(
+							Material.AIR, 
+							Material.LONG_GRASS,
+							Material.CHORUS_FLOWER,
+							Material.YELLOW_FLOWER,
+							Material.TORCH,
+							Material.SUGAR_CANE_BLOCK);
 					
-					while(loc.getBlock().getType() == Material.AIR){
+					while(materials.contains(loc.getBlock().getType())){
 						loc.setY(loc.getY() - 1);
+					}
+					
+					List<Material> cancel = Arrays.asList(
+							Material.FENCE,
+							Material.FENCE_GATE,
+							Material.COBBLE_WALL,
+							Material.WATER,
+							Material.STATIONARY_WATER);
+					
+					//Don't let mobs spawn on top of the blocks above
+					if (cancel.contains(loc.getBlock().getType())){
+						return; 
 					}
 					
 					loc.setY(loc.getY() + 1);
