@@ -1,9 +1,9 @@
 package com.robinmc.ublisk.quest;
 
-import org.bukkit.entity.Player;
+import com.robinmc.ublisk.utils.UPlayer;
 
 public interface QuestCharacterClass {
 
-	public void talk(Player player);
+	public void talk(UPlayer player);
 
 }

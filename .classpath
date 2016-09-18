@@ -7,8 +7,6 @@
 	<classpathentry kind="lib" path="C:/Jars/BossBarAPI_v2.4.1.jar"/>
 	<classpathentry kind="lib" path="C:/Jars/ActionBarAPI-1.5.2.jar"/>
 	<classpathentry kind="lib" path="C:/Jars/spigot-1.10.2.jar"/>
-	<classpathentry kind="lib" path="C:/Jars/NPCLib_v2.2.4.jar"/>
-	<classpathentry kind="lib" path="C:/Jars/NickNamer_v3.12.3.jar"/>
 	<classpathentry kind="lib" path="C:/Jars/nuvotifier-universal-2.3.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

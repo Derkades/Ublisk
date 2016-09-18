@@ -56,14 +56,21 @@ public class Weapon {
 	
 	private List<String> getWeaponLore(String tag){
 		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.WHITE + tag);
+		lore.add(ChatColor.DARK_AQUA + tag);
 		lore.add("");
+		
 		lore.add("Damage: " + weaponInfo.getDamage());
-		lore.add("Attack speed: " + weaponInfo.getAttackSpeed());
-		if (weaponInfo.getMovementSpeed() != 0.7){ //If movement speed is not the default value
+		
+		lore.add("Attack speed: " + weaponInfo.getAttackSpeedName());
+		
+		if (weaponInfo.getMovementSpeed() != -1) //If movement speed is not the default value
 			lore.add("Movement speed: " + weaponInfo.getMovementSpeed());
+		if (weaponInfo.getKnockbackResistance() == -1){
+			lore.add("Knockback resistance: default");
+		} else {
+			lore.add("Knockback resistance: " + weaponInfo.getKnockbackResistance());
 		}
-		lore.add("Knockback resistance: " + weaponInfo.getKnockbackResistance());
+		
 		return lore;
 	}
 	

@@ -65,17 +65,5 @@ public class HelpMessages {
 		sender.sendMessage(yellow + "/credits map" + gray + " - To view who built what");
 		return true;
 	}
-	
-	public boolean commandsMenu(CommandSender sender){ // XXX /menu help
-		sender.sendMessage("");
-		sender.sendMessage(gray + "Coming soon!");
-		return true;
-	}
-	
-	public boolean commandsMusic(CommandSender sender){ // XXX /music help
-		sender.sendMessage("");
-		sender.sendMessage(gray + "Coming soon!");
-		return true;
-	}
 
 }

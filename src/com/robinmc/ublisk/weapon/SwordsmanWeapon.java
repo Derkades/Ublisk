@@ -8,48 +8,27 @@ import com.robinmc.ublisk.utils.inventory.item.weapon.type.SwordType;
 
 public enum SwordsmanWeapon {
 	
-	TEST_WEAPON(new Weapon(
-			SwordType.GOLD,
-			WeaponRarity.LEGENDARY,
-			new WeaponInfo(1.0, 1.0, 1.9, 1.0),
-			"Awesome Weapon", 
-			"A cool weapon")
-			),
 	BASIC_WOODEN_SWORD(new Weapon(
 			SwordType.WOOD,
 			WeaponRarity.COMMON,
-			new WeaponInfo(0, 0, AttackSpeed.VERY_FAST.getSpeed(), 0),
-			"Basic Wooden Sword",
-			"Your handcrafted weapon")
-			),
-	BASIC_WOODascdEN_SWORD1(new Weapon(
+			new WeaponInfo(1, -1, AttackSpeed.FASTER, -1),
+			"Basic Wooden Sword", 
+			"The sword you created yourself"
+			)),
+	WOODEN_LONG_SWORD(new Weapon(
 			SwordType.WOOD,
 			WeaponRarity.COMMON,
-			new WeaponInfo(0, 0, AttackSpeed.FAST.getSpeed(), 0),
-			"Basic Wooden Sword",
-			"Your handcrafted weapon")
-			),
-	BASIC_WascdOODEN_SWORD(new Weapon(
+			new WeaponInfo(5, -1, AttackSpeed.VANILLA, -1),
+			"Wooden Long Sword",
+			"Insert description here"
+			)),
+	WOODEN_SHORT_SWORD(new Weapon(
 			SwordType.WOOD,
 			WeaponRarity.COMMON,
-			new WeaponInfo(0, 0, AttackSpeed.MEDIUM.getSpeed(), 0),
-			"Basic Wooden Sword",
-			"Your handcrafted weapon")
-			),
-	BASIC_WOODEascdN_SWORD(new Weapon(
-			SwordType.WOOD,
-			WeaponRarity.COMMON,
-			new WeaponInfo(0, 0, AttackSpeed.SLOW.getSpeed(), 0),
-			"Basic Wooden Sword",
-			"Your handcrafted weapon")
-			),
-	BASIC_WOODascdEN_SWORD(new Weapon(
-			SwordType.WOOD,
-			WeaponRarity.COMMON,
-			new WeaponInfo(0, 0, AttackSpeed.VERY_SLOW.getSpeed(), 0),
-			"Basic Wooden Sword",
-			"Your handcrafted weapon")
-			);
+			new WeaponInfo(3, -1, AttackSpeed.FASTEST, -1),
+			"Wooden Short Sword",
+			"Insert description here"
+			));
 	
 	private Weapon weapon;
 	

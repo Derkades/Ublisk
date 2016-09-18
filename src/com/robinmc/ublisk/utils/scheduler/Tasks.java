@@ -20,8 +20,8 @@ import com.robinmc.ublisk.task.RespawnNPC;
 import com.robinmc.ublisk.task.SyncTrackers;
 import com.robinmc.ublisk.task.UpdateBackpackName;
 import com.robinmc.ublisk.task.UpdateDoubleExpBar;
-import com.robinmc.ublisk.task.UpdateInfo;
 import com.robinmc.ublisk.task.UpdateFriendsHealthBar;
+import com.robinmc.ublisk.task.UpdateInfo;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 

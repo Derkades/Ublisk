@@ -25,7 +25,7 @@ public class UpdateDoubleExpBar implements Task {
 							if (!HashMaps.doubleExpBarActive.get(HashMaps.placeHolder())){
 								HashMaps.doubleExpBarActive.put(HashMaps.placeHolder(), true);
 								@SuppressWarnings("unused")
-								BossBar bossBar = BossBarAPI.addBar(player, new TextComponent("Double XP for 1 minute"), BossBarAPI.Color.GREEN, BossBarAPI.Style.PROGRESS, 1.0f, 60*20, 1);
+								BossBar bossBar = BossBarAPI.addBar(player, new TextComponent("Double XP"), BossBarAPI.Color.GREEN, BossBarAPI.Style.PROGRESS, 1.0f, 60*20, 1);
 							}
 						}
 						

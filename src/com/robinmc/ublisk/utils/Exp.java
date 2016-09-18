@@ -106,12 +106,13 @@ public class Exp {
 		if (HashMaps.doublexp.get(HashMaps.placeHolder())){ //If double XP is active
 			ActionBarAPI.sendActionBar(player, ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP", 3*10);
 			Exp.add(player, xp * 2);
-			Logger.log(LogLevel.INFO, "XP", "[MobExp] Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
+			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
 		} else {
 			ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP", 3*10);
 			Exp.add(player, xp);
-			Logger.log(LogLevel.INFO, "XP", "[MobExp] Given " + player.getName() + " " + xp + " for killing a " + name);
+			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp + " for killing a " + name);
 		}	
+		
 		refresh(player);
 	}
 	
@@ -128,17 +129,20 @@ public class Exp {
 	}
 	
 	public static void levelUp(Player player){
+		int level = UPlayer.get(player).getLevel();
 		Bukkit.broadcastMessage("");
 		Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "--------------------------------------------");
 		Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + player.getName() + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " has reached level " + player.getLevel() + "!");
-		Bukkit.broadcastMessage(ChatColor.BLUE + "To celebrate this double XP will be activated in 10 seconds, get ready!");
+		if (!(level < 5)) Bukkit.broadcastMessage(ChatColor.BLUE + "To celebrate this double XP will be activated in 10 seconds, get ready!");
 		Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "--------------------------------------------");
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
-			public void run(){
-				HashMaps.doublexp.put("hi", true);
-			}
-		}, 10*20)
-;		
+		
+		if (!(level < 5)){
+			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+				public void run(){
+					HashMaps.doublexp.put("hi", true);
+				}
+			}, 10*20);
+		}	
 	}
 
 }

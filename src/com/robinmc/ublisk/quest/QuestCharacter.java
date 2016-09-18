@@ -1,7 +1,14 @@
 package com.robinmc.ublisk.quest;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.bukkit.Location;
+import org.bukkit.entity.Villager;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import com.robinmc.ublisk.quest.npc.Alvin;
 import com.robinmc.ublisk.quest.npc.Arzhur;
@@ -10,46 +17,82 @@ import com.robinmc.ublisk.quest.npc.Merek;
 import com.robinmc.ublisk.quest.npc.Rasmus;
 import com.robinmc.ublisk.quest.npc.Ulric;
 import com.robinmc.ublisk.quest.npc.Zoltar;
+import com.robinmc.ublisk.utils.ULocation;
+import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.exception.NPCNotFoundException;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.variable.Message;
+import com.robinmc.ublisk.utils.variable.Var;
 
 public enum QuestCharacter {
 	
-	MEREK(new Merek(), "Merek", "MrCaMeRoOn_01", new NPCLocation(33, 67, -38, -70, 0)),
-	ULRIC(new Ulric(), "Ulric", "Chaspyr", new NPCLocation(38.5, 67, -26.5, -145, 0)),
-	ARZHUR(new Arzhur(), "Arzhur", "Notch", new NPCLocation(111.5, 68, -103.5, -20, 0)), // TODO Arzhur skin
-	ASHER(null, "Asher", "MrParkerl11", new NPCLocation(449.3, 70, -10.5, 75, 5)), // TODO Asher skin
-	RASMUS(new Rasmus(), "Rasmus", "RobinMC", new NPCLocation(1, 1, 1, 1, 1)), // TODO Rasmus skin TODO Rasmus coordinates
-	DIANH(new Dianh(), "Dianh", ":D", new NPCLocation(1, 1, 1, 1, 1)),// TODO coordinaten en skin van Dianh
-	ZOLTAR(new Zoltar(), "Zoltar", ":D", new NPCLocation(1, 1, 1, 1, 1)),// TODO coordinaten en skin van Zoltar
-	ALVIN(new Alvin(), "Alvin", ":D", new NPCLocation(1, 1, 1, 1, 1));
+	MEREK(new Merek(), "Merek", new ULocation(33, 67, -38, -70, 0)),
+	ULRIC(new Ulric(), "Ulric", new ULocation(38.5, 67, -26.5, -145, 0)),
+	ARZHUR(new Arzhur(), "Arzhur", new ULocation(111.5, 68, -103.5, -20, 0)),
+	//ASHER(null, "Asher", new NPCLocation(449.3, 70, -10.5, 75, 5)),
+	RASMUS(new Rasmus(), "Rasmus", new ULocation(1, 1, 1, 1, 1)), // TODO Rasmus coordinates
+	DIANH(new Dianh(), "Dianh", new ULocation(1, 1, 1, 1, 1)),// TODO coordinaten van Dianh
+	ZOLTAR(new Zoltar(), "Zoltar", new ULocation(1, 1, 1, 1, 1)),// TODO coordinaten van Zoltar
+	ALVIN(new Alvin(), "Alvin", new ULocation(1, 1, 1, 1, 1));
 	
 	private QuestCharacterClass qcc;
 	private String name;
-	private String skin;
-	private NPCLocation loc;
+	private Location loc;
 	
-	QuestCharacter(QuestCharacterClass qcc, String name, String skin, NPCLocation loc){
+	QuestCharacter(QuestCharacterClass qcc, String name, ULocation loc){
+		this.qcc = qcc;
 		this.name = name;
-		this.loc = loc;
-		this.skin = skin;
+		this.loc = loc.get();
 	}
 	
 	public QuestCharacterClass getQuestCharacterClass(){
 		return qcc;
 	}
-	
+
 	public String getName(){
 		return name;
 	}
 	
-	public String getSkin(){
-		return skin;
-	}
-	
-	public NPCLocation getLocation(){
+	public Location getLocation(){
 		return loc;
 	}
 	
-	public static QuestCharacter fromString(String text) throws IllegalArgumentException {
+	public void spawn(){
+		Villager villager = Var.WORLD.spawn(loc, Villager.class);
+		villager.setCustomName(name);
+		villager.setSilent(true);
+		villager.setInvulnerable(true);
+		villager.setCustomNameVisible(true);
+		villager.setBreed(false);
+		villager.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000000*20, 255, true));
+		Logger.log(LogLevel.DEBUG, villager.getName() + "" + villager.getLocation().getBlockX() + "" + villager.getLocation().getBlockZ());
+	}
+	
+	public void talk(UPlayer player){
+		boolean success = true;
+		
+		try {
+			Logger.log(LogLevel.DEBUG, this.getName() + "  " + this.getQuestCharacterClass());
+			Method method = qcc.getClass().getMethod("talk", UPlayer.class);
+			method.invoke(qcc.getClass().newInstance(), player);
+			Logger.log(LogLevel.INFO, "NPC", player.getName() + " talked to " + name);
+		} catch (NoSuchMethodException 
+				| SecurityException 
+				| IllegalAccessException 
+				| IllegalArgumentException 
+				| InvocationTargetException 
+				| InstantiationException e) {
+			e.printStackTrace();
+			success = false;
+		}
+		
+		if (!success){
+			player.sendMessage(Message.Complicated.Quests.npcNotFound(name));
+		}
+	}
+	
+	public static QuestCharacter fromName(String text) throws NPCNotFoundException {
 		if (text == null) {
 			throw new IllegalArgumentException();
 		}
@@ -60,10 +103,11 @@ public enum QuestCharacter {
 			}
 		}
 		
-		throw new IllegalArgumentException();
+		throw new NPCNotFoundException();
 		
 	}
 	
+	@Deprecated
 	public static List<String> getAllNames(){
 		List<String> list = new ArrayList<String>();
 		for (QuestCharacter npc : QuestCharacter.values()){

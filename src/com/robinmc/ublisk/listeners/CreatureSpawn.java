@@ -7,6 +7,7 @@ import static net.md_5.bungee.api.ChatColor.DARK_GREEN;
 import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
@@ -26,7 +27,8 @@ public class CreatureSpawn implements Listener {
 	public void onSpawn(CreatureSpawnEvent event){
 		LivingEntity entity = event.getEntity();
 		
-		if (entity instanceof ArmorStand){
+		if (entity instanceof ArmorStand ||
+				entity instanceof Villager){
 			event.setCancelled(false);
 			return;
 		}

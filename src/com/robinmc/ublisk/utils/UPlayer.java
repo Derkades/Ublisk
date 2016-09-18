@@ -401,6 +401,10 @@ public class UPlayer {
 		}
 	}
 	
+	public void tracker(Tracker tracker){
+		tracker.add(player);
+	}
+	
 	public static UPlayer[] getOnlinePlayers(){
 		List<UPlayer> list = new ArrayList<UPlayer>();
 		for (Player player : Bukkit.getOnlinePlayers()){

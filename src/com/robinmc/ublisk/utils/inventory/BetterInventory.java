@@ -107,48 +107,54 @@ public class BetterInventory {
 		Item item = new Item(weapon.getType().getMaterial());
 		item.setItemInfo(weapon.getItemInfo());
 		
+		NBTTagList modifiers = new NBTTagList();
+
 		NBTTagCompound damage = new NBTTagCompound();
 		damage.setString("AttributeName", "generic.attackDamage");
 		damage.setString("Name", "generic.attackDamage");
 		damage.setDouble("Amount", weapon.getWeaponInfo().getDamage());
-		damage.setInt("Operation", 0);
+		damage.setInt("Operation", 1);
 		damage.setInt("UUIDLeast", 652);
 		damage.setInt("UUIDMost", 12098);
-		
-		NBTTagCompound speed = new NBTTagCompound();
-		speed.setString("AttributeName", "generic.movementSpeed");
-		speed.setString("Name", "generic.movementSpeed");
-		speed.setDouble("Amount", weapon.getWeaponInfo().getMovementSpeed());
-		speed.setInt("Operation", 0);
-		speed.setInt("UUIDLeast", 652);
-		speed.setInt("UUIDMost", 12098);
-		
-		NBTTagCompound attackSpeed = new NBTTagCompound();
-		attackSpeed.setString("AttributeName", "generic.attackSpeed");
-		attackSpeed.setString("Name", "generic.attackSpeed");
-		attackSpeed.setDouble("Amount", weapon.getWeaponInfo().getAttackSpeed());
-		attackSpeed.setInt("Operation", 0);
-		attackSpeed.setInt("UUIDLeast", 652);
-		attackSpeed.setInt("UUIDMost", 12098);
-		
-		NBTTagCompound knockback = new NBTTagCompound();
-		knockback.setString("AttributeName", "generic.knockbackResistance");
-		knockback.setString("Name", "generic.knockbackResistance");
-		knockback.setDouble("Amount", weapon.getWeaponInfo().getKnockbackResistance());
-		knockback.setInt("Operation", 0);
-		knockback.setInt("UUIDLeast", 652);
-		knockback.setInt("UUIDMost", 12098);
-		
-		NBTTagList modifiers = new NBTTagList();
 		modifiers.add(damage);
-		modifiers.add(speed);
-		modifiers.add(attackSpeed);
-		modifiers.add(knockback);
+		
+		if (weapon.getWeaponInfo().getMovementSpeed() != -1){
+			NBTTagCompound speed = new NBTTagCompound();
+			speed.setString("AttributeName", "generic.movementSpeed");
+			speed.setString("Name", "generic.movementSpeed");
+			speed.setDouble("Amount", weapon.getWeaponInfo().getMovementSpeed());
+			speed.setInt("Operation", 1);
+			speed.setInt("UUIDLeast", 652);
+			speed.setInt("UUIDMost", 12098);
+			modifiers.add(speed);
+		}
+		
+		if (weapon.getWeaponInfo().getAttackSpeedValue() != -1){
+			NBTTagCompound attackSpeed = new NBTTagCompound();
+			attackSpeed.setString("AttributeName", "generic.attackSpeed");
+			attackSpeed.setString("Name", "generic.attackSpeed");
+			attackSpeed.setDouble("Amount", weapon.getWeaponInfo().getAttackSpeedValue());
+			attackSpeed.setInt("Operation", 1);
+			attackSpeed.setInt("UUIDLeast", 652);
+			attackSpeed.setInt("UUIDMost", 12098);
+			modifiers.add(attackSpeed);
+		}
+		
+		if (weapon.getWeaponInfo().getKnockbackResistance() != -1){
+			NBTTagCompound knockback = new NBTTagCompound();
+			knockback.setString("AttributeName", "generic.knockbackResistance");
+			knockback.setString("Name", "generic.knockbackResistance");
+			knockback.setDouble("Amount", weapon.getWeaponInfo().getKnockbackResistance());
+			knockback.setInt("Operation", 1);
+			knockback.setInt("UUIDLeast", 652);
+			knockback.setInt("UUIDMost", 12098);
+			modifiers.add(knockback);
+		}
 		
 		NBTTagCompound compound = item.getCompound();
 		compound.set("AttributeModifiers", modifiers);
-		compound.setInt("HideFlags", 1);
-		compound.setInt("HideFlags", 2);
+		compound.setInt("HideFlags", 7);
+		compound.setBoolean("Unbreakable", true);
 		item.setCompound(compound);
 		
 		add(item);

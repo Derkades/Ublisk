@@ -8,10 +8,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.enums.Loot;
 import com.robinmc.ublisk.enums.Tracker;
+import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
@@ -92,6 +94,17 @@ public class Debug implements CommandExecutor {
 							return true;
 						}
 						player.sendMessage("Voting points: " + target.getVotingPoints());
+						return true;
+					} else if (args[0].equals("inv")){
+						UPlayer target;
+						try {
+							target = UPlayer.get(args[1]);
+						} catch (PlayerNotFoundException e){
+							player.sendMessage(Message.PLAYER_NOT_FOUND);
+							return true;
+						}
+						PlayerInventory inv = target.getPlayer().getInventory();
+						player.getPlayer().openInventory(inv);
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
@@ -199,6 +212,10 @@ public class Debug implements CommandExecutor {
 							}
 							Time.add(100);
 						}
+						return true;
+					} else if (args[0].equals("npctest")){
+						QuestCharacter.MEREK.spawn();
+						QuestCharacter.ULRIC.spawn();
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());

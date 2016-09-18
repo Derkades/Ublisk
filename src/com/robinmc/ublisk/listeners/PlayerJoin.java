@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -96,5 +97,7 @@ public class PlayerJoin implements Listener {
         	item.setName(ChatColor.RESET + "" + ChatColor.BLUE + "" + ChatColor.BOLD + "Menu");
         	inv.setItem(7, item.getItemStack());
         }
+        
+        player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(1);
 	}
 }

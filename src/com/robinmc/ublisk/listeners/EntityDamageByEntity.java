@@ -9,7 +9,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.enums.Classes;
-import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class EntityDamageByEntity implements Listener {
@@ -18,11 +17,6 @@ public class EntityDamageByEntity implements Listener {
 	public void useWeapon(EntityDamageByEntityEvent event){
 		
 		if (event.isCancelled()){
-			return;
-		}
-		
-		if (QuestCharacter.getAllNames().contains(event.getEntity().getName())){
-			event.setCancelled(true);
 			return;
 		}
 		

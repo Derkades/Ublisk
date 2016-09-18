@@ -8,11 +8,14 @@ import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.quest.QuestCharacterClass;
 import com.robinmc.ublisk.quest.QuestParticipant;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;	
 
 public class Merek implements QuestCharacterClass {
 	
-	public void talk(Player player){
+	public void talk(UPlayer player2){
+		// TODO Update to UPlayer
+		Player player = player2.getPlayer();
 		QuestParticipant qp = new QuestParticipant(player, Quest.INTRODUCTION, QuestCharacter.MEREK);	
 		BetterInventory inv = qp.getInventory();
 		if (inv.contains(
