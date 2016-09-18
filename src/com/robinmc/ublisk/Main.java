@@ -7,6 +7,7 @@ import com.robinmc.ublisk.enums.Command;
 import com.robinmc.ublisk.enums.Loot;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Listeners;
+import com.robinmc.ublisk.utils.mob.Mob;
 import com.robinmc.ublisk.utils.scheduler.Tasks;
 import com.robinmc.ublisk.utils.sql.MySQL;
 import com.robinmc.ublisk.utils.third_party.Lag;
@@ -43,6 +44,8 @@ public class Main extends JavaPlugin {
 				Loot.removeLoot();
 			}
 		}, 10*20);
+		
+		Mob.startMobSpawning();
 	}
 	
 	@Override

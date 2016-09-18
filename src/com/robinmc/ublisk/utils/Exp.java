@@ -15,9 +15,6 @@ import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.mob.Mob;
-import com.robinmc.ublisk.utils.mob.MobArea;
-import com.robinmc.ublisk.utils.mob.MobInfo;
-import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
 
 public class Exp {
@@ -83,7 +80,8 @@ public class Exp {
 	 * @throws UnknownAreaException If the entity specified is not in an area
 	 * @throws MobInfoMissingException  
 	 */
-	public static void giveMobExp(Player player, Entity entity) throws MobNotFoundException, UnknownAreaException, MobInfoMissingException {
+	public static void giveMobExp(Player player, Entity entity) throws MobNotFoundException {
+		/*
 		if (!Mob.containsEntity(entity)){
 			player.sendMessage(Message.ERROR_GENERAL.get());
 			return;
@@ -111,7 +109,25 @@ public class Exp {
 			ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP", 3*10);
 			Exp.add(player, xp);
 			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp + " for killing a " + name);
-		}	
+		}
+		*/
+		
+		// TODO Remove old code after checking if new code works
+		
+		Mob mob = Mob.getMob(entity);
+		
+		String name = mob.getName();
+		int xp = mob.getXP();
+		
+		if (HashMaps.doublexp.get(HashMaps.placeHolder())){ //If double XP is active
+			ActionBarAPI.sendActionBar(player, ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP", 3*10);
+			Exp.add(player, xp * 2);
+			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
+		} else {
+			ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP", 3*10);
+			Exp.add(player, xp);
+			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp + " for killing a " + name);
+		}
 		
 		refresh(player);
 	}

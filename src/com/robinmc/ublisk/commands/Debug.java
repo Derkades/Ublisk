@@ -15,17 +15,13 @@ import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.enums.Loot;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.quest.QuestCharacter;
-import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Time;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
-import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.mob.Mob;
-import com.robinmc.ublisk.utils.mob.MobArea;
-import com.robinmc.ublisk.utils.mob.MobInfo;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
@@ -144,6 +140,7 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("lag")){
 						player.sendMessage("TPS: " + Lag.getTPS());
 						return true;
+						/*
 					} else if (args[0].equals("mobarea")){
 						try {
 							player.sendMessage("");
@@ -174,6 +171,7 @@ public class Debug implements CommandExecutor {
 							player.sendMessage("Unknown area!");
 							return true;
 						}
+						*/
 					} else if (args[0].equals("list")){
 						for (Entity entity : Var.WORLD.getEntities()){
 							player.sendMessage(entity.getName() + " : " + entity.getCustomName() + " : " + entity.getLocation().getBlockX() + " : " + entity.getLocation().getBlockZ() + " : " + entity.getLocation().getChunk());

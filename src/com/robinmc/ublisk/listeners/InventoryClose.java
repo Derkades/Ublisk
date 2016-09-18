@@ -14,7 +14,7 @@ public class InventoryClose implements Listener {
 	public void onInvClose(final InventoryCloseEvent event){
 		if (event.getInventory().getName().contains("Box")){
 			Voting.setPlayerOpeningBox(false);
-			Scheduler.runTaskLater(10, new Runnable(){
+			Scheduler.runTaskLater(2, new Runnable(){
 				public void run(){
 					HumanEntity human = event.getPlayer();
 					human.teleport(Voting.getOldPlayerLocation());

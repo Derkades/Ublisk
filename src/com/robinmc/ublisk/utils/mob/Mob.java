@@ -1,86 +1,115 @@
 package com.robinmc.ublisk.utils.mob;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import static net.md_5.bungee.api.ChatColor.DARK_AQUA;
+import static net.md_5.bungee.api.ChatColor.DARK_GRAY;
+import static net.md_5.bungee.api.ChatColor.DARK_GREEN;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 
-import com.robinmc.ublisk.utils.Area;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
-import com.robinmc.ublisk.utils.exception.UnknownAreaException;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.variable.Var;
 
 public enum Mob {
 	
-	CHICKEN(EntityType.CHICKEN, MobArea.INTRODUCTION),
-	SHEEP(EntityType.SHEEP, MobArea.INTRODUCTION);
+	/*
+	 * Spawn location x
+	 * Spawn location y
+	 * Diameter for the previously mentioned x and y
+	 * Entity type
+	 * Level
+	 * Health (1.5 is one and a half heart)
+	 * XP given when killed
+	 * Name
+	 * Spawn rate (4 means 1 every 4 seconds
+	 */
 	
+	TEST_MOB(63, -56, 5, EntityType.CHICKEN, 2, 5, 4, 10, "Test", 2);
+	
+	private int x;
+	private int z;
+	private int diameter;
 	private EntityType type;
-	private List<MobArea> area;
-	
-	Mob(EntityType type, MobArea... mobArea){
+	private int level;
+	private double health;
+	private int xp;
+	private int max;
+	private String name;
+	private double rate;
+
+	Mob(int x, int z, int diameter, EntityType type, int level, double health, int xp, int max, String name, double spawn){
+		this.x = x;
+		this.z = z;
+		this.diameter = diameter;
 		this.type = type;
-		List<MobArea> list = new ArrayList<MobArea>();
-		for (MobArea singleArea : mobArea){
-			list.add(singleArea);
-		}
-		area = list;
+		this.level = level;
+		this.health = health;
+		this.xp = xp;
+		this.max = max;
+		this.name = name;
+		this.rate = spawn;
 	}
 	
-	public EntityType getType(){
+	public int getX(){
+		return x;
+	}
+	
+	public int getZ(){
+		return z;
+	}
+	
+	public int getRadius(){
+		return diameter / 2;
+	}
+	
+	public EntityType getEntityType(){
 		return type;
 	}
 	
-	public List<MobArea> getAreas(){
-		return area;
+	public int getLevel(){
+		return level;
 	}
 	
-	public static boolean belongsInArea(LivingEntity entity) throws MobNotFoundException, UnknownAreaException{
-		return Mob.getMob(entity).getAreas().contains(Mob.getArea(entity));
+	public double getHealth(){
+		return health;
 	}
 	
-	public static Mob getMob(Entity entity) throws MobNotFoundException {
+	public int getXP(){
+		return xp;
+	}
+	
+	public int getMax(){
+		return max;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public double getSpawnRate(){
+		return rate;
+	}
+	
+	public boolean hasReachedMax(){
+		int count = 0;
 		
-		for (Mob mob : Mob.values()){
-			if (mob.getType() == entity.getType()){
-				return mob;
+		for (LivingEntity entity : Var.WORLD.getLivingEntities()){
+			if (entity.getType() == getEntityType() &&
+					entity.getHealth() == getHealth() &&
+					entity.getName().contains(getName())){
+				count++;
 			}
 		}
 		
-		throw new MobNotFoundException();
+		Logger.log(LogLevel.DEBUG, count + "");
+		
+		return count >= getMax();
 	}
-	
-	private static List<EntityType> getAllEntityTypes(){
-		List<EntityType> list = new ArrayList<EntityType>();
-		for (Mob mob : Mob.values()){
-			EntityType type = mob.getType();
-			if (!list.contains(type))
-				list.add(type);
-		}
-		return list;
-	}
-	
-	public static boolean containsEntity(Entity entity){
-		return getAllEntityTypes().contains(entity.getType());
-	}
-	
-	public static MobArea getArea(Entity entity) throws UnknownAreaException {
-		for (MobArea mobArea : MobArea.values()){
-			Area area = mobArea.getArea();
-			int x = entity.getLocation().getBlockX();
-			int z = entity.getLocation().getBlockZ();
-			if (	x < area.lessX() &&
-					x > area.moreX() &&
-					z < area.lessZ() &&
-					z > area.moreZ()){
-				return mobArea;
-			}
-		}
-		throw new UnknownAreaException();
-	}
-	
+
 	public static void removeMobs(){
 		for (Entity entity: Var.WORLD.getEntities()){
 			EntityType type = entity.getType();
@@ -93,4 +122,27 @@ public enum Mob {
 		}
 	}
 	
+	public static Mob getMob(Entity entity) throws MobNotFoundException {
+		for (Mob mob : Mob.values()){
+			String name = DARK_AQUA + mob.getName() + DARK_GRAY + " [" + DARK_GREEN + mob.getLevel() + DARK_GRAY + "]";
+			if (mob.getName().equals(name)){
+				return mob;
+			}
+		}
+		throw new MobNotFoundException();
+	}
+	
+	public static boolean containsEntityType(EntityType type){
+		for (Mob mob : Mob.values()){
+			if (mob.getEntityType() == type){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static void startMobSpawning(){
+		SpawnMob.spawnMobs();
+	}
+
 }

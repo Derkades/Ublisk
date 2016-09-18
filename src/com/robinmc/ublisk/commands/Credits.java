@@ -19,10 +19,11 @@ public class Credits implements CommandExecutor {
 			sender.sendMessage("");
 			sender.sendMessage(gold + "Plugin development" + gray + ":" + yellow + " RobinMC");
 			sender.sendMessage(gold + "Building" + gray + ":" + yellow + " See /credits map");
-			sender.sendMessage(gold + "Weapons" + gray + ":" + yellow + " N/A");
-			sender.sendMessage(gold + "Textures" + gray + ":" + yellow + " GlitcherDOTbe, RobinMC, RottenNugget, SenpaiSander");
-			sender.sendMessage(gold + "Music" + gray + ":" + yellow + " RobinMC");
+			sender.sendMessage(gold + "Weapons" + gray + ":" + yellow + " RobinMC, SenpaiSander, Chaspyr");
+			sender.sendMessage(gold + "Textures" + gray + ":" + yellow + " GlitcherDOTbe, RobinMC, RottenNugget, SenpaiSander, Breecko, Jerrijn");
+			sender.sendMessage(gold + "Music" + gray + ":" + yellow + " RobinMC, SirSydan");
 			sender.sendMessage(gold + "Quests" + gray + ": " + yellow + "SenpaiSander, RobinMC");
+			sender.sendMessage(gold + "Bug testing" + gray + ": " + yellow + "Chaspyr, RobinMC");
 			sender.sendMessage("");
 			sender.sendMessage(gray + "Type /credits [user] for more information on a user");
 			return true;

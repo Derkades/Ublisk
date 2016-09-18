@@ -2,6 +2,7 @@ package com.robinmc.ublisk.utils.mob;
 
 import org.bukkit.entity.EntityType;
 
+@Deprecated
 public class MobInfo {
 	
 	private EntityType type;

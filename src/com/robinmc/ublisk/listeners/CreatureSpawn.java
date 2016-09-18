@@ -1,25 +1,11 @@
 package com.robinmc.ublisk.listeners;
 
-import static net.md_5.bungee.api.ChatColor.DARK_AQUA;
-import static net.md_5.bungee.api.ChatColor.DARK_GRAY;
-import static net.md_5.bungee.api.ChatColor.DARK_GREEN;
-
-import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
-
-import com.robinmc.ublisk.utils.exception.MobInfoMissingException;
-import com.robinmc.ublisk.utils.exception.MobNotFoundException;
-import com.robinmc.ublisk.utils.exception.UnknownAreaException;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.mob.Mob;
-import com.robinmc.ublisk.utils.mob.MobArea;
-import com.robinmc.ublisk.utils.mob.MobInfo;
 
 public class CreatureSpawn implements Listener {
 	
@@ -33,6 +19,7 @@ public class CreatureSpawn implements Listener {
 			return;
 		}
 		
+		/*
 		if (!Mob.containsEntity(entity)){
 			event.setCancelled(true);
 			return;
@@ -64,6 +51,7 @@ public class CreatureSpawn implements Listener {
 		} catch (MobNotFoundException e) {
 			e.printStackTrace();
 		}
+		*/
 	}
 
 }
