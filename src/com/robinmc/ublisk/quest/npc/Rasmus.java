@@ -44,7 +44,7 @@ public class Rasmus implements QuestCharacterClass {
 		} else if (qp.getProgress(QuestProgress.CHICKEN_HUNT_TALK_TO_ARZHUR)){
 			
 		} else {
-			qp.msg("Hi again. Have you noticed all these monsters eating our crops! Can you maybe slay these monsters for me? Go to Arzhur he probably has a tool for you that will help you!");
+			qp.msg("Hi again. Have you noticed all these monsters eating our crops! Can you kill these monsters for me? Go to Arzhur, he probably has a tool for you that will help you!");
 			qp.saveProgress(QuestProgress.CHICKENHUNT_TALK_TO_RASMUS);
 		}
 		
@@ -53,7 +53,7 @@ public class Rasmus implements QuestCharacterClass {
 	private void hayTransportation(Player player){
 		QuestParticipant qp = new QuestParticipant(player, Quest.HAY_TRANSPORT, QuestCharacter.RASMUS);
 
-			qp.msg("I see you have fixed the water issue, well done! Can you maybe help me too? There is a big pile of hay that needs to be transported to a cart just outside of Glaenor. You should give it to Zoltar, he’ll pay you for the job.");
+			qp.msg("I see you have fixed the water issue, well done! Can you maybe help me too? There is a big pile of hay that needs to be transported to a cart just outside of Glaenor. You should give it to Zoltar, he\'ll pay you for the job.");
 			if (!qp.getProgress(QuestProgress.HAY_TRANSPORT_STARTED)) 
 				qp.saveProgress(QuestProgress.HAY_TRANSPORT_STARTED);
 			//TODO item voor hay verzamelen

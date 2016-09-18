@@ -12,6 +12,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import com.robinmc.ublisk.quest.npc.Alvin;
 import com.robinmc.ublisk.quest.npc.Arzhur;
+import com.robinmc.ublisk.quest.npc.David;
 import com.robinmc.ublisk.quest.npc.Dianh;
 import com.robinmc.ublisk.quest.npc.Merek;
 import com.robinmc.ublisk.quest.npc.Rasmus;
@@ -25,16 +26,19 @@ import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
 
+import net.md_5.bungee.api.ChatColor;
+
 public enum QuestCharacter {
 	
+	DAVID(new David(), "David", new ULocation(72.5, 67, -2.5, 13, 0)),
 	MEREK(new Merek(), "Merek", new ULocation(33, 67, -38, -70, 0)),
 	ULRIC(new Ulric(), "Ulric", new ULocation(38.5, 67, -26.5, -145, 0)),
 	ARZHUR(new Arzhur(), "Arzhur", new ULocation(111.5, 68, -103.5, -20, 0)),
 	//ASHER(null, "Asher", new NPCLocation(449.3, 70, -10.5, 75, 5)),
-	RASMUS(new Rasmus(), "Rasmus", new ULocation(1, 1, 1, 1, 1)), // TODO Rasmus coordinates
-	DIANH(new Dianh(), "Dianh", new ULocation(1, 1, 1, 1, 1)),// TODO coordinaten van Dianh
-	ZOLTAR(new Zoltar(), "Zoltar", new ULocation(1, 1, 1, 1, 1)),// TODO coordinaten van Zoltar
-	ALVIN(new Alvin(), "Alvin", new ULocation(1, 1, 1, 1, 1));
+	RASMUS(new Rasmus(), "Rasmus", ULocation.UNKNOWN_NPC_LOCATION), // TODO Rasmus coordinates
+	DIANH(new Dianh(), "Dianh", ULocation.UNKNOWN_NPC_LOCATION),// TODO coordinaten van Dianh
+	ZOLTAR(new Zoltar(), "Zoltar", ULocation.UNKNOWN_NPC_LOCATION),// TODO coordinaten van Zoltar
+	ALVIN(new Alvin(), "Alvin", ULocation.UNKNOWN_NPC_LOCATION); // TODO Alvin coordinates
 	
 	private QuestCharacterClass qcc;
 	private String name;
@@ -60,12 +64,13 @@ public enum QuestCharacter {
 	
 	public void spawn(){
 		Villager villager = Var.WORLD.spawn(loc, Villager.class);
-		villager.setCustomName(name);
+		villager.setCustomName(ChatColor.DARK_GREEN + name);
 		villager.setSilent(true);
 		villager.setInvulnerable(true);
 		villager.setCustomNameVisible(true);
 		villager.setBreed(false);
 		villager.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000000*20, 255, true));
+		villager.teleport(loc);
 		Logger.log(LogLevel.DEBUG, villager.getName() + "" + villager.getLocation().getBlockX() + "" + villager.getLocation().getBlockZ());
 	}
 	

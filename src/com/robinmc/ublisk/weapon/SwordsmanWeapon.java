@@ -20,7 +20,7 @@ public enum SwordsmanWeapon {
 			WeaponRarity.COMMON,
 			new WeaponInfo(5, -1, AttackSpeed.VANILLA, -1),
 			"Wooden Long Sword",
-			"Insert description here"
+			"Slower than average but quite powerful"
 			)),
 	WOODEN_SHORT_SWORD(new Weapon(
 			SwordType.WOOD,

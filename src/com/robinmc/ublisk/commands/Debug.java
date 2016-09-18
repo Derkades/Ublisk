@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.HashMaps;
@@ -214,8 +215,12 @@ public class Debug implements CommandExecutor {
 						}
 						return true;
 					} else if (args[0].equals("npctest")){
-						QuestCharacter.MEREK.spawn();
-						QuestCharacter.ULRIC.spawn();
+						for (Villager villager : Var.WORLD.getEntitiesByClass(Villager.class)){
+							villager.remove();
+						}
+						for (QuestCharacter npc : QuestCharacter.values()){
+							npc.spawn();
+						}
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());

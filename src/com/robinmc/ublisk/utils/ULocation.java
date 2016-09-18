@@ -50,6 +50,6 @@ public class ULocation {
 				getYaw());
 	}
 	
-	
+	public static ULocation UNKNOWN_NPC_LOCATION = new ULocation(2.5, 71, -16.5, 0, 0);
 
 }
