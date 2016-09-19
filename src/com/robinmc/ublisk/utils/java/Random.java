@@ -2,6 +2,8 @@ package com.robinmc.ublisk.utils.java;
 
 public class Random {
 	
+	private static java.util.Random random = new java.util.Random();
+	
 	public static int getRandomInteger(int min, int max){
 		return NumberUtils.randomInteger(min, max);
 	}
@@ -15,5 +17,8 @@ public class Random {
 		}
 	}
 	
-
+	public static double getRandomDouble(){
+		return random.nextDouble();
+	}
+	
 }

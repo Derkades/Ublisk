@@ -5,9 +5,11 @@ import static net.md_5.bungee.api.ChatColor.DARK_AQUA;
 import static net.md_5.bungee.api.ChatColor.DARK_GRAY;
 import static net.md_5.bungee.api.ChatColor.DARK_GREEN;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
@@ -24,11 +26,16 @@ public enum Mob {
 	 * Level
 	 * Health (1.5 is one and a half heart)
 	 * XP given when killed
+	 * Max spawns within area
 	 * Name
-	 * Spawn rate (4 means 1 every 4 seconds
+	 * Spawn rate (4 means 1 every 4 seconds)
+	 * 
+	 * NOTE: Every mob must have at least a unique name or level.
 	 */
 	
-	TEST_MOB(63, -56, 5, EntityType.CHICKEN, 2, 5, 4, 10, "Test", 2);
+	//TEST_MOB(63, -56, 5, EntityType.CHICKEN, 2, 5, 4, 10, "Test", 2),
+	INTRODUCTION_SHEEP(27, -50, 5, EntityType.SHEEP, 1, 1.5, 2, 4, "Sheep", 10, new MobDrop(new ItemStack(Material.WOOL), 70)),
+	CHICKEN(66, -40, 60, EntityType.CHICKEN, 1, 0.5, 1, 20, "Chicken", 5);
 	
 	private int x;
 	private int z;
@@ -40,8 +47,9 @@ public enum Mob {
 	private int max;
 	private String name;
 	private double rate;
+	private MobDrop[] drops;
 
-	Mob(int x, int z, int diameter, EntityType type, int level, double health, int xp, int max, String name, double spawn){
+	Mob(int x, int z, int diameter, EntityType type, int level, double health, int xp, int max, String name, double spawn, MobDrop... drops){
 		this.x = x;
 		this.z = z;
 		this.diameter = diameter;
@@ -52,6 +60,7 @@ public enum Mob {
 		this.max = max;
 		this.name = name;
 		this.rate = spawn;
+		this.drops = drops;
 	}
 	
 	public int getX(){
@@ -92,6 +101,10 @@ public enum Mob {
 	
 	public double getSpawnRate(){
 		return rate;
+	}
+	
+	public MobDrop[] getDrops(){
+		return drops;
 	}
 	
 	public boolean hasReachedMax(){

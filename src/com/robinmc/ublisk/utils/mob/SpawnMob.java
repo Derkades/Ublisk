@@ -7,6 +7,7 @@ import static net.md_5.bungee.api.ChatColor.DARK_GREEN;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
@@ -24,6 +25,10 @@ class SpawnMob {
 			double rate = mob.getSpawnRate() * 20;
 			Scheduler.runSyncRepeatingTask(5*20, (int) rate, new Runnable(){
 				public void run(){
+					
+					if (Bukkit.getOnlinePlayers().size() == 0){
+						return;
+					}
 					
 					if (mob.hasReachedMax()){
 						Logger.log(LogLevel.DEBUG, "Mob " + mob.getName() + " has reached maximum spawning");
@@ -53,7 +58,7 @@ class SpawnMob {
 						z = z - randomZ;
 					}
 					
-					Location loc = new Location(Var.WORLD, x, 255, z);
+					Location loc = new Location(Var.WORLD, x, 100, z);
 
 					List<Material> materials = Arrays.asList(
 							Material.AIR, 
@@ -72,7 +77,9 @@ class SpawnMob {
 							Material.FENCE_GATE,
 							Material.COBBLE_WALL,
 							Material.WATER,
-							Material.STATIONARY_WATER);
+							Material.STATIONARY_WATER,
+							Material.LEAVES,
+							Material.LEAVES_2);
 					
 					//Don't let mobs spawn on top of the blocks above
 					if (cancel.contains(loc.getBlock().getType())){

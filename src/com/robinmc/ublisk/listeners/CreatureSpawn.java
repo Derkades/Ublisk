@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.listeners;
 
 import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
@@ -14,7 +15,8 @@ public class CreatureSpawn implements Listener {
 		LivingEntity entity = event.getEntity();
 		
 		if (entity instanceof ArmorStand ||
-				entity instanceof Villager){
+				entity instanceof Villager ||
+				entity instanceof Item){
 			event.setCancelled(false);
 			return;
 		}

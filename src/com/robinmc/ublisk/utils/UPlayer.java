@@ -169,6 +169,10 @@ public class UPlayer {
 		player.spigot().sendMessage(text);
 	}
 	
+	public void sendMessage(Object o){
+		player.sendMessage(o + "");
+	}
+	
 	public void sendSpacer(){
 		player.sendMessage(" ");
 	}

@@ -11,7 +11,10 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.mob.Mob;
+import com.robinmc.ublisk.utils.mob.MobDrop;
 import com.robinmc.ublisk.utils.variable.Message;
 
 public class EntityDeath implements Listener {
@@ -34,8 +37,19 @@ public class EntityDeath implements Listener {
 			}
 			
 			player.tracker(Tracker.MOB_KILLS);
+			
 			try {
 				player.giveMobXP(entity);
+				
+				Mob mob = Mob.getMob(entity);
+				
+				if (mob.getDrops().length > 0){
+					for (MobDrop drop : mob.getDrops()){
+						drop.drop(entity.getLocation());
+						Logger.log(LogLevel.DEBUG, "Mobs", "Mob drop " + drop.getItemStack().getType());
+					}
+				}
+				
 			} catch (MobNotFoundException e) {
 				player.sendMessage(Message.ERROR_GENERAL.get());
 				Location loc = entity.getLocation();
