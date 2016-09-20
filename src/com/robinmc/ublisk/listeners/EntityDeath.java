@@ -48,6 +48,11 @@ public class EntityDeath implements Listener {
 						drop.drop(entity.getLocation());
 						Logger.log(LogLevel.DEBUG, "Mobs", "Mob drop " + drop.getItemStack().getType());
 					}
+					
+					for (MobDrop drop : mob.getGoldDrop().getMobDrops()){
+						drop.drop(entity.getLocation());
+						Logger.log(LogLevel.DEBUG, "Mobs", "Mob drop " + drop.getItemStack().getType());
+					}
 				}
 				
 			} catch (MobNotFoundException e) {
