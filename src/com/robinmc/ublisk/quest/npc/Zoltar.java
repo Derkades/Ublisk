@@ -23,13 +23,13 @@ public class Zoltar implements QuestCharacterClass {
 		if(haytransport.getProgress(QuestProgress.HAY_TRANSPORT_STARTED) && inv.contains(Material.HAY_BLOCK, 10))
 		{
 		inv.remove(Material.HAY_BLOCK, 10);
-		haytransport.msg("There you are! That took you a while, didn’t it. Anyway, thanks for helping.");
+		haytransport.sendMessage("There you are! That took you a while, didn’t it. Anyway, thanks for helping.");
 		haytransport.sendCompletedMessage(); //Send a message
 		haytransport.giveRewardExp(); //Give reward experience
 		haytransport.setQuestCompleted(true); //Set the quest as completed for this player
-		haytransport.msg("Hold on! If you ever need to sell something, come to me I am always here to buy your goodies.");
+		haytransport.sendMessage("Hold on! If you ever need to sell something, come to me I am always here to buy your goodies.");
 		} else {
-			haytransport.msg("Hello, I'm the junk merchant.");
+			haytransport.sendMessage("Hello, I'm the junk merchant.");
 		}
 	}
 

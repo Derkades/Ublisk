@@ -34,8 +34,12 @@ public enum Mob {
 	 */
 	
 	//TEST_MOB(63, -56, 5, EntityType.CHICKEN, 2, 5, 4, 10, "Test", 2),
-	INTRODUCTION_SHEEP(27, -50, 5, EntityType.SHEEP, 1, 1.5, 2, 4, "Sheep", 10, new MobDrop(new ItemStack(Material.WOOL), 70)),
-	CHICKEN(66, -40, 60, EntityType.CHICKEN, 1, 0.5, 1, 20, "Chicken", 5);
+	INTRODUCTION_SHEEP(27, -50, 5, 
+			EntityType.SHEEP, 1, 1.5, 2, 4, "Sheep", 10, GoldDrop.LEVEL2,
+			new MobDrop(new ItemStack(Material.WOOL), 70)),
+	CHICKEN(66, -40, 60, 
+			EntityType.CHICKEN, 1, 0.5, 1, 20, "Chicken", 5, GoldDrop.LEVEL1,
+			new MobDrop(new ItemStack(Material.FEATHER), 30));
 	
 	private int x;
 	private int z;
@@ -47,9 +51,10 @@ public enum Mob {
 	private int max;
 	private String name;
 	private double rate;
+	private GoldDrop gold;
 	private MobDrop[] drops;
 
-	Mob(int x, int z, int diameter, EntityType type, int level, double health, int xp, int max, String name, double spawn, MobDrop... drops){
+	Mob(int x, int z, int diameter, EntityType type, int level, double health, int xp, int max, String name, double spawn, GoldDrop gold, MobDrop... drops){
 		this.x = x;
 		this.z = z;
 		this.diameter = diameter;
@@ -60,6 +65,7 @@ public enum Mob {
 		this.max = max;
 		this.name = name;
 		this.rate = spawn;
+		this.gold = gold;
 		this.drops = drops;
 	}
 	
@@ -101,6 +107,10 @@ public enum Mob {
 	
 	public double getSpawnRate(){
 		return rate;
+	}
+	
+	public GoldDrop getGoldDrop(){
+		return gold;
 	}
 	
 	public MobDrop[] getDrops(){

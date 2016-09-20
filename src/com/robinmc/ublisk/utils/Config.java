@@ -81,39 +81,5 @@ public class Config {
 	public static FileConfiguration getConfig(){
 		return config;
 	}
-	
-	/*	
-	public static List<String> getList(String path){
-		return config.getStringList(path);
-	}
-	
-	public static void addToList(String path, String string){
-		List<String> list = getList(path);
-		list.add(string);
-		saveList(path, list);
-	}
-	
-	public static void clearList(String path){
-		List<String> list = getList(path);
-		list.clear();
-		saveList(path, list);
-	}
-	
-	public static void removeFromList(String path, int index){
-		List<String> list = getList(path);
-		list.remove(index);
-		saveList(path, list);
-	}
-	
-	public static void removeFromList(String path, Object object){
-		List<String> list = getList(path);
-		list.remove(object);
-		saveList(path, list);
-	}
-	
-	private static void saveList(String path, List<String> list){
-		config.set(path, config);
-		save();
-	}
-	*/
+
 }

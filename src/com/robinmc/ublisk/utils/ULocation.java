@@ -4,6 +4,7 @@ import org.bukkit.Location;
 
 import com.robinmc.ublisk.utils.variable.Var;
 
+@Deprecated
 public class ULocation {
 	
 	private double x;
@@ -50,6 +51,6 @@ public class ULocation {
 				getYaw());
 	}
 	
-	public static ULocation UNKNOWN_NPC_LOCATION = new ULocation(2.5, 71, -16.5, 0, 0);
+	
 
 }

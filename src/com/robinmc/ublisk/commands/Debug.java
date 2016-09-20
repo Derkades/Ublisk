@@ -179,7 +179,7 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("sword")){
 						for (SwordsmanWeapon weapon : SwordsmanWeapon.values()){
-							player.getInventory().addWeapon(weapon.getWeapon());
+							player.getInventory().addWeapon(weapon);
 						}
 						return true;
 					} else if (args[0].equals("restart")){

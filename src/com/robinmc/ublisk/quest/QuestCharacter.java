@@ -19,7 +19,6 @@ import com.robinmc.ublisk.quest.npc.Merek;
 import com.robinmc.ublisk.quest.npc.Rasmus;
 import com.robinmc.ublisk.quest.npc.Ulric;
 import com.robinmc.ublisk.quest.npc.Zoltar;
-import com.robinmc.ublisk.utils.ULocation;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.NPCNotFoundException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
@@ -31,26 +30,26 @@ import net.md_5.bungee.api.ChatColor;
 
 public enum QuestCharacter {
 	
-	DAVID(new David(), "David", Profession.FARMER, new ULocation(72.5, 67, -2.5, 13, 0)),
-	MEREK(new Merek(), "Merek", Profession.FARMER, new ULocation(33, 67, -38, -70, 0)),
-	ULRIC(new Ulric(), "Ulric", Profession.FARMER, new ULocation(38.5, 67, -26.5, -145, 0)),
-	ARZHUR(new Arzhur(), "Arzhur", null, new ULocation(111.5, 68, -103.5, -20, 0)), // TODO Profession
-	//ASHER(null, "Asher", new NPCLocation(449.3, 70, -10.5, 75, 5)), // TODO Profession
-	RASMUS(new Rasmus(), "Rasmus", null, ULocation.UNKNOWN_NPC_LOCATION), // TODO Rasmus coordinates TODO Profession
-	DIANH(new Dianh(), "Dianh", null, ULocation.UNKNOWN_NPC_LOCATION),// TODO coordinaten van Dianh TODO Profession
-	ZOLTAR(new Zoltar(), "Zoltar", null, ULocation.UNKNOWN_NPC_LOCATION),// TODO coordinaten van Zoltar TODO Profession
-	ALVIN(new Alvin(), "Alvin", null, ULocation.UNKNOWN_NPC_LOCATION); // TODO Alvin coordinates TODO Profession
+	DAVID(new David(), "David", Profession.FARMER, 72.5, 67, -2.5, 13, 0),
+	MEREK(new Merek(), "Merek", Profession.FARMER, 33, 67, -38, -70, 0),
+	ULRIC(new Ulric(), "Ulric", Profession.FARMER, 38.5, 67, -26.5, -145, 0),
+	ARZHUR(new Arzhur(), "Arzhur", null, 111.5, 68, -103.5, -20, 0), // TODO Profession
+	//ASHER(null, "Asher", 449.3, 70, -10.5, 75, 5), // TODO Profession TODO QCC
+	RASMUS(new Rasmus(), "Rasmus", null, 2.5, 71, -16.5, 0, 0), // TODO Rasmus coordinates TODO Profession
+	DIANH(new Dianh(), "Dianh", null, 2.5, 71, -16.5, 0, 0),// TODO coordinaten van Dianh TODO Profession
+	ZOLTAR(new Zoltar(), "Zoltar", null, 2.5, 71, -16.5, 0, 0),// TODO coordinaten van Zoltar TODO Profession
+	ALVIN(new Alvin(), "Alvin", null, 121.5, 72, 7.3, -161, 4); // TODO Alvin coordinates TODO Profession
 	
 	private QuestCharacterClass qcc;
 	private String name;
 	private Profession profession;
 	private Location loc;
 	
-	QuestCharacter(QuestCharacterClass qcc, String name, Profession profession, ULocation loc){
+	QuestCharacter(QuestCharacterClass qcc, String name, Profession profession, double x, double y, double z, int pitch, int yaw){
 		this.qcc = qcc;
 		this.name = name;
 		this.profession = profession;
-		this.loc = loc.get();
+		this.loc = new Location(Var.WORLD, x, y, z, pitch, yaw);
 	}
 	
 	public QuestCharacterClass getQuestCharacterClass(){

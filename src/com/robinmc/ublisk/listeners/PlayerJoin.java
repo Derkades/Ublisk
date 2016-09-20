@@ -20,6 +20,7 @@ import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.iconmenus.ClassMenu;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
+import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
@@ -75,8 +76,9 @@ public class PlayerJoin implements Listener {
         }, 2*20);
         
         String ip = player.getAddress().toString();
-        ip.replace("/", "");
-        Config.set("data.ip." + uuid, ip);
+        ip = ip.replace("/", "");
+        //Config.set("data.ip." + uuid, ip);
+        DataFile.IP.set("ip." + uuid, ip);
         
         Exp.refresh(player);
         

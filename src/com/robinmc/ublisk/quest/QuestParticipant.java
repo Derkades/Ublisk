@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.enums.Town;
-import com.robinmc.ublisk.utils.Config;
+import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
@@ -34,16 +34,8 @@ public class QuestParticipant {
 		return quest;
 	}
 	
-	public QuestCharacter getNPC(){
-		return npc;
-	}
-	
-	public QuestCharacter getNpc(){
-		return getNPC();
-	}
-	
 	public QuestCharacter getQuestCharacter(){
-		return getNPC();
+		return npc;
 	}
 	
 	public BetterInventory getInventory(){
@@ -51,23 +43,23 @@ public class QuestParticipant {
 	}
 	
 	public void saveProgress(QuestProgress data){
-		Config.set("quests." + player.getUniqueId() + "." + data.toString(), true);
+		DataFile.QUESTS.set(player.getUniqueId() + "." + data.toString(), true);
 	}
 	
 	public boolean getProgress(QuestProgress data){
 		try {
-			return Config.getBoolean("quests." + player.getUniqueId() + "." + data.toString());
+			return DataFile.QUESTS.getBoolean(player.getUniqueId() + "." + data.toString());
 		} catch (Exception e){
 			return false;
 		}
 	}
 	
 	public void setQuestCompleted(boolean bool){
-		Config.set("quests." + player.getUniqueId() + "." + quest.getConfigString(), bool);
+		DataFile.QUESTS.set(player.getUniqueId() + "." + quest.getConfigString(), bool);
 	}
 	
 	public boolean getQuestCompleted(){
-		return Config.getBoolean("quests." + player.getUniqueId() + "." + quest.getConfigString());
+		return DataFile.QUESTS.getBoolean(player.getUniqueId() + "." + quest.getConfigString());
 	}
 	
 	public boolean hasRequiredLevel(){
@@ -76,7 +68,7 @@ public class QuestParticipant {
 		return level >= levelRequired;
 	}
 	
-	public void msg(String msg){
+	public void sendMessage(String msg){
 		player.sendMessage(Message.Complicated.Quests.npcMsg(npc.getName(), msg));
 	}
 	

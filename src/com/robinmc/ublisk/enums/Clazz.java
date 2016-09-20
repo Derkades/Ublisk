@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.utils.Config;
 
-public enum Classes {
+public enum Clazz {
 	
 	SWORDSMAN("Swordsman"),
 	ARCHER("Archer"),
@@ -13,7 +13,7 @@ public enum Classes {
 	
 	private String name;
 	
-	Classes(String name){
+	Clazz(String name){
 		this.name = name;
 	}
 	
@@ -21,8 +21,8 @@ public enum Classes {
 		return name;
 	}
 	
-	public static Classes fromString(String text) {
-		for (Classes c: Classes.values()) {
+	public static Clazz fromString(String text) {
+		for (Clazz c: Clazz.values()) {
 			if (text.equalsIgnoreCase(c.name)) {
 				return c;
 			}
@@ -30,9 +30,9 @@ public enum Classes {
 		return null;
 	}
 	
-	public static Classes getClass(Player player){
+	public static Clazz getClass(Player player){
 		String name = Config.getString("class." + player.getUniqueId());
-		Classes c = fromString(name);
+		Clazz c = fromString(name);
 		return c;
 	}
 

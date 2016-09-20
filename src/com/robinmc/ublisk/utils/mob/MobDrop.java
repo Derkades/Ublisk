@@ -8,13 +8,32 @@ import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.variable.Var;
 
+
 public class MobDrop {
 	
-	private ItemStack stack;
+	private ItemStack item;
 	private int percentage;
 	
+	/**
+	 * Specifies a mob drop with random change of dropping
+	 * @param item Item to be dropped
+	 * @param percentage Random chance (1-100)
+	 */
 	public MobDrop(ItemStack item, int percentage){
-		this.stack = item;
+		this.item = item;
+		this.percentage = percentage;
+	}
+	
+	/**
+	 * Specifies a mob drop with random change of dropping
+	 * @param item Item to be dropped
+	 * @param min Minimum for random item amount
+	 * @param max Maximum for random item amount
+	 * @param percentage Random chance (1-100)
+	 */
+	public MobDrop(ItemStack item, int min, int max, int percentage){
+		item.setAmount(Random.getRandomInteger(min, max));
+		this.item = item;
 		this.percentage = percentage;
 	}
 	
@@ -24,13 +43,13 @@ public class MobDrop {
 		boolean drop = Random.getRandomDouble() <= d;
 		Logger.log(LogLevel.DEBUG, "Mob", "Random: " + drop);
 		if (drop){
-			org.bukkit.entity.Item item = Var.WORLD.dropItemNaturally(loc, stack);
-			item.setPickupDelay(10);
+			org.bukkit.entity.Item entity = Var.WORLD.dropItemNaturally(loc, item);
+			entity.setPickupDelay(10);
 		}
 	}
 	
 	public ItemStack getItemStack(){
-		return stack;
+		return item;
 	}
 
 }

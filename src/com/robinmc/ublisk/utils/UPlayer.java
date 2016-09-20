@@ -22,6 +22,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.enums.Clazz;
 import com.robinmc.ublisk.enums.Helper;
 import com.robinmc.ublisk.enums.Town;
 import com.robinmc.ublisk.enums.Tracker;
@@ -399,6 +400,10 @@ public class UPlayer {
 	
 	public void tracker(Tracker tracker){
 		tracker.add(player);
+	}
+	
+	public Clazz getClazz(){
+		return Clazz.getClass(player);
 	}
 	
 	public static UPlayer[] getOnlinePlayers(){

@@ -10,7 +10,7 @@ public class David implements QuestCharacterClass {
 	@Override
 	public void talk(UPlayer player) {
 		QuestParticipant qp = player.getQuestParticipant(null, QuestCharacter.DAVID);
-		qp.msg("Hi!");
+		qp.sendMessage("Hi!");
 	}
 
 }

@@ -21,7 +21,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.enums.Classes;
+import com.robinmc.ublisk.enums.Clazz;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.iconmenus.MainMenu;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -46,12 +46,12 @@ public class PlayerInteract implements Listener {
 			Material offhand = inv.getItemInOffHand().getType();
 			
 			if (item == Material.BOW || offhand == Material.BOW){
-				if (!(Classes.getClass(player) == Classes.ARCHER)){
+				if (!(Clazz.getClass(player) == Clazz.ARCHER)){
 					player.sendMessage(Message.CLASS_WRONG_WEAPON.get());
 					event.setCancelled(true);
 				}
 			} else if (item == Material.STICK || offhand == Material.STICK){
-				if (!(Classes.getClass(player) == Classes.SORCERER)){
+				if (!(Clazz.getClass(player) == Clazz.SORCERER)){
 					player.sendMessage(Message.CLASS_WRONG_WEAPON.get());
 					event.setCancelled(true);
 				}

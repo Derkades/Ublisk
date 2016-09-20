@@ -8,6 +8,7 @@ import org.bukkit.inventory.PlayerInventory;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.inventory.item.Item;
 import com.robinmc.ublisk.utils.inventory.item.weapon.Weapon;
+import com.robinmc.ublisk.weapon.SwordsmanWeapon;
 
 import net.minecraft.server.v1_10_R1.NBTTagCompound;
 import net.minecraft.server.v1_10_R1.NBTTagList;
@@ -103,7 +104,8 @@ public class BetterInventory {
 		for (ItemStack item : inv.getArmorContents()) inv.remove(item);
 	}
 	
-	public void addWeapon(Weapon weapon){
+	public void addWeapon(SwordsmanWeapon swordsmanWeapon){
+		Weapon weapon = swordsmanWeapon.getWeapon();
 		Item item = new Item(weapon.getType().getMaterial());
 		item.setItemInfo(weapon.getItemInfo());
 		

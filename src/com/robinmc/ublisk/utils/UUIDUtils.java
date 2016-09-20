@@ -1,8 +1,5 @@
 package com.robinmc.ublisk.utils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -10,17 +7,17 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
-import com.robinmc.ublisk.utils.third_party.UUIDFetcher;
 
 public class UUIDUtils {
 	
 	public static UUID getIdFromName(String name){
-		String string = Config.getString("uuid.uuid." + name);
+		//String string = Config.getString("uuid.uuid." + name);
+		String string = DataFile.UUID.getString("uuid." + name);
 		return UUID.fromString(string);
 	}
 	
 	public static String getNameFromId(UUID uuid){
-		String name = Config.getString("uuid.name." + uuid);
+		String name = DataFile.UUID.getString("name." + uuid);
 		return name;
 	}
 	
@@ -54,11 +51,13 @@ public class UUIDUtils {
 		}
 	}
 	
-	public static ArrayList<UUID> getIdFromName(String... name){
+	/*
+	public static UUID getIdFromName(String name){
 		ArrayList<String> list = new ArrayList<String>();
-		for (String s : name) list.add(s);
+		list.add(name);
 		UUIDFetcher uuidFetcher = new UUIDFetcher(list);
 		Map<String, UUID> uuidMap = new HashMap<String, UUID>();
+		
 		try {
 			 uuidMap = uuidFetcher.call();	
 		} catch (Exception e){
@@ -71,14 +70,13 @@ public class UUIDUtils {
 			uuidList.add(uuid);
 		}
 		
-		return uuidList;
+		return uuidList.get(0);
 	}
+	*/
 	
 	public static void save(Player player){
-		UUID uuid = player.getUniqueId();
-		String pn = player.getName();
-		Config.set("uuid.uuid." + pn, uuid.toString());
-		Config.set("uuid.name." + uuid, pn);
+		DataFile.UUID.set("uuid." + player.getName(), player.getUniqueId().toString());
+		DataFile.UUID.set("name." + player.getUniqueId(), player.getName());
 	}
 
 }

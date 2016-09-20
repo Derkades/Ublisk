@@ -2,7 +2,7 @@ package com.robinmc.ublisk.utils.inventory.item.weapon.type;
 
 import org.bukkit.Material;
 
-import com.robinmc.ublisk.enums.Classes;
+import com.robinmc.ublisk.enums.Clazz;
 import com.robinmc.ublisk.utils.inventory.item.weapon.WeaponType;
 
 public enum BowType implements WeaponType {
@@ -24,8 +24,8 @@ public enum BowType implements WeaponType {
 	}
 	
 	@Override
-	public Classes getClass(Classes clazz) {
-		return Classes.ARCHER;
+	public Clazz getClass(Clazz clazz) {
+		return Clazz.ARCHER;
 	}
 	
 }
