@@ -63,7 +63,7 @@ public class QuestParticipant {
 	}
 	
 	public void setQuestCompleted(boolean bool){
-		Config.set("quest." + player.getUniqueId() + "." + quest.getConfigString(), bool);
+		Config.set("quests." + player.getUniqueId() + "." + quest.getConfigString(), bool);
 	}
 	
 	public boolean getQuestCompleted(){
