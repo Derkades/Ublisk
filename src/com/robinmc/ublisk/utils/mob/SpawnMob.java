@@ -13,8 +13,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
 
 import com.robinmc.ublisk.utils.java.Random;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.variable.Var;
 
@@ -31,7 +29,6 @@ class SpawnMob {
 					}
 					
 					if (mob.hasReachedMax()){
-						Logger.log(LogLevel.DEBUG, "Mob " + mob.getName() + " has reached maximum spawning");
 						return;
 					}
 					

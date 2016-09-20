@@ -12,8 +12,6 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.variable.Var;
 
 public enum Mob {
@@ -125,8 +123,6 @@ public enum Mob {
 				if (getMob(entity) == this) count++;
 			} catch (MobNotFoundException e) {}
 		}
-		
-		Logger.log(LogLevel.DEBUG, count + "");
 		
 		return count >= getMax();
 	}

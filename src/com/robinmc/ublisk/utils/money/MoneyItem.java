@@ -58,6 +58,10 @@ public enum MoneyItem {
 	}
 	
 	public ItemStack getItem(){
+		return getItem(1);
+	}
+	
+	public ItemStack getItem(int amount){
 		int damage = 0;
 		if (this == MoneyItem.CHUNK){
 			damage = 11; //Yellow dye
@@ -65,8 +69,9 @@ public enum MoneyItem {
 		
 		return new ItemBuilder(material)
 				.setName(ChatColor.GOLD + name)
-				.setLore(ChatColor.YELLOW + "Value: " + value)
+				.setLore(ChatColor.YELLOW + "Value: $" + value)
 				.setDamage(damage)
+				.setAmount(amount)
 				.getItemStack();
 	}
 

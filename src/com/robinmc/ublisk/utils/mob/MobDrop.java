@@ -12,6 +12,8 @@ import com.robinmc.ublisk.utils.variable.Var;
 public class MobDrop {
 	
 	private ItemStack item;
+	private int min = 9001;
+	private int max = 9001;
 	private int percentage;
 	
 	/**
@@ -32,12 +34,18 @@ public class MobDrop {
 	 * @param percentage Random chance (1-100)
 	 */
 	public MobDrop(ItemStack item, int min, int max, int percentage){
-		item.setAmount(Random.getRandomInteger(min, max));
+		this.min = min;
+		this.max = max;
 		this.item = item;
 		this.percentage = percentage;
 	}
 	
 	public void drop(Location loc){
+		if (min != 9001 && max != 9001){ //If min and max are set
+			item.setAmount(Random.getRandomInteger(min, max));
+			Logger.log(LogLevel.DEBUG, "Gold", "Random gold: " + Random.getRandomInteger(min, max));
+		}
+		
 		double d = percentage / 100.0; // 100% - 1.0 | 50% - 0.5
 		Logger.log(LogLevel.DEBUG, "Mob", "Percentage / 100 = " + d);
 		boolean drop = Random.getRandomDouble() <= d;
