@@ -1,11 +1,19 @@
 package com.robinmc.ublisk.utils.inventory.item.weapon;
 
+import static net.md_5.bungee.api.ChatColor.BOLD;
+import static net.md_5.bungee.api.ChatColor.DARK_AQUA;
+import static net.md_5.bungee.api.ChatColor.DARK_GREEN;
+import static net.md_5.bungee.api.ChatColor.DARK_PURPLE;
+import static net.md_5.bungee.api.ChatColor.GOLD;
+import static net.md_5.bungee.api.ChatColor.GRAY;
+import static net.md_5.bungee.api.ChatColor.GREEN;
+import static net.md_5.bungee.api.ChatColor.WHITE;
+import static net.md_5.bungee.api.ChatColor.YELLOW;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import com.robinmc.ublisk.utils.inventory.item.ItemInfo;
-
-import static net.md_5.bungee.api.ChatColor.*;
 
 public class Weapon {
 	

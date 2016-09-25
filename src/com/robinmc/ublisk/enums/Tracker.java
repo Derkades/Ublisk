@@ -162,7 +162,7 @@ public enum Tracker {
 	        		PreparedStatement update = MySQL.prepareStatement("UPDATE `exp` SET count=?,name=? WHERE uuid=?;");
 	        		
 	        		update.setInt(1, xp + 1);
-	        		update.setString(1, player.getName());
+	        		update.setString(2, player.getName());
 	        		update.setString(3, player.getUniqueId().toString());
 	        		
 	        		update.executeUpdate();

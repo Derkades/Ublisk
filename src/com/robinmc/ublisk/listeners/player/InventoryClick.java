@@ -1,11 +1,12 @@
 package com.robinmc.ublisk.listeners.player;
 
-import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
+import com.robinmc.ublisk.enums.Helper;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 
@@ -16,7 +17,7 @@ public class InventoryClick implements Listener {
 
 		Logger.log(LogLevel.DEBUG, event.getWhoClicked().getName() + " clicked in inventory " + event.getInventory().getTitle());
 		
-		if (event.getWhoClicked().getGameMode() == GameMode.CREATIVE){
+		if (Helper.builderModeEnabled((Player) event.getWhoClicked())){
 			return;
 		}
 		

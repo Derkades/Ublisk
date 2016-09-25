@@ -2,9 +2,11 @@ package com.robinmc.ublisk.utils.inventory.item;
 
 import java.util.Arrays;
 
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 public class ItemBuilder {
@@ -51,6 +53,12 @@ public class ItemBuilder {
 		SkullMeta meta = (SkullMeta) item.getItemMeta();
 		meta.setOwner(playerName);
 		item.setItemMeta(meta);
+		return this;
+	}
+	
+	public ItemBuilder setLeatherArmorColor(Color color){
+		LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
+		meta.setColor(color);
 		return this;
 	}
 	

@@ -22,6 +22,7 @@ import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.enums.Clazz;
+import com.robinmc.ublisk.enums.Helper;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.iconmenus.MainMenu;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -55,7 +56,7 @@ public class PlayerInteract implements Listener {
 					player.sendMessage(Message.CLASS_WRONG_WEAPON.get());
 					event.setCancelled(true);
 				}
-			} else if (item == Material.CHEST){
+			} else if (item == Material.CHEST && !Helper.builderModeEnabled(player)){
 				MainMenu.open(player);
 				event.setCancelled(true);
 			} else if (item == Material.END_CRYSTAL){

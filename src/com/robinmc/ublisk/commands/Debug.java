@@ -21,6 +21,7 @@ import com.robinmc.ublisk.utils.Time;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
+import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.mob.Mob;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
@@ -102,6 +103,9 @@ public class Debug implements CommandExecutor {
 						}
 						PlayerInventory inv = target.getPlayer().getInventory();
 						player.getPlayer().openInventory(inv);
+						return true;
+					} else if (args[0].equals("skull")){
+						player.getInventory().add(new ItemBuilder(args[1]).create());
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());

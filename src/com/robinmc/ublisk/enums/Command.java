@@ -7,6 +7,7 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.commands.Afk;
 import com.robinmc.ublisk.commands.Builder;
 import com.robinmc.ublisk.commands.ClassCommand;
+import com.robinmc.ublisk.commands.Contact;
 import com.robinmc.ublisk.commands.Credits;
 import com.robinmc.ublisk.commands.Debug;
 import com.robinmc.ublisk.commands.FriendsCommand;
@@ -16,7 +17,6 @@ import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.commands.MsgCommand;
 import com.robinmc.ublisk.commands.MuteCommand;
 import com.robinmc.ublisk.commands.Report;
-import com.robinmc.ublisk.commands.Contact;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 
