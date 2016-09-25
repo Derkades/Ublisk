@@ -15,7 +15,7 @@ public class Arzhur implements QuestCharacterClass {
 
 	@Override
 	public void talk(UPlayer player2) {
-		// TODO Update to UPlayer
+		// XXX Update to UPlayer
 		Player player = player2.getPlayer();
 		if (new QuestParticipant(player, Quest.SEARCH_MEAT, QuestCharacter.ARZHUR).getQuestCompleted()){
 			new QuestParticipant(player, Quest.SEARCH_MEAT, QuestCharacter.ARZHUR).sendMessage("Nice work! I wish you the best of luck and we will meet again. Soon!");
@@ -52,18 +52,16 @@ public class Arzhur implements QuestCharacterClass {
 			qp.sendMessage("You were sent by Rasmus, weren’t you? That old man always bothers himself of the so called monsters in his farm. Just between you and me, he has gotten a little crazy over the last few years and now thinks that the chickens in his farm are monsters! Here take this. It will help you to scare those chickens away.");
 			qp.saveProgress(QuestProgress.CHICKEN_HUNT_TALK_TO_ARZHUR);
 		} else {
-			qp.sendMessage("Hey there. Nice work on the dam, See ya!");
+			qp.sendMessage("Thank you for fixing up the dam!");
 		}
 	}
 	
 	private void waterProblem(Player player){
 		QuestParticipant qp = new QuestParticipant(player, Quest.WATER_PROBLEM, QuestCharacter.ARZHUR);
-		if (qp.getQuestCompleted()){
-			//If the player has already completed the quest
-			qp.sendMessage("Thank you for helping me!");
-		} else if (qp.getProgress(QuestProgress.CHECKED_DAM)){ 
+		if (qp.getProgress(QuestProgress.CHECKED_DAM)){ 
 			//If the player has checked the dam
 			qp.sendMessage("Oh no, we must fix the dam before it completely breaks. You should collect some wood from the saw and bring it to Alvin.");
+			qp.saveProgress(QuestProgress.DAM_REPORTED_BACK);
 		} else {
 			//If neither of the above are true
 			qp.sendMessage("People from the village have been complaining about an excessive amount of water, can you go and check the Glaenor Dam?");

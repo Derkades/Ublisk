@@ -43,23 +43,23 @@ public class QuestParticipant {
 	}
 	
 	public void saveProgress(QuestProgress data){
-		DataFile.QUESTS.set(player.getUniqueId() + "." + data.toString(), true);
+		DataFile.QUESTS.set(player.getUniqueId() + ".progress." + data.toString(), true);
 	}
 	
 	public boolean getProgress(QuestProgress data){
-		try {
-			return DataFile.QUESTS.getBoolean(player.getUniqueId() + "." + data.toString());
-		} catch (Exception e){
+		if (DataFile.QUESTS.isSet(player.getUniqueId() + ".progress." + data.toString())){
+			return DataFile.QUESTS.getBoolean(player.getUniqueId() + ".progress." + data.toString());
+		} else {
 			return false;
 		}
 	}
 	
 	public void setQuestCompleted(boolean bool){
-		DataFile.QUESTS.set(player.getUniqueId() + "." + quest.getConfigString(), bool);
+		DataFile.QUESTS.set(player.getUniqueId() + ".quests." + quest.getConfigString(), bool);
 	}
 	
 	public boolean getQuestCompleted(){
-		return DataFile.QUESTS.getBoolean(player.getUniqueId() + "." + quest.getConfigString());
+		return DataFile.QUESTS.getBoolean(player.getUniqueId() + ".quests." + quest.getConfigString());
 	}
 	
 	public boolean hasRequiredLevel(){

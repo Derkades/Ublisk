@@ -39,7 +39,7 @@ public class Rasmus implements QuestCharacterClass {
 			qp.sendCompletedMessage();
 			qp.setQuestCompleted(true);
 		} else if (qp.getProgress(QuestProgress.CHICKEN_HUNT_TALK_TO_ARZHUR)){
-			// TODO Message
+			// TODO Message for chicken hunt quest
 		} else {
 			qp.sendMessage("Hi again. Have you noticed all these monsters eating our crops! Can you kill these monsters for me? Go to Arzhur, he probably has a tool for you that will help you!");
 			qp.saveProgress(QuestProgress.CHICKENHUNT_TALK_TO_RASMUS);
@@ -54,7 +54,7 @@ public class Rasmus implements QuestCharacterClass {
 		
 		if (!qp.getProgress(QuestProgress.HAY_TRANSPORT_STARTED)) 
 			qp.saveProgress(QuestProgress.HAY_TRANSPORT_STARTED);
-		//TODO item voor hay verzamelen
+		// TODO Item for breaking hay
 	}
 
 }

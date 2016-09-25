@@ -35,10 +35,10 @@ public enum QuestCharacter {
 	ULRIC(new Ulric(), "Ulric", Profession.FARMER, 38.5, 67, -26.5, -145, 0),
 	ARZHUR(new Arzhur(), "Arzhur", null, 111.5, 68, -103.5, -20, 0), // TODO Profession
 	//ASHER(null, "Asher", 449.3, 70, -10.5, 75, 5), // TODO Profession TODO QCC
-	RASMUS(new Rasmus(), "Rasmus", null, 2.5, 71, -16.5, 0, 0), // TODO Rasmus coordinates TODO Profession
-	DIANH(new Dianh(), "Dianh", null, 2.5, 71, -16.5, 0, 0),// TODO coordinaten van Dianh TODO Profession
-	ZOLTAR(new Zoltar(), "Zoltar", null, 2.5, 71, -16.5, 0, 0),// TODO coordinaten van Zoltar TODO Profession
-	ALVIN(new Alvin(), "Alvin", null, 121.5, 72, 7.3, -161, 4); // TODO Alvin coordinates TODO Profession
+	RASMUS(new Rasmus(), "Rasmus", null, 2.5, 71, -16.5, 0, 0), // TODO Rasmus coordinates XXX Profession
+	DIANH(new Dianh(), "Dianh", null, 2.5, 71, -16.5, 0, 0),// TODO Dianh coordinates XXX Profession
+	ZOLTAR(new Zoltar(), "Zoltar", null, 2.5, 71, -16.5, 0, 0),// TODO Zoltar coordinates XXX Profession
+	ALVIN(new Alvin(), "Alvin", null, 121.5, 72, 7.3, -161, 4); // XXX Profession
 	
 	private QuestCharacterClass qcc;
 	private String name;

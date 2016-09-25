@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -180,5 +181,42 @@ public class IconMenu implements Listener {
         im.setLore(list);
         item.setItemMeta(im);
         return item;
+    }
+    
+    public void fillEdgesWithGlass(){
+    	ItemStack icon = new ItemStack(Material.STAINED_GLASS_PANE);
+    	String name = "";
+    	int[] position = {
+    			0,
+    			1,
+    			2,
+    			3,
+    			4,
+    			5,
+    			6,
+    			7,
+    			8,
+    			17,
+    			26,
+    			35,
+    			44,
+    			53,
+    			53,
+    			52,
+    			51,
+    			50,
+    			49,
+    			48,
+    			47,
+    			46,
+    			45,
+    			36,
+    			27,
+    			18,
+    			9
+    			};
+    	
+    	for (int i : position) setOption(i, icon, name);
+    		
     }
 }

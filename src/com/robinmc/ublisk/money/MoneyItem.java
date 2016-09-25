@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.money;
+package com.robinmc.ublisk.money;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -73,6 +73,15 @@ public enum MoneyItem {
 				.setDamage(damage)
 				.setAmount(amount)
 				.getItemStack();
+	}
+	
+	public static MoneyItem fromItemStack(ItemStack item){
+		for (MoneyItem money : MoneyItem.values()){
+			if (money.getItem().getType() == item.getType()){
+				return money;
+			}
+		}
+		return null;
 	}
 
 }

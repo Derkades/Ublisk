@@ -15,6 +15,14 @@ public class ItemBuilder {
 		item = new ItemStack(material);
 	}
 	
+	public ItemBuilder(ItemStack item){
+		this.item = item;
+	}
+	
+	public ItemBuilder(String skullOwner){
+		item = new ItemBuilder(Material.SKULL_ITEM).setDamage(3).setSkullOwner(skullOwner).getItemStack();
+	}
+	
 	public ItemBuilder setAmount(int amount){
 		item.setAmount(amount);
 		return this;

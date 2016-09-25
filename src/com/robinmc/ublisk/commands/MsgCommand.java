@@ -35,10 +35,11 @@ public class MsgCommand implements CommandExecutor {
 		
 		if (args.length >= 2){
 			UPlayer target;
+			
 			try {
 				target = UPlayer.get(args[0]);
 			} catch (PlayerNotFoundException e1) {
-				// TODO Player not found
+				player.sendMessage(Message.PLAYER_NOT_FOUND);
 				return true;
 			}
 			

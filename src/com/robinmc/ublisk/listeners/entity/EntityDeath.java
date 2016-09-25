@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.listeners;
+package com.robinmc.ublisk.listeners.entity;
 
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;

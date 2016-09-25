@@ -14,13 +14,13 @@ public class Alvin implements QuestCharacterClass{
 
 	@Override
 	public void talk(UPlayer player) {
-		// TODO Auto-generated method stub
 		//QuestParticipant qp = new QuestParticipant(player, Quest.WATER_PROBLEM, QuestCharacter.ALVIN);
 		QuestParticipant qp = player.getQuestParticipant(Quest.WATER_PROBLEM, QuestCharacter.ALVIN);
 		BetterInventory inv = player.getInventory();
 		
 		if (qp.getQuestCompleted()){
-			qp.sendMessage("I looking for the biggest rose in the world!");
+			qp.sendMessage("I'm looking for the biggest rose in the world!");
+			return;
 		}
 		
 		if (qp.getProgress(QuestProgress.DAM_REPORTED_BACK) && inv.contains(Material.LOG, 5)){
@@ -39,7 +39,7 @@ public class Alvin implements QuestCharacterClass{
 		}
 		
 		if (!qp.getProgress(QuestProgress.DAM_FIRST_TALK)){
-			qp.sendMessage("I looking for the biggest rose in the world!");
+			qp.sendMessage("I'm looking for the biggest rose in the world!");
 			return;
 		}
 		

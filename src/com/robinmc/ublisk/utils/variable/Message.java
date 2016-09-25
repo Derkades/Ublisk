@@ -19,7 +19,7 @@ public enum Message {
 	REPORT(prefix() + "Please report hackers and staff abusers over at http://ublisk.robinmc.com"),
 	SUGGEST_FEATURE(prefix() + "Please suggest new features here: http://goo.gl/EcrBia"),
 	NO_PERMISSION(prefix() + RED + "You don't have the required permissions to execute this command"),
-	PLAYER_NOT_FOUND(prefix() + RED + "This player could not be found."),
+	PLAYER_NOT_FOUND(prefix() + RED + "That player could not be found."),
 	
 	NOT_IN_GULID(prefix("Guilds") + RED + "You are not in a guild."),
 	ALREADY_IN_GUILD(prefix("Guilds") + RED + "You are already in a guild. Please leave your guild first."),
@@ -59,7 +59,11 @@ public enum Message {
 	BUILDER_MODE_DEACTIVATED(prefix() + YELLOW + "You are no longer in builder mode. Enjoy playing!"),
 	
 	VOTE_BOX_BUSY(prefix("Voting") + RED + "Someone is already opening a voting box. Please try again in a minute."),
-	VOTE_BOX_INSUFFICIENT_POINTS(prefix("Voting") + RED + "You do not have enough voting points. Vote at " + Var.VOTE_URL);
+	VOTE_BOX_INSUFFICIENT_POINTS(prefix("Voting") + RED + "You do not have enough voting points. Vote at " + Var.VOTE_URL),
+	
+	NOT_ENOUGH_MONEY(prefix("Money") + RED + "You don't have enough money"),
+	CANT_AFFORD_ITEM(prefix("Money") + RED + "You can't afford that item"),
+	INVENTORY_NOT_CONTAIN_MONEY_ITEM(prefix("Money") + RED + "Your inventory does not contain any");
 	
 	private String msg;
 	
@@ -179,7 +183,8 @@ public enum Message {
 			}	
 			
 			public static String npcMsg(String npc, String message){
-				return prefix(npc) + message;
+				//return prefix(npc) + message;
+				return DARK_AQUA + "" + BOLD + npc + ": " + RESET + "" + AQUA + message;
 			}
 			
 		}

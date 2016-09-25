@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
+import com.robinmc.ublisk.money.MoneyItem;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.inventory.item.Item;
 import com.robinmc.ublisk.utils.inventory.item.weapon.Weapon;
@@ -45,20 +46,24 @@ public class BetterInventory {
 		return inv;
 	}
 	
-	public void add(Material item, int amount){
-		inv.addItem(new ItemStack(item, amount));
-	}
-	
-	public void add(Material material){
-		inv.addItem(new ItemStack(material, 1));
-	}
-	
 	public void add(ItemStack item){
 		inv.addItem(item);
 	}
 	
+	public void add(Material item, int amount){
+		add(new ItemStack(item, amount));
+	}
+	
+	public void add(Material material){
+		add(new ItemStack(material, 1));
+	}
+	
 	public void add(Item item){
-		inv.addItem(item.getBukkitItem());
+		add(item.getBukkitItem());
+	}
+	
+	public void add(MoneyItem item){
+		add(item.getItem());
 	}
 	
 	public void set(int slot, Item item){
@@ -77,10 +82,29 @@ public class BetterInventory {
 		remove(new ItemStack(material, amount));
 	}
 	
+	public void remove(MoneyItem item){
+		remove(item.getItem());
+	}
+	
+	/**
+	 * Checks if a player's inventory contains an item
+	 * @param material
+	 * @return
+	 * True: if a player's inventory contains at least one of the specified material
+	 * <br>
+	 * False: if it does not
+	 */
 	public boolean contains(Material material) {
 		return inv.contains(material);
 	}
 	
+	/**
+	 * Will return true if the player's inventory contains <b>at least</b> [amount] of an item
+	 * @see #contains(ItemStack)
+	 * @param material
+	 * @param amount
+	 * @return 
+	 */
 	public boolean contains(Material material, int amount){
 		return inv.containsAtLeast(new ItemStack(material), amount);
 	}

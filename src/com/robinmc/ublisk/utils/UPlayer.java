@@ -26,6 +26,7 @@ import com.robinmc.ublisk.enums.Clazz;
 import com.robinmc.ublisk.enums.Helper;
 import com.robinmc.ublisk.enums.Town;
 import com.robinmc.ublisk.enums.Tracker;
+import com.robinmc.ublisk.money.Money;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.quest.QuestParticipant;
@@ -404,6 +405,26 @@ public class UPlayer {
 	
 	public Clazz getClazz(){
 		return Clazz.getClass(player);
+	}
+	
+	public void setMoney(int amount){
+		Money.set(player, amount);
+	}
+	
+	public int getMoney(){
+		return Money.get(player);
+	}
+	
+	public boolean hasMoney(int amount){
+		return Money.get(player) >= amount;
+	}
+	
+	public void addMoney(int amount){
+		setMoney(getMoney() + amount);
+	}
+	
+	public void removeMoney(int amount){
+		setMoney(getMoney() - amount);
 	}
 	
 	public static UPlayer[] getOnlinePlayers(){

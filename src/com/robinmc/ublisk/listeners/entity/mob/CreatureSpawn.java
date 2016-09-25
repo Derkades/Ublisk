@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.listeners;
+package com.robinmc.ublisk.listeners.entity.mob;
 
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Item;

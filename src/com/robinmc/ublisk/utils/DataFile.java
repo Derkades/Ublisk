@@ -18,7 +18,8 @@ public enum DataFile {
 	IP("ip"),
 	LIFE_CRYSTAL("life"),
 	XP("xp"),
-	VOTING("voting");
+	VOTING("voting"),
+	MONEY("money");
 	
 	private File file;
 	
@@ -68,6 +69,10 @@ public enum DataFile {
 	
 	public List<String> getStringList(String path){
 		return getConfig().getStringList(path);
+	}
+	
+	public boolean isSet(String path){
+		return getConfig().isSet(path);
 	}
 	
 }

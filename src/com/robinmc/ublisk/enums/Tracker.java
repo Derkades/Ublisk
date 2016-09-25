@@ -159,19 +159,15 @@ public enum Tracker {
 	        	
 	        	if (containsPlayer){
 	        		int xp = player.getXP();
-	        		PreparedStatement updatexp = MySQL.prepareStatement("UPDATE `exp` SET count=? WHERE uuid=?;");
-	        		updatexp.setInt(1, xp + 1);
-	        		updatexp.setString(2, player.getUniqueId().toString());
-	        		updatexp.executeUpdate();
+	        		PreparedStatement update = MySQL.prepareStatement("UPDATE `exp` SET count=?,name=? WHERE uuid=?;");
 	        		
-	        		// XXX Cleanup second PreparedStatement
-	        		PreparedStatement name = MySQL.prepareStatement("UPDATE `exp` SET name=? where uuid=?;");
-	        		name.setString(1, player.getName());
-	        		name.setString(2, player.getUniqueId().toString());
-	        		name.executeUpdate();
+	        		update.setInt(1, xp + 1);
+	        		update.setString(1, player.getName());
+	        		update.setString(3, player.getUniqueId().toString());
 	        		
-	        		name.close();
-	        		updatexp.close();
+	        		update.executeUpdate();
+
+	        		update.close();
 	        	} else {
 	        		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `exp` values(?, 0, ?);");
 	        		newplayer.setString(1, player.getUniqueId().toString());

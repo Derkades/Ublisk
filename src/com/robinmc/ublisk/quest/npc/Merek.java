@@ -3,13 +3,13 @@ package com.robinmc.ublisk.quest.npc;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import com.robinmc.ublisk.money.MoneyItem;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.quest.QuestCharacterClass;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.inventory.BetterInventory;
-import com.robinmc.ublisk.utils.money.MoneyItem;	
+import com.robinmc.ublisk.utils.inventory.BetterInventory;	
 
 public class Merek implements QuestCharacterClass {
 	

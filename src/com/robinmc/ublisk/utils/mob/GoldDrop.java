@@ -3,7 +3,7 @@ package com.robinmc.ublisk.utils.mob;
 import java.util.Arrays;
 import java.util.List;
 
-import com.robinmc.ublisk.utils.money.MoneyItem;
+import com.robinmc.ublisk.money.MoneyItem;
 
 public enum GoldDrop {
 	

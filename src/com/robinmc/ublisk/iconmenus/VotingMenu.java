@@ -11,6 +11,7 @@ import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
+import com.robinmc.ublisk.utils.variable.Message;
 
 public class VotingMenu {
 	
@@ -23,10 +24,10 @@ public class VotingMenu {
 				event.setWillClose(false);
 			} else {
 				if (Voting.isPlayerOpeningBox()){
-					player.sendMessage("someone is already opening box"); // TODO Proper message
+					player.sendMessage(Message.VOTE_BOX_BUSY);
 					event.setWillDestroy(false);
 				} else if (!player.hasVotingPoints(3)){
-					player.sendMessage("not enough points"); // TODO Proper message
+					player.sendMessage(Message.VOTE_BOX_INSUFFICIENT_POINTS);
 					event.setWillDestroy(false);
 				} else {
 					player.removeVotingPoints(3);

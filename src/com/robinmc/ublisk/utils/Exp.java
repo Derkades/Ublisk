@@ -81,41 +81,7 @@ public class Exp {
 	 * @throws MobInfoMissingException  
 	 */
 	public static void giveMobExp(Player player, Entity entity) throws MobNotFoundException {
-		/*
-		if (!Mob.containsEntity(entity)){
-			player.sendMessage(Message.ERROR_GENERAL.get());
-			return;
-		}
-		
-		MobArea area = Mob.getArea(entity);
-		int xp = 0;
-		String name = "error";
-		for (MobInfo info : area.getMobInfo()){
-			if (entity.getType() == info.getEntityType()){
-				xp = info.getXP();
-				name = info.getName();
-			}
-		}
-		
-		if (xp == 0 || name == "error"){
-			throw new MobInfoMissingException();
-		}
-		
-		if (HashMaps.doublexp.get(HashMaps.placeHolder())){ //If double XP is active
-			ActionBarAPI.sendActionBar(player, ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP", 3*10);
-			Exp.add(player, xp * 2);
-			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
-		} else {
-			ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP", 3*10);
-			Exp.add(player, xp);
-			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp + " for killing a " + name);
-		}
-		*/
-		
-		// TODO Remove old code after checking if new code works
-		
 		Mob mob = Mob.getMob(entity);
-		
 		String name = mob.getName();
 		int xp = mob.getXP();
 		
@@ -128,8 +94,6 @@ public class Exp {
 			Exp.add(player, xp);
 			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp + " for killing a " + name);
 		}
-		
-		refresh(player);
 	}
 	
 	/**
