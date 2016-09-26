@@ -216,7 +216,7 @@ public class Debug implements CommandExecutor {
 							Time.add(100);
 						}
 						return true;
-					} else if (args[0].equals("npctest")){
+					} else if (args[0].equals("npc")){
 						for (Villager villager : Var.WORLD.getEntitiesByClass(Villager.class)){
 							villager.remove();
 						}

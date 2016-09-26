@@ -35,6 +35,11 @@ public class GuildCommand implements CommandExecutor {
 					return true;
 				}
 			} else if (args[0].equalsIgnoreCase("accept")){
+				if (player.isInGuild()){
+					player.sendMessage(Message.ALREADY_IN_GUILD);
+					return true;
+				}
+				
 				try {
 					Guild guild = player.getInvitedGuild();
 					player.joinGuild(guild);
@@ -60,10 +65,11 @@ public class GuildCommand implements CommandExecutor {
 			}
 		} else if (args.length == 2){
 			if (args[0].equalsIgnoreCase("create")){
-				Logger.log(LogLevel.DEBUG, "Guilds list: ");
-				for (Guild guild : Guilds.getGuilds()){
-					Logger.log(LogLevel.DEBUG, "- " + guild.getName());
+				if (player.isInGuild()){
+					player.sendMessage(Message.ALREADY_IN_GUILD);
+					return true;
 				}
+				
 				if (!Guilds.getGuilds().contains(Guilds.fromName(args[1]))){
 					player.joinGuild(Guilds.fromName(args[1]));
 				} else {

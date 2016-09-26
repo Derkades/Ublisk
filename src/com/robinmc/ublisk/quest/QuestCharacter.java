@@ -30,25 +30,27 @@ import net.md_5.bungee.api.ChatColor;
 
 public enum QuestCharacter {
 	
-	DAVID(new David(), "David", Profession.FARMER, 72.5, 67, -2.5, 13, 0),
-	MEREK(new Merek(), "Merek", Profession.FARMER, 33, 67, -38, -70, 0),
-	ULRIC(new Ulric(), "Ulric", Profession.FARMER, 38.5, 67, -26.5, -145, 0),
-	ARZHUR(new Arzhur(), "Arzhur", null, 111.5, 68, -103.5, -20, 0), // TODO Profession
+	DAVID(new David(), "David", Profession.FARMER, false, 72.5, 67, -2.5, 13, 0),
+	MEREK(new Merek(), "Merek", Profession.FARMER, false, 33, 67, -38, -70, 0),
+	ULRIC(new Ulric(), "Ulric", Profession.FARMER, false, 38.5, 67, -26.5, -145, 0),
+	ARZHUR(new Arzhur(), "Arzhur", null, false, 111.5, 68, -103.5, -20, 0), // TODO Profession
 	//ASHER(null, "Asher", 449.3, 70, -10.5, 75, 5), // TODO Profession TODO QCC
-	RASMUS(new Rasmus(), "Rasmus", null, 2.5, 71, -16.5, 0, 0), // TODO Rasmus coordinates XXX Profession
-	DIANH(new Dianh(), "Dianh", null, 2.5, 71, -16.5, 0, 0),// TODO Dianh coordinates XXX Profession
-	ZOLTAR(new Zoltar(), "Zoltar", null, 2.5, 71, -16.5, 0, 0),// TODO Zoltar coordinates XXX Profession
-	ALVIN(new Alvin(), "Alvin", null, 121.5, 72, 7.3, -161, 4); // XXX Profession
+	RASMUS(new Rasmus(), "Rasmus", null, false, 2.5, 71, -16.5, 0, 0), // TODO Rasmus coordinates XXX Profession
+	DIANH(new Dianh(), "Dianh", null, false, 2.5, 71, -16.5, 0, 0),// TODO Dianh coordinates XXX Profession
+	ZOLTAR(new Zoltar(), "Zoltar", null, false, 2.5, 71, -16.5, 0, 0),// TODO Zoltar coordinates XXX Profession
+	ALVIN(new Alvin(), "Alvin", null, true, 121.5, 72, 7.3, -161, 4); // XXX Profession
 	
-	private QuestCharacterClass qcc;
-	private String name;
-	private Profession profession;
-	private Location loc;
+	private final QuestCharacterClass qcc;
+	private final String name;
+	private final Profession profession;
+	private final boolean canWalk;
+	private final Location loc;
 	
-	QuestCharacter(QuestCharacterClass qcc, String name, Profession profession, double x, double y, double z, int pitch, int yaw){
+	QuestCharacter(QuestCharacterClass qcc, String name, Profession profession, boolean canWalk, double x, double y, double z, int pitch, int yaw){
 		this.qcc = qcc;
 		this.name = name;
 		this.profession = profession;
+		this.canWalk = canWalk;
 		this.loc = new Location(Var.WORLD, x, y, z, pitch, yaw);
 	}
 	
@@ -68,6 +70,10 @@ public enum QuestCharacter {
 		return profession;
 	}
 	
+	public boolean canWalk(){
+		return canWalk;
+	}
+	
 	public void spawn(){
 		Villager villager = Var.WORLD.spawn(loc, Villager.class);
 		villager.setCustomName(ChatColor.DARK_GREEN + name);
@@ -75,12 +81,11 @@ public enum QuestCharacter {
 		villager.setInvulnerable(true);
 		villager.setCustomNameVisible(true);
 		villager.setBreed(false);
-		villager.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000000*20, 255, true));
+		if (!canWalk()) villager.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000000*20, 255, true));
 		villager.teleport(loc);
 		if (getProfession() != null){
 			villager.setProfession(getProfession());
 		}
-		Logger.log(LogLevel.DEBUG, villager.getName() + "" + villager.getLocation().getBlockX() + "" + villager.getLocation().getBlockZ());
 	}
 	
 	public void talk(UPlayer player){

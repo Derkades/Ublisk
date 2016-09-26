@@ -31,13 +31,14 @@ public class HashMaps {
 	
 	public static Map<Player, Integer> lastLevel = new HashMap<>();
 
-	//Tracker HashMaps. These will be added to the database every 5 minutes and reset to 0.
+	//Tracker HashMaps. Every 5 minutes, these will be added to the database and reset to 0.
 	public static Map<UUID, Integer> rightClicked = new HashMap<>();
 	public static Map<UUID, Integer> leftClicked = new HashMap<>();
 	public static Map<UUID, Integer> mobKills = new HashMap<>();
 	public static Map<UUID, Integer> lootFound = new HashMap<>();
 	public static Map<UUID, Integer> loggedIn = new HashMap<>();
 	public static Map<UUID, Integer> chatMessages = new HashMap<>();
+	public static Map<UUID, Integer> votingBoxes = new HashMap<>();
 	
 	static void resetAllPlayers(){
 		for (Player player : Bukkit.getOnlinePlayers()){

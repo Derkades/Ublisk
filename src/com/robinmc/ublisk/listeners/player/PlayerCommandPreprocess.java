@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.listeners.player;
 
+import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
@@ -25,7 +26,7 @@ public class PlayerCommandPreprocess implements Listener {
 		String pn = sender.getName();
 		
 		if (cmd.startsWith("/time set")){
-			sender.sendMessage("Please do not use /time set. This command has been cancelled");
+			sender.sendMessage("Please do not use /time set. The command has been cancelled");
 			event.setCancelled(true);
 			return;
 		}
@@ -48,6 +49,16 @@ public class PlayerCommandPreprocess implements Listener {
 		
 		if (cmd.equalsIgnoreCase("/rl") || cmd.equalsIgnoreCase("/reload")){
 			sender.sendMessage(ChatColor.AQUA + "How about you don't!");
+			event.setCancelled(true);
+			return;
+		}
+		
+		if (sender.getGameMode() == GameMode.SPECTATOR && cmd.equals("/gamemode 1")){
+			return;
+		}
+		
+		if (cmd.contains("gamemode") && !cmd.contains("3")){
+			sender.sendMessage(ChatColor.AQUA + "Please use builder mode instead");
 			event.setCancelled(true);
 			return;
 		}

@@ -30,7 +30,8 @@ public enum Tracker {
 	JOINED(HashMaps.loggedIn, "login_count"),
 	MOB_KILLS(HashMaps.mobKills, "mob_kills"),
 	LOOT_FOUND(HashMaps.lootFound, "loot_found"),
-	CHAT_MESSAGES(HashMaps.chatMessages, "chat_messages");
+	CHAT_MESSAGES(HashMaps.chatMessages, "chat_messages"),
+	VOTING_BOXES_OPENED(HashMaps.votingBoxes, "voting_boxes");
 	
 	private Map<UUID, Integer> map;
 	private String table;

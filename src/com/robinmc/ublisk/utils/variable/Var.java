@@ -13,7 +13,7 @@ public class Var {
 	/**
 	 * Direct URL to resource pack zip
 	 */
-	public static final String PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures5.zip";
+	public static final String PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures6.zip";
 	
 	/**
 	 * How long double XP will last for.

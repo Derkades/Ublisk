@@ -160,6 +160,8 @@ public class PlayerInteract implements Listener {
 				player.addLifeCrystals(life);
 			}
 			
+			player.tracker(Tracker.VOTING_BOXES_OPENED);
+			
 			Logger.log(LogLevel.DEBUG, "Gold: " + gold + " | XP: " + xp + " | Life: " + life);
 		}
 	}
