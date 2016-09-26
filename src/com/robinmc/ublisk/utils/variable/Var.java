@@ -47,5 +47,10 @@ public class Var {
 	 * Maximum amount of players in a guild
 	 */
 	public static final int GUILD_MEMBER_LIMIT = 8;
+	
+	/**
+	 * Prefix character for chat triggers 
+	 */
+	public static final char TRIGGER_CHARACTER = '!';
 
 }

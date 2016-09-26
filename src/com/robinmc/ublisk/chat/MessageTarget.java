@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.chat;
+package com.robinmc.ublisk.chat;
 
 import org.bukkit.entity.Player;
 

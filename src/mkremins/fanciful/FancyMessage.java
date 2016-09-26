@@ -24,7 +24,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonWriter;
-import com.robinmc.ublisk.utils.chat.JSON;
 
 import net.amoebaman.util.ArrayWrapper;
 
@@ -460,14 +459,6 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
 		dirty = false;
 		return jsonString;
 	}
-	
-	// RobinMCDev Code START
-	
-	public JSON getJSON(){
-		return JSON.fromString(toJSONString());
-	}
-	
-	// RobinMCDev Code END
 
 	/**
 	 * Sends this message to a player. The player will receive the fully-fledged formatted display of this message.

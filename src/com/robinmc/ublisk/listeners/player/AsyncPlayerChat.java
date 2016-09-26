@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.variable.Message;
@@ -34,6 +35,12 @@ public class AsyncPlayerChat implements Listener {
 		ChatColor chatColor = ChatColor.WHITE;
 		if (HashMaps.isSoftMuted.get(player.getUniqueId())){
 			chatColor = ChatColor.GRAY;
+		}
+		
+		for (Trigger trigger : Trigger.values()){
+			if (event.getMessage().equals(trigger.getTrigger())){
+				event.setMessage(trigger.getMessage());
+			}
 		}
 		
 		int level = player.getLevel();

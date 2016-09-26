@@ -1,5 +1,6 @@
-package com.robinmc.ublisk.utils.chat;
+package com.robinmc.ublisk.chat;
 
+@Deprecated
 public class JSON {
 	
 	private String string;
