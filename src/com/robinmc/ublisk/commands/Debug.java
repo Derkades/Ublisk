@@ -12,6 +12,7 @@ import org.bukkit.entity.Villager;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.enums.Loot;
 import com.robinmc.ublisk.enums.Tracker;
@@ -228,6 +229,9 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("triggers")){
 						for (Trigger trigger : Trigger.values())
 							player.sendMessage(trigger.getTrigger() + ": " + trigger.getMessage());
+						return true;
+					} else if (args[0].equals("ability")){
+						Ability.TEST.doAbility(player);
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());

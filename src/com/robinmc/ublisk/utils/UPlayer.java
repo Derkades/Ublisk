@@ -11,12 +11,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Particle;
 import org.bukkit.command.CommandSender;
+import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -52,6 +55,7 @@ import com.robinmc.ublisk.utils.variable.Var;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.minecraft.server.v1_10_R1.Packet;
 
 public class UPlayer {
 	
@@ -427,6 +431,14 @@ public class UPlayer {
 		setMoney(getMoney() - amount);
 	}
 	
+	public void sendPacket(@SuppressWarnings("rawtypes") Packet packet){
+		((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+	}
+	
+	public void playNotMovingParticle(Particle particle, double x, double y, double z){
+		player.spawnParticle(particle, x, y, z, 0, 0, 0, 0, 1);
+	}
+	
 	public static UPlayer[] getOnlinePlayers(){
 		List<UPlayer> list = new ArrayList<UPlayer>();
 		for (Player player : Bukkit.getOnlinePlayers()){
@@ -454,5 +466,7 @@ public class UPlayer {
 	public static UPlayer get(PlayerQuitEvent event){ return get(event.getPlayer()); }
 	
 	public static UPlayer get(PlayerJoinEvent event){ return get(event.getPlayer()); }
+	
+	public static UPlayer get(PlayerInteractEvent event){ return get(event.getPlayer()); }
 
 }
