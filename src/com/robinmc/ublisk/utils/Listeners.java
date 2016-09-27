@@ -2,9 +2,9 @@ package com.robinmc.ublisk.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.PluginManager;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.abilities.AbilityListener;
 import com.robinmc.ublisk.listeners.ServerListPing;
 import com.robinmc.ublisk.listeners.Votifier;
 import com.robinmc.ublisk.listeners.entity.EntityDamageByEntity;
@@ -31,31 +31,46 @@ public class Listeners {
 	
 	public static void register(){
 		Logger.log(LogLevel.INFO, "Listeners", "Registering listeners...");
-		register(new AsyncPlayerChat());
-		register(new BreakBlock());
-		register(new CreatureSpawn());
-		register(new EntityCombust());
-		register(new EntityDamageByEntity());
-		register(new EntityDeath());
-		register(new EntityExplode());
-		register(new InventoryClose());
-		register(new InventoryClick());
-		register(new PlayerCommandPreprocess());
-		register(new PlayerInteract());
-		register(new PlayerInteractEntity());
-		register(new PlayerItemConsume());
-		register(new PlayerJoin());
-		register(new PlayerQuit());
-		register(new PlayerResourcePackStatus());
-		register(new ServerListPing());
-		register(new SongEnd());
-		register(new Votifier());
+		for (Enum listener : Enum.values()){
+			Logger.log(LogLevel.DEBUG, "Listeners", "Registered " + listener);
+			listener.register();
+		}
 	}
 	
-	private static void register(Listener listener){
-		Main plugin = Main.getInstance();
-		PluginManager pman = Bukkit.getServer().getPluginManager();
-		pman.registerEvents(listener, plugin);
+	private enum Enum {
+		
+		CHAT(new AsyncPlayerChat()),
+		BREAK_BLOCK(new BreakBlock()),
+		CREATURE_SPAWN(new CreatureSpawn()),
+		ENTITY_COMBUST(new EntityCombust()),
+		ENTITY_DAMAGE(new EntityDamageByEntity()),
+		ENTITY_DEATH(new EntityDeath()),
+		ENTITY_EXPLODE(new EntityExplode()),
+		INV_CLOSE(new InventoryClose()),
+		INV_CLICK(new InventoryClick()),
+		PLAYER_COMMAND(new PlayerCommandPreprocess()),
+		INTERACT(new PlayerInteract()),
+		INTERACT_ENTITY(new PlayerInteractEntity()),
+		CONSUME(new PlayerItemConsume()),
+		JOIN(new PlayerJoin()),
+		QUIT(new PlayerQuit()),
+		RESOURCE_PACK(new PlayerResourcePackStatus()),
+		PING_SERVER(new ServerListPing()),
+		SONG_END(new SongEnd()),
+		VOTE(new Votifier()),
+		
+		ABILITIES(new AbilityListener());
+		
+		private Listener listener;
+		
+		Enum(Listener listener){
+			this.listener = listener;
+		}
+		
+		public void register(){
+			Bukkit.getServer().getPluginManager().registerEvents(listener, Main.getInstance());
+		}
+		
 	}
 
 }
