@@ -52,5 +52,12 @@ public class Var {
 	 * Prefix character for chat triggers 
 	 */
 	public static final char TRIGGER_CHARACTER = '!';
+	
+	/**
+	 * Additional delay between trackers.
+	 * 
+	 * Tracker delay = TRACKER_DELAY + [player count] * 50
+	 */
+	public static final int TRACKER_DELAY = 40;
 
 }

@@ -1,6 +1,5 @@
 package com.robinmc.ublisk.enums;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 
 import com.robinmc.ublisk.Main;
@@ -44,30 +43,22 @@ public enum Command {
 		this.exec = exec;
 	}
 	
-	public String getCommand(){
+	private String getCommand(){
 		return cmd;
 	}
 	
-	public CommandExecutor getExecutor(){
+	private CommandExecutor getExecutor(){
 		return exec;
 	}
 	
-	public static int registerAll(){
-		int delay = 30;
+	public static void registerAll(){
 		Logger.log(LogLevel.INFO, "Commands", "Registering commands...");
 		for (final Command cmd : Command.values()){
-			delay = delay + 3;
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
-				public void run(){
-					Logger.log(LogLevel.INFO, "Commands", "Registered command with class " + cmd.getExecutor().getClass().getSimpleName());
-					String command = cmd.getCommand();
-					CommandExecutor executor = cmd.getExecutor();
-					Main.getInstance().getCommand(command).setExecutor(executor);
-				}
-			}, delay);
+			Logger.log(LogLevel.INFO, "Commands", "Registered command with class " + cmd.getExecutor().getClass().getSimpleName());
+			String command = cmd.getCommand();
+			CommandExecutor executor = cmd.getExecutor();
+			Main.getInstance().getCommand(command).setExecutor(executor);
 		}
-		
-		return delay;
 	}
 	
 }

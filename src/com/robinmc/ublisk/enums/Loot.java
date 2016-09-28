@@ -13,6 +13,7 @@ import org.bukkit.entity.EntityType;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.variable.Message;
 import com.robinmc.ublisk.utils.variable.Var;
 
@@ -72,6 +73,13 @@ public enum Loot {
 				Bukkit.broadcastMessage(Message.Complicated.lootSpawned(x, y, z));
 			}
 		}, 70);
+		
+		Scheduler.runTaskLater(5*60*20, new Runnable(){
+			public void run(){
+				Block block = loc.getBlock();
+				block.setType(Material.AIR);
+			}
+		});
 	}
 	
 	public static void removeLoot(){

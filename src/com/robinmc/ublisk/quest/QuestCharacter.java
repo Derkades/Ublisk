@@ -86,6 +86,7 @@ public enum QuestCharacter {
 		if (getProfession() != null){
 			villager.setProfession(getProfession());
 		}
+		Logger.log(LogLevel.DEBUG, "NPC", "Spawned " + getName() + " at (" + loc.getX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ() + ")");
 	}
 	
 	public void talk(UPlayer player){
@@ -124,6 +125,14 @@ public enum QuestCharacter {
 		
 		throw new NPCNotFoundException();
 		
+	}
+	
+	public static void respawnAll(){
+		for (Villager villager : Var.WORLD.getEntitiesByClass(Villager.class))
+			villager.remove();
+
+		for (QuestCharacter npc : QuestCharacter.values())
+			npc.spawn();
 	}
 	
 	@Deprecated

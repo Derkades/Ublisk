@@ -7,15 +7,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import com.robinmc.ublisk.enums.Helper;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 
 public class InventoryClick implements Listener {
 	
 	@EventHandler
 	public void onItemClick(InventoryClickEvent event){
-
-		Logger.log(LogLevel.DEBUG, event.getWhoClicked().getName() + " clicked in inventory " + event.getInventory().getTitle());
 		
 		if (Helper.builderModeEnabled((Player) event.getWhoClicked())){
 			return;

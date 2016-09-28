@@ -15,6 +15,7 @@ import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.sql.MySQL;
+import com.robinmc.ublisk.utils.variable.Var;
 
 public enum Tracker {
 	
@@ -58,7 +59,7 @@ public enum Tracker {
 	public static void syncAll(){
 		int delay = 0;
 		for (final Tracker tracker : Tracker.values()){
-			delay = delay + 20 + Bukkit.getOnlinePlayers().size() * 50;
+			delay = delay + Var.TRACKER_DELAY + Bukkit.getOnlinePlayers().size() * 50;
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 				public void run(){
 					int playerDelay = 0;

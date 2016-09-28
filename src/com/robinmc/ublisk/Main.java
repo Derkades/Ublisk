@@ -8,7 +8,7 @@ import com.robinmc.ublisk.enums.Loot;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Listeners;
 import com.robinmc.ublisk.utils.mob.Mob;
-import com.robinmc.ublisk.utils.scheduler.Tasks;
+import com.robinmc.ublisk.utils.scheduler.Task;
 import com.robinmc.ublisk.utils.sql.MySQL;
 import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.utils.variable.Var;
@@ -26,9 +26,10 @@ public class Main extends JavaPlugin {
 		
 		Listeners.register();
 		
-		int delay = Command.registerAll();
+		Command.registerAll();
 		
-		Tasks.start(delay);
+		for (Task task : Task.values()) task.start();
+		
 		Config.create();
 		
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);

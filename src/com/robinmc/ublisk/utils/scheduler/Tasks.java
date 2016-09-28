@@ -1,32 +1,11 @@
 package com.robinmc.ublisk.utils.scheduler;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-import org.bukkit.Bukkit;
-
-import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.task.CheckDoubleExp;
-import com.robinmc.ublisk.task.CheckShield;
-import com.robinmc.ublisk.task.CheckTown;
-import com.robinmc.ublisk.task.ClearWeather;
-import com.robinmc.ublisk.task.FastDayNight;
-import com.robinmc.ublisk.task.LifeCrystalInventory;
-import com.robinmc.ublisk.task.PlayerLevelUp;
-import com.robinmc.ublisk.task.RandomTips;
-import com.robinmc.ublisk.task.RegenerateHunger;
-import com.robinmc.ublisk.task.RemoveMobs;
-import com.robinmc.ublisk.task.RespawnNPC;
-import com.robinmc.ublisk.task.SyncTrackers;
-import com.robinmc.ublisk.task.UpdateBackpackName;
-import com.robinmc.ublisk.task.UpdateDoubleExpBar;
-import com.robinmc.ublisk.task.UpdateFriendsHealthBar;
-import com.robinmc.ublisk.task.UpdateInfo;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
-
+@Deprecated
 public enum Tasks {
+	  
+	// TODO: Remove
 	
+	/*
 	CHECK_DOUBLE_EXP(new CheckDoubleExp()),
 	CHECK_SHIELD(new CheckShield()),
 	CHECK_TOWN(new CheckTown()),
@@ -93,4 +72,5 @@ public enum Tasks {
 			}, delay);
 		}
 	}
+	*/
 }
