@@ -1,6 +1,10 @@
 package com.robinmc.ublisk.utils.variable;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 
 public class Var {
@@ -18,7 +22,7 @@ public class Var {
 	/**
 	 * How long double XP will last for.
 	 */
-	public static final int DOUBLE_XP_TIME = 60; // XXX: Comfirm that this actually works
+	public static final int DOUBLE_XP_TIME = 60; // XXX: Confirm that this actually works
 	
 	/**
 	 * <b>The number all XP is divided by.</b>
@@ -59,5 +63,37 @@ public class Var {
 	 * Tracker delay = TRACKER_DELAY + [player count] * 50
 	 */
 	public static final int TRACKER_DELAY = 40;
+	
+	public static final int VOTE_XP_MIN = 20;
+	public static final int VOTE_XP_MAX = 100;
+	
+	public static final int VOTE_GOLD_MIN = 0;
+	public static final int VOTE_GOLD_MAX = 50;
+	
+	public static final int VOTE_LIFE_MIN = 0;
+	public static final int VOTE_LIFE_MAX = 2;
+	
+	/**
+	 * List of materials that are on top of a solid block and which mobs should spawn inside of
+	 */
+	public static final List<Material> MOB_SPAWNING_AIR_BLOCKS = Arrays.asList(
+			Material.AIR, 
+			Material.LONG_GRASS,
+			Material.CHORUS_FLOWER,
+			Material.YELLOW_FLOWER,
+			Material.TORCH,
+			Material.SUGAR_CANE_BLOCK);
+	
+	/**
+	 * Do not spawn mobs on top of these blocks
+	 */
+	public static final List<Material> MOB_SPAWNING_CANCEL = Arrays.asList(
+			Material.FENCE,
+			Material.FENCE_GATE,
+			Material.COBBLE_WALL,
+			Material.WATER,
+			Material.STATIONARY_WATER,
+			Material.LEAVES,
+			Material.LEAVES_2);
 
 }

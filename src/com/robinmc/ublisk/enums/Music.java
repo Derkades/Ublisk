@@ -19,15 +19,15 @@ public enum Music {
 	RHOCUS("Rhocus", "Rhocus.nbs");
 	
 	private String town;
-	private String path;
+	private String filename;
 	
-	Music(String town, String path){
-		this.path = path;
+	Music(String town, String filename){
+		this.filename = filename;
 		this.town = town;
 	}
 	
-	public String getPath(){
-		return path;
+	public File getFile(){
+		return new File(Main.getInstance().getDataFolder() + "\\music", filename);
 	}
 	
 	public String getTown(){
@@ -36,9 +36,9 @@ public enum Music {
 	
 	public static void playSong(Player player, String town){
 		Music song = fromString(town);
-		Song s = NBSDecoder.parse(new File(Main.getInstance().getDataFolder(), song.getPath()));
+		Song s = NBSDecoder.parse(song.getFile());
 		
-		Logger.log(LogLevel.INFO, "Music", "Playing " + song + " for town with name " + song.getTown() + " with filename " + song.getPath() + " to " + player.getName());
+		Logger.log(LogLevel.INFO, "Music", "Playing " + song + " for town with name " + song.getTown() + " with filename " + song.getFile() + " to " + player.getName());
 		
 		SongPlayer sp = new RadioSongPlayer(s);
 		sp.setAutoDestroy(true);

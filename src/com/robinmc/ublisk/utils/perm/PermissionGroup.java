@@ -8,14 +8,18 @@ import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 public enum PermissionGroup {
 	
 	DEFAULT("Default", "&7&lMember&8:"),
-	BUILDER("Builder", "&c&lBuilder&8:&6&l"),
+	BUILDER("Builder", "&c&lBuilder&8:&6&l",
+			Permission.COMMAND_DEBUG,
+			Permission.BUILDER_MODE),
 	MODERATOR("Moderator", "&e&lModerator&8:&6&l",
 			Permission.COMMAND_MUTE,
-			Permission.COMMAND_DEBUG),
+			Permission.COMMAND_DEBUG,
+			Permission.COMMANDLOG),
 	OWNER("Owner", "&2&lOwner&8:&6&l", 
 			Permission.COMMAND_DEBUG, 
 			Permission.COMMAND_MUTE, 
-			Permission.COMMANDLOG
+			Permission.COMMANDLOG,
+			Permission.BUILDER_MODE
 			);
 	
 	private String name;

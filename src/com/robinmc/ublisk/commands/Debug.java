@@ -10,6 +10,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.inventory.PlayerInventory;
+import org.inventivetalent.rpapi.ResourcePackAPI;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.abilities.Ability;
@@ -232,6 +233,9 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("ability")){
 						Ability.TEST.doAbility(player);
+						return true;
+					} else if (args[0].equals("pack")){
+						ResourcePackAPI.setResourcepack(player.getPlayer(), Var.PACK_URL);
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());

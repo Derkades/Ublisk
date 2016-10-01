@@ -22,28 +22,28 @@ public class Logger {
 	 * Sends a message to the console
 	 * @param string A message
 	 */
-	public void log(String string){		
+	public void log(Object object){		
 		switch (logLevel){
 		case WARNING:
-			Bukkit.getLogger().log(Level.WARNING, string);
+			Bukkit.getLogger().log(Level.WARNING, object + "");
 			break;
 		case SEVERE:
-			Bukkit.getLogger().log(Level.WARNING, string);
+			Bukkit.getLogger().log(Level.WARNING, object + "");
 			break;
 		default:
 			if (Config.getBoolean("log")){
-				Bukkit.getLogger().log(Level.INFO, string);
+				Bukkit.getLogger().log(Level.INFO, object + "");
 			}
 			break;
 		}
 	}
 	
-	public static void log(LogLevel logLevel, String string){
-		Logger.getLogger(logLevel).log(string);
+	public static void log(LogLevel logLevel, Object object){
+		Logger.getLogger(logLevel).log(object);
 	}
 	
-	public static void log(LogLevel logLevel, String name, String string){
-		log(logLevel, "[" + name + "] " + string);
+	public static void log(LogLevel logLevel, String name, Object object){
+		log(logLevel, "[" + name + "] " + object);
 	}
 	
 	public static Logger getLogger(LogLevel logLevel){

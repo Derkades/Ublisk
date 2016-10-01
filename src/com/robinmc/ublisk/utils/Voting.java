@@ -19,15 +19,15 @@ public class Voting {
 	}
 	
 	public static int getRandomXP(){
-		return NumberUtils.randomInteger(20, 100);
+		return NumberUtils.randomInteger(Var.VOTE_XP_MIN, Var.VOTE_XP_MAX);
 	}
 	
 	public static int getRandomGold(){
-		return NumberUtils.randomInteger(0, 50);
+		return NumberUtils.randomInteger(Var.VOTE_GOLD_MIN, Var.VOTE_GOLD_MAX);
 	}
 	
 	public static int getRandomLife(){
-		return NumberUtils.randomInteger(0, 2);
+		return NumberUtils.randomInteger(Var.VOTE_LIFE_MIN, Var.VOTE_LIFE_MAX);
 	}
 	
 	public static boolean isVotingChest(Block block){

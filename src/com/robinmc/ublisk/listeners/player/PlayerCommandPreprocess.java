@@ -32,7 +32,7 @@ public class PlayerCommandPreprocess implements Listener {
 		}
 		
 		if (cmd.length() >= 4){
-			if (cmd.substring(0, 4).equalsIgnoreCase("/op ") || cmd.substring(0, 4).equalsIgnoreCase("/rl ")){
+			if (cmd.substring(0, 4).equalsIgnoreCase("/op ")){
 				sender.sendMessage(ChatColor.AQUA + "How about you don't!");
 				event.setCancelled(true);
 				return;
@@ -45,12 +45,6 @@ public class PlayerCommandPreprocess implements Listener {
 				event.setCancelled(true);
 				return;
 			}
-		}
-		
-		if (cmd.equalsIgnoreCase("/rl") || cmd.equalsIgnoreCase("/reload")){
-			sender.sendMessage(ChatColor.AQUA + "How about you don't!");
-			event.setCancelled(true);
-			return;
 		}
 		
 		if (sender.getGameMode() == GameMode.SPECTATOR && cmd.equals("/gamemode 1")){

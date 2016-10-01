@@ -16,6 +16,7 @@ import com.robinmc.ublisk.commands.Menu;
 import com.robinmc.ublisk.commands.MsgCommand;
 import com.robinmc.ublisk.commands.MuteCommand;
 import com.robinmc.ublisk.commands.Report;
+import com.robinmc.ublisk.commands.VoteRestartCommand;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 
@@ -24,6 +25,7 @@ public enum Command {
 	AFK("afk", new Afk()),
 	BUILDER("builder", new Builder()),
 	CLASS("class", new ClassCommand()),
+	CONTACT("contact", new Contact()),
 	CREDITS("credits", new Credits()),
 	DEBUG("debug", new Debug()),
 	FRIENDS("friends", new FriendsCommand()),
@@ -33,7 +35,7 @@ public enum Command {
 	MSG("msg", new MsgCommand()),
 	MUTE("mute", new MuteCommand()),
 	REPORT("report", new Report()),
-	CONTACT("contact", new Contact());
+	VOTE_RESTART("voterestart", new VoteRestartCommand());
 	
 	private String cmd;
 	private CommandExecutor exec;
@@ -53,11 +55,15 @@ public enum Command {
 	
 	public static void registerAll(){
 		Logger.log(LogLevel.INFO, "Commands", "Registering commands...");
-		for (final Command cmd : Command.values()){
+		for (Command cmd : Command.values()){
 			Logger.log(LogLevel.INFO, "Commands", "Registered command with class " + cmd.getExecutor().getClass().getSimpleName());
 			String command = cmd.getCommand();
 			CommandExecutor executor = cmd.getExecutor();
-			Main.getInstance().getCommand(command).setExecutor(executor);
+			try {
+				Main.getInstance().getCommand(command).setExecutor(executor);
+			} catch (NullPointerException e){
+				Logger.log(LogLevel.SEVERE, "Commands", "The command /" + cmd.getCommand() + " is not specified in the plugin.yml file");
+			}
 		}
 	}
 	

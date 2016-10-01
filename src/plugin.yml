@@ -38,4 +38,6 @@ commands:
         usage: </command>
     guild:
         aliases: [guilds, g]
+    voterestart:
+        aliases: [voteforrestart, restart]
         

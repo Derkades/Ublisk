@@ -25,6 +25,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.VoteRestart;
 import com.robinmc.ublisk.enums.Clazz;
 import com.robinmc.ublisk.enums.Helper;
 import com.robinmc.ublisk.enums.Town;
@@ -437,6 +438,14 @@ public class UPlayer {
 	
 	public void playNotMovingParticle(Particle particle, double x, double y, double z){
 		player.spawnParticle(particle, x, y, z, 0, 0, 0, 0, 1);
+	}
+	
+	public boolean hasVotedForRestart(){
+		return VoteRestart.hasVotedForRestart(this);
+	}
+	
+	public void voteRestart(){
+		VoteRestart.voteForRestart(this);
 	}
 	
 	public static UPlayer[] getOnlinePlayers(){

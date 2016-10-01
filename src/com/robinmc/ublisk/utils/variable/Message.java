@@ -63,7 +63,9 @@ public enum Message {
 	
 	NOT_ENOUGH_MONEY(prefix("Money") + RED + "You don't have enough money"),
 	CANT_AFFORD_ITEM(prefix("Money") + RED + "You can't afford that item"),
-	INVENTORY_NOT_CONTAIN_MONEY_ITEM(prefix("Money") + RED + "Your inventory does not contain any");
+	INVENTORY_NOT_CONTAIN_MONEY_ITEM(prefix("Money") + RED + "Your inventory does not contain any"),
+	
+	ALREADY_VOTED_RESTART(prefix() + RED + "You have already voted for a restart");
 	
 	private String msg;
 	
@@ -126,6 +128,10 @@ public enum Message {
 			}
 			
 			return prefix() + "The server will restart in " + minutes + " " + suffix + "!";
+		}
+		
+		public static String someoneVotedRestart(String playerName, int totalVotes){
+			return prefix() + playerName + " voted for a restart. Vote for a restart using /voterestart. Total votes: " + totalVotes;
 		}
 		
 		public static String vote(String playerName, int points){

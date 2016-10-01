@@ -6,31 +6,24 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.variable.Message;
 
-public class Builder implements CommandExecutor {
-	
+public class VoteRestartCommand implements CommandExecutor {
+
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (!(sender instanceof Player)){
 			sender.sendMessage(Message.NOT_A_PLAYER.get());
-			return true;
-		}
-		
-		if (args.length != 0){
-			sender.sendMessage(Message.WRONG_USAGE.get());
-			return true;
 		}
 		
 		UPlayer player = UPlayer.get(sender);
 		
-		if (!player.hasPermission(Permission.BUILDER_MODE)){
-			player.sendMessage(Message.NO_PERMISSION);
+		if (player.hasVotedForRestart()){
+			player.sendMessage(Message.ALREADY_VOTED_RESTART);
 			return true;
 		}
 		
-		player.toggleBuilderMode();
+		player.voteRestart();
 		return true;
 	}
 
