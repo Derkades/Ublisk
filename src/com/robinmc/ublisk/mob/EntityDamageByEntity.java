@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.listeners.entity;
+package com.robinmc.ublisk.mob;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -8,17 +8,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.PlayerInventory;
 
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.enums.Clazz;
-import com.robinmc.ublisk.utils.variable.Message;
 
 public class EntityDamageByEntity implements Listener {
 	
-	@EventHandler
+	@EventHandler(ignoreCancelled = true)
 	public void useWeapon(EntityDamageByEntityEvent event){
-		
-		if (event.isCancelled()){
-			return;
-		}
 		
 		if (event.getDamager().getType() == EntityType.PLAYER){
 			Player player = (Player) event.getDamager();
@@ -36,6 +32,24 @@ public class EntityDamageByEntity implements Listener {
 				}
 			}
 		}
+		
 	}
+	
+	/*
+	@EventHandler(ignoreCancelled = true)
+	public void spawnBloodParticles(EntityDamageByEntityEvent event){
+		Location location = event.getEntity().getLocation();
+		Var.WORLD.spigot().playEffect(location, 
+				Effect.COLOURED_DUST, 
+				30, // Particle id 
+				0, // Data (I don't know what it does)
+				0, // Offset X,
+				0, // Y,
+				0, // and Z
+				1, // Speed
+				10, // Particle count 
+				0); // Radius
+	}
+	*/
 
 }

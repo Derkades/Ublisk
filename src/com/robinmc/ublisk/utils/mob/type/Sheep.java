@@ -4,7 +4,7 @@ import org.bukkit.DyeColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 
-import com.robinmc.ublisk.utils.mob.MobCode;
+import com.robinmc.ublisk.mob.MobCode;
 
 public class Sheep implements MobType {
 

@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.mob;
+package com.robinmc.ublisk.mob;
 
 import static net.md_5.bungee.api.ChatColor.DARK_AQUA;
 import static net.md_5.bungee.api.ChatColor.DARK_GRAY;
@@ -8,11 +8,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.LivingEntity;
 
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.java.Random;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
-import com.robinmc.ublisk.utils.variable.Var;
 
 class SpawnMob {
 	
@@ -26,10 +24,7 @@ class SpawnMob {
 							break;
 						}
 						
-						boolean hasReachedMaxSpawning = mob.hasReachedMaxSpawning();
-						
-						Logger.log(LogLevel.DEBUG, hasReachedMaxSpawning);
-						if (hasReachedMaxSpawning){
+						if ( mob.hasReachedMaxSpawning()){
 							break;
 						}
 						

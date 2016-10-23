@@ -5,13 +5,9 @@ import org.bukkit.event.Listener;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.abilities.AbilityListener;
+import com.robinmc.ublisk.listeners.EntityExplode;
 import com.robinmc.ublisk.listeners.ServerListPing;
 import com.robinmc.ublisk.listeners.Votifier;
-import com.robinmc.ublisk.listeners.entity.EntityDamageByEntity;
-import com.robinmc.ublisk.listeners.entity.EntityDeath;
-import com.robinmc.ublisk.listeners.entity.EntityExplode;
-import com.robinmc.ublisk.listeners.entity.mob.CreatureSpawn;
-import com.robinmc.ublisk.listeners.entity.mob.EntityCombust;
 import com.robinmc.ublisk.listeners.player.AsyncPlayerChat;
 import com.robinmc.ublisk.listeners.player.BreakBlock;
 import com.robinmc.ublisk.listeners.player.InventoryClick;
@@ -24,6 +20,10 @@ import com.robinmc.ublisk.listeners.player.PlayerJoin;
 import com.robinmc.ublisk.listeners.player.PlayerQuit;
 import com.robinmc.ublisk.listeners.player.PlayerResourcePackStatus;
 import com.robinmc.ublisk.listeners.player.SongEnd;
+import com.robinmc.ublisk.mob.CreatureSpawn;
+import com.robinmc.ublisk.mob.EntityCombust;
+import com.robinmc.ublisk.mob.EntityDamageByEntity;
+import com.robinmc.ublisk.mob.EntityDeath;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 

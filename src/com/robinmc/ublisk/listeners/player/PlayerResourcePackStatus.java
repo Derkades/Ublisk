@@ -7,9 +7,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerResourcePackStatusEvent;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.variable.Message;
 
 public class PlayerResourcePackStatus implements Listener {
 	

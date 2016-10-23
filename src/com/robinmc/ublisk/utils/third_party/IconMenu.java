@@ -18,6 +18,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
+import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 
@@ -30,17 +32,16 @@ public class IconMenu implements Listener {
     private String name;
     private int size;
     private OptionClickEventHandler handler;
-    private Plugin plugin;
+    private Plugin plugin = Main.getInstance();
     private Player player;
  
     private String[] optionNames;
     private ItemStack[] optionIcons;
  
-    public IconMenu(String name, int size, OptionClickEventHandler handler, Plugin plugin) {
+    public IconMenu(String name, int size, OptionClickEventHandler handler) {
         this.name = name;
         this.size = size;
         this.handler = handler;
-        this.plugin = plugin;
         this.optionNames = new String[size];
         this.optionIcons = new ItemStack[size];
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
@@ -68,6 +69,10 @@ public class IconMenu implements Listener {
             }
         }
         player.openInventory(inventory);
+    }
+    
+    public void open(UPlayer player){
+    	open(player.getPlayer());
     }
  
     public void destroy() {

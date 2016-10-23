@@ -4,7 +4,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
@@ -29,7 +28,7 @@ public class CommandsHelp {
 			
 			event.setWillClose(false);
 		}
-	}, Main.getInstance());
+	});
 	
 	public static void open(Player player){
 		Logger.log(LogLevel.INFO, "Menu", "Commands help menu has been opened for " + player.getName());

@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.listeners.entity;
+package com.robinmc.ublisk.mob;
 
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
@@ -8,14 +8,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.mob.Mob;
-import com.robinmc.ublisk.utils.mob.MobDrop;
-import com.robinmc.ublisk.utils.variable.Message;
 
 public class EntityDeath implements Listener {
 	

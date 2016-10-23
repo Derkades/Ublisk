@@ -5,8 +5,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.enums.Helper;
-import com.robinmc.ublisk.utils.variable.Message;
 
 public class Credits implements CommandExecutor {
 	

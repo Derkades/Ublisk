@@ -6,7 +6,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.inventivetalent.bossbar.BossBarAPI;
 
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.utils.variable.Var;
+import com.robinmc.ublisk.Var;
 
 import net.md_5.bungee.api.chat.TextComponent;
 

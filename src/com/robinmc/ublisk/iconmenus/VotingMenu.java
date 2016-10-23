@@ -4,14 +4,13 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Voting;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.variable.Message;
 
 public class VotingMenu {
 	
@@ -35,7 +34,7 @@ public class VotingMenu {
 				}
 			}
 		}
-	}, Main.getInstance());
+	});
 	
 	public static void open(Player player){
 		Logger.log(LogLevel.INFO, "Menu", "Voting has been opened for " + player.getName());

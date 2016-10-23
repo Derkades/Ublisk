@@ -7,7 +7,6 @@ import org.bukkit.Bukkit;
 
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
-import com.robinmc.ublisk.utils.variable.Message;
 
 public class VoteRestart {
 

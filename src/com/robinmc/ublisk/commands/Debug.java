@@ -13,10 +13,13 @@ import org.bukkit.inventory.PlayerInventory;
 import org.inventivetalent.rpapi.ResourcePackAPI;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.enums.Loot;
 import com.robinmc.ublisk.enums.Tracker;
+import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
@@ -25,13 +28,10 @@ import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
-import com.robinmc.ublisk.utils.mob.Mob;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.third_party.Lag;
-import com.robinmc.ublisk.utils.variable.Message;
-import com.robinmc.ublisk.utils.variable.Var;
 import com.robinmc.ublisk.weapon.SwordsmanWeapon;
 
 public class Debug implements CommandExecutor {

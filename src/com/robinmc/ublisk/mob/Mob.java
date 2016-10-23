@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.mob;
+package com.robinmc.ublisk.mob;
 
 
 import static net.md_5.bungee.api.ChatColor.DARK_AQUA;
@@ -15,13 +15,13 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.java.Random;
 import com.robinmc.ublisk.utils.mob.type.Chicken;
 import com.robinmc.ublisk.utils.mob.type.MobType;
 import com.robinmc.ublisk.utils.mob.type.Sheep;
 import com.robinmc.ublisk.utils.mob.type.Zombie;
-import com.robinmc.ublisk.utils.variable.Var;
 
 public enum Mob {
 	
@@ -72,7 +72,7 @@ public enum Mob {
 			new Radius(160, 89, 100),
 			new Radius(214, -66, 60),
 			new Radius(111, 19, 50)),
-			Zombie.NORMAL, 3, 7, 0, 5, 70, "Zombie", 5, GoldDrop.LEVEL2);
+			Zombie.NORMAL, 3, 7, 0, 5, 50, "Zombie", 5, GoldDrop.LEVEL2);
 	
 	private Radius[] area;
 	private MobType type;

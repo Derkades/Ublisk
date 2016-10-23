@@ -2,14 +2,13 @@ package com.robinmc.ublisk.money;
 
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.variable.Message;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -51,7 +50,7 @@ public class BankMenu {
 			
 			event.setWillClose(false);
 		}
-	}, Main.getInstance());
+	});
 	
 	public static void open(Player player){
 		Logger.log(LogLevel.INFO, "Menu", "Bank menu has been opened for " + player.getName());

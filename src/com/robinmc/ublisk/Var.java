@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.variable;
+package com.robinmc.ublisk;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,10 +17,10 @@ public class Var {
 	/**
 	 * Direct URL to resource pack zip
 	 */
-	public static final String PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures6.zip";
+	public static final String PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures9.zip";
 	
 	/**
-	 * How long double XP will last for.
+	 * How long double XP will last for. Please do not change this value until it's confirmed that it works
 	 */
 	public static final int DOUBLE_XP_TIME = 60; // XXX: Confirm that this actually works
 	

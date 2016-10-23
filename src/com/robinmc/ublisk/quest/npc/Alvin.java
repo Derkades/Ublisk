@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Villager;
 
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestCharacter;
@@ -13,9 +14,9 @@ import com.robinmc.ublisk.utils.inventory.BetterInventory;
 public class Alvin implements QuestCharacterClass{
 
 	@Override
-	public void talk(UPlayer player) {
+	public void talk(UPlayer player, QuestCharacter npc) {
 		//QuestParticipant qp = new QuestParticipant(player, Quest.WATER_PROBLEM, QuestCharacter.ALVIN);
-		QuestParticipant qp = player.getQuestParticipant(Quest.WATER_PROBLEM, QuestCharacter.ALVIN);
+		QuestParticipant qp = player.getQuestParticipant(Quest.WATER_PROBLEM, npc);
 		BetterInventory inv = player.getInventory();
 		
 		if (qp.getQuestCompleted()){
@@ -46,6 +47,12 @@ public class Alvin implements QuestCharacterClass{
 		qp.sendMessage("HELP! I don't know what to do! Everything will be underwater! Please save us! ");
 		qp.saveProgress(QuestProgress.CHECKED_DAM);
 		
+		
+	}
+
+	@Override
+	public void spawn(Villager villager, QuestCharacter npc) {
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -5,8 +5,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.variable.Message;
 
 public class VoteRestartCommand implements CommandExecutor {
 

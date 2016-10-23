@@ -13,12 +13,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.NPCNotFoundException;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
-import com.robinmc.ublisk.utils.variable.Message;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;

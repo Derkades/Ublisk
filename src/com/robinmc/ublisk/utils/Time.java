@@ -1,8 +1,8 @@
 package com.robinmc.ublisk.utils;
 
-import com.robinmc.ublisk.utils.variable.Var;
+import com.robinmc.ublisk.Var;
 
-	public class Time {
+public class Time {
 	
 	public static boolean isDay() {
 	    long time = Var.WORLD.getTime();	 

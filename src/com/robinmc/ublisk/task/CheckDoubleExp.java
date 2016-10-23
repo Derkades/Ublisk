@@ -8,10 +8,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.exception.ConnectionClosedException;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.sql.MySQL;
-import com.robinmc.ublisk.utils.variable.Message;
 
 public class CheckDoubleExp extends BukkitRunnable {
 

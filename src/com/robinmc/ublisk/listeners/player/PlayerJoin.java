@@ -14,6 +14,8 @@ import org.inventivetalent.rpapi.ResourcePackAPI;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.enums.Helper;
 import com.robinmc.ublisk.enums.Music;
 import com.robinmc.ublisk.enums.Tracker;
@@ -26,8 +28,6 @@ import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.inventory.item.Item;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
-import com.robinmc.ublisk.utils.variable.Message;
-import com.robinmc.ublisk.utils.variable.Var;
 
 import net.md_5.bungee.api.ChatColor;
 

@@ -11,7 +11,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.NotSetException;
@@ -21,7 +21,6 @@ import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.settings.Setting;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.variable.Message;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -72,7 +71,7 @@ public class FriendsMenu {
 				player.sendMessage(text);
 			}
 		}
-	}, Main.getInstance());
+	});
 	
 	public static void open(Player player){
 		Logger.log(LogLevel.INFO, "Menu", "FriendsMenu has been opened for " + player.getName());

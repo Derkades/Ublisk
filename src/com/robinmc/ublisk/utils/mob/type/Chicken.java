@@ -2,7 +2,7 @@ package com.robinmc.ublisk.utils.mob.type;
 
 import org.bukkit.entity.EntityType;
 
-import com.robinmc.ublisk.utils.mob.MobCode;
+import com.robinmc.ublisk.mob.MobCode;
 
 public class Chicken implements MobType {
 

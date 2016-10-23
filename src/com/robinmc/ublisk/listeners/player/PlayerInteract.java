@@ -21,6 +21,8 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.enums.Clazz;
 import com.robinmc.ublisk.enums.Helper;
 import com.robinmc.ublisk.enums.Tracker;
@@ -30,8 +32,6 @@ import com.robinmc.ublisk.utils.Voting;
 import com.robinmc.ublisk.utils.inventory.item.Item;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.variable.Message;
-import com.robinmc.ublisk.utils.variable.Var;
 
 import net.md_5.bungee.api.ChatColor;
 

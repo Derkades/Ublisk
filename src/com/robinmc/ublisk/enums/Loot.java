@@ -11,11 +11,11 @@ import org.bukkit.block.Chest;
 import org.bukkit.entity.EntityType;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
-import com.robinmc.ublisk.utils.variable.Message;
-import com.robinmc.ublisk.utils.variable.Var;
 
 public enum Loot {
 	

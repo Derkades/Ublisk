@@ -7,13 +7,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Cooldown;
-import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.variable.Message;
 
 public class ClassMenu {
 	
@@ -46,7 +45,7 @@ public class ClassMenu {
 				}
 			}
 		}
-	}, Main.getInstance());
+	});
 	
 	public static void open(Player player){
 		Logger.log(LogLevel.INFO, "Menu", "ClassMenu has been opened for " + player.getName());

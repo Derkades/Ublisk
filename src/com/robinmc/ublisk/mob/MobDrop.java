@@ -1,10 +1,10 @@
-package com.robinmc.ublisk.utils.mob;
+package com.robinmc.ublisk.mob;
 
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.java.Random;
-import com.robinmc.ublisk.utils.variable.Var;
 
 public class MobDrop {
 	

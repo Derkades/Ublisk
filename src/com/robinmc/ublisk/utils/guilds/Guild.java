@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.variable.Var;
 
 public class Guild {
 	

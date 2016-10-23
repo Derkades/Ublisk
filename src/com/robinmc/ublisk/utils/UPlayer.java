@@ -25,6 +25,8 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.VoteRestart;
 import com.robinmc.ublisk.enums.Clazz;
 import com.robinmc.ublisk.enums.Helper;
@@ -34,6 +36,7 @@ import com.robinmc.ublisk.money.Money;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.quest.QuestParticipant;
+import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
@@ -50,8 +53,6 @@ import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
 import com.robinmc.ublisk.utils.settings.StaffSetting;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.variable.Message;
-import com.robinmc.ublisk.utils.variable.Var;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -446,6 +447,10 @@ public class UPlayer {
 	
 	public void voteRestart(){
 		VoteRestart.voteForRestart(this);
+	}
+	
+	public void openNpcMenu(NPCMenu menu){
+		menu.open(this);
 	}
 	
 	public static UPlayer[] getOnlinePlayers(){

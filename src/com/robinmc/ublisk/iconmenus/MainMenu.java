@@ -4,7 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.iconmenus.help.HelpMenu;
 import com.robinmc.ublisk.money.BankMenu;
 import com.robinmc.ublisk.money.MoneyItem;
@@ -16,7 +16,6 @@ import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.variable.Message;
 
 public class MainMenu {
 	
@@ -66,7 +65,7 @@ public class MainMenu {
 				player.sendMessage(Message.ERROR_MENU.get());
 			}
 		}
-	}, Main.getInstance());
+	});
 	
 	public static void open(Player player){
 		Logger.log(LogLevel.INFO, "Menu", "MainMenu has been opened for " + player.getName());

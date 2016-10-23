@@ -11,33 +11,36 @@ import org.bukkit.entity.Villager.Profession;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.quest.npc.Alvin;
 import com.robinmc.ublisk.quest.npc.Arzhur;
 import com.robinmc.ublisk.quest.npc.David;
 import com.robinmc.ublisk.quest.npc.Dianh;
 import com.robinmc.ublisk.quest.npc.Merek;
 import com.robinmc.ublisk.quest.npc.Rasmus;
+import com.robinmc.ublisk.quest.npc.TestNPC;
 import com.robinmc.ublisk.quest.npc.Ulric;
 import com.robinmc.ublisk.quest.npc.Zoltar;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.NPCNotFoundException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.variable.Message;
-import com.robinmc.ublisk.utils.variable.Var;
 
 import net.md_5.bungee.api.ChatColor;
 
 public enum QuestCharacter {
+	
+	TEST_NPC(new TestNPC(), "TestNPC", null, false),
 	
 	DAVID(new David(), "David", Profession.FARMER, false, 72.5, 67, -2.5, 13, 0),
 	MEREK(new Merek(), "Merek", Profession.FARMER, false, 33, 67, -38, -70, 0),
 	ULRIC(new Ulric(), "Ulric", Profession.FARMER, false, 38.5, 67, -26.5, -145, 0),
 	ARZHUR(new Arzhur(), "Arzhur", null, false, 111.5, 68, -103.5, -20, 0), // TODO Profession
 	//ASHER(null, "Asher", 449.3, 70, -10.5, 75, 5), // TODO Profession TODO QCC
-	RASMUS(new Rasmus(), "Rasmus", null, false, 2.5, 71, -16.5, 0, 0), // TODO Rasmus coordinates XXX Profession
-	DIANH(new Dianh(), "Dianh", null, false, 2.5, 71, -16.5, 0, 0),// TODO Dianh coordinates XXX Profession
-	ZOLTAR(new Zoltar(), "Zoltar", null, false, 2.5, 71, -16.5, 0, 0),// TODO Zoltar coordinates XXX Profession
+	RASMUS(new Rasmus(), "Rasmus", null, false), // TODO Rasmus coordinates XXX Profession
+	DIANH(new Dianh(), "Dianh", null, false),// TODO Dianh coordinates XXX Profession
+	ZOLTAR(new Zoltar(), "Zoltar", null, false),// TODO Zoltar coordinates XXX Profession
 	ALVIN(new Alvin(), "Alvin", null, true, 121.5, 72, 7.3, -161, 4); // XXX Profession
 	
 	private final QuestCharacterClass qcc;
@@ -52,6 +55,14 @@ public enum QuestCharacter {
 		this.profession = profession;
 		this.canWalk = canWalk;
 		this.loc = new Location(Var.WORLD, x, y, z, pitch, yaw);
+	}
+	
+	QuestCharacter(QuestCharacterClass qcc, String name, Profession profession, boolean canWalk){
+		this.qcc = qcc;
+		this.name = name;
+		this.profession = profession;
+		this.canWalk = canWalk;
+		this.loc = new Location(Var.WORLD, 2.5, 71, -16.5, 0, 0);
 	}
 	
 	public QuestCharacterClass getQuestCharacterClass(){

@@ -4,8 +4,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.variable.Message;
 
 public class PlayerQuit implements Listener {
 	

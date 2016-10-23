@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.utils.variable.Message;
+import com.robinmc.ublisk.Message;
 
 public class Afk implements CommandExecutor {
 	

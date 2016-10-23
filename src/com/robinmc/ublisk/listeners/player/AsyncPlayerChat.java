@@ -8,10 +8,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.variable.Message;
 
 import net.md_5.bungee.api.ChatColor;
 

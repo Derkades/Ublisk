@@ -1,6 +1,6 @@
 package com.robinmc.ublisk.chat;
 
-import com.robinmc.ublisk.utils.variable.Var;
+import com.robinmc.ublisk.Var;
 
 public enum Trigger {
 

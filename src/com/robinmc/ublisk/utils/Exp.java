@@ -9,13 +9,13 @@ import org.bukkit.entity.Player;
 import com.connorlinfoot.actionbarapi.ActionBarAPI;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.utils.exception.MobInfoMissingException;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.mob.Mob;
-import com.robinmc.ublisk.utils.variable.Var;
 
 public class Exp {
 	

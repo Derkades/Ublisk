@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.mob;
+package com.robinmc.ublisk.mob;
 
 import org.bukkit.entity.LivingEntity;
 

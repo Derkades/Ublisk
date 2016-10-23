@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.variable;
+package com.robinmc.ublisk;
 
 import static org.bukkit.ChatColor.AQUA;
 import static org.bukkit.ChatColor.BOLD;

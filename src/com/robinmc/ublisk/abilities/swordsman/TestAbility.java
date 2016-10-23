@@ -10,9 +10,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.abilities.AbilityExecutor;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.variable.Var;
 
 import net.minecraft.server.v1_10_R1.Entity;
 import net.minecraft.server.v1_10_R1.EntityLiving;
