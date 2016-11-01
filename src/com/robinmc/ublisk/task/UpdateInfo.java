@@ -2,8 +2,9 @@ package com.robinmc.ublisk.task;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.enums.Tracker;
+import com.robinmc.ublisk.PlayerInfo;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.guilds.Guilds;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
 public class UpdateInfo extends BukkitRunnable {
@@ -17,23 +18,23 @@ public class UpdateInfo extends BukkitRunnable {
 			
 			Scheduler.runTaskLater(delay, new Runnable(){
 				public void run(){
-					Tracker.PlayerInfo.syncExp(player);
+					PlayerInfo.XP.syncWithDatabase(player);
 					
 					Scheduler.runTaskLater(2*20, new Runnable(){
 						public void run(){
-							Tracker.PlayerInfo.syncGuild(player);
+							PlayerInfo.GUILD.syncWithDatabase(player);
 						}
 					});
 					
 					Scheduler.runTaskLater(4*20, new Runnable(){
 						public void run(){
-							Tracker.PlayerInfo.syncRank(player);
+							PlayerInfo.RANK.syncWithDatabase(player);
 						}
 					});
 					
 					Scheduler.runTaskLater(6*20, new Runnable(){
 						public void run(){
-							Tracker.PlayerInfo.syncLastSeen(player);
+							PlayerInfo.LAST_SEEN.syncWithDatabase(player);
 						}
 					});
 					
@@ -42,6 +43,13 @@ public class UpdateInfo extends BukkitRunnable {
 							//Nothing yet
 						}
 					});
+				}
+			});
+			
+			Scheduler.runTaskLater(10*20, new Runnable(){
+				public void run(){
+					//Sync guilds
+					Guilds.syncAllGuildsWithDatabase();
 				}
 			});
 		}

@@ -31,7 +31,7 @@ public class GuildCommand implements CommandExecutor {
 					player.leaveGuild(guild);
 					return true;
 				} catch (NotInGuildException e) {
-					player.sendMessage(Message.NOT_IN_GULID);
+					player.sendMessage(Message.NOT_IN_GUILD);
 					return true;
 				}
 			} else if (args[0].equalsIgnoreCase("accept")){
@@ -91,8 +91,34 @@ public class GuildCommand implements CommandExecutor {
 				try {
 					player.inviteToGuild(player.getGuild(), target);
 				} catch (NotInGuildException e) {
-					player.sendMessage(Message.NOT_IN_GULID);
+					player.sendMessage(Message.NOT_IN_GUILD);
 				}
+				return true;
+			} else if (args[0].equalsIgnoreCase("image") || args[0].equalsIgnoreCase("picture") || args[0].equalsIgnoreCase("icon")){
+				if (!(
+						args[1].startsWith("http://images.robinmc.com/ublisk-guild/icon/") &&
+							(
+								args[1].endsWith(".jpg") ||
+								args[1].endsWith(".jpeg") ||
+								args[1].endsWith(".png") ||
+								args[1].endsWith(".gif")
+							)
+						)){
+					player.sendMessage(Message.INVALID_GUILD_IMAGE_URL);
+					return true;
+				}
+				
+				Guild guild;
+				
+				try {
+					guild = player.getGuild();
+				} catch (NotInGuildException e) {
+					player.sendMessage(Message.NOT_IN_GUILD);
+					return true;
+				}
+				
+				guild.setImageURL(args[1]);
+				player.sendMessage(Message.GUILD_IMAGE_SET);
 				return true;
 			} else {
 				player.sendMessage(Message.WRONG_USAGE.get());

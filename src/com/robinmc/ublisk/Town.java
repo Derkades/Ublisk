@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.enums;
+package com.robinmc.ublisk;
 
 import org.bukkit.entity.Player;
 

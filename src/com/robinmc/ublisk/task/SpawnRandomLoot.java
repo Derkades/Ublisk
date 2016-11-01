@@ -2,7 +2,7 @@ package com.robinmc.ublisk.task;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.enums.Loot;
+import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.utils.java.Random;
 
 public class SpawnRandomLoot extends BukkitRunnable {

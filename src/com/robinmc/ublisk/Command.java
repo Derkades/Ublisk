@@ -1,8 +1,7 @@
-package com.robinmc.ublisk.enums;
+package com.robinmc.ublisk;
 
 import org.bukkit.command.CommandExecutor;
 
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.commands.Afk;
 import com.robinmc.ublisk.commands.Builder;
 import com.robinmc.ublisk.commands.ClassCommand;

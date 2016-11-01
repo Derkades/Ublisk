@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import com.robinmc.ublisk.enums.Music;
+import com.robinmc.ublisk.Music;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;

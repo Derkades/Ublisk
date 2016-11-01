@@ -1,10 +1,9 @@
-package com.robinmc.ublisk.enums;
+package com.robinmc.ublisk;
 
 import java.io.File;
 
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.xxmicloxx.NoteBlockAPI.NBSDecoder;

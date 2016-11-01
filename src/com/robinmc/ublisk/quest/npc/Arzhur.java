@@ -1,7 +1,7 @@
 package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestCharacter;
@@ -14,22 +14,20 @@ import com.robinmc.ublisk.utils.inventory.BetterInventory;
 public class Arzhur implements QuestCharacterClass {
 
 	@Override
-	public void talk(UPlayer player2) {
-		// XXX Update to UPlayer
-		Player player = player2.getPlayer();
-		if (new QuestParticipant(player, Quest.SEARCH_MEAT, QuestCharacter.ARZHUR).getQuestCompleted()){
-			new QuestParticipant(player, Quest.SEARCH_MEAT, QuestCharacter.ARZHUR).sendMessage("Nice work! I wish you the best of luck and we will meet again. Soon!");
-		} else if (new QuestParticipant(player, Quest.CHICKEN_HUNT, QuestCharacter.ARZHUR).getQuestCompleted()){
+	public void talk(UPlayer player, QuestCharacter npc) {
+		if (player.getQuestParticipant(Quest.SEARCH_MEAT, npc).getQuestCompleted()){
+			player.getQuestParticipant(Quest.SEARCH_MEAT, npc).sendMessage("Nice work! I wish you the best of luck and we will meet again. Soon!");
+		} else if (player.getQuestParticipant(Quest.CHICKEN_HUNT, QuestCharacter.ARZHUR).getQuestCompleted()){
 			searchMeat(player);
-		} else if (new QuestParticipant(player, Quest.WATER_PROBLEM, QuestCharacter.ARZHUR).getQuestCompleted()){
+		} else if (player.getQuestParticipant(Quest.WATER_PROBLEM, QuestCharacter.ARZHUR).getQuestCompleted()){
 			chickenHunt(player);
 		} else {
 			waterProblem(player);
 		}
 	}
 	
-	private void searchMeat(Player player){
-		QuestParticipant qp = new QuestParticipant(player, Quest.SEARCH_MEAT, QuestCharacter.ARZHUR);
+	private void searchMeat(UPlayer player){
+		QuestParticipant qp = player.getQuestParticipant(Quest.SEARCH_MEAT, QuestCharacter.ARZHUR);
 		BetterInventory inv = qp.getInventory();
 		if (inv.contains(Material.GRILLED_PORK, 10))
 		{
@@ -45,8 +43,8 @@ public class Arzhur implements QuestCharacterClass {
 		}
 	}
 	
-	private void chickenHunt(Player player){
-		QuestParticipant qp = new QuestParticipant(player, Quest.CHICKEN_HUNT, QuestCharacter.ARZHUR);
+	private void chickenHunt(UPlayer player){
+		QuestParticipant qp = player.getQuestParticipant(Quest.CHICKEN_HUNT, QuestCharacter.ARZHUR);
 	
 		if (qp.getProgress(QuestProgress.CHICKENHUNT_TALK_TO_RASMUS)){	
 			qp.sendMessage("You were sent by Rasmus, weren’t you? That old man always bothers himself of the so called monsters in his farm. Just between you and me, he has gotten a little crazy over the last few years and now thinks that the chickens in his farm are monsters! Here take this. It will help you to scare those chickens away.");
@@ -56,8 +54,8 @@ public class Arzhur implements QuestCharacterClass {
 		}
 	}
 	
-	private void waterProblem(Player player){
-		QuestParticipant qp = new QuestParticipant(player, Quest.WATER_PROBLEM, QuestCharacter.ARZHUR);
+	private void waterProblem(UPlayer player){
+		QuestParticipant qp = player.getQuestParticipant(Quest.WATER_PROBLEM, QuestCharacter.ARZHUR);
 		if (qp.getProgress(QuestProgress.CHECKED_DAM)){ 
 			//If the player has checked the dam
 			qp.sendMessage("Oh no, we must fix the dam before it completely breaks. You should collect some wood from the saw and bring it to Alvin.");
@@ -68,6 +66,11 @@ public class Arzhur implements QuestCharacterClass {
 			if (!qp.getProgress(QuestProgress.DAM_FIRST_TALK)) 
 				qp.saveProgress(QuestProgress.DAM_FIRST_TALK);
 		}
+	}
+
+	@Override
+	public void spawn(Villager villager, QuestCharacter npc) {
+		
 	}
 
 }

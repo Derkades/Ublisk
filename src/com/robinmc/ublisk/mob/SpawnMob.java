@@ -77,6 +77,11 @@ class SpawnMob {
 						entity.setMaxHealth(health);
 						entity.setHealth(health);
 						
+						Location tp = entity.getLocation();
+						tp.setPitch(Random.getRandomFloat(0, 360));
+						
+						entity.teleport(tp);
+						
 						MobCode code = mob.getMobType().getCode();
 						if (code != null)
 							code.mobCode(entity);

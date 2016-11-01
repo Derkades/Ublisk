@@ -20,12 +20,12 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
+import com.robinmc.ublisk.Clazz;
+import com.robinmc.ublisk.Helper;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.enums.Clazz;
-import com.robinmc.ublisk.enums.Helper;
-import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.iconmenus.MainMenu;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Voting;

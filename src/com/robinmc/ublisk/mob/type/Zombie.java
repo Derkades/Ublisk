@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.mob.type;
+package com.robinmc.ublisk.mob.type;
 
 import org.bukkit.craftbukkit.v1_10_R1.entity.CraftZombie;
 import org.bukkit.entity.EntityType;

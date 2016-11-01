@@ -1,5 +1,7 @@
 package com.robinmc.ublisk.utils.java;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Random {
 	
 	private static java.util.Random random = new java.util.Random();
@@ -19,6 +21,14 @@ public class Random {
 	
 	public static double getRandomDouble(){
 		return random.nextDouble();
+	}
+	
+	public static float getRandomFloat(){
+		return random.nextFloat();
+	}
+	
+	public static float getRandomFloat(int min, int max){
+		return ThreadLocalRandom.current().nextInt(min, max + 1);
 	}
 	
 }

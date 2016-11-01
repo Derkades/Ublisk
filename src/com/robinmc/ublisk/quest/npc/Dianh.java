@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Villager;
 
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestCharacter;
@@ -13,8 +14,8 @@ import com.robinmc.ublisk.utils.inventory.BetterInventory;
 public class Dianh implements QuestCharacterClass {
 
 	@Override
-	public void talk(UPlayer player) {
-		QuestParticipant qp = player.getQuestParticipant(Quest.SEARCH_MEAT, QuestCharacter.DIANH);
+	public void talk(UPlayer player, QuestCharacter npc) {
+		QuestParticipant qp = player.getQuestParticipant(Quest.SEARCH_MEAT, npc);
 		BetterInventory inv = qp.getInventory();
 		
 		if(qp.getProgress(QuestProgress.SEARCH_FOR_MEAT_TALK_TO_ARZHUR) && inv.contains(Material.ROTTEN_FLESH, 20)){
@@ -24,6 +25,11 @@ public class Dianh implements QuestCharacterClass {
 		} else {
 			qp.sendMessage("Hello there, what are you looking at?!");
 		}
+	}
+
+	@Override
+	public void spawn(Villager villager, QuestCharacter npc) {
+		
 	}
 
 }

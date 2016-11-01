@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.money.MoneyItem;
@@ -13,9 +14,9 @@ import com.robinmc.ublisk.utils.inventory.BetterInventory;
 
 public class Merek implements QuestCharacterClass {
 	
-	public void talk(UPlayer player){
+	public void talk(UPlayer player, QuestCharacter npc){
 		//QuestParticipant qp = new QuestParticipant(player, Quest.INTRODUCTION, QuestCharacter.MEREK);
-		QuestParticipant qp = player.getQuestParticipant(Quest.INTRODUCTION, QuestCharacter.MEREK);
+		QuestParticipant qp = player.getQuestParticipant(Quest.INTRODUCTION, npc);
 		BetterInventory inv = qp.getInventory();
 		if (inv.contains(
 				new ItemStack(Material.LOG, 10), 
@@ -36,6 +37,11 @@ public class Merek implements QuestCharacterClass {
 			qp.sendMessage("What are you doing out here? You don’t even have a weapon yet! I\'ll tell you what you’ll need to make a weapon. First, get 10 gold dust by killing animals.");
 		}
 			
+	}
+
+	@Override
+	public void spawn(Villager villager, QuestCharacter npc) {
+	
 	}
 
 }

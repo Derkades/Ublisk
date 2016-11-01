@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.connorlinfoot.actionbarapi.ActionBarAPI;
-import com.robinmc.ublisk.enums.Tip;
+import com.robinmc.ublisk.Tip;
 
 public class RandomTips extends BukkitRunnable {
 

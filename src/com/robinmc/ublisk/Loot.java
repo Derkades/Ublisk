@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.enums;
+package com.robinmc.ublisk;
 
 import java.security.SecureRandom;
 
@@ -10,9 +10,6 @@ import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.entity.EntityType;
 
-import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;

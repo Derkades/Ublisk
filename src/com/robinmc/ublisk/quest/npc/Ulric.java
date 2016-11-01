@@ -1,9 +1,10 @@
 package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.enums.Clazz;
+import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.quest.QuestCharacterClass;
@@ -14,8 +15,9 @@ import com.robinmc.ublisk.weapon.SwordsmanWeapon;
 
 public class Ulric implements QuestCharacterClass {
 	
-	public void talk(UPlayer player){
-		QuestParticipant qp = player.getQuestParticipant(Quest.INTRODUCTION, QuestCharacter.ULRIC);
+	@Override
+	public void talk(UPlayer player, QuestCharacter npc){
+		QuestParticipant qp = player.getQuestParticipant(Quest.INTRODUCTION, npc);
 		BetterInventory inv = qp.getInventory();
 		
 		if (inv.contains(new ItemStack(Material.LOG, 10),
@@ -34,6 +36,11 @@ public class Ulric implements QuestCharacterClass {
 		} else {
 			qp.sendMessage("I can make a weapon for you if you bring me the required materials.");
 		}
+	}
+
+	@Override
+	public void spawn(Villager villager, QuestCharacter npc) {
+		
 	}
 
 }

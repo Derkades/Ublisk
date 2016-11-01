@@ -8,8 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.PlayerInventory;
 
+import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.enums.Clazz;
 
 public class EntityDamageByEntity implements Listener {
 	

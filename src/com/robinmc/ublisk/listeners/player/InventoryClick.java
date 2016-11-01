@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import com.robinmc.ublisk.enums.Helper;
+import com.robinmc.ublisk.Helper;
 
 public class InventoryClick implements Listener {
 	

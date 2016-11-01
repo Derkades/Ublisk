@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Villager;
 
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestCharacter;
@@ -12,8 +13,8 @@ import com.robinmc.ublisk.utils.inventory.BetterInventory;
 
 public class Rasmus implements QuestCharacterClass {
 	
-	public void talk(UPlayer player){
-		QuestParticipant qp = player.getQuestParticipant(Quest.HAY_TRANSPORT, QuestCharacter.RASMUS);
+	public void talk(UPlayer player, QuestCharacter npc){
+		QuestParticipant qp = player.getQuestParticipant(Quest.HAY_TRANSPORT, npc);
 		if (qp.getQuestCompleted()){
 			//If player has completed 'Hay Transportation', do quest 'Chicken Hunt'.
 			chickenHunt(player);
@@ -55,6 +56,11 @@ public class Rasmus implements QuestCharacterClass {
 		if (!qp.getProgress(QuestProgress.HAY_TRANSPORT_STARTED)) 
 			qp.saveProgress(QuestProgress.HAY_TRANSPORT_STARTED);
 		// TODO Item for breaking hay
+	}
+
+	@Override
+	public void spawn(Villager villager, QuestCharacter npc) {
+	
 	}
 
 }

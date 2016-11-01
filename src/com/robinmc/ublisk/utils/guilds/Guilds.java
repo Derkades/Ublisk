@@ -9,10 +9,11 @@ import java.util.Map;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.java.MiscUtils;
+import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
 public class Guilds {
 	
-	static String path = Main.getInstance().getDataFolder() + "\\guilds";
+	static final String PATH = Main.getInstance().getDataFolder() + "\\guilds";
 	
 	public static Map<UPlayer, Guild> INVITED_GUILD = new HashMap<>();
 	
@@ -20,12 +21,8 @@ public class Guilds {
 		return new Guild(name);
 	}
 	
-	public static String getPath(){
-		return path;
-	}
-	
 	public static List<Guild> getGuilds(){
-		File dir = new File(getPath());
+		File dir = new File(PATH);
 		File[] directoryListing = dir.listFiles();
 		
 		List<Guild> guilds = new ArrayList<Guild>();
@@ -36,6 +33,18 @@ public class Guilds {
 		}
 		
 		return guilds;
+	}
+	
+	public static void syncAllGuildsWithDatabase(){
+		int delay = -5*20;
+		for (final Guild guild : getGuilds()){
+			delay = delay + 5*20;
+			Scheduler.runTaskLater(delay, new Runnable(){
+				public void run(){
+					guild.syncInfoWithDatabase();
+				}
+			});
+		}
 	}
 
 }

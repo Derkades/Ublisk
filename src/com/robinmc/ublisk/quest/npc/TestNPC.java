@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Villager;
 
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestCharacter;
@@ -15,8 +16,8 @@ import com.robinmc.ublisk.utils.UPlayer;
 public class TestNPC implements QuestCharacterClass {
 
 	@Override
-	public void talk(UPlayer player) {
-		final QuestParticipant qp = player.getQuestParticipant(Quest.UNKNOWN, QuestCharacter.TEST_NPC);
+	public void talk(UPlayer player, QuestCharacter npc) {
+		final QuestParticipant qp = player.getQuestParticipant(Quest.UNKNOWN, npc);
 		
 		ClickAction action = new ClickAction(){
 
@@ -31,6 +32,11 @@ public class TestNPC implements QuestCharacterClass {
 		Option option2 = new Option(11, Material.WOOD, "Option without lore");
 		
 		qp.openMenu(new NPCMenu("Test Menu", action, option1, option2));
+	}
+
+	@Override
+	public void spawn(Villager villager, QuestCharacter npc) {
+
 	}
 
 }

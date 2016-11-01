@@ -2,16 +2,23 @@ package com.robinmc.ublisk.utils.guilds;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.UUIDUtils;
+import com.robinmc.ublisk.utils.exception.ConnectionClosedException;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.sql.MySQL;
 
 public class Guild {
 	
@@ -26,7 +33,7 @@ public class Guild {
 	}
 	
 	public File getFile(){
-		return new File(Guilds.path, getName() + ".yml");
+		return new File(Guilds.PATH, getName() + ".yml");
 	}
 	
 	private YamlConfiguration config;
@@ -121,6 +128,33 @@ public class Guild {
 		return bool;
 	}
 	
+	public List<String> getPlayerUUIDList(){
+		openConfig();
+		List<String> list;
+		if (config.contains("players") && config.isSet("players")){
+			list = config.getStringList("players");
+		} else {
+			list = new ArrayList<String>();
+		}
+		closeConfig();
+		return list;
+	}
+	
+	public List<String> getPlayerNamesList(){
+		List<String> uuids = getPlayerUUIDList();
+		List<String> names = new ArrayList<String>();
+		for (String uuid : uuids){
+			UUIDUtils.getNameFromId(UUID.fromString(uuid));
+		}
+		return names;
+	}
+	
+	public int getPlayerCount(){
+		List<String> list = getPlayerUUIDList();
+		if (list.isEmpty()) return 0;
+		return list.size();
+	}
+	
 	public int getPoints(){
 		openConfig();
 		int points;
@@ -141,6 +175,79 @@ public class Guild {
 	
 	public boolean hasPoints(int points){
 		return getPoints() >= points;
+	}
+	
+	public void setImageURL(String url){
+		openConfig();
+		config.set("image", url);
+		closeConfig();
+	}
+	
+	public String getImageURL(){
+		openConfig();
+		String url;
+		if (config.isSet("image")){
+			url = config.getString("image");
+		} else {
+			url = "http://images.robinmc.com/upload/no-guild-image.png";
+		}
+		
+		closeConfig();
+		return url;
+	}
+	
+	/*
+	 * Database structure:
+	 * TEXT name (Guild name)
+	 * INT points (Guild points)
+	 * TEXT img (Image URL)
+	 * INT playercount (Player count)
+	 * TEXT players (player1 name, player2 name, ...)
+	 */
+	public void syncInfoWithDatabase(){
+		// FIXME Syncing message
+		try {
+			MySQL.openConnection();
+			PreparedStatement sql = MySQL.prepareStatement("SELECT * FROM `guilds` WHERE name=?;");
+			sql.setString(1, this.getName());
+			ResultSet resultSet = sql.executeQuery();
+			boolean containsGuild = resultSet.next();
+			
+			if (containsGuild){
+				PreparedStatement update = MySQL.prepareStatement("UPDATE `guilds` SET points=?,img=?,playercount=?,players=? WHERE name=?;");
+        		
+        		update.setInt(1, this.getPoints());
+        		update.setString(2, this.getImageURL());
+        		update.setInt(3, this.getPlayerCount());
+        		update.setString(4, String.join(", ", this.getPlayerNamesList()));
+        		
+        		update.setString(5, this.getName());
+        		
+        		update.executeUpdate();
+        		update.close();
+			} else {
+				PreparedStatement insert = MySQL.prepareStatement("INSERT INTO `guilds` values(?, ?, ?, ?, ?);");
+				insert.setString(1, this.getName());
+				insert.setInt(2, this.getPoints());
+				insert.setString(3, this.getImageURL());
+				insert.setInt(4, this.getPlayerCount());
+				insert.setString(5, String.join(", ", this.getPlayerNamesList()));
+        		
+        		insert.execute();
+        		insert.close();
+			}
+			
+			sql.close();
+			resultSet.close();
+		} catch (SQLException | ConnectionClosedException e){
+			e.printStackTrace();
+		} finally {
+			try {
+				MySQL.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

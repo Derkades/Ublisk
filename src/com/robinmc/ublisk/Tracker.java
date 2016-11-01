@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.enums;
+package com.robinmc.ublisk;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,9 +9,6 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
@@ -144,6 +141,7 @@ public enum Tracker {
 		});
 	}
 	
+	@Deprecated
 	public static class PlayerInfo {
 		
 		public static void syncExp(UPlayer player){

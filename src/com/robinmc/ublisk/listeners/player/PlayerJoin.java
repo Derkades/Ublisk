@@ -13,12 +13,12 @@ import org.bukkit.inventory.PlayerInventory;
 import org.inventivetalent.rpapi.ResourcePackAPI;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.Helper;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.Music;
+import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.enums.Helper;
-import com.robinmc.ublisk.enums.Music;
-import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.iconmenus.ClassMenu;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;

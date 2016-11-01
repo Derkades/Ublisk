@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.enums.Town;
+import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.Exp;

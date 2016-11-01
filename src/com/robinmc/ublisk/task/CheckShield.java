@@ -6,8 +6,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.enums.Clazz;
 
 public class CheckShield extends BukkitRunnable {
 

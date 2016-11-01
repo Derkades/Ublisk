@@ -3,8 +3,6 @@ package com.robinmc.ublisk;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.robinmc.ublisk.enums.Command;
-import com.robinmc.ublisk.enums.Loot;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Listeners;

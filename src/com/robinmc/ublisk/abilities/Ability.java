@@ -6,12 +6,14 @@ import java.lang.reflect.Method;
 import org.bukkit.Material;
 
 import com.robinmc.ublisk.abilities.AbilityTrigger.TriggerType;
+import com.robinmc.ublisk.abilities.swordsman.Meteorite;
 import com.robinmc.ublisk.abilities.swordsman.TestAbility;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public enum Ability {
 	
-	TEST(new TestAbility(), new AbilityTrigger(Material.WOOD_SWORD, TriggerType.RIGHT_CLICK));
+	TEST(new TestAbility(), new AbilityTrigger(Material.WOOD_SWORD, TriggerType.RIGHT_CLICK)),
+	TEST2(new Meteorite(), new AbilityTrigger(Material.GOLD_SWORD, TriggerType.RIGHT_CLICK));
 	
 	private AbilityExecutor exec;
 	private AbilityTrigger trigger;

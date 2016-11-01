@@ -1,11 +1,10 @@
-package com.robinmc.ublisk.enums;
+package com.robinmc.ublisk;
 
 import java.io.File;
 
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
 import com.robinmc.ublisk.utils.inventory.InvUtils;
 

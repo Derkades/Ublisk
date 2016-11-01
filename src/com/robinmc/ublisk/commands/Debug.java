@@ -13,12 +13,12 @@ import org.bukkit.inventory.PlayerInventory;
 import org.inventivetalent.rpapi.ResourcePackAPI;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.chat.Trigger;
-import com.robinmc.ublisk.enums.Loot;
-import com.robinmc.ublisk.enums.Tracker;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.utils.Config;

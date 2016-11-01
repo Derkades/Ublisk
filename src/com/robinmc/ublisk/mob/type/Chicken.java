@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.mob.type;
+package com.robinmc.ublisk.mob.type;
 
 import org.bukkit.entity.EntityType;
 
