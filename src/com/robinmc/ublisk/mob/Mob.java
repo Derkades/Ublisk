@@ -17,7 +17,6 @@ import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.mob.type.Chicken;
-import com.robinmc.ublisk.mob.type.MobType;
 import com.robinmc.ublisk.mob.type.Sheep;
 import com.robinmc.ublisk.mob.type.Zombie;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;

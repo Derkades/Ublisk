@@ -1,8 +1,6 @@
-package com.robinmc.ublisk.mob.type;
+package com.robinmc.ublisk.mob;
 
 import org.bukkit.entity.EntityType;
-
-import com.robinmc.ublisk.mob.MobCode;
 
 public interface MobType {
 	

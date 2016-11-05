@@ -1,7 +1,5 @@
 package com.robinmc.ublisk.quest;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +13,7 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.quest.npc.Alvin;
 import com.robinmc.ublisk.quest.npc.Arzhur;
+import com.robinmc.ublisk.quest.npc.Asher;
 import com.robinmc.ublisk.quest.npc.David;
 import com.robinmc.ublisk.quest.npc.Dianh;
 import com.robinmc.ublisk.quest.npc.Merek;
@@ -33,15 +32,15 @@ public enum QuestCharacter {
 	
 	TEST_NPC(new TestNPC(), "TestNPC", null, false),
 	
-	DAVID(new David(), "David", Profession.FARMER, false, 72.5, 67, -2.5, 13, 0),
-	MEREK(new Merek(), "Merek", Profession.FARMER, false, 33, 67, -38, -70, 0),
-	ULRIC(new Ulric(), "Ulric", Profession.FARMER, false, 38.5, 67, -26.5, -145, 0),
-	ARZHUR(new Arzhur(), "Arzhur", null, false, 111.5, 68, -103.5, -20, 0), // TODO Profession
-	//ASHER(null, "Asher", 449.3, 70, -10.5, 75, 5), // TODO Profession TODO QCC
+	DAVID(new David(), "David", Profession.FARMER, false, 72.5, 67, -2.5/*, 13, 0*/),
+	MEREK(new Merek(), "Merek", Profession.FARMER, false, 33, 67, -38/*, -70, 0*/),
+	ULRIC(new Ulric(), "Ulric", Profession.FARMER, false, 38.5, 67, -26.5/*, -145, 0*/),
+	ARZHUR(new Arzhur(), "Arzhur", null, false, 111.5, 68, -103.5/*, -20, 0*/), // TODO Profession
+	ASHER(new Asher(), "Asher", null, false, 449.3, 70, -10.5/*, 75, 5*/), // TODO Profession
 	RASMUS(new Rasmus(), "Rasmus", null, false), // TODO Rasmus coordinates XXX Profession
 	DIANH(new Dianh(), "Dianh", null, false),// TODO Dianh coordinates XXX Profession
 	ZOLTAR(new Zoltar(), "Zoltar", null, false),// TODO Zoltar coordinates XXX Profession
-	ALVIN(new Alvin(), "Alvin", null, true, 121.5, 72, 7.3, -161, 4); // XXX Profession
+	ALVIN(new Alvin(), "Alvin", null, true, 121.5, 72, 7.3/*, -161, 4*/); // XXX Profession
 	
 	private final QuestCharacterClass qcc;
 	private final String name;
@@ -49,12 +48,12 @@ public enum QuestCharacter {
 	private final boolean canWalk;
 	private final Location loc;
 	
-	QuestCharacter(QuestCharacterClass qcc, String name, Profession profession, boolean canWalk, double x, double y, double z, int pitch, int yaw){
+	QuestCharacter(QuestCharacterClass qcc, String name, Profession profession, boolean canWalk, double x, double y, double z/*, int pitch, int yaw*/){
 		this.qcc = qcc;
 		this.name = name;
 		this.profession = profession;
 		this.canWalk = canWalk;
-		this.loc = new Location(Var.WORLD, x, y, z, pitch, yaw);
+		this.loc = new Location(Var.WORLD, x, y, z);
 	}
 	
 	QuestCharacter(QuestCharacterClass qcc, String name, Profession profession, boolean canWalk){
@@ -93,7 +92,7 @@ public enum QuestCharacter {
 		villager.setCustomNameVisible(true);
 		villager.setBreed(false);
 		if (!canWalk()) villager.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000000*20, 255, true));
-		villager.teleport(loc);
+		/*villager.teleport(loc);*/
 		if (getProfession() != null){
 			villager.setProfession(getProfession());
 		}
@@ -101,6 +100,7 @@ public enum QuestCharacter {
 	}
 	
 	public void talk(UPlayer player){
+		/*
 		boolean success = true;
 		
 		try {
@@ -121,6 +121,14 @@ public enum QuestCharacter {
 		if (!success){
 			player.sendMessage(Message.Complicated.Quests.npcNotFound(name));
 		}
+		*/
+		
+		if (qcc == null){
+			player.sendMessage(Message.Complicated.Quests.npcNotFound(name));
+			return;
+		}
+		
+		qcc.talk(player, this);
 	}
 	
 	public static QuestCharacter fromName(String text) throws NPCNotFoundException {

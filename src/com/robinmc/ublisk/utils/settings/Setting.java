@@ -2,7 +2,7 @@ package com.robinmc.ublisk.utils.settings;
 
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.utils.Config;
+import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 
 public enum Setting {
@@ -35,15 +35,15 @@ public enum Setting {
 	
 	public boolean get(Player player) throws NotSetException{
 		String path = "settings." + s + "." + player.getUniqueId();
-		if (Config.getConfig().isSet(path)){
-			return Config.getBoolean(path);
+		if (DataFile.SETTINGS.getConfig().isSet(path)){
+			return DataFile.SETTINGS.getConfig().getBoolean(path);
 		} else {
 			throw new NotSetException();
 		}
 	}
 	
 	public void put(Player player, boolean bool){
-		Config.set("settings." + s + "." + player.getUniqueId(), bool);
+		DataFile.SETTINGS.getConfig().set("settings." + s + "." + player.getUniqueId(), bool);
 	}
 	
 	public static Setting fromName(String name){

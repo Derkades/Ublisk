@@ -26,6 +26,7 @@ import com.robinmc.ublisk.mob.EntityDamageByEntity;
 import com.robinmc.ublisk.mob.EntityDeath;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
+import com.sethbling.blinghomingarrows.HomingArrowsListener;
 
 public class Listeners {
 	
@@ -59,7 +60,9 @@ public class Listeners {
 		SONG_END(new SongEnd()),
 		VOTE(new Votifier()),
 		
-		ABILITIES(new AbilityListener());
+		ABILITIES(new AbilityListener()),
+		
+		SETHBLING_HOMING_ARROWS(new HomingArrowsListener());
 		
 		private Listener listener;
 		

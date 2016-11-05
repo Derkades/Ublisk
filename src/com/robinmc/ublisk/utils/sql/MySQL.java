@@ -2,11 +2,13 @@ package com.robinmc.ublisk.utils.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import com.robinmc.ublisk.utils.Config;
+import com.robinmc.ublisk.utils.exception.ConnectionClosedException;
 
-public class MySQL extends SQLTableChanging {
+public class MySQL {
 	
 	protected static Connection connection;
 
@@ -47,5 +49,9 @@ public class MySQL extends SQLTableChanging {
 
 	public static void openConnection() throws SQLException {
 		openConnection(getConnection());		
+	}
+	
+	public static PreparedStatement prepareStatement(String sql) throws ConnectionClosedException, SQLException {
+		return MySQL.connection.prepareStatement(sql);
 	}
 }

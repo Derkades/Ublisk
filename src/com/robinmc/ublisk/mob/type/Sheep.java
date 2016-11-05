@@ -5,6 +5,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 
 import com.robinmc.ublisk.mob.MobCode;
+import com.robinmc.ublisk.mob.MobType;
 
 public class Sheep implements MobType {
 

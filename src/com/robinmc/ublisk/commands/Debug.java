@@ -133,7 +133,7 @@ public class Debug implements CommandExecutor {
 						Config.reload();
 						return true;
 					} else if (args[0].equals("loot")){
-						Loot.spawnRandomLoot();
+						Loot.getRandomLoot().spawn();
 						return true;
 					} else if (args[0].equals("removeloot")){
 						Loot.removeLoot();

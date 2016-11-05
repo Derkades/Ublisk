@@ -2,7 +2,7 @@ package com.robinmc.ublisk;
 
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.utils.Config;
+import com.robinmc.ublisk.utils.DataFile;
 
 public enum Clazz {
 	
@@ -31,7 +31,7 @@ public enum Clazz {
 	}
 	
 	public static Clazz getClass(Player player){
-		String name = Config.getString("class." + player.getUniqueId());
+		String name = DataFile.CLASSES.getString("class." + player.getUniqueId());
 		Clazz c = fromString(name);
 		return c;
 	}

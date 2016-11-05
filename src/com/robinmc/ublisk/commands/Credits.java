@@ -1,17 +1,32 @@
 package com.robinmc.ublisk.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import com.robinmc.ublisk.Helper;
-import com.robinmc.ublisk.Message;
+
+import static org.bukkit.ChatColor.*;
 
 public class Credits implements CommandExecutor {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
+		sender.sendMessage("");
+		sender.sendMessage(DARK_AQUA + "Special thanks to:");
+		for (Helper helper : Helper.values()){
+			sender.sendMessage("");
+			sender.sendMessage(DARK_AQUA + "" + BOLD + helper.getIgn());
+			sender.sendMessage(AQUA + helper.getFunction());
+			sender.sendMessage(GRAY + helper.getLink());
+		}
+		
+		for (int i = 0; i <= 3 ; i++) sender.sendMessage("");
+		
+		sender.sendMessage(DARK_AQUA + "" + BOLD + " ^^^ " + AQUA + "Open chat and scroll up" + DARK_AQUA + "" + BOLD + " ^^^");
+		
+		return true;
+		/*
 		ChatColor gold = ChatColor.GOLD;
 		ChatColor yellow = ChatColor.YELLOW;
 		ChatColor gray = ChatColor.GRAY;
@@ -20,7 +35,7 @@ public class Credits implements CommandExecutor {
 			sender.sendMessage(gold + "Plugin development" + gray + ":" + yellow + " RobinMC");
 			sender.sendMessage(gold + "Building" + gray + ":" + yellow + " See /credits map");
 			sender.sendMessage(gold + "Weapons" + gray + ":" + yellow + " RobinMC, SenpaiSander, Chaspyr");
-			sender.sendMessage(gold + "Textures" + gray + ":" + yellow + " GlitcherDOTbe, RobinMC, RottenNugget, SenpaiSander, Breecko, Jerrijn");
+			sender.sendMessage(gold + "Textures" + gray + ":" + yellow + " GlitcherDOTbe, RobinMC, RottenNugget, SenpaiSander, Breecko, Jerrijn, Xisuma");
 			sender.sendMessage(gold + "Music" + gray + ":" + yellow + " RobinMC, SirSydan");
 			sender.sendMessage(gold + "Quests" + gray + ": " + yellow + "SenpaiSander, RobinMC");
 			sender.sendMessage(gold + "Bug testing" + gray + ": " + yellow + "Chaspyr, RobinMC");
@@ -68,6 +83,7 @@ public class Credits implements CommandExecutor {
 			sender.sendMessage(Message.WRONG_USAGE.get());
 			return true;
 		}
+		*/
 	}
 
 }

@@ -40,6 +40,7 @@ import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
+import com.robinmc.ublisk.utils.exception.NotEnoughManaException;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
@@ -72,7 +73,7 @@ public class UPlayer {
 	}
 	
 	public void setLifeCrystals(int amount){
-		Config.set("life." + getUniqueId(), amount);
+		DataFile.LIFE_CRYSTAL.set("life." + getUniqueId(), amount);
 	}
 	
 	public void addLifeCrystals(int amount){
@@ -86,8 +87,8 @@ public class UPlayer {
 	}
 	
 	public int getLifeCrystals(){
-		if (Config.getConfig().isSet("life." + getUniqueId())){
-			return Config.getInteger("life." + getUniqueId());
+		if (DataFile.LIFE_CRYSTAL.isSet("life." + getUniqueId())){
+			return DataFile.LIFE_CRYSTAL.getInteger("life." + getUniqueId());
 		} else {
 			return 5;
 		}
@@ -99,8 +100,8 @@ public class UPlayer {
 	
 	public int getVotingPoints(){
 		String path = "voting." + getUniqueId();
-		if (Config.getConfig().isSet(path)){
-			return Config.getInteger(path);
+		if (DataFile.VOTING.isSet(path)){
+			return DataFile.VOTING.getInteger(path);
 		} else {
 			setVotingPoints(0);
 			return 0;
@@ -109,7 +110,7 @@ public class UPlayer {
 	
 	public void setVotingPoints(int i){
 		String path = "voting." + getUniqueId();
-		Config.set(path, i);
+		DataFile.VOTING.set(path, i);
 	}
 	
 	public void addVotingPoints(int i){
@@ -232,23 +233,21 @@ public class UPlayer {
 	}
 	
 	public boolean addFriend(Player newFriend){
-		final List<String> list = Main.getInstance().getConfig().getStringList("friends." + getUniqueId());
+		final List<String> list = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
 		if (list.contains(newFriend.getUniqueId().toString())){
 			return false;
 		} else {
 			list.add(newFriend.getUniqueId().toString());
-			Main.getInstance().getConfig().set("friends." + getUniqueId(), list);
-			Config.save();
+			DataFile.FRIENDS.set("friends." + getUniqueId(), list);
 			return true;
 		}
 	}
 	
 	public boolean removeFriend(int index){
-		final List<String> list = Main.getInstance().getConfig().getStringList("friends." + getUniqueId());
+		final List<String> list = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
 		if (list.size() >= index){
 			list.remove(index);
-			Main.getInstance().getConfig().set("friends." + getUniqueId(), list);
-			Config.save();
+			DataFile.FRIENDS.set("friends." + getUniqueId(), list);
 			return true;
 		} else {
 			return false;
@@ -256,11 +255,10 @@ public class UPlayer {
 	}
 	
 	public boolean removeFriend(OfflinePlayer friendToRemove){
-		final List<String> list = Main.getInstance().getConfig().getStringList("friends." + getUniqueId());
+		final List<String> list = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
 		if (list.contains(friendToRemove.getUniqueId().toString())){			
 			list.remove(friendToRemove.getUniqueId().toString());
-			Main.getInstance().getConfig().set("friends." + getUniqueId(), list);
-			Config.save();
+			DataFile.FRIENDS.set("friends." + getUniqueId(), list);
 			return true;
 		} else {
 			return false;
@@ -268,7 +266,7 @@ public class UPlayer {
 	}
 	
 	public List<String> getFriends(){
-		final List<String> list = Main.getInstance().getConfig().getStringList("friends." + getUniqueId());
+		final List<String> list = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
 		return list;
 	}
 	
@@ -394,12 +392,12 @@ public class UPlayer {
 		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 		Date dateobj = new Date();
 		String date = df.format(dateobj);
-		Config.set("last-played." + player.getUniqueId(), date);
+		DataFile.LAST_PLAYED.set("last-played." + player.getUniqueId(), date);
 	}
 	
 	public String getLastSeenDate(){
-		if (Config.getConfig().isSet("last-played." + player.getUniqueId())){
-			return Config.getString("last-played." + player.getUniqueId());
+		if (DataFile.LAST_PLAYED.isSet("last-played." + player.getUniqueId())){
+			return DataFile.LAST_PLAYED.getString("last-played." + player.getUniqueId());
 		} else {
 			return "Never";
 		}
@@ -451,6 +449,26 @@ public class UPlayer {
 	
 	public void openNpcMenu(NPCMenu menu){
 		menu.open(this);
+	}
+	
+	/**
+	 * @return Mana, value between 0 and 20 
+	 */
+	public int getMana(){
+		return player.getFoodLevel();
+	}
+	
+	/**
+	 * @param mana An integer, 0-20
+	 */
+	public void setMana(int mana){
+		player.setFoodLevel(mana);
+	}
+	
+	public void removeMana(int mana) throws NotEnoughManaException {
+		if (getMana() - mana < 0) throw new NotEnoughManaException();
+		
+		setMana(getMana() - mana);
 	}
 	
 	public static UPlayer[] getOnlinePlayers(){

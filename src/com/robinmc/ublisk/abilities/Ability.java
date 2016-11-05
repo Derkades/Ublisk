@@ -1,30 +1,26 @@
 package com.robinmc.ublisk.abilities;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import org.bukkit.Material;
 
 import com.robinmc.ublisk.abilities.AbilityTrigger.TriggerType;
 import com.robinmc.ublisk.abilities.swordsman.Meteorite;
 import com.robinmc.ublisk.abilities.swordsman.TestAbility;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.exception.NotEnoughManaException;
 
 public enum Ability {
 	
-	TEST(new TestAbility(), new AbilityTrigger(Material.WOOD_SWORD, TriggerType.RIGHT_CLICK)),
-	TEST2(new Meteorite(), new AbilityTrigger(Material.GOLD_SWORD, TriggerType.RIGHT_CLICK));
+	TEST(4, new TestAbility(), new AbilityTrigger(Material.WOOD_SWORD, TriggerType.RIGHT_CLICK)),
+	TEST2(10, new Meteorite(), new AbilityTrigger(Material.GOLD_SWORD, TriggerType.RIGHT_CLICK));
 	
 	private AbilityExecutor exec;
 	private AbilityTrigger trigger;
+	private int mana;
 	
-	Ability(AbilityExecutor exec, AbilityTrigger trigger){
+	Ability(int mana, AbilityExecutor exec, AbilityTrigger trigger){
 		this.exec = exec;
 		this.trigger = trigger;
-	}
-	
-	private AbilityExecutor getExecutor(){
-		return exec;
+		this.mana = mana;
 	}
 	
 	public AbilityTrigger getTrigger(){
@@ -32,22 +28,13 @@ public enum Ability {
 	}
 	
 	public void doAbility(UPlayer player){
-		Class<?> clazz = getExecutor().getClass();
-		
 		try {
-			
-			Method method = clazz.getMethod("doAbility", UPlayer.class);
-			method.invoke(clazz.newInstance(), player);
-			
-		} catch (NoSuchMethodException | 
-				SecurityException | 
-				IllegalAccessException |
-				IllegalArgumentException | 
-				InvocationTargetException | 
-				InstantiationException e) {
-			e.printStackTrace();
+			player.removeMana(mana);
+		} catch (NotEnoughManaException e) {
+			// FIXME Handle not enough mana exception
 		}
 		
+		exec.doAbility(player);
 	}
 
 }

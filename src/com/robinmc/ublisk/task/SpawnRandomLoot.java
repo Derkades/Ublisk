@@ -11,7 +11,7 @@ public class SpawnRandomLoot extends BukkitRunnable {
 	public void run() {
 		int random = Random.getRandomInteger(0, 5);
 		if (random == 0){
-			Loot.spawnRandomLoot();
+			Loot.getRandomLoot().spawn();
 		}
 	}
 

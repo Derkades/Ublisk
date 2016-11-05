@@ -18,10 +18,16 @@ public class HashMaps {
 	public static Map<UUID, Boolean> cooldownNpc = new HashMap<>();
 	public static Map<UUID, Boolean> cooldownClass = new HashMap<>();
 	
+	/*
+	@Deprecated
 	public static Map<String, Boolean> doublexp = new HashMap<>();
+	@Deprecated
 	public static Map<String, Integer> doubleExpTime = new HashMap<>();
+	@Deprecated
 	public static Map<String, Boolean> doubleExpCooldown = new HashMap<>();
+	@Deprecated
 	public static Map<String, Boolean> doubleExpBarActive = new HashMap<>();
+	*/
 	
 	public static Map<UUID, Boolean> isMuted = new HashMap<>();
 	public static Map<UUID, Boolean> isSoftMuted = new HashMap<>();
@@ -63,6 +69,7 @@ public class HashMaps {
 		}
 	}
 	
+	@Deprecated
 	public static String placeHolder(){
 		return "hi";
 	}

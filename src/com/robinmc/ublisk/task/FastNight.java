@@ -4,13 +4,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.utils.Time;
 
-public class FastDayNight extends BukkitRunnable {
+public class FastNight extends BukkitRunnable {
 
 	@Override
 	public void run(){
-		if (Time.isDay()){
-			Time.add(3L);
-		} else {
+		if (!Time.isDay()){
 			Time.add(3L);
 		}
 	}

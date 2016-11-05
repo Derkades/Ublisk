@@ -19,7 +19,8 @@ public enum DataFile {
 	LIFE_CRYSTAL("life"),
 	XP("xp"),
 	VOTING("voting"),
-	MONEY("money");
+	MONEY("money"),
+	LAST_PLAYED("last-played");
 	
 	private File file;
 	

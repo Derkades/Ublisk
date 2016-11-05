@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 
@@ -82,7 +83,8 @@ public class Var {
 			Material.CHORUS_FLOWER,
 			Material.YELLOW_FLOWER,
 			Material.TORCH,
-			Material.SUGAR_CANE_BLOCK);
+			Material.SUGAR_CANE_BLOCK
+			);
 	
 	/**
 	 * Do not spawn mobs on top of these blocks
@@ -94,6 +96,11 @@ public class Var {
 			Material.WATER,
 			Material.STATIONARY_WATER,
 			Material.LEAVES,
-			Material.LEAVES_2);
+			Material.LEAVES_2
+			);
+	
+	public static final List<Location> SAFE_TRAPDOORS = Arrays.asList(
+			new Location(Var.WORLD, -23, 74, 3)
+			);
 
 }

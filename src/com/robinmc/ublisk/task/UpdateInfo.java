@@ -12,7 +12,7 @@ public class UpdateInfo extends BukkitRunnable {
 	public void run(){
 		int delay = 0;
 		for (final UPlayer player : UPlayer.getOnlinePlayers()){
-			delay = delay + 10*20;
+			delay = delay + 14*20;
 				
 			player.refreshLastSeenDate();
 			
@@ -40,13 +40,19 @@ public class UpdateInfo extends BukkitRunnable {
 					
 					Scheduler.runTaskLater(8*20, new Runnable(){
 						public void run(){
-							//Nothing yet
+							PlayerInfo.LEVEL.syncWithDatabase(player);
+						}
+					});
+					
+					Scheduler.runTaskLater(10*20, new Runnable(){
+						public void run(){
+							PlayerInfo.LAST_TOWN.syncWithDatabase(player);
 						}
 					});
 				}
 			});
 			
-			Scheduler.runTaskLater(10*20, new Runnable(){
+			Scheduler.runTaskLater(12*20, new Runnable(){
 				public void run(){
 					//Sync guilds
 					Guilds.syncAllGuildsWithDatabase();

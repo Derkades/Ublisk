@@ -32,16 +32,13 @@ public class Main extends JavaPlugin {
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);
 		
 		HashMaps.resetAllPlayers();
+		
+		/*
 		HashMaps.doublexp.put(HashMaps.placeHolder(), false);
 		HashMaps.doubleExpTime.put(HashMaps.placeHolder(), Var.DOUBLE_XP_TIME);
 		HashMaps.doubleExpCooldown.put(HashMaps.placeHolder(), false);
 		HashMaps.doubleExpBarActive.put(HashMaps.placeHolder(), false);
-		
-		Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
-			public void run(){
-				Loot.removeLoot();
-			}
-		}, 10*20);
+		*/
 		
 		Mob.startMobSpawning();
 	}

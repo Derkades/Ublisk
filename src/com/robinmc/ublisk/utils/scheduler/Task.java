@@ -7,7 +7,7 @@ import com.robinmc.ublisk.task.CheckDoubleExp;
 import com.robinmc.ublisk.task.CheckShield;
 import com.robinmc.ublisk.task.CheckTown;
 import com.robinmc.ublisk.task.ClearWeather;
-import com.robinmc.ublisk.task.FastDayNight;
+import com.robinmc.ublisk.task.FastNight;
 import com.robinmc.ublisk.task.LifeCrystalInventory;
 import com.robinmc.ublisk.task.PlayerLevelUp;
 import com.robinmc.ublisk.task.RandomTips;
@@ -27,7 +27,7 @@ public enum Task {
 	CHECK_SHIELD(new CheckShield(), 5*20, 5*20, false),
 	CHECK_TOWN(new CheckTown(), 0, 2*20, false),
 	CLEAR_WEATHER(new ClearWeather(), 60*20, 5*60*20, false),
-	FAST_DAY_NIGHT(new FastDayNight(), 0, 1, false),
+	FAST_DAY_NIGHT(new FastNight(), 0, 1, false),
 	LIFE_CRYSTAL_INVENTORY(new LifeCrystalInventory(), 5*20, 5*20, false),
 	PLAYER_LEVEL_UP(new PlayerLevelUp(), 0, 5*20, false),
 	RANDOM_TIP(new RandomTips(), 30*20, 5*60*20, false),

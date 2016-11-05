@@ -31,7 +31,6 @@ public enum Message {
 	CANT_PM_MUTED(prefix("Chat") + RED + "You cannot send private messages while muted."),
 	CANT_CHAT_MUTED(prefix("Chat") + RED + "You cannot chat while muted."),
 	
-	//SONG_ENDED(GOLD + "Music" + GRAY + " >> " + "Your song has ended. Please select a new song using /music"),
 	MUSIC_DISABLED(prefix("Music") + "Music has been disabled. After this song no more songs will play."),
 	MUSIC_ENABLED(prefix("Music") + "Music has been enabled"),
 	
@@ -52,7 +51,8 @@ public enum Message {
 	ERROR_MENU(prefix("Menu") + RED + "An unexpected error has occured. Please report this error and the steps you took to get this error at the forums."),
 	ERROR_GENERAL(prefix() + RED + "An unexpected error has occured. Please report this error and the steps you took to get this error at the forums."),
 	
-	CANT_EAT(prefix() + RED + "Eating food is not allowed on this server. Please use a recycler"),
+	CANT_EAT(prefix() + RED + "Eating food is not allowed on this server. Please use a recycler to get rid of the item."),
+	
 	ENTITIES_REMOVED(prefix() + YELLOW + "All mobs and items have been cleared!"),
 	
 	DOUBLE_XP_COOLDOWN(prefix() + RED + "Hi there, person who tried to activate double xp, there's a cooldown to prevent people like you from abusing the system!"),

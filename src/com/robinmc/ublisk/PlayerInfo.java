@@ -13,7 +13,7 @@ import com.robinmc.ublisk.utils.sql.MySQL;
 
 public enum PlayerInfo {
 
-	XP("exp", new UpdateCode(){ /* INT xp count, TEXT name, TEXT uuid */
+	XP("exp", new UpdateCode(){ /* TEXT uuid, INT xp count, TEXT name */
 
 		@Override
 		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
@@ -41,7 +41,7 @@ public enum PlayerInfo {
 		
 	}),
 	
-	GUILD("playerguild", new UpdateCode(){ /* TEXT guild name, TEXT name, TEXT uuid */
+	GUILD("playerguild", new UpdateCode(){ /* TEXT uuid, TEXT guild name, TEXT name */
 
 		@Override
 		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
@@ -75,7 +75,7 @@ public enum PlayerInfo {
 		
 	}),
 	
-	RANK("rank", new UpdateCode(){ /* TEXT rank name, TEXT name, TEXT uuid */
+	RANK("rank", new UpdateCode(){ /* TEXT uuid, TEXT rank name, TEXT name */
 
 		@Override
 		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
@@ -104,7 +104,7 @@ public enum PlayerInfo {
 		
 	}),
 	
-	LAST_SEEN("last_seen", new UpdateCode(){
+	LAST_SEEN("last_seen", new UpdateCode(){ /* TEXT uuid, INT level, TEXT name */
 
 		@Override
 		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
@@ -125,6 +125,64 @@ public enum PlayerInfo {
         		PreparedStatement insert = MySQL.prepareStatement("INSERT INTO `" + table + "` values(?, ?, ?);");
         		insert.setString(1, player.getUniqueId().toString());
         		insert.setString(2, date);
+        		insert.setString(3, player.getName());
+        		insert.execute();
+        		insert.close();
+        	}
+		}
+		
+	}),
+	
+	LEVEL("level", new UpdateCode(){ /* TEXT uuid, INT level, TEXT name */
+
+		@Override
+		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
+				throws SQLException, ConnectionClosedException {
+			
+			int level = player.getLevel();
+			
+        	if (containsPlayer){
+        		PreparedStatement update = MySQL.prepareStatement("UPDATE `" + table + "` SET level=?,name=? WHERE uuid=?;");
+        		
+        		update.setInt(1, level);
+        		update.setString(2, player.getName());
+        		update.setString(3, player.getUniqueId().toString());
+        		
+        		update.executeUpdate();
+        		update.close();
+        	} else {
+        		PreparedStatement insert = MySQL.prepareStatement("INSERT INTO `" + table + "` values(?, ?, ?);");
+        		insert.setString(1, player.getUniqueId().toString());
+        		insert.setInt(2, level);
+        		insert.setString(3, player.getName());
+        		insert.execute();
+        		insert.close();
+        	}
+		}
+		
+	}),
+	
+	LAST_TOWN("town", new UpdateCode(){ /* TEXT uuid, TEXT town, TEXT name */
+
+		@Override
+		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
+				throws SQLException, ConnectionClosedException {
+			
+			Town town = player.getLastTown();
+			
+        	if (containsPlayer){
+        		PreparedStatement update = MySQL.prepareStatement("UPDATE `" + table + "` SET level=?,name=? WHERE uuid=?;");
+        		
+        		update.setString(1, town.getName());
+        		update.setString(2, player.getName());
+        		update.setString(3, player.getUniqueId().toString());
+        		
+        		update.executeUpdate();
+        		update.close();
+        	} else {
+        		PreparedStatement insert = MySQL.prepareStatement("INSERT INTO `" + table + "` values(?, ?, ?);");
+        		insert.setString(1, player.getUniqueId().toString());
+        		insert.setString(2, town.getName());
         		insert.setString(3, player.getName());
         		insert.execute();
         		insert.close();

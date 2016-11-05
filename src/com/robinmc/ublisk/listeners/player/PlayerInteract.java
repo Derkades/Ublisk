@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.listeners.player;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -18,6 +19,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.Clazz;
@@ -32,6 +34,7 @@ import com.robinmc.ublisk.utils.Voting;
 import com.robinmc.ublisk.utils.inventory.item.Item;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -66,7 +69,8 @@ public class PlayerInteract implements Listener {
 		}
 	}
 	
-	@EventHandler(priority=EventPriority.LOW, ignoreCancelled = false)
+	//ignoreCancelled = true - Still track clicks when they are cancelled
+	@EventHandler(priority=EventPriority.LOW, ignoreCancelled = true)
 	public void tracker(PlayerInteractEvent event){
 		Player player = event.getPlayer();
 		Action action = event.getAction();
@@ -87,7 +91,7 @@ public class PlayerInteract implements Listener {
 		}
 	}
 	
-	@EventHandler(ignoreCancelled = true)
+	@EventHandler
 	public void spellTest(PlayerInteractEvent event){
 		if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BLAZE_ROD){
@@ -113,7 +117,7 @@ public class PlayerInteract implements Listener {
 		}
 	}
 	
-	@EventHandler(ignoreCancelled = true)
+	@EventHandler
 	public void voteBox(PlayerInteractEvent event){
 		if (event.getAction() != Action.RIGHT_CLICK_BLOCK){
 			return;
@@ -166,52 +170,90 @@ public class PlayerInteract implements Listener {
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
+	@EventHandler(priority=EventPriority.LOW)
+	public void setWetFarmland(PlayerInteractEvent event){
+		if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.GOLD_HOE &&
+				event.getAction() == Action.RIGHT_CLICK_BLOCK){
+			Block block = event.getClickedBlock();
+			block.setType(Material.SOIL);
+			block.setData((byte) 7);
+			Location loc = block.getLocation();
+			Block wheat = new Location(Var.WORLD, loc.getX(), loc.getY() + 1, loc.getZ()).getBlock();
+			wheat.setType(Material.CROPS);
+			wheat.setData((byte) 7);
+		}
+	}
+	
 	/*
-	 * Taken from http://dev.bukkit.org/bukkit-plugins/anticroptrample/. 
-	 * Changed old deprecated methods of getting blocks by id to the new system.
-	 * All original code is not deleted but commented out.
+	 * Inspiration from http://dev.bukkit.org/bukkit-plugins/anticroptrample/. 
 	 */
 	@SuppressWarnings("deprecation")
-	@EventHandler(priority=EventPriority.MONITOR, ignoreCancelled = true)
+	@EventHandler(priority=EventPriority.LOWEST, ignoreCancelled = false)
 	public void onTrample(PlayerInteractEvent event){
-	    if (event.getAction() == Action.PHYSICAL){
-		      Block block = event.getClickedBlock();
-		      if (block == null) {
-		    	  return;
-		      }
-		      //int blockType = block.getTypeId();
-		      Material material = block.getType();
-		      //if (blockType == Material.getMaterial(59).getId()){
-		      if (material == Material.WHEAT){
-		        //event.setUseInteractedBlock(Event.Result.DENY);
-		    	event.setUseInteractedBlock(PlayerInteractEvent.Result.DENY);
-		        event.setCancelled(true);
-	
-		        //block.setTypeId(blockType);
-		        block.setType(Material.WHEAT);
-		        block.setData(block.getData());
-	      	}
-	    }
-	    
 	    if (event.getAction() == Action.PHYSICAL){
 	    	Block block = event.getClickedBlock();
 			if (block == null){
 				return;
 			}  
 		
-			//int blockType = block.getTypeId();
 			Material material = block.getType(); 
 			
-			//if (blockType == Material.getMaterial(60).getId()){
 			if (material == Material.SOIL){
-				//event.setUseInteractedBlock(Event.Result.DENY);
 				event.setUseInteractedBlock(PlayerInteractEvent.Result.DENY);
 				event.setCancelled(true);       
 				
-				//block.setType(Material.getMaterial(60));
 				block.setType(Material.SOIL);
-				block.setData(block.getData());
+				block.setData((byte) 0);
+				final Block block2 = block;
+				Scheduler.runTaskLater(2*20, new Runnable(){
+					public void run(){
+						block2.setData((byte) 7);
+					}
+				});
+				Location loc = block.getLocation();
+				final Block wheat = new Location(Var.WORLD, loc.getX(), loc.getY() + 1, loc.getZ()).getBlock();
+				wheat.setType(Material.CROPS);
+		        new BukkitRunnable(){
+		        	public void run(){
+		        		byte data = wheat.getData();
+		        		if (data == 7) cancel();
+		        		wheat.setData((byte) (data + 1));
+		        	}
+		        }.runTaskTimer(Main.getInstance(), 0, 20);
 			}
+		}
+	}
+	
+	@EventHandler(priority=EventPriority.LOWEST)
+	public void resetDoors(PlayerInteractEvent event){
+		if (event.getAction() == Action.RIGHT_CLICK_BLOCK &&
+				(event.getClickedBlock().getType() == Material.TRAP_DOOR ||
+				event.getClickedBlock().getType() == Material.IRON_TRAPDOOR)){
+			
+			final Block block = event.getClickedBlock();
+			Player player = event.getPlayer();
+			
+			//If the trapdoor is one of the safe trapdoors, let the player open it.
+			for (Location loc : Var.SAFE_TRAPDOORS){
+				Block safe = loc.getBlock();
+				if (block.getLocation().equals(safe.getLocation())){
+					if (player.getGameMode() == GameMode.CREATIVE) player.sendMessage("Safe trapdoor!");
+					return;
+				}
+			}
+			
+			//If player is holding a beetroot, let them open the trapdoor.
+			if (player.getInventory().getItemInMainHand().getType() == Material.BEETROOT){
+				player.sendMessage("Permanently closed trapdoor!");
+				return;
+			}
+			
+			//If the player is in creative mode, send them a message on how to permanently open the trapdoor.
+			if (player.getGameMode() == GameMode.CREATIVE)
+				player.sendMessage("NOTE: To permamently close or open a trapdoor.");
+			
+			event.setCancelled(true);
 		}
 	}
 

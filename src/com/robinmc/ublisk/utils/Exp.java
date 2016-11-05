@@ -7,7 +7,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import com.connorlinfoot.actionbarapi.ActionBarAPI;
-import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.mob.Mob;
@@ -19,13 +18,18 @@ import com.robinmc.ublisk.utils.logging.Logger;
 
 public class Exp {
 	
+	public static boolean DOUBLE_XP_ACTIVE = false;
+	public static int DOUBLE_XP_TIME = Var.DOUBLE_XP_TIME;
+	public static boolean DOUBLE_XP_COOLDOWN = false;
+	public static boolean DOUBLE_XP_BAR_ACTIVE = false;
+	
 	/**
 	 * Set a player's experience points
 	 * @param Player
 	 * @param Number of experience points
 	 */
 	public static void set(OfflinePlayer player, int n){
-		Config.set("xp." + player.getUniqueId(), n);
+		DataFile.XP.set("xp." + player.getUniqueId(), n);
 		
 		if (player.isOnline()){
 			Player online = (Player) player;
@@ -44,14 +48,14 @@ public class Exp {
 	}
 	
 	/**
-	 * Gets a player's XP as stored in configuration
+	 * Gets a player's XP as stored in file
 	 * @param Player
 	 * @return XP (not level!)
 	 */
 	public static int get(OfflinePlayer player){
-		if (Config.getConfig().isSet("xp." + player.getUniqueId())){
-			return Config.getInteger("xp." + player.getUniqueId());
-		} else { //If XP is not yet set in config set it to 0
+		if (DataFile.XP.isSet("xp." + player.getUniqueId())){
+			return DataFile.XP.getInteger("xp." + player.getUniqueId());
+		} else { //If XP is not yet set in file set it to 0
 			set(player, 0);
 			
 			if (player.isOnline()){
@@ -85,7 +89,7 @@ public class Exp {
 		String name = mob.getName();
 		int xp = mob.getXP();
 		
-		if (HashMaps.doublexp.get(HashMaps.placeHolder())){ //If double XP is active
+		if (DOUBLE_XP_ACTIVE){ //If double XP is active
 			ActionBarAPI.sendActionBar(player, ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP", 3*10);
 			Exp.add(player, xp * 2);
 			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
@@ -97,7 +101,7 @@ public class Exp {
 	}
 	
 	/**
-	 * Refreshes a player's xp from config to XP bar.
+	 * Refreshes a player's xp from file to XP bar.
 	 * @param Player
 	 */
 	public static void refresh(Player player){
@@ -119,7 +123,7 @@ public class Exp {
 		if (!(level < 5)){
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 				public void run(){
-					HashMaps.doublexp.put("hi", true);
+					DOUBLE_XP_ACTIVE = true;
 				}
 			}, 10*20);
 		}	

@@ -1,88 +1,88 @@
 package com.robinmc.ublisk;
 
+import java.lang.reflect.Field;
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
+import org.bukkit.craftbukkit.v1_10_R1.block.CraftChest;
 import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.ItemStack;
 
+import com.robinmc.ublisk.utils.java.Random;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
+
+import net.minecraft.server.v1_10_R1.TileEntityChest;
 
 public enum Loot {
 	
-	A(1, 80, 74, -5),
-	B(1, 250, 67, -10),
-	C(1, 214, 69, -11);
+	A(Level.ONE, 80, 74, -5),
+	B(Level.ONE, 250, 67, -10),
+	C(Level.ONE, 214, 69, -11);
 	
-	private int tier;
-	private int x;
-	private int y;
-	private int z;
+	private Level level;
+	private Location loc;
 	
-	Loot(int tier, int x, int y, int z){
-		this.tier = tier;
-		this.x = x;
-		this.y = y;
-		this.z = z;
+	Loot(Level level, int x, int y, int z){
+		this.level = level;
+		this.loc = new Location(Var.WORLD, x, y, z);
 	}
 	
-	public int getTier(){
-		return tier;
-	}
-	
-	public int getX(){
-		return x;
-	}
-	
-	public int getY(){
-		return y;
-	}
-	
-	public int getZ(){
-		return z;
-	}
-	
-	private static <T extends Enum<?>> T randomEnum(Class<T> clazz){
+	public static Loot getRandomLoot(){
+		Class<Loot> clazz = Loot.class;
 		final SecureRandom random = new SecureRandom();
         int x = random.nextInt(clazz.getEnumConstants().length);
         return clazz.getEnumConstants()[x];
     }
 	
-	public static void spawnRandomLoot(){
-		World world = Var.WORLD;
-		Loot loot = randomEnum(Loot.class);
-		final int x = loot.getX();
-		final int y = loot.getY();
-		final int z = loot.getZ();
-		final Location loc = new Location(world, x, y, z);
-		Location shulkerBullet = new Location(world, x + 0.5, y + 100, z + 0.5);
-		world.spawnEntity(shulkerBullet, EntityType.SHULKER_BULLET);
+	public void spawn(){
+		Location shulkerBullet = new Location(Var.WORLD, loc.getX() + 0.5, loc.getY() + 100, loc.getZ() + 0.5);
+		Var.WORLD.spawnEntity(shulkerBullet, EntityType.SHULKER_BULLET);
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 			public void run(){
 				Block block = loc.getBlock();
 				block.setType(Material.CHEST);
-				Bukkit.broadcastMessage(Message.Complicated.lootSpawned(x, y, z));
+				CraftChest chest = (CraftChest) block.getState();
+				try {
+				    Field inventoryField = chest.getClass().getDeclaredField("chest");
+				    inventoryField.setAccessible(true);
+				    TileEntityChest teChest = ((TileEntityChest) inventoryField.get(chest));
+				    teChest.a("Loot");
+				} catch (Exception e){
+				     e.printStackTrace();
+				}
+				fillChestWithLoot();
+				Bukkit.broadcastMessage(Message.Complicated.lootSpawned(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
 			}
 		}, 70);
+	}
+	
+	private void fillChestWithLoot(){
+		Chest chest = (Chest) loc.getBlock().getState();
+		LootItem[] loot = level.items;
+		List<ItemStack> items = new ArrayList<ItemStack>();
+		for (LootItem item : loot) items.add(new ItemStack(item.getMaterial(), item.getAmount()));
+		List<ItemStack> contents = Arrays.asList(chest.getInventory().getContents());
 		
-		Scheduler.runTaskLater(5*60*20, new Runnable(){
-			public void run(){
-				Block block = loc.getBlock();
-				block.setType(Material.AIR);
-			}
-		});
+		for (ItemStack item : items){
+			int slot = Random.getRandomInteger(0, 27);
+			contents.set(slot, item);
+		}
+		
+		chest.getInventory().setContents((ItemStack[]) contents.toArray());
 	}
 	
 	public static void removeLoot(){
 		Logger.log(LogLevel.INFO, "Loot", "Removed all loot chests!");
 		for (Loot loot : Loot.values()){
-			Block block = new Location(Var.WORLD, loot.getX(), loot.getY(), loot.getZ()).getBlock();
+			Block block = new Location(Var.WORLD, loot.loc.getX(), loot.loc.getY(), loot.loc.getZ()).getBlock();
 			block.setType(Material.AIR);
 		}
 	}
@@ -90,13 +90,55 @@ public enum Loot {
 	public static boolean isLoot(Chest chest){
 		Location loc = chest.getLocation();
 		for (Loot loot : Loot.values()){
-			if (	loot.getX() == loc.getBlockX() &&
-					loot.getY() == loc.getBlockY() &&
-					loot.getZ() == loc.getBlockZ()){
+			if (	loot.loc.getX() == loc.getBlockX() &&
+					loot.loc.getY() == loc.getBlockY() &&
+					loot.loc.getZ() == loc.getBlockZ()){
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	private enum Level {
+		
+		ONE(
+				new LootItem(Material.ROTTEN_FLESH, 1, 20)
+				),
+		TWO(
+				
+				),
+		THREE(
+				
+				);
+		
+		private LootItem[] items;
+		
+		Level(LootItem... items){
+			this.items = items;
+		}
+		
+	}
+
+	private static class LootItem {
+		
+		private Material material;
+		private int min;
+		private int max;
+		
+		LootItem(Material material, int min, int max){
+			this.material = material;
+			this.min = min;
+			this.max = max;
+		}
+		
+		private Material getMaterial(){
+			return material;
+		}
+		
+		private int getAmount(){
+			return Random.getRandomInteger(min, max);
+		}
+		
 	}
 
 }
