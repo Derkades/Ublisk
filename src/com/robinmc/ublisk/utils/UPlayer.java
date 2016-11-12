@@ -282,7 +282,7 @@ public class UPlayer {
 	}
 	
 	/**
-	 * Bans a player for a given amounqt of time
+	 * Bans a player for a given amount of time
 	 * @param player
 	 * @param time Time in seconds
 	 */
