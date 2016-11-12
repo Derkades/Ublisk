@@ -21,6 +21,7 @@ import com.robinmc.ublisk.task.SyncTrackersAndInfo;
 import com.robinmc.ublisk.task.UpdateBackpackName;
 import com.robinmc.ublisk.task.UpdateDoubleExpBar;
 import com.robinmc.ublisk.task.UpdateFriendsHealthBar;
+import com.robinmc.ublisk.utils.third_party.Lag;
 
 public enum Task {
 	
@@ -42,7 +43,9 @@ public enum Task {
 	UPDATE_BACKPACK_NAME(new UpdateBackpackName(), 0, 5*20, false),
 	UPDATE_DOUBLE_XP_BAR(new UpdateDoubleExpBar(), 1*20, 1*20, false),
 	UPDATE_FRIENDS_HEALTH_BAR(new UpdateFriendsHealthBar(), 5*20, 1*20, false),
-	UPDATE_INFO(new SyncTrackersAndInfo(), 10*20, 5*60*20, false);
+	UPDATE_INFO(new SyncTrackersAndInfo(), 10*20, 5*60*20, false),
+	
+	TPS_UPDATE(new Lag(), 100, 1, false);
 	
 	private BukkitRunnable runnable;
 	private int delay;

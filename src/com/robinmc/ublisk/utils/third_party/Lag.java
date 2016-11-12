@@ -1,6 +1,8 @@
 package com.robinmc.ublisk.utils.third_party;
 
-public class Lag implements Runnable {
+import org.bukkit.scheduler.BukkitRunnable;
+
+public class Lag extends BukkitRunnable {
 	
 	//Please note that this is slightly modified by me
 	

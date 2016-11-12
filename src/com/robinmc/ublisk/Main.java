@@ -27,8 +27,6 @@ public class Main extends JavaPlugin {
 		
 		for (Task task : Task.values()) task.start();
 		
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);
-		
 		HashMaps.resetAllPlayers();
 		
 		Mob.startMobSpawning();
