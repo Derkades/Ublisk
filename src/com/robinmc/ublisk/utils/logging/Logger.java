@@ -4,8 +4,6 @@ import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 
-import com.robinmc.ublisk.utils.Config;
-
 public class Logger {
 	
 	private LogLevel logLevel;
@@ -31,9 +29,7 @@ public class Logger {
 			Bukkit.getLogger().log(Level.WARNING, object + "");
 			break;
 		default:
-			if (Config.getBoolean("log")){
-				Bukkit.getLogger().log(Level.INFO, object + "");
-			}
+			Bukkit.getLogger().log(Level.INFO, object + "");
 			break;
 		}
 	}

@@ -6,13 +6,14 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 import com.robinmc.ublisk.Main;
 
+@Deprecated
 public class Config {
 	
 	static FileConfiguration config = Main.getInstance().getConfig();
 	
 	public static void create(){
 		try {
-			Main main = Main.getInstance(); //Get main's instance as I can't use "this" here
+			Main main = Main.getInstance();
 			File file = new File(main.getDataFolder(), "config.yml"); //Set file variable
 			if (!main.getDataFolder().exists()) //Check if folder doesn't exist
 				main.getDataFolder().mkdirs(); //Then make one

@@ -171,7 +171,7 @@ public enum PlayerInfo {
 			Town town = player.getLastTown();
 			
         	if (containsPlayer){
-        		PreparedStatement update = MySQL.prepareStatement("UPDATE `" + table + "` SET level=?,name=? WHERE uuid=?;");
+        		PreparedStatement update = MySQL.prepareStatement("UPDATE `" + table + "` SET town=?,name=? WHERE uuid=?;");
         		
         		update.setString(1, town.getName());
         		update.setString(2, player.getName());

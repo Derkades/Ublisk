@@ -28,7 +28,7 @@ public class MsgCommand implements CommandExecutor {
 		UPlayer player = UPlayer.get(sender);
 		
 		//If player is muted don't send private message
-		if (HashMaps.isMuted.get(player.getUniqueId())){
+		if (HashMaps.IS_MUTED.get(player.getUniqueId())){
 			player.sendMessage(Message.CANT_PM_MUTED.get());
 			return true;
 		}

@@ -1,29 +1,36 @@
 package com.robinmc.ublisk;
 
-import org.bukkit.entity.Player;
-
-import com.robinmc.ublisk.utils.Config;
+import org.bukkit.Location;
 
 public enum Town {
 	
 	//(x < ..., x > ..., z < ..., z > ...
 	//x < 100 x > 22 z < -10 z > 90
-	INTRODUCTION("Introduction", 100, 22, -10, -90),
-	GLEANOR("Glaenor", 190, 100, 17, -120),
-	RHOCUS("Rhocus", 200, 100, 400, 240);
+	INTRODUCTION("Introduction", 100, 22, -10, -90, 69, 67, 5),
+	GLAENOR("Glaenor", 190, 100, 17, -120, 116, 68, -86),
+	RHOCUS("Rhocus", 200, 100, 400, 240, 122, 82, 288);
 	
 	private String name;
-	private int x;
-	private int x2;
-	private int z;
-	private int z2;
 	
-	Town(String name, int x, int x2, int z, int z2){
+	private int rangex;
+	private int rangex2;
+	private int rangez;
+	private int rangez2;
+	
+	private int x;
+	private int y;
+	private int z;
+	
+	Town(String name, int rangex, int rangex2, int rangez, int rangez2, int x, int y, int z){
 		this.name = name;
+		this.rangex = rangex;
+		this.rangex2 = rangex2;
+		this.rangez = rangez;
+		this.rangez2 = rangez2;
+		
 		this.x = x;
-		this.x2 = x2;
+		this.y = y;
 		this.z = z;
-		this.z2 = z2;
 	}
 	
 	public String getName(){
@@ -31,25 +38,23 @@ public enum Town {
 	}
 	
 	public int lessX(){
-		return x;
+		return rangex;
 	}
 	
 	public int moreX(){
-		return x2;
+		return rangex2;
 	}
 	
 	public int lessZ(){
-		return z;
+		return rangez;
 	}
 	
 	public int moreZ(){
-		return z2;
+		return rangez2;
 	}
 	
-	public static Town getLastTown(Player player){
-		String town = Config.getString("last-town." + player.getUniqueId());
-		return fromString(town);
-		
+	public Location getSpawnLocation(){
+		return new Location(Var.WORLD, x, y, z);
 	}
 	
 	public static Town fromString(String text) throws IllegalArgumentException {

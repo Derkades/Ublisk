@@ -20,7 +20,10 @@ public enum DataFile {
 	XP("xp"),
 	VOTING("voting"),
 	MONEY("money"),
-	LAST_PLAYED("last-played");
+	LAST_PLAYED("last-played"),
+	PERMISSIONS("permissions"),
+	MYSQL("mysql"),
+	TOWN("town");
 	
 	private File file;
 	

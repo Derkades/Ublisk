@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.mob;
+package com.robinmc.ublisk.mob.listeners;
 
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
@@ -10,6 +10,8 @@ import org.bukkit.event.entity.EntityDeathEvent;
 
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Tracker;
+import com.robinmc.ublisk.mob.Mob;
+import com.robinmc.ublisk.mob.MobDrop;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.logging.LogLevel;

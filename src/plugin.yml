@@ -38,6 +38,8 @@ commands:
         usage: </command>
     guild:
         aliases: [guilds, g]
+    pack:
+        aliases: [resources, resource, resourcepack, texture, textures, texturepack]
     voterestart:
         aliases: [voteforrestart, restart]
         

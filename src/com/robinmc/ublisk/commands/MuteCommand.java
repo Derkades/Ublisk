@@ -43,15 +43,15 @@ public class MuteCommand implements CommandExecutor {
 			UUID uuid = target.getUniqueId();
 			String targetName = target.getName();
 			String playerName = player.getName();
-			if (HashMaps.isMuted.get(uuid)){
+			if (HashMaps.IS_MUTED.get(uuid)){
 				player.sendMessage(Message.Complicated.Commands.Mute.unMutedOther(targetName));
 				target.sendMessage(Message.Complicated.Commands.Mute.unMuted(playerName));
-				HashMaps.isMuted.put(uuid, false);
+				HashMaps.IS_MUTED.put(uuid, false);
 				return true;
 			} else {
 				player.sendMessage(Message.Complicated.Commands.Mute.mutedOther(targetName));
 				target.sendMessage(Message.Complicated.Commands.Mute.muted(playerName));
-				HashMaps.isMuted.put(uuid, true);
+				HashMaps.IS_MUTED.put(uuid, true);
 				return true;
 			}
 		} else if (args.length == 2 && args[1].equalsIgnoreCase("soft")){
@@ -67,15 +67,15 @@ public class MuteCommand implements CommandExecutor {
 			UUID uuid = target.getUniqueId();
 			String targetName = target.getName();
 			String playerName = player.getName();
-			if (HashMaps.isSoftMuted.get(uuid)){
+			if (HashMaps.IS_SOFT_MUTED.get(uuid)){
 				player.sendMessage(Message.Complicated.Commands.Mute.unSoftMutedOther(targetName));
 				target.sendMessage(Message.Complicated.Commands.Mute.unSoftMuted(playerName));
-				HashMaps.isMuted.put(uuid, false);
+				HashMaps.IS_MUTED.put(uuid, false);
 				return true;
 			} else {
 				player.sendMessage(Message.Complicated.Commands.Mute.softMutedOther(targetName));
 				target.sendMessage(Message.Complicated.Commands.Mute.softMuted(playerName));
-				HashMaps.isMuted.put(uuid, true);
+				HashMaps.IS_MUTED.put(uuid, true);
 				return true;
 			}
 		} else {

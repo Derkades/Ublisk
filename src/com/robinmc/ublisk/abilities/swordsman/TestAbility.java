@@ -18,7 +18,7 @@ import net.minecraft.server.v1_10_R1.Entity;
 import net.minecraft.server.v1_10_R1.EntityLiving;
 import net.minecraft.server.v1_10_R1.NBTTagCompound;
 
-public class TestAbility implements AbilityExecutor {
+public class TestAbility extends AbilityExecutor {
 
 	@Override
 	public void doAbility(final UPlayer player) {
@@ -53,6 +53,11 @@ public class TestAbility implements AbilityExecutor {
                 }
 			}
 		}.runTaskTimer(Main.getInstance(), 0, 1);
+	}
+
+	@Override
+	public int getCooldown() {
+		return 60;
 	}
 
 }

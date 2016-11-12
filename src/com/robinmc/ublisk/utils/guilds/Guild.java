@@ -39,18 +39,18 @@ public class Guild {
 	private YamlConfiguration config;
 	
 	private void openConfig(){
-		Logger.log(LogLevel.DEBUG, "Initialize config");
+		//Logger.log(LogLevel.DEBUG, "Initialize config");
 		if (getFile().exists()){
 			config = YamlConfiguration.loadConfiguration(getFile());
-			Logger.log(LogLevel.DEBUG, "Load existing config");
+			//Logger.log(LogLevel.DEBUG, "Load existing config");
 		} else {
 			config = new YamlConfiguration();
-			Logger.log(LogLevel.DEBUG, "Create new config");
+			//Logger.log(LogLevel.DEBUG, "Create new config");
 		}
 	}
 	
 	private void closeConfig(){
-		Logger.log(LogLevel.DEBUG, "Close config");
+		//Logger.log(LogLevel.DEBUG, "Close config");
 		try {
 			config.save(getFile());
 		} catch (IOException e) {
@@ -61,47 +61,47 @@ public class Guild {
 	}
 	
 	public void addPlayer(UPlayer player){
-		Logger.log(LogLevel.DEBUG, "Add player");
+		//Logger.log(LogLevel.DEBUG, "Add player");
 		openConfig();
 		if (config.contains("players") && config.isSet("players")){
-			Logger.log(LogLevel.DEBUG, "Config contains list");
+			//Logger.log(LogLevel.DEBUG, "Config contains list");
 			List<String> list = config.getStringList("players");		
 			list.add(player.getUniqueId().toString());
 			Logger.log(LogLevel.DEBUG, "List: " + list);
 			config.set("players", list);
 		} else {
-			Logger.log(LogLevel.DEBUG, "Config does not contain list");
+			//Logger.log(LogLevel.DEBUG, "Config does not contain list");
 			List<String> list = new ArrayList<String>();
 			list.add(player.getUniqueId().toString());
-			Logger.log(LogLevel.DEBUG, "List: " + list);
+			//Logger.log(LogLevel.DEBUG, "List: " + list);
 			config.set("players", list);
 		}
 		closeConfig();
 	}
 	
 	public boolean hasPlayer(UPlayer player){
-		Logger.log(LogLevel.DEBUG, "Has player?");
+		//Logger.log(LogLevel.DEBUG, "Has player?");
 		openConfig();
 		boolean bool = config.getStringList("players").contains(player.getUniqueId().toString());
-		Logger.log(LogLevel.DEBUG, "Has player: " + bool);
+		//Logger.log(LogLevel.DEBUG, "Has player: " + bool);
 		closeConfig();
 		return bool;
 	}	
 	
 	public void removePlayer(UPlayer player) throws NotInGuildException {
-		Logger.log(LogLevel.DEBUG, "Remove player");
+		//Logger.log(LogLevel.DEBUG, "Remove player");
 		openConfig();
 		List<String> list = config.getStringList("players");
-		Logger.log(LogLevel.DEBUG, "List: " + list);
+		//Logger.log(LogLevel.DEBUG, "List: " + list);
 		if (!list.contains(player.getUniqueId().toString())){
-			Logger.log(LogLevel.DEBUG, "List does not contain player");
+			//Logger.log(LogLevel.DEBUG, "List does not contain player");
 			throw new NotInGuildException();
 		}
-		Logger.log(LogLevel.DEBUG, "List contains player");
+		//Logger.log(LogLevel.DEBUG, "List contains player");
 		list.remove(player.getUniqueId().toString());
 		//If list is empty, delete guild
 		if (list.isEmpty()){
-			Logger.log(LogLevel.DEBUG, "List is empty, guild will be deleted");
+			//Logger.log(LogLevel.DEBUG, "List is empty, guild will be deleted");
 			delete();
 			config = null;
 			return; //Return now, we do not want to save the config.
@@ -111,7 +111,7 @@ public class Guild {
 	}
 	
 	public void delete(){
-		Logger.log(LogLevel.DEBUG, "File delete");
+		//Logger.log(LogLevel.DEBUG, "File delete");
 		getFile().delete();
 	}
 	
@@ -205,7 +205,7 @@ public class Guild {
 	 * TEXT players (player1 name, player2 name, ...)
 	 */
 	public void syncInfoWithDatabase(){
-		// FIXME Syncing message
+		Logger.log(LogLevel.INFO, "Guilds", "Synchornising guild data...");
 		try {
 			MySQL.openConnection();
 			PreparedStatement sql = MySQL.prepareStatement("SELECT * FROM `guilds` WHERE name=?;");

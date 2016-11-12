@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.mob;
+package com.robinmc.ublisk.mob.listeners;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.robinmc.ublisk.utils.Config;
+import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.exception.ConnectionClosedException;
 
 public class MySQL {
@@ -17,11 +17,14 @@ public class MySQL {
 	}
 	
 	private static String getUser(){
-		return Config.getString("mysql.user");
+		//return Config.getString("mysql.user");
+		return DataFile.MYSQL.getString("user");
 	}
 
 	private static String getPassword(){
-		return Config.getString("mysql.password");
+		//return Config.getString("mysql.password");
+		//Admit it, you hoped that the password would be here in plain text. Nope!
+		return DataFile.MYSQL.getString("password");
 	}
 	
 	public synchronized static void openConnection(DatabaseConnection dbCon) throws SQLException {

@@ -10,7 +10,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.inventory.PlayerInventory;
-import org.inventivetalent.rpapi.ResourcePackAPI;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Loot;
@@ -21,7 +20,6 @@ import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.quest.QuestCharacter;
-import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Time;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -121,17 +119,17 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equalsIgnoreCase("cmd")){
 						UUID uuid = player.getUniqueId();
-						if (HashMaps.disableCommandLog.get(uuid)){
+						if (HashMaps.DISABLE_COMMAND_LOG.get(uuid)){
 							player.sendMessage("Enabled!");
-							HashMaps.disableCommandLog.put(uuid, false);
+							HashMaps.DISABLE_COMMAND_LOG.put(uuid, false);
 						} else {
 							player.sendMessage("Disabled!");
-							HashMaps.disableCommandLog.put(uuid, true);
+							HashMaps.DISABLE_COMMAND_LOG.put(uuid, true);
 						}
 						return true;
-					} else if (args[0].equals("reload")){
+					/*} else if (args[0].equals("reload")){
 						Config.reload();
-						return true;
+						return true;*/
 					} else if (args[0].equals("loot")){
 						Loot.getRandomLoot().spawn();
 						return true;
@@ -235,7 +233,7 @@ public class Debug implements CommandExecutor {
 						Ability.TEST.doAbility(player);
 						return true;
 					} else if (args[0].equals("pack")){
-						ResourcePackAPI.setResourcepack(player.getPlayer(), Var.PACK_URL);
+						player.sendMessage("This command is deprecated. Please use /pack instead.");
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());

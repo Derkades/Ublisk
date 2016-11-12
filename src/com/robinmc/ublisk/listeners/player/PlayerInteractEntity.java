@@ -58,11 +58,11 @@ public class PlayerInteractEntity implements Listener {
 		}
 		
 		if (entity instanceof Player && player.isSneaking()){
-			if (HashMaps.cooldownNpc.get(player.getUniqueId())){
+			if (HashMaps.COOLDOWN_NPC.get(player.getUniqueId())){
 				return;
 			}
 			
-			HashMaps.cooldownNpc.put(player.getPlayer().getUniqueId(), true);
+			HashMaps.COOLDOWN_NPC.put(player.getPlayer().getUniqueId(), true);
 			UPlayer target = UPlayer.get(entity);
 			
 			BaseComponent[] stats = new ComponentBuilder("Click here to view statistics")
@@ -95,7 +95,7 @@ public class PlayerInteractEntity implements Listener {
 			
 			Scheduler.runTaskLater(5, new Runnable(){
 				public void run(){
-					HashMaps.cooldownNpc.put(player.getPlayer().getUniqueId(), false);
+					HashMaps.COOLDOWN_NPC.put(player.getPlayer().getUniqueId(), false);
 				}
 			});
 		}

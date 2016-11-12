@@ -20,14 +20,15 @@ import com.robinmc.ublisk.Music;
 import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.iconmenus.ClassMenu;
-import com.robinmc.ublisk.utils.Config;
 import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
+import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.inventory.item.Item;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
+import com.robinmc.ublisk.utils.settings.Setting;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -35,7 +36,8 @@ public class PlayerJoin implements Listener {
 	
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event){
-		final Player player = event.getPlayer();
+		final Player player = event.getPlayer(); // TODO Switch to UPlayer
+		UPlayer uPlayer = new UPlayer(player);
 		String pn = player.getName();
 		UUID uuid = player.getUniqueId();
 		
@@ -56,6 +58,7 @@ public class PlayerJoin implements Listener {
 		
 		HashMaps.addPlayerToMaps(player);
 		
+		/*
 		if (Main.getInstance().getConfig().isSet("settings.music." + uuid)){
 	        if (Config.getBoolean("settings.music." + uuid)){
 	        	String town = Config.getString("last-town." + uuid);
@@ -65,6 +68,16 @@ public class PlayerJoin implements Listener {
 			  String town = Config.getString("last-town." + uuid);
 			  Config.set("settings.music." + uuid, true);
 			  Music.playSong(player, town);
+		}
+		*/
+		
+		try {
+			if (uPlayer.getSetting(Setting.PLAY_MUSIC)){
+				Music.playSong(player, uPlayer.getLastTown().getName().toLowerCase());
+			}
+		} catch (NotSetException e) {
+			Music.playSong(player, uPlayer.getLastTown().getName().toLowerCase());
+			uPlayer.setSetting(Setting.PLAY_MUSIC, true);
 		}
 		
 		Tracker.JOINED.add(player);
@@ -83,7 +96,6 @@ public class PlayerJoin implements Listener {
         Exp.refresh(player);
         
         //If the player is not a Builder, Moderator or Owner disable builder mode to prevent griefing
-        UPlayer uPlayer = new UPlayer(player);
         PermissionGroup group = uPlayer.getGroup();
         if (!(	group == PermissionGroup.BUILDER ||
         		group == PermissionGroup.MODERATOR ||

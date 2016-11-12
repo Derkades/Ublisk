@@ -18,7 +18,7 @@ import net.minecraft.server.v1_10_R1.Entity;
 import net.minecraft.server.v1_10_R1.EntityLiving;
 import net.minecraft.server.v1_10_R1.NBTTagCompound;
 
-public class Meteorite implements AbilityExecutor {
+public class Meteorite extends AbilityExecutor {
 
 	@Override
 	public void doAbility(final UPlayer player) {
@@ -34,11 +34,9 @@ public class Meteorite implements AbilityExecutor {
                 
 				double x, y, z;
 				
-				double m, pi;
-				
-				pi = Math.PI;
+				double m;
 	
-				m = t / pi;
+				m = t / 3.14;
 				
                 x = direction.getX() * m;
                 y = Math.sqrt( -1 * Math.pow(t-33, 3) );
@@ -53,7 +51,6 @@ public class Meteorite implements AbilityExecutor {
                 
                 if (loc.getY() < (player.getLocation().getY() + 1.5) ){
                     this.cancel();
-                    //loc.add(x,y,z);
 
                     Creeper creeper = Var.WORLD.spawn(loc, Creeper.class);
                     
@@ -70,6 +67,11 @@ public class Meteorite implements AbilityExecutor {
                loc.subtract(x,y,z);
 			}
 		}.runTaskTimer(Main.getInstance(), 0, 1);
+	}
+
+	@Override
+	public int getCooldown() {
+		return 10;
 	}
 
 }

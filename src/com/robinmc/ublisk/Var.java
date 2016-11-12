@@ -1,6 +1,7 @@
 package com.robinmc.ublisk;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -11,22 +12,22 @@ import org.bukkit.World;
 public class Var {
 	
 	/**
-	 * Ublisk main world
+	 * Ublisk main world. Do not change unless you know what you are doing.
 	 */
 	public static final World WORLD = Bukkit.getWorld("ublisk");
 	
 	/**
-	 * Direct URL to resource pack zip
+	 * Direct URL to resource pack zip. Do not change unless you know what you are doing.
 	 */
-	public static final String PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures10.zip";
+	public static final String PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures29.zip";
 	
 	/**
-	 * How long double XP will last for. Please do not change this value until it's confirmed that it works
+	 * How long double XP will last for. Do not change this value until it's confirmed that it works
 	 */
 	public static final int DOUBLE_XP_TIME = 60; // XXX: Confirm that this actually works
 	
 	/**
-	 * <b>The number all XP is divided by.</b>
+	 * <b>The integer all XP is divided by.</b>
 	 * <br><br>
 	 * Example (if XP_DIVISION is 5): 
 	 * <br>
@@ -99,8 +100,26 @@ public class Var {
 			Material.LEAVES_2
 			);
 	
+	/**
+	 * Locations of trapdoors players should be able to open
+	 */
 	public static final List<Location> SAFE_TRAPDOORS = Arrays.asList(
 			new Location(Var.WORLD, -23, 74, 3)
+			);
+	
+	/**
+	 * Number of seconds after which a player will be automatically set as AFK.
+	 */
+	public static final int AFK_TIME = 60;
+	
+	/**
+	 * Number of half harts a player will have at a level. For example,
+	 * 5, 6
+	 * Will mean that the player has 6 / 2 = 3 hearts at level 5.
+	 */
+	public static final HashMap<Integer, Integer> LEVEL_HEALTH = HashMaps.build(
+			1, 3,
+			2, 4
 			);
 
 }

@@ -33,15 +33,7 @@ public class PlayerCommandPreprocess implements Listener {
 		
 		if (cmd.length() >= 4){
 			if (cmd.substring(0, 4).equalsIgnoreCase("/op ")){
-				sender.sendMessage(ChatColor.AQUA + "How about you don't!");
-				event.setCancelled(true);
-				return;
-			}
-		}
-		
-		if (cmd.length() >= 8){
-			if (cmd.substring(0, 8).equalsIgnoreCase("/reload ")){
-				sender.sendMessage(ChatColor.AQUA + "How about you don't!");
+				sender.sendMessage(ChatColor.AQUA + "oygnuonaiysgdcoauisgcdoauighscdoauismh");
 				event.setCancelled(true);
 				return;
 			}
@@ -57,10 +49,16 @@ public class PlayerCommandPreprocess implements Listener {
 			return;
 		}
 		
+		if (cmd.contains("gamerule")){
+			sender.sendMessage("no no no.");
+			event.setCancelled(true);
+			return;
+		}
+		
 		for (UPlayer player: UPlayer.getOnlinePlayers()){
 			if (player.hasPermission(Permission.COMMANDLOG)){
 				if (!(player == sender)){
-					if (!(HashMaps.disableCommandLog.get(player.getUniqueId()))){
+					if (!(HashMaps.DISABLE_COMMAND_LOG.get(player.getUniqueId()))){
 						player.sendMessage(Message.Complicated.commandLog(pn, cmd));
 					}
 				}

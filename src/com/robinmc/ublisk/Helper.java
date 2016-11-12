@@ -17,9 +17,9 @@ public enum Helper {
 	PARKER("MrParkerl11", "https://goo.gl/WFW9zm", "Building"),
 	SANDERP("SenpaiSander (Sander)", "https://www.youtube.com/channel/UC7gVEC704565MNzCB6OS3Ew", "Has done a lot of work for Ublisk! Building, quests, weapons, textures"),
 	SYDAN("SirSydan (Sydan)", "https://www.youtube.com/channel/UCFl5VN9R5uEszEoLrYgTOoA", "Music"),
-	XISUMA("xisumavoid", "[LINK]", "Textures (stained glass, end rods, dark oak wood)"), // TODO Youtube link
-	BREECKO("Breecko (Brecht)", "[LINK]", "Building, being awesome and motivating :D"), // TODO Youtube link
-	SANDER_GAMING("Sander_Gaming (Sander)", "[LINK]", "Building, textures, being the great person he is :)"), // TODO Youtube link
+	XISUMA("xisumavoid", "https://www.youtube.com/user/xisumavoid", "Textures (stained glass, end rods, dark oak wood)"),
+	BREECKO("Breecko (Brecht)", "https://www.youtube.com/channel/UC4Slc9O6dLsia_fWrgN8Q9Q", "Building, being awesome and motivating :D"),
+	SANDER_GAMING("Sander_Gaming (Sander)", "https://www.youtube.com/channel/UCW-jqEMRdjgimFtarWZGGsg", "Building, textures, being the great person he is :)"),
 	LARISSA("LarissaMC (Larissa)", "No link provided", "Building"),
 	JERRIJN("Jerrijn (Jerrijn)", "No link provided", "Ideas (though sometimes too complicated for me to code)"),
 	JARICK("EpicC4Build (Jarick)", "No link provided", "Building");

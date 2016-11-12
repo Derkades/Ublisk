@@ -1,14 +1,14 @@
 package com.robinmc.ublisk.listeners.player;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 import com.robinmc.ublisk.Music;
-import com.robinmc.ublisk.utils.Config;
+import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.settings.Setting;
 import com.xxmicloxx.NoteBlockAPI.SongEndEvent;
 
 public class SongEnd implements Listener {
@@ -17,18 +17,14 @@ public class SongEnd implements Listener {
 	public void musicStopped(SongEndEvent event){
 		try {
 		    for (String playername : event.getSongPlayer().getPlayerList()){
-				Player player = Bukkit.getServer().getPlayer(playername);
-		        try {
-		        	if (Config.getBoolean("settings.music." + player.getUniqueId())){
-		        		String town = Config.getString("last-town." + player.getUniqueId());
-		 		        Music.playSong(player, town);
-		        	} else {
-		        		return;
-		        	}
-		        } catch (Exception e){
-		        	 String town = Config.getString("last-town." + player.getUniqueId());
-				     Music.playSong(player, town);
-		        }	       
+				UPlayer player = UPlayer.get(playername);
+				try {
+					if (player.getSetting(Setting.PLAY_MUSIC)){
+						Music.playSong(player.getPlayer(), player.getLastTown().getName().toLowerCase());
+					}
+				} catch (NotSetException e){
+					Music.playSong(player.getPlayer(), player.getLastTown().getName().toLowerCase());
+				}
 		    }
 		} catch (Exception e) {
 			Logger.log(LogLevel.WARNING, "Music", "Tried to play new song but player has already logged out");

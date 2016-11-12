@@ -20,13 +20,13 @@ public class Afk implements CommandExecutor {
 			UUID uuid = player.getUniqueId();
 			String name = player.getName();
 			
-			if (HashMaps.afk.get(uuid)){ //If player is already afk
+			if (HashMaps.AFK.get(uuid)){ //If player is already afk
 				Bukkit.broadcastMessage(Message.Complicated.Commands.noLongerAfk(name)); //Set as no longer afk
-				HashMaps.afk.put(uuid, false);
+				HashMaps.AFK.put(uuid, false);
 				return true;
 			} else { //If player is not AFK
 				Bukkit.broadcastMessage(Message.Complicated.Commands.nowAfk(name)); //Set as afk
-				HashMaps.afk.put(uuid, true);
+				HashMaps.AFK.put(uuid, true);
 				return true;
 			}
 		} else {

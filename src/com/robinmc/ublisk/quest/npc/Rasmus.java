@@ -3,6 +3,7 @@ package com.robinmc.ublisk.quest.npc;
 import org.bukkit.Material;
 import org.bukkit.entity.Villager;
 
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.quest.QuestCharacterClass;
@@ -28,7 +29,7 @@ public class Rasmus implements QuestCharacterClass {
 		BetterInventory inv = qp.getInventory();
 		
 		if (!qp.hasRequiredLevel()){
-			//Message
+			qp.sendMessage(Message.QUEST_LOW_LEVEL);
 			return;
 		}
 		

@@ -7,32 +7,27 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
 import com.robinmc.ublisk.utils.DataFile;
-import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
 
 public class QuestParticipant {
 	
-	private Player player;
+	private UPlayer player;
 	private Quest quest;
 	private QuestCharacter npc;
 	
-	private UPlayer uPlayer;
-	
 	public QuestParticipant(Player player, Quest quest, QuestCharacter npc){
-		this.player = player;
+		this.player = UPlayer.get(player);
 		this.quest = quest;
 		this.npc = npc;
-		
-		this.uPlayer = UPlayer.get(player);
 	}
 	
 	public Player getBukkitPlayer(){
-		return player;
+		return player.getPlayer();
 	}
 	
 	public UPlayer getPlayer(){
-		return uPlayer;
+		return player;
 	}
 	
 	public Quest getQuest(){
@@ -44,7 +39,7 @@ public class QuestParticipant {
 	}
 	
 	public BetterInventory getInventory(){
-		return new BetterInventory(player);
+		return player.getInventory();
 	}
 	
 	public void saveProgress(QuestProgress data){
@@ -68,7 +63,7 @@ public class QuestParticipant {
 	}
 	
 	public boolean hasRequiredLevel(){
-		int level = Exp.getLevel(player);
+		int level = player.getLevel();
 		int levelRequired = quest.getLevel();
 		return level >= levelRequired;
 	}
@@ -77,8 +72,12 @@ public class QuestParticipant {
 		player.sendMessage(Message.Complicated.Quests.npcMsg(npc.getName(), msg));
 	}
 	
+	public void sendMessage(Message message){
+		player.sendMessage(message.get());
+	}
+	
 	public void giveRewardExp(){
-		Exp.add(player, quest.getRewardExp());
+		player.addXP(quest.getRewardExp());
 	}
 	
 	public void sendCompletedMessage(){
@@ -90,15 +89,15 @@ public class QuestParticipant {
 	}
 	
 	public Town getLastTown(){
-		return Town.getLastTown(player);
+		return player.getLastTown();
 	}
 	
 	public PlayerInventory getBukkitInventory(){
-		return player.getInventory();
+		return player.getInventory().getBukkitInventory();
 	}
 	
 	public void openMenu(NPCMenu menu){
-		menu.open(uPlayer);
+		menu.open(player);
 	}
 
 }

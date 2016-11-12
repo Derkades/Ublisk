@@ -1,21 +1,8 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.commands;
 
 import org.bukkit.command.CommandExecutor;
 
-import com.robinmc.ublisk.commands.Afk;
-import com.robinmc.ublisk.commands.Builder;
-import com.robinmc.ublisk.commands.ClassCommand;
-import com.robinmc.ublisk.commands.Contact;
-import com.robinmc.ublisk.commands.Credits;
-import com.robinmc.ublisk.commands.Debug;
-import com.robinmc.ublisk.commands.FriendsCommand;
-import com.robinmc.ublisk.commands.GuildCommand;
-import com.robinmc.ublisk.commands.Help;
-import com.robinmc.ublisk.commands.Menu;
-import com.robinmc.ublisk.commands.MsgCommand;
-import com.robinmc.ublisk.commands.MuteCommand;
-import com.robinmc.ublisk.commands.Report;
-import com.robinmc.ublisk.commands.VoteRestartCommand;
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 
@@ -34,6 +21,7 @@ public enum Command {
 	MSG("msg", new MsgCommand()),
 	MUTE("mute", new MuteCommand()),
 	REPORT("report", new Report()),
+	RESOURCE_PACK("pack", new ResourcePackCommand()),
 	VOTE_RESTART("voterestart", new VoteRestartCommand());
 	
 	private String cmd;

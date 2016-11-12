@@ -34,10 +34,11 @@ public enum Message {
 	MUSIC_DISABLED(prefix("Music") + "Music has been disabled. After this song no more songs will play."),
 	MUSIC_ENABLED(prefix("Music") + "Music has been enabled"),
 	
-	PACK_DECLINED(RED + "Please enable server resource packs and join again"),
-	PACK_FAILED_DOWNLOAD(prefix() + RED + "We failed in sending you our resource pack. You'll have to play without. Please report this issue at the forums."),
-	PACK_LOADED(prefix() + "The resource pack has been successfully loaded"),
+	PACK_DECLINED(RED + "You have declined the automatic installation of the server resource pack. We recommend installing our resource pack for the best experience. For information on how to download our resource pack, go to http://ublisk.robinmc.com/pack/."),
+	PACK_FAILED_DOWNLOAD(prefix() + RED + "We failed in sending you our resource pack. You'll have to play without. Please report this issue."),
+	PACK_LOADED(prefix() + "The resource pack has been successfully loaded."),
 	PACK_SENDING(prefix() + "Sending you our resource pack..."),
+	PACK_CHECK(prefix() + "If you see a green object, the pack is enabled. If you see a normal guardian, you do not have the resource pack installed. If you see neither, particles are turned off."),
 	
 	CLASS_COOLDOWN(prefix() + "You have to wait 15 minutes before you can change class again"),
 	CLASS_WRONG_WEAPON(prefix() + "This weapon is not for your class"),
@@ -54,6 +55,8 @@ public enum Message {
 	CANT_EAT(prefix() + RED + "Eating food is not allowed on this server. Please use a recycler to get rid of the item."),
 	
 	ENTITIES_REMOVED(prefix() + YELLOW + "All mobs and items have been cleared!"),
+	
+	QUEST_LOW_LEVEL(prefix() + "You have not yet reached the right level needed to start this quest. Please come back later."),
 	
 	DOUBLE_XP_COOLDOWN(prefix() + RED + "Hi there, person who tried to activate double xp, there's a cooldown to prevent people like you from abusing the system!"),
 	
@@ -106,7 +109,7 @@ public enum Message {
 		}
 		
 		public static String lootSpawned(int x, int y, int z){
-			return prefix("Loot") + "A loot chest has been spawned at " + GOLD + "" + BOLD + x + " " + y + " " + z + RESET + YELLOW + "!";
+			return prefix("Loot") + "A loot chest dropped at " + GOLD + "" + BOLD + x + " " + y + " " + z + RESET + YELLOW + "!";
 		}
 		
 		public static String serverRestartingWarningSeconds(int seconds){

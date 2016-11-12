@@ -26,14 +26,14 @@ public class AsyncPlayerChat implements Listener {
 		
 		UPlayer player = UPlayer.get(event.getPlayer());
 		
-		if (HashMaps.isMuted.get(player.getUniqueId())){
+		if (HashMaps.IS_MUTED.get(player.getUniqueId())){
 			player.sendMessage(Message.CANT_CHAT_MUTED.get());
 			event.setCancelled(true);
 			return;
 		}
 		
 		ChatColor chatColor = ChatColor.WHITE;
-		if (HashMaps.isSoftMuted.get(player.getUniqueId())){
+		if (HashMaps.IS_SOFT_MUTED.get(player.getUniqueId())){
 			chatColor = ChatColor.GRAY;
 		}
 		

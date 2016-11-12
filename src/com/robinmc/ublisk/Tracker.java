@@ -23,13 +23,13 @@ public enum Tracker {
 	 * 'name' with type TEXT
 	 */
 	
-	RIGHT_CLICKED(HashMaps.rightClicked, "right_click"),
-	LEFT_CLICKED(HashMaps.leftClicked, "left_click"),
-	JOINED(HashMaps.loggedIn, "login_count"),
-	MOB_KILLS(HashMaps.mobKills, "mob_kills"),
-	LOOT_FOUND(HashMaps.lootFound, "loot_found"),
-	CHAT_MESSAGES(HashMaps.chatMessages, "chat_messages"),
-	VOTING_BOXES_OPENED(HashMaps.votingBoxes, "voting_boxes");
+	RIGHT_CLICKED(HashMaps.TRACKER_RIGHT_CLICKED, "right_click"),
+	LEFT_CLICKED(HashMaps.TRACKER_LEFT_CLICKED, "left_click"),
+	JOINED(HashMaps.TRACKER_JOIN_COUNT, "login_count"),
+	MOB_KILLS(HashMaps.TRACKER_MOB_KILLS, "mob_kills"),
+	LOOT_FOUND(HashMaps.TRACKER_LOOT_FOUND, "loot_found"),
+	CHAT_MESSAGES(HashMaps.TRACKER_CHAT_MESSAGES, "chat_messages"),
+	VOTING_BOXES_OPENED(HashMaps.TRACKER_VOTING_BOXES_OPENED, "voting_boxes");
 	
 	private Map<UUID, Integer> map;
 	private String table;

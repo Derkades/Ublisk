@@ -3,16 +3,17 @@ package com.robinmc.ublisk.task;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.PlayerInfo;
+import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.guilds.Guilds;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
-public class UpdateInfo extends BukkitRunnable {
+public class SyncTrackersAndInfo extends BukkitRunnable {
 
 	public void run(){
 		int delay = 0;
 		for (final UPlayer player : UPlayer.getOnlinePlayers()){
-			delay = delay + 14*20;
+			delay = delay + 12*20;
 				
 			player.refreshLastSeenDate();
 			
@@ -51,14 +52,21 @@ public class UpdateInfo extends BukkitRunnable {
 					});
 				}
 			});
-			
-			Scheduler.runTaskLater(12*20, new Runnable(){
-				public void run(){
-					//Sync guilds
-					Guilds.syncAllGuildsWithDatabase();
-				}
-			});
 		}
+		
+		Scheduler.runTaskLater(delay + 12*20, new Runnable(){
+			public void run(){
+				//Sync guilds
+				Guilds.syncAllGuildsWithDatabase();
+			}
+		});
+		
+		Scheduler.runTaskLater(14*20, new Runnable(){
+			public void run(){
+				//Sync trackers
+				Tracker.syncAll();
+			}
+		});
 	}
 
 }

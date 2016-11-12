@@ -16,11 +16,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Player.Spigot;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.robinmc.ublisk.Clazz;
@@ -37,10 +40,12 @@ import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
+import com.robinmc.ublisk.task.AfkTimer;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.NotEnoughManaException;
+import com.robinmc.ublisk.utils.exception.NotInATownException;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
@@ -127,7 +132,8 @@ public class UPlayer {
 	
 	public PermissionGroup getGroup(){
 		try {
-			return PermissionGroup.fromString(Config.getString("groups." + getUniqueId()));
+			//return PermissionGroup.fromString(Config.getString("groups." + getUniqueId()));
+			return PermissionGroup.fromString(DataFile.PERMISSIONS.getString("groups." + this.getUniqueId()));
 		} catch (GroupNotFoundException e) {
 			Logger.log(LogLevel.WARNING, "Permissions", "Could not get group of " + player.getName());
 			return PermissionGroup.DEFAULT;
@@ -135,7 +141,8 @@ public class UPlayer {
 	}
 	
 	public void setGroup(PermissionGroup group){
-		Config.set("groups." + getUniqueId(), group.getName().toLowerCase());
+		//Config.set("groups." + getUniqueId(), group.getName().toLowerCase());
+		DataFile.PERMISSIONS.set("groups." + getUniqueId(), group.getName().toLowerCase());
 	}
 	
 	public boolean hasPermission(Permission perm){
@@ -225,7 +232,11 @@ public class UPlayer {
 	}
 	
 	public Town getLastTown(){
-		return Town.getLastTown(player);
+		String s = DataFile.TOWN.getString("last-town." + player.getUniqueId());
+		if (s == null){
+			return Town.INTRODUCTION;
+		}
+		return Town.fromString(s);
 	}
 	
 	public void syncTracker(Tracker tracker){
@@ -271,11 +282,11 @@ public class UPlayer {
 	}
 	
 	/**
-	 * Bans a player for a given amount of time
+	 * Bans a player for a given amounqt of time
 	 * @param player
 	 * @param time Time in seconds
 	 */
-	@SuppressWarnings("deprecation")
+	@Deprecated
 	public void tempBan(final int time){
 		player.setBanned(true);
 		Logger.log(LogLevel.WARNING, "Banning", player.getName() + " has been banned for " + time + " seconds.");
@@ -287,7 +298,7 @@ public class UPlayer {
 		}, time * 20);
 	}
 	
-	public boolean getSetting(Setting setting) throws NotSetException{
+	public boolean getSetting(Setting setting) throws NotSetException {
 		return setting.get(player);
 	}
 	
@@ -295,7 +306,7 @@ public class UPlayer {
 		setting.put(player, bool);
 	}
 	
-	public boolean getStaffSetting(StaffSetting setting) throws NotSetException{
+	public boolean getStaffSetting(StaffSetting setting) throws NotSetException {
 		return setting.get(player);
 	}
 	
@@ -321,9 +332,9 @@ public class UPlayer {
 	}
 	
 	public boolean isInGuild(){
-		Logger.log(LogLevel.DEBUG, "Is in guild?");
+		//Logger.log(LogLevel.DEBUG, "Is in guild?");
 		for (Guild guild : Guilds.getGuilds()){
-			Logger.log(LogLevel.DEBUG, "Guilds for loop: " + guild.getName() + ". Contains player? " + guild.hasPlayer(this));
+			//Logger.log(LogLevel.DEBUG, "Guilds for loop: " + guild.getName() + ". Contains player? " + guild.hasPlayer(this));
 			if (guild.hasPlayer(this)){
 				return true;
 			}
@@ -333,7 +344,7 @@ public class UPlayer {
 	
 	public Guild getGuild() throws NotInGuildException {
 		for (Guild guild : Guilds.getGuilds()){
-			Logger.log(LogLevel.DEBUG, "Guilds for loop: " + guild.getName() + ". Contains player? " + guild.hasPlayer(this));
+			//Logger.log(LogLevel.DEBUG, "Guilds for loop: " + guild.getName() + ". Contains player? " + guild.hasPlayer(this));
 			if (guild.hasPlayer(this)){
 				return guild;
 			}
@@ -352,15 +363,15 @@ public class UPlayer {
 	}
 	
 	public void setLastSender(UPlayer player){
-		HashMaps.lastMessageSender.put(this.player, player.getPlayer());
+		HashMaps.LAST_MESSAGE_SENDER.put(this.player, player.getPlayer());
 	}
 	
 	public UPlayer getLastSender() throws LastSenderUnknownException{
-		if (!HashMaps.lastMessageSender.containsKey(player)){
+		if (!HashMaps.LAST_MESSAGE_SENDER.containsKey(player)){
 			throw new LastSenderUnknownException();
 		}
 		
-		return UPlayer.get(HashMaps.lastMessageSender.get(player));
+		return UPlayer.get(HashMaps.LAST_MESSAGE_SENDER.get(player));
 	}
 	
 	public void sendPrivateMessage(UPlayer sender, String msg){
@@ -471,6 +482,95 @@ public class UPlayer {
 		setMana(getMana() - mana);
 	}
 	
+	public void setAfk(boolean isAfk){
+		HashMaps.AFK.put(this.getUniqueId(), isAfk);
+		if (isAfk){
+			Bukkit.broadcastMessage(Message.Complicated.Commands.nowAfk(getName()));
+		} else {
+			Bukkit.broadcastMessage(Message.Complicated.Commands.noLongerAfk(getName()));
+		}
+	}
+	
+	public boolean isAfk(){
+		return HashMaps.AFK.get(this.getUniqueId());
+	}
+	
+	public void resetAfkTimer(){
+		AfkTimer.TIMER.put(this.getUniqueId(), 0);
+	}
+	
+	/**
+	 * Please avoid using this, unless you are sure that you need this instead of UPlayer#getLastTown()
+	 * @throws NotInATownException If the player is not in a town
+	 */
+	public Town getCurrentTown() throws NotInATownException {
+		for (Town town: Town.values()){
+			Location loc = player.getLocation();
+			if (	loc.getX() < town.lessX() &&
+					loc.getX() > town.moreX() &&
+					loc.getZ() < town.lessZ() &&
+					loc.getZ() > town.moreZ()){
+				return town;
+			}
+		}
+		throw new NotInATownException();
+	}
+	
+	/**
+	 * getLastTown()
+	 */
+	public Town getTown(){
+		return this.getLastTown();
+	}
+	
+	public void setLastTown(Town town){
+		//Config.set("last-town." + player.getUniqueId(), town.getName());
+		DataFile.TOWN.set("last-town." + player.getUniqueId(), town.getName());
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void sendTitle(String title, String subtitle){
+		player.sendTitle(title, subtitle);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void sendTitle(String title){
+		player.sendTitle(title, "");
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void sendSubTitle(String subtitle){
+		player.sendTitle("", subtitle);
+	}
+	
+	public boolean isDead(){
+		return player.isDead();
+	}
+	
+	public void setHealth(double health){
+		player.setHealth(health);
+	}
+	
+	public void setMaxHealth(double maxHealth){
+		player.setMaxHealth(maxHealth);
+	}
+	
+	public double getMaxHealth(){
+		return player.getMaxHealth();
+	}
+	
+	public int getCorrectMaxHealth(){
+		if (!Var.LEVEL_HEALTH.containsKey(this.getLevel())){
+			return 1;
+		} else {
+			return Var.LEVEL_HEALTH.get(this.getLevel());
+		}
+	}
+	
+	public Spigot spigot(){
+		return player.spigot();
+	}
+	
 	public static UPlayer[] getOnlinePlayers(){
 		List<UPlayer> list = new ArrayList<UPlayer>();
 		for (Player player : Bukkit.getOnlinePlayers()){
@@ -500,5 +600,9 @@ public class UPlayer {
 	public static UPlayer get(PlayerJoinEvent event){ return get(event.getPlayer()); }
 	
 	public static UPlayer get(PlayerInteractEvent event){ return get(event.getPlayer()); }
+	
+	public static UPlayer get(PlayerMoveEvent event){ return get(event.getPlayer()); }
+	
+	public static UPlayer get(PlayerDeathEvent event){ return get(event.getEntity()); }
 
 }

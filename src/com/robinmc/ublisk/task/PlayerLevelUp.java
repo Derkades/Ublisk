@@ -13,11 +13,11 @@ public class PlayerLevelUp extends BukkitRunnable {
 	public void run(){
 		for (Player player : Bukkit.getOnlinePlayers()){
 			int current = player.getLevel();
-			int last = HashMaps.lastLevel.get(player);
+			int last = HashMaps.PREVIOUS_LEVEL.get(player);
 			if (current > last){
 				Exp.levelUp(player);
 			}
-			HashMaps.lastLevel.put(player, current);
+			HashMaps.PREVIOUS_LEVEL.put(player, current);
 		}
 	}
 

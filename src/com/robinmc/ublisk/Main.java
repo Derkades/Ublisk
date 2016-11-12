@@ -3,9 +3,9 @@ package com.robinmc.ublisk;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.robinmc.ublisk.commands.Command;
+import com.robinmc.ublisk.listeners.Listeners;
 import com.robinmc.ublisk.mob.Mob;
-import com.robinmc.ublisk.utils.Config;
-import com.robinmc.ublisk.utils.Listeners;
 import com.robinmc.ublisk.utils.scheduler.Task;
 import com.robinmc.ublisk.utils.sql.MySQL;
 import com.robinmc.ublisk.utils.third_party.Lag;
@@ -27,7 +27,7 @@ public class Main extends JavaPlugin {
 		
 		for (Task task : Task.values()) task.start();
 		
-		Config.create();
+		//Config.create();
 		
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);
 		
