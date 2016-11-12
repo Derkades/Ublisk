@@ -10,9 +10,6 @@ import com.robinmc.ublisk.utils.sql.MySQL;
 
 public class Main extends JavaPlugin {
 	
-	// Todo area
-	// XXX /info [player] shows player info
-	
 	public static Main instance;
 	
 	@Override
