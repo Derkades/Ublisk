@@ -27,18 +27,9 @@ public class Main extends JavaPlugin {
 		
 		for (Task task : Task.values()) task.start();
 		
-		//Config.create();
-		
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);
 		
 		HashMaps.resetAllPlayers();
-		
-		/*
-		HashMaps.doublexp.put(HashMaps.placeHolder(), false);
-		HashMaps.doubleExpTime.put(HashMaps.placeHolder(), Var.DOUBLE_XP_TIME);
-		HashMaps.doubleExpCooldown.put(HashMaps.placeHolder(), false);
-		HashMaps.doubleExpBarActive.put(HashMaps.placeHolder(), false);
-		*/
 		
 		Mob.startMobSpawning();
 	}
