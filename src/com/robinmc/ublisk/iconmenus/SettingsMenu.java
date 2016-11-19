@@ -6,7 +6,6 @@ import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.exception.NotSetException;
-import com.robinmc.ublisk.utils.java.MiscUtils;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
@@ -36,7 +35,7 @@ public class SettingsMenu {
 			
 			try {
 				//If setting is set to true, set to false and if set to false, set to true
-				setting.put(player, MiscUtils.invertBoolean(setting.get(player)));
+				setting.put(player, !setting.get(player));
 				
 				String enabledDisabled;
 				if (setting.get(player)){

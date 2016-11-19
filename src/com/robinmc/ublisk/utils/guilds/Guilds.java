@@ -8,7 +8,7 @@ import java.util.Map;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.java.MiscUtils;
+import com.robinmc.ublisk.utils.java.FileUtils;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
 public class Guilds {
@@ -28,7 +28,7 @@ public class Guilds {
 		List<Guild> guilds = new ArrayList<Guild>();
 		
 		for (File file : directoryListing) {
-			String name = MiscUtils.getFileName(file);
+			String name = FileUtils.getFileName(file);
 			guilds.add(fromName(name));
 		}
 		
