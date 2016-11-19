@@ -13,12 +13,14 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Villager.Profession;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.mob.type.Chicken;
 import com.robinmc.ublisk.mob.type.Sheep;
 import com.robinmc.ublisk.mob.type.Zombie;
+import com.robinmc.ublisk.mob.type.ZombieVillager;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.java.Random;
 
@@ -65,13 +67,13 @@ public enum Mob {
 			new MobDrop(new ItemStack(Material.FEATHER), 30)),
 	RUINS_DWELLER(new MobArea(
 			new Radius(221, -23, 20)),
-			Zombie.VILLAGER_BROWN, 4, 10, 2, 7, 7, "Ruins Dweller", 10, GoldDrop.LEVEL3,
+			new ZombieVillager().withProfession(Profession.FARMER), 4, 10, 2, 7, 7, "Ruins Dweller", 10, GoldDrop.LEVEL3,
 			new MobDrop(new ItemStack(Material.ROTTEN_FLESH), 0, 2)),
 	ZOMBIE_LEVEL_3(new MobArea(
 			new Radius(160, 89, 100),
 			new Radius(214, -66, 60),
 			new Radius(111, 19, 50)),
-			Zombie.NORMAL, 3, 7, 0, 5, 50, "Zombie", 5, GoldDrop.LEVEL2);
+			new Zombie(), 3, 7, 0, 5, 50, "Zombie", 5, GoldDrop.LEVEL2);
 	
 	private Radius[] area;
 	private MobType type;

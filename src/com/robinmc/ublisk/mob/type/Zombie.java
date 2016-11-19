@@ -1,31 +1,17 @@
 package com.robinmc.ublisk.mob.type;
 
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftZombie;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftZombie;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 
 import com.robinmc.ublisk.mob.MobCode;
 import com.robinmc.ublisk.mob.MobType;
 
-import net.minecraft.server.v1_10_R1.EntityZombie;
-import net.minecraft.server.v1_10_R1.EnumZombieType;
+import net.minecraft.server.v1_11_R1.EntityZombie;
 
-public enum Zombie implements MobType {
-		
-	NORMAL(EnumZombieType.NORMAL),
-	HUSK(EnumZombieType.HUSK),
-	VILLAGER_BROWN(EnumZombieType.VILLAGER_FARMER),
-	VILLAGER_WHITE(EnumZombieType.VILLAGER_LIBRARIAN);
-	
-	// TODO All zombie villager types
+public class Zombie implements MobType {
 	
 	private boolean isBaby = false;
-	
-	private EnumZombieType type;
-	
-	Zombie(EnumZombieType type){
-		this.type = type;
-	}
 	
 	@Override
 	public EntityType getEntityType(){
@@ -40,7 +26,6 @@ public enum Zombie implements MobType {
 			public void mobCode(LivingEntity entity) {
 				CraftZombie craftZombie = (CraftZombie) entity;
 				EntityZombie zombie = craftZombie.getHandle();
-				zombie.setVillagerType(type);
 				zombie.setBaby(isBaby);
 			}
 			

@@ -11,8 +11,8 @@ import com.robinmc.ublisk.utils.inventory.item.Item;
 import com.robinmc.ublisk.utils.inventory.item.weapon.Weapon;
 import com.robinmc.ublisk.weapon.SwordsmanWeapon;
 
-import net.minecraft.server.v1_10_R1.NBTTagCompound;
-import net.minecraft.server.v1_10_R1.NBTTagList;
+import net.minecraft.server.v1_11_R1.NBTTagCompound;
+import net.minecraft.server.v1_11_R1.NBTTagList;
 
 public class BetterInventory {
 	

@@ -2,7 +2,7 @@ package com.robinmc.ublisk.abilities.swordsman;
 
 import org.bukkit.Effect;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftEntity;
 import org.bukkit.entity.Creeper;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -14,9 +14,9 @@ import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.abilities.AbilityExecutor;
 import com.robinmc.ublisk.utils.UPlayer;
 
-import net.minecraft.server.v1_10_R1.Entity;
-import net.minecraft.server.v1_10_R1.EntityLiving;
-import net.minecraft.server.v1_10_R1.NBTTagCompound;
+import net.minecraft.server.v1_11_R1.Entity;
+import net.minecraft.server.v1_11_R1.EntityLiving;
+import net.minecraft.server.v1_11_R1.NBTTagCompound;
 
 public class TestAbility extends AbilityExecutor {
 
@@ -26,6 +26,7 @@ public class TestAbility extends AbilityExecutor {
 			double t = 0;
 			Location loc = player.getLocation();
 			
+			@SuppressWarnings("deprecation")
 			public void run(){
 				t = t + 0.8;
                 Vector direction = loc.getDirection().normalize();
@@ -33,7 +34,7 @@ public class TestAbility extends AbilityExecutor {
                 double y = direction.getY() * t + 1.5;
                 double z = direction.getZ() * t;
                 loc.add(x,y,z);
-                Var.WORLD.spigot().playEffect(loc, Effect.FIREWORKS_SPARK, 3, 0, 0, 0, 0, 0, 1, 50);
+                Var.WORLD.spigot().playEffect(loc, Effect.FIREWORKS_SPARK, 3, 0, 0, 0, 0, 0, 1, 50); // XXX New method https://www.spigotmc.org/threads/deprecation-of-world-spigot-playeffect-alternatives.194307
                 loc.subtract(x,y,z);
                 
                 if (t > 20){

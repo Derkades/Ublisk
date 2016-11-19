@@ -2,7 +2,7 @@ package com.robinmc.ublisk.abilities.swordsman;
 
 import org.bukkit.Effect;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftEntity;
 import org.bukkit.entity.Creeper;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -14,9 +14,9 @@ import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.abilities.AbilityExecutor;
 import com.robinmc.ublisk.utils.UPlayer;
 
-import net.minecraft.server.v1_10_R1.Entity;
-import net.minecraft.server.v1_10_R1.EntityLiving;
-import net.minecraft.server.v1_10_R1.NBTTagCompound;
+import net.minecraft.server.v1_11_R1.Entity;
+import net.minecraft.server.v1_11_R1.EntityLiving;
+import net.minecraft.server.v1_11_R1.NBTTagCompound;
 
 public class Meteorite extends AbilityExecutor {
 
@@ -27,6 +27,7 @@ public class Meteorite extends AbilityExecutor {
 			
 			double t = 12;
 			
+			@SuppressWarnings("deprecation")
 			public void run(){				
 				t = t + 0.6;
 				
@@ -47,7 +48,7 @@ public class Meteorite extends AbilityExecutor {
                 System.out.println("Y: " + loc.getY());
                 System.out.println("t: " + t);
                 
-                Var.WORLD.spigot().playEffect(loc, Effect.FLAME, 26, 0, 0, 1, 0, 0, 5, 100);
+                Var.WORLD.spigot().playEffect(loc, Effect.FLAME, 26, 0, 0, 1, 0, 0, 5, 100); // XXX New method https://www.spigotmc.org/threads/deprecation-of-world-spigot-playeffect-alternatives.194307
                 
                 if (loc.getY() < (player.getLocation().getY() + 1.5) ){
                     this.cancel();
