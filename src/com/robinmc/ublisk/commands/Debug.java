@@ -8,7 +8,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.HashMaps;
@@ -19,7 +18,7 @@ import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.mob.Mob;
-import com.robinmc.ublisk.quest.QuestCharacter;
+import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Time;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -218,12 +217,15 @@ public class Debug implements CommandExecutor {
 						}
 						return true;
 					} else if (args[0].equals("npc")){
+						/*
 						for (Villager villager : Var.WORLD.getEntitiesByClass(Villager.class)){
 							villager.remove();
 						}
 						for (QuestCharacter npc : QuestCharacter.values()){
 							npc.spawn();
 						}
+						*/
+						NPC.respawnAll();
 						return true;
 					} else if (args[0].equals("triggers")){
 						for (Trigger trigger : Trigger.values())

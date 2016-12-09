@@ -14,9 +14,9 @@ public class QuestParticipant {
 	
 	private UPlayer player;
 	private Quest quest;
-	private QuestCharacter npc;
+	private NPC npc;
 	
-	public QuestParticipant(Player player, Quest quest, QuestCharacter npc){
+	public QuestParticipant(Player player, Quest quest, NPC npc){
 		this.player = UPlayer.get(player);
 		this.quest = quest;
 		this.npc = npc;
@@ -34,7 +34,7 @@ public class QuestParticipant {
 		return quest;
 	}
 	
-	public QuestCharacter getQuestCharacter(){
+	public NPC getNPC(){
 		return npc;
 	}
 	

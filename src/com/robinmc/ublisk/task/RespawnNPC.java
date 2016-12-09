@@ -2,12 +2,12 @@ package com.robinmc.ublisk.task;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.quest.QuestCharacter;
+import com.robinmc.ublisk.quest.NPC;
 
 public class RespawnNPC extends BukkitRunnable {
 
 	public void run(){
-		QuestCharacter.respawnAll();
+		NPC.respawnAll();
 	}
 
 }

@@ -36,8 +36,8 @@ import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.VoteRestart;
 import com.robinmc.ublisk.money.Money;
+import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.quest.Quest;
-import com.robinmc.ublisk.quest.QuestCharacter;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
 import com.robinmc.ublisk.task.AfkTimer;
@@ -165,7 +165,7 @@ public class UPlayer {
 		teleport(new Location(Var.WORLD, x, y, z, pitch, yaw));
 	}
 	
-	public QuestParticipant getQuestParticipant(Quest quest, QuestCharacter npc){
+	public QuestParticipant getQuestParticipant(Quest quest, NPC npc){
 		return new QuestParticipant(player, quest, npc);
 	}
 	

@@ -1,22 +1,27 @@
 package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Villager;
 
+import com.robinmc.ublisk.quest.NPC;
+import com.robinmc.ublisk.quest.NPCInfo;
+import com.robinmc.ublisk.quest.NPCInfo.NPCLocation;
 import com.robinmc.ublisk.quest.Quest;
-import com.robinmc.ublisk.quest.QuestCharacter;
-import com.robinmc.ublisk.quest.QuestCharacterClass;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.QuestProgress;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
 
-public class Alvin implements QuestCharacterClass{
-
+public class Alvin extends NPC {
+	
 	@Override
-	public void talk(UPlayer player, QuestCharacter npc) {
+	public NPCInfo getNPCInfo() {
+		return new NPCInfo("Alvin", null, true, new NPCLocation(121.5, 72, 7.3));
+	}
+	
+	@Override
+	public void talk(UPlayer player) {
 		//QuestParticipant qp = new QuestParticipant(player, Quest.WATER_PROBLEM, QuestCharacter.ALVIN);
-		QuestParticipant qp = player.getQuestParticipant(Quest.WATER_PROBLEM, npc);
+		QuestParticipant qp = player.getQuestParticipant(Quest.WATER_PROBLEM, this);
 		BetterInventory inv = player.getInventory();
 		
 		if (qp.getQuestCompleted()){
@@ -50,10 +55,6 @@ public class Alvin implements QuestCharacterClass{
 		
 	}
 
-	@Override
-	public void spawn(Villager villager, QuestCharacter npc) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

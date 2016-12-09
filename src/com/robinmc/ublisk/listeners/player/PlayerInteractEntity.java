@@ -15,7 +15,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Tracker;
-import com.robinmc.ublisk.quest.QuestCharacter;
+import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.NPCNotFoundException;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
@@ -42,7 +42,7 @@ public class PlayerInteractEntity implements Listener {
 		
 		if (entity instanceof Villager){
 			try {
-				QuestCharacter npc = QuestCharacter.fromName(entity.getCustomName());
+				NPC npc = NPC.fromName(entity.getCustomName());
 				npc.talk(player);
 			} catch (NPCNotFoundException e) {
 				player.sendMessage(Message.Complicated.Quests.npcNotFound(entity.getCustomName()));

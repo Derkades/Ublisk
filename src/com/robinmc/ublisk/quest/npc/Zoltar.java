@@ -1,21 +1,25 @@
 package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Villager;
 
+import com.robinmc.ublisk.quest.NPC;
+import com.robinmc.ublisk.quest.NPCInfo;
 import com.robinmc.ublisk.quest.Quest;
-import com.robinmc.ublisk.quest.QuestCharacter;
-import com.robinmc.ublisk.quest.QuestCharacterClass;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.QuestProgress;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
 
-public class Zoltar implements QuestCharacterClass {
+public class Zoltar extends NPC {
 
 	@Override
-	public void talk(UPlayer player, QuestCharacter npc) {
-		QuestParticipant qp = player.getQuestParticipant(Quest.HAY_TRANSPORT, npc);
+	public NPCInfo getNPCInfo() {
+		return new NPCInfo("Zoltar", null, false, null);
+	}
+	
+	@Override
+	public void talk(UPlayer player) {
+		QuestParticipant qp = player.getQuestParticipant(Quest.HAY_TRANSPORT, this);
 		BetterInventory inv = qp.getInventory();
 		
 		if (qp.getProgress(QuestProgress.HAY_TRANSPORT_STARTED) && inv.contains(Material.HAY_BLOCK, 10)){
@@ -28,11 +32,6 @@ public class Zoltar implements QuestCharacterClass {
 		} else {
 			qp.sendMessage("Hello, I'm the junk merchant.");
 		}
-	}
-
-	@Override
-	public void spawn(Villager villager, QuestCharacter npc) {
-		
 	}
 
 }

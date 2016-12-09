@@ -1,20 +1,19 @@
 package com.robinmc.ublisk.quest.npc;
 
-import org.bukkit.entity.Villager;
-
-import com.robinmc.ublisk.quest.QuestCharacter;
-import com.robinmc.ublisk.quest.QuestCharacterClass;
+import com.robinmc.ublisk.quest.NPC;
+import com.robinmc.ublisk.quest.NPCInfo;
+import com.robinmc.ublisk.quest.NPCInfo.NPCLocation;
 import com.robinmc.ublisk.utils.UPlayer;
 
-public class Asher implements QuestCharacterClass {
+public class Asher extends NPC {
 
 	@Override
-	public void talk(UPlayer player, QuestCharacter npc) {
-		
+	public NPCInfo getNPCInfo() {
+		return new NPCInfo("Asher", null, false, new NPCLocation(449.3, 70, -10.5));
 	}
-
+	
 	@Override
-	public void spawn(Villager villager, QuestCharacter npc) {
+	public void talk(UPlayer player) {
 		
 	}
 

@@ -15,10 +15,14 @@ public enum QuestProgress {
 	SEARCH_FOR_MEAT_TALK_TO_ARZHUR,
 	;
 	
+	// TODO Remove deprecated methods
+	
+	@Deprecated
 	public static QuestProgress fromString(String s){
 		return QuestProgress.valueOf(s);
 	}
 	
+	@Deprecated
 	public static String toString(QuestProgress progress){
 		return progress.toString();
 	}

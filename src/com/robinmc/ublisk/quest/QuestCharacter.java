@@ -1,35 +1,9 @@
 package com.robinmc.ublisk.quest;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.bukkit.Location;
-import org.bukkit.entity.Villager;
-import org.bukkit.entity.Villager.Profession;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-
-import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.quest.npc.Alvin;
-import com.robinmc.ublisk.quest.npc.Arzhur;
-import com.robinmc.ublisk.quest.npc.Asher;
-import com.robinmc.ublisk.quest.npc.David;
-import com.robinmc.ublisk.quest.npc.Dianh;
-import com.robinmc.ublisk.quest.npc.Merek;
-import com.robinmc.ublisk.quest.npc.Rasmus;
-import com.robinmc.ublisk.quest.npc.TestNPC;
-import com.robinmc.ublisk.quest.npc.Ulric;
-import com.robinmc.ublisk.quest.npc.Zoltar;
-import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.exception.NPCNotFoundException;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
-
-import net.md_5.bungee.api.ChatColor;
-
+@Deprecated
 public enum QuestCharacter {
 	
+	/*
 	TEST_NPC(new TestNPC(), "TestNPC", null, false),
 	
 	DAVID(new David(), "David", Profession.FARMER, false, 72.5, 67, -2.5),
@@ -48,7 +22,7 @@ public enum QuestCharacter {
 	private final boolean canWalk;
 	private final Location loc;
 	
-	QuestCharacter(QuestCharacterClass qcc, String name, Profession profession, boolean canWalk, double x, double y, double z/*, int pitch, int yaw*/){
+	QuestCharacter(QuestCharacterClass qcc, String name, Profession profession, boolean canWalk, double x, double y, double z){
 		this.qcc = qcc;
 		this.name = name;
 		this.profession = profession;
@@ -137,5 +111,6 @@ public enum QuestCharacter {
 		}
 		return list;
 	}
+	*/
 	
 }
