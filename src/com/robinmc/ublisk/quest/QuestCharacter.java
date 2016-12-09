@@ -92,37 +92,12 @@ public enum QuestCharacter {
 		villager.setCustomNameVisible(true);
 		villager.setBreed(false);
 		if (!canWalk()) villager.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000000*20, 255, true));
-		/*villager.teleport(loc);*/
-		if (getProfession() != null){
+		if (getProfession() != null)
 			villager.setProfession(getProfession());
-		}
 		Logger.log(LogLevel.DEBUG, "NPC", "Spawned " + getName() + " at (" + loc.getX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ() + ")");
 	}
 	
 	public void talk(UPlayer player){
-		/*
-		boolean success = true;
-		
-		try {
-			Logger.log(LogLevel.DEBUG, this.getName() + "  " + this.getQuestCharacterClass());
-			Method method = qcc.getClass().getMethod("talk", UPlayer.class);
-			method.invoke(qcc.getClass().newInstance(), player);
-			Logger.log(LogLevel.INFO, "NPC", player.getName() + " talked to " + name);
-		} catch (NoSuchMethodException 
-				| SecurityException 
-				| IllegalAccessException 
-				| IllegalArgumentException 
-				| InvocationTargetException 
-				| InstantiationException e) {
-			e.printStackTrace();
-			success = false;
-		}
-		
-		if (!success){
-			player.sendMessage(Message.Complicated.Quests.npcNotFound(name));
-		}
-		*/
-		
 		if (qcc == null){
 			player.sendMessage(Message.Complicated.Quests.npcNotFound(name));
 			return;
