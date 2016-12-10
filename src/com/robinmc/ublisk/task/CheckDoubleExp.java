@@ -9,7 +9,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.Exp;
-import com.robinmc.ublisk.utils.exception.ConnectionClosedException;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.sql.MySQL;
 
@@ -39,7 +38,7 @@ public class CheckDoubleExp extends BukkitRunnable {
 				sql1.close();
 			}
 
-		} catch (SQLException | ConnectionClosedException e){
+		} catch (SQLException e){
 			e.printStackTrace();
 		} finally {
 			try {

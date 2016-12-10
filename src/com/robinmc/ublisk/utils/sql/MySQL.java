@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import com.robinmc.ublisk.utils.DataFile;
-import com.robinmc.ublisk.utils.exception.ConnectionClosedException;
 
 public class MySQL {
 	
@@ -54,7 +53,7 @@ public class MySQL {
 		openConnection(getConnection());		
 	}
 	
-	public static PreparedStatement prepareStatement(String sql) throws ConnectionClosedException, SQLException {
+	public static PreparedStatement prepareStatement(String sql) throws SQLException {
 		return MySQL.connection.prepareStatement(sql);
 	}
 }

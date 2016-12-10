@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.exception.ConnectionClosedException;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
@@ -17,7 +16,7 @@ public enum PlayerInfo {
 
 		@Override
 		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
-				throws SQLException, ConnectionClosedException {
+				throws SQLException {
 			
 			if (containsPlayer){
         		int xp = player.getXP();
@@ -45,7 +44,7 @@ public enum PlayerInfo {
 
 		@Override
 		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
-				throws SQLException, ConnectionClosedException {
+				throws SQLException {
 			
 			String guildName;
 			try {
@@ -79,7 +78,7 @@ public enum PlayerInfo {
 
 		@Override
 		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
-				throws SQLException, ConnectionClosedException {
+				throws SQLException {
 			
 			String rank = player.getGroup().getName();
 			
@@ -108,7 +107,7 @@ public enum PlayerInfo {
 
 		@Override
 		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
-				throws SQLException, ConnectionClosedException {
+				throws SQLException {
 			
 			String date = player.getLastSeenDate();
 			
@@ -137,7 +136,7 @@ public enum PlayerInfo {
 
 		@Override
 		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
-				throws SQLException, ConnectionClosedException {
+				throws SQLException {
 			
 			int level = player.getLevel();
 			
@@ -166,7 +165,7 @@ public enum PlayerInfo {
 
 		@Override
 		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
-				throws SQLException, ConnectionClosedException {
+				throws SQLException {
 			
 			Town town = player.getLastTown();
 			
@@ -218,7 +217,7 @@ public enum PlayerInfo {
 			
 			code.executeUpdate(player, uuid, name, containsPlayer, table);
         	
-		} catch (SQLException | ConnectionClosedException e){
+		} catch (SQLException e){
 			e.printStackTrace();
 		} finally {
 			try {
@@ -231,7 +230,7 @@ public enum PlayerInfo {
 	
 	private interface UpdateCode {
 		
-		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table) throws SQLException, ConnectionClosedException;
+		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table) throws SQLException;
 		
 	}
 

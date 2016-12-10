@@ -14,7 +14,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
-import com.robinmc.ublisk.utils.exception.ConnectionClosedException;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
@@ -239,7 +238,7 @@ public class Guild {
 			
 			sql.close();
 			resultSet.close();
-		} catch (SQLException | ConnectionClosedException e){
+		} catch (SQLException e){
 			e.printStackTrace();
 		} finally {
 			try {
