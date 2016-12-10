@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.UUID;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.utils.UPlayer;
@@ -53,7 +52,9 @@ public enum Tracker {
 		getMap().put(uuid, previous + 1);
 	}
 	
+	@Deprecated
 	public static void syncAll(){
+		/*
 		int delay = 0;
 		for (final Tracker tracker : Tracker.values()){
 			delay = delay + Var.TRACKER_DELAY + Bukkit.getOnlinePlayers().size() * 50;
@@ -64,28 +65,27 @@ public enum Tracker {
 						playerDelay = playerDelay + 50;
 						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 							public void run(){
-								syncWithDatabase(player, tracker);
+								//syncWithDatabase(player, tracker);
 							}
 						}, playerDelay);
 					}
 				}
 			}, delay);
 		}
+		*/
 	}
 	
-	public static synchronized void syncWithDatabase(final Player player, final Tracker tracker){
-		Logger.log(LogLevel.INFO, "Tracker", "Syncronising " + tracker + " for " + player.getName());
-		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable(){
-			public void run() {
+	public void syncWithDatabase(final UPlayer player){
+		Logger.log(LogLevel.INFO, "Tracker", "Syncronising " + this + " for " + player.getName());
 				UUID uuid = player.getUniqueId();
-				String tbl = tracker.getTable();
-				int value = tracker.getMap().get(uuid);
+				String table = this.getTable();
+				int value = this.getMap().get(uuid);
 				try {
 		        	MySQL.openConnection();
 		        	int stat = 0;
 		        	boolean containsPlayer = false;
 		        	
-		    		PreparedStatement check = MySQL.prepareStatement("SELECT * FROM `" + tbl + "` WHERE uuid=?;");
+		    		PreparedStatement check = MySQL.prepareStatement("SELECT * FROM `" + table + "` WHERE uuid=?;");
 		    		check.setString(1, uuid.toString());
 		    		ResultSet resultSet = check.executeQuery();
 		    		containsPlayer = resultSet.next();
@@ -94,7 +94,7 @@ public enum Tracker {
 		    		resultSet.close();
 		        	
 		        	if (containsPlayer){
-		        		PreparedStatement sql = MySQL.prepareStatement("SELECT count FROM `" + tbl + "` WHERE uuid=?;");
+		        		PreparedStatement sql = MySQL.prepareStatement("SELECT count FROM `" + table + "` WHERE uuid=?;");
 		        		sql.setString(1, uuid.toString());
 		        		
 		        		ResultSet result = sql.executeQuery();
@@ -105,20 +105,20 @@ public enum Tracker {
 		        		result.close();
 		        		sql.close();
 		        		
-		        		PreparedStatement newlogins = MySQL.prepareStatement("UPDATE `" + tbl + "` SET count=? WHERE uuid=?;");
+		        		PreparedStatement newlogins = MySQL.prepareStatement("UPDATE `" + table + "` SET count=? WHERE uuid=?;");
 		        		newlogins.setInt(1, stat + value);
 		        		newlogins.setString(2, uuid.toString());
 		        		newlogins.executeUpdate();
 		        		newlogins.close();
 		        		
-		        		PreparedStatement name = MySQL.prepareStatement("UPDATE `" + tbl + "` SET name=? where uuid=?;");
+		        		PreparedStatement name = MySQL.prepareStatement("UPDATE `" + table + "` SET name=? where uuid=?;");
 		        		name.setString(1, player.getName());
 		        		name.setString(2, uuid.toString());
 		        		name.executeUpdate();
 		        		
 		        		name.close();
 		        	} else {
-		        		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `" + tbl + "` values(?, ?, ?);");
+		        		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `" + table + "` values(?, ?, ?);");
 		        		newplayer.setString(1, uuid.toString());
 		        		newplayer.setInt(2, value);
 		        		newplayer.setString(3, player.getName());
@@ -126,7 +126,7 @@ public enum Tracker {
 		        		newplayer.close();
 		        	}
 		        	
-		        	tracker.getMap().put(uuid, 0);
+		        	this.getMap().put(uuid, 0);
 		        	
 		        } catch (Exception e){
 		        	e.printStackTrace();
@@ -137,8 +137,6 @@ public enum Tracker {
 						e.printStackTrace();
 					}
 		        }
-			}
-		});
 	}
 	
 	@Deprecated

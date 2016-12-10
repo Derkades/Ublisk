@@ -13,7 +13,6 @@ import org.bukkit.inventory.PlayerInventory;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.chat.Trigger;
@@ -137,10 +136,10 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("health")){
 						player.sendMessage(player.getHealth() + "");
 						return true;
-					} else if (args[0].equals("sync")){
+					} /*else if (args[0].equals("sync")){
 						Tracker.syncAll();
-						return true;
-					} else if (args[0].equals("lag")){
+						return true; TODO Fix command
+					}*/ else if (args[0].equals("lag")){
 						player.sendMessage("TPS: " + Lag.getTPS());
 						return true;
 						/* XXX Remove?

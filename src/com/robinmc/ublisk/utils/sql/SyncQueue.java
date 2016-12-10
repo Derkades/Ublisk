@@ -6,6 +6,8 @@ import java.util.List;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 
 public class SyncQueue {
 	
@@ -15,9 +17,17 @@ public class SyncQueue {
 		list.add(runnable);
 	}
 	
+	public static void addToQueue(List<BukkitRunnable> runnableList){
+		list.addAll(runnableList);
+	}
+	
 	public static void syncNext(){
-		if (list.isEmpty())
+		if (list.isEmpty()){
+			Logger.log(LogLevel.DEBUG, "Sync queue is empty!");
 			return; //If list is empty do nothing
+		} else {
+			Logger.log(LogLevel.DEBUG, "Sync queue is not empty, it contains " + list.size() + " entries.");
+		}
 		
 		BukkitRunnable runnable = list.get(0); //Get first in list
 		

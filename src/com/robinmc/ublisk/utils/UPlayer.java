@@ -234,8 +234,9 @@ public class UPlayer {
 		return player.getName();
 	}
 	
+	@Deprecated
 	public void syncTracker(Tracker tracker){
-		Tracker.syncWithDatabase(player, tracker);
+		//Tracker.syncWithDatabase(player, tracker); FIXME Remove
 	}
 	
 	public boolean addFriend(Player newFriend){
