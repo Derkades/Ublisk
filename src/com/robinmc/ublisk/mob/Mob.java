@@ -73,7 +73,12 @@ public enum Mob {
 			new Radius(160, 89, 100),
 			new Radius(214, -66, 60),
 			new Radius(111, 19, 50)),
-			new Zombie(), 3, 7, 0, 5, 50, "Zombie", 5, GoldDrop.LEVEL2);
+			new Zombie(), 3, 7, 0, 5, 50, "Zombie", 5, GoldDrop.LEVEL2),
+	RHOCUS_ZOMBIE(new MobArea(
+			new Radius(280, 90, 318, 60)),
+			new Zombie(), 15, 15, 5, 15, 50, "Rhocus Zombie", 5, GoldDrop.LEVEL3,
+			new MobDrop(new ItemStack(Material.ROTTEN_FLESH), 0, 2),
+			new MobDrop(new ItemStack(Material.ROTTEN_FLESH), 2, 3));
 	
 	private Radius[] area;
 	private MobType type;
