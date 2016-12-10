@@ -4,7 +4,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.inventivetalent.rpapi.ResourcePackAPI;
 
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
@@ -27,7 +26,8 @@ public class ResourcePackCommand implements CommandExecutor {
 			player.sendMessage(Message.PACK_CHECK);
 			return true;
 		} else if (args.length == 0){
-			ResourcePackAPI.setResourcepack(player.getPlayer(), Var.PACK_URL);
+			//ResourcePackAPI.setResourcepack(player.getPlayer(), Var.PACK_URL);
+			player.setResourcePack(Var.PACK_URL);
 			return true;
 		} else {
 			player.sendMessage(Message.WRONG_USAGE);

@@ -10,7 +10,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.PlayerInventory;
-import org.inventivetalent.rpapi.ResourcePackAPI;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Helper;
@@ -37,7 +36,7 @@ public class PlayerJoin implements Listener {
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event){
 		final Player player = event.getPlayer(); // TODO Switch to UPlayer
-		UPlayer uPlayer = new UPlayer(player);
+		final UPlayer uPlayer = new UPlayer(player);
 		String pn = player.getName();
 		UUID uuid = player.getUniqueId();
 		
@@ -49,7 +48,8 @@ public class PlayerJoin implements Listener {
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){ 
 			//For some reason sending the pack has to be delayed, otherwise the client won't get the message
 			public void run(){
-				ResourcePackAPI.setResourcepack(player, Var.PACK_URL);
+				//ResourcePackAPI.setResourcepack(player, Var.PACK_URL);
+				uPlayer.setResourcePack(Var.PACK_URL);
 			}
 		}, 1*20);
 		
