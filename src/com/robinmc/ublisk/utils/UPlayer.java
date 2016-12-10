@@ -12,6 +12,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Particle;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
@@ -528,17 +529,17 @@ public class UPlayer {
 		DataFile.TOWN.set("last-town." + player.getUniqueId(), town.getName());
 	}
 	
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("deprecation") //TODO: Find a non-deprecated solution
 	public void sendTitle(String title, String subtitle){
 		player.sendTitle(title, subtitle);
 	}
 	
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("deprecation") //TODO: Find a non-deprecated solution
 	public void sendTitle(String title){
 		player.sendTitle(title, "");
 	}
 	
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("deprecation") //TODO: Find a non-deprecated solution
 	public void sendSubTitle(String subtitle){
 		player.sendTitle("", subtitle);
 	}
@@ -552,11 +553,13 @@ public class UPlayer {
 	}
 	
 	public void setMaxHealth(double maxHealth){
-		player.setMaxHealth(maxHealth);
+		//player.setMaxHealth(maxHealth);
+		player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(maxHealth);
 	}
 	
 	public double getMaxHealth(){
-		return player.getMaxHealth();
+		//return player.getMaxHealth();
+		return player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
 	}
 	
 	public int getCorrectMaxHealth(){
@@ -569,6 +572,10 @@ public class UPlayer {
 	
 	public Spigot spigot(){
 		return player.spigot();
+	}
+	
+	public void setResourcePack(String pack){
+		player.setResourcePack(pack);
 	}
 	
 	public static UPlayer[] getOnlinePlayers(){

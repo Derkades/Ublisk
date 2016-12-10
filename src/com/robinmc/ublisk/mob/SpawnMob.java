@@ -6,6 +6,7 @@ import static net.md_5.bungee.api.ChatColor.DARK_GREEN;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.LivingEntity;
 
 import com.robinmc.ublisk.Var;
@@ -74,7 +75,8 @@ class SpawnMob {
 						entity.setCustomName(name);
 						entity.setCustomNameVisible(true);
 						double health = mob.getHealth();
-						entity.setMaxHealth(health);
+						//entity.setMaxHealth(health);
+						entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
 						entity.setHealth(health);						
 						Location tp = entity.getLocation();
 						tp.setPitch(Random.getRandomFloat(0, 360));
