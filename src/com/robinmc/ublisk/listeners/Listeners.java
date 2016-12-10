@@ -76,7 +76,7 @@ public class Listeners {
 		
 		public void register(){
 			Bukkit.getServer().getPluginManager().registerEvents(listener, Main.getInstance());
-			Logger.log(LogLevel.DEBUG, "Listeners", "Registered " + listener);
+			Logger.log(LogLevel.DEBUG, "Listeners", "Registered " + listener.getClass().getSimpleName());
 		}
 		
 	}
