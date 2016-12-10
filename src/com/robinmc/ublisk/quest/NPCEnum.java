@@ -13,19 +13,17 @@ import com.robinmc.ublisk.quest.npc.Zoltar;
 
 public enum NPCEnum {
 	
-	//FIXME Move TODOs
-	
 	TEST_NPC(new TestNPC()),
 	
 	DAVID(new David()),
 	MEREK(new Merek()),
 	ULRIC(new Ulric()),
-	ARZHUR(new Arzhur()), // TODO Profession
-	ASHER(new Asher()), // TODO Profession
-	RASMUS(new Rasmus()), // TODO Rasmus coordinates XXX Profession
-	DIANH(new Dianh()),// TODO Dianh coordinates XXX Profession
-	ZOLTAR(new Zoltar()),// TODO Zoltar coordinates XXX Profession
-	ALVIN(new Alvin()); // XXX Profession
+	ARZHUR(new Arzhur()),
+	ASHER(new Asher()),
+	RASMUS(new Rasmus()),
+	DIANH(new Dianh()),
+	ZOLTAR(new Zoltar()),
+	ALVIN(new Alvin());
 	
 	private NPC npc;
 	
