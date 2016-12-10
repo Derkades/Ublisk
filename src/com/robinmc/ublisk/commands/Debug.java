@@ -128,9 +128,6 @@ public class Debug implements CommandExecutor {
 							HashMaps.DISABLE_COMMAND_LOG.put(uuid, true);
 						}
 						return true;
-					/*} else if (args[0].equals("reload")){
-						Config.reload();
-						return true;*/
 					} else if (args[0].equals("loot")){
 						Loot.getRandomLoot().spawn();
 						return true;
@@ -219,14 +216,6 @@ public class Debug implements CommandExecutor {
 						}
 						return true;
 					} else if (args[0].equals("npc")){
-						/*
-						for (Villager villager : Var.WORLD.getEntitiesByClass(Villager.class)){
-							villager.remove();
-						}
-						for (QuestCharacter npc : QuestCharacter.values()){
-							npc.spawn();
-						}
-						*/
 						NPC.respawnAll();
 						return true;
 					} else if (args[0].equals("triggers")){
@@ -240,7 +229,6 @@ public class Debug implements CommandExecutor {
 						player.sendMessage("This command is deprecated. Please use /pack instead.");
 						return true;
 					} else if (args[0].equals("actionbar")){
-						//ActionBarAPI.sendActionBar(player.getPlayer(), ChatColor.RED + "TEST!");
 						player.sendActionBarMessage(ChatColor.RED + "TEST!");
 						return true;
 					} else {
