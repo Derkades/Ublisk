@@ -7,17 +7,13 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Tracker;
-import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.exception.NPCNotFoundException;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -39,19 +35,6 @@ public class PlayerInteractEntity implements Listener {
 		final UPlayer player = UPlayer.get(event);
 		
 		player.tracker(Tracker.RIGHT_CLICKED);
-		
-		if (entity instanceof Villager){
-			try {
-				NPC npc = NPC.fromName(entity.getCustomName());
-				npc.talk(player);
-			} catch (NPCNotFoundException e) {
-				player.sendMessage(Message.Complicated.Quests.npcNotFound(entity.getCustomName()));
-				e.printStackTrace();
-			} finally {
-				event.setCancelled(true);
-			}
-			return;
-		}
 		
 		if (entity instanceof ArmorStand && player.getGameMode() != GameMode.CREATIVE){
 			event.setCancelled(true);

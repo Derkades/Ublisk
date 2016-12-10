@@ -23,6 +23,7 @@ import com.robinmc.ublisk.mob.CreatureSpawn;
 import com.robinmc.ublisk.mob.listeners.EntityCombust;
 import com.robinmc.ublisk.mob.listeners.EntityDamageByEntity;
 import com.robinmc.ublisk.mob.listeners.EntityDeath;
+import com.robinmc.ublisk.quest.NPCClickListener;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.sethbling.blinghomingarrows.HomingArrowsListener;
@@ -63,7 +64,9 @@ public class Listeners {
 		
 		ABILITIES(new AbilityListener()),
 		
-		SETHBLING_HOMING_ARROWS(new HomingArrowsListener());
+		SETHBLING_HOMING_ARROWS(new HomingArrowsListener()),
+		
+		NPC_CLICK_LISTENER(new NPCClickListener());
 		
 		private Listener listener;
 		

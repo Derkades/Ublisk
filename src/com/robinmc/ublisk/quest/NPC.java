@@ -11,7 +11,6 @@ import org.bukkit.potion.PotionEffectType;
 
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.exception.NPCNotFoundException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 
@@ -53,7 +52,7 @@ public abstract class NPC {
 		Logger.log(LogLevel.DEBUG, "NPC", "Spawned " + getName() + " at (" + this.getLocation().getX() + ", " + this.getLocation().getBlockY() + ", " + this.getLocation().getBlockZ() + ")");
 	}
 	
-	public static NPC fromName(String text) throws NPCNotFoundException {
+	public static NPC fromName(String text){
 		if (text == null) {
 			throw new IllegalArgumentException();
 		}
@@ -64,7 +63,7 @@ public abstract class NPC {
 			}
 		}
 		
-		throw new NPCNotFoundException();
+		return null;
 		
 	}
 	
