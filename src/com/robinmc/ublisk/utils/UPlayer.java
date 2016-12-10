@@ -234,14 +234,6 @@ public class UPlayer {
 		return player.getName();
 	}
 	
-	public Town getLastTown(){
-		String s = DataFile.TOWN.getString("last-town." + player.getUniqueId());
-		if (s == null){
-			return Town.INTRODUCTION;
-		}
-		return Town.fromString(s);
-	}
-	
 	public void syncTracker(Tracker tracker){
 		Tracker.syncWithDatabase(player, tracker);
 	}
@@ -503,7 +495,7 @@ public class UPlayer {
 	}
 	
 	/**
-	 * Please avoid using this, unless you are sure that you need this instead of UPlayer#getLastTown()
+	 * Please avoid using this, unless you are sure that you need this instead of UPlayer#getTown()
 	 * @throws NotInATownException If the player is not in a town
 	 */
 	public Town getCurrentTown() throws NotInATownException {
@@ -523,7 +515,17 @@ public class UPlayer {
 	 * getLastTown()
 	 */
 	public Town getTown(){
-		return this.getLastTown();
+		String s = DataFile.TOWN.getString("last-town." + player.getUniqueId());
+		
+		if (s == null)
+			return Town.INTRODUCTION;
+		
+		return Town.fromString(s);
+	}
+	
+	@Deprecated
+	public Town getLastTown(){
+		return getTown();
 	}
 	
 	public void setLastTown(Town town){
@@ -531,19 +533,19 @@ public class UPlayer {
 		DataFile.TOWN.set("last-town." + player.getUniqueId(), town.getName());
 	}
 	
-	@SuppressWarnings("deprecation") //TODO: Find a non-deprecated solution
 	public void sendTitle(String title, String subtitle){
-		player.sendTitle(title, subtitle);
+		//player.sendTitle(title, subtitle);
+		((CraftPlayer) player).sendTitle(title, subtitle);
 	}
 	
-	@SuppressWarnings("deprecation") //TODO: Find a non-deprecated solution
 	public void sendTitle(String title){
-		player.sendTitle(title, "");
+		//player.sendTitle(title, "");
+		((CraftPlayer) player).sendTitle(title, "");
 	}
 	
-	@SuppressWarnings("deprecation") //TODO: Find a non-deprecated solution
 	public void sendSubTitle(String subtitle){
-		player.sendTitle("", subtitle);
+		//player.sendTitle("", subtitle);
+		((CraftPlayer) player).sendTitle("", subtitle);
 	}
 	
 	public boolean isDead(){
