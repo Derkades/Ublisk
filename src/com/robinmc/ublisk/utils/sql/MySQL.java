@@ -16,12 +16,10 @@ public class MySQL {
 	}
 	
 	private static String getUser(){
-		//return Config.getString("mysql.user");
 		return DataFile.MYSQL.getString("user");
 	}
 
 	private static String getPassword(){
-		//return Config.getString("mysql.password");
 		//Admit it, you hoped that the password would be here in plain text. Nope!
 		return DataFile.MYSQL.getString("password");
 	}
