@@ -18,7 +18,7 @@ public class HashMaps {
 	
 	public static final Map<UUID, Boolean> DISABLE_COMMAND_LOG = new HashMap<>();
 	
-	public static final Map<UUID, Boolean> COOLDOWN_NPC = new HashMap<>();
+	public static final Map<UUID, Boolean> ENTITY_RIGHT_CLICK_COOLDOWN = new HashMap<>();
 	public static final Map<UUID, Boolean> COOLDOWN_CLASS = new HashMap<>();
 	
 	public static final Map<UUID, Boolean> IS_MUTED = new HashMap<>();
@@ -48,7 +48,7 @@ public class HashMaps {
 		UUID uuid = player.getUniqueId();
 		
 		AFK.put(uuid, false);
-		COOLDOWN_NPC.put(uuid, false);
+		ENTITY_RIGHT_CLICK_COOLDOWN.put(uuid, false);
 		COOLDOWN_CLASS.put(uuid, false);
 		DISABLE_COMMAND_LOG.put(uuid, false);
 		IS_MUTED.put(uuid, false);
