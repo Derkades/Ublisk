@@ -4,7 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Jars/Minecraft/API/nuvotifier-universal-2.3.3.jar"/>
 	<classpathentry kind="lib" path="C:/Jars/Minecraft/API/BossBarAPI_v2.4.1.jar"/>
-	<classpathentry kind="lib" path="C:/Jars/Minecraft/API/ActionBarAPI-1.5.2.jar"/>
 	<classpathentry kind="lib" path="C:/Jars/Minecraft/Server Jars/spigot-1.11.jar"/>
 	<classpathentry kind="lib" path="C:/Jars/Minecraft/API/NoteBlockAPI.jar"/>
 	<classpathentry kind="output" path="bin"/>

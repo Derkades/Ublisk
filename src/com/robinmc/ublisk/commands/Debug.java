@@ -31,6 +31,8 @@ import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.weapon.SwordsmanWeapon;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class Debug implements CommandExecutor {
 	
 	@Override
@@ -236,6 +238,10 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("pack")){
 						player.sendMessage("This command is deprecated. Please use /pack instead.");
+						return true;
+					} else if (args[0].equals("actionbar")){
+						//ActionBarAPI.sendActionBar(player.getPlayer(), ChatColor.RED + "TEST!");
+						player.sendActionBarMessage(ChatColor.RED + "TEST!");
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());

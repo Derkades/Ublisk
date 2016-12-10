@@ -6,7 +6,6 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-import com.connorlinfoot.actionbarapi.ActionBarAPI;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.mob.Mob;
@@ -84,18 +83,22 @@ public class Exp {
 	 * @throws UnknownAreaException If the entity specified is not in an area
 	 * @throws MobInfoMissingException  
 	 */
-	public static void giveMobExp(Player player, Entity entity) throws MobNotFoundException {
+	public static void giveMobExp(UPlayer player, Entity entity) throws MobNotFoundException {
 		Mob mob = Mob.getMob(entity);
 		String name = mob.getName();
 		int xp = mob.getXP();
 		
 		if (DOUBLE_XP_ACTIVE){ //If double XP is active
-			ActionBarAPI.sendActionBar(player, ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP", 3*10);
-			Exp.add(player, xp * 2);
+			//ActionBarAPI.sendActionBar(player, ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP", 3*10);
+			player.sendActionBarMessage(ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP");
+			//Exp.add(player, xp * 2);
+			player.addXP(xp * 2);
 			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
 		} else {
-			ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP", 3*10);
-			Exp.add(player, xp);
+			//ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP", 3*10);
+			player.sendActionBarMessage(ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP");
+			//Exp.add(player, xp);
+			player.addXP(xp);
 			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp + " for killing a " + name);
 		}
 	}

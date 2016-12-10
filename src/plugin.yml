@@ -3,7 +3,7 @@ main: com.robinmc.ublisk.Main
 version: 6.9
 author: RobinMCDev
 description: Ublisk plugin
-softdepend: [NoteBlockAPI, ActionBarAPI, BossBarAPI, Votifier]
+softdepend: [NoteBlockAPI, BossBarAPI, Votifier]
 
 commands:
     menu:

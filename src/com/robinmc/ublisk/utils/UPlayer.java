@@ -64,7 +64,9 @@ import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.minecraft.server.v1_11_R1.ChatComponentText;
 import net.minecraft.server.v1_11_R1.Packet;
+import net.minecraft.server.v1_11_R1.PacketPlayOutChat;
 
 public class UPlayer {
 	
@@ -225,7 +227,7 @@ public class UPlayer {
 	}
 	
 	public void giveMobXP(Entity entity) throws MobNotFoundException {
-		Exp.giveMobExp(player, entity);
+		Exp.giveMobExp(this, entity);
 	}
 	
 	public String getName(){
@@ -576,6 +578,11 @@ public class UPlayer {
 	
 	public void setResourcePack(String pack){
 		player.setResourcePack(pack);
+	}
+	
+	public void sendActionBarMessage(String message){
+		PacketPlayOutChat packet = new PacketPlayOutChat(new ChatComponentText(message), (byte) 2);
+		this.sendPacket(packet);
 	}
 	
 	public static UPlayer[] getOnlinePlayers(){

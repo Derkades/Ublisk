@@ -31,7 +31,7 @@ public enum Tip {
         return clazz.getEnumConstants()[x];
     }
 	
-	public static String getRandom(){
+	public static String getRandomTip(){
 		Tip tip = randomEnum(Tip.class);
 		String text = tip.getText();
 		return ChatColor.YELLOW + text;
