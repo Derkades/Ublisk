@@ -167,7 +167,7 @@ public enum PlayerInfo {
 		public void executeUpdate(UPlayer player, String uuid, String name, boolean containsPlayer, String table)
 				throws SQLException {
 			
-			Town town = player.getLastTown();
+			Town town = player.getTown();
 			
         	if (containsPlayer){
         		PreparedStatement update = MySQL.prepareStatement("UPDATE `" + table + "` SET town=?,name=? WHERE uuid=?;");

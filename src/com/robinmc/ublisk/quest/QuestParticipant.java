@@ -89,7 +89,7 @@ public class QuestParticipant {
 	}
 	
 	public Town getLastTown(){
-		return player.getLastTown();
+		return player.getTown();
 	}
 	
 	public PlayerInventory getBukkitInventory(){

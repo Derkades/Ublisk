@@ -20,10 +20,10 @@ public class SongEnd implements Listener {
 				UPlayer player = UPlayer.get(playername);
 				try {
 					if (player.getSetting(Setting.PLAY_MUSIC)){
-						Music.playSong(player.getPlayer(), player.getLastTown().getName().toLowerCase());
+						Music.playSong(player.getPlayer(), player.getTown().getName().toLowerCase());
 					}
 				} catch (NotSetException e){
-					Music.playSong(player.getPlayer(), player.getLastTown().getName().toLowerCase());
+					Music.playSong(player.getPlayer(), player.getTown().getName().toLowerCase());
 				}
 		    }
 		} catch (Exception e) {

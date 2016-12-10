@@ -73,10 +73,10 @@ public class PlayerJoin implements Listener {
 		
 		try {
 			if (uPlayer.getSetting(Setting.PLAY_MUSIC)){
-				Music.playSong(player, uPlayer.getLastTown().getName().toLowerCase());
+				Music.playSong(player, uPlayer.getTown().getName().toLowerCase());
 			}
 		} catch (NotSetException e) {
-			Music.playSong(player, uPlayer.getLastTown().getName().toLowerCase());
+			Music.playSong(player, uPlayer.getTown().getName().toLowerCase());
 			uPlayer.setSetting(Setting.PLAY_MUSIC, true);
 		}
 		
