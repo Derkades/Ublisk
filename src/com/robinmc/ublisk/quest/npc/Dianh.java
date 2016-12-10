@@ -14,7 +14,7 @@ public class Dianh extends NPC {
 
 	@Override
 	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Dianh", null, false, null);
+		return new NPCInfo("Dianh", null, false, null); // TODO Dianh coordinates XXX Profession
 	}
 	
 	@Override

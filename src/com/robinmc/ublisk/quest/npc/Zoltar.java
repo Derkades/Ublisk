@@ -14,7 +14,7 @@ public class Zoltar extends NPC {
 
 	@Override
 	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Zoltar", null, false, null);
+		return new NPCInfo("Zoltar", null, false, null); // TODO Zoltar coordinates XXX Profession
 	}
 	
 	@Override

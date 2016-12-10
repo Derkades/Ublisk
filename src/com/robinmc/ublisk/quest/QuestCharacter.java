@@ -9,12 +9,12 @@ public enum QuestCharacter {
 	DAVID(new David(), "David", Profession.FARMER, false, 72.5, 67, -2.5),
 	MEREK(new Merek(), "Merek", Profession.FARMER, false, 33, 67, -38),
 	ULRIC(new Ulric(), "Ulric", Profession.FARMER, false, 38.5, 67, -26.5),
-	ARZHUR(new Arzhur(), "Arzhur", null, false, 111.5, 68, -103.5), // TODO Profession
-	ASHER(new Asher(), "Asher", null, false, 449.3, 70, -10.5), // TODO Profession
-	RASMUS(new Rasmus(), "Rasmus", null, false), // TODO Rasmus coordinates XXX Profession
-	DIANH(new Dianh(), "Dianh", null, false),// TODO Dianh coordinates XXX Profession
-	ZOLTAR(new Zoltar(), "Zoltar", null, false),// TODO Zoltar coordinates XXX Profession
-	ALVIN(new Alvin(), "Alvin", null, true, 121.5, 72, 7.3); // XXX Profession
+	ARZHUR(new Arzhur(), "Arzhur", null, false, 111.5, 68, -103.5),
+	ASHER(new Asher(), "Asher", null, false, 449.3, 70, -10.5),
+	RASMUS(new Rasmus(), "Rasmus", null, false),
+	DIANH(new Dianh(), "Dianh", null, false),
+	ZOLTAR(new Zoltar(), "Zoltar", null, false),
+	ALVIN(new Alvin(), "Alvin", null, true, 121.5, 72, 7.3);
 	
 	private final QuestCharacterClass qcc;
 	private final String name;

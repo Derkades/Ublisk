@@ -15,7 +15,7 @@ public class Alvin extends NPC {
 	
 	@Override
 	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Alvin", null, true, new NPCLocation(121.5, 72, 7.3));
+		return new NPCInfo("Alvin", null, true, new NPCLocation(121.5, 72, 7.3)); // XXX Profession
 	}
 	
 	@Override

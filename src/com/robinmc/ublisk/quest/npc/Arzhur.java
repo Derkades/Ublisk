@@ -15,7 +15,7 @@ public class Arzhur extends NPC {
 
 	@Override
 	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Arzhur", null, false, new NPCLocation(111.5, 68, -103.5));
+		return new NPCInfo("Arzhur", null, false, new NPCLocation(111.5, 68, -103.5));  // TODO Profession
 	}
 	
 	@Override

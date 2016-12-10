@@ -15,7 +15,7 @@ public class Rasmus extends NPC {
 	
 	@Override
 	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Rasmus", null, false, null);
+		return new NPCInfo("Rasmus", null, false, null);  // TODO Rasmus coordinates XXX Profession
 	}
 	
 	@Override
