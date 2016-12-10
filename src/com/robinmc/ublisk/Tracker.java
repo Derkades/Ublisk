@@ -77,65 +77,65 @@ public enum Tracker {
 	
 	public void syncWithDatabase(final UPlayer player){
 		Logger.log(LogLevel.INFO, "Tracker", "Syncronising " + this + " for " + player.getName());
-				UUID uuid = player.getUniqueId();
-				String table = this.getTable();
-				int value = this.getMap().get(uuid);
-				try {
-		        	MySQL.openConnection();
-		        	int stat = 0;
-		        	boolean containsPlayer = false;
-		        	
-		    		PreparedStatement check = MySQL.prepareStatement("SELECT * FROM `" + table + "` WHERE uuid=?;");
-		    		check.setString(1, uuid.toString());
-		    		ResultSet resultSet = check.executeQuery();
-		    		containsPlayer = resultSet.next();
-		    			
-		    		check.close();
-		    		resultSet.close();
-		        	
-		        	if (containsPlayer){
-		        		PreparedStatement sql = MySQL.prepareStatement("SELECT count FROM `" + table + "` WHERE uuid=?;");
-		        		sql.setString(1, uuid.toString());
-		        		
-		        		ResultSet result = sql.executeQuery();
-		        		result.next();
-		        		
-		        		stat = result.getInt("count");
-		        		
-		        		result.close();
-		        		sql.close();
-		        		
-		        		PreparedStatement newlogins = MySQL.prepareStatement("UPDATE `" + table + "` SET count=? WHERE uuid=?;");
-		        		newlogins.setInt(1, stat + value);
-		        		newlogins.setString(2, uuid.toString());
-		        		newlogins.executeUpdate();
-		        		newlogins.close();
-		        		
-		        		PreparedStatement name = MySQL.prepareStatement("UPDATE `" + table + "` SET name=? where uuid=?;");
-		        		name.setString(1, player.getName());
-		        		name.setString(2, uuid.toString());
-		        		name.executeUpdate();
-		        		
-		        		name.close();
-		        	} else {
-		        		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `" + table + "` values(?, ?, ?);");
-		        		newplayer.setString(1, uuid.toString());
-		        		newplayer.setInt(2, value);
-		        		newplayer.setString(3, player.getName());
-		        		newplayer.execute();
-		        		newplayer.close();
-		        	}
-		        	
-		        	this.getMap().put(uuid, 0);
-		        	
-		        } catch (Exception e){
-		        	e.printStackTrace();
-		        } finally {
-		        	try {
-						MySQL.closeConnection();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-		        }
+		UUID uuid = player.getUniqueId();
+		String table = this.getTable();
+		int value = this.getMap().get(uuid);
+		try {
+        	MySQL.openConnection();
+        	int stat = 0;
+        	boolean containsPlayer = false;
+        	
+    		PreparedStatement check = MySQL.prepareStatement("SELECT * FROM `" + table + "` WHERE uuid=?;");
+    		check.setString(1, uuid.toString());
+    		ResultSet resultSet = check.executeQuery();
+    		containsPlayer = resultSet.next();
+    			
+    		check.close();
+    		resultSet.close();
+        	
+        	if (containsPlayer){
+        		PreparedStatement sql = MySQL.prepareStatement("SELECT count FROM `" + table + "` WHERE uuid=?;");
+        		sql.setString(1, uuid.toString());
+        		
+        		ResultSet result = sql.executeQuery();
+        		result.next();
+        		
+        		stat = result.getInt("count");
+        		
+        		result.close();
+        		sql.close();
+        		
+        		PreparedStatement newlogins = MySQL.prepareStatement("UPDATE `" + table + "` SET count=? WHERE uuid=?;");
+        		newlogins.setInt(1, stat + value);
+        		newlogins.setString(2, uuid.toString());
+        		newlogins.executeUpdate();
+        		newlogins.close();
+        		
+        		PreparedStatement name = MySQL.prepareStatement("UPDATE `" + table + "` SET name=? where uuid=?;");
+        		name.setString(1, player.getName());
+        		name.setString(2, uuid.toString());
+        		name.executeUpdate();
+        		
+        		name.close();
+        	} else {
+        		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `" + table + "` values(?, ?, ?);");
+        		newplayer.setString(1, uuid.toString());
+        		newplayer.setInt(2, value);
+        		newplayer.setString(3, player.getName());
+        		newplayer.execute();
+        		newplayer.close();
+        	}
+        	
+        	this.getMap().put(uuid, 0);
+        	
+        } catch (Exception e){
+        	e.printStackTrace();
+        } finally {
+        	try {
+				MySQL.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
 	}
 }
