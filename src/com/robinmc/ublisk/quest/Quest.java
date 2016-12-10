@@ -54,11 +54,6 @@ public enum Quest {
 		return life == 0;
 	}
 	
-	@Deprecated
-	public static String getName(Quest quest){
-		return quest.getName();
-	}
-	
 	public static Quest fromConfigString(String s) throws QuestNotFoundException{
 		for (Quest quest : Quest.values()){
 			if (quest.getConfigString() == s){
@@ -67,6 +62,11 @@ public enum Quest {
 		}
 		
 		throw new QuestNotFoundException();
+	}
+	
+	@Override
+	public String toString(){
+		return name;
 	}
 	
 }
