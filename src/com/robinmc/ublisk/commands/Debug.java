@@ -143,7 +143,7 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("lag")){
 						player.sendMessage("TPS: " + Lag.getTPS());
 						return true;
-						/*
+						/* XXX Remove?
 					} else if (args[0].equals("mobarea")){
 						try {
 							player.sendMessage("");
