@@ -14,7 +14,7 @@ import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.sql.SyncQueue;
 
-public class SyncTrackersAndInfo extends BukkitRunnable {
+public class AddTrackersInfoToQueue extends BukkitRunnable {
 
 	public void run(){
 		List<BukkitRunnable> list = new ArrayList<BukkitRunnable>();
@@ -27,6 +27,7 @@ public class SyncTrackersAndInfo extends BukkitRunnable {
 							info.syncWithDatabase(player);
 						} catch (SQLException e) {
 							Logger.log(LogLevel.WARNING, "MySQL", "An error occurred while trying to synchronise.");
+							e.printStackTrace();
 						}
 					}
 				});
@@ -47,6 +48,7 @@ public class SyncTrackersAndInfo extends BukkitRunnable {
 							tracker.syncWithDatabase(player);
 						} catch (SQLException e) {
 							Logger.log(LogLevel.WARNING, "MySQL", "An error occurred while trying to synchronise.");
+							e.printStackTrace();
 						}
 					}
 				});
