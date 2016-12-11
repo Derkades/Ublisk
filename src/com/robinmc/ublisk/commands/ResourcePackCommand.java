@@ -7,8 +7,8 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 
 public class ResourcePackCommand implements CommandExecutor {
 
@@ -22,7 +22,7 @@ public class ResourcePackCommand implements CommandExecutor {
 		UPlayer player = UPlayer.get(sender);
 		
 		if (args.length == 1 && args[0].equalsIgnoreCase("check")){
-			Console.sendCommand("execute " + player.getName() + " ~ ~ ~ particle mobappearance ~ ~ ~ 0 0 1 50");
+			Ublisk.sendConsoleCommand("execute " + player.getName() + " ~ ~ ~ particle mobappearance ~ ~ ~ 0 0 1 50"); //TODO Use bukkit API
 			player.sendMessage(Message.PACK_CHECK);
 			return true;
 		} else if (args.length == 0){

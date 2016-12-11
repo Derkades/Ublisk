@@ -10,8 +10,8 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.settings.Setting;
@@ -54,7 +54,7 @@ public class MsgCommand implements CommandExecutor {
 			//Play a sound if the target player has enabled it
 			try {
 				if (target.getSetting(Setting.PM_SOUND)){
-					Console.sendCommand("execute " + target.getPlayer().getName() + " ~ ~ ~ playsound entity.item.pickup master @p");
+					Ublisk.sendConsoleCommand("execute " + target.getPlayer().getName() + " ~ ~ ~ playsound entity.item.pickup master @p"); // TODO Play sound API
 				}
 			} catch (NotSetException e) {	
 				target.setSetting(Setting.PM_SOUND, true);
