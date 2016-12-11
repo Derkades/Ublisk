@@ -60,23 +60,6 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 			});
 		}
 		
-		/* TODO Remove
-		for (final UPlayer player : Ublisk.getOnlinePlayers()){
-			for (final PlayerInfo info : PlayerInfo.values()){
-				list.add(new BukkitRunnable(){
-					public void run(){
-						try {
-							info.syncWithDatabase(player);
-						} catch (SQLException e) {
-							Logger.log(LogLevel.WARNING, "MySQL", "An error occurred while trying to synchronise.");
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		}
-		*/
-		
 		SyncQueue.addToQueue(list);
 	}
 }
