@@ -11,31 +11,6 @@ public class MySQL {
 	
 	protected static Connection connection;
 	
-	@Deprecated
-	public static DatabaseConnection getConnection(){
-		return new DatabaseConnection("192.168.0.125", 3306, getUser(), getPassword(), "ublisk");
-	}
-	
-	@Deprecated
-	private static String getUser(){
-		return DataFile.MYSQL.getString("user");
-	}
-
-	@Deprecated
-	private static String getPassword(){
-		//Admit it, you hoped that the password would be here in plain text. Nope!
-		return DataFile.MYSQL.getString("password");
-	}
-	@Deprecated
-	public synchronized static void openConnection(DatabaseConnection dbCon) throws SQLException {
-		String ip = dbCon.getIP();
-		int port = dbCon.getPort();
-		String user = dbCon.getUser();
-		String pass = dbCon.getPassword();
-		String db = dbCon.getDatabase();
-		connection = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + db, user, pass);
-	}
-	
 	public synchronized static void closeConnection() throws SQLException {
 		connection.close();
 	}
