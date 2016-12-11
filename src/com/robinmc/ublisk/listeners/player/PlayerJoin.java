@@ -58,19 +58,6 @@ public class PlayerJoin implements Listener {
 		
 		HashMaps.addPlayerToMaps(player);
 		
-		/*
-		if (Main.getInstance().getConfig().isSet("settings.music." + uuid)){
-	        if (Config.getBoolean("settings.music." + uuid)){
-	        	String town = Config.getString("last-town." + uuid);
- 		        Music.playSong(player, town);
-	        }
-		} else {
-			  String town = Config.getString("last-town." + uuid);
-			  Config.set("settings.music." + uuid, true);
-			  Music.playSong(player, town);
-		}
-		*/
-		
 		try {
 			if (uPlayer.getSetting(Setting.PLAY_MUSIC)){
 				Music.playSong(player, uPlayer.getTown().getName().toLowerCase());
@@ -90,7 +77,6 @@ public class PlayerJoin implements Listener {
         
         String ip = player.getAddress().toString();
         ip = ip.replace("/", "");
-        //Config.set("data.ip." + uuid, ip);
         DataFile.IP.set("ip." + uuid, ip);
         
         Exp.refresh(player);
