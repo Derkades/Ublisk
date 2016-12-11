@@ -2,6 +2,7 @@ package com.robinmc.ublisk.utils.guilds;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,8 +17,8 @@ import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
-import com.robinmc.ublisk.utils.sql.MySQL;
 
 public class Guild {
 	
@@ -203,57 +204,77 @@ public class Guild {
 	 * INT playercount (Player count)
 	 * TEXT players (player1 name, player2 name, ...)
 	 */
-	public void syncInfoWithDatabase(){
+	public void syncInfoWithDatabase() throws SQLException {
 		Logger.log(LogLevel.INFO, "Guilds", "Synchornising guild data...");
-		try {
-			MySQL.openConnection();
-			PreparedStatement sql = MySQL.prepareStatement("SELECT * FROM `guilds` WHERE name=?;");
-			sql.setString(1, this.getName());
-			ResultSet resultSet = sql.executeQuery();
-			boolean containsGuild;
-			
-			if (resultSet == null){
-				containsGuild = false;
-			} else {
-				containsGuild = resultSet.next();
+		boolean containsGuild = containsGuild();			
+		if (containsGuild){
+			Connection connection = null;
+			PreparedStatement update = null;
+			try {
+				connection = Ublisk.getNewDatabaseConnection("Guilds (update)");
+				update = connection.prepareStatement("UPDATE `guilds` SET points=?,img=?,playercount=?,players=? WHERE name=?;");
+	    		
+	    		update.setInt(1, this.getPoints());
+	    		update.setString(2, this.getImageURL());
+	    		update.setInt(3, this.getPlayerCount());
+	    		update.setString(4, String.join(", ", this.getPlayerNamesList()));
+	    		
+	    		update.setString(5, this.getName());
+	    		
+	    		update.executeUpdate();
+			} catch (SQLException e){
+				throw e;
+			} finally {
+				update.close();
+				connection.close();
 			}
-			
-			
-			if (containsGuild){
-				PreparedStatement update = MySQL.prepareStatement("UPDATE `guilds` SET points=?,img=?,playercount=?,players=? WHERE name=?;");
-        		
-        		update.setInt(1, this.getPoints());
-        		update.setString(2, this.getImageURL());
-        		update.setInt(3, this.getPlayerCount());
-        		update.setString(4, String.join(", ", this.getPlayerNamesList()));
-        		
-        		update.setString(5, this.getName());
-        		
-        		update.executeUpdate();
-        		update.close();
-			} else {
-				PreparedStatement insert = MySQL.prepareStatement("INSERT INTO `guilds` values(?, ?, ?, ?, ?);");
+		} else {
+			Connection connection = null;
+			PreparedStatement insert = null;
+			try {
+				connection = Ublisk.getNewDatabaseConnection("Guilds (insert)");
+				insert = connection.prepareStatement("INSERT INTO `guilds` values(?, ?, ?, ?, ?);");
 				insert.setString(1, this.getName());
 				insert.setInt(2, this.getPoints());
 				insert.setString(3, this.getImageURL());
 				insert.setInt(4, this.getPlayerCount());
 				insert.setString(5, String.join(", ", this.getPlayerNamesList()));
-        		
-        		insert.execute();
-        		insert.close();
-			}
-			
-			sql.close();
-			resultSet.close();
-		} catch (SQLException e){
-			e.printStackTrace();
-		} finally {
-			try {
-				MySQL.closeConnection();
-			} catch (SQLException e) {
-				e.printStackTrace();
+	    		
+	    		insert.execute();
+			} catch (SQLException e){
+				throw e;
+			} finally {
+				insert.close();
+				connection.close();
 			}
 		}
+
+	}
+	
+	private boolean containsGuild() throws SQLException {
+		Connection connection = null;
+		
+		PreparedStatement sql = null;
+		ResultSet result = null;
+		
+		boolean containsGuild = false;
+		
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Contains guild");
+			sql = connection.prepareStatement("SELECT * FROM `guilds` WHERE name=?;");
+			sql.setString(1, this.getName());
+			result = sql.executeQuery();
+			containsGuild = result.next();
+		} catch (SQLException e){
+			throw e;
+		} finally {
+			sql.close();
+			result.close();
+			
+			connection.close();
+		}
+		
+		return containsGuild;
 	}
 
 }
