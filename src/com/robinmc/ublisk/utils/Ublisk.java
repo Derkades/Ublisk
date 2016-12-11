@@ -9,6 +9,8 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import com.robinmc.ublisk.utils.Logger.LogLevel;
+
 public class Ublisk {
 	
 	public static UPlayer[] getOnlinePlayers(){
@@ -28,6 +30,7 @@ public class Ublisk {
 	}
 	
 	public static Connection getNewDatabaseConnection() throws SQLException {
+		Logger.log(LogLevel.DEBUG, "Something asked for a new MySQL connection!");
 		String ip = "localhost"; //TODO Use Var class to get database info
 		int port = 3306;
 		String user = DataFile.MYSQL.getString("user");
