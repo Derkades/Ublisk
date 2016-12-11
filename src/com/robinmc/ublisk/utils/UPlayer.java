@@ -134,7 +134,6 @@ public class UPlayer {
 	
 	public PermissionGroup getGroup(){
 		try {
-			//return PermissionGroup.fromString(Config.getString("groups." + getUniqueId()));
 			return PermissionGroup.fromString(DataFile.PERMISSIONS.getString("groups." + this.getUniqueId()));
 		} catch (GroupNotFoundException e) {
 			Logger.log(LogLevel.WARNING, "Permissions", "Could not get group of " + player.getName());
@@ -143,7 +142,6 @@ public class UPlayer {
 	}
 	
 	public void setGroup(PermissionGroup group){
-		//Config.set("groups." + getUniqueId(), group.getName().toLowerCase());
 		DataFile.PERMISSIONS.set("groups." + getUniqueId(), group.getName().toLowerCase());
 	}
 	
@@ -322,9 +320,7 @@ public class UPlayer {
 	}
 	
 	public boolean isInGuild(){
-		//Logger.log(LogLevel.DEBUG, "Is in guild?");
 		for (Guild guild : Guilds.getGuilds()){
-			//Logger.log(LogLevel.DEBUG, "Guilds for loop: " + guild.getName() + ". Contains player? " + guild.hasPlayer(this));
 			if (guild.hasPlayer(this)){
 				return true;
 			}
@@ -334,7 +330,6 @@ public class UPlayer {
 	
 	public Guild getGuild() throws NotInGuildException {
 		for (Guild guild : Guilds.getGuilds()){
-			//Logger.log(LogLevel.DEBUG, "Guilds for loop: " + guild.getName() + ". Contains player? " + guild.hasPlayer(this));
 			if (guild.hasPlayer(this)){
 				return guild;
 			}
@@ -524,22 +519,18 @@ public class UPlayer {
 	}
 	
 	public void setLastTown(Town town){
-		//Config.set("last-town." + player.getUniqueId(), town.getName());
 		DataFile.TOWN.set("last-town." + player.getUniqueId(), town.getName());
 	}
 	
 	public void sendTitle(String title, String subtitle){
-		//player.sendTitle(title, subtitle);
 		((CraftPlayer) player).sendTitle(title, subtitle);
 	}
 	
 	public void sendTitle(String title){
-		//player.sendTitle(title, "");
 		((CraftPlayer) player).sendTitle(title, "");
 	}
 	
 	public void sendSubTitle(String subtitle){
-		//player.sendTitle("", subtitle);
 		((CraftPlayer) player).sendTitle("", subtitle);
 	}
 	
@@ -552,12 +543,10 @@ public class UPlayer {
 	}
 	
 	public void setMaxHealth(double maxHealth){
-		//player.setMaxHealth(maxHealth);
 		player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(maxHealth);
 	}
 	
 	public double getMaxHealth(){
-		//return player.getMaxHealth();
 		return player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
 	}
 	
