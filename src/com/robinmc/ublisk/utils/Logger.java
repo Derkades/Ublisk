@@ -17,7 +17,7 @@ public class Logger {
 			Bukkit.getLogger().log(Level.INFO, consoleMessage);
 		
 		for (UPlayer player : Ublisk.getOnlinePlayers()){
-			player.sendMessage(chatMessage);
+			if (logLevel != LogLevel.DEBUG) player.sendMessage(chatMessage);
 		}
 	}
 	
