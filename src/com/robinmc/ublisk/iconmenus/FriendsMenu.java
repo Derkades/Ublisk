@@ -61,13 +61,6 @@ public class FriendsMenu {
 								ClickEvent.Action.OPEN_URL,
 								"http://ublisk.robinmc.com/stats/player.php?player=" + friend.getName()))
 						.create();
-				/*
-				player.sendMessage("");
-				player.sendMessage(GOLD + "Information for your friend " + YELLOW + BOLD + friend.getName());
-				player.sendMessage("");
-				player.sendMessage(GOLD + "XP" + GRAY + ": " + YELLOW + Exp.get(friend));
-				player.sendMessage(GOLD + "More info coming soon!");
-				*/
 				player.sendMessage(text);
 			}
 		}
@@ -84,13 +77,6 @@ public class FriendsMenu {
 		UPlayer player = UPlayer.get(bukkitPlayer);
 		
 		if (player.getFriends().isEmpty()){
-			/*
-			ItemStack head = new ItemStack(Material.SKULL_ITEM, 1);
-			head.setDurability((short) 3); //Durability value 3 is to get a human head instead of a skeleton head
-			SkullMeta meta = (SkullMeta) head.getItemMeta();
-			meta.setOwner("RobinMC");
-			head.setItemMeta(meta);
-			*/
 			ItemStack head = new ItemBuilder(Material.SKULL_ITEM)
 					.setAmount(1)
 					.setDamage(3) //Damage value 3 is to get a human head instead of a skeleton head
@@ -121,14 +107,6 @@ public class FriendsMenu {
 		int i = 0;
 		for (String string : player.getFriends()){
 			String pn = UUIDUtils.getNameFromIdString(string);
-			
-			/*
-			ItemStack head = new ItemStack(Material.SKULL_ITEM, 1);
-			head.setDurability((short) 3); //Durability value 3 is to get a human head instead of a skeleton head
-			SkullMeta meta = (SkullMeta) head.getItemMeta();
-			meta.setOwner(pn);
-			head.setItemMeta(meta);
-			*/
 			
 			ItemStack head = new ItemBuilder(Material.SKULL_ITEM)
 					.setAmount(1)
