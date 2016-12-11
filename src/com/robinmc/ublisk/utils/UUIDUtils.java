@@ -11,7 +11,6 @@ import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 public class UUIDUtils {
 	
 	public static UUID getIdFromName(String name){
-		//String string = Config.getString("uuid.uuid." + name);
 		String string = DataFile.UUID.getString("uuid." + name);
 		return UUID.fromString(string);
 	}
@@ -50,29 +49,6 @@ public class UUIDUtils {
 			throw new PlayerNotFoundException();
 		}
 	}
-	
-	/*
-	public static UUID getIdFromName(String name){
-		ArrayList<String> list = new ArrayList<String>();
-		list.add(name);
-		UUIDFetcher uuidFetcher = new UUIDFetcher(list);
-		Map<String, UUID> uuidMap = new HashMap<String, UUID>();
-		
-		try {
-			 uuidMap = uuidFetcher.call();	
-		} catch (Exception e){
-			return null;
-		}
-		
-		ArrayList<UUID> uuidList = new ArrayList<UUID>();
-		
-		for (UUID uuid : uuidMap.values()){
-			uuidList.add(uuid);
-		}
-		
-		return uuidList.get(0);
-	}
-	*/
 	
 	public static void save(Player player){
 		DataFile.UUID.set("uuid." + player.getName(), player.getUniqueId().toString());
