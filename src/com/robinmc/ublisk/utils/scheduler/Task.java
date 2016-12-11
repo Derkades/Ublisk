@@ -42,7 +42,6 @@ public enum Task {
 	RESPAWN_NPC(new RespawnNPC(), 5*20, 5*60*20, false),
 	SET_MAX_HEALTH(new SetMaxHealth(), 5*20, 5*20, false),
 	SPAWN_RANDOM_LOOT(new SpawnRandomLoot(), 5*60*20, 5*60*20, false),
-	//SYNC_TRACKERS(new SyncTrackers(), 5*60*20, 5*60*20, false),
 	UPDATE_BACKPACK_NAME(new UpdateBackpackName(), 0, 5*20, false),
 	UPDATE_DOUBLE_XP_BAR(new UpdateDoubleExpBar(), 1*20, 1*20, false),
 	UPDATE_FRIENDS_HEALTH_BAR(new UpdateFriendsHealthBar(), 5*20, 1*20, false),
@@ -53,11 +52,11 @@ public enum Task {
 	PROCESS_QUEUE(new ProcessQueue(), 10*20, 4*20, false);
 	
 	private BukkitRunnable runnable;
-	private int delay;
-	private int period;
+	private long delay;
+	private long period;
 	private boolean async;
 	
-	Task(BukkitRunnable runnable, int delay, int period, boolean async){
+	Task(BukkitRunnable runnable, long delay, long period, boolean async){
 		this.runnable = runnable;
 		this.delay = delay;
 		this.period = period;
