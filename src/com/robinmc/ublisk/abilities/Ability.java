@@ -2,6 +2,7 @@ package com.robinmc.ublisk.abilities;
 
 import org.bukkit.Material;
 
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.abilities.AbilityTrigger.TriggerType;
 import com.robinmc.ublisk.abilities.swordsman.Meteorite;
 import com.robinmc.ublisk.abilities.swordsman.TestAbility;
@@ -31,7 +32,8 @@ public enum Ability {
 		try {
 			player.removeMana(mana);
 		} catch (NotEnoughManaException e) {
-			// FIXME Handle not enough mana exception
+			player.sendMessage(Message.ABILITY_NOT_ENOUGH_MANA);
+			return;
 		}
 		
 		exec.doAbility(player);

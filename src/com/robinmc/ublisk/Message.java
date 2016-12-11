@@ -70,7 +70,9 @@ public enum Message {
 	CANT_AFFORD_ITEM(prefix("Money") + RED + "You can't afford that item"),
 	INVENTORY_NOT_CONTAIN_MONEY_ITEM(prefix("Money") + RED + "Your inventory does not contain any"),
 	
-	ALREADY_VOTED_RESTART(prefix() + RED + "You have already voted for a restart");
+	ALREADY_VOTED_RESTART(prefix() + RED + "You have already voted for a restart"),
+	
+	ABILITY_NOT_ENOUGH_MANA(prefix("Abilities") + "You do not have enough mana to do this ability.");
 	
 	private String msg;
 	
