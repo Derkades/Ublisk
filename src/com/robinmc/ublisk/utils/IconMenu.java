@@ -19,9 +19,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 
 import net.md_5.bungee.api.ChatColor;
  

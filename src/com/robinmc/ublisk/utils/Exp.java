@@ -9,11 +9,10 @@ import org.bukkit.entity.Player;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.mob.Mob;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.exception.MobInfoMissingException;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 
 public class Exp {
 	

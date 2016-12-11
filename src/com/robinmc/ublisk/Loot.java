@@ -15,9 +15,9 @@ import org.bukkit.craftbukkit.v1_11_R1.block.CraftChest;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.java.Random;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 
 import net.minecraft.server.v1_11_R1.TileEntityChest;
 

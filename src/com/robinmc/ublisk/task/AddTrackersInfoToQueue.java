@@ -8,11 +8,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.PlayerInfo;
 import com.robinmc.ublisk.Tracker;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.guilds.Guilds;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.sql.SyncQueue;
 
 public class AddTrackersInfoToQueue extends BukkitRunnable {

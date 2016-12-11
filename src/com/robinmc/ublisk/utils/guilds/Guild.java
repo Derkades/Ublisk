@@ -12,11 +12,11 @@ import java.util.UUID;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.sql.MySQL;
 
 public class Guild {

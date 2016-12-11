@@ -8,9 +8,9 @@ import java.util.UUID;
 
 import org.bukkit.entity.Player;
 
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.sql.MySQL;
 
 public enum Tracker {

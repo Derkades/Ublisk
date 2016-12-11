@@ -6,8 +6,8 @@ import java.util.List;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 
 public class SyncQueue {
 	

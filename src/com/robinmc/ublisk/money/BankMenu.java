@@ -4,11 +4,11 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.IconMenu;
-import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.inventory.BetterInventory;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 
 import net.md_5.bungee.api.ChatColor;
 

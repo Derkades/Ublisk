@@ -6,13 +6,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.guilds.Guild;
 import com.robinmc.ublisk.utils.guilds.Guilds;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 
 public class GuildCommand implements CommandExecutor {
 	

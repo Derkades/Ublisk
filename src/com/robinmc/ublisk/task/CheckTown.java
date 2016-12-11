@@ -4,11 +4,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Town;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.NotInATownException;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 
 public class CheckTown extends BukkitRunnable {
 

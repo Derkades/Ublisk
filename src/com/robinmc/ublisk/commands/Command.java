@@ -3,8 +3,8 @@ package com.robinmc.ublisk.commands;
 import org.bukkit.command.CommandExecutor;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 
 public enum Command {
 	

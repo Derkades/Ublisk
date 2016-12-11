@@ -29,11 +29,11 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.iconmenus.MainMenu;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Voting;
 import com.robinmc.ublisk.utils.inventory.item.Item;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
 import net.md_5.bungee.api.ChatColor;

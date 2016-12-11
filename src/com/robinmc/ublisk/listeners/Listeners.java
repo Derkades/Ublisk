@@ -24,8 +24,8 @@ import com.robinmc.ublisk.mob.listeners.EntityCombust;
 import com.robinmc.ublisk.mob.listeners.EntityDamageByEntity;
 import com.robinmc.ublisk.mob.listeners.EntityDeath;
 import com.robinmc.ublisk.quest.NPCClickListener;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.sethbling.blinghomingarrows.HomingArrowsListener;
 
 public class Listeners {

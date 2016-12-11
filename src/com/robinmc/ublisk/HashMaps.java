@@ -8,8 +8,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.task.AfkTimer;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 
 public class HashMaps {
 

@@ -4,8 +4,8 @@ import java.io.File;
 
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.xxmicloxx.NoteBlockAPI.NBSDecoder;
 import com.xxmicloxx.NoteBlockAPI.RadioSongPlayer;
 import com.xxmicloxx.NoteBlockAPI.Song;
