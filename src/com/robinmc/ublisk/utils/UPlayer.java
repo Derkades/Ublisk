@@ -234,11 +234,6 @@ public class UPlayer {
 		return player.getName();
 	}
 	
-	@Deprecated
-	public void syncTracker(Tracker tracker){
-		//Tracker.syncWithDatabase(player, tracker); FIXME Remove
-	}
-	
 	public boolean addFriend(Player newFriend){
 		final List<String> list = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
 		if (list.contains(newFriend.getUniqueId().toString())){
