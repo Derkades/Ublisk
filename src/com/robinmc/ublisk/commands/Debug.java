@@ -136,10 +136,7 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("health")){
 						player.sendMessage(player.getHealth() + "");
 						return true;
-					} /*else if (args[0].equals("sync")){
-						Tracker.syncAll();
-						return true; TODO Fix command
-					}*/ else if (args[0].equals("lag")){
+					} else if (args[0].equals("lag")){
 						player.sendMessage("TPS: " + Lag.getTPS());
 						return true;
 						/* XXX Remove?
