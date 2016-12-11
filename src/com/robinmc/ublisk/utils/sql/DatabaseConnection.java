@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.utils.sql;
 
+@Deprecated
 public class DatabaseConnection {
 	
 	private String ip;
