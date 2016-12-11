@@ -5,51 +5,27 @@ import java.util.logging.Level;
 import org.bukkit.Bukkit;
 
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 
 import net.md_5.bungee.api.ChatColor;
 
 public class Logger {
-	
-	private LogLevel logLevel;
-	
-	public Logger(LogLevel logLevel){
-		this.logLevel = logLevel;
-	}
-	
-	public LogLevel getLogLevel(){
-		return logLevel;
-	}
 
-	/**
-	 * Sends a message to the console
-	 * @param string A message
-	 */
-	public void log(Object object){		
-		switch (logLevel){
-		case WARNING:
-			Bukkit.getLogger().log(Level.WARNING, object + "");
-			break;
-		case SEVERE:
-			Bukkit.getLogger().log(Level.WARNING, object + "");
-			break;
-		default:
-			Bukkit.getLogger().log(Level.INFO, object + "");
-			break;
-		}
+	public static void log(LogLevel logLevel, String name, Object object){
+		String consoleMessage = "[" + name + "] " + object;
+		String chatMessage = ChatColor.GRAY + "[" + logLevel + "] " + object;
+		if (logLevel == LogLevel.SEVERE || logLevel == LogLevel.WARNING)
+			Bukkit.getLogger().log(Level.WARNING, consoleMessage);
+		else
+			Bukkit.getLogger().log(Level.INFO, consoleMessage);
 		
-		for (UPlayer player : UPlayer.getOnlinePlayers()) player.sendMessage(ChatColor.GRAY + "[" + logLevel + "] " + object);
+		for (UPlayer player : Ublisk.getOnlinePlayers()){
+			player.sendMessage(chatMessage);
+		}
 	}
 	
 	public static void log(LogLevel logLevel, Object object){
-		Logger.getLogger(logLevel).log(object);
-	}
-	
-	public static void log(LogLevel logLevel, String name, Object object){
-		log(logLevel, "[" + name + "] " + object);
-	}
-	
-	public static Logger getLogger(LogLevel logLevel){
-		return new Logger(logLevel);
+		log(logLevel, "Ublisk", object);
 	}
 	
 }
