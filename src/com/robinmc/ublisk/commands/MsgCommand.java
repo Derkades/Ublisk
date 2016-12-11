@@ -3,6 +3,7 @@ package com.robinmc.ublisk.commands;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -54,7 +55,8 @@ public class MsgCommand implements CommandExecutor {
 			//Play a sound if the target player has enabled it
 			try {
 				if (target.getSetting(Setting.PM_SOUND)){
-					Ublisk.sendConsoleCommand("execute " + target.getPlayer().getName() + " ~ ~ ~ playsound entity.item.pickup master @p"); // TODO Play sound API
+					//Ublisk.sendConsoleCommand("execute " + target.getPlayer().getName() + " ~ ~ ~ playsound entity.item.pickup master @p");
+					target.playSound(Sound.ENTITY_ITEM_PICKUP);
 				}
 			} catch (NotSetException e) {	
 				target.setSetting(Setting.PM_SOUND, true);
