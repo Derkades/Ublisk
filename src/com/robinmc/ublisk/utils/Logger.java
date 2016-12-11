@@ -10,7 +10,7 @@ public class Logger {
 
 	public static void log(LogLevel logLevel, String name, Object object){
 		String consoleMessage = "[" + name + "] " + object;
-		String chatMessage = ChatColor.GRAY + "[" + logLevel + "] " + object;
+		String chatMessage = ChatColor.GRAY + "[" + logLevel + "] " + consoleMessage;
 		if (logLevel == LogLevel.SEVERE || logLevel == LogLevel.WARNING)
 			Bukkit.getLogger().log(Level.WARNING, consoleMessage);
 		else
