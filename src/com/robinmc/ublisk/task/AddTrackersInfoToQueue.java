@@ -19,6 +19,11 @@ import com.robinmc.ublisk.utils.sql.SyncQueue;
 public class AddTrackersInfoToQueue extends BukkitRunnable {
 
 	public void run(){
+		if (!SyncQueue.isEmpty())
+			return;
+		
+		//The SyncQueue is empty, so add new stuff to it:
+		
 		List<BukkitRunnable> list = new ArrayList<BukkitRunnable>();
 		
 		for (final UPlayer player : Ublisk.getOnlinePlayers()){
