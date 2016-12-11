@@ -583,6 +583,7 @@ public class UPlayer {
 		this.sendPacket(packet);
 	}
 	
+	@Deprecated
 	public static UPlayer[] getOnlinePlayers(){
 		List<UPlayer> list = new ArrayList<UPlayer>();
 		for (Player player : Bukkit.getOnlinePlayers()){
