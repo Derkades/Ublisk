@@ -602,6 +602,10 @@ public class UPlayer {
 		this.playSound(sound, 1.0f);
 	}
 	
+	public void setCollidable(boolean bool){
+		((CraftPlayer) player).setCollidable(bool);
+	}
+	
 	public static UPlayer get(Player player){ return new UPlayer(player); }
 	
 	public static UPlayer get(QuestParticipant qp){ return get(qp.getBukkitPlayer()); }

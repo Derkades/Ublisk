@@ -21,7 +21,6 @@ import com.robinmc.ublisk.iconmenus.ClassMenu;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
-import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
@@ -35,7 +34,8 @@ public class PlayerJoin implements Listener {
 		String pn = player.getName();
 		UUID uuid = player.getUniqueId();
 		
-		Ublisk.sendConsoleCommand("scoreboard teams join all " + pn); //Join team "all". This team disables 1.9 collision TODO: Better solution
+		//Ublisk.sendConsoleCommand("scoreboard teams join all " + pn); //Join team "all". This team disables 1.9 collision TODO: Better solution
+		player.setCollidable(false);
 		
 		event.setJoinMessage(Message.Complicated.JoinQuit.playerJoin(pn));
 		
