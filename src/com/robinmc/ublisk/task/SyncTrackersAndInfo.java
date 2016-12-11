@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.task;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,8 @@ import com.robinmc.ublisk.PlayerInfo;
 import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.guilds.Guilds;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.sql.SyncQueue;
 
 public class SyncTrackersAndInfo extends BukkitRunnable {
@@ -20,7 +23,11 @@ public class SyncTrackersAndInfo extends BukkitRunnable {
 			for (final PlayerInfo info : PlayerInfo.values()){
 				list.add(new BukkitRunnable(){
 					public void run(){
-						info.syncWithDatabase(player);
+						try {
+							info.syncWithDatabase(player);
+						} catch (SQLException e) {
+							Logger.log(LogLevel.WARNING, "MySQL", "An error occurred while trying to synchronise.");
+						}
 					}
 				});
 			}
@@ -36,7 +43,11 @@ public class SyncTrackersAndInfo extends BukkitRunnable {
 			for (final Tracker tracker : Tracker.values()){
 				list.add(new BukkitRunnable(){
 					public void run(){
-						tracker.syncWithDatabase(player);
+						try {
+							tracker.syncWithDatabase(player);
+						} catch (SQLException e) {
+							Logger.log(LogLevel.WARNING, "MySQL", "An error occurred while trying to synchronise.");
+						}
 					}
 				});
 			}
