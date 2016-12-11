@@ -217,7 +217,7 @@ public class PlayerInteract implements Listener {
 		        new BukkitRunnable(){
 		        	public void run(){
 		        		byte data = wheat.getData();
-		        		if (data == 7) cancel();
+		        		if (data >= 7) cancel();
 		        		wheat.setData((byte) (data + 1));
 		        	}
 		        }.runTaskTimer(Main.getInstance(), 0, 20);
