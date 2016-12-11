@@ -3,6 +3,7 @@ package com.robinmc.ublisk.utils.scheduler;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.task.AddTrackersInfoToQueue;
 import com.robinmc.ublisk.task.AfkTimer;
 import com.robinmc.ublisk.task.CheckDoubleExp;
 import com.robinmc.ublisk.task.CheckShield;
@@ -12,12 +13,12 @@ import com.robinmc.ublisk.task.FastNight;
 import com.robinmc.ublisk.task.LifeCrystalInventory;
 import com.robinmc.ublisk.task.PlayerLevelUp;
 import com.robinmc.ublisk.task.RandomTips;
+import com.robinmc.ublisk.task.RefreshLastSeenDate;
 import com.robinmc.ublisk.task.RegenerateHunger;
 import com.robinmc.ublisk.task.RemoveMobs;
 import com.robinmc.ublisk.task.RespawnNPC;
 import com.robinmc.ublisk.task.SetMaxHealth;
 import com.robinmc.ublisk.task.SpawnRandomLoot;
-import com.robinmc.ublisk.task.AddTrackersInfoToQueue;
 import com.robinmc.ublisk.task.UpdateBackpackName;
 import com.robinmc.ublisk.task.UpdateDoubleExpBar;
 import com.robinmc.ublisk.task.UpdateFriendsHealthBar;
@@ -35,6 +36,7 @@ public enum Task {
 	LIFE_CRYSTAL_INVENTORY(new LifeCrystalInventory(), 5*20, 5*20, false),
 	PLAYER_LEVEL_UP(new PlayerLevelUp(), 0, 5*20, false),
 	RANDOM_TIP(new RandomTips(), 30*20, 5*60*20, false),
+	REFRESH_LAST_SEEN_DATE(new RefreshLastSeenDate(), 0, 5*20, false),
 	REGENERATE_HUNGER(new RegenerateHunger(), 5*20, 5*20, false),
 	REMOVE_MOBS(new RemoveMobs(), 5*60*20, 15*60*20, false),
 	RESPAWN_NPC(new RespawnNPC(), 5*20, 5*60*20, false),
