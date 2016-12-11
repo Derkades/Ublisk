@@ -25,7 +25,7 @@ public class NewPlayerInfo {
 				insertInfo(player);
 			}
 		} catch (SQLException e){
-			Logger.log(LogLevel.SEVERE, "An error occured while trying to syncronise player data for " + player.getName());
+			Logger.log(LogLevel.SEVERE, "An error occured while trying to syncronise player info for " + player.getName());
 			e.printStackTrace();
 		}
 	}
@@ -71,6 +71,8 @@ public class NewPlayerInfo {
 			update.setString(4, player.getLastSeenDate());
 			update.setInt(5, player.getLevel());
 			update.setString(6, player.getTown().getName());
+			
+			update.setString(7, player.getUniqueId().toString());
 			
 			update.executeUpdate();
 		} catch (SQLException e){
