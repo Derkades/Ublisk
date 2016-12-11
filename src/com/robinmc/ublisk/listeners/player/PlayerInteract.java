@@ -70,7 +70,7 @@ public class PlayerInteract implements Listener {
 	}
 	
 	//ignoreCancelled = true - Still track clicks when they are cancelled
-	@EventHandler(priority=EventPriority.LOW, ignoreCancelled = true)
+	@EventHandler(priority=EventPriority.MONITOR, ignoreCancelled = true)
 	public void tracker(PlayerInteractEvent event){
 		Player player = event.getPlayer();
 		Action action = event.getAction();
