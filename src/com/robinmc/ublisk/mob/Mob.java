@@ -62,15 +62,15 @@ public enum Mob {
 			new Sheep(), 1, 1.5, 0, 4, 10, "Sheep", 10, GoldDrop.LEVEL1,
 			new MobDrop(new ItemStack(Material.WOOL), 70)),
 	CHICKEN(new MobArea(
-			new Radius(66, -40, 60)), 
+			new Radius(66, -40, 60)), //Introduction
 			new Chicken(), 1, 0.5, 0, 2, 20, "Chicken", 5, GoldDrop.LEVEL1,
 			new MobDrop(new ItemStack(Material.FEATHER), 30)),
 	RUINS_DWELLER(new MobArea(
-			new Radius(221, -23, 20)),
+			new Radius(221, -23, 20)), //Ruins near Glaenor forest
 			new ZombieVillager().withProfession(Profession.FARMER), 4, 10, 2, 7, 7, "Ruins Dweller", 10, GoldDrop.LEVEL3,
 			new MobDrop(new ItemStack(Material.ROTTEN_FLESH), 0, 2)),
 	ZOMBIE_LEVEL_3(new MobArea(
-			new Radius(160, 89, 100),
+			new Radius(160, 89, 100), //TODO Merge into one big radius
 			new Radius(214, -66, 60),
 			new Radius(111, 19, 50)),
 			new Zombie(), 3, 7, 0, 5, 50, "Zombie", 5, GoldDrop.LEVEL2),
