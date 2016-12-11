@@ -10,6 +10,7 @@ public class Scheduler {
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), runnable, delay);
 	}
 	
+	@Deprecated
 	public static void oneTickDelay(Runnable runnable){
 		runTaskLater(1, runnable);
 	}
