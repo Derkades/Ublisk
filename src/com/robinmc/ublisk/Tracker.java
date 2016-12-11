@@ -1,5 +1,6 @@
 package com.robinmc.ublisk;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +12,7 @@ import org.bukkit.entity.Player;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.sql.MySQL;
+import com.robinmc.ublisk.utils.Ublisk;
 
 public enum Tracker {
 	
@@ -58,48 +59,84 @@ public enum Tracker {
 		String table = this.getTable();
 		int value = this.getMap().get(uuid);
     	int current = 0;
-    	boolean containsPlayer = false;
-    	
-    	MySQL.openConnection();
-		PreparedStatement check = MySQL.prepareStatement("SELECT * FROM `" + table + "` WHERE uuid=?;");
-		check.setString(1, uuid.toString());
-		ResultSet resultSet = check.executeQuery();
-		check.close();
-		containsPlayer = resultSet.next();
-		resultSet.close();
-    	
+    	boolean containsPlayer = containsPlayer(table, uuid);
+
     	if (containsPlayer){
-    		PreparedStatement sql = MySQL.prepareStatement("SELECT count FROM `" + table + "` WHERE uuid=?;");
-    		sql.setString(1, uuid.toString());
+    		Connection connection = null;
+    		PreparedStatement sql = null;
+    		ResultSet result = null;
+    		PreparedStatement updateValue = null;
+    		PreparedStatement updateName = null;
+    		try {
+    			connection = Ublisk.getNewDatabaseConnection();
+    			sql = connection.prepareStatement("SELECT count FROM `" + table + "` WHERE uuid=?;");
+        		sql.setString(1, uuid.toString());
+        		
+        		result = sql.executeQuery();
+        		sql.close();
+        		result.next();	
+        		current = result.getInt("count"); 		
+        		result.close();
+        		
+        		updateValue = connection.prepareStatement("UPDATE `" + table + "` SET count=? WHERE uuid=?;");
+        		updateValue.setInt(1, current + value);
+        		updateValue.setString(2, uuid.toString());
+        		updateValue.executeUpdate();
+        		
+        		updateName = connection.prepareStatement("UPDATE `" + table + "` SET name=? where uuid=?;");
+        		updateName.setString(1, player.getName());
+        		updateName.setString(2, uuid.toString());
+        		updateName.executeUpdate();
+    		} catch (SQLException e){
+    			throw e;
+    		} finally {
+    			sql.close();
+    			result.close();
+    			updateValue.close();
+    			updateName.close();
+    			
+    			connection.close();
+    		}
     		
-    		ResultSet result = sql.executeQuery();
-    		sql.close();
-    		result.next();	
-    		current = result.getInt("count"); 		
-    		result.close();
-    		
-    		PreparedStatement updatevalue = MySQL.prepareStatement("UPDATE `" + table + "` SET count=? WHERE uuid=?;");
-    		updatevalue.setInt(1, current + value);
-    		updatevalue.setString(2, uuid.toString());
-    		updatevalue.executeUpdate();
-    		updatevalue.close();
-    		
-    		PreparedStatement updatename = MySQL.prepareStatement("UPDATE `" + table + "` SET name=? where uuid=?;");
-    		updatename.setString(1, player.getName());
-    		updatename.setString(2, uuid.toString());
-    		updatename.executeUpdate();
-    		updatename.close();
     	} else {
-    		PreparedStatement newplayer = MySQL.prepareStatement("INSERT INTO `" + table + "` values(?, ?, ?);");
-    		newplayer.setString(1, uuid.toString());
-    		newplayer.setInt(2, value);
-    		newplayer.setString(3, player.getName());
-    		newplayer.execute();
-        	newplayer.close();
-        }
-        
-        this.getMap().put(uuid, 0);
-        	
-		MySQL.closeConnection();
+    		Connection connection = null;
+    		PreparedStatement insertPlayer = null;
+    		try {
+    			connection = Ublisk.getNewDatabaseConnection();
+	    		insertPlayer = connection.prepareStatement("INSERT INTO `" + table + "` values(?, ?, ?);");
+	    		insertPlayer.setString(1, uuid.toString());
+	    		insertPlayer.setInt(2, value);
+	    		insertPlayer.setString(3, player.getName());
+	    		insertPlayer.execute();
+    		} catch (SQLException e){
+    			throw e;
+    		} finally {
+    			insertPlayer.close();
+    			
+    			connection.close();
+    		}
+    	}
+    	
+    	this.getMap().put(uuid, 0);
+	}
+	
+	private static boolean containsPlayer(String table, UUID uuid) throws SQLException {
+		boolean containsPlayer = false;
+		
+		Connection connection = null;
+		try {
+			connection = Ublisk.getNewDatabaseConnection();
+			PreparedStatement check = connection.prepareStatement("SELECT * FROM `" + table + "` WHERE uuid=?;");
+			check.setString(1, uuid.toString());
+			ResultSet resultSet = check.executeQuery();
+			check.close();
+			containsPlayer = resultSet.next();
+		} catch (SQLException e){
+			throw e;
+		} finally {
+			connection.close();
+		}
+		
+		return containsPlayer;
 	}
 }
