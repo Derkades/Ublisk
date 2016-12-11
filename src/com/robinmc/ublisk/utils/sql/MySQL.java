@@ -9,12 +9,15 @@ import com.robinmc.ublisk.utils.DataFile;
 
 public class MySQL {
 	
+	@Deprecated
 	protected static Connection connection;
 	
+	@Deprecated
 	public synchronized static void closeConnection() throws SQLException {
 		connection.close();
 	}
 	
+	@Deprecated
 	public static void onDisable(){
 		if (connection != null){
 			try {
@@ -25,6 +28,7 @@ public class MySQL {
 		}
 	}
 
+	@Deprecated
 	public synchronized static void openConnection() throws SQLException {
 		String ip = "localhost";
 		int port = 3306;
@@ -34,7 +38,9 @@ public class MySQL {
 		connection = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + db, user, pass);	
 	}
 	
+	@Deprecated
 	public static PreparedStatement prepareStatement(String sql) throws SQLException {
 		return MySQL.connection.prepareStatement(sql);
 	}
+
 }
