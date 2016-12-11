@@ -68,7 +68,7 @@ public enum Tracker {
     		PreparedStatement updateValue = null;
     		PreparedStatement updateName = null;
     		try {
-    			connection = Ublisk.getNewDatabaseConnection();
+    			connection = Ublisk.getNewDatabaseConnection("Tracker (" + this + ")");
     			
     			//Get current value
     			sql = connection.prepareStatement("SELECT count FROM `" + table + "` WHERE uuid=?;");
@@ -103,7 +103,7 @@ public enum Tracker {
     		Connection connection = null;
     		PreparedStatement insertPlayer = null;
     		try {
-    			connection = Ublisk.getNewDatabaseConnection();
+    			connection = Ublisk.getNewDatabaseConnection("Tracker (" + this + ")");
 	    		insertPlayer = connection.prepareStatement("INSERT INTO `" + table + "` values(?, ?, ?);");
 	    		insertPlayer.setString(1, uuid.toString());
 	    		insertPlayer.setInt(2, value);
@@ -128,7 +128,7 @@ public enum Tracker {
 		PreparedStatement check = null;
 		ResultSet result = null;
 		try {
-			connection = Ublisk.getNewDatabaseConnection();
+			connection = Ublisk.getNewDatabaseConnection("Tracker (containsPlayer)");
 			check = connection.prepareStatement("SELECT * FROM `" + table + "` WHERE uuid=?;");
 			check.setString(1, uuid.toString());
 			result = check.executeQuery();
