@@ -14,8 +14,6 @@ import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.mob.MobDrop;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 
 public class EntityDeath implements Listener {
 	
