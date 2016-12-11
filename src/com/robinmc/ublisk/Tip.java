@@ -1,8 +1,8 @@
 package com.robinmc.ublisk;
 
-import java.security.SecureRandom;
-
 import org.bukkit.ChatColor;
+
+import com.robinmc.ublisk.utils.java.EnumUtils;
 
 public enum Tip {
 	
@@ -25,14 +25,8 @@ public enum Tip {
 		return tip;
 	}
 	
-	private static <T extends Enum<?>> T randomEnum(Class<T> clazz){
-		final SecureRandom random = new SecureRandom();
-        int x = random.nextInt(clazz.getEnumConstants().length);
-        return clazz.getEnumConstants()[x];
-    }
-	
 	public static String getRandomTip(){
-		Tip tip = randomEnum(Tip.class);
+		Tip tip = EnumUtils.getRandomEnum(Tip.class);
 		String text = tip.getText();
 		return ChatColor.GOLD + text;
 	}

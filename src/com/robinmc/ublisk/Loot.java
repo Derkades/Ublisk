@@ -1,7 +1,6 @@
 package com.robinmc.ublisk;
 
 import java.lang.reflect.Field;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.utils.java.EnumUtils;
 import com.robinmc.ublisk.utils.java.Random;
 
 import net.minecraft.server.v1_11_R1.TileEntityChest;
@@ -36,10 +36,7 @@ public enum Loot {
 	}
 	
 	public static Loot getRandomLoot(){
-		Class<Loot> clazz = Loot.class;
-		final SecureRandom random = new SecureRandom();
-        int x = random.nextInt(clazz.getEnumConstants().length);
-        return clazz.getEnumConstants()[x];
+		return EnumUtils.getRandomEnum(Loot.class);	
     }
 	
 	public void spawn(){
