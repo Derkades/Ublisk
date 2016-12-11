@@ -13,6 +13,7 @@ import org.bukkit.inventory.PlayerInventory;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.NewPlayerInfo;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.chat.Trigger;
@@ -226,6 +227,9 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("actionbar")){
 						player.sendActionBarMessage(ChatColor.RED + "TEST!");
+						return true;
+					} else if (args[0].equals("playerinfo")){
+						NewPlayerInfo.syncInfo(player);
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());

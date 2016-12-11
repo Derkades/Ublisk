@@ -10,6 +10,7 @@ import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
 import com.robinmc.ublisk.utils.sql.MySQL;
 
+@Deprecated
 public enum PlayerInfo {
 
 	XP("exp", new UpdateCode(){ /* TEXT uuid, INT xp count, TEXT name */

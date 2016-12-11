@@ -6,7 +6,6 @@ import com.robinmc.ublisk.commands.Command;
 import com.robinmc.ublisk.listeners.Listeners;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.utils.scheduler.Task;
-import com.robinmc.ublisk.utils.sql.MySQL;
 
 public class Main extends JavaPlugin {
 	
@@ -30,7 +29,7 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable(){
 		instance = null;
-		MySQL.onDisable();
+		//MySQL.onDisable();
 	}
 	
 	public static Main getInstance(){
