@@ -9,7 +9,6 @@ import com.robinmc.ublisk.iconmenus.MainMenu;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 
@@ -21,24 +20,13 @@ public class HelpMenu {
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
 			final Player player = event.getPlayer();
+			event.setWillClose(false);
 			if (name.contains("commands")){
-				Scheduler.oneTickDelay(new Runnable(){
-					public void run(){
-						CommandsHelp.open(player);
-					}
-				});
+				CommandsHelp.open(player);
 			} else if (name.contains("faq")){
-				Scheduler.oneTickDelay(new Runnable(){
-					public void run(){
-						// TODO Open faq menu
-					}
-				});
+				// TODO Open faq menu
 			} else if (name.equals("back")){
-				Scheduler.oneTickDelay(new Runnable(){
-					public void run(){
-						MainMenu.open(player);
-					}
-				});
+					MainMenu.open(player);
 			} else {
 				player.sendMessage(Message.ERROR_MENU.get());
 			}
