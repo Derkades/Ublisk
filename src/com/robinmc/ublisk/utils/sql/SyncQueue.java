@@ -39,5 +39,9 @@ public class SyncQueue {
 			list.remove(runnable); //Remove it from the list, even if an exception occurred
 		}
 	}
+	
+	public static boolean isEmpty(){
+		return list.isEmpty();
+	}
 
 }
