@@ -23,6 +23,7 @@ import com.google.common.collect.ImmutableList;
  * @author https://github.com/evilmidget38
  * @author Kiskae
  */
+@Deprecated
 public class UUIDFetcher implements Callable<Map<String, UUID>> {
     private static final String PROFILE_URL = "https://api.mojang.com/profiles/minecraft";
     private final JSONParser jsonParser = new JSONParser();
