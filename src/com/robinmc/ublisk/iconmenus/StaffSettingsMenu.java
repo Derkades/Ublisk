@@ -6,8 +6,6 @@ import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.exception.NotSetException;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.settings.StaffSetting;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
@@ -54,7 +52,6 @@ public class StaffSettingsMenu {
 	});
 	
 	public static void open(Player player){
-		Logger.log(LogLevel.INFO, "Menu", "StaffSettings has been opened for " + player.getName());
 		fillMenu(player);
 		menu.open(player);
 	}

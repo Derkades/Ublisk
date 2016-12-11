@@ -16,8 +16,6 @@ import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.settings.Setting;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
@@ -67,7 +65,6 @@ public class FriendsMenu {
 	});
 	
 	public static void open(Player player){
-		Logger.log(LogLevel.INFO, "Menu", "FriendsMenu has been opened for " + player.getName());
 		fillMenu(player);
 		menu.open(player);
 	}

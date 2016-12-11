@@ -7,8 +7,6 @@ import org.bukkit.inventory.ItemStack;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.iconmenus.MainMenu;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 
@@ -34,7 +32,6 @@ public class HelpMenu {
 	});
 	
 	public static void open(Player player){
-		Logger.log(LogLevel.INFO, "Menu", "Help menu has been opened for " + player.getName());
 		fillMenu();
 		menu.open(player);
 	}

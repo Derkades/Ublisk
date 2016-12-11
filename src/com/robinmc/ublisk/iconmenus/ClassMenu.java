@@ -9,8 +9,6 @@ import org.bukkit.inventory.ItemStack;
 import com.robinmc.ublisk.Cooldown;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.DataFile;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 
@@ -48,7 +46,6 @@ public class ClassMenu {
 	});
 	
 	public static void open(Player player){
-		Logger.log(LogLevel.INFO, "Menu", "ClassMenu has been opened for " + player.getName());
 		fillMenu();
 		menu.open(player);
 	}

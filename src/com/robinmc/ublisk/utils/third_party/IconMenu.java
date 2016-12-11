@@ -22,6 +22,8 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
+import com.robinmc.ublisk.utils.logging.LogLevel;
+import com.robinmc.ublisk.utils.logging.Logger;
 
 import net.md_5.bungee.api.ChatColor;
  
@@ -62,6 +64,7 @@ public class IconMenu implements Listener {
     }
  
     public void open(Player player) {
+		Logger.log(LogLevel.INFO, "Menu", name + " has been opened for " + player.getName());
         Inventory inventory = Bukkit.createInventory(player, size, name);
         for (int i = 0; i < optionIcons.length; i++) {
             if (optionIcons[i] != null) {

@@ -10,8 +10,6 @@ import com.robinmc.ublisk.money.BankMenu;
 import com.robinmc.ublisk.money.MoneyItem;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
@@ -44,7 +42,6 @@ public class MainMenu {
 	});
 	
 	public static void open(Player player){
-		Logger.log(LogLevel.INFO, "Menu", "MainMenu has been opened for " + player.getName());
 		fillMenu(player);
 		menu.open(player);
 	}

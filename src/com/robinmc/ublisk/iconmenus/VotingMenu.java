@@ -7,8 +7,6 @@ import org.bukkit.inventory.ItemStack;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Voting;
-import com.robinmc.ublisk.utils.logging.LogLevel;
-import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 
@@ -37,7 +35,6 @@ public class VotingMenu {
 	});
 	
 	public static void open(Player player){
-		Logger.log(LogLevel.INFO, "Menu", "Voting has been opened for " + player.getName());
 		fillMenu(player);
 		menu.open(player);
 	}
