@@ -198,34 +198,25 @@ public enum PlayerInfo {
 		this.code = code;
 	}
 	
-	public void syncWithDatabase(UPlayer player){
+	public void syncWithDatabase(UPlayer player) throws SQLException {
 		String uuid = player.getUniqueId().toString();
 		String name = player.getName();
 		
-		try {
-			MySQL.openConnection();
-			
-			Logger.log(LogLevel.INFO, "PlayerInfo", "Updating " + table + " in database for player " + player.getName());
-    		
-    		PreparedStatement sql = MySQL.prepareStatement("SELECT * FROM `" + table + "` WHERE uuid=?;");
-			sql.setString(1, uuid);
-			ResultSet resultSet = sql.executeQuery();
-			boolean containsPlayer = resultSet.next();
-			
-			sql.close();
-			resultSet.close();
-			
-			code.executeUpdate(player, uuid, name, containsPlayer, table);
-        	
-		} catch (SQLException e){
-			e.printStackTrace();
-		} finally {
-			try {
-				MySQL.closeConnection();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		MySQL.openConnection();
+		
+		Logger.log(LogLevel.INFO, "PlayerInfo", "Updating " + table + " in database for player " + player.getName());
+		
+		PreparedStatement sql = MySQL.prepareStatement("SELECT * FROM `" + table + "` WHERE uuid=?;");
+		sql.setString(1, uuid);
+		ResultSet resultSet = sql.executeQuery();
+		boolean containsPlayer = resultSet.next();
+		
+		sql.close();
+		resultSet.close();
+		
+		code.executeUpdate(player, uuid, name, containsPlayer, table);
+    	
+		MySQL.closeConnection();
 	}
 	
 	private interface UpdateCode {
