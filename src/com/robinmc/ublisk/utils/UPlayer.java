@@ -12,6 +12,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
@@ -588,6 +589,18 @@ public class UPlayer {
 	
 	public double getAttribute(Attribute attribute){
 		return player.getAttribute(attribute).getBaseValue();
+	}
+	
+	public void playSound(Sound sound, float volume, float pitch){
+		player.playSound(player.getLocation(), sound, volume, pitch);
+	}
+	
+	public void playSound(Sound sound, float pitch){
+		this.playSound(sound, 1.0f, pitch);
+	}
+	
+	public void playSound(Sound sound){
+		this.playSound(sound, 1.0f);
 	}
 	
 	@Deprecated
