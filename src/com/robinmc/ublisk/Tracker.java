@@ -52,29 +52,6 @@ public enum Tracker {
 		getMap().put(uuid, previous + 1);
 	}
 	
-	@Deprecated
-	public static void syncAll(){
-		/*
-		int delay = 0;
-		for (final Tracker tracker : Tracker.values()){
-			delay = delay + Var.TRACKER_DELAY + Bukkit.getOnlinePlayers().size() * 50;
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
-				public void run(){
-					int playerDelay = 0;
-					for (final Player player : Bukkit.getOnlinePlayers()){
-						playerDelay = playerDelay + 50;
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
-							public void run(){
-								//syncWithDatabase(player, tracker);
-							}
-						}, playerDelay);
-					}
-				}
-			}, delay);
-		}
-		*/
-	}
-	
 	public void syncWithDatabase(final UPlayer player) throws SQLException {
 		Logger.log(LogLevel.INFO, "Tracker", "Syncronising " + this + " for " + player.getName());
 		UUID uuid = player.getUniqueId();
