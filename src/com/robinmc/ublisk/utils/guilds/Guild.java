@@ -205,7 +205,7 @@ public class Guild {
 	 * TEXT players (player1 name, player2 name, ...)
 	 */
 	public void syncInfoWithDatabase() throws SQLException {
-		Logger.log(LogLevel.INFO, "Guilds", "Synchornising guild data...");
+		Logger.log(LogLevel.INFO, "Guilds", "Synchornising guild data for " + this.getName());
 		boolean containsGuild = containsGuild();			
 		if (containsGuild){
 			Connection connection = null;
