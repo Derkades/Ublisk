@@ -21,6 +21,21 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 		List<BukkitRunnable> list = new ArrayList<BukkitRunnable>();
 		
 		for (final UPlayer player : Ublisk.getOnlinePlayers()){
+			for (final Tracker tracker : Tracker.values()){
+				list.add(new BukkitRunnable(){
+					public void run(){
+						try {
+							tracker.syncWithDatabase(player);
+						} catch (SQLException e) {
+							Logger.log(LogLevel.WARNING, "MySQL", "An error occurred while trying to synchronise.");
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		}
+		
+		for (final UPlayer player : Ublisk.getOnlinePlayers()){
 			for (final PlayerInfo info : PlayerInfo.values()){
 				list.add(new BukkitRunnable(){
 					public void run(){
@@ -41,20 +56,7 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 			}
 		});
 		
-		for (final UPlayer player : Ublisk.getOnlinePlayers()){
-			for (final Tracker tracker : Tracker.values()){
-				list.add(new BukkitRunnable(){
-					public void run(){
-						try {
-							tracker.syncWithDatabase(player);
-						} catch (SQLException e) {
-							Logger.log(LogLevel.WARNING, "MySQL", "An error occurred while trying to synchronise.");
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		}
+
 		
 		SyncQueue.addToQueue(list);
 	}

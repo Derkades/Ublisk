@@ -69,20 +69,21 @@ public enum Tracker {
     		PreparedStatement updateName = null;
     		try {
     			connection = Ublisk.getNewDatabaseConnection();
+    			
+    			//Get current value
     			sql = connection.prepareStatement("SELECT count FROM `" + table + "` WHERE uuid=?;");
         		sql.setString(1, uuid.toString());
-        		
         		result = sql.executeQuery();
-        		sql.close();
         		result.next();	
         		current = result.getInt("count"); 		
-        		result.close();
         		
+        		//Set new value (current + value)
         		updateValue = connection.prepareStatement("UPDATE `" + table + "` SET count=? WHERE uuid=?;");
         		updateValue.setInt(1, current + value);
         		updateValue.setString(2, uuid.toString());
         		updateValue.executeUpdate();
         		
+        		//Update name
         		updateName = connection.prepareStatement("UPDATE `" + table + "` SET name=? where uuid=?;");
         		updateName.setString(1, player.getName());
         		updateName.setString(2, uuid.toString());
@@ -124,16 +125,20 @@ public enum Tracker {
 		boolean containsPlayer = false;
 		
 		Connection connection = null;
+		PreparedStatement check = null;
+		ResultSet result = null;
 		try {
 			connection = Ublisk.getNewDatabaseConnection();
-			PreparedStatement check = connection.prepareStatement("SELECT * FROM `" + table + "` WHERE uuid=?;");
+			check = connection.prepareStatement("SELECT * FROM `" + table + "` WHERE uuid=?;");
 			check.setString(1, uuid.toString());
-			ResultSet resultSet = check.executeQuery();
-			check.close();
-			containsPlayer = resultSet.next();
+			result = check.executeQuery();
+			containsPlayer = result.next();
 		} catch (SQLException e){
 			throw e;
 		} finally {
+			check.close();
+			result.close();
+			
 			connection.close();
 		}
 		

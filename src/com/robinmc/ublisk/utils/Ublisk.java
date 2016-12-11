@@ -1,5 +1,8 @@
 package com.robinmc.ublisk.utils;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,15 @@ public class Ublisk {
 	 */
 	public static void sendConsoleCommand(String cmd){
 		Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), cmd);
+	}
+	
+	public static Connection getNewDatabaseConnection() throws SQLException {
+		String ip = "localhost"; //TODO Use Var class to get database info
+		int port = 3306;
+		String user = DataFile.MYSQL.getString("user");
+		String pass = DataFile.MYSQL.getString("password"); //Admit it, you hoped that the password would be here in plain text. Nope!
+		String db = "ublisk";
+		return DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + db, user, pass);	
 	}
 
 
