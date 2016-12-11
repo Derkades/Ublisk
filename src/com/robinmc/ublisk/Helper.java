@@ -12,11 +12,11 @@ public enum Helper {
 	
 	ROBINMC("RobinMC (Robin)", 
 			"https://goo.gl/Aay9Ry", 
-			"Plugin development, bug testing, buliding, textures, weapons, quests, music"),
+			"Plugin development, testing, building, textures, weapons, quests, music"),
 	
 	CHASPYR("Chaspyr (Casper)", 
 			"https://twitter.com/ItsChaspyr", 
-			"Building"),
+			"Building, bug reporting"),
 	
 	GLITCHERDOTBE("GlitcherDOTbe", 
 			"http://www.planetminecraft.com/texture_pack/glitchs-3d-addons-pack-19/", 
