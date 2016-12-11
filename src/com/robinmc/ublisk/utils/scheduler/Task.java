@@ -48,7 +48,7 @@ public enum Task {
 	
 	TPS_UPDATE(new Lag(), 100, 1, false),
 	
-	PROCESS_QUEUE(new ProcessQueue(), 10*20, 5*20, false);
+	PROCESS_QUEUE(new ProcessQueue(), 10*20, 15*20, false);
 	
 	private BukkitRunnable runnable;
 	private int delay;
