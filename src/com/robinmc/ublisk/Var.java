@@ -47,7 +47,7 @@ public class Var {
 	/**
 	 * Vote URL
 	 */
-	public static final String VOTE_URL = "http://robinmc.com/hi"; // TODO Vote URL
+	public static final String VOTE_URL = "http://robinmc.com/hi"; // XXX Vote URL
 	
 	/**
 	 * Maximum amount of players in a guild
