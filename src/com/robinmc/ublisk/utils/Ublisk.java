@@ -29,8 +29,8 @@ public class Ublisk {
 		Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), cmd);
 	}
 	
-	public static Connection getNewDatabaseConnection() throws SQLException {
-		Logger.log(LogLevel.DEBUG, "Something asked for a new MySQL connection!");
+	public static Connection getNewDatabaseConnection(String reason) throws SQLException {
+		Logger.log(LogLevel.DEBUG, "New connection: " + reason);
 		String ip = "localhost"; //TODO Use Var class to get database info
 		int port = 3306;
 		String user = DataFile.MYSQL.getString("user");
