@@ -9,6 +9,7 @@ import org.inventivetalent.bossbar.BossBarAPI;
 
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
@@ -20,7 +21,7 @@ public class UpdateFriendsHealthBar extends BukkitRunnable {
 
 	@Override
 	public void run(){
-		for (final UPlayer player : UPlayer.getOnlinePlayers()){
+		for (final UPlayer player : Ublisk.getOnlinePlayers()){
 			if (player.getGameMode() == GameMode.CREATIVE){
 				return;
 			}

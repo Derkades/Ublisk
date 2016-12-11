@@ -7,6 +7,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 
 public class AfkTimer extends BukkitRunnable {
 
@@ -14,7 +15,7 @@ public class AfkTimer extends BukkitRunnable {
 	
 	@Override
 	public void run() {
-		for (UPlayer player : UPlayer.getOnlinePlayers()){
+		for (UPlayer player : Ublisk.getOnlinePlayers()){
 			UUID uuid = player.getUniqueId();
 			TIMER.put(uuid, TIMER.get(uuid) + 1);
 			if (TIMER.get(uuid) >= 60){

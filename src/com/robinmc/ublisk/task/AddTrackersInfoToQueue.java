@@ -9,6 +9,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.robinmc.ublisk.PlayerInfo;
 import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.guilds.Guilds;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
@@ -19,7 +20,7 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 	public void run(){
 		List<BukkitRunnable> list = new ArrayList<BukkitRunnable>();
 		
-		for (final UPlayer player : UPlayer.getOnlinePlayers()){
+		for (final UPlayer player : Ublisk.getOnlinePlayers()){
 			for (final PlayerInfo info : PlayerInfo.values()){
 				list.add(new BukkitRunnable(){
 					public void run(){
@@ -40,7 +41,7 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 			}
 		});
 		
-		for (final UPlayer player : UPlayer.getOnlinePlayers()){
+		for (final UPlayer player : Ublisk.getOnlinePlayers()){
 			for (final Tracker tracker : Tracker.values()){
 				list.add(new BukkitRunnable(){
 					public void run(){

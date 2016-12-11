@@ -5,6 +5,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.NotInATownException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
@@ -13,7 +14,7 @@ public class CheckTown extends BukkitRunnable {
 
 	@Override
 	public void run(){
-		for (UPlayer player: UPlayer.getOnlinePlayers()){
+		for (UPlayer player: Ublisk.getOnlinePlayers()){
 			Town town;
 			
 			try {

@@ -19,11 +19,11 @@ import com.robinmc.ublisk.Music;
 import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.iconmenus.ClassMenu;
-import com.robinmc.ublisk.utils.Console;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.inventory.item.Item;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
@@ -40,7 +40,7 @@ public class PlayerJoin implements Listener {
 		String pn = player.getName();
 		UUID uuid = player.getUniqueId();
 		
-		Console.sendCommand("scoreboard teams join all " + pn); //Join team "all". This team disables 1.9 collision
+		Ublisk.sendConsoleCommand("scoreboard teams join all " + pn); //Join team "all". This team disables 1.9 collision TODO: Better solution
 		
 		event.setJoinMessage(Message.Complicated.JoinQuit.playerJoin(pn));
 		

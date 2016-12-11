@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.perm.Permission;
 
 import net.md_5.bungee.api.ChatColor;
@@ -55,7 +56,7 @@ public class PlayerCommandPreprocess implements Listener {
 			return;
 		}
 		
-		for (UPlayer player: UPlayer.getOnlinePlayers()){
+		for (UPlayer player: Ublisk.getOnlinePlayers()){
 			if (player.hasPermission(Permission.COMMANDLOG)){
 				if (!(player == sender)){
 					if (!(HashMaps.DISABLE_COMMAND_LOG.get(player.getUniqueId()))){
