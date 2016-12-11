@@ -583,6 +583,14 @@ public class UPlayer {
 		this.sendPacket(packet);
 	}
 	
+	public void setAttribute(Attribute attribute, double d){
+		player.getAttribute(attribute).setBaseValue(d);
+	}
+	
+	public double getAttribute(Attribute attribute){
+		return player.getAttribute(attribute).getBaseValue();
+	}
+	
 	@Deprecated
 	public static UPlayer[] getOnlinePlayers(){
 		List<UPlayer> list = new ArrayList<UPlayer>();
