@@ -69,7 +69,7 @@ public class PlayerInteract implements Listener {
 		}
 	}
 	
-	//ignoreCancelled = true - Still track clicks when they are cancelled
+	//ignoreCancelled = true - Still track clicks if they are cancelled
 	@EventHandler(priority=EventPriority.MONITOR, ignoreCancelled = true)
 	public void tracker(PlayerInteractEvent event){
 		Player player = event.getPlayer();
@@ -91,7 +91,7 @@ public class PlayerInteract implements Listener {
 		}
 	}
 	
-	@EventHandler
+	@EventHandler(priority = EventPriority.MONITOR)
 	public void spellTest(PlayerInteractEvent event){
 		if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BLAZE_ROD){
@@ -117,7 +117,7 @@ public class PlayerInteract implements Listener {
 		}
 	}
 	
-	@EventHandler
+	@EventHandler(priority = EventPriority.MONITOR)
 	public void voteBox(PlayerInteractEvent event){
 		if (event.getAction() != Action.RIGHT_CLICK_BLOCK){
 			return;
@@ -171,7 +171,7 @@ public class PlayerInteract implements Listener {
 	}
 	
 	@SuppressWarnings("deprecation")
-	@EventHandler(priority=EventPriority.LOW)
+	@EventHandler(priority=EventPriority.LOWEST)
 	public void setWetFarmland(PlayerInteractEvent event){
 		if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.GOLD_HOE &&
 				event.getAction() == Action.RIGHT_CLICK_BLOCK){
@@ -203,21 +203,32 @@ public class PlayerInteract implements Listener {
 				event.setUseInteractedBlock(PlayerInteractEvent.Result.DENY);
 				event.setCancelled(true);       
 				
+				//Set soil as not hydrated
 				block.setType(Material.SOIL);
 				block.setData((byte) 0);
 				final Block block2 = block;
 				Scheduler.runTaskLater(2*20, new Runnable(){
 					public void run(){
+						//Set soil as hydrated
 						block2.setData((byte) 7);
 					}
 				});
+				
+				//The code below slowly grows the weat plant.
 				Location loc = block.getLocation();
 				final Block wheat = new Location(Var.WORLD, loc.getX(), loc.getY() + 1, loc.getZ()).getBlock();
 				wheat.setType(Material.CROPS);
 		        new BukkitRunnable(){
 		        	public void run(){
 		        		byte data = wheat.getData();
-		        		if (data >= 7) cancel();
+		        		
+		        		Logger.log(LogLevel.DEBUG, "Crops", "Someone trampled me! Current current growing state: " + data);
+		        		
+		        		//I used >= just for safety, it shouldn't matter.
+		        		if (data >= 7){
+		        			this.cancel(); 
+		        			return;
+		        		}
 		        		wheat.setData((byte) (data + 1));
 		        	}
 		        }.runTaskTimer(Main.getInstance(), 0, 20);
@@ -225,7 +236,7 @@ public class PlayerInteract implements Listener {
 		}
 	}
 	
-	@EventHandler(priority=EventPriority.LOWEST)
+	@EventHandler(priority=EventPriority.LOW)
 	public void resetDoors(PlayerInteractEvent event){
 		if (event.getAction() == Action.RIGHT_CLICK_BLOCK &&
 				(event.getClickedBlock().getType() == Material.TRAP_DOOR ||
