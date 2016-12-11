@@ -7,7 +7,6 @@ import org.bukkit.inventory.ItemStack;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 
@@ -17,16 +16,10 @@ public class CommandsHelp {
 
 		@Override
 		public void onOptionClick(final OptionClickEvent event) {
-			if (event.getName().equals("Back")){
-				Scheduler.oneTickDelay(new Runnable(){
-					public void run(){
-						HelpMenu.open(event.getPlayer());
-					}
-				});
-				return;
-			}
-			
 			event.setWillClose(false);
+			if (event.getName().equals("Back")){
+				HelpMenu.open(event.getPlayer());
+			}
 		}
 	});
 	
