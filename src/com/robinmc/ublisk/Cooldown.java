@@ -18,7 +18,7 @@ public class Cooldown {
 			public void run(){
 				HashMaps.COOLDOWN_CLASS.put(uuid, false);
 			}
-		}, 14*60*20); //14 minutes to account for lag (average TPS on server is 19.5)
+		}, 15*60*20);
 	}
 
 }
