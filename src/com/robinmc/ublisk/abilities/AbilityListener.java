@@ -16,7 +16,13 @@ public class AbilityListener implements Listener {
 			return;
 		}
 		
-		// TODO Listen for abilities
+		for (Ability ability : Ability.values()){
+			TriggerType type = ability.getTrigger().getTriggerType();
+			if (type == TriggerType.LEFT_CLICK &&
+					event.getPlayer().getInventory().getItemInMainHand().getType() == ability.getTrigger().getItemType()){
+				ability.doAbility(UPlayer.get(event));
+			}
+		}
 	}
 	
 	@EventHandler
