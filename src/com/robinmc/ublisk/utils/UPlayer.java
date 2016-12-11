@@ -2,7 +2,6 @@ package com.robinmc.ublisk.utils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -601,15 +600,6 @@ public class UPlayer {
 	
 	public void playSound(Sound sound){
 		this.playSound(sound, 1.0f);
-	}
-	
-	@Deprecated
-	public static UPlayer[] getOnlinePlayers(){
-		List<UPlayer> list = new ArrayList<UPlayer>();
-		for (Player player : Bukkit.getOnlinePlayers()){
-			list.add(new UPlayer(player));
-		}
-		return list.toArray(new UPlayer[0]);
 	}
 	
 	public static UPlayer get(Player player){ return new UPlayer(player); }
