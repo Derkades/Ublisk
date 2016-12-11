@@ -13,7 +13,6 @@ import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.third_party.IconMenu;
 import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 
@@ -25,42 +24,19 @@ public class MainMenu {
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
 			final Player player = event.getPlayer();
+			event.setWillClose(false);
 			if (name.equals("settings")){
-				Scheduler.oneTickDelay(new Runnable(){ 
-					public void run(){ 
-						SettingsMenu.open(player); 
-					}
-				});
+				SettingsMenu.open(player); 
 			} else if (name.equals("voting")){
-				Scheduler.oneTickDelay(new Runnable(){ 
-					public void run(){ 
-						VotingMenu.open(player);
-					}
-				});
+				VotingMenu.open(player);
 			} else if (name.equals("friends")){
-				Scheduler.oneTickDelay(new Runnable(){ 
-					public void run(){ 
-						FriendsMenu.open(player);
-					}
-				});
+				FriendsMenu.open(player);
 			} else if (name.equals("staff settings")){
-				Scheduler.oneTickDelay(new Runnable(){
-					public void run(){
-						StaffSettingsMenu.open(player);
-					}
-				});
+				StaffSettingsMenu.open(player);
 			} else if (name.equals("help")){
-				Scheduler.oneTickDelay(new Runnable(){
-					public void run(){
-						HelpMenu.open(player);
-					}
-				});
+				HelpMenu.open(player);
 			} else if (name.equals("bank")){
-				Scheduler.oneTickDelay(new Runnable(){
-					public void run(){
-						BankMenu.open(player);
-					}
-				});
+				BankMenu.open(player);
 			} else {
 				player.sendMessage(Message.ERROR_MENU.get());
 			}
