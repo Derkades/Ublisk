@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.third_party;
+package com.robinmc.ublisk.utils;
 
 import org.bukkit.scheduler.BukkitRunnable;
 

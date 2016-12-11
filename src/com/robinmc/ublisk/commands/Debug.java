@@ -19,6 +19,7 @@ import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.utils.Exp;
+import com.robinmc.ublisk.utils.Lag;
 import com.robinmc.ublisk.utils.Time;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
@@ -27,7 +28,6 @@ import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
-import com.robinmc.ublisk.utils.third_party.Lag;
 import com.robinmc.ublisk.weapon.SwordsmanWeapon;
 
 import net.md_5.bungee.api.ChatColor;

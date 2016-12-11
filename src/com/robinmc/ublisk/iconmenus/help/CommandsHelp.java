@@ -4,9 +4,9 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import com.robinmc.ublisk.utils.IconMenu;
+import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
-import com.robinmc.ublisk.utils.third_party.IconMenu;
-import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 
 public class CommandsHelp {
 	

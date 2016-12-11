@@ -1,11 +1,11 @@
 package com.robinmc.ublisk.quest.npcmenu;
 
+import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
+import com.robinmc.ublisk.utils.IconMenu.OptionClickEventHandler;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;
-import com.robinmc.ublisk.utils.third_party.IconMenu;
-import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEventHandler;
 
 public class NPCMenu {
 	

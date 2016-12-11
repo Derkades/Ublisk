@@ -42,6 +42,7 @@ import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
 import com.robinmc.ublisk.task.AfkTimer;
+import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
@@ -59,7 +60,6 @@ import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
 import com.robinmc.ublisk.utils.settings.StaffSetting;
-import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;

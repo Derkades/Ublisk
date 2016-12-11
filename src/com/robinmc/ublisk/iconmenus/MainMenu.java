@@ -8,11 +8,11 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.iconmenus.help.HelpMenu;
 import com.robinmc.ublisk.money.BankMenu;
 import com.robinmc.ublisk.money.MoneyItem;
+import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
-import com.robinmc.ublisk.utils.third_party.IconMenu;
-import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 
 public class MainMenu {
 	

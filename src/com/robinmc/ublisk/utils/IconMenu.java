@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.third_party;
+package com.robinmc.ublisk.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +19,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.logging.LogLevel;
 import com.robinmc.ublisk.utils.logging.Logger;

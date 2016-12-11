@@ -5,11 +5,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.utils.IconMenu;
+import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.settings.Setting;
-import com.robinmc.ublisk.utils.third_party.IconMenu;
-import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
 
 public class SettingsMenu {
 

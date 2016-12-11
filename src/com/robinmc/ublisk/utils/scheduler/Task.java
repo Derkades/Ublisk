@@ -21,8 +21,8 @@ import com.robinmc.ublisk.task.AddTrackersInfoToQueue;
 import com.robinmc.ublisk.task.UpdateBackpackName;
 import com.robinmc.ublisk.task.UpdateDoubleExpBar;
 import com.robinmc.ublisk.task.UpdateFriendsHealthBar;
+import com.robinmc.ublisk.utils.Lag;
 import com.robinmc.ublisk.utils.sql.ProcessQueue;
-import com.robinmc.ublisk.utils.third_party.Lag;
 
 public enum Task {
 	

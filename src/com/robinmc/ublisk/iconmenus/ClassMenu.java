@@ -9,8 +9,8 @@ import org.bukkit.inventory.ItemStack;
 import com.robinmc.ublisk.Cooldown;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.DataFile;
-import com.robinmc.ublisk.utils.third_party.IconMenu;
-import com.robinmc.ublisk.utils.third_party.IconMenu.OptionClickEvent;
+import com.robinmc.ublisk.utils.IconMenu;
+import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 
 public class ClassMenu {
 	
