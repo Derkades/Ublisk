@@ -4,6 +4,10 @@ import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 
+import com.robinmc.ublisk.utils.UPlayer;
+
+import net.md_5.bungee.api.ChatColor;
+
 public class Logger {
 	
 	private LogLevel logLevel;
@@ -32,6 +36,8 @@ public class Logger {
 			Bukkit.getLogger().log(Level.INFO, object + "");
 			break;
 		}
+		
+		for (UPlayer player : UPlayer.getOnlinePlayers()) player.sendMessage(ChatColor.GRAY + "[" + logLevel + "] " + object);
 	}
 	
 	public static void log(LogLevel logLevel, Object object){
