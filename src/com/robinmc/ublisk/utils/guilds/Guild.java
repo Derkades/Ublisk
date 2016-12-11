@@ -210,7 +210,14 @@ public class Guild {
 			PreparedStatement sql = MySQL.prepareStatement("SELECT * FROM `guilds` WHERE name=?;");
 			sql.setString(1, this.getName());
 			ResultSet resultSet = sql.executeQuery();
-			boolean containsGuild = resultSet.next();
+			boolean containsGuild;
+			
+			if (resultSet == null){
+				containsGuild = false;
+			} else {
+				containsGuild = resultSet.next();
+			}
+			
 			
 			if (containsGuild){
 				PreparedStatement update = MySQL.prepareStatement("UPDATE `guilds` SET points=?,img=?,playercount=?,players=? WHERE name=?;");
