@@ -50,6 +50,10 @@ public class AsyncPlayerChat implements Listener {
 		
 		Tracker.CHAT_MESSAGES.add(player.getPlayer());
 		
+		if (player.isAfk()){
+			player.setAfk(false);
+		}
+		
 	}
 
 }
