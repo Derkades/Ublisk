@@ -72,7 +72,8 @@ public enum Message {
 	
 	ALREADY_VOTED_RESTART(prefix() + RED + "You have already voted for a restart"),
 	
-	ABILITY_NOT_ENOUGH_MANA(prefix("Abilities") + "You do not have enough mana to do this ability.");
+	ABILITY_NOT_ENOUGH_MANA(prefix("Abilities") + "You do not have enough mana to do this ability."),
+	ABILITY_NOT_ENOUGH_LEVEL(prefix("Abilities") + "You have not yet unlocked this ability.");
 	
 	private String msg;
 	

@@ -11,17 +11,19 @@ import com.robinmc.ublisk.utils.exception.NotEnoughManaException;
 
 public enum Ability {
 	
-	TEST(4, new TestAbility(), new AbilityTrigger(Material.WOOD_SWORD, TriggerType.RIGHT_CLICK)),
-	TEST2(10, new Meteorite(), new AbilityTrigger(Material.GOLD_SWORD, TriggerType.RIGHT_CLICK));
+	TEST(4, 0, new TestAbility(), new AbilityTrigger(Material.WOOD_SWORD, TriggerType.RIGHT_CLICK)),
+	TEST2(10, 0, new Meteorite(), new AbilityTrigger(Material.GOLD_SWORD, TriggerType.RIGHT_CLICK));
 	
+	private int mana;
+	private int minLevel;
 	private AbilityExecutor exec;
 	private AbilityTrigger trigger;
-	private int mana;
 	
-	Ability(int mana, AbilityExecutor exec, AbilityTrigger trigger){
+	Ability(int mana, int minLevel, AbilityExecutor exec, AbilityTrigger trigger){
+		this.mana = mana;
+		this.minLevel = minLevel;
 		this.exec = exec;
 		this.trigger = trigger;
-		this.mana = mana;
 	}
 	
 	public AbilityTrigger getTrigger(){
@@ -29,6 +31,11 @@ public enum Ability {
 	}
 	
 	public void doAbility(UPlayer player){
+		if (minLevel > player.getLevel()){
+			player.sendMessage(Message.ABILITY_NOT_ENOUGH_LEVEL);
+			return;
+		}
+		
 		try {
 			player.removeMana(mana);
 		} catch (NotEnoughManaException e) {
