@@ -11,6 +11,7 @@ import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.guilds.Guild;
 import com.robinmc.ublisk.utils.guilds.Guilds;
@@ -27,6 +28,12 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 		List<BukkitRunnable> list = new ArrayList<BukkitRunnable>();
 		
 		for (final UPlayer player : Ublisk.getOnlinePlayers()){
+			list.add(new BukkitRunnable(){
+				public void run(){
+					UUIDUtils.save(player.getPlayer());
+				}
+			});
+			
 			list.add(new BukkitRunnable(){
 				public void run(){
 					NewPlayerInfo.syncInfo(player);
