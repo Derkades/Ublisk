@@ -58,7 +58,7 @@ public class PlayerCommandPreprocess implements Listener {
 		
 		for (UPlayer player: Ublisk.getOnlinePlayers()){
 			if (player.hasPermission(Permission.COMMANDLOG)){
-				if (!(player == sender)){
+				if (!(player.getName() == sender.getName())){
 					if (!(HashMaps.DISABLE_COMMAND_LOG.get(player.getUniqueId()))){
 						player.sendMessage(Message.Complicated.commandLog(pn, cmd));
 					}
