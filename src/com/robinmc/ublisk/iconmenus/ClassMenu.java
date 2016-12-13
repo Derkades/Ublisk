@@ -34,7 +34,7 @@ public class ClassMenu {
 					player.sendMessage(Message.Complicated.changedClass("Archer"));
 				} else if (name.equals("sorcerer")){
 					DataFile.CLASSES.set("class." + uuid, "Sorcerer");
-					player.sendMessage(Message.Complicated.changedClass("Sorceer"));
+					player.sendMessage(Message.Complicated.changedClass("Sorcerer"));
 				} else if (name.equals("paladin")){
 					DataFile.CLASSES.set("class." + uuid, "Paladin");
 					player.sendMessage(Message.Complicated.changedClass("Paladin"));
