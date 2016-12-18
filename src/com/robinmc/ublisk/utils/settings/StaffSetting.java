@@ -35,9 +35,7 @@ public enum StaffSetting {
 	
 	public boolean get(Player player) throws NotSetException{
 		String path = "staffsettings." + s + "." + player.getUniqueId();
-		//if (Config.getConfig().isSet(path)){
 		if (DataFile.SETTINGS.isSet(path)){
-			//return Config.getBoolean(path);
 			return DataFile.SETTINGS.getBoolean(path);
 		} else {
 			throw new NotSetException();
@@ -45,7 +43,6 @@ public enum StaffSetting {
 	}
 	
 	public void put(Player player, boolean bool){
-		//Config.set("staffsettings." + s + "." + player.getUniqueId(), bool);
 		DataFile.SETTINGS.set("staffsettings." + s + "." + player.getUniqueId(), bool	);
 	}
 	

@@ -34,22 +34,5 @@ public class EntityDamageByEntity implements Listener {
 		}
 		
 	}
-	
-	/*
-	@EventHandler(ignoreCancelled = true)
-	public void spawnBloodParticles(EntityDamageByEntityEvent event){
-		Location location = event.getEntity().getLocation();
-		Var.WORLD.spigot().playEffect(location, 
-				Effect.COLOURED_DUST, 
-				30, // Particle id 
-				0, // Data (I don't know what it does)
-				0, // Offset X,
-				0, // Y,
-				0, // and Z
-				1, // Speed
-				10, // Particle count 
-				0); // Radius
-	}
-	*/
 
 }

@@ -20,7 +20,6 @@ public class Alvin extends NPC {
 	
 	@Override
 	public void talk(UPlayer player) {
-		//QuestParticipant qp = new QuestParticipant(player, Quest.WATER_PROBLEM, QuestCharacter.ALVIN);
 		QuestParticipant qp = player.getQuestParticipant(Quest.WATER_PROBLEM, this);
 		UInventory inv = player.getInventory();
 		

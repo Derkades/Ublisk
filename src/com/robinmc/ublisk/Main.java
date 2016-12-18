@@ -29,7 +29,6 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable(){
 		instance = null;
-		//MySQL.onDisable();
 	}
 	
 	public static Main getInstance(){

@@ -88,15 +88,11 @@ public class Exp {
 		int xp = mob.getXP();
 		
 		if (DOUBLE_XP_ACTIVE){ //If double XP is active
-			//ActionBarAPI.sendActionBar(player, ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP", 3*10);
 			player.sendActionBarMessage(ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP");
-			//Exp.add(player, xp * 2);
 			player.addXP(xp * 2);
 			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
 		} else {
-			//ActionBarAPI.sendActionBar(player, ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP", 3*10);
 			player.sendActionBarMessage(ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP");
-			//Exp.add(player, xp);
 			player.addXP(xp);
 			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp + " for killing a " + name);
 		}

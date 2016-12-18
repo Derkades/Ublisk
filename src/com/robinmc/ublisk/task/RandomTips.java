@@ -11,7 +11,6 @@ public class RandomTips extends BukkitRunnable {
 	@Override
 	public void run(){
 		for (UPlayer player : Ublisk.getOnlinePlayers()){
-			//ActionBarAPI.sendActionBar(player, Tip.getRandom(), 100);
 			player.sendActionBarMessage(Tip.getRandomTip());
 		}
 	}

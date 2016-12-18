@@ -17,7 +17,6 @@ import com.robinmc.ublisk.listeners.player.PlayerItemConsume;
 import com.robinmc.ublisk.listeners.player.PlayerJoin;
 import com.robinmc.ublisk.listeners.player.PlayerMove;
 import com.robinmc.ublisk.listeners.player.PlayerQuit;
-import com.robinmc.ublisk.listeners.player.PlayerResourcePackStatus;
 import com.robinmc.ublisk.listeners.player.SongEnd;
 import com.robinmc.ublisk.mob.CreatureSpawn;
 import com.robinmc.ublisk.mob.listeners.EntityCombust;
@@ -51,7 +50,6 @@ public class Listeners {
 		CONSUME(new PlayerItemConsume()),
 		JOIN(new PlayerJoin()),
 		QUIT(new PlayerQuit()),
-		RESOURCE_PACK(new PlayerResourcePackStatus()),
 		PING_SERVER(new ServerListPing()),
 		SONG_END(new SongEnd()),
 		VOTE(new Votifier()),

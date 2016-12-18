@@ -4,8 +4,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class Lag extends BukkitRunnable {
 	
-	//Please note that this is slightly modified by me
-	
 	public static int tickCount = 0;
 	public static long[] tick = new long[600];
 	public static long lastTick = 0L;

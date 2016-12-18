@@ -22,7 +22,6 @@ public class Merek extends NPC {
 	
 	@Override
 	public void talk(UPlayer player){
-		//QuestParticipant qp = new QuestParticipant(player, Quest.INTRODUCTION, QuestCharacter.MEREK);
 		QuestParticipant qp = player.getQuestParticipant(Quest.INTRODUCTION, this);
 		UInventory inv = qp.getInventory();
 		if (inv.contains(
