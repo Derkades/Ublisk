@@ -195,7 +195,7 @@ public class Guild {
 			Connection connection = null;
 			PreparedStatement update = null;
 			try {
-				connection = Ublisk.getNewDatabaseConnection("Guilds (update)");
+				connection = Ublisk.getNewDatabaseConnection("Guilds update (" + this.getName() + ")");
 				update = connection.prepareStatement("UPDATE `guilds` SET points=?,img=?,playercount=?,players=? WHERE name=?;");
 	    		
 	    		update.setInt(1, this.getPoints());
@@ -216,7 +216,7 @@ public class Guild {
 			Connection connection = null;
 			PreparedStatement insert = null;
 			try {
-				connection = Ublisk.getNewDatabaseConnection("Guilds (insert)");
+				connection = Ublisk.getNewDatabaseConnection("Guilds insert (" + this.getName() + ")");
 				insert = connection.prepareStatement("INSERT INTO `guilds` values(?, ?, ?, ?, ?);");
 				insert.setString(1, this.getName());
 				insert.setInt(2, this.getPoints());
