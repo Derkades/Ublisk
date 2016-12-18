@@ -12,6 +12,7 @@ import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 
+@Deprecated
 public class ClassMenu {
 	
 	private static IconMenu menu = new IconMenu("Class menu", 1*9, new IconMenu.OptionClickEventHandler(){

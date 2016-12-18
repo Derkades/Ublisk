@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.iconmenus.ClassMenu;
 
+@Deprecated
 public class ClassCommand implements CommandExecutor {
 	
 	@Override

@@ -10,6 +10,7 @@ public enum Command {
 	
 	AFK("afk", new Afk()),
 	BUILDER("builder", new Builder()),
+	@Deprecated
 	CLASS("class", new ClassCommand()),
 	CONTACT("contact", new Contact()),
 	CREDITS("credits", new Credits()),
