@@ -12,6 +12,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.java.Random;
 
 class SpawnMob {
@@ -25,8 +27,8 @@ class SpawnMob {
 						if (Bukkit.getOnlinePlayers().size() == 0){
 							break;
 						}
-						
-						if ( mob.hasReachedMaxSpawning()){
+												
+						if (mob.hasReachedMaxSpawning()){
 							break;
 						}
 						
@@ -54,6 +56,11 @@ class SpawnMob {
 						}
 						
 						Location loc = new Location(Var.WORLD, x, area.getY(), z);
+						
+						if (!loc.getChunk().isLoaded()){
+							Logger.log(LogLevel.INFO, "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because the chunk is not loaded.");
+							continue;
+						}
 
 						while(Var.MOB_SPAWNING_AIR_BLOCKS.contains(loc.getBlock().getType())){
 							loc.setY(loc.getY() - 1);
