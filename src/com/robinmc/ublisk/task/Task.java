@@ -1,27 +1,8 @@
-package com.robinmc.ublisk.utils.scheduler;
+package com.robinmc.ublisk.task;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.task.AddTrackersInfoToQueue;
-import com.robinmc.ublisk.task.AfkTimer;
-import com.robinmc.ublisk.task.CheckDoubleExp;
-import com.robinmc.ublisk.task.CheckShield;
-import com.robinmc.ublisk.task.CheckTown;
-import com.robinmc.ublisk.task.ClearWeather;
-import com.robinmc.ublisk.task.FastNight;
-import com.robinmc.ublisk.task.LifeCrystalInventory;
-import com.robinmc.ublisk.task.PlayerLevelUp;
-import com.robinmc.ublisk.task.RandomTips;
-import com.robinmc.ublisk.task.RefreshLastSeenDate;
-import com.robinmc.ublisk.task.RegenerateHunger;
-import com.robinmc.ublisk.task.RemoveMobs;
-import com.robinmc.ublisk.task.RespawnNPC;
-import com.robinmc.ublisk.task.SetMaxHealth;
-import com.robinmc.ublisk.task.SpawnRandomLoot;
-import com.robinmc.ublisk.task.UpdateBackpackName;
-import com.robinmc.ublisk.task.UpdateDoubleExpBar;
-import com.robinmc.ublisk.task.UpdateFriendsHealthBar;
 import com.robinmc.ublisk.utils.Lag;
 import com.robinmc.ublisk.utils.sql.ProcessQueue;
 

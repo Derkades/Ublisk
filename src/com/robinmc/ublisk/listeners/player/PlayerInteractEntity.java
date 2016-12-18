@@ -10,11 +10,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -76,11 +77,11 @@ public class PlayerInteractEntity implements Listener {
 			player.sendMessage(stats);
 			player.sendMessage(addAsFriend);
 			
-			Scheduler.runTaskLater(5, new Runnable(){
+			new BukkitRunnable(){
 				public void run(){
 					HashMaps.ENTITY_RIGHT_CLICK_COOLDOWN.put(player.getPlayer().getUniqueId(), false);
 				}
-			});
+			}.runTaskLater(Main.getInstance(), 5L);
 		}
 
 	}

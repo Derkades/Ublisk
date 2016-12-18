@@ -34,7 +34,6 @@ import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Voting;
 import com.robinmc.ublisk.utils.inventory.UInventory;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -242,12 +241,12 @@ public class PlayerInteract implements Listener {
 				block.setType(Material.SOIL);
 				block.setData((byte) 0);
 				final Block block2 = block;
-				Scheduler.runTaskLater(2*20, new Runnable(){
+				new BukkitRunnable(){
 					public void run(){
 						//Set soil as hydrated
 						block2.setData((byte) 7);
 					}
-				});
+				}.runTaskLater(Main.getInstance(), 2*20);
 				
 				//The code below slowly grows the weat plant.
 				Location loc = block.getLocation();

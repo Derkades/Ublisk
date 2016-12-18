@@ -3,9 +3,10 @@ package com.robinmc.ublisk.listeners.player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
 public class PlayerDeath implements Listener {
 
@@ -20,20 +21,20 @@ public class PlayerDeath implements Listener {
 			event.setKeepInventory(false);
 		}
 		
-		Scheduler.runTaskLater(3L, new Runnable(){
+		new BukkitRunnable(){
 			public void run(){
 				player.spigot().respawn();
 			}
-		});
+		}.runTaskLater(Main.getInstance(), 3L);
 		
-		Scheduler.runTaskLater(25L, new Runnable(){
+		new BukkitRunnable(){
 			public void run(){
 				player.setMana(20);
 				player.setMaxHealth(20);
 				player.setHealth(20);
 				player.teleport(player.getTown().getSpawnLocation());
 			}
-		});
+		}.runTaskLater(Main.getInstance(), 25L);
 	}
 
 }

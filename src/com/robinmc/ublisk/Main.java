@@ -5,7 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.robinmc.ublisk.commands.Command;
 import com.robinmc.ublisk.listeners.Listeners;
 import com.robinmc.ublisk.mob.Mob;
-import com.robinmc.ublisk.utils.scheduler.Task;
+import com.robinmc.ublisk.task.Task;
 
 public class Main extends JavaPlugin {
 	

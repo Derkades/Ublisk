@@ -1,9 +1,10 @@
-package com.robinmc.ublisk.utils.scheduler;
+package com.robinmc.ublisk.utils;
 
 import org.bukkit.Bukkit;
 
 import com.robinmc.ublisk.Main;
 
+@Deprecated
 public class Scheduler {
 	
 	public static void runTaskLater(long delay, Runnable runnable){

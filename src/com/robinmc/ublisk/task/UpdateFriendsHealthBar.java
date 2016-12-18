@@ -7,12 +7,12 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.inventivetalent.bossbar.BossBar;
 import org.inventivetalent.bossbar.BossBarAPI;
 
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.settings.Setting;
 
 import net.md_5.bungee.api.chat.TextComponent;
@@ -97,12 +97,12 @@ public class UpdateFriendsHealthBar extends BukkitRunnable {
 							20, 
 							999);
 					
-					// Remove after one second to make room for new bar
-					Scheduler.runTaskLater(2*20, new Runnable(){
+					// Remove after one second to make room for new bar | TODO: Better solution
+					new BukkitRunnable(){
 						public void run(){
 							bossBar.removePlayer(player.getPlayer());
 						}
-					}); 
+					}.runTaskLater(Main.getInstance(), 2*20);
 				}
 			}
 		}

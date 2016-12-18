@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.Ublisk;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
 public class CheckDoubleExp extends BukkitRunnable {
 
@@ -56,11 +56,11 @@ public class CheckDoubleExp extends BukkitRunnable {
 	
 	public void startCooldown(){
 		Exp.DOUBLE_XP_COOLDOWN = true;
-		Scheduler.runTaskLater(10*60*20, new Runnable(){
+		new BukkitRunnable(){
 			public void run(){
 				Exp.DOUBLE_XP_COOLDOWN = false;
 			}
-		});
+		}.runTaskLater(Main.getInstance(), 10*60*20);
 	}
 
 }

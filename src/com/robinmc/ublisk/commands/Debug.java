@@ -32,7 +32,6 @@ import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.weapon.SwordsmanWeapon;
 
 import net.md_5.bungee.api.ChatColor;
@@ -185,28 +184,6 @@ public class Debug implements CommandExecutor {
 						for (SwordsmanWeapon weapon : SwordsmanWeapon.values()){
 							player.getInventory().addWeapon(weapon);
 						}
-						return true;
-					} else if (args[0].equals("restart")){
-						Bukkit.broadcastMessage(Message.Complicated.serverRestartingWarningMinutes(1));
-						Scheduler.runTaskLater(30*20, new Runnable(){
-							public void run(){
-								Bukkit.broadcastMessage(Message.Complicated.serverRestartingWarningSeconds(30));
-								Scheduler.runTaskLater(20*20, new Runnable(){
-									public void run(){
-										Bukkit.broadcastMessage(Message.Complicated.serverRestartingWarningSeconds(10));
-										Scheduler.runTaskLater(5*20, new Runnable(){
-											public void run(){
-												Scheduler.runTaskLater(5*20, new Runnable(){
-													public void run(){
-														Bukkit.getServer().shutdown();
-													}
-												});
-											}
-										});
-									}
-								});
-							}
-						});
 						return true;
 					} else if (args[0].equals("day")){
 						while (true){

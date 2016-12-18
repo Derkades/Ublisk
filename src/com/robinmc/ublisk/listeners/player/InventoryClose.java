@@ -5,10 +5,11 @@ import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.Voting;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
 public class InventoryClose implements Listener {
 	
@@ -16,20 +17,20 @@ public class InventoryClose implements Listener {
 	public void onInvClose(final InventoryCloseEvent event){
 		if (event.getInventory().getName().contains("Box")){
 			Voting.setPlayerOpeningBox(false);
-			Scheduler.runTaskLater(2, new Runnable(){
+			new BukkitRunnable(){
 				public void run(){
 					HumanEntity human = event.getPlayer();
 					human.teleport(Voting.getOldPlayerLocation());
 				}
-			});
+			}.runTaskLater(Main.getInstance(), 2L);
 		}
 		
 		if (event.getInventory().getName().contains("Loot")){
-			Scheduler.runTaskLater(5*20, new Runnable(){
+			new BukkitRunnable(){
 				public void run(){
 					Var.WORLD.getBlockAt(event.getInventory().getLocation()).setType(Material.AIR);
 				}
-			});
+			}.runTaskLater(Main.getInstance(), 5*20);
 		}
 	}
 

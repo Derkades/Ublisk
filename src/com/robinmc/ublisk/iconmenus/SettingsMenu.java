@@ -8,7 +8,6 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.exception.NotSetException;
-import com.robinmc.ublisk.utils.scheduler.Scheduler;
 import com.robinmc.ublisk.utils.settings.Setting;
 
 public class SettingsMenu {
@@ -20,12 +19,10 @@ public class SettingsMenu {
 			String name = event.getName();
 			final Player player = event.getPlayer();
 		
+			event.setWillClose(false);
+			
 			if (name.equalsIgnoreCase("back")){
-				Scheduler.runTaskLater(5, new Runnable(){
-					public void run(){
-						MainMenu.open(player);
-					}
-				});
+				MainMenu.open(player);
 				return;
 			}
 			
@@ -47,7 +44,6 @@ public class SettingsMenu {
 				setting.put(player, false);
 			}
 			
-			event.setWillClose(false);
 		}
 	});
 	
