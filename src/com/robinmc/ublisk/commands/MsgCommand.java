@@ -54,7 +54,6 @@ public class MsgCommand implements CommandExecutor {
 			//Play a sound if the target player has enabled it
 			try {
 				if (target.getSetting(Setting.PM_SOUND)){
-					//Ublisk.sendConsoleCommand("execute " + target.getPlayer().getName() + " ~ ~ ~ playsound entity.item.pickup master @p");
 					target.playSound(Sound.ENTITY_ITEM_PICKUP);
 				}
 			} catch (NotSetException e) {	

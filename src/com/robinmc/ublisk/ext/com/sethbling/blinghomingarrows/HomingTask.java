@@ -1,4 +1,4 @@
-package com.sethbling.blinghomingarrows;
+package com.robinmc.ublisk.ext.com.sethbling.blinghomingarrows;
 
 import org.bukkit.Effect;
 import org.bukkit.entity.Arrow;

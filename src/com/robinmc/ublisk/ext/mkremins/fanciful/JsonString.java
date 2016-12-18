@@ -1,4 +1,4 @@
-package mkremins.fanciful;
+package com.robinmc.ublisk.ext.mkremins.fanciful;
 
 import java.io.IOException;
 import java.util.HashMap;

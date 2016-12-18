@@ -26,7 +26,6 @@ public class ResourcePackCommand implements CommandExecutor {
 			player.sendMessage(Message.PACK_CHECK);
 			return true;
 		} else if (args.length == 0){
-			//ResourcePackAPI.setResourcepack(player.getPlayer(), Var.PACK_URL);
 			player.setResourcePack(Var.PACK_URL);
 			return true;
 		} else {

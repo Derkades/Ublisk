@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.abilities.AbilityListener;
+import com.robinmc.ublisk.ext.com.sethbling.blinghomingarrows.HomingArrowsListener;
 import com.robinmc.ublisk.listeners.player.AsyncPlayerChat;
 import com.robinmc.ublisk.listeners.player.BreakBlock;
 import com.robinmc.ublisk.listeners.player.InventoryClick;
@@ -25,7 +26,6 @@ import com.robinmc.ublisk.mob.listeners.EntityDeath;
 import com.robinmc.ublisk.quest.NPCClickListener;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
-import com.sethbling.blinghomingarrows.HomingArrowsListener;
 
 public class Listeners {
 	

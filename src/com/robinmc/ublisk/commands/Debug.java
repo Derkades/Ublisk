@@ -143,38 +143,6 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("lag")){
 						player.sendMessage("TPS: " + Lag.getTPS());
 						return true;
-						/* XXX Remove?
-					} else if (args[0].equals("mobarea")){
-						try {
-							player.sendMessage("");
-							player.sendMessage("");
-							player.sendMessage("");
-							player.sendMessage("");
-							player.sendMessage("");
-							MobArea area = player.getMobArea();
-							player.sendMessage("You are in area " + area.toString());
-							player.sendMessage("");
-							player.sendMessage("This area contains MobInfo:");
-							for (MobInfo info : area.getMobInfo()){
-								player.sendMessage("EntityType: " + info.getEntityType());
-								player.sendMessage("Name: " + info.getName());
-								player.sendMessage("Health: " + info.getHealth());
-								player.sendMessage("XP: " + info.getXP());
-								player.sendMessage("Level: " + info.getLevel());
-								player.sendMessage("");
-							}
-							player.sendMessage("Coordinates:");
-							Area a = area.getArea();
-							player.sendMessage("LessX: " + a.lessX());
-							player.sendMessage("MoreX: " + a.moreX());
-							player.sendMessage("LessZ: " + a.lessZ());
-							player.sendMessage("MoreZ: " + a.moreZ());
-							return true;
-						} catch (UnknownAreaException e) {
-							player.sendMessage("Unknown area!");
-							return true;
-						}
-						*/
 					} else if (args[0].equals("list")){
 						for (Entity entity : Var.WORLD.getEntities()){
 							player.sendMessage(entity.getName() + " : " + entity.getCustomName() + " : " + entity.getLocation().getBlockX() + " : " + entity.getLocation().getBlockZ() + " : " + entity.getLocation().getChunk());

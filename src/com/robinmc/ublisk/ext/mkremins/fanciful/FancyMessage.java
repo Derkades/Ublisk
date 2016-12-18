@@ -1,6 +1,6 @@
-package mkremins.fanciful;
+package com.robinmc.ublisk.ext.mkremins.fanciful;
 
-import static mkremins.fanciful.TextualComponent.rawText;
+import static com.robinmc.ublisk.ext.mkremins.fanciful.TextualComponent.rawText;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -24,8 +24,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonWriter;
-
-import net.amoebaman.util.ArrayWrapper;
+import com.robinmc.ublisk.ext.net.amoebaman.util.ArrayWrapper;
 
 /**
  * Represents a formattable message. Such messages can use elements such as colors, formatting codes, hover and click data, and other features provided by the vanilla Minecraft <a href="http://minecraft.gamepedia.com/Tellraw#Raw_JSON_Text">JSON message formatter</a>.

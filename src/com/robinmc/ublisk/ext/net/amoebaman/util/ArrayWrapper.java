@@ -1,4 +1,4 @@
-package net.amoebaman.util;
+package com.robinmc.ublisk.ext.net.amoebaman.util;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
