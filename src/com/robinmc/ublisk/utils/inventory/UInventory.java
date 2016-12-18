@@ -6,7 +6,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.money.MoneyItem;
-import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.inventory.item.weapon.Weapon;
 import com.robinmc.ublisk.weapon.SwordsmanWeapon;
@@ -20,26 +19,6 @@ public class UInventory {
 	
 	public UInventory(Player player){
 		this.inv = player.getInventory();
-	}
-	
-	@Deprecated
-	public UInventory(PlayerInventory inv){
-		this.inv = inv;
-	}
-	
-	@Deprecated
-	public static UInventory getInventory(Player player){
-		return new UInventory(player);
-	}
-	
-	@Deprecated
-	public static UInventory getInventory(PlayerInventory inv){
-		return new UInventory(inv);
-	}
-	
-	@Deprecated
-	public static UInventory getInventory(QuestParticipant qp){
-		return new UInventory(qp.getBukkitInventory());
 	}
 	
 	public PlayerInventory getBukkitInventory(){

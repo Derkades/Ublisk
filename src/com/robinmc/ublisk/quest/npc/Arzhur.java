@@ -38,7 +38,7 @@ public class Arzhur extends NPC {
 		{
 			qp.sendMessage("Thank you very much for helping us. We will be alright for a while! Here is something that will help you survive in the fields.");
 			inv.remove(Material.GRILLED_PORK, 10);
-			qp.getPlayer().addLifeCrystals(5);
+			qp.addLifeCrystals(5);
 			qp.setQuestCompleted(true);
 			qp.sendCompletedMessage();
 			qp.giveRewardExp();

@@ -622,8 +622,6 @@ public class UPlayer {
 	
 	public static UPlayer get(Player player){ return new UPlayer(player); }
 	
-	public static UPlayer get(QuestParticipant qp){ return get(qp.getBukkitPlayer()); }
-	
 	public static UPlayer get(CommandSender sender){ return get((Player) sender); }
 	
 	public static UPlayer get(String name) throws PlayerNotFoundException { return get(UUIDUtils.getPlayerFromName(name)); }
