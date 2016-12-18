@@ -26,7 +26,7 @@ public class UInventory {
 	}
 	
 	public void set(int slot, ItemStack item){
-		inv.setItem(0, item);
+		inv.setItem(slot, item);
 	}
 	
 	public void add(ItemStack item){
