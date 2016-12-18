@@ -16,6 +16,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -34,6 +35,7 @@ import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Voting;
 import com.robinmc.ublisk.utils.inventory.item.Item;
+import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
 import net.md_5.bungee.api.ChatColor;
@@ -171,18 +173,52 @@ public class PlayerInteract implements Listener {
 	}
 	
 	@SuppressWarnings("deprecation")
-	@EventHandler(priority=EventPriority.LOWEST)
-	public void setWetFarmland(PlayerInteractEvent event){
-		if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.GOLD_HOE &&
-				event.getAction() == Action.RIGHT_CLICK_BLOCK){
-			Block block = event.getClickedBlock();
+	@EventHandler(priority=EventPriority.LOW)
+	public void staffTool(PlayerInteractEvent event){
+		ItemStack itemInHand = event.getPlayer().getInventory().getItemInMainHand();
+
+		
+		if (itemInHand.getType() != Material.COAL_ORE || event.getAction() != Action.RIGHT_CLICK_BLOCK){
+			return;
+		}
+		
+		Player player = event.getPlayer();
+		String itemName = itemInHand.getItemMeta().getDisplayName();
+		Block block = event.getClickedBlock();
+		
+		event.setCancelled(true);
+		
+		if (itemName == null){
+			sendStaffToolInfoMessage(player);
+			return;
+		}
+		
+		if (itemName.contains("farmland")){
 			block.setType(Material.SOIL);
 			block.setData((byte) 7);
 			Location loc = block.getLocation();
 			Block wheat = new Location(Var.WORLD, loc.getX(), loc.getY() + 1, loc.getZ()).getBlock();
 			wheat.setType(Material.CROPS);
 			wheat.setData((byte) 7);
+		} else if (itemName.contains("invis")){
+			block.setData((byte) 0);
+			block.setType(Material.PISTON_MOVING_PIECE);
+			event.getPlayer().sendMessage("Placed invisible block. To remove invisible block, type /u rinv while standing inside an invisible block.");
+		} else {
+			sendStaffToolInfoMessage(player);
 		}
+	}
+	
+	private static void sendStaffToolInfoMessage(Player player){
+		String[] strings = new String[]{
+				"",
+				"Mogelijke namen:",
+				"invis - Plaatst onzichtbaar block",
+				"farmland - Plaatst farmland met wheat"
+		};
+		
+		for (String string : strings) player.sendMessage(string);
+		player.getInventory().addItem(new ItemBuilder(Material.ANVIL).setName("Use this to rename the coal block.").getItemStack());
 	}
 	
 	/*

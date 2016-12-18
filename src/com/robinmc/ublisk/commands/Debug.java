@@ -3,15 +3,19 @@ package com.robinmc.ublisk.commands;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Loot;
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.NewPlayerInfo;
 import com.robinmc.ublisk.Var;
@@ -230,6 +234,15 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("playerinfo")){
 						NewPlayerInfo.syncInfo(player);
+						return true;
+					} else if (args[0].equals("rinv")){
+						final Block block = player.getLocation().getBlock();
+						block.setType(Material.STONE);
+						new BukkitRunnable(){
+							public void run(){
+								block.setType(Material.AIR);
+							}
+						}.runTaskLater(Main.getInstance(), 5);
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
