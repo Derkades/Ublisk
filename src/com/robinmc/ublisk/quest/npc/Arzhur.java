@@ -9,7 +9,7 @@ import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.QuestProgress;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.inventory.BetterInventory;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 
 public class Arzhur extends NPC {
 
@@ -33,7 +33,7 @@ public class Arzhur extends NPC {
 	
 	private void searchMeat(UPlayer player){
 		QuestParticipant qp = player.getQuestParticipant(Quest.SEARCH_MEAT, this);
-		BetterInventory inv = qp.getInventory();
+		UInventory inv = qp.getInventory();
 		if (inv.contains(Material.GRILLED_PORK, 10))
 		{
 			qp.sendMessage("Thank you very much for helping us. We will be alright for a while! Here is something that will help you survive in the fields.");

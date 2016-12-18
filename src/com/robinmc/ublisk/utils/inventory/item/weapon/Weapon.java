@@ -13,8 +13,6 @@ import static net.md_5.bungee.api.ChatColor.YELLOW;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.robinmc.ublisk.utils.inventory.item.ItemInfo;
-
 public class Weapon {
 	
 	private WeaponType type;
@@ -43,7 +41,7 @@ public class Weapon {
 		return weaponInfo;
 	}
 	
-	public ItemInfo getItemInfo(){
+	public String getName(){
 		String color = WHITE + "";
 		
 		if (rarity == WeaponRarity.COMMON){
@@ -58,11 +56,14 @@ public class Weapon {
 			color = GOLD + "" + BOLD;
 		}
 		
-		String name =  color + this.name;
-		return new ItemInfo(name, getWeaponLore(lore));
+		return color + this.name; 
 	}
 	
-	private List<String> getWeaponLore(String tag){
+	public String[] getLore(){
+		return getWeaponLore(lore);
+	}
+	
+	private String[] getWeaponLore(String tag){
 		List<String> lore = new ArrayList<String>();
 		lore.add(DARK_AQUA + tag);
 		lore.add("");
@@ -76,7 +77,7 @@ public class Weapon {
 		if (weaponInfo.getKnockbackResistance() != -1)
 			lore.add(YELLOW + "Knockback resistance: " + GOLD + weaponInfo.getKnockbackResistance());
 		
-		return lore;
+		return lore.toArray(new String[]{});
 	}
 	
 }

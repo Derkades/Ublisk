@@ -9,7 +9,7 @@ import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.QuestProgress;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.inventory.BetterInventory;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 
 public class Alvin extends NPC {
 	
@@ -22,7 +22,7 @@ public class Alvin extends NPC {
 	public void talk(UPlayer player) {
 		//QuestParticipant qp = new QuestParticipant(player, Quest.WATER_PROBLEM, QuestCharacter.ALVIN);
 		QuestParticipant qp = player.getQuestParticipant(Quest.WATER_PROBLEM, this);
-		BetterInventory inv = player.getInventory();
+		UInventory inv = player.getInventory();
 		
 		if (qp.getQuestCompleted()){
 			qp.sendMessage("I'm looking for the biggest rose in the world!");

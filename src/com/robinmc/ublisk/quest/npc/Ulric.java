@@ -11,7 +11,7 @@ import com.robinmc.ublisk.quest.NPCInfo.NPCLocation;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.inventory.BetterInventory;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 import com.robinmc.ublisk.weapon.SwordsmanWeapon;
 
 public class Ulric extends NPC {
@@ -24,7 +24,7 @@ public class Ulric extends NPC {
 	@Override
 	public void talk(UPlayer player){
 		QuestParticipant qp = player.getQuestParticipant(Quest.INTRODUCTION, this);
-		BetterInventory inv = qp.getInventory();
+		UInventory inv = qp.getInventory();
 		
 		if (inv.contains(new ItemStack(Material.LOG, 10),
 			new ItemStack(Material.STRING, 16),

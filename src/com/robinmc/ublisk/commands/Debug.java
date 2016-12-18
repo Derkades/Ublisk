@@ -111,7 +111,7 @@ public class Debug implements CommandExecutor {
 						player.getPlayer().openInventory(inv);
 						return true;
 					} else if (args[0].equals("skull")){
-						player.getInventory().add(new ItemBuilder(args[1]).create());
+						player.getInventory().add(new ItemBuilder(args[1]).getItemStack());
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());

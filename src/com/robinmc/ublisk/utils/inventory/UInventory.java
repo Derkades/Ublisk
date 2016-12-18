@@ -7,43 +7,47 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.money.MoneyItem;
 import com.robinmc.ublisk.quest.QuestParticipant;
-import com.robinmc.ublisk.utils.inventory.item.Item;
+import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.inventory.item.weapon.Weapon;
 import com.robinmc.ublisk.weapon.SwordsmanWeapon;
 
 import net.minecraft.server.v1_11_R1.NBTTagCompound;
 import net.minecraft.server.v1_11_R1.NBTTagList;
 
-public class BetterInventory {
+public class UInventory {
 	
 	private PlayerInventory inv;
 	
-	public BetterInventory(Player player){
+	public UInventory(Player player){
 		this.inv = player.getInventory();
 	}
 	
-	public BetterInventory(PlayerInventory inv){
+	@Deprecated
+	public UInventory(PlayerInventory inv){
 		this.inv = inv;
 	}
 	
-	public BetterInventory(QuestParticipant qp){
-		this.inv = qp.getBukkitInventory();
+	@Deprecated
+	public static UInventory getInventory(Player player){
+		return new UInventory(player);
 	}
 	
-	public static BetterInventory getInventory(Player player){
-		return new BetterInventory(player);
+	@Deprecated
+	public static UInventory getInventory(PlayerInventory inv){
+		return new UInventory(inv);
 	}
 	
-	public static BetterInventory getInventory(PlayerInventory inv){
-		return new BetterInventory(inv);
-	}
-	
-	public static BetterInventory getInventory(QuestParticipant qp){
-		return new BetterInventory(qp.getBukkitInventory());
+	@Deprecated
+	public static UInventory getInventory(QuestParticipant qp){
+		return new UInventory(qp.getBukkitInventory());
 	}
 	
 	public PlayerInventory getBukkitInventory(){
 		return inv;
+	}
+	
+	public void set(int slot, ItemStack item){
+		inv.setItem(0, item);
 	}
 	
 	public void add(ItemStack item){
@@ -58,24 +62,12 @@ public class BetterInventory {
 		add(new ItemStack(material, 1));
 	}
 	
-	public void add(Item item){
-		add(item.getBukkitItem());
-	}
-	
 	public void add(MoneyItem item){
 		add(item.getItem());
 	}
 	
-	public void set(int slot, Item item){
-		inv.setItem(slot, item.getBukkitItem());
-	}
-	
 	public void remove(ItemStack item){
 		inv.remove(item);
-	}
-	
-	public void remove(Item item){
-		remove(item.getBukkitItem());
 	}
 	
 	public void remove(Material material, int amount){
@@ -128,10 +120,22 @@ public class BetterInventory {
 		for (ItemStack item : inv.getArmorContents()) inv.remove(item);
 	}
 	
+	public ItemStack getItemInHand(){
+		return inv.getItemInMainHand();
+	}
+	
+	public ItemStack getItemInOffHand(){
+		return inv.getItemInOffHand();
+	}
+	
 	public void addWeapon(SwordsmanWeapon swordsmanWeapon){
 		Weapon weapon = swordsmanWeapon.getWeapon();
-		Item item = new Item(weapon.getType().getMaterial());
-		item.setItemInfo(weapon.getItemInfo());
+		//Item item = new Item(weapon.getType().getMaterial());
+		//item.setItemInfo(weapon.getItemInfo());
+		ItemStack item = new ItemBuilder(weapon.getType().getMaterial())
+				.setName(weapon.getName())
+				.setLore(weapon.getLore())
+				.getItemStack();
 		
 		NBTTagList modifiers = new NBTTagList();
 
@@ -177,13 +181,15 @@ public class BetterInventory {
 			modifiers.add(knockback);
 		}
 		
-		NBTTagCompound compound = item.getCompound();
+		NBTTagCompound compound = InvUtils.getCompound(item);
+		
 		compound.set("AttributeModifiers", modifiers);
 		compound.setInt("HideFlags", 7);
 		compound.setBoolean("Unbreakable", true);
-		item.setCompound(compound);
 		
-		add(item);
+		ItemStack nbtItem = InvUtils.applyCompound(item, compound);
+		
+		add(nbtItem);
 	}
 
 }

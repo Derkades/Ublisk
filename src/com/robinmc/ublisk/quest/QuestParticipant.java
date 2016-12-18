@@ -8,7 +8,7 @@ import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.inventory.BetterInventory;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 
 public class QuestParticipant {
 	
@@ -38,7 +38,7 @@ public class QuestParticipant {
 		return npc;
 	}
 	
-	public BetterInventory getInventory(){
+	public UInventory getInventory(){
 		return player.getInventory();
 	}
 	

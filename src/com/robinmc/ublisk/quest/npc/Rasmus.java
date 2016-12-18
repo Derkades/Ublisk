@@ -9,7 +9,7 @@ import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.QuestProgress;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.inventory.BetterInventory;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 
 public class Rasmus extends NPC {
 	
@@ -31,7 +31,7 @@ public class Rasmus extends NPC {
 	
 	private void chickenHunt(UPlayer player){
 		QuestParticipant qp = player.getQuestParticipant(Quest.CHICKEN_HUNT, this);
-		BetterInventory inv = qp.getInventory();
+		UInventory inv = qp.getInventory();
 		
 		if (!qp.hasRequiredLevel()){
 			qp.sendMessage(Message.QUEST_LOW_LEVEL);

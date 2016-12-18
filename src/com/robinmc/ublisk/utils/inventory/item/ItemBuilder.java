@@ -62,10 +62,6 @@ public class ItemBuilder {
 		return this;
 	}
 	
-	public Item create(){
-		return new Item(item);
-	}
-	
 	public ItemStack getItemStack(){
 		return item;
 	}

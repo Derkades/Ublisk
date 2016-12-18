@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.utils;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,6 +20,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Player.Spigot;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -29,7 +31,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.Helper;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Town;
@@ -54,7 +55,8 @@ import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.guilds.Guild;
 import com.robinmc.ublisk.utils.guilds.Guilds;
-import com.robinmc.ublisk.utils.inventory.BetterInventory;
+import com.robinmc.ublisk.utils.inventory.InvUtils;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
@@ -101,8 +103,8 @@ public class UPlayer {
 		}
 	}
 	
-	public BetterInventory getInventory(){
-		return BetterInventory.getInventory(player);
+	public UInventory getInventory(){
+		return new UInventory(player);
 	}
 	
 	public int getVotingPoints(){
@@ -310,6 +312,10 @@ public class UPlayer {
 		return player.getGameMode();
 	}
 	
+	public void setGameMode(GameMode gamemode){
+		player.setGameMode(gamemode);
+	}
+	
 	public void joinGuild(Guild guild){
 		guild.addPlayer(this);
 	}
@@ -369,14 +375,20 @@ public class UPlayer {
 	}
 	
 	public boolean isInBuilderMode(){
-		return Helper.builderModeEnabled(player);
+		//Check if an inventory file exists, because the item is deleted when a player goes out of builder mode.
+		return new File(InvUtils.path, player.getName()+".yml").exists();
 	}
 	
 	public void setBuilderModeEnabled(boolean bool){
-		if (bool){
-			Helper.enableBuilderMode(player);
-		} else {
-			Helper.disableBuilderMode(player);
+		if (bool){ //Enable builder mode
+			this.saveInventoryToFile(Main.getInstance().getDataFolder() + "\\inv"); //Save inventory to file
+			this.getInventory().clear();		
+			this.setGameMode(GameMode.CREATIVE);		
+			this.sendMessage(Message.BUILDER_MODE_ACTIVATED);
+		} else { //Disable builder mode
+			this.fillInventoryFromFile(Main.getInstance().getDataFolder() + "\\inv");
+			this.setGameMode(GameMode.ADVENTURE);
+			this.sendMessage(Message.BUILDER_MODE_DEACTIVATED);
 		}
 	}
 	
@@ -595,6 +607,19 @@ public class UPlayer {
 		((CraftPlayer) player).setCollidable(bool);
 	}
 	
+	public void saveInventoryToFile(String path){
+		InvUtils.saveIntentory(path, player);
+	}
+	
+	public void fillInventoryFromFile(String path){
+		this.getInventory().clear();
+		InvUtils.restoreInventory(path, player);
+	}
+	
+	public void openEnderchest(){
+		player.openInventory(player.getEnderChest());
+	}
+	
 	public static UPlayer get(Player player){ return new UPlayer(player); }
 	
 	public static UPlayer get(QuestParticipant qp){ return get(qp.getBukkitPlayer()); }
@@ -621,4 +646,6 @@ public class UPlayer {
 	
 	public static UPlayer get(PlayerDeathEvent event){ return get(event.getEntity()); }
 
+	public static UPlayer get(InventoryClickEvent event){ return get(event.getWhoClicked()); }
+	
 }

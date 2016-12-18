@@ -1,19 +1,18 @@
 package com.robinmc.ublisk.listeners.player;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import com.robinmc.ublisk.Helper;
+import com.robinmc.ublisk.utils.UPlayer;
 
 public class InventoryClick implements Listener {
 	
 	@EventHandler
 	public void onItemClick(InventoryClickEvent event){
-		
-		if (Helper.builderModeEnabled((Player) event.getWhoClicked())){
+
+		if (UPlayer.get(event).isInBuilderMode()){
 			return;
 		}
 		

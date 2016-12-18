@@ -17,14 +17,12 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.Clazz;
-import com.robinmc.ublisk.Helper;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Tracker;
@@ -34,7 +32,7 @@ import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Voting;
-import com.robinmc.ublisk.utils.inventory.item.Item;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
 import com.robinmc.ublisk.utils.scheduler.Scheduler;
 
@@ -44,28 +42,28 @@ public class PlayerInteract implements Listener {
 	
 	@EventHandler(ignoreCancelled = false)
 	public void onInteract(PlayerInteractEvent event){
-		Player player = event.getPlayer();
+		UPlayer player = UPlayer.get(event);
 		Action action = event.getAction();
 		if (action == Action.RIGHT_CLICK_BLOCK || action == Action.RIGHT_CLICK_AIR){
-			PlayerInventory inv = player.getInventory();
-			Material item = inv.getItemInMainHand().getType();
+			UInventory inv = player.getInventory();
+			Material item = inv.getItemInHand().getType();
 			Material offhand = inv.getItemInOffHand().getType();
 			
 			if (item == Material.BOW || offhand == Material.BOW){
-				if (!(Clazz.getClass(player) == Clazz.ARCHER)){
+				if (!(player.getClazz() == Clazz.ARCHER)){
 					player.sendMessage(Message.CLASS_WRONG_WEAPON.get());
 					event.setCancelled(true);
 				}
 			} else if (item == Material.STICK || offhand == Material.STICK){
-				if (!(Clazz.getClass(player) == Clazz.SORCERER)){
+				if (!(player.getClazz() == Clazz.SORCERER)){
 					player.sendMessage(Message.CLASS_WRONG_WEAPON.get());
 					event.setCancelled(true);
 				}
-			} else if (item == Material.CHEST && !Helper.builderModeEnabled(player)){
-				MainMenu.open(player);
+			} else if (item == Material.CHEST && !player.isInBuilderMode()){
+				MainMenu.open(player.getPlayer());
 				event.setCancelled(true);
 			} else if (item == Material.END_CRYSTAL){
-				player.openInventory(player.getEnderChest());
+				player.openEnderchest();
 				event.setCancelled(true);
 			}
 		}
@@ -134,23 +132,24 @@ public class PlayerInteract implements Listener {
 			int xp = Voting.getRandomXP();
 			int life = Voting.getRandomLife();
 			
-			String reset = "" + ChatColor.RESET; 
-					
-			Item goldItem = new Item(Material.GOLD_NUGGET);
-			goldItem.setAmount(gold);
-			goldItem.setDisplayName(reset + ChatColor.GOLD + "" + ChatColor.BOLD + "Gold: " + gold);
+			ItemStack goldItem = new ItemBuilder(Material.GOLD_NUGGET)
+					.setName(ChatColor.GOLD + "" + ChatColor.BOLD + "Gold: " + gold)
+					.setAmount(gold)
+					.getItemStack();
 			
-			Item xpItem = new Item(Material.EMERALD);
-			xpItem.setAmount(xp);
-			xpItem.setDisplayName(reset + ChatColor.GREEN + "" + ChatColor.BOLD + "XP: " + xp);
+			ItemStack xpItem = new ItemBuilder(Material.EMERALD)
+					.setName(ChatColor.GREEN + "" + ChatColor.BOLD + "XP: " + xp)
+					.setAmount(xp)
+					.getItemStack();
 			
-			Item lifeItem = new Item(Material.NETHER_STAR);
-			lifeItem.setAmount(life);
-			lifeItem.setDisplayName(reset + ChatColor.BOLD + "Life Crystals: " + life);
+			ItemStack lifeItem = new ItemBuilder(Material.NETHER_STAR)
+					.setName(ChatColor.BOLD + "Life Crystals: " + life)
+					.setAmount(life)
+					.getItemStack();
 			
-			inv.setItem(12, goldItem.getItemStack());
-			inv.setItem(13, xpItem.getItemStack());
-			inv.setItem(14, lifeItem.getItemStack());
+			inv.setItem(12, goldItem);
+			inv.setItem(13, xpItem);
+			inv.setItem(14, lifeItem);
 			
 			UPlayer player = UPlayer.get(event.getPlayer());
 			
