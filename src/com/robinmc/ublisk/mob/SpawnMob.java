@@ -84,7 +84,8 @@ class SpawnMob {
 						entity.setCustomNameVisible(true);
 						double health = mob.getHealth();
 						entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
-						entity.setHealth(health);						
+						entity.setHealth(health);
+						entity.setRemoveWhenFarAway(true);
 						Location tp = entity.getLocation();
 						tp.setPitch(Random.getRandomFloat(0, 360));
 						
