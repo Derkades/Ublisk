@@ -54,7 +54,7 @@ public class QuestParticipant extends UPlayer {
 	
 	@Override
 	public void sendMessage(String message){
-		this.sendMessage(Message.Complicated.Quests.npcMsg(npc.getName(), message));
+		super.sendMessage(Message.Complicated.Quests.npcMsg(npc.getName(), message));
 	}
 	
 	public void giveRewardExp(){
