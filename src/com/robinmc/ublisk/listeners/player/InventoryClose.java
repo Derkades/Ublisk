@@ -15,7 +15,7 @@ public class InventoryClose implements Listener {
 	
 	@EventHandler
 	public void onInvClose(final InventoryCloseEvent event){
-		if (event.getInventory().getName().contains("Box")){
+		if (event.getInventory().getName().contains("Box") && !event.getInventory().getName().contains("Shulker")){
 			Voting.setPlayerOpeningBox(false);
 			new BukkitRunnable(){
 				public void run(){
