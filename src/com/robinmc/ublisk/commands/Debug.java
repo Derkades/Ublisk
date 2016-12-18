@@ -18,6 +18,7 @@ import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.NewPlayerInfo;
+import com.robinmc.ublisk.Scoreboard;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.chat.Trigger;
@@ -188,6 +189,9 @@ public class Debug implements CommandExecutor {
 								block.setType(Material.AIR);
 							}
 						}.runTaskLater(Main.getInstance(), 5);
+						return true;
+					} else if (args[0].equals("sidebar")){
+						Scoreboard.getScoreboard(player).showTo(player.getPlayer());
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());

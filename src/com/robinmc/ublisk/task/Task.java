@@ -27,6 +27,7 @@ public enum Task {
 	UPDATE_DOUBLE_XP_BAR(new UpdateDoubleExpBar(), 1*20, 1*20, false),
 	UPDATE_FRIENDS_HEALTH_BAR(new UpdateFriendsHealthBar(), 5*20, 1*20, false),
 	UPDATE_INFO(new AddTrackersInfoToQueue(), 10*20, 5*60*20, false),
+	UPDATE_SIDEBAR(new UpdateSidebar(), 10*20, 5*20, false),
 	
 	TPS_UPDATE(new Lag(), 100, 1, false),
 	
