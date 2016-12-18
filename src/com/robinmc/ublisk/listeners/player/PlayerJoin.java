@@ -17,7 +17,6 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Music;
 import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.iconmenus.ClassMenu;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
@@ -65,11 +64,13 @@ public class PlayerJoin implements Listener {
 		//Tracker.JOINED.add(player);
 		player.tracker(Tracker.JOINED);
         
+		/*
         Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
         	public void run(){
         		ClassMenu.open(player.getPlayer()); //TODO Update method to use UPlayer instead
         	}
         }, 2*20);
+        */
         
         String ip = player.getPlayer().getAddress().toString();
         ip = ip.replace("/", "");
