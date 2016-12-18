@@ -33,7 +33,6 @@ public class PlayerJoin implements Listener {
 		String pn = player.getName();
 		UUID uuid = player.getUniqueId();
 		
-		//Ublisk.sendConsoleCommand("scoreboard teams join all " + pn); //Join team "all". This team disables 1.9 collision TODO: Better solution
 		player.setCollidable(false);
 		
 		event.setJoinMessage(Message.Complicated.JoinQuit.playerJoin(pn));
@@ -42,7 +41,6 @@ public class PlayerJoin implements Listener {
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){ 
 			//For some reason sending the pack has to be delayed, otherwise the client won't get the message
 			public void run(){
-				//ResourcePackAPI.setResourcepack(player, Var.PACK_URL);
 				player.setResourcePack(Var.PACK_URL);
 			}
 		}, 1*20);
@@ -61,7 +59,6 @@ public class PlayerJoin implements Listener {
 			player.setSetting(Setting.PLAY_MUSIC, true);
 		}
 		
-		//Tracker.JOINED.add(player);
 		player.tracker(Tracker.JOINED);
         
 		/*
@@ -76,7 +73,6 @@ public class PlayerJoin implements Listener {
         ip = ip.replace("/", "");
         DataFile.IP.set("ip." + uuid, ip);
         
-        //Exp.refresh(player);
         player.refreshXP();
         
         //If the player is not a Builder, Moderator or Owner disable builder mode to prevent griefing
@@ -86,25 +82,14 @@ public class PlayerJoin implements Listener {
         		group == PermissionGroup.OWNER
         		) &&
         		player.isInBuilderMode()){
-        	//Helper.disableBuilderMode(player);
         	player.setBuilderModeEnabled(false);
         }
-        
-        /*
-        PlayerInventory inv = player.getInventory();
-        if (!inv.contains(Material.CHEST)){
-        	Item item = new Item(Material.CHEST);
-        	item.setName(ChatColor.RESET + "" + ChatColor.BLUE + "" + ChatColor.BOLD + "Menu");
-        	inv.setItem(7, item.getItemStack());
-        }*/
         
         ItemStack item = new ItemBuilder(Material.CHEST)
         		.setName(ChatColor.BLUE + "" + ChatColor.BOLD + "Menu")
         		.getItemStack();
         player.getInventory().add(item);
         		
-        
-        //player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(1);
         player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
 	}
 }
