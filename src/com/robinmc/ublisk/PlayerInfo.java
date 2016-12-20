@@ -11,7 +11,7 @@ import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
 
-public class NewPlayerInfo {
+public class PlayerInfo {
 	
 	private static final String TABLE = "player_info";
 	

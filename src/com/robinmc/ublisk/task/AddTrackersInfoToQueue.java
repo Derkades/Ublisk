@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.NewPlayerInfo;
+import com.robinmc.ublisk.PlayerInfo;
 import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
@@ -36,7 +36,7 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 			
 			list.add(new BukkitRunnable(){
 				public void run(){
-					NewPlayerInfo.syncInfo(player);
+					PlayerInfo.syncInfo(player);
 				}
 			});
 			

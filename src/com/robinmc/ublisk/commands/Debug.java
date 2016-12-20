@@ -17,7 +17,7 @@ import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.NewPlayerInfo;
+import com.robinmc.ublisk.PlayerInfo;
 import com.robinmc.ublisk.Scoreboard;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.abilities.Ability;
@@ -179,7 +179,7 @@ public class Debug implements CommandExecutor {
 						player.sendActionBarMessage(ChatColor.RED + "TEST!");
 						return true;
 					} else if (args[0].equals("playerinfo")){
-						NewPlayerInfo.syncInfo(player);
+						PlayerInfo.syncInfo(player);
 						return true;
 					} else if (args[0].equals("rinv")){
 						final Block block = player.getLocation().getBlock();
