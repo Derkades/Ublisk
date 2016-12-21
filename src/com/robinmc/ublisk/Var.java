@@ -9,6 +9,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 
+import com.robinmc.ublisk.utils.DataFile;
+
 public class Var {
 	
 	/**
@@ -121,5 +123,11 @@ public class Var {
 			1, 3,
 			2, 4
 			);
+	
+	public static final String DATABASE_HOST = "localhost";
+	public static final int DATABASE_PORT = 3306;
+	public static final String DATABASE_USER = DataFile.MYSQL.getString("user");
+	public static final String DATABASE_PASSWORD = DataFile.MYSQL.getString("password"); //Admit it, you hoped the password would be here in plain text. Nope!
+	public static final String DATABASE_DB_NAME = "ublisk";
 
 }
