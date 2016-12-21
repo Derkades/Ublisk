@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.NewTracker;
 import com.robinmc.ublisk.PlayerInfo;
 import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.utils.Logger;
@@ -28,6 +29,13 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 		List<BukkitRunnable> list = new ArrayList<BukkitRunnable>();
 		
 		for (final UPlayer player : Ublisk.getOnlinePlayers()){
+			
+			list.add(new BukkitRunnable(){
+				public void run(){
+					NewTracker.syncWithDatabase(player);
+				}
+			});
+			
 			list.add(new BukkitRunnable(){
 				public void run(){
 					UUIDUtils.save(player.getPlayer());

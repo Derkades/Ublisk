@@ -4,12 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.task.AfkTimer;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 
 public class HashMaps {
 
@@ -38,12 +39,12 @@ public class HashMaps {
 	public static final Map<UUID, Integer> TRACKER_VOTING_BOXES_OPENED = new HashMap<>();
 	
 	static void resetAllPlayers(){
-		for (Player player : Bukkit.getOnlinePlayers()){
+		for (UPlayer player : Ublisk.getOnlinePlayers()){
 			addPlayerToMaps(player);
 		}
 	}
 
-	public static void addPlayerToMaps(Player player){
+	public static void addPlayerToMaps(UPlayer player){
 		Logger.log(LogLevel.INFO, "HashMaps", player.getName() + "'s maps have been reset");
 		UUID uuid = player.getUniqueId();
 		
@@ -53,14 +54,16 @@ public class HashMaps {
 		DISABLE_COMMAND_LOG.put(uuid, false);
 		IS_MUTED.put(uuid, false);
 		IS_SOFT_MUTED.put(uuid, false);
-		LAST_MESSAGE_SENDER.put(player, null);
-		PREVIOUS_LEVEL.put(player, player.getLevel());
+		LAST_MESSAGE_SENDER.put(player.getPlayer(), null);
+		PREVIOUS_LEVEL.put(player.getPlayer(), player.getLevel());
 		AfkTimer.TIMER.put(uuid, 0);
 		
 		for (Tracker tracker : Tracker.values()){
 			Map<UUID, Integer> map = tracker.getMap();
 			map.put(uuid, 0);
 		}
+		
+		NewTracker.resetHashMaps(player);
 	}
 	
 	public static HashMap<Integer, Integer> build(int... data){

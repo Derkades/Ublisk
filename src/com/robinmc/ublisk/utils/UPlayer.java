@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -411,8 +412,13 @@ public class UPlayer {
 		}
 	}
 	
+	@Deprecated
 	public void tracker(Tracker tracker){
 		tracker.add(player);
+	}
+	
+	public void tracker(Map<UUID, Integer> map){
+		map.put(this.getUniqueId(), map.get(this.getUniqueId()) + 1);
 	}
 	
 	public Clazz getClazz(){

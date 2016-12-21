@@ -14,6 +14,7 @@ import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 
+@Deprecated
 public enum Tracker {
 	
 	/*

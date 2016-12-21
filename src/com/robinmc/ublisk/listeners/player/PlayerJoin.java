@@ -48,7 +48,7 @@ public class PlayerJoin implements Listener {
 		//Save player uuid and name for later use
 		UUIDUtils.save(player.getPlayer()); //TODO Update method to use UPlayer instead
 		
-		HashMaps.addPlayerToMaps(player.getPlayer()); //TODO Update method to use UPlayer instead
+		HashMaps.addPlayerToMaps(player);
 		
 		try {
 			if (player.getSetting(Setting.PLAY_MUSIC)){
