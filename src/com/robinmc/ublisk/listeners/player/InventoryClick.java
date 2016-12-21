@@ -11,7 +11,7 @@ import com.robinmc.ublisk.utils.UPlayer;
 
 public class InventoryClick implements Listener {
 	
-	@EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
+	@EventHandler(ignoreCancelled = false, priority = EventPriority.MONITOR)
 	public void tracker(InventoryClickEvent event){
 		UPlayer player = UPlayer.get(event);
 		player.tracker(NewTracker.INV_CLICK);
