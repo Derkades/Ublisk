@@ -58,10 +58,12 @@ public class HashMaps {
 		PREVIOUS_LEVEL.put(player.getPlayer(), player.getLevel());
 		AfkTimer.TIMER.put(uuid, 0);
 		
+		/*
 		for (Tracker tracker : Tracker.values()){
 			Map<UUID, Integer> map = tracker.getMap();
 			map.put(uuid, 0);
 		}
+		*/
 		
 		NewTracker.resetHashMaps(player);
 	}

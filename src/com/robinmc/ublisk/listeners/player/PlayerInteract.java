@@ -25,7 +25,7 @@ import org.bukkit.util.Vector;
 import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.Tracker;
+import com.robinmc.ublisk.NewTracker;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.iconmenus.MainMenu;
 import com.robinmc.ublisk.utils.Logger;
@@ -71,21 +71,24 @@ public class PlayerInteract implements Listener {
 	//ignoreCancelled = true - Still track clicks if they are cancelled
 	@EventHandler(priority=EventPriority.MONITOR, ignoreCancelled = true)
 	public void tracker(PlayerInteractEvent event){
-		Player player = event.getPlayer();
+		UPlayer player = UPlayer.get(event);
 		Action action = event.getAction();
 		
 		if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK){
-			Tracker.RIGHT_CLICKED.add(player);
+			//Tracker.RIGHT_CLICKED.add(player);
+			player.tracker(NewTracker.RIGHT_CLICKED);
 		}
 		
 		if (action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK){
-			Tracker.LEFT_CLICKED.add(player);
+			//Tracker.LEFT_CLICKED.add(player);
+			player.tracker(NewTracker.LEFT_CLICKED);
 		}
 		
 		if (action == Action.RIGHT_CLICK_BLOCK){
 			Material type = event.getClickedBlock().getType();
-			if (type == Material.CHEST){
-				Tracker.LOOT_FOUND.add(player);
+			if (type == Material.CHEST && !Voting.isVotingChest(event.getClickedBlock())){
+				//Tracker.LOOT_FOUND.add(player);
+				player.tracker(NewTracker.LOOT_FOUND);
 			}
 		}
 	}
@@ -164,7 +167,8 @@ public class PlayerInteract implements Listener {
 				player.addLifeCrystals(life);
 			}
 			
-			player.tracker(Tracker.VOTING_BOXES_OPENED);
+			//player.tracker(Tracker.VOTING_BOXES_OPENED);
+			player.tracker(NewTracker.VOTE_BOX);
 			
 			Logger.log(LogLevel.DEBUG, "Gold: " + gold + " | XP: " + xp + " | Life: " + life);
 		}
