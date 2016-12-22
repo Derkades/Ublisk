@@ -117,7 +117,8 @@ public class NewTracker {
     				+ "loot_found=?,"
     				+ "chat_msg=?,"
     				+ "vote_box=?,"
-    				+ "inv_click=?"
+    				+ "inv_click=?,"
+    				+ "entity_click=?"
     				+ " WHERE uuid=?;");
     		
     		update.setInt(1, rightClick + RIGHT_CLICKED.get(key));
