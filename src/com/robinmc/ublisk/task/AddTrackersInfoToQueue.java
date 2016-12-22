@@ -37,7 +37,7 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 			
 			list.add(new BukkitRunnable(){
 				public void run(){
-					UUIDUtils.save(player.getPlayer());
+					UUIDUtils.save(player);
 				}
 			});
 			

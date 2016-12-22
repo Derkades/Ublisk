@@ -46,7 +46,7 @@ public class PlayerJoin implements Listener {
 		}, 1*20);
 		
 		//Save player uuid and name for later use
-		UUIDUtils.save(player.getPlayer()); //TODO Update method to use UPlayer instead
+		UUIDUtils.save(player);
 		
 		HashMaps.addPlayerToMaps(player);
 		

@@ -55,14 +55,14 @@ public class UUIDUtils {
 		}
 	}
 	
-	public static void save(Player player){
+	public static void save(UPlayer player){
 		DataFile.UUID.set("uuid." + player.getName(), player.getUniqueId().toString());
 		DataFile.UUID.set("name." + player.getUniqueId(), player.getName());
 		
 		syncWithDatabase(player);
 	}
 	
-	private static void syncWithDatabase(Player player){
+	private static void syncWithDatabase(UPlayer player){
 		try {
 			if (containsPlayer(player)){
 				updateInDatabase(player);
@@ -75,7 +75,7 @@ public class UUIDUtils {
 		}
 	}
 	
-	private static boolean containsPlayer(Player player) throws SQLException {
+	private static boolean containsPlayer(UPlayer player) throws SQLException {
 		boolean containsPlayer = false;
 		
 		Connection connection = null;
@@ -99,7 +99,7 @@ public class UUIDUtils {
 		return containsPlayer;
 	}
 	
-	private static void updateInDatabase(Player player) throws SQLException {
+	private static void updateInDatabase(UPlayer player) throws SQLException {
 		Connection connection = null;
 		PreparedStatement update = null;
 		
@@ -120,7 +120,7 @@ public class UUIDUtils {
 		}
 	}
 	
-	private static void insertIntoDatabase(Player player) throws SQLException {
+	private static void insertIntoDatabase(UPlayer player) throws SQLException {
 		Connection connection = null;
 		PreparedStatement insert = null;
 		
