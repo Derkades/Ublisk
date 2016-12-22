@@ -59,16 +59,7 @@ public class PlayerJoin implements Listener {
 			player.setSetting(Setting.PLAY_MUSIC, true);
 		}
 		
-		//player.tracker(Tracker.JOINED);
 		player.tracker(Tracker.JOIN_COUNT);
-        
-		/*
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
-        	public void run(){
-        		ClassMenu.open(player.getPlayer()); //TODO Update method to use UPlayer instead
-        	}
-        }, 2*20);
-        */
         
         String ip = player.getPlayer().getAddress().toString();
         ip = ip.replace("/", "");
