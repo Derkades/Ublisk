@@ -65,7 +65,7 @@ public class HashMaps {
 		}
 		*/
 		
-		NewTracker.resetHashMaps(player);
+		Tracker.resetHashMaps(player);
 	}
 	
 	public static HashMap<Integer, Integer> build(int... data){

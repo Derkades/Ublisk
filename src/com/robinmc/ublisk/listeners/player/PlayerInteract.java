@@ -25,7 +25,7 @@ import org.bukkit.util.Vector;
 import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.NewTracker;
+import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.iconmenus.MainMenu;
 import com.robinmc.ublisk.utils.Logger;
@@ -76,19 +76,19 @@ public class PlayerInteract implements Listener {
 		
 		if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK){
 			//Tracker.RIGHT_CLICKED.add(player);
-			player.tracker(NewTracker.RIGHT_CLICKED);
+			player.tracker(Tracker.RIGHT_CLICKED);
 		}
 		
 		if (action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK){
 			//Tracker.LEFT_CLICKED.add(player);
-			player.tracker(NewTracker.LEFT_CLICKED);
+			player.tracker(Tracker.LEFT_CLICKED);
 		}
 		
 		if (action == Action.RIGHT_CLICK_BLOCK){
 			Material type = event.getClickedBlock().getType();
 			if (type == Material.CHEST && !Voting.isVotingChest(event.getClickedBlock())){
 				//Tracker.LOOT_FOUND.add(player);
-				player.tracker(NewTracker.LOOT_FOUND);
+				player.tracker(Tracker.LOOT_FOUND);
 			}
 		}
 	}
@@ -168,7 +168,7 @@ public class PlayerInteract implements Listener {
 			}
 			
 			//player.tracker(Tracker.VOTING_BOXES_OPENED);
-			player.tracker(NewTracker.VOTE_BOX);
+			player.tracker(Tracker.VOTE_BOX);
 			
 			Logger.log(LogLevel.DEBUG, "Gold: " + gold + " | XP: " + xp + " | Life: " + life);
 		}

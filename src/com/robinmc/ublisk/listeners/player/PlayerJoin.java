@@ -15,7 +15,7 @@ import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Music;
-import com.robinmc.ublisk.NewTracker;
+import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -60,7 +60,7 @@ public class PlayerJoin implements Listener {
 		}
 		
 		//player.tracker(Tracker.JOINED);
-		player.tracker(NewTracker.JOIN_COUNT);
+		player.tracker(Tracker.JOIN_COUNT);
         
 		/*
         Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){

@@ -15,7 +15,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.NewTracker;
+import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
 
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -28,7 +28,7 @@ public class PlayerInteractEntity implements Listener {
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
 	public void tracker(PlayerInteractEntityEvent event){
 		UPlayer player = UPlayer.get(event);
-		player.tracker(NewTracker.ENTITY_CLICK);
+		player.tracker(Tracker.ENTITY_CLICK);
 	}
 	
 	@EventHandler

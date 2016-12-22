@@ -6,7 +6,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import com.robinmc.ublisk.NewTracker;
+import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public class InventoryClick implements Listener {
@@ -14,7 +14,7 @@ public class InventoryClick implements Listener {
 	@EventHandler(ignoreCancelled = false, priority = EventPriority.MONITOR)
 	public void tracker(InventoryClickEvent event){
 		UPlayer player = UPlayer.get(event);
-		player.tracker(NewTracker.INV_CLICK);
+		player.tracker(Tracker.INV_CLICK);
 	}
 	
 	@EventHandler

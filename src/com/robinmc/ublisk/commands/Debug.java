@@ -17,7 +17,7 @@ import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.NewTracker;
+import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.PlayerInfo;
 import com.robinmc.ublisk.Scoreboard;
 import com.robinmc.ublisk.Var;
@@ -195,8 +195,8 @@ public class Debug implements CommandExecutor {
 						Scoreboard.getScoreboard(player).showTo(player.getPlayer());
 						return true;
 					} else if (args[0].equals("trackerclick")){
-						player.tracker(NewTracker.RIGHT_CLICKED);
-						player.sendMessage(NewTracker.RIGHT_CLICKED.get(player.getUniqueId()));
+						player.tracker(Tracker.RIGHT_CLICKED);
+						player.sendMessage(Tracker.RIGHT_CLICKED.get(player.getUniqueId()));
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
