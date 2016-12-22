@@ -130,7 +130,7 @@ public class NewTracker {
     		update.setInt(7, voteBox + VOTE_BOX.get(key));
     		update.setInt(8, invClick + INV_CLICK.get(key));
     		update.setInt(9, entityClick + ENTITY_CLICK.get(key));
-    		update.setString(9, key.toString());
+    		update.setString(10, key.toString());
     		
     		update.executeUpdate();
     		update.close();
