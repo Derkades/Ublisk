@@ -35,7 +35,6 @@ import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Town;
-import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.VoteRestart;
 import com.robinmc.ublisk.money.Money;
@@ -410,11 +409,6 @@ public class UPlayer {
 		} else {
 			return "Never";
 		}
-	}
-	
-	@Deprecated
-	public void tracker(Tracker tracker){
-		tracker.add(player);
 	}
 	
 	public void tracker(Map<UUID, Integer> map){
