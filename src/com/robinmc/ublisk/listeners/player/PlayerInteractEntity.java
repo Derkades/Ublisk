@@ -14,7 +14,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.Tracker;
+import com.robinmc.ublisk.NewTracker;
 import com.robinmc.ublisk.utils.UPlayer;
 
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -35,7 +35,8 @@ public class PlayerInteractEntity implements Listener {
 		
 		final UPlayer player = UPlayer.get(event);
 		
-		player.tracker(Tracker.RIGHT_CLICKED);
+		//player.tracker(Tracker.RIGHT_CLICKED);
+		player.tracker(NewTracker.ENTITY_CLICK);
 		
 		if (entity instanceof ArmorStand && player.getGameMode() != GameMode.CREATIVE){
 			event.setCancelled(true);

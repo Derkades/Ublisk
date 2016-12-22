@@ -25,6 +25,7 @@ public class NewTracker {
 	public static final Map<UUID, Integer> CHAT_MESSAGES = new HashMap<>();
 	public static final Map<UUID, Integer> VOTE_BOX = new HashMap<>();
 	public static final Map<UUID, Integer> INV_CLICK = new HashMap<>();
+	public static final Map<UUID, Integer> ENTITY_CLICK = new HashMap<>();
 	
 	public static void resetHashMaps(UPlayer player){
 		UUID key = player.getUniqueId();
@@ -36,6 +37,7 @@ public class NewTracker {
 		CHAT_MESSAGES.put(key, 0);
 		VOTE_BOX.put(key, 0);
 		INV_CLICK.put(key, 0);
+		ENTITY_CLICK.put(key, 0);
 	}
 	
 	public static void syncWithDatabase(UPlayer player){
@@ -58,7 +60,7 @@ public class NewTracker {
 		try {
 			connection = Ublisk.getNewDatabaseConnection("Tracker (" + player.getName() + ")");
 			
-    		sql = connection.prepareStatement("INSERT INTO `" + TABLE + "` values(?, ?, ?, ?, ?, ?, ?, ?, ?);");
+    		sql = connection.prepareStatement("INSERT INTO `" + TABLE + "` values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
     		
     		sql.setString(1, player.getUniqueId().toString());
     		sql.setInt(2, 0);
@@ -69,6 +71,7 @@ public class NewTracker {
     		sql.setInt(7, 0);
     		sql.setInt(8, 0);
     		sql.setInt(9, 0);
+    		sql.setInt(10, 0);
     		
     		sql.execute();
 		} catch (SQLException e){
@@ -101,6 +104,7 @@ public class NewTracker {
 			int chatMessages = current.getInt("chat_msg");
 			int voteBox = current.getInt("vote_box");
 			int invClick = current.getInt("inv_click");
+			int entityClick = current.getInt("entity_click");
 			
 			getCurrent.close();
 			current.close();
@@ -124,6 +128,7 @@ public class NewTracker {
     		update.setInt(6, chatMessages + CHAT_MESSAGES.get(key));
     		update.setInt(7, voteBox + VOTE_BOX.get(key));
     		update.setInt(8, invClick + INV_CLICK.get(key));
+    		update.setInt(9, entityClick + ENTITY_CLICK.get(key));
     		update.setString(9, key.toString());
     		
     		update.executeUpdate();
