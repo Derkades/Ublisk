@@ -8,6 +8,7 @@ import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -24,8 +25,14 @@ import net.md_5.bungee.api.chat.HoverEvent;
 
 public class PlayerInteractEntity implements Listener {
 	
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+	public void tracker(PlayerInteractEntityEvent event){
+		UPlayer player = UPlayer.get(event);
+		player.tracker(NewTracker.ENTITY_CLICK);
+	}
+	
 	@EventHandler
-	public void onPlayerInteractEntityEvent(PlayerInteractEntityEvent event) {
+	public void onPlayerInteractEntityEvent(PlayerInteractEntityEvent event){
 		
 		if (event.isCancelled()){
 			return;
@@ -36,7 +43,7 @@ public class PlayerInteractEntity implements Listener {
 		final UPlayer player = UPlayer.get(event);
 		
 		//player.tracker(Tracker.RIGHT_CLICKED);
-		player.tracker(NewTracker.ENTITY_CLICK);
+		
 		
 		if (entity instanceof ArmorStand && player.getGameMode() != GameMode.CREATIVE){
 			event.setCancelled(true);
