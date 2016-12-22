@@ -17,9 +17,6 @@ import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.Tracker;
-import com.robinmc.ublisk.PlayerInfo;
-import com.robinmc.ublisk.Scoreboard;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.chat.Trigger;
@@ -139,9 +136,6 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("removeloot")){
 						Loot.removeLoot();
 						return true;
-					} else if (args[0].equals("health")){
-						player.sendMessage(player.getHealth() + "");
-						return true;
 					} else if (args[0].equals("lag")){
 						player.sendMessage("TPS: " + Lag.getTPS());
 						return true;
@@ -179,9 +173,6 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("actionbar")){
 						player.sendActionBarMessage(ChatColor.RED + "TEST!");
 						return true;
-					} else if (args[0].equals("playerinfo")){
-						PlayerInfo.syncInfo(player);
-						return true;
 					} else if (args[0].equals("rinv")){
 						final Block block = player.getLocation().getBlock();
 						block.setType(Material.STONE);
@@ -190,13 +181,6 @@ public class Debug implements CommandExecutor {
 								block.setType(Material.AIR);
 							}
 						}.runTaskLater(Main.getInstance(), 5);
-						return true;
-					} else if (args[0].equals("sidebar")){
-						Scoreboard.getScoreboard(player).showTo(player.getPlayer());
-						return true;
-					} else if (args[0].equals("trackerclick")){
-						player.tracker(Tracker.RIGHT_CLICKED);
-						player.sendMessage(Tracker.RIGHT_CLICKED.get(player.getUniqueId()));
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE.get());
