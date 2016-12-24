@@ -1,12 +1,14 @@
 package com.robinmc.ublisk;
 
+import org.bukkit.ChatColor;
+
 import com.robinmc.ublisk.utils.java.EnumUtils;
 
 public enum MOTD {
 	
-	MOTD_1("MOTD 1", ""),
-	MOTD_2("MOTD 2", "MOTD 2"),
-	MOTD_3("MOTD", "3");
+	MOTD_1(ChatColor.GREEN + "" + ChatColor.STRIKETHROUGH + "Wynncraft", ""),
+	MOTD_2(ChatColor.MAGIC + "OIJAMOIDJMOSAIJCDMOAISJM", ChatColor.YELLOW + "Ok"),
+	MOTD_3("Hello human being reading this!", "Why have you not joined yet!?!?");
 	
 	private String lineOne;
 	private String lineTwo;
