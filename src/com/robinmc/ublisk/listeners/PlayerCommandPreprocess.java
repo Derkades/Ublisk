@@ -1,6 +1,5 @@
 package com.robinmc.ublisk.listeners;
 
-import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
@@ -40,13 +39,9 @@ public class PlayerCommandPreprocess implements Listener {
 			}
 		}
 		
-		if (sender.getGameMode() == GameMode.SPECTATOR && cmd.equals("/gamemode 1")){
-			return;
-		}
-		
-		if (cmd.contains("gamemode") && !cmd.contains("3")){
-			sender.sendMessage(ChatColor.AQUA + "Please use builder mode instead");
-			event.setCancelled(true);
+		if (cmd.contains("gamemode")){
+			sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + 
+					"WARNING: Please don't use /gamemode. Use /builder instead to keep survival and creative inventory seperated.");
 			return;
 		}
 		
