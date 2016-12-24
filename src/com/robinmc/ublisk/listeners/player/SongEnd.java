@@ -3,7 +3,7 @@ package com.robinmc.ublisk.listeners.player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import com.robinmc.ublisk.Music;
+import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -18,12 +18,15 @@ public class SongEnd implements Listener {
 		try {
 		    for (String playername : event.getSongPlayer().getPlayerList()){
 				UPlayer player = UPlayer.get(playername);
+				Town town = player.getTown();
 				try {
 					if (player.getSetting(Setting.PLAY_MUSIC)){
-						Music.playSong(player.getPlayer(), player.getTown().getName().toLowerCase());
+						//Music.playSong(player.getPlayer(), player.getTown().getName().toLowerCase());
+						town.playThemeToPlayer(player);
 					}
 				} catch (NotSetException e){
-					Music.playSong(player.getPlayer(), player.getTown().getName().toLowerCase());
+					//Music.playSong(player.getPlayer(), player.getTown().getName().toLowerCase());
+					town.playThemeToPlayer(player);
 				}
 		    }
 		} catch (Exception e) {

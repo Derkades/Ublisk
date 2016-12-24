@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.Music;
+import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.Tracker;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.DataFile;
@@ -49,12 +49,15 @@ public class PlayerJoin implements Listener {
 		
 		HashMaps.addPlayerToMaps(player);
 		
+		Town town = player.getTown();
 		try {
 			if (player.getSetting(Setting.PLAY_MUSIC)){
-				Music.playSong(player.getPlayer(), player.getTown().getName().toLowerCase()); //TODO Update method to use UPlayer instead
+				//Music.playSong(player.getPlayer(), player.getTown().getName().toLowerCase());
+				town.playThemeToPlayer(player);
 			}
 		} catch (NotSetException e) {
-			Music.playSong(player.getPlayer(), player.getTown().getName().toLowerCase());
+			//Music.playSong(player.getPlayer(), player.getTown().getName().toLowerCase());
+			town.playThemeToPlayer(player);
 			player.setSetting(Setting.PLAY_MUSIC, true);
 		}
 		

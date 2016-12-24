@@ -11,6 +11,7 @@ import com.xxmicloxx.NoteBlockAPI.RadioSongPlayer;
 import com.xxmicloxx.NoteBlockAPI.Song;
 import com.xxmicloxx.NoteBlockAPI.SongPlayer;
 
+@Deprecated
 public enum Music {
 	
 	COMPTINE_DUN_AUTRE_ETE("Introduction", "ComptineDunAutreEte.nbs"),
