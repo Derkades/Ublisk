@@ -11,15 +11,24 @@ import java.util.List;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import com.coloredcarrot.api.sidebar.Sidebar;
 import com.coloredcarrot.api.sidebar.SidebarString;
 import com.robinmc.ublisk.utils.DoubleXP;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class Scoreboard {
+public class Scoreboard extends BukkitRunnable {
+	
+	@Override
+	public void run() {
+		for (UPlayer player : Ublisk.getOnlinePlayers()){
+			Scoreboard.getScoreboard(player).showTo(player.getPlayer());
+		}
+	}
 	
 	public static Sidebar getScoreboard(UPlayer player){		
 		

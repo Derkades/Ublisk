@@ -3,6 +3,7 @@ package com.robinmc.ublisk.task;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Scoreboard;
 import com.robinmc.ublisk.database.AddTrackersInfoToQueue;
 import com.robinmc.ublisk.utils.Lag;
 import com.robinmc.ublisk.utils.sql.ProcessQueue;
@@ -25,10 +26,8 @@ public enum Task {
 	SPAWN_RANDOM_LOOT(new SpawnRandomLoot(), 5*60*20, 5*60*20, false),
 	UPDATE_BACKPACK_NAME(new UpdateBackpackName(), 0, 5*20, false),
 	UPDATE_INFO(new AddTrackersInfoToQueue(), 10*20, 5*60*20, false),
-	UPDATE_SIDEBAR(new UpdateSidebar(), 5*20, 2*20, false),
-	
+	UPDATE_SIDEBAR(new Scoreboard(), 5*20, 2*20, false),
 	TPS_UPDATE(new Lag(), 100, 1, false),
-	
 	PROCESS_QUEUE(new ProcessQueue(), 10*20, 4*20, false);
 	
 	private BukkitRunnable runnable;
