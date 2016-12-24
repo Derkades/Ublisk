@@ -5,12 +5,15 @@ import java.util.UUID;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.Cooldown;
+import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
+import com.robinmc.ublisk.utils.UPlayer;
 
 @Deprecated
 public class ClassMenu {
@@ -20,13 +23,13 @@ public class ClassMenu {
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
-			Player player = event.getPlayer();
+			UPlayer player = UPlayer.get(event);
 			UUID uuid = player.getUniqueId();
-			if (Cooldown.chooseClass(player)){
-				player.sendMessage(Message.CLASS_COOLDOWN.get());
+			if (HashMaps.COOLDOWN_CLASS.get(player.getUniqueId())){
+				player.sendMessage(Message.CLASS_COOLDOWN);
 				return;
 			} else {
-				Cooldown.chooseClassStart(player);
+				startCooldown(player);
 				if (name.equals("swordsman")){
 					DataFile.CLASSES.set("class." + uuid, "Swordsman");
 					player.sendMessage(Message.Complicated.changedClass("Swordsman"));
@@ -56,6 +59,16 @@ public class ClassMenu {
 		menu.setOption(3, new ItemStack(Material.BOW), "Archer", "Damage: ■■□□", "Defence: ■□□□", "Magic: ■□□□", "Walk speed: ■■■■", "Range: ■■■■");
 		menu.setOption(5, new ItemStack(Material.STICK), "Sorcerer", "Damage: ■□□□", "Defence: ■□□□", "Magic: ■■■■", "Walk speed: ■■□□", "Range: □□□□");
 		menu.setOption(7, new ItemStack(Material.SHIELD), "Paladin", "Damage: ■■■□", "Defence: ■■■■", "Magic: □□□□", "Walk speed: □□□□", "Range: □□□□");
+	}
+	
+	private static void startCooldown(UPlayer player){
+		final UUID uuid = player.getUniqueId();
+		HashMaps.COOLDOWN_CLASS.put(uuid, true);
+		new BukkitRunnable(){
+			public void run(){
+				HashMaps.COOLDOWN_CLASS.put(uuid, false);
+			}
+		}.runTaskLater(Main.getInstance(), 15*60*20);
 	}
 
 }
