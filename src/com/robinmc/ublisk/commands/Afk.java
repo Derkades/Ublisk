@@ -30,7 +30,7 @@ public class Afk implements CommandExecutor {
 				return true;
 			}
 		} else {
-			sender.sendMessage(Message.NOT_A_PLAYER.get());
+			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 			return true;
 		}
 	}

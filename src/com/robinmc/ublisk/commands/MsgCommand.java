@@ -21,7 +21,7 @@ public class MsgCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		if (!(sender instanceof Player)){
-			sender.sendMessage(Message.NOT_A_PLAYER.get());
+			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 			return true;
 		}
 		
@@ -29,7 +29,7 @@ public class MsgCommand implements CommandExecutor {
 		
 		//If player is muted don't send private message
 		if (HashMaps.IS_MUTED.get(player.getUniqueId())){
-			player.sendMessage(Message.CANT_PM_MUTED.get());
+			player.sendMessage(Message.CANT_PM_MUTED);
 			return true;
 		}
 		

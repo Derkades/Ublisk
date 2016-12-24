@@ -1,6 +1,8 @@
 package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.quest.NPCInfo;
@@ -9,7 +11,6 @@ import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.QuestProgress;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.inventory.UInventory;
 
 public class Arzhur extends NPC {
 
@@ -33,11 +34,10 @@ public class Arzhur extends NPC {
 	
 	private void searchMeat(UPlayer player){
 		QuestParticipant qp = player.getQuestParticipant(Quest.SEARCH_MEAT, this);
-		UInventory inv = qp.getInventory();
-		if (inv.contains(Material.GRILLED_PORK, 10))
-		{
+		PlayerInventory inv = qp.getInventory();
+		if (inv.containsAtLeast(new ItemStack(Material.GRILLED_PORK), 10)){
 			qp.sendMessage("Thank you very much for helping us. We will be alright for a while! Here is something that will help you survive in the fields.");
-			inv.remove(Material.GRILLED_PORK, 10);
+			inv.remove(new ItemStack(Material.GRILLED_PORK, 10));
 			qp.addLifeCrystals(5);
 			qp.setQuestCompleted(true);
 			qp.sendCompletedMessage();

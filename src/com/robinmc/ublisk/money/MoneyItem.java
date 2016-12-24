@@ -3,7 +3,7 @@ package com.robinmc.ublisk.money;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 
 import net.md_5.bungee.api.ChatColor;
 

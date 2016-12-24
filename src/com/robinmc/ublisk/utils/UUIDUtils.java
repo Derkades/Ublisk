@@ -48,11 +48,11 @@ public class UUIDUtils {
 	}
 	
 	public static Player getPlayerFromName(String name) throws PlayerNotFoundException {
-		try {
-			return Bukkit.getPlayer(name);
-		} catch (Exception e){
+		Player player = Bukkit.getPlayer(name);
+		if (player == null)
 			throw new PlayerNotFoundException();
-		}
+		else
+			return player;
 	}
 	
 	public static void save(UPlayer player){

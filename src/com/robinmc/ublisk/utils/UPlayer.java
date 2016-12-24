@@ -3,6 +3,7 @@ package com.robinmc.ublisk.utils;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.HashMaps;
@@ -56,7 +59,6 @@ import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.guilds.Guild;
 import com.robinmc.ublisk.utils.guilds.Guilds;
 import com.robinmc.ublisk.utils.inventory.InvUtils;
-import com.robinmc.ublisk.utils.inventory.UInventory;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
@@ -103,8 +105,8 @@ public class UPlayer {
 		}
 	}
 	
-	public UInventory getInventory(){
-		return new UInventory(player);
+	public PlayerInventory getInventory(){
+		return player.getInventory();
 	}
 	
 	public int getVotingPoints(){
@@ -233,12 +235,12 @@ public class UPlayer {
 		return player.getName();
 	}
 	
-	public boolean addFriend(Player newFriend){
+	public boolean addFriend(UPlayer newFriend){
 		final List<String> list = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
-		if (list.contains(newFriend.getUniqueId().toString())){
+		if (list.contains(newFriend.toString())){
 			return false;
 		} else {
-			list.add(newFriend.getUniqueId().toString());
+			list.add(newFriend.toString());
 			DataFile.FRIENDS.set("friends." + getUniqueId(), list);
 			return true;
 		}
@@ -257,8 +259,8 @@ public class UPlayer {
 	
 	public boolean removeFriend(OfflinePlayer friendToRemove){
 		final List<String> list = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
-		if (list.contains(friendToRemove.getUniqueId().toString())){			
-			list.remove(friendToRemove.getUniqueId().toString());
+		if (list.contains(friendToRemove.toString())){			
+			list.remove(friendToRemove.toString());
 			DataFile.FRIENDS.set("friends." + getUniqueId(), list);
 			return true;
 		} else {
@@ -266,9 +268,12 @@ public class UPlayer {
 		}
 	}
 	
-	public List<String> getFriends(){
-		final List<String> list = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
-		return list;
+	public List<OfflinePlayer> getFriends(){
+		final List<String> strings = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
+		final List<OfflinePlayer> players = new ArrayList<OfflinePlayer>();
+		for (String string : strings)
+			players.add(Ublisk.getPlayerFromString(string));
+		return players;
 	}
 	
 	/**
@@ -371,7 +376,7 @@ public class UPlayer {
 	}
 	
 	public void sendMessage(Message message){
-		player.sendMessage(message.get());
+		player.sendMessage(message.toString());
 	}
 	
 	public boolean isInBuilderMode(){
@@ -382,7 +387,7 @@ public class UPlayer {
 	public void setBuilderModeEnabled(boolean bool){
 		if (bool){ //Enable builder mode
 			this.saveInventoryToFile(Main.getInstance().getDataFolder() + "\\inv"); //Save inventory to file
-			this.getInventory().clear();		
+			this.clearInventory();
 			this.setGameMode(GameMode.CREATIVE);		
 			this.sendMessage(Message.BUILDER_MODE_ACTIVATED);
 		} else { //Disable builder mode
@@ -612,12 +617,40 @@ public class UPlayer {
 	}
 	
 	public void fillInventoryFromFile(String path){
-		this.getInventory().clear();
+		this.clearInventory();
 		InvUtils.restoreInventory(path, player);
 	}
 	
 	public void openEnderchest(){
 		player.openInventory(player.getEnderChest());
+	}
+	
+	@Override
+	public String toString(){
+		return player.getUniqueId().toString();
+	}
+	
+	public static UPlayer fromString(String string){
+		return new UPlayer(Bukkit.getPlayer(string));
+	}
+	
+	/**
+	 * Clears inventory and armor slots.
+	 */
+	public void clearInventory(){
+		PlayerInventory inv = player.getInventory();
+		for (ItemStack item : inv.getContents()) inv.remove(item);
+		for (ItemStack item : inv.getArmorContents()) inv.remove(item);
+	}
+	
+	public boolean inventoryContains(ItemStack... items){
+		boolean hasItems = true;
+		for (ItemStack item : items){
+			if (!player.getInventory().containsAtLeast(item, item.getAmount())){
+				hasItems = false;
+			}
+		}
+		return hasItems;
 	}
 	
 	public static UPlayer get(Player player){ return new UPlayer(player); }

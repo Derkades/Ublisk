@@ -1,6 +1,6 @@
 package com.robinmc.ublisk.money;
 
-import org.bukkit.entity.Player;
+import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.IconMenu;
@@ -8,7 +8,6 @@ import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.inventory.UInventory;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -26,7 +25,7 @@ public class BankMenu {
 				return;
 			}
 			
-			UInventory inv = player.getInventory();
+			PlayerInventory inv = player.getInventory();
 			
 			if (event.getName().contains("Deposit")){
 				if (!inv.contains(item.getItem())){
@@ -36,7 +35,7 @@ public class BankMenu {
 				}
 				
 				player.addMoney(item.getValue());
-				inv.remove(item);
+				inv.remove(item.getItem());
 			} else {
 				if (player.getMoney() < item.getValue()){
 					player.sendMessage(Message.NOT_ENOUGH_MONEY);
@@ -45,16 +44,16 @@ public class BankMenu {
 				}
 				
 				player.removeMoney(item.getValue());
-				inv.add(item);
+				inv.addItem(item.getItem());
 			}
 			
 			event.setWillClose(false);
 		}
 	});
 	
-	public static void open(Player player){
+	public static void open(UPlayer player){
 		Logger.log(LogLevel.INFO, "Menu", "Bank menu has been opened for " + player.getName());
-		fillMenu(UPlayer.get(player));
+		fillMenu(player);
 		menu.open(player);
 	}
 	

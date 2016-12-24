@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.inventory.item.weapon;
+package com.robinmc.ublisk.weapon.sword;
 
 public enum AttackSpeed {
 	
@@ -18,7 +18,7 @@ public enum AttackSpeed {
 		return name;
 	}
 	
-	public double getSpeed(){
+	public double getValue(){
 		return speed;
 	}
 

@@ -9,23 +9,49 @@ import static org.bukkit.ChatColor.RED;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
+
 import com.coloredcarrot.api.sidebar.Sidebar;
 import com.coloredcarrot.api.sidebar.SidebarString;
+import com.robinmc.ublisk.utils.DoubleXP;
 import com.robinmc.ublisk.utils.UPlayer;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class Scoreboard {
 	
 	public static Sidebar getScoreboard(UPlayer player){		
 		
+		String r = ChatColor.RESET.toString();
+		
 		String redBold = RED + "" + BOLD;
 		
-		String[] strings = new String[]{
-				DARK_GRAY + "---------------",
-				redBold + "Class",
-				GRAY + player.getClazz().getName(),
-				"",
-				redBold + "XP",
-				GRAY + "" + player.getXP()};
+		List<String> strings = new ArrayList<String>();
+		
+		strings.add(DARK_GRAY + "---------------");
+		strings.add(redBold + "Class");
+		strings.add(GRAY + player.getClazz().getName());
+		strings.add(" ");
+		strings.add(redBold + "XP");
+		strings.add(GRAY + "" + player.getXP());
+		
+		if (DoubleXP.isActive()){
+			strings.add(r + DARK_GRAY + "---------------");
+			strings.add(redBold + "Double XP");
+			strings.add(DoubleXP.getDoubleXPSidebarString());
+		}
+		
+		if (player.getFriends().size() > 1){
+			strings.add(r + r + DARK_GRAY + "---------------");
+			strings.add(redBold + "Online Friends");
+			for (OfflinePlayer friend : player.getFriends()){				
+				if (friend != null && friend.isOnline()){
+					UPlayer online = UPlayer.get((Player) friend);
+					strings.add(ChatColor.DARK_AQUA + friend.getName() + DARK_GRAY + ": " + ChatColor.AQUA + Math.round(online.getHealth()) + "HP");
+				}
+			}
+		}
 		
 		List<SidebarString> sidebarStrings = new ArrayList<SidebarString>();
 		for (String string : strings) sidebarStrings.add(new SidebarString(string));

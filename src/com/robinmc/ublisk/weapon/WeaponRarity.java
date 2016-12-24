@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.inventory.item.weapon;
+package com.robinmc.ublisk.weapon;
 
 public enum WeaponRarity {
 	

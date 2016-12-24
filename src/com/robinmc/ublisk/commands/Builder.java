@@ -14,12 +14,12 @@ public class Builder implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		if (!(sender instanceof Player)){
-			sender.sendMessage(Message.NOT_A_PLAYER.get());
+			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 			return true;
 		}
 		
 		if (args.length != 0){
-			sender.sendMessage(Message.WRONG_USAGE.get());
+			sender.sendMessage(Message.WRONG_USAGE.toString());
 			return true;
 		}
 		

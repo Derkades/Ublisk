@@ -1,14 +1,13 @@
 package com.robinmc.ublisk.iconmenus;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.IconMenu;
+import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Voting;
-import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 
 public class VotingMenu {
 	
@@ -34,13 +33,13 @@ public class VotingMenu {
 		}
 	});
 	
-	public static void open(Player player){
+	public static void open(UPlayer player){
 		fillMenu(player);
 		menu.open(player);
 	}
 	
-	private static void fillMenu(Player player){
-		int points = UPlayer.get(player).getVotingPoints();
+	private static void fillMenu(UPlayer player){
+		int points = player.getVotingPoints();
 		menu.setOption(3, new ItemStack(Material.PAPER, points), 
 				"Voting points", 
 				"You have " + points + " voting points");

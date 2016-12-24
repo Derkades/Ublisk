@@ -19,7 +19,7 @@ public class GuildCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (!(sender instanceof Player)){
-			sender.sendMessage(Message.NOT_A_PLAYER.get());
+			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 		}
 		
 		UPlayer player = UPlayer.get(sender);
@@ -60,7 +60,7 @@ public class GuildCommand implements CommandExecutor {
 				}
 				return true;
 			} else {
-				player.sendMessage(Message.WRONG_USAGE.get());
+				player.sendMessage(Message.WRONG_USAGE);
 				return true;
 			}
 		} else if (args.length == 2){
@@ -121,11 +121,11 @@ public class GuildCommand implements CommandExecutor {
 				player.sendMessage(Message.GUILD_IMAGE_SET);
 				return true;
 			} else {
-				player.sendMessage(Message.WRONG_USAGE.get());
+				player.sendMessage(Message.WRONG_USAGE);
 				return true;
 			}
 		} else {
-			player.sendMessage(Message.WRONG_USAGE.get());
+			player.sendMessage(Message.WRONG_USAGE);
 			return true;
 		}
 	}

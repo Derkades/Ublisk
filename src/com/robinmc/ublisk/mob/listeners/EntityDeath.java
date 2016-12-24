@@ -51,7 +51,7 @@ public class EntityDeath implements Listener {
 				}
 				
 			} catch (MobNotFoundException e) {
-				player.sendMessage(Message.ERROR_GENERAL.get());
+				player.sendMessage(Message.ERROR_GENERAL);
 				Location loc = entity.getLocation();
 				player.sendMessage("Entity: " + entity.getType());
 				player.sendMessage("Name: " + entity.getCustomName());

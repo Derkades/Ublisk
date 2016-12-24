@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.settings.StaffSetting;
 
@@ -22,7 +23,7 @@ public class StaffSettingsMenu {
 			event.setWillClose(false);
 			
 			if (name.equalsIgnoreCase("back")){
-				MainMenu.open(player);
+				MainMenu.open(UPlayer.get(player));
 				return;
 			}
 			
@@ -46,8 +47,8 @@ public class StaffSettingsMenu {
 		}
 	});
 	
-	public static void open(Player player){
-		fillMenu(player);
+	public static void open(UPlayer player){
+		fillMenu(player.getPlayer());
 		menu.open(player);
 	}
 	

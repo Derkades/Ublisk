@@ -8,16 +8,14 @@ import static net.md_5.bungee.api.ChatColor.RED;
 
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.IconMenu;
-import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
+import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.NotSetException;
-import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.utils.settings.Setting;
 
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -64,14 +62,12 @@ public class FriendsMenu {
 		}
 	});
 	
-	public static void open(Player player){
+	public static void open(UPlayer player){
 		fillMenu(player);
 		menu.open(player);
 	}
 	
-	private static void fillMenu(Player bukkitPlayer){
-		
-		UPlayer player = UPlayer.get(bukkitPlayer);
+	private static void fillMenu(UPlayer player){
 		
 		if (player.getFriends().isEmpty()){
 			ItemStack head = new ItemBuilder(Material.SKULL_ITEM)
@@ -102,16 +98,14 @@ public class FriendsMenu {
 	
 	private static void addFriendsToMenu(UPlayer player){
 		int i = 0;
-		for (String string : player.getFriends()){
-			String pn = UUIDUtils.getNameFromIdString(string);
-			
+		for (OfflinePlayer friend : player.getFriends()){
 			ItemStack head = new ItemBuilder(Material.SKULL_ITEM)
 					.setAmount(1)
 					.setDamage(3) //Damage value 3 is to get a human head instead of a skeleton head
-					.setSkullOwner(pn)
+					.setSkullOwner(friend.getName())
 					.getItemStack();
 			
-			menu.setOption(i, head, pn);
+			menu.setOption(i, head, friend.getName());
 			
 			i++;
 			

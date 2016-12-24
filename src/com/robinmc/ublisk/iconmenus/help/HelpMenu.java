@@ -1,14 +1,14 @@
 package com.robinmc.ublisk.iconmenus.help;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.iconmenus.MainMenu;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.ItemBuilder;
+import com.robinmc.ublisk.utils.UPlayer;
 
 public class HelpMenu {
 	
@@ -17,7 +17,7 @@ public class HelpMenu {
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
-			final Player player = event.getPlayer();
+			final UPlayer player = UPlayer.get(event);
 			event.setWillClose(false);
 			if (name.contains("commands")){
 				CommandsHelp.open(player);
@@ -26,12 +26,12 @@ public class HelpMenu {
 			} else if (name.equals("back")){
 					MainMenu.open(player);
 			} else {
-				player.sendMessage(Message.ERROR_MENU.get());
+				player.sendMessage(Message.ERROR_MENU);
 			}
 		}
 	});
 	
-	public static void open(Player player){
+	public static void open(UPlayer player){
 		fillMenu();
 		menu.open(player);
 	}

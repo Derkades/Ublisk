@@ -59,6 +59,7 @@ public enum Message {
 	QUEST_LOW_LEVEL(prefix() + "You have not yet reached the right level needed to start this quest. Please come back later."),
 	
 	DOUBLE_XP_COOLDOWN(prefix() + RED + "Hi there, person who tried to activate double xp, there's a cooldown to prevent people like you from abusing the system!"),
+	DOUBLE_XP_ALREADY_ACTIVE(prefix() + RED + "Double XP is already active. Activating double XP again in 5 minutes."),
 	
 	BUILDER_MODE_ACTIVATED(prefix() + YELLOW + "You are now in builder mode. When you're done, simply type /builder again to exit out of builder mode and to get your inventory back."),
 	BUILDER_MODE_DEACTIVATED(prefix() + YELLOW + "You are no longer in builder mode. Enjoy playing!"),
@@ -81,7 +82,13 @@ public enum Message {
 		this.msg = msg;
 	}
 	
+	@Deprecated
 	public String get(){
+		return msg;
+	}
+	
+	@Override
+	public String toString(){
 		return msg;
 	}
 	

@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.inventory.item;
+package com.robinmc.ublisk.utils.inventory;
 
 import java.util.Arrays;
 
@@ -8,6 +8,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+
+import com.robinmc.ublisk.utils.UPlayer;
 
 public class ItemBuilder {
 	
@@ -64,6 +66,14 @@ public class ItemBuilder {
 	
 	public ItemStack getItemStack(){
 		return item;
+	}
+	
+	public void addToInventory(UPlayer player){
+		player.getInventory().addItem(item);
+	}
+	
+	public void setItemInInventory(UPlayer player, int slot){
+		player.getInventory().setItem(slot, item);
 	}
 
 }

@@ -16,11 +16,6 @@ import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 
 public class Exp {
 	
-	public static boolean DOUBLE_XP_ACTIVE = false;
-	public static int DOUBLE_XP_TIME = Var.DOUBLE_XP_TIME;
-	public static boolean DOUBLE_XP_COOLDOWN = false;
-	public static boolean DOUBLE_XP_BAR_ACTIVE = false;
-	
 	/**
 	 * Set a player's experience points
 	 * @param Player
@@ -87,7 +82,7 @@ public class Exp {
 		String name = mob.getName();
 		int xp = mob.getXP();
 		
-		if (DOUBLE_XP_ACTIVE){ //If double XP is active
+		if (DoubleXP.isActive()){ //If double XP is active
 			player.sendActionBarMessage(ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP");
 			player.addXP(xp * 2);
 			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
@@ -110,8 +105,8 @@ public class Exp {
 	    player.giveExp(Math.round(xp / Var.XP_DIVISION));
 	}
 	
-	public static void levelUp(Player player){
-		int level = UPlayer.get(player).getLevel();
+	public static void levelUp(final UPlayer player){
+		int level = player.getLevel();
 		Bukkit.broadcastMessage("");
 		Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "--------------------------------------------");
 		Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + player.getName() + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " has reached level " + player.getLevel() + "!");
@@ -121,7 +116,7 @@ public class Exp {
 		if (!(level < 5)){
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
 				public void run(){
-					DOUBLE_XP_ACTIVE = true;
+					DoubleXP.startDoubleXP(player);
 				}
 			}, 10*20);
 		}	

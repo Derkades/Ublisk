@@ -1,12 +1,12 @@
 package com.robinmc.ublisk.iconmenus.help;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.ItemBuilder;
+import com.robinmc.ublisk.utils.UPlayer;
 
 public class CommandsHelp {
 	
@@ -16,12 +16,12 @@ public class CommandsHelp {
 		public void onOptionClick(final OptionClickEvent event) {
 			event.setWillClose(false);
 			if (event.getName().equals("Back")){
-				HelpMenu.open(event.getPlayer());
+				HelpMenu.open(UPlayer.get(event));
 			}
 		}
 	});
 	
-	public static void open(Player player){
+	public static void open(UPlayer player){
 		fillMenu();
 		menu.open(player);
 	}

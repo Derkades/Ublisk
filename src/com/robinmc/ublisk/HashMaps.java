@@ -27,7 +27,7 @@ public class HashMaps {
 	
 	public static final Map<Player, Player> LAST_MESSAGE_SENDER = new HashMap<>();
 	
-	public static final Map<Player, Integer> PREVIOUS_LEVEL = new HashMap<>();
+	public static final Map<UUID, Integer> PREVIOUS_LEVEL = new HashMap<>();
 
 	//Tracker HashMaps. Every 5 minutes, these will be added to the database and reset to 0.
 	public static final Map<UUID, Integer> TRACKER_RIGHT_CLICKED = new HashMap<>();
@@ -55,7 +55,7 @@ public class HashMaps {
 		IS_MUTED.put(uuid, false);
 		IS_SOFT_MUTED.put(uuid, false);
 		LAST_MESSAGE_SENDER.put(player.getPlayer(), null);
-		PREVIOUS_LEVEL.put(player.getPlayer(), player.getLevel());
+		PREVIOUS_LEVEL.put(uuid, player.getLevel());
 		AfkTimer.TIMER.put(uuid, 0);
 		
 		/*

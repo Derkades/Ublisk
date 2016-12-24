@@ -20,14 +20,14 @@ public class MuteCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		
 		if (!(sender instanceof Player)){
-			sender.sendMessage(Message.NOT_A_PLAYER.get());
+			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 			return true;
 		}
 		
 		UPlayer player = UPlayer.get(sender);
 		
 		if (player.hasPermission(Permission.COMMAND_MUTE)){
-			player.sendMessage(Message.NO_PERMISSION.get());
+			player.sendMessage(Message.NO_PERMISSION);
 			return true;
 		}
 		
@@ -36,7 +36,7 @@ public class MuteCommand implements CommandExecutor {
 			try {
 				target = UUIDUtils.getPlayerFromName(args[0]);
 			} catch (PlayerNotFoundException e) {
-				player.sendMessage(Message.PLAYER_NOT_FOUND.get());
+				player.sendMessage(Message.PLAYER_NOT_FOUND);
 				return true;
 			}
 			
@@ -60,7 +60,7 @@ public class MuteCommand implements CommandExecutor {
 			try {
 				target = UUIDUtils.getPlayerFromName(args[2]);
 			} catch (PlayerNotFoundException e){
-				player.sendMessage(Message.PLAYER_NOT_FOUND.get());
+				player.sendMessage(Message.PLAYER_NOT_FOUND);
 				return true;
 			}
 			
@@ -79,7 +79,7 @@ public class MuteCommand implements CommandExecutor {
 				return true;
 			}
 		} else {
-			player.sendMessage(Message.WRONG_USAGE.get());
+			player.sendMessage(Message.WRONG_USAGE);
 			return true;
 		}
 	}

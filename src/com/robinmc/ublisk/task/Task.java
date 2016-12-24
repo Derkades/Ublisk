@@ -9,7 +9,6 @@ import com.robinmc.ublisk.utils.sql.ProcessQueue;
 public enum Task {
 	
 	AFK_TIMER(new AfkTimer(), 30*20, 1*20, false),
-	CHECK_DOUBLE_EXP(new CheckDoubleExp(), 10*20, 10*20, true),
 	CHECK_SHIELD(new CheckShield(), 5*20, 5*20, false),
 	CHECK_TOWN(new CheckTown(), 0, 2*20, false),
 	CLEAR_WEATHER(new ClearWeather(), 60*20, 5*60*20, false),
@@ -24,10 +23,8 @@ public enum Task {
 	SET_MAX_HEALTH(new SetMaxHealth(), 5*20, 5*20, false),
 	SPAWN_RANDOM_LOOT(new SpawnRandomLoot(), 5*60*20, 5*60*20, false),
 	UPDATE_BACKPACK_NAME(new UpdateBackpackName(), 0, 5*20, false),
-	UPDATE_DOUBLE_XP_BAR(new UpdateDoubleExpBar(), 1*20, 1*20, false),
-	UPDATE_FRIENDS_HEALTH_BAR(new UpdateFriendsHealthBar(), 5*20, 1*20, false),
 	UPDATE_INFO(new AddTrackersInfoToQueue(), 10*20, 5*60*20, false),
-	UPDATE_SIDEBAR(new UpdateSidebar(), 10*20, 5*20, false),
+	UPDATE_SIDEBAR(new UpdateSidebar(), 5*20, 2*20, false),
 	
 	TPS_UPDATE(new Lag(), 100, 1, false),
 	

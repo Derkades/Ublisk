@@ -1,6 +1,5 @@
 package com.robinmc.ublisk.commands;
 
-import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,14 +19,21 @@ public class FriendsCommand implements CommandExecutor {
 		if (sender instanceof Player){
 			UPlayer player = UPlayer.get(sender);
 			if (args.length == 0){
-				FriendsMenu.open(player.getPlayer());
+				FriendsMenu.open(player);
 			} else if (args.length == 2){
 				if (args[0].equals("add")){
-					Player newFriend = Bukkit.getPlayer(args[1]);
-					if (player.addFriend(newFriend)){
-						player.sendMessage(Message.Complicated.Friends.friendAdded(newFriend.getName()));
+					UPlayer friend;
+					try {
+						friend = UPlayer.get(args[1]);
+					} catch (PlayerNotFoundException e) {
+						player.sendMessage(Message.FRIEND_OFFLINE);
+						return true;
+					}
+					
+					if (player.addFriend(friend)){
+						player.sendMessage(Message.Complicated.Friends.friendAdded(friend.getName()));
 					} else {
-						player.sendMessage(Message.FRIEND_OFFLINE.get());
+						//TODO Send message if friend is already in friends list
 					}
 				} else if (args[0].equals("remove") || args[0].equals("delete")){
 					try {
@@ -35,20 +41,20 @@ public class FriendsCommand implements CommandExecutor {
 						if (player.removeFriend(friend)){
 							player.sendMessage(Message.Complicated.Friends.friendRemoved(friend.getName()));
 						} else {
-							player.sendMessage(Message.FRIEND_NOT_EXIST.get());
+							player.sendMessage(Message.FRIEND_NOT_EXIST);
 						}
 					} catch (PlayerNotFoundException e){
-						player.sendMessage(Message.PLAYER_NOT_FOUND.get());
+						player.sendMessage(Message.PLAYER_NOT_FOUND);
 					}
 					// XXX Add ability to remove friend by index
 				} else {
-					player.sendMessage(Message.WRONG_USAGE.get());
+					player.sendMessage(Message.WRONG_USAGE);
 				}
 			} else {
-				player.sendMessage(Message.WRONG_USAGE.get());
+				player.sendMessage(Message.WRONG_USAGE);
 			}
 		} else {
-			sender.sendMessage(Message.NOT_A_PLAYER.get());
+			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 		}
 		return true;
 	}

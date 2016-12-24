@@ -2,7 +2,6 @@ package com.robinmc.ublisk.mob.listeners;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -10,6 +9,7 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.utils.UPlayer;
 
 public class EntityDamageByEntity implements Listener {
 	
@@ -17,7 +17,7 @@ public class EntityDamageByEntity implements Listener {
 	public void useWeapon(EntityDamageByEntityEvent event){
 		
 		if (event.getDamager().getType() == EntityType.PLAYER){
-			Player player = (Player) event.getDamager();
+			UPlayer player = UPlayer.get(event.getDamager());
 			PlayerInventory inv = player.getInventory();
 			Material item = inv.getItemInMainHand().getType();
 			
@@ -26,8 +26,8 @@ public class EntityDamageByEntity implements Listener {
 					item == Material.DIAMOND_SWORD ||
 					item == Material.GOLD_SWORD ||
 					item == Material.IRON_SWORD){
-				if (!(Clazz.getClass(player) == Clazz.SWORDSMAN)){
-					player.sendMessage(Message.CLASS_WRONG_WEAPON.get());
+				if (!(player.getClazz() == Clazz.SWORDSMAN)){
+					player.sendMessage(Message.CLASS_WRONG_WEAPON);
 					event.setCancelled(true);
 				}
 			}

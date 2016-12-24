@@ -26,12 +26,13 @@ import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Lag;
 import com.robinmc.ublisk.utils.Time;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
-import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
-import com.robinmc.ublisk.weapon.SwordsmanWeapon;
+import com.robinmc.ublisk.weapon.sword.wood.WoodenShortSword;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -63,7 +64,7 @@ public class Debug implements CommandExecutor {
 						player.sendMessage("group successful: " + target.getGroup().getName());
 						return true;
 					} else {
-						player.sendMessage(Message.WRONG_USAGE.get());
+						player.sendMessage(Message.WRONG_USAGE);
 						return true;
 					}
 				} else if (args.length == 2){
@@ -109,15 +110,16 @@ public class Debug implements CommandExecutor {
 						player.getPlayer().openInventory(inv);
 						return true;
 					} else if (args[0].equals("skull")){
-						player.getInventory().add(new ItemBuilder(args[1]).getItemStack());
+						//player.getInventory().add(new ItemBuilder(args[1]).getItemStack());
+						new ItemBuilder(args[1]).addToInventory(player);
 						return true;
 					} else {
-						player.sendMessage(Message.WRONG_USAGE.get());
+						player.sendMessage(Message.WRONG_USAGE);
 						return true;
 					}
 				} else if (args.length == 1){
 					if (args[0].equalsIgnoreCase("kill")){
-						Bukkit.broadcastMessage(Message.ENTITIES_REMOVED.get());
+						Ublisk.broadcastMessage(Message.ENTITIES_REMOVED);
 						Mob.removeMobs();
 						return true;
 					} else if (args[0].equalsIgnoreCase("cmd")){
@@ -145,9 +147,10 @@ public class Debug implements CommandExecutor {
 						}
 						return true;
 					} else if (args[0].equals("sword")){
-						for (SwordsmanWeapon weapon : SwordsmanWeapon.values()){
-							player.getInventory().addWeapon(weapon);
-						}
+						//for (SwordsmanWeapon weapon : SwordsmanWeapon.values()){
+						//	player.getInventory().addWeapon(weapon);
+						//}
+						player.getInventory().addItem(new WoodenShortSword().getItemStack());
 						return true;
 					} else if (args[0].equals("day")){
 						while (true){
@@ -183,20 +186,20 @@ public class Debug implements CommandExecutor {
 						}.runTaskLater(Main.getInstance(), 5);
 						return true;
 					} else {
-						player.sendMessage(Message.WRONG_USAGE.get());
+						player.sendMessage(Message.WRONG_USAGE);
 						return true;
 					}
 				} else {
-					player.sendMessage(Message.WRONG_USAGE.get());
+					player.sendMessage(Message.WRONG_USAGE);
 					return true;
 				}
 			} else {
-				player.sendMessage(Message.NO_PERMISSION.get());
+				player.sendMessage(Message.NO_PERMISSION);
 				return true;
 			}
 			
 		} else {
-			sender.sendMessage(Message.NOT_A_PLAYER.get());
+			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 			return true;
 		}
 	}

@@ -9,7 +9,6 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
@@ -21,7 +20,7 @@ import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.NotSetException;
-import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
 
@@ -37,7 +36,7 @@ public class PlayerJoin implements Listener {
 		
 		event.setJoinMessage(Message.Complicated.JoinQuit.playerJoin(pn));
 		
-		player.sendMessage(Message.PACK_SENDING.get());
+		player.sendMessage(Message.PACK_SENDING);
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){ 
 			//For some reason sending the pack has to be delayed, otherwise the client won't get the message
 			public void run(){
@@ -77,10 +76,9 @@ public class PlayerJoin implements Listener {
         	player.setBuilderModeEnabled(false);
         }
         
-        ItemStack item = new ItemBuilder(Material.CHEST)
+        new ItemBuilder(Material.CHEST)
         		.setName(ChatColor.BLUE + "" + ChatColor.BOLD + "Menu")
-        		.getItemStack();
-        player.getInventory().add(item);
+        		.addToInventory(player);
         		
         player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
 	}

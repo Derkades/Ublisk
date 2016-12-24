@@ -1,6 +1,8 @@
 package com.robinmc.ublisk.quest.npc;
 
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.quest.NPCInfo;
@@ -8,7 +10,6 @@ import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.QuestProgress;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.inventory.UInventory;
 
 public class Zoltar extends NPC {
 
@@ -20,10 +21,10 @@ public class Zoltar extends NPC {
 	@Override
 	public void talk(UPlayer player) {
 		QuestParticipant qp = player.getQuestParticipant(Quest.HAY_TRANSPORT, this);
-		UInventory inv = qp.getInventory();
+		PlayerInventory inv = qp.getInventory();
 		
 		if (qp.getProgress(QuestProgress.HAY_TRANSPORT_STARTED) && inv.contains(Material.HAY_BLOCK, 10)){
-		inv.remove(Material.HAY_BLOCK, 10);
+		inv.remove(new ItemStack(Material.HAY_BLOCK, 10));
 		qp.sendMessage("There you are! That took you a while, didn’t it. Anyway, thanks for helping.");
 		qp.sendCompletedMessage(); //Send a message
 		qp.giveRewardExp(); //Give reward experience

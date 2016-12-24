@@ -6,7 +6,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
-import com.robinmc.ublisk.utils.inventory.item.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -23,10 +23,10 @@ public class LifeCrystalInventory extends BukkitRunnable {
 			
 			if (player.isInBuilderMode()){
 				item.setType(Material.WOOD_AXE);
-				player.getInventory().getBukkitInventory().setHelmet(new ItemStack(Material.GOLD_HELMET));
+				player.getInventory().setHelmet(new ItemStack(Material.GOLD_HELMET));
 			}
 			
-			player.getInventory().set(8, item);
+			player.getInventory().setItem(8, item);
 		}
 	}
 
