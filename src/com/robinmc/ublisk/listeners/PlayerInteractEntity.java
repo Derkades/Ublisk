@@ -15,7 +15,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.Tracker;
+import com.robinmc.ublisk.database.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
 
 import net.md_5.bungee.api.chat.BaseComponent;

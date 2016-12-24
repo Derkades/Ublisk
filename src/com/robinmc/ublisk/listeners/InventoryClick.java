@@ -6,7 +6,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import com.robinmc.ublisk.Tracker;
+import com.robinmc.ublisk.database.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public class InventoryClick implements Listener {

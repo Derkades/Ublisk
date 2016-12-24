@@ -1,4 +1,4 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

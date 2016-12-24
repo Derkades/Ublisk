@@ -3,6 +3,7 @@ package com.robinmc.ublisk.task;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.database.AddTrackersInfoToQueue;
 import com.robinmc.ublisk.utils.Lag;
 import com.robinmc.ublisk.utils.sql.ProcessQueue;
 

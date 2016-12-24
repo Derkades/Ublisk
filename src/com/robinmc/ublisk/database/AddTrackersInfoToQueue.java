@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.task;
+package com.robinmc.ublisk.database;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.Tracker;
-import com.robinmc.ublisk.PlayerInfo;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;

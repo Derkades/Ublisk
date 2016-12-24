@@ -9,7 +9,7 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.Tracker;
+import com.robinmc.ublisk.database.Tracker;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.mob.MobDrop;
 import com.robinmc.ublisk.utils.UPlayer;
