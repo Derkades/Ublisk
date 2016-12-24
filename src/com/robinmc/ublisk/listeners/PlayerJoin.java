@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.listeners.player;
+package com.robinmc.ublisk.listeners;
 
 import java.util.UUID;
 

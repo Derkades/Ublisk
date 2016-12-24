@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.listeners.player;
+package com.robinmc.ublisk.listeners;
 
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;

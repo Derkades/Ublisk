@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.listeners.player;
+package com.robinmc.ublisk.listeners;
 
 import static org.bukkit.ChatColor.DARK_GRAY;
 import static org.bukkit.ChatColor.GRAY;

@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.listeners.player;
+package com.robinmc.ublisk.listeners;
 
 import static net.md_5.bungee.api.ChatColor.DARK_AQUA;
 import static net.md_5.bungee.api.ChatColor.GOLD;
