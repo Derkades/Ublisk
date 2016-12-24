@@ -25,7 +25,7 @@ public class CheckTown extends BukkitRunnable {
 			
 			if (town.getName() != player.getTown().getName()){
 				player.sendSubTitle(ChatColor.GRAY + "You are now in " + town.getName());
-				Logger.log(LogLevel.INFO, "Town", player.getName() + " is now in " + town.getName() + " and got there from " + player.getTown().getName());
+				Logger.log(LogLevel.INFO, "Town", player.getName() + ": " + player.getTown().getName() + " -> "+ town.getName());
 				player.setLastTown(town);
 			}
 		}
