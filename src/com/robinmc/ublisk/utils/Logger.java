@@ -1,24 +1,40 @@
 package com.robinmc.ublisk.utils;
 
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
+
+import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.utils.java.FileUtils;
 
 import net.md_5.bungee.api.ChatColor;
 
 public class Logger {
 
 	public static void log(LogLevel logLevel, String name, Object object){
-		String consoleMessage = "[" + name + "] " + object;
-		String chatMessage = ChatColor.GRAY + "[" + logLevel + "] " + consoleMessage;
-		if (logLevel == LogLevel.SEVERE || logLevel == LogLevel.WARNING)
-			Bukkit.getLogger().log(Level.WARNING, consoleMessage);
-		else
-			Bukkit.getLogger().log(Level.INFO, consoleMessage);
+		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+		String timeStamp = df.format(new Date());
 		
-		for (UPlayer player : Ublisk.getOnlinePlayers()){
+		String consoleMessage = "[" + name + "] " + object;
+		String fileMessage = "[" + timeStamp + "] [" + logLevel + "] "+ consoleMessage + "\n";
+		String chatMessage = ChatColor.GRAY + "[" + logLevel + "] " + consoleMessage;
+		
+		if (logLevel == LogLevel.SEVERE || logLevel == LogLevel.WARNING){
+			Bukkit.getLogger().log(Level.WARNING, consoleMessage);
+			File file = new File(Main.getInstance().getDataFolder() + "\\logs\\", "warning-log.txt");
+			FileUtils.appendStringToFile(file, fileMessage);
+		} else Bukkit.getLogger().log(Level.INFO, consoleMessage);
+		
+		File file = new File(Main.getInstance().getDataFolder() + "\\logs\\", "log.txt");
+		FileUtils.appendStringToFile(file, fileMessage);
+		
+		//Send message to online players
+		for (UPlayer player : Ublisk.getOnlinePlayers())
 			if (logLevel != LogLevel.DEBUG) player.sendMessage(chatMessage);
-		}
 	}
 	
 	public static void log(LogLevel logLevel, Object object){
