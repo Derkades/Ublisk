@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.iconmenus.ClassMenu;
 
-@Deprecated
 public class ClassCommand implements CommandExecutor {
 	
 	@Override
@@ -18,7 +17,7 @@ public class ClassCommand implements CommandExecutor {
 			ClassMenu.open(player);
 			return true;
 		} else {
-			sender.sendMessage(Message.NOT_A_PLAYER.get());
+			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 			return true;
 		}
 	}

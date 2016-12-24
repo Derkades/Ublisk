@@ -15,7 +15,6 @@ import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.UPlayer;
 
-@Deprecated
 public class ClassMenu {
 	
 	private static IconMenu menu = new IconMenu("Class menu", 1*9, new IconMenu.OptionClickEventHandler(){
@@ -43,7 +42,7 @@ public class ClassMenu {
 					DataFile.CLASSES.set("class." + uuid, "Paladin");
 					player.sendMessage(Message.Complicated.changedClass("Paladin"));
 				} else {
-					player.sendMessage(Message.ERROR_MENU.get());
+					player.sendMessage(Message.ERROR_MENU);
 				}
 			}
 		}
