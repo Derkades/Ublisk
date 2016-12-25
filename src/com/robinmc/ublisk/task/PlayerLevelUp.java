@@ -13,7 +13,7 @@ public class PlayerLevelUp extends BukkitRunnable {
 	public void run(){
 		for (UPlayer player : Ublisk.getOnlinePlayers()){
 			int current = player.getLevel();
-			int last = HashMaps.PREVIOUS_LEVEL.get(player);
+			int last = HashMaps.PREVIOUS_LEVEL.get(player.getUniqueId());
 			if (current > last){
 				Exp.levelUp(player);
 			}
