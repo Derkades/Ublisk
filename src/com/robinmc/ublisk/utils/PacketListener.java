@@ -23,8 +23,8 @@ public class PacketListener {
 		    		sockets.add(serverSocket);
 		            byte[] receiveData = new byte[packetLength];
 		
-		            System.out.printf("Listening on udp:%s:%d%n",
-		                    InetAddress.getLocalHost().getHostAddress(), port);     
+		            String address = InetAddress.getLocalHost().getHostAddress();
+		            Logger.log(LogLevel.INFO, "PacketListener", "Started listening on port " + address + ":" + port);
 		            final DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 		
 		            while(true){
