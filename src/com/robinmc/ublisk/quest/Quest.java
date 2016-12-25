@@ -1,7 +1,5 @@
 package com.robinmc.ublisk.quest;
 
-import com.robinmc.ublisk.utils.exception.QuestNotFoundException;
-
 public enum Quest {
 	
 	UNKNOWN("Unknown", 0, 0, "unknown", 0),
@@ -54,14 +52,13 @@ public enum Quest {
 		return life == 0;
 	}
 	
-	public static Quest fromConfigString(String s) throws QuestNotFoundException{
+	public static Quest fromConfigString(String s){
 		for (Quest quest : Quest.values()){
 			if (quest.getConfigString() == s){
 				return quest;
 			}
 		}
-		
-		throw new QuestNotFoundException();
+		return null;
 	}
 	
 	@Override
