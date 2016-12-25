@@ -21,15 +21,9 @@ import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Player.Spigot;
-import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.entity.EntityEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
@@ -643,30 +637,37 @@ public class UPlayer {
 		return hasItems;
 	}
 	
-	public static UPlayer get(Player player){ return new UPlayer(player); }
+	public static UPlayer get(Player player){
+		return new UPlayer(player);
+	}
 	
-	public static UPlayer get(CommandSender sender){ return get((Player) sender); }
+	public static UPlayer get(CommandSender sender){
+		return get((Player) sender);
+	}
 	
-	public static UPlayer get(String name) throws PlayerNotFoundException { return get(UUIDUtils.getPlayerFromName(name)); }
+	public static UPlayer get(String name) throws PlayerNotFoundException {
+		return get(UUIDUtils.getPlayerFromName(name));
+	}
 	
-	public static UPlayer get(OptionClickEvent event){ return get(event.getPlayer()); }
-	
-	public static UPlayer get(PlayerCommandPreprocessEvent event){ return get(event.getPlayer()); }
-	
-	public static UPlayer get(AsyncPlayerChatEvent event){ return get(event.getPlayer()); }
-	
-	public static UPlayer get(PlayerInteractEntityEvent event){ return get(event.getPlayer()); }
-	
-	public static UPlayer get(PlayerQuitEvent event){ return get(event.getPlayer()); }
-	
-	public static UPlayer get(PlayerJoinEvent event){ return get(event.getPlayer()); }
-	
-	public static UPlayer get(PlayerInteractEvent event){ return get(event.getPlayer()); }
-	
-	public static UPlayer get(PlayerMoveEvent event){ return get(event.getPlayer()); }
-	
-	public static UPlayer get(PlayerDeathEvent event){ return get(event.getEntity()); }
+	public static UPlayer get(OptionClickEvent event){
+		return get(event.getPlayer());
+	}
 
-	public static UPlayer get(InventoryClickEvent event){ return get(event.getWhoClicked()); }
+	public static UPlayer get(InventoryClickEvent event){
+		return get(event.getWhoClicked()); 
+	}
+	
+	public static UPlayer get(PlayerEvent event){
+		return get(event.getPlayer());
+	}
+	
+	public static UPlayer get(EntityEvent event){
+		Entity entity = event.getEntity();
+		if (entity instanceof Player){
+			return UPlayer.get(event.getEntity());
+		} else {
+			return null;
+		}
+	}
 	
 }
