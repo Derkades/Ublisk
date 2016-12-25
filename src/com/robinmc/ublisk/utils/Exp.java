@@ -34,6 +34,7 @@ public class Exp {
 	 * @param player
 	 * @param Number of experience points
 	 */
+	@Deprecated
 	public static void add(Player player, int i){
 		set(player, get(player) + i);
 		refresh(player);

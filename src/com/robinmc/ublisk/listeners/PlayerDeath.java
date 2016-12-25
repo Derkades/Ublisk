@@ -15,7 +15,8 @@ public class PlayerDeath implements Listener {
 		final UPlayer player = UPlayer.get(event);
 		
 		if (player.getLifeCrystals() > 0){
-			player.removeLifeCrystals(1);
+			//player.removeLifeCrystals(1);
+			player.setLifeCrystals(player.getLifeCrystals() - 1);
 			event.setKeepInventory(true);
 		} else {
 			event.setKeepInventory(false);

@@ -164,7 +164,8 @@ public class PlayerInteract implements Listener {
 			}
 			
 			if (life != 0){
-				player.addLifeCrystals(life);
+				//player.addLifeCrystals(life);
+				player.setLifeCrystals(player.getLifeCrystals() + life);
 			}
 			
 			//player.tracker(Tracker.VOTING_BOXES_OPENED);

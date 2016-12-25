@@ -34,7 +34,8 @@ public class BankMenu {
 					return;
 				}
 				
-				player.addMoney(item.getValue());
+				//player.addMoney(item.getValue());
+				player.setMoney(player.getMoney() + item.getValue());
 				inv.remove(item.getItem());
 			} else {
 				if (player.getMoney() < item.getValue()){
@@ -43,7 +44,8 @@ public class BankMenu {
 					return;
 				}
 				
-				player.removeMoney(item.getValue());
+				//player.removeMoney(item.getValue());
+				player.setMoney(player.getMoney() - item.getValue());
 				inv.addItem(item.getItem());
 			}
 			

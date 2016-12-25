@@ -70,7 +70,7 @@ public class Debug implements CommandExecutor {
 				} else if (args.length == 2){
 					if (args[0].equalsIgnoreCase("xp")){
 						int xp = Integer.parseInt(args[1]);
-						player.setXP(xp);
+						Exp.set(player.getPlayer(), xp);
 						return true;
 					} else if (args[0].equalsIgnoreCase("hunger")){
 						Player player2 = Bukkit.getPlayer(args[1]);

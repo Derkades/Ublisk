@@ -79,11 +79,13 @@ public class UPlayer {
 		DataFile.LIFE_CRYSTAL.set("life." + getUniqueId(), amount);
 	}
 	
+	@Deprecated
 	public void addLifeCrystals(int amount){
 		int old = getLifeCrystals();
 		setLifeCrystals(old + amount);
 	}
 	
+	@Deprecated
 	public void removeLifeCrystals(int amount){
 		int old = getLifeCrystals();
 		setLifeCrystals(old - amount);
@@ -116,10 +118,12 @@ public class UPlayer {
 		DataFile.VOTING.set(path, i);
 	}
 	
+	@Deprecated
 	public void addVotingPoints(int i){
 		setVotingPoints(getVotingPoints() + i);
 	}
 	
+	@Deprecated
 	public void removeVotingPoints(int i){
 		setVotingPoints(getVotingPoints() - i);
 	}
@@ -203,6 +207,10 @@ public class UPlayer {
 		return Exp.getLevel(player);
 	}
 	
+	private void setXP(int xp){
+		Exp.set(player, xp);
+	}
+	
 	public int getXP(){
 		return Exp.get(player);
 	}
@@ -212,11 +220,7 @@ public class UPlayer {
 	}
 	
 	public void addXP(int xp){
-		Exp.add(player, xp);
-	}
-	
-	public void setXP(int xp){
-		Exp.set(player, xp);
+		setXP(getXP() + xp);
 	}
 	
 	public void giveMobXP(Entity entity) throws MobNotFoundException {
@@ -420,10 +424,12 @@ public class UPlayer {
 		return Money.get(player) >= amount;
 	}
 	
+	@Deprecated
 	public void addMoney(int amount){
 		setMoney(getMoney() + amount);
 	}
 	
+	@Deprecated
 	public void removeMoney(int amount){
 		setMoney(getMoney() - amount);
 	}
