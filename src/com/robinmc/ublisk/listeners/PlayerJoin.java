@@ -73,7 +73,7 @@ public class PlayerJoin implements Listener {
         
         new ItemBuilder(Material.CHEST)
         		.setName(ChatColor.BLUE + "" + ChatColor.BOLD + "Menu")
-        		.addToInventory(player);
+        		.setItemInInventory(player, 7);
         		
         player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
 	}
