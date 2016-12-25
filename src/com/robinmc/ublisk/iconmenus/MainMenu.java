@@ -9,9 +9,8 @@ import com.robinmc.ublisk.money.BankMenu;
 import com.robinmc.ublisk.money.MoneyItem;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.perm.PermissionGroup;
+import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 
 public class MainMenu {
 	
@@ -28,8 +27,6 @@ public class MainMenu {
 				VotingMenu.open(player);
 			} else if (name.equals("friends")){
 				FriendsMenu.open(player);
-			} else if (name.equals("staff settings")){
-				StaffSettingsMenu.open(player);
 			} else if (name.equals("help")){
 				HelpMenu.open(player);
 			} else if (name.equals("bank")){
@@ -51,10 +48,6 @@ public class MainMenu {
 		menu.setOption(2, new ItemBuilder(player.getName()).getItemStack(), "Friends");
 		menu.setOption(3, new ItemBuilder("MHF_Question").getItemStack(), "Help", "Help for commands and more");
 		menu.setOption(4, MoneyItem.BAR.getItem(), "Bank", "This will later be removed and", "replaced with a proper bank");
-		
-		if (player.getGroup() != PermissionGroup.DEFAULT){
-			menu.setOption(8, new ItemStack(Material.DIAMOND), "Staff settings");
-		}
 	}
 
 }

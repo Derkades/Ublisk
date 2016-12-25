@@ -7,7 +7,6 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.settings.Setting;
 
 public class SettingsMenu {
@@ -28,21 +27,16 @@ public class SettingsMenu {
 			
 			Setting setting = Setting.fromName(name);
 			
-			try {
-				//If setting is set to true, set to false and if set to false, set to true
-				player.setSetting(setting, !player.getSetting(setting));
+			//If setting is set to true, set to false and if set to false, set to true
+			player.setSetting(setting, !player.getSetting(setting));
 				
-				String enabledDisabled;
-				if (player.getSetting(setting)){
-					enabledDisabled = "enabled";
-				} else {
-					enabledDisabled = "disabled";
-				}
+			String enabledDisabled;
+			if (player.getSetting(setting))
+				enabledDisabled = "enabled";
+			else 
+				enabledDisabled = "disabled";
 				
-				player.sendMessage(Message.prefix("Settings") + name + " has been " + enabledDisabled + ".");
-			} catch (NotSetException e) {
-				player.setSetting(setting, false);
-			}
+			player.sendMessage(Message.prefix("Settings") + name + " has been " + enabledDisabled + ".");
 			
 		}
 	});
@@ -57,14 +51,10 @@ public class SettingsMenu {
 		for (Setting setting : Setting.values()){
 			//If setting is on, set dye color to green, otherwise to gray
 			short damage;
-			try {
-				if (player.getSetting(setting)){
-					damage = 10;
-				} else {
-					damage = 8;
-				}
-			} catch (NotSetException e) {
-				damage = 5;
+			if (player.getSetting(setting)){
+				damage = 10;
+			} else {
+				damage = 8;
 			}
 			
 			ItemStack item = new ItemStack(Material.INK_SACK);

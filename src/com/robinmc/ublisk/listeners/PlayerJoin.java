@@ -19,7 +19,6 @@ import com.robinmc.ublisk.database.Tracker;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
-import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
@@ -49,16 +48,9 @@ public class PlayerJoin implements Listener {
 		
 		HashMaps.addPlayerToMaps(player);
 		
-		Town town = player.getTown();
-		try {
-			if (player.getSetting(Setting.PLAY_MUSIC)){
-				//Music.playSong(player.getPlayer(), player.getTown().getName().toLowerCase());
-				town.playThemeToPlayer(player);
-			}
-		} catch (NotSetException e) {
-			//Music.playSong(player.getPlayer(), player.getTown().getName().toLowerCase());
+		if (player.getSetting(Setting.PLAY_MUSIC)){
+			Town town = player.getTown();
 			town.playThemeToPlayer(player);
-			player.setSetting(Setting.PLAY_MUSIC, true);
 		}
 		
 		player.tracker(Tracker.JOIN_COUNT);

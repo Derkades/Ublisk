@@ -54,7 +54,6 @@ import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.NotEnoughManaException;
 import com.robinmc.ublisk.utils.exception.NotInATownException;
 import com.robinmc.ublisk.utils.exception.NotInGuildException;
-import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.guilds.Guild;
 import com.robinmc.ublisk.utils.guilds.Guilds;
@@ -62,7 +61,6 @@ import com.robinmc.ublisk.utils.inventory.InvUtils;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
-import com.robinmc.ublisk.utils.settings.StaffSetting;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -293,19 +291,11 @@ public class UPlayer {
 		}, time * 20);
 	}
 	
-	public boolean getSetting(Setting setting) throws NotSetException {
+	public boolean getSetting(Setting setting){
 		return setting.get(player);
 	}
 	
 	public void setSetting(Setting setting, boolean bool){
-		setting.put(player, bool);
-	}
-	
-	public boolean getStaffSetting(StaffSetting setting) throws NotSetException {
-		return setting.get(player);
-	}
-	
-	public void setStaffSetting(StaffSetting setting, boolean bool){
 		setting.put(player, bool);
 	}
 	

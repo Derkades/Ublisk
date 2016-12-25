@@ -1,18 +1,9 @@
 package com.robinmc.ublisk.iconmenus;
 
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-
-import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.utils.IconMenu;
-import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.exception.NotSetException;
-import com.robinmc.ublisk.utils.settings.StaffSetting;
-
+@Deprecated
 public class StaffSettingsMenu {
 
+	/*
 	private static IconMenu menu = new IconMenu("Staff Settings", 1*9, new IconMenu.OptionClickEventHandler(){
 
 		@Override
@@ -76,6 +67,6 @@ public class StaffSettingsMenu {
 		}
 		
 		menu.setOption(8, new ItemStack(Material.BARRIER), "Back");
-	}
+	}*/	
 	
 }

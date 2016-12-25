@@ -14,7 +14,6 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.exception.NotSetException;
 import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.utils.settings.Setting;
 
@@ -34,17 +33,12 @@ public class FriendsMenu {
 			OfflinePlayer friend = event.getFriend();
 			if (item == Material.SPECKLED_MELON){
 				event.setWillClose(false);
-				try {
-					if (player.getSetting(Setting.FRIENDS_SHOW_HEALTH)){
-						player.setSetting(Setting.FRIENDS_SHOW_HEALTH, false);
-						player.sendMessage(Message.FRIEND_HEALTH_DISABLED);
-					} else {
-						player.setSetting(Setting.FRIENDS_SHOW_HEALTH, true);
-						player.sendMessage(Message.FRIEND_HEALTH_ENABLED);
-					}
-				} catch (NotSetException e) {
+				if (player.getSetting(Setting.FRIENDS_SHOW_HEALTH)){
 					player.setSetting(Setting.FRIENDS_SHOW_HEALTH, false);
 					player.sendMessage(Message.FRIEND_HEALTH_DISABLED);
+				} else {
+					player.setSetting(Setting.FRIENDS_SHOW_HEALTH, true);
+					player.sendMessage(Message.FRIEND_HEALTH_ENABLED);
 				}
 			} else {
 				BaseComponent[] text = new ComponentBuilder("Click here")
@@ -82,15 +76,9 @@ public class FriendsMenu {
 		
 		String displayName = "error";
 		
-		try {
-			if (player.getSetting(Setting.FRIENDS_SHOW_HEALTH)){		
-				displayName = GOLD + "Show friend's health: " + GREEN + BOLD + "Enabled";
-			} else {
-				displayName = GOLD + "Show friend's health: " + RED + BOLD + "Disabled";
-			}
-		} catch (NotSetException e) {
-			displayName = GOLD + "Show friend's health: " + GREEN + BOLD + "Enabled";
-		}
+		if (player.getSetting(Setting.FRIENDS_SHOW_HEALTH))
+			 displayName = GOLD + "Show friend's health: " + GREEN + BOLD + "Enabled";
+		else displayName = GOLD + "Show friend's health: " + RED + BOLD + "Disabled";
 		
 		ItemStack friendsHealth = new ItemStack(Material.SPECKLED_MELON, 1);
 		menu.setOption(18, friendsHealth, displayName);
