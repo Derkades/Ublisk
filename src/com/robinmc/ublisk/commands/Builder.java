@@ -23,7 +23,7 @@ public class Builder implements CommandExecutor {
 			return true;
 		}
 		
-		UPlayer player = UPlayer.get(sender);
+		UPlayer player = new UPlayer(sender);
 		
 		if (!player.hasPermission(Permission.BUILDER_MODE)){
 			player.sendMessage(Message.NO_PERMISSION);

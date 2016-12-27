@@ -18,7 +18,6 @@ import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.abilities.swordsman.TestAbility;
 import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.mob.Mob;
@@ -42,7 +41,7 @@ public class Debug implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (sender instanceof Player){
-			UPlayer player = UPlayer.get(sender);
+			UPlayer player = new UPlayer(sender);
 			if (player.hasPermission(Permission.COMMAND_DEBUG)){
 				if (args.length == 3){
 					if (args[0].equals("group")){
@@ -55,7 +54,7 @@ public class Debug implements CommandExecutor {
 						}
 						UPlayer target;
 						try {
-							target = UPlayer.get(args[1]);
+							target = new UPlayer(args[1]);
 						} catch (PlayerNotFoundException e) {
 							player.sendMessage("player not found");
 							return true;
@@ -92,7 +91,7 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("vote")){
 						UPlayer target;
 						try {
-							target = UPlayer.get(args[1]);
+							target = new UPlayer(args[1]);
 						} catch (PlayerNotFoundException e) {
 							player.sendMessage("player not found");
 							return true;
@@ -102,7 +101,7 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("inv")){
 						UPlayer target;
 						try {
-							target = UPlayer.get(args[1]);
+							target = new UPlayer(args[1]);
 						} catch (PlayerNotFoundException e){
 							player.sendMessage(Message.PLAYER_NOT_FOUND);
 							return true;
