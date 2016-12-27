@@ -34,6 +34,7 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.VoteRestart;
+import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.money.Money;
 import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.quest.Quest;
@@ -75,12 +76,8 @@ public class UPlayer {
 		this.player = Bukkit.getPlayer(uuid);
 	}
 
-	public UPlayer(String name) {
-		try {
-			this.player = UUIDUtils.getPlayerFromName(name);
-		} catch (PlayerNotFoundException e) {
-			throw new IllegalArgumentException("A player with name " + name + " is not online");
-		}
+	public UPlayer(String name) throws PlayerNotFoundException {
+		this.player = UUIDUtils.getPlayerFromName(name);
 	}
 
 	public UPlayer(CommandSender sender) {
@@ -645,6 +642,26 @@ public class UPlayer {
 			}
 		}
 		return hasItems;
+	}
+	
+	/**
+	 * Checks if the player has enough mana and if their level is high enough. If both or one of these conditions is not true, it will send message(s).
+	 * @param ability
+	 */
+	public void doAbility(Ability ability){
+		if (ability.getMinimumLevel() > player.getLevel()){
+			this.sendMessage(Message.ABILITY_NOT_ENOUGH_LEVEL);
+			return;
+		}
+		
+		try {
+			this.removeMana(ability.getMana());
+		} catch (NotEnoughManaException e) {
+			this.sendMessage(Message.ABILITY_NOT_ENOUGH_MANA);
+			return;
+		}
+		
+		ability.run(this);
 	}
 
 	@Override

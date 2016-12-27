@@ -5,10 +5,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import com.robinmc.ublisk.abilities.AbilityTrigger.TriggerType;
-import com.robinmc.ublisk.utils.UPlayer;
-
 public class AbilityListener implements Listener {
+	
+	//TODO Fix ability listener
 	
 	@EventHandler
 	public void onLeftClick(PlayerInteractEvent event){
@@ -16,13 +15,6 @@ public class AbilityListener implements Listener {
 			return;
 		}
 		
-		for (Ability ability : Ability.values()){
-			TriggerType type = ability.getTrigger().getTriggerType();
-			if (type == TriggerType.LEFT_CLICK &&
-					event.getPlayer().getInventory().getItemInMainHand().getType() == ability.getTrigger().getItemType()){
-				ability.doAbility(UPlayer.get(event));
-			}
-		}
 	}
 	
 	@EventHandler
@@ -31,13 +23,6 @@ public class AbilityListener implements Listener {
 			return;
 		}
 	
-		for (Ability ability : Ability.values()){
-			AbilityTrigger trigger = ability.getTrigger();
-			if (trigger.getTriggerType() == TriggerType.RIGHT_CLICK &&
-					event.getPlayer().getInventory().getItemInMainHand().getType() == trigger.getItemType()){
-				ability.doAbility(UPlayer.get(event));
-			}
-		}
 	}
 
 }

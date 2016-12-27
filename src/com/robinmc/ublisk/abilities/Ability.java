@@ -1,33 +1,41 @@
 package com.robinmc.ublisk.abilities;
 
-import org.bukkit.Material;
-
-import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.abilities.AbilityTrigger.TriggerType;
-import com.robinmc.ublisk.abilities.swordsman.Meteorite;
-import com.robinmc.ublisk.abilities.swordsman.TestAbility;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.exception.NotEnoughManaException;
 
-public enum Ability {
-	
-	TEST(4, 0, new TestAbility(), new AbilityTrigger(Material.WOOD_SWORD, TriggerType.RIGHT_CLICK)),
-	TEST2(10, 0, new Meteorite(), new AbilityTrigger(Material.GOLD_SWORD, TriggerType.RIGHT_CLICK));
+public abstract class Ability {
 	
 	private int mana;
 	private int minLevel;
-	private AbilityExecutor exec;
-	private AbilityTrigger trigger;
 	
-	Ability(int mana, int minLevel, AbilityExecutor exec, AbilityTrigger trigger){
+	public Ability(int mana, int minLevel){
+		this.mana = mana;
+		this.minLevel = minLevel;
+	}
+	
+	public int getMana(){
+		return mana;
+	}
+	
+	public int getMinimumLevel(){
+		return minLevel;
+	}
+	
+	public abstract void run(UPlayer player);
+	
+	
+	/*
+	TEST(4, 0, new TestAbility(), new AbilityTrigger(Material.WOOD_SWORD, TriggerType.RIGHT_CLICK)),
+	TEST2(10, 0, new Meteorite(), new AbilityTrigger(Material.GOLD_SWORD, TriggerType.RIGHT_CLICK));*/
+	
+	/*
+	private int mana;
+	private int minLevel;
+	private AbilityExecutor exec;
+	
+	Ability(int mana, int minLevel, AbilityExecutor exec){
 		this.mana = mana;
 		this.minLevel = minLevel;
 		this.exec = exec;
-		this.trigger = trigger;
-	}
-	
-	public AbilityTrigger getTrigger(){
-		return trigger;
 	}
 	
 	public void doAbility(UPlayer player){
@@ -45,5 +53,6 @@ public enum Ability {
 		
 		exec.doAbility(player);
 	}
+	*/
 
 }

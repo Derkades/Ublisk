@@ -19,6 +19,7 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.abilities.Ability;
+import com.robinmc.ublisk.abilities.swordsman.TestAbility;
 import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.quest.NPC;
@@ -164,7 +165,7 @@ public class Debug implements CommandExecutor {
 							player.sendMessage(trigger.getTrigger() + ": " + trigger.getMessage());
 						return true;
 					} else if (args[0].equals("ability")){
-						Ability.TEST.doAbility(player);
+						player.doAbility(new TestAbility());
 						return true;
 					} else if (args[0].equals("pack")){
 						player.sendMessage("This command is deprecated. Please use /pack instead.");

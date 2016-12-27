@@ -6,14 +6,18 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.abilities.AbilityExecutor;
+import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 
-public class TestAbility extends AbilityExecutor {
+public class TestAbility extends Ability {
+
+	public TestAbility(){
+		super(5, 0); //TODO Min level
+	}
 
 	@Override
-	public void doAbility(final UPlayer player) {
+	public void run(final UPlayer player) {
 		new BukkitRunnable() {
 			double t = 0;
 			Location loc = player.getLocation();
@@ -38,9 +42,5 @@ public class TestAbility extends AbilityExecutor {
 		}.runTaskTimer(Main.getInstance(), 0, 1);
 	}
 
-	@Override
-	public int getCooldown() {
-		return 60;
-	}
 
 }
