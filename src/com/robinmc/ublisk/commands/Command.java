@@ -7,7 +7,7 @@ import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 
 public enum Command {
-	
+
 	AFK("afk", new Afk()),
 	BUILDER("builder", new Builder()),
 	CLASS("class", new ClassCommand()),
@@ -23,7 +23,7 @@ public enum Command {
 	REPORT("report", new Report()),
 	RESOURCE_PACK("pack", new ResourcePackCommand()),
 	VOTE_RESTART("voterestart", new VoteRestartCommand());
-	
+
 	private String cmd;
 	private CommandExecutor exec;
 
@@ -55,5 +55,5 @@ public enum Command {
 			}
 		}
 	}
-	
+
 }
