@@ -11,56 +11,57 @@ import com.robinmc.ublisk.utils.DoubleXP;
 import com.robinmc.ublisk.utils.PacketListener;
 
 public class Main extends JavaPlugin {
-	
+
 	public static Main instance;
-	
+
 	@Override
-	public void onEnable(){
+	public void onEnable() {
 		instance = this;
-		
+
 		HashMaps.resetAllPlayers();
-		
-		new BukkitRunnable(){
-			public void run(){
+
+		new BukkitRunnable() {
+			public void run() {
 				Listeners.register();
 			}
 		}.runTaskLater(this, 5);
-		
-		new BukkitRunnable(){
-			public void run(){
+
+		new BukkitRunnable() {
+			public void run() {
 				Command.registerAll();
 			}
 		}.runTaskLater(this, 10);
-		
-		new BukkitRunnable(){
-			public void run(){
+
+		new BukkitRunnable() {
+			public void run() {
 				Mob.startMobSpawning();
 			}
 		}.runTaskLater(this, 15);
-		
-		new BukkitRunnable(){
-			public void run(){
-				for (Task task : Task.values()) task.start();
+
+		new BukkitRunnable() {
+			public void run() {
+				for (Task task : Task.values())
+					task.start();
 			}
 		}.runTaskLater(this, 20);
-		
-		new BukkitRunnable(){
-			public void run(){
+
+		new BukkitRunnable() {
+			public void run() {
 				DoubleXP.startDoubleXPPacketListener();
 			}
 		}.runTaskLater(this, 25);
-		
+
 	}
-	
+
 	@Override
-	public void onDisable(){
+	public void onDisable() {
 		instance = null;
-		
+
 		PacketListener.closeAllOpenSockets();
 	}
-	
-	public static Main getInstance(){
+
+	public static Main getInstance() {
 		return instance;
 	}
-	
+
 }
