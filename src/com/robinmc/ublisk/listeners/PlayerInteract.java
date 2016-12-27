@@ -41,7 +41,7 @@ public class PlayerInteract implements Listener {
 	
 	@EventHandler(ignoreCancelled = false)
 	public void onInteract(PlayerInteractEvent event){
-		UPlayer player = UPlayer.get(event);
+		UPlayer player = new UPlayer(event);
 		Action action = event.getAction();
 		if (action == Action.RIGHT_CLICK_BLOCK || action == Action.RIGHT_CLICK_AIR){
 			PlayerInventory inv = player.getInventory();
@@ -71,7 +71,7 @@ public class PlayerInteract implements Listener {
 	//ignoreCancelled = true - Still track clicks if they are cancelled
 	@EventHandler(priority=EventPriority.MONITOR, ignoreCancelled = true)
 	public void tracker(PlayerInteractEvent event){
-		UPlayer player = UPlayer.get(event);
+		UPlayer player = new UPlayer(event);
 		Action action = event.getAction();
 		
 		if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK){
@@ -150,7 +150,7 @@ public class PlayerInteract implements Listener {
 			inv.setItem(13, xpItem);
 			inv.setItem(14, lifeItem);
 			
-			UPlayer player = UPlayer.get(event.getPlayer());
+			UPlayer player = new UPlayer(event);
 			
 			if (gold !=0){
 				new ItemBuilder(Material.GOLD_NUGGET)

@@ -11,7 +11,7 @@ public class PlayerQuit implements Listener {
 	
 	@EventHandler
 	public void onQuit(PlayerQuitEvent event){
-		UPlayer player = UPlayer.get(event);
+		UPlayer player = new UPlayer(event);
 		event.setQuitMessage(Message.Complicated.JoinQuit.quit(player.getName()));
 		player.refreshLastSeenDate();
 	}

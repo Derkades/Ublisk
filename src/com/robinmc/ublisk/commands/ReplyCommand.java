@@ -18,7 +18,7 @@ public class ReplyCommand implements CommandExecutor {
 			return true;
 		}
 		
-		UPlayer player = UPlayer.get(sender);
+		UPlayer player = new UPlayer(sender);
 		
 		UPlayer target;
 		try {

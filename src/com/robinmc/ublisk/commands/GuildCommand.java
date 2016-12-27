@@ -22,7 +22,7 @@ public class GuildCommand implements CommandExecutor {
 			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 		}
 		
-		UPlayer player = UPlayer.get(sender);
+		UPlayer player = new UPlayer(sender);
 		
 		if (args.length == 1){
 			if (args[0].equalsIgnoreCase("leave")){
@@ -82,7 +82,7 @@ public class GuildCommand implements CommandExecutor {
 				Logger.log(LogLevel.DEBUG, "/guild invite command yes very much hello there");
 				
 				try {
-					target = UPlayer.get(args[1]);
+					target = new UPlayer(args[1]);
 				} catch (PlayerNotFoundException e) {
 					player.sendMessage(Message.PLAYER_NOT_FOUND);
 					return true;

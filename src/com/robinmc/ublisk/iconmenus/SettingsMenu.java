@@ -16,7 +16,7 @@ public class SettingsMenu {
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName();
-			final UPlayer player = UPlayer.get(event);
+			final UPlayer player = new UPlayer(event.getPlayer());
 		
 			event.setWillClose(false);
 			

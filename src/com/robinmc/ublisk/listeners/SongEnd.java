@@ -17,7 +17,7 @@ public class SongEnd implements Listener {
 	public void musicStopped(SongEndEvent event){
 		try {
 		    for (String playername : event.getSongPlayer().getPlayerList()){
-		    	UPlayer player = UPlayer.get(playername);
+		    	UPlayer player = new UPlayer(playername);
 		    	if (player.getSetting(Setting.PLAY_MUSIC)){
 					Town town = player.getTown();
 					town.playThemeToPlayer(player);

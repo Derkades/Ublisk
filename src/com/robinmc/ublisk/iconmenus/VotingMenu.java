@@ -15,7 +15,7 @@ public class VotingMenu {
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
-			UPlayer player = UPlayer.get(event.getPlayer());
+			UPlayer player = new UPlayer(event.getPlayer());
 			if (name.contains("points")){
 				event.setWillClose(false);
 			} else {

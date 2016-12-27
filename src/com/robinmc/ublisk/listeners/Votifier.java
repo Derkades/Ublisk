@@ -20,7 +20,7 @@ public class Votifier implements Listener {
 		Vote vote = event.getVote();
 		UPlayer player;
 		try {
-			player = UPlayer.get(vote.getUsername());
+			player = new UPlayer(vote.getUsername());
 		} catch (PlayerNotFoundException e) {
 			e.printStackTrace(); //TODO Deal with player not online
 			return;

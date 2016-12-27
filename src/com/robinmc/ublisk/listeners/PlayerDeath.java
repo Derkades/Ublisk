@@ -12,7 +12,7 @@ public class PlayerDeath implements Listener {
 
 	@EventHandler
 	public void onDeath(PlayerDeathEvent event){
-		final UPlayer player = UPlayer.get(event);
+		final UPlayer player = new UPlayer(event);
 		
 		if (player.getLifeCrystals() > 0){
 			player.setLifeCrystals(player.getLifeCrystals() - 1);

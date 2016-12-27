@@ -27,7 +27,7 @@ public class PlayerJoin implements Listener {
 	
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event){
-		final UPlayer player = UPlayer.get(event);
+		final UPlayer player = new UPlayer(event);
 		String pn = player.getName();
 		UUID uuid = player.getUniqueId();
 		

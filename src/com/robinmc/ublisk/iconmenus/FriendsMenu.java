@@ -28,7 +28,7 @@ public class FriendsMenu {
 
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
-			UPlayer player = UPlayer.get(event);
+			UPlayer player = new UPlayer(event.getPlayer());
 			Material item = event.getItem().getType();
 			OfflinePlayer friend = event.getFriend();
 			if (item == Material.SPECKLED_MELON){

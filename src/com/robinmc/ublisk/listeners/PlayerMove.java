@@ -11,7 +11,7 @@ public class PlayerMove implements Listener {
 
 	@EventHandler
 	public void onMove(PlayerMoveEvent event){
-		UPlayer player = UPlayer.get(event);
+		UPlayer player = new UPlayer(event);
 		
 		player.resetAfkTimer();
 		

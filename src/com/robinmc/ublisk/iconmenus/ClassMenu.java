@@ -22,7 +22,7 @@ public class ClassMenu {
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
-			UPlayer player = UPlayer.get(event);
+			UPlayer player = new UPlayer(event.getPlayer());
 			UUID uuid = player.getUniqueId();
 			if (HashMaps.COOLDOWN_CLASS.get(player.getUniqueId())){
 				player.sendMessage(Message.CLASS_COOLDOWN);

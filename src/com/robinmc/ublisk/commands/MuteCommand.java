@@ -24,7 +24,7 @@ public class MuteCommand implements CommandExecutor {
 			return true;
 		}
 		
-		UPlayer player = UPlayer.get(sender);
+		UPlayer player = new UPlayer(sender);
 		
 		if (player.hasPermission(Permission.COMMAND_MUTE)){
 			player.sendMessage(Message.NO_PERMISSION);

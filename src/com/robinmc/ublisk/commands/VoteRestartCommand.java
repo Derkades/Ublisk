@@ -16,7 +16,7 @@ public class VoteRestartCommand implements CommandExecutor {
 			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 		}
 		
-		UPlayer player = UPlayer.get(sender);
+		UPlayer player = new UPlayer(sender);
 		
 		if (player.hasVotedForRestart()){
 			player.sendMessage(Message.ALREADY_VOTED_RESTART);

@@ -19,7 +19,7 @@ public class MainMenu {
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
-			final UPlayer player = UPlayer.get(event);
+			final UPlayer player = new UPlayer(event.getPlayer());
 			event.setWillClose(false);
 			if (name.equals("settings")){
 				SettingsMenu.open(player); 

@@ -24,7 +24,7 @@ public class MsgCommand implements CommandExecutor {
 			return true;
 		}
 		
-		UPlayer player = UPlayer.get(sender);
+		UPlayer player = new UPlayer(sender);
 		
 		//If player is muted don't send private message
 		if (HashMaps.IS_MUTED.get(player.getUniqueId())){
@@ -36,7 +36,7 @@ public class MsgCommand implements CommandExecutor {
 			UPlayer target;
 			
 			try {
-				target = UPlayer.get(args[0]);
+				target = new UPlayer(args[0]);
 			} catch (PlayerNotFoundException e1) {
 				player.sendMessage(Message.PLAYER_NOT_FOUND);
 				return true;

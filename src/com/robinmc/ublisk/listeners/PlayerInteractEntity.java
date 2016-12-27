@@ -27,7 +27,7 @@ public class PlayerInteractEntity implements Listener {
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
 	public void tracker(PlayerInteractEntityEvent event){
-		UPlayer player = UPlayer.get(event);
+		UPlayer player = new UPlayer(event);
 		player.tracker(Tracker.ENTITY_CLICK);
 	}
 	
@@ -40,7 +40,7 @@ public class PlayerInteractEntity implements Listener {
 		
 		Entity entity = event.getRightClicked();
 		
-		final UPlayer player = UPlayer.get(event);
+		final UPlayer player = new UPlayer(event);
 		
 		if (entity instanceof ArmorStand && player.getGameMode() != GameMode.CREATIVE){
 			event.setCancelled(true);
@@ -52,7 +52,7 @@ public class PlayerInteractEntity implements Listener {
 			}
 			
 			HashMaps.ENTITY_RIGHT_CLICK_COOLDOWN.put(player.getPlayer().getUniqueId(), true);
-			UPlayer target = UPlayer.get(entity);
+			UPlayer target = new UPlayer(event);
 			
 			BaseComponent[] stats = new ComponentBuilder("Click here to view statistics")
 					.bold(true)

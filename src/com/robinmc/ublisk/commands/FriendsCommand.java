@@ -17,14 +17,14 @@ public class FriendsCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (sender instanceof Player){
-			UPlayer player = UPlayer.get(sender);
+			UPlayer player = new UPlayer(sender);
 			if (args.length == 0){
 				FriendsMenu.open(player);
 			} else if (args.length == 2){
 				if (args[0].equals("add")){
 					UPlayer friend;
 					try {
-						friend = UPlayer.get(args[1]);
+						friend = new UPlayer(args[1]);
 					} catch (PlayerNotFoundException e) {
 						player.sendMessage(Message.FRIEND_OFFLINE);
 						return true;

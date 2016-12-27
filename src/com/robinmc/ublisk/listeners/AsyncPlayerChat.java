@@ -24,7 +24,7 @@ public class AsyncPlayerChat implements Listener {
 			return;
 		}
 		
-		UPlayer player = UPlayer.get(event.getPlayer());
+		UPlayer player = new UPlayer(event);
 		
 		if (HashMaps.IS_MUTED.get(player.getUniqueId())){
 			player.sendMessage(Message.CANT_CHAT_MUTED);

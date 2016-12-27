@@ -19,7 +19,7 @@ public class ResourcePackCommand implements CommandExecutor {
 			return true;
 		}
 		
-		UPlayer player = UPlayer.get(sender);
+		UPlayer player = new UPlayer(sender);
 		
 		if (args.length == 1 && args[0].equalsIgnoreCase("check")){
 			Ublisk.sendConsoleCommand("execute " + player.getName() + " ~ ~ ~ particle mobappearance ~ ~ ~ 0 0 1 50"); //TODO Use bukkit API

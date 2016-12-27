@@ -16,7 +16,7 @@ public class CommandsHelp {
 		public void onOptionClick(final OptionClickEvent event) {
 			event.setWillClose(false);
 			if (event.getName().equals("Back")){
-				HelpMenu.open(UPlayer.get(event));
+				HelpMenu.open(new UPlayer(event.getPlayer()));
 			}
 		}
 	});

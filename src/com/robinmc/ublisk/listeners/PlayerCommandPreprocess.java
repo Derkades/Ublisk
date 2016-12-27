@@ -22,7 +22,7 @@ public class PlayerCommandPreprocess implements Listener {
 		}
 		
 		String cmd = event.getMessage();
-		UPlayer sender = UPlayer.get(event);
+		UPlayer sender = new UPlayer(event);
 		String pn = sender.getName();
 		
 		if (cmd.startsWith("/time set")){

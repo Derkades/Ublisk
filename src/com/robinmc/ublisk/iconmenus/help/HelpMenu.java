@@ -17,7 +17,7 @@ public class HelpMenu {
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
 			String name = event.getName().toLowerCase();
-			final UPlayer player = UPlayer.get(event);
+			final UPlayer player = new UPlayer(event.getPlayer());
 			event.setWillClose(false);
 			if (name.contains("commands")){
 				CommandsHelp.open(player);

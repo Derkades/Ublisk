@@ -13,14 +13,14 @@ public class InventoryClick implements Listener {
 	
 	@EventHandler(ignoreCancelled = false, priority = EventPriority.MONITOR)
 	public void tracker(InventoryClickEvent event){
-		UPlayer player = UPlayer.get(event);
+		UPlayer player = new UPlayer(event.getWhoClicked());
 		player.tracker(Tracker.INV_CLICK);
 	}
 	
 	@EventHandler
 	public void onItemClick(InventoryClickEvent event){
 
-		if (UPlayer.get(event).isInBuilderMode()){
+		if (new UPlayer(event.getWhoClicked()).isInBuilderMode()){
 			return;
 		}
 		

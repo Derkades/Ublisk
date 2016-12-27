@@ -16,7 +16,7 @@ public class PlayerItemConsume implements Listener {
 			return;
 		}
 		
-		UPlayer player = UPlayer.get(event.getPlayer());
+		UPlayer player = new UPlayer(event);
 		player.sendMessage(Message.CANT_EAT);
 		event.setCancelled(true);
 	}
