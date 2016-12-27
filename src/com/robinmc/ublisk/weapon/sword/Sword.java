@@ -3,6 +3,7 @@ package com.robinmc.ublisk.weapon.sword;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.utils.inventory.InvUtils;
 import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.weapon.Weapon;
@@ -15,8 +16,9 @@ public abstract class Sword extends Weapon {
 	
 	private AttackSpeed attackSpeed;
 	
-	protected Sword(String name, Material material, WeaponRarity rarity, String tagline, AttackSpeed attackSpeed, int damage, double movementSpeed, double knockbackResistance) {
-		super(name, material, rarity, tagline, damage, movementSpeed, knockbackResistance);
+	protected Sword(String name, Material material, WeaponRarity rarity, String tagline, AttackSpeed attackSpeed, int damage, double movementSpeed, double knockbackResistance, Ability ability) {
+		super(name, material, rarity, tagline, damage, movementSpeed, knockbackResistance, null, ability); 
+		//Left click ability is null, because swords can't have a left click ability.
 		
 		this.attackSpeed = attackSpeed;
 	}

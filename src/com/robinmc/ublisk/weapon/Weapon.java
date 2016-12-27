@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.bukkit.Material;
 
+import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.weapon.sword.Sword;
 
 public abstract class Weapon {
@@ -23,9 +24,13 @@ public abstract class Weapon {
 	private Material material;
 	private WeaponRarity rarity;
 	private String tagline;
+	
 	private int damage;
 	private double movementSpeed;
 	private double knockbackResistance;
+	
+	private Ability leftClickAbility;
+	private Ability rightClickAbility;
 	
 	/**
 	 * Represents a weapon of any type.
@@ -37,7 +42,7 @@ public abstract class Weapon {
 	 * @param movementSpeed Speed of movement. Value higher than 0. For vanilla movement speed use -1.
 	 * @param knockbackResistance The chance to resist knockback from attacks, explosions, and projectiles. 1.0 is 100% chance for resistance. For vanilla use -1
 	 */
-	protected Weapon(String name, Material material, WeaponRarity rarity, String tagline, int damage, double movementSpeed, double knockbackResistance){
+	protected Weapon(String name, Material material, WeaponRarity rarity, String tagline, int damage, double movementSpeed, double knockbackResistance, Ability leftClickAbility, Ability rightClickAbility){
 		if (name == null){
 			throw new IllegalArgumentException("Weapon name must not be null"); 
 		}
@@ -100,6 +105,14 @@ public abstract class Weapon {
 	
 	public double getKnockbackResistance(){
 		return knockbackResistance;
+	}
+	
+	public Ability getLeftClickAbility(){
+		return leftClickAbility;
+	}
+	
+	public Ability getRightClickAbility(){
+		return rightClickAbility;
 	}
 	
 	public String getColoredName(){
