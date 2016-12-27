@@ -101,25 +101,25 @@ public class UPlayer {
 			throw new IllegalArgumentException("Entity is not a player");
 		}
 	}
-	
-	public UPlayer(Entity entity){
+
+	public UPlayer(Entity entity) {
 		if (entity instanceof Player) {
 			this.player = (Player) entity;
 		} else {
 			throw new IllegalArgumentException("Entity is not a player");
 		}
 	}
-	
-	public UPlayer(HumanEntity human){
-		if (human instanceof Player){
+
+	public UPlayer(HumanEntity human) {
+		if (human instanceof Player) {
 			this.player = (Player) human;
 		} else {
 			throw new IllegalArgumentException("Human is not a player");
 		}
 	}
-	
-	public UPlayer(OfflinePlayer offline){
-		if (offline.isOnline()){
+
+	public UPlayer(OfflinePlayer offline) {
+		if (offline.isOnline()) {
 			this.player = offline.getPlayer();
 		} else {
 			throw new IllegalArgumentException("Player " + player.getName() + " is not online.");
@@ -317,6 +317,7 @@ public class UPlayer {
 		player.setBanned(true);
 		Logger.log(LogLevel.WARNING, "Banning", player.getName() + " has been banned for " + time + " seconds.");
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+
 			public void run() {
 				player.setBanned(false);
 				Logger.log(LogLevel.INFO, "Banning",
@@ -668,24 +669,26 @@ public class UPlayer {
 		}
 		return hasItems;
 	}
-	
+
 	/**
-	 * Checks if the player has enough mana and if their level is high enough. If both or one of these conditions is not true, it will send message(s).
+	 * Checks if the player has enough mana and if their level is high enough.
+	 * If both or one of these conditions is not true, it will send message(s).
+	 * 
 	 * @param ability
 	 */
-	public void doAbility(Ability ability){
-		if (ability.getMinimumLevel() > player.getLevel()){
+	public void doAbility(Ability ability) {
+		if (ability.getMinimumLevel() > player.getLevel()) {
 			this.sendMessage(Message.ABILITY_NOT_ENOUGH_LEVEL);
 			return;
 		}
-		
+
 		try {
 			this.removeMana(ability.getMana());
 		} catch (NotEnoughManaException e) {
 			this.sendMessage(Message.ABILITY_NOT_ENOUGH_MANA);
 			return;
 		}
-		
+
 		ability.run(this);
 	}
 

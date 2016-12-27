@@ -10,50 +10,49 @@ import com.robinmc.ublisk.utils.PacketListener.PacketRecievedListener;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 
 public class DoubleXP {
-	
+
 	private static float DOUBLE_XP_PERCENTAGE = 0.0f;
 	private static int DOUBLE_XP_SECONDS_LEFT = 0;
 	private static final int DOUBLE_XP_TOTAL_SECONDS = 150;
-	
-	public static boolean isActive(){
+
+	public static boolean isActive() {
 		return DoubleXP.DOUBLE_XP_PERCENTAGE != 0.0f;
 	}
-	
-	public static void startDoubleXP(UPlayer player){
-		if (DoubleXP.isActive()){
+
+	public static void startDoubleXP(UPlayer player) {
+		if (DoubleXP.isActive()) {
 			Bukkit.broadcastMessage(Message.DOUBLE_XP_ALREADY_ACTIVE.toString());
 		}
-		
+
 		Bukkit.broadcastMessage("Double XP started thanks to " + player.getName()); //FIXME: Fancy message
-		
+
 		DoubleXP.DOUBLE_XP_PERCENTAGE = 1.0f;
 		DoubleXP.DOUBLE_XP_SECONDS_LEFT = DoubleXP.DOUBLE_XP_TOTAL_SECONDS;
-		
-		new BukkitRunnable(){
-			public void run(){
+
+		new BukkitRunnable() {
+
+			public void run() {
 				//Every second: remove 1 second from `DOUBLE_XP_SECONDS_LEFT` and recalculate percentage.
 				DoubleXP.DOUBLE_XP_SECONDS_LEFT--;
 				float percent = ((float) DoubleXP.DOUBLE_XP_SECONDS_LEFT) / ((float) DoubleXP.DOUBLE_XP_TOTAL_SECONDS);
 				DoubleXP.DOUBLE_XP_PERCENTAGE = percent;
-				Logger.log(LogLevel.DEBUG, 
-						"Seconds left: " + DoubleXP.DOUBLE_XP_SECONDS_LEFT
-						+ " | Total seconds: " + DoubleXP.DOUBLE_XP_TOTAL_SECONDS
-						+ " | Percentage float: " + DoubleXP.DOUBLE_XP_PERCENTAGE);
-				if (DoubleXP.DOUBLE_XP_SECONDS_LEFT == 0){
+				Logger.log(LogLevel.DEBUG, "Seconds left: " + DoubleXP.DOUBLE_XP_SECONDS_LEFT + " | Total seconds: "
+						+ DoubleXP.DOUBLE_XP_TOTAL_SECONDS + " | Percentage float: " + DoubleXP.DOUBLE_XP_PERCENTAGE);
+				if (DoubleXP.DOUBLE_XP_SECONDS_LEFT == 0) {
 					this.cancel();
 					DoubleXP.DOUBLE_XP_PERCENTAGE = 0.0f;
 					Bukkit.broadcastMessage("Double XP ended"); //FIXME Fancy message
 				}
 			}
-		}.runTaskTimer(Main.getInstance(), 0L, 1*20L);
+		}.runTaskTimer(Main.getInstance(), 0L, 1 * 20L);
 	}
-	
-	public static String getDoubleXPSidebarString(){
+
+	public static String getDoubleXPSidebarString() {
 		return Ublisk.getProgressString(DOUBLE_XP_PERCENTAGE);
 	}
-	
-	public static void startDoubleXPPacketListener(){
-		PacketListener.listenForPacket(45678, 16, new PacketRecievedListener(){
+
+	public static void startDoubleXPPacketListener() {
+		PacketListener.listenForPacket(45678, 16, new PacketRecievedListener() {
 
 			@Override
 			public void onPacketRecieved(String message) {
@@ -61,10 +60,10 @@ public class DoubleXP {
 				try {
 					DoubleXP.startDoubleXP(new UPlayer(message));
 				} catch (PlayerNotFoundException e) {
-					Bukkit.broadcastMessage("The player who started DoubleXP is not online.") ;//FIXME Fancy message
+					Bukkit.broadcastMessage("The player who started DoubleXP is not online.");//FIXME Fancy message
 				}
 			}
-			
+
 		});
 	}
 

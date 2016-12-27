@@ -51,8 +51,7 @@ public class UUIDUtils {
 		Player player = Bukkit.getPlayer(name);
 		if (player == null)
 			throw new PlayerNotFoundException();
-		else
-			return player;
+		else return player;
 	}
 
 	public static void save(UPlayer player) {
