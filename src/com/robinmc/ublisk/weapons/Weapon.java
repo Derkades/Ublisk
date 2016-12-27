@@ -80,6 +80,9 @@ public abstract class Weapon {
 			throw new IllegalArgumentException("Knockback resistance must be either -1 or a value between 0 and 1.");
 		}
 		this.knockbackResistance = knockbackResistance;
+		
+		this.leftClickAbility = leftClickAbility;
+		this.rightClickAbility = rightClickAbility;
 	}
 	
 	public String getName(){
@@ -168,7 +171,7 @@ public abstract class Weapon {
 		if (item.getType() != weapon.getMaterial()) 
 			return false;
 		
-		if (item.getItemMeta().getDisplayName() != weapon.getColoredName())
+		if (item.getItemMeta().getDisplayName().equals(weapon.getColoredName()))
 			return false;
 		
 		return true;
