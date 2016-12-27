@@ -19,6 +19,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Player.Spigot;
 import org.bukkit.event.entity.EntityEvent;
@@ -98,6 +99,22 @@ public class UPlayer {
 			this.player = (Player) entity;
 		} else {
 			throw new IllegalArgumentException("Entity is not a player");
+		}
+	}
+	
+	public UPlayer(Entity entity){
+		if (entity instanceof Player) {
+			this.player = (Player) entity;
+		} else {
+			throw new IllegalArgumentException("Entity is not a player");
+		}
+	}
+	
+	public UPlayer(HumanEntity human){
+		if (human instanceof Player){
+			this.player = (Player) human;
+		} else {
+			throw new IllegalArgumentException("Human is not a player");
 		}
 	}
 
