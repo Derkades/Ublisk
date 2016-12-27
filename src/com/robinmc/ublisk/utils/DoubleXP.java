@@ -59,7 +59,7 @@ public class DoubleXP {
 			public void onPacketRecieved(String message) {
 				Logger.log(LogLevel.DEBUG, message);
 				try {
-					DoubleXP.startDoubleXP(UPlayer.get(message));
+					DoubleXP.startDoubleXP(new UPlayer(message));
 				} catch (PlayerNotFoundException e) {
 					Bukkit.broadcastMessage("The player who started DoubleXP is not online.") ;//FIXME Fancy message
 				}

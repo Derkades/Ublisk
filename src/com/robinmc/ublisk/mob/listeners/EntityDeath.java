@@ -28,7 +28,7 @@ public class EntityDeath implements Listener {
 		event.setDroppedExp(0);
 		
 		if (entity.getLastDamageCause().getCause() == DamageCause.ENTITY_ATTACK){
-			UPlayer player = UPlayer.get(entity.getKiller());
+			UPlayer player = new UPlayer(entity.getKiller());
 			
 			if (!Mob.containsEntityType(entity.getType())){
 				return;

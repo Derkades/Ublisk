@@ -15,9 +15,8 @@ public class EntityDamageByEntity implements Listener {
 	
 	@EventHandler(ignoreCancelled = true)
 	public void useWeapon(EntityDamageByEntityEvent event){
-		
 		if (event.getDamager().getType() == EntityType.PLAYER){
-			UPlayer player = UPlayer.get(event.getDamager());
+			UPlayer player = new UPlayer(event.getDamager());
 			PlayerInventory inv = player.getInventory();
 			Material item = inv.getItemInMainHand().getType();
 			

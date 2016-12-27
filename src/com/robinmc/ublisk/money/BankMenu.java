@@ -17,7 +17,7 @@ public class BankMenu {
 
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
-			UPlayer player = UPlayer.get(event);
+			UPlayer player = new UPlayer(event.getPlayer());
 			MoneyItem item = MoneyItem.fromItemStack(event.getItem());
 			
 			if (item == null){

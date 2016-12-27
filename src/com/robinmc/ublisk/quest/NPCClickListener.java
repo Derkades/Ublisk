@@ -22,7 +22,7 @@ public class NPCClickListener implements Listener {
 		
 		event.setCancelled(true);
 		
-		UPlayer player = UPlayer.get(event);
+		UPlayer player = new UPlayer(event);
 		
 		NPC npc = NPC.fromName(entity.getCustomName());
 		
