@@ -71,6 +71,39 @@ public class UPlayer {
 		this.player = player;
 	}
 	
+	public UPlayer(UUID uuid){
+		this.player = Bukkit.getPlayer(uuid);
+	}
+	
+	public UPlayer(String name){
+		try {
+			this.player = UUIDUtils.getPlayerFromName(name);
+		} catch (PlayerNotFoundException e) {
+			throw new IllegalArgumentException("A player with name " + name + " is not online");
+		}
+	}
+	
+	public UPlayer(CommandSender sender){
+		if (sender instanceof Player){
+			this.player = (Player) sender;
+		} else {
+			throw new IllegalArgumentException("CommandSender is not a player");
+		}
+	}
+	
+	public UPlayer(PlayerEvent event){
+		this.player = event.getPlayer();
+	}
+	
+	public UPlayer(EntityEvent event){
+		Entity entity = event.getEntity();
+		if (entity instanceof Player){
+			this.player = (Player) entity;
+		} else {
+			throw new IllegalArgumentException("Entity is not a player");
+		}
+	}
+	
 	public Player getPlayer(){
 		return player;
 	}
@@ -578,15 +611,6 @@ public class UPlayer {
 		player.openInventory(player.getEnderChest());
 	}
 	
-	@Override
-	public String toString(){
-		return player.getUniqueId().toString();
-	}
-	
-	public static UPlayer fromString(String string){
-		return new UPlayer(Bukkit.getPlayer(string));
-	}
-	
 	/**
 	 * Clears inventory and armor slots.
 	 */
@@ -606,30 +630,47 @@ public class UPlayer {
 		return hasItems;
 	}
 	
+	@Override
+	public String toString(){
+		return player.getUniqueId().toString();
+	}
+	
+	@Deprecated
+	public static UPlayer fromUUID(UUID uuid){
+		return new UPlayer(Bukkit.getPlayer(uuid));
+	}
+	
+	@Deprecated
 	public static UPlayer get(Player player){
 		return new UPlayer(player);
 	}
 	
+	@Deprecated
 	public static UPlayer get(CommandSender sender){
 		return get((Player) sender);
 	}
 	
+	@Deprecated
 	public static UPlayer get(String name) throws PlayerNotFoundException {
 		return get(UUIDUtils.getPlayerFromName(name));
 	}
 	
+	@Deprecated
 	public static UPlayer get(OptionClickEvent event){
 		return get(event.getPlayer());
 	}
-
+	
+	@Deprecated
 	public static UPlayer get(InventoryClickEvent event){
 		return get(event.getWhoClicked()); 
 	}
 	
+	@Deprecated
 	public static UPlayer get(PlayerEvent event){
 		return get(event.getPlayer());
 	}
 	
+	@Deprecated
 	public static UPlayer get(EntityEvent event){
 		Entity entity = event.getEntity();
 		if (entity instanceof Player){
