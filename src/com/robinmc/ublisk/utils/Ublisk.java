@@ -88,7 +88,7 @@ public class Ublisk {
 	}
 	
 	/**
-	 * Broadcasts a message. This message will not appear in the console
+	 * Broadcasts a message. This message will not appear in the console.
 	 * @param message Message to be sent.
 	 */
 	public static void broadcastMessage(Message message){
@@ -98,8 +98,8 @@ public class Ublisk {
 	}
 	
 	/**
-	 * Broadcasts a message. This message will not appear in the console
-	 * @param message
+	 * Broadcasts a message. This message will not appear in the console.
+	 * @param message Message to be sent.
 	 */
 	public static void broadcastMessage(String message){
 		for (Player player : Bukkit.getOnlinePlayers()){
