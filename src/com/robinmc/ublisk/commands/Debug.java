@@ -31,8 +31,9 @@ import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
+import com.robinmc.ublisk.weapons.Weapon;
 import com.robinmc.ublisk.weapons.abilities.TestAbility;
-import com.robinmc.ublisk.weapons.sword.wood.WoodenShortSword;
+import com.robinmc.ublisk.weapons.sword.Sword;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -147,9 +148,6 @@ public class Debug implements CommandExecutor {
 									+ " : " + entity.getLocation().getChunk());
 						}
 						return true;
-					} else if (args[0].equals("sword")) {
-						player.getInventory().addItem(new WoodenShortSword().getItemStack());
-						return true;
 					} else if (args[0].equals("day")) {
 						while (true) {
 							if (Time.isDay()) {
@@ -183,6 +181,15 @@ public class Debug implements CommandExecutor {
 							}
 						}.runTaskLater(Main.getInstance(), 5);
 						return true;
+					} else if (args[0].equals("sword")){
+						PlayerInventory inv = player.getInventory();
+						
+						for (Weapon weapon : Weapon.getWeapons()){
+							if (weapon instanceof Sword){
+								inv.addItem(((Sword) weapon).getItemStack());
+							}
+						}
+						return true;	
 					} else {
 						player.sendMessage(Message.WRONG_USAGE);
 						return true;
