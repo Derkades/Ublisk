@@ -667,10 +667,15 @@ public class UPlayer {
 
 	/**
 	 * Checks if the player has enough mana and if their level is high enough. If both or one of these conditions is not true, it will send message(s).
+	 * Null value is permitted.
 	 * 
 	 * @param ability
 	 */
 	public void doAbility(Ability ability) {
+		if (ability == null){
+			return;
+		}
+		
 		if (ability.getMinimumLevel() > player.getLevel()) {
 			this.sendMessage(Message.ABILITY_NOT_ENOUGH_LEVEL);
 			return;
