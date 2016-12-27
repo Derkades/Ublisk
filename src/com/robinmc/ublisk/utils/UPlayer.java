@@ -310,7 +310,7 @@ public class UPlayer {
 	 * 
 	 * @param player
 	 * @param time
-	 *            Time in seconds
+	 *        Time in seconds
 	 */
 	@Deprecated
 	public void tempBan(final int time) {
@@ -407,17 +407,13 @@ public class UPlayer {
 	}
 
 	public boolean isInBuilderMode() {
-		// Check if an inventory file exists, because the item is deleted when a
-		// player goes out of builder mode.
+		// Check if an inventory file exists, because the item is deleted when a player goes out of builder mode.
 		return new File(InvUtils.path, player.getName() + ".yml").exists();
 	}
 
 	public void setBuilderModeEnabled(boolean bool) {
 		if (bool) { // Enable builder mode
-			this.saveInventoryToFile(Main.getInstance().getDataFolder() + "\\inv"); // Save
-																					// inventory
-																					// to
-																					// file
+			this.saveInventoryToFile(Main.getInstance().getDataFolder() + "\\inv"); // Save inventory to file
 			this.clearInventory();
 			this.setGameMode(GameMode.CREATIVE);
 			this.sendMessage(Message.BUILDER_MODE_ACTIVATED);
@@ -428,11 +424,11 @@ public class UPlayer {
 		}
 	}
 
+	/**
+	 * If player is not in builder mode. put player in builder mode and visa versa
+	 */
 	public void toggleBuilderMode() {
-		setBuilderModeEnabled(!isInBuilderMode()); // If player is not in
-													// builder mode put player
-													// in builder mode and visa
-													// versa
+		setBuilderModeEnabled(!isInBuilderMode());
 	}
 
 	public void refreshLastSeenDate() {
@@ -499,7 +495,7 @@ public class UPlayer {
 
 	/**
 	 * @param mana
-	 *            An integer, 0-20
+	 *        An integer, 0-20
 	 */
 	public void setMana(int mana) {
 		player.setFoodLevel(mana);
@@ -530,11 +526,10 @@ public class UPlayer {
 	}
 
 	/**
-	 * Please avoid using this, unless you are sure that you need this instead
-	 * of UPlayer#getTown()
+	 * Please avoid using this, unless you are sure that you need this instead of UPlayer#getTown()
 	 * 
 	 * @throws NotInATownException
-	 *             If the player is not in a town
+	 *         If the player is not in a town
 	 */
 	public Town getCurrentTown() throws NotInATownException {
 		for (Town town : Town.values()) {
@@ -671,8 +666,7 @@ public class UPlayer {
 	}
 
 	/**
-	 * Checks if the player has enough mana and if their level is high enough.
-	 * If both or one of these conditions is not true, it will send message(s).
+	 * Checks if the player has enough mana and if their level is high enough. If both or one of these conditions is not true, it will send message(s).
 	 * 
 	 * @param ability
 	 */
