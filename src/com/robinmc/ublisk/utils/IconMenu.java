@@ -26,9 +26,7 @@ import net.md_5.bungee.api.ChatColor;
  
 public class IconMenu implements Listener {
  
-	/* MODIFIFACTIONS HAVE BEEN MADE */
-	
-    private String name;
+	private String name;
     private int size;
     private OptionClickEventHandler handler;
     private Plugin plugin = Main.getInstance();
