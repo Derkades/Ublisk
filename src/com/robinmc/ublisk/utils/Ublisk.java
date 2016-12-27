@@ -13,6 +13,7 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Server;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Message;
@@ -95,6 +96,9 @@ public class Ublisk {
 			player.sendMessage(message.toString());
 		}
 	}
-
+	
+	public static Server getServer(){
+		return Bukkit.getServer();
+	}
 
 }
