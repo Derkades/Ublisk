@@ -19,7 +19,6 @@ public class RemoveMobs extends BukkitRunnable {
 				new BukkitRunnable(){
 					public void run(){
 						Mob.removeMobs();
-						//Bukkit.broadcastMessage(Message.ENTITIES_REMOVED.get());
 						Ublisk.broadcastMessage(Message.ENTITIES_REMOVED);
 					}
 				}.runTaskLater(Main.getInstance(), 5*20);

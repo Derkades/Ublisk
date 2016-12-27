@@ -22,12 +22,11 @@ public class Votifier implements Listener {
 		try {
 			player = UPlayer.get(vote.getUsername());
 		} catch (PlayerNotFoundException e) {
-			e.printStackTrace();
+			e.printStackTrace(); //TODO Deal with player not online
 			return;
 		}
-		//int points = ThreadLocalRandom.current().nextInt(1, 3 + 1);
+		
 		int points = Random.getRandomInteger(1, 3);
-		//player.addVotingPoints(points);
 		player.setVotingPoints(player.getVotingPoints() + points);
 		Bukkit.broadcastMessage(Message.Complicated.vote(player.getName(), points));
 		Logger.log(LogLevel.INFO, "Vote", player.getName() + " has voted at " + vote.getServiceName() + " (" + vote.getAddress() + ") and got " + points + " points.");

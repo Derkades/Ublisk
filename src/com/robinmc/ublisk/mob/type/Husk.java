@@ -17,6 +17,4 @@ public class Husk implements MobType {
 		return null;
 	}
 
-	
-
 }

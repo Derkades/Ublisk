@@ -153,7 +153,6 @@ public class PlayerInteract implements Listener {
 			UPlayer player = UPlayer.get(event.getPlayer());
 			
 			if (gold !=0){
-				//player.getInventory().addItem(new ItemStack(Material.GOLD_NUGGET, gold));
 				new ItemBuilder(Material.GOLD_NUGGET)
 				.setAmount(gold)
 				.addToInventory(player);
@@ -164,11 +163,9 @@ public class PlayerInteract implements Listener {
 			}
 			
 			if (life != 0){
-				//player.addLifeCrystals(life);
 				player.setLifeCrystals(player.getLifeCrystals() + life);
 			}
 			
-			//player.tracker(Tracker.VOTING_BOXES_OPENED);
 			player.tracker(Tracker.VOTE_BOX);
 			
 			Logger.log(LogLevel.DEBUG, "Gold: " + gold + " | XP: " + xp + " | Life: " + life);

@@ -48,7 +48,6 @@ public class AsyncPlayerChat implements Listener {
 		String format = DARK_GRAY + "[" + GRAY + level + DARK_GRAY + "] " + prefix + " " + player.getName() + DARK_GRAY + ": " + chatColor + event.getMessage();
 		event.setFormat(format);
 		
-		//Tracker.CHAT_MESSAGES.add(player.getPlayer());
 		player.tracker(Tracker.CHAT_MESSAGES);
 		
 		if (player.isAfk()){

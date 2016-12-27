@@ -30,17 +30,6 @@ public class Exp {
 	}
 	
 	/**
-	 * Adds experience points
-	 * @param player
-	 * @param Number of experience points
-	 */
-	@Deprecated
-	public static void add(Player player, int i){
-		set(player, get(player) + i);
-		refresh(player);
-	}
-	
-	/**
 	 * Gets a player's XP as stored in file
 	 * @param Player
 	 * @return XP (not level!)

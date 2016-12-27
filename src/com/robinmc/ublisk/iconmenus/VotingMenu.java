@@ -26,7 +26,6 @@ public class VotingMenu {
 					player.sendMessage(Message.VOTE_BOX_INSUFFICIENT_POINTS);
 					event.setWillDestroy(false);
 				} else {
-					//player.removeVotingPoints(3);
 					player.setVotingPoints(player.getVotingPoints() - 3);
 					Voting.openVotingBox(player.getPlayer());
 				}

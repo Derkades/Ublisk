@@ -34,7 +34,6 @@ public class EntityDeath implements Listener {
 				return;
 			}
 			
-			//player.tracker(Tracker.MOB_KILLS);
 			player.tracker(Tracker.MOB_KILLS);
 			
 			try {

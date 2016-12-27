@@ -16,7 +16,6 @@ public class InvUtils {
 	
 	public static String path = Main.getInstance().getDataFolder() + "\\inv";
 	
-	// https://bukkit.org/threads/save-inventory-to-config-file.164890/ Post #9 (Modified)
 	public static void saveIntentory(String path, Player player){
 		YamlConfiguration c = new YamlConfiguration();
 		c.set("inventory.armor", player.getInventory().getArmorContents());
@@ -28,7 +27,6 @@ public class InvUtils {
 		}
 	}
 	
-	// https://bukkit.org/threads/save-inventory-to-config-file.164890/ Post #9 (Modified)
     public static void restoreInventory(String path, Player player){
     	File file = new File(path, player.getName()+".yml");
         YamlConfiguration c = YamlConfiguration.loadConfiguration(file);

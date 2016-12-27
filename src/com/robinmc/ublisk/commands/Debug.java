@@ -110,7 +110,6 @@ public class Debug implements CommandExecutor {
 						player.getPlayer().openInventory(inv);
 						return true;
 					} else if (args[0].equals("skull")){
-						//player.getInventory().add(new ItemBuilder(args[1]).getItemStack());
 						new ItemBuilder(args[1]).addToInventory(player);
 						return true;
 					} else {
@@ -147,9 +146,6 @@ public class Debug implements CommandExecutor {
 						}
 						return true;
 					} else if (args[0].equals("sword")){
-						//for (SwordsmanWeapon weapon : SwordsmanWeapon.values()){
-						//	player.getInventory().addWeapon(weapon);
-						//}
 						player.getInventory().addItem(new WoodenShortSword().getItemStack());
 						return true;
 					} else if (args[0].equals("day")){

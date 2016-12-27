@@ -42,9 +42,6 @@ public class PlayerInteractEntity implements Listener {
 		
 		final UPlayer player = UPlayer.get(event);
 		
-		//player.tracker(Tracker.RIGHT_CLICKED);
-		
-		
 		if (entity instanceof ArmorStand && player.getGameMode() != GameMode.CREATIVE){
 			event.setCancelled(true);
 		}

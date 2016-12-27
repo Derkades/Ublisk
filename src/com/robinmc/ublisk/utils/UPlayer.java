@@ -79,18 +79,6 @@ public class UPlayer {
 		DataFile.LIFE_CRYSTAL.set("life." + getUniqueId(), amount);
 	}
 	
-	@Deprecated
-	public void addLifeCrystals(int amount){
-		int old = getLifeCrystals();
-		setLifeCrystals(old + amount);
-	}
-	
-	@Deprecated
-	public void removeLifeCrystals(int amount){
-		int old = getLifeCrystals();
-		setLifeCrystals(old - amount);
-	}
-	
 	public int getLifeCrystals(){
 		if (DataFile.LIFE_CRYSTAL.isSet("life." + getUniqueId())){
 			return DataFile.LIFE_CRYSTAL.getInteger("life." + getUniqueId());
@@ -116,16 +104,6 @@ public class UPlayer {
 	public void setVotingPoints(int i){
 		String path = "voting." + getUniqueId();
 		DataFile.VOTING.set(path, i);
-	}
-	
-	@Deprecated
-	public void addVotingPoints(int i){
-		setVotingPoints(getVotingPoints() + i);
-	}
-	
-	@Deprecated
-	public void removeVotingPoints(int i){
-		setVotingPoints(getVotingPoints() - i);
 	}
 	
 	public boolean hasVotingPoints(int i){
@@ -424,16 +402,6 @@ public class UPlayer {
 		return Money.get(player) >= amount;
 	}
 	
-	@Deprecated
-	public void addMoney(int amount){
-		setMoney(getMoney() + amount);
-	}
-	
-	@Deprecated
-	public void removeMoney(int amount){
-		setMoney(getMoney() - amount);
-	}
-	
 	public void sendPacket(@SuppressWarnings("rawtypes") Packet packet){
 		((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
 	}
@@ -518,11 +486,6 @@ public class UPlayer {
 			return Town.INTRODUCTION;
 		
 		return Town.fromString(s);
-	}
-	
-	@Deprecated
-	public Town getLastTown(){
-		return getTown();
 	}
 	
 	public void setLastTown(Town town){
