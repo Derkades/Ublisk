@@ -11,9 +11,12 @@ import static net.md_5.bungee.api.ChatColor.WHITE;
 import static net.md_5.bungee.api.ChatColor.YELLOW;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.weapons.abilities.Ability;
 import com.robinmc.ublisk.weapons.sword.Sword;
@@ -151,6 +154,24 @@ public abstract class Weapon {
 			lore.add(YELLOW + "Knockback resistance: " + GOLD + this.getKnockbackResistance());
 		
 		return lore.toArray(new String[]{});
+	}
+	
+	public static Set<Weapon> getWeapons(){
+		Set<Weapon> set = new HashSet<Weapon>();
+		for (WeaponEnum we : WeaponEnum.values()){
+			set.add(we.getWeapon());
+		}
+		return set;
+	}
+	
+	public static boolean itemStackIsWeapon(ItemStack item, Weapon weapon){
+		if (item.getType() != weapon.getMaterial()) 
+			return false;
+		
+		if (item.getItemMeta().getDisplayName() != weapon.getColoredName())
+			return false;
+		
+		return true;
 	}
 
 }
