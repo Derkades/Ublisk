@@ -26,30 +26,32 @@ public enum Command {
 	
 	private String cmd;
 	private CommandExecutor exec;
-	
-	Command(String cmd, CommandExecutor exec){
+
+	Command(String cmd, CommandExecutor exec) {
 		this.cmd = cmd;
 		this.exec = exec;
 	}
-	
-	private String getCommand(){
+
+	private String getCommand() {
 		return cmd;
 	}
-	
-	private CommandExecutor getExecutor(){
+
+	private CommandExecutor getExecutor() {
 		return exec;
 	}
-	
-	public static void registerAll(){
+
+	public static void registerAll() {
 		Logger.log(LogLevel.INFO, "Commands", "Registering commands...");
-		for (Command cmd : Command.values()){
-			Logger.log(LogLevel.INFO, "Commands", "Registered command with class " + cmd.getExecutor().getClass().getSimpleName());
+		for (Command cmd : Command.values()) {
+			Logger.log(LogLevel.INFO, "Commands",
+					"Registered command with class " + cmd.getExecutor().getClass().getSimpleName());
 			String command = cmd.getCommand();
 			CommandExecutor executor = cmd.getExecutor();
 			try {
 				Main.getInstance().getCommand(command).setExecutor(executor);
-			} catch (NullPointerException e){
-				Logger.log(LogLevel.SEVERE, "Commands", "The command /" + cmd.getCommand() + " is not specified in the plugin.yml file");
+			} catch (NullPointerException e) {
+				Logger.log(LogLevel.SEVERE, "Commands",
+						"The command /" + cmd.getCommand() + " is not specified in the plugin.yml file");
 			}
 		}
 	}
