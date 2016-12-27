@@ -5,7 +5,7 @@ import com.robinmc.ublisk.weapon.sword.AttackSpeed;
 
 public class WoodenShortSword extends WoodenSword {
 
-	WoodenShortSword() {
+	public WoodenShortSword() {
 		super("Wooden Short Sword", WeaponRarity.COMMON, "Insert description here", AttackSpeed.FASTEST, 3, -1, -1);
 	}
 
