@@ -117,6 +117,14 @@ public class UPlayer {
 			throw new IllegalArgumentException("Human is not a player");
 		}
 	}
+	
+	public UPlayer(OfflinePlayer offline){
+		if (offline.isOnline()){
+			this.player = offline.getPlayer();
+		} else {
+			throw new IllegalArgumentException("Player " + player.getName() + " is not online.");
+		}
+	}
 
 	public Player getPlayer() {
 		return player;
