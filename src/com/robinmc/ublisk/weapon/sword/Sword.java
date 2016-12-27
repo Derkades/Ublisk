@@ -24,7 +24,7 @@ public abstract class Sword extends Weapon {
 	
 	public ItemStack getItemStack(){
 		ItemStack item = new ItemBuilder(this.getMaterial())
-				.setName(this.getName())
+				.setName(this.getColoredName())
 				.setLore(this.getLore())
 				.getItemStack();
 		
