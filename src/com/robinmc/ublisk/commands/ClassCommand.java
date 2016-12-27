@@ -9,10 +9,10 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.iconmenus.ClassMenu;
 
 public class ClassCommand implements CommandExecutor {
-	
+
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
-		if (sender instanceof Player){
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			ClassMenu.open(player);
 			return true;
