@@ -12,7 +12,9 @@ import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Particle;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
 
@@ -85,12 +87,20 @@ public class Ublisk {
 		return UUIDUtils.getPlayerFromId(UUID.fromString(uuid));
 	}
 	
+	/**
+	 * Broadcasts a message. This message will not appear in the console
+	 * @param message Message to be sent.
+	 */
 	public static void broadcastMessage(Message message){
 		for (Player player : Bukkit.getOnlinePlayers()){
 			player.sendMessage(message.toString());
 		}
 	}
 	
+	/**
+	 * Broadcasts a message. This message will not appear in the console
+	 * @param message
+	 */
 	public static void broadcastMessage(String message){
 		for (Player player : Bukkit.getOnlinePlayers()){
 			player.sendMessage(message.toString());
@@ -99,6 +109,20 @@ public class Ublisk {
 	
 	public static Server getServer(){
 		return Bukkit.getServer();
+	}
+	
+	public static void spawnParticle(Particle particle, Location location, int count, double offsetX, double offsetY, double offsetZ, double speed){
+		Var.WORLD.spawnParticle(particle, location, count, offsetX, offsetY, offsetZ, speed);
+	}
+	
+	/**
+	 * Spawns an explosion at the specified location. This explosion will not destroy blocks
+	 * @param loc Location
+	 * @param power The explosion radius (e.g. 0.2f)
+	 * @param spawnFire Whether this explosion should spawn fire.
+	 */
+	public static void createExplosion(Location loc, float power, boolean spawnFire){
+		Var.WORLD.createExplosion(loc.getX(), loc.getY(), loc.getZ(), power, spawnFire, false);
 	}
 
 }
