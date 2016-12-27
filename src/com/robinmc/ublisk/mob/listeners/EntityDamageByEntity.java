@@ -1,7 +1,7 @@
 package com.robinmc.ublisk.mob.listeners;
 
 import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -15,7 +15,7 @@ public class EntityDamageByEntity implements Listener {
 	
 	@EventHandler(ignoreCancelled = true)
 	public void useWeapon(EntityDamageByEntityEvent event){
-		if (event.getDamager().getType() == EntityType.PLAYER){
+		if (event.getDamager() instanceof Player){
 			UPlayer player = new UPlayer(event.getDamager());
 			PlayerInventory inv = player.getInventory();
 			Material item = inv.getItemInMainHand().getType();
