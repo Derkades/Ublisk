@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.abilities.AbilityListener;
 import com.robinmc.ublisk.ext.com.sethbling.blinghomingarrows.HomingArrowsListener;
 import com.robinmc.ublisk.mob.CreatureSpawn;
 import com.robinmc.ublisk.mob.listeners.EntityCombust;
@@ -13,6 +12,7 @@ import com.robinmc.ublisk.mob.listeners.EntityDeath;
 import com.robinmc.ublisk.quest.NPCClickListener;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.weapons.abilities.AbilityListener;
 
 public class Listeners {
 	

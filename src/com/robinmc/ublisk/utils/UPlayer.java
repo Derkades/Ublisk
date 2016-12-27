@@ -35,7 +35,6 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.VoteRestart;
-import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.money.Money;
 import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.quest.Quest;
@@ -57,6 +56,7 @@ import com.robinmc.ublisk.utils.inventory.InvUtils;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
+import com.robinmc.ublisk.weapons.abilities.Ability;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;

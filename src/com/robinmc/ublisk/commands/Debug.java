@@ -18,7 +18,6 @@ import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.abilities.swordsman.TestAbility;
 import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.quest.NPC;
@@ -32,7 +31,8 @@ import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
-import com.robinmc.ublisk.weapon.sword.wood.WoodenShortSword;
+import com.robinmc.ublisk.weapons.abilities.TestAbility;
+import com.robinmc.ublisk.weapons.sword.wood.WoodenShortSword;
 
 import net.md_5.bungee.api.ChatColor;
 

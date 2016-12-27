@@ -1,13 +1,13 @@
-package com.robinmc.ublisk.weapon.sword;
+package com.robinmc.ublisk.weapons.sword;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.utils.inventory.InvUtils;
 import com.robinmc.ublisk.utils.inventory.ItemBuilder;
-import com.robinmc.ublisk.weapon.Weapon;
-import com.robinmc.ublisk.weapon.WeaponRarity;
+import com.robinmc.ublisk.weapons.Weapon;
+import com.robinmc.ublisk.weapons.WeaponRarity;
+import com.robinmc.ublisk.weapons.abilities.Ability;
 
 import net.minecraft.server.v1_11_R1.NBTTagCompound;
 import net.minecraft.server.v1_11_R1.NBTTagList;

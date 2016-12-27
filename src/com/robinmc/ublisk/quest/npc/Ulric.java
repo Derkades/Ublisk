@@ -12,7 +12,7 @@ import com.robinmc.ublisk.quest.NPCInfo.NPCLocation;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.weapon.sword.wood.BasicWoodenSword;
+import com.robinmc.ublisk.weapons.sword.wood.BasicWoodenSword;
 
 public class Ulric extends NPC {
 	

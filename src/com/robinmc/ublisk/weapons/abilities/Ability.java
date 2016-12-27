@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.abilities;
+package com.robinmc.ublisk.weapons.abilities;
 
 import com.robinmc.ublisk.utils.UPlayer;
 

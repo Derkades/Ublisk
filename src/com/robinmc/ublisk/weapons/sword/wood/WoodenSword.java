@@ -1,11 +1,11 @@
-package com.robinmc.ublisk.weapon.sword.wood;
+package com.robinmc.ublisk.weapons.sword.wood;
 
 import org.bukkit.Material;
 
-import com.robinmc.ublisk.abilities.Ability;
-import com.robinmc.ublisk.weapon.WeaponRarity;
-import com.robinmc.ublisk.weapon.sword.AttackSpeed;
-import com.robinmc.ublisk.weapon.sword.Sword;
+import com.robinmc.ublisk.weapons.WeaponRarity;
+import com.robinmc.ublisk.weapons.abilities.Ability;
+import com.robinmc.ublisk.weapons.sword.AttackSpeed;
+import com.robinmc.ublisk.weapons.sword.Sword;
 
 public abstract class WoodenSword extends Sword {
 

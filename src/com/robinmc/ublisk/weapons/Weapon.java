@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.weapon;
+package com.robinmc.ublisk.weapons;
 
 import static net.md_5.bungee.api.ChatColor.BOLD;
 import static net.md_5.bungee.api.ChatColor.DARK_AQUA;
@@ -15,8 +15,8 @@ import java.util.List;
 
 import org.bukkit.Material;
 
-import com.robinmc.ublisk.abilities.Ability;
-import com.robinmc.ublisk.weapon.sword.Sword;
+import com.robinmc.ublisk.weapons.abilities.Ability;
+import com.robinmc.ublisk.weapons.sword.Sword;
 
 public abstract class Weapon {
 	

@@ -1,8 +1,8 @@
-package com.robinmc.ublisk.weapon.sword.wood;
+package com.robinmc.ublisk.weapons.sword.wood;
 
-import com.robinmc.ublisk.abilities.swordsman.TestAbility;
-import com.robinmc.ublisk.weapon.WeaponRarity;
-import com.robinmc.ublisk.weapon.sword.AttackSpeed;
+import com.robinmc.ublisk.weapons.WeaponRarity;
+import com.robinmc.ublisk.weapons.abilities.TestAbility;
+import com.robinmc.ublisk.weapons.sword.AttackSpeed;
 
 public class WoodenShortSword extends WoodenSword {
 

@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.weapon.sword;
+package com.robinmc.ublisk.weapons.sword;
 
 public enum AttackSpeed {
 	

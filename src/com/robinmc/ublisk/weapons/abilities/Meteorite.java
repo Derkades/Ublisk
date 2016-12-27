@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.abilities.swordsman;
+package com.robinmc.ublisk.weapons.abilities;
 
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -11,7 +11,6 @@ import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.abilities.Ability;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 

@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.abilities;
+package com.robinmc.ublisk.weapons.abilities;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
