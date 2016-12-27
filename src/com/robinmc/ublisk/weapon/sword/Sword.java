@@ -1,26 +1,29 @@
 package com.robinmc.ublisk.weapon.sword;
 
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.utils.inventory.InvUtils;
 import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.weapon.Weapon;
+import com.robinmc.ublisk.weapon.WeaponRarity;
 
 import net.minecraft.server.v1_11_R1.NBTTagCompound;
 import net.minecraft.server.v1_11_R1.NBTTagList;
 
 public abstract class Sword extends Weapon {
 	
-	/**
-	 *  Determines speed at which attack strength recharges.
-	 * <br><br>
-	 * AttackSpeed.VANILLA - "Slow"
-	 * <br>
-	 * AttackSpeed.FASTER - "Medium"
-	 * <br>
-	 * AttackSpeed.FASTEST - "Fast"
-	 */
-	public abstract AttackSpeed getAttackSpeed();
+	private AttackSpeed attackSpeed;
+	
+	protected Sword(String name, Material material, WeaponRarity rarity, String tagline, AttackSpeed attackSpeed, int damage, double movementSpeed, double knockbackResistance) {
+		super(name, material, rarity, tagline, damage, movementSpeed, knockbackResistance);
+		
+		this.attackSpeed = attackSpeed;
+	}
+	
+	public AttackSpeed getAttackSpeed(){
+		return attackSpeed;
+	}
 	
 	public ItemStack getItemStack(){
 		ItemStack item = new ItemBuilder(this.getMaterial())

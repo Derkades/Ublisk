@@ -19,40 +19,88 @@ import com.robinmc.ublisk.weapon.sword.Sword;
 
 public abstract class Weapon {
 	
-	public abstract String getName();
-	
-	public abstract Material getMaterial();
-	
-	public abstract WeaponRarity getRarity();
-	
-	public abstract String getTagLine();
-	
-	/**
-	 * <b>Damage dealt by attacks, in half-hearts. For example: 3 means 3 half-hearts so 1.5 hearts.</b>
-	 * <br><br>
-	 * Minimum: 0.0
-	 * <br>
-	 * Maximum: --
-	 */
-	public abstract int getDamage();
+	private String name;
+	private Material material;
+	private WeaponRarity rarity;
+	private String tagline;
+	private int damage;
+	private double movementSpeed;
+	private double knockbackResistance;
 	
 	/**
-	 * Speed of movement. <b>For vanilla use -1</b>
-	 * <br><br>
-	 * Minimum: 0.0
-	 * <br>
-	 * Maximum: --
+	 * Represents a weapon of any type.
+	 * @param name Weapon display name, for example "Diamond Long Sword"
+	 * @param material
+	 * @param rarity
+	 * @param tagline
+	 * @param damage Damage dealt by attacks, in half-hearts. For example: 3 means 3 half-hearts so 1.5 hearts. Must be a value higher than 0.
+	 * @param movementSpeed Speed of movement. Value higher than 0. For vanilla movement speed use -1.
+	 * @param knockbackResistance The chance to resist knockback from attacks, explosions, and projectiles. 1.0 is 100% chance for resistance. For vanilla use -1
 	 */
-	public abstract double getMovementSpeed();
+	protected Weapon(String name, Material material, WeaponRarity rarity, String tagline, int damage, double movementSpeed, double knockbackResistance){
+		if (name == null){
+			throw new IllegalArgumentException("Weapon name must not be null"); 
+		}
+		this.name = name;
+		
+		if (material == null){
+			throw new IllegalArgumentException("Material must not be null");
+		}
+		this.material = material;
+		
+		if (rarity == null){
+			throw new IllegalArgumentException("Weapon rarity must not be null");
+		}
+		this.rarity = rarity;
+		
+		if (tagline == null){
+			throw new IllegalArgumentException("Tagline must not be null. If you don't want a tagline use \"\"");
+		}
+		this.tagline = tagline;
+		
+		if (damage < 0){
+			throw new IllegalArgumentException("Damage must not be less than 0");
+		}
+		this.damage = damage;
+		
+		if (movementSpeed < 0 && movementSpeed != -1){
+			throw new IllegalArgumentException("Movement speed must be either -1 or a value higher than 0.");
+		}
+		this.movementSpeed = movementSpeed;
+		
+		if ((knockbackResistance < 0 || knockbackResistance > 1) && knockbackResistance != -1){
+			throw new IllegalArgumentException("Knockback resistance must be either -1 or a value between 0 and 1.");
+		}
+		this.knockbackResistance = knockbackResistance;
+	}
 	
-	/**
-	 * The chance to resist knockback from attacks, explosions, and projectiles. 1.0 is 100% chance for resistance. <b>For vanilla use -1</b>
-	 * <br><br>
-	 * Minimum: 0.0
-	 * <br>
-	 * Maximum: 1.0
-	 */
-	public abstract double getKnockbackResistance();
+	public String getName(){
+		return name;
+	}
+	
+	public Material getMaterial(){
+		return material;
+	}
+	
+	public WeaponRarity getRarity(){
+		return rarity;
+	}
+	
+	public String getTagLine(){
+		return tagline;
+	}
+	
+	public int getDamage(){
+		return damage;
+	}
+	
+	public double getMovementSpeed(){
+		return movementSpeed;
+	}
+	
+	public double getKnockbackResistance(){
+		return knockbackResistance;
+	}
 	
 	public String getColoredName(){
 		String color = WHITE + "";
