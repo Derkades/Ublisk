@@ -1,8 +1,11 @@
 package com.robinmc.ublisk.utils;
 
 import static org.bukkit.ChatColor.DARK_GRAY;
+import static org.bukkit.ChatColor.GOLD;
+import static org.bukkit.ChatColor.GRAY;
 import static org.bukkit.ChatColor.GREEN;
 import static org.bukkit.ChatColor.RED;
+import static org.bukkit.ChatColor.YELLOW;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -123,6 +126,14 @@ public class Ublisk {
 	 */
 	public static void createExplosion(Location loc, float power, boolean spawnFire){
 		Var.WORLD.createExplosion(loc.getX(), loc.getY(), loc.getZ(), power, spawnFire, false);
+	}
+	
+	public static String getPrefix(){
+		return getPrefix("Ublisk");
+	}
+	
+	public static String getPrefix(String string){
+		return GOLD + string + GRAY + " >> " + YELLOW;
 	}
 
 }

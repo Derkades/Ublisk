@@ -396,9 +396,9 @@ public class UPlayer {
 	}
 
 	public void sendPrivateMessage(UPlayer sender, String msg) {
-		player.sendMessage(Message.prefix("Private Message") + sender.getName() + ChatColor.DARK_GRAY + ": "
+		player.sendMessage(Ublisk.getPrefix("Private Message") + sender.getName() + ChatColor.DARK_GRAY + ": "
 				+ ChatColor.RESET + ChatColor.BOLD + msg);
-		sender.sendMessage(Message.prefix("Private Message") + ChatColor.AQUA + " -> " + player.getName()
+		sender.sendMessage(Ublisk.getPrefix("Private Message") + ChatColor.AQUA + " -> " + player.getName()
 				+ ChatColor.DARK_GRAY + ": " + ChatColor.RESET + ChatColor.BOLD + msg);
 	}
 

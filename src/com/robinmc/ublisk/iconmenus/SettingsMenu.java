@@ -3,10 +3,10 @@ package com.robinmc.ublisk.iconmenus;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.settings.Setting;
 
 public class SettingsMenu {
@@ -36,7 +36,7 @@ public class SettingsMenu {
 			else 
 				enabledDisabled = "disabled";
 				
-			player.sendMessage(Message.prefix("Settings") + name + " has been " + enabledDisabled + ".");
+			player.sendMessage(Ublisk.getPrefix("Settings") + name + " has been " + enabledDisabled + ".");
 			
 		}
 	});

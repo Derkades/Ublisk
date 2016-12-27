@@ -10,6 +10,7 @@ import static org.bukkit.ChatColor.RESET;
 import static org.bukkit.ChatColor.YELLOW;
 
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.guilds.Guild;
 
 public enum Message {
@@ -92,12 +93,12 @@ public enum Message {
 		return msg;
 	}
 	
-	static String prefix(){
-		return prefix("Ublisk");
+	private static String prefix(){
+		return Ublisk.getPrefix();
 	}
 	
-	public static String prefix(String string){
-		return GOLD + string + GRAY + " >> " + YELLOW;
+	private static String prefix(String string){
+		return Ublisk.getPrefix(string);
 	}
 	
 	public static class Complicated {
