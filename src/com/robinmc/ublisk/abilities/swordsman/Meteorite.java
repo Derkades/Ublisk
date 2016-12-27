@@ -28,10 +28,11 @@ public class Meteorite extends Ability {
 	@Override
 	public void run(final UPlayer player) {
 		new BukkitRunnable() {
+
 			Location loc = player.getLocation();
 
 			double t = 12;
-			
+
 			public void run() {
 				t = t + 0.6;
 

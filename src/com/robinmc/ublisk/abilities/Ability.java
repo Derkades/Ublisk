@@ -3,30 +3,29 @@ package com.robinmc.ublisk.abilities;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public abstract class Ability {
-	
+
 	private int mana;
 	private int minLevel;
-	
-	public Ability(int mana, int minLevel){
+
+	public Ability(int mana, int minLevel) {
 		this.mana = mana;
 		this.minLevel = minLevel;
 	}
-	
-	public int getMana(){
+
+	public int getMana() {
 		return mana;
 	}
-	
-	public int getMinimumLevel(){
+
+	public int getMinimumLevel() {
 		return minLevel;
 	}
-	
+
 	public abstract void run(UPlayer player);
-	
-	
+
 	/*
 	TEST(4, 0, new TestAbility(), new AbilityTrigger(Material.WOOD_SWORD, TriggerType.RIGHT_CLICK)),
 	TEST2(10, 0, new Meteorite(), new AbilityTrigger(Material.GOLD_SWORD, TriggerType.RIGHT_CLICK));*/
-	
+
 	/*
 	private int mana;
 	private int minLevel;

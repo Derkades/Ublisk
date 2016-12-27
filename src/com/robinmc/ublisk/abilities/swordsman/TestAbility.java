@@ -12,13 +12,14 @@ import com.robinmc.ublisk.utils.Ublisk;
 
 public class TestAbility extends Ability {
 
-	public TestAbility(){
+	public TestAbility() {
 		super(5, 0); //TODO Min level
 	}
 
 	@Override
 	public void run(final UPlayer player) {
 		new BukkitRunnable() {
+
 			double t = 0;
 			Location loc = player.getLocation();
 
@@ -35,12 +36,11 @@ public class TestAbility extends Ability {
 				if (t > 20) {
 					this.cancel();
 					loc.add(x, y, z);
-					
+
 					Ublisk.createExplosion(loc, 1.5f, false);
 				}
 			}
 		}.runTaskTimer(Main.getInstance(), 0, 1);
 	}
-
 
 }
