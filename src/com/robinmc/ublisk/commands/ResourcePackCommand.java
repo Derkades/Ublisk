@@ -1,5 +1,7 @@
 package com.robinmc.ublisk.commands;
 
+import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -22,7 +24,7 @@ public class ResourcePackCommand implements CommandExecutor {
 		UPlayer player = new UPlayer(sender);
 		
 		if (args.length == 1 && args[0].equalsIgnoreCase("check")){
-			Ublisk.sendConsoleCommand("execute " + player.getName() + " ~ ~ ~ particle mobappearance ~ ~ ~ 0 0 1 50"); //TODO Use bukkit API
+			Ublisk.spawnParticle(Particle.MOB_APPEARANCE, new Location(Var.WORLD, 0, 0, 0), 1, 0, 0, 0, 0);
 			player.sendMessage(Message.PACK_CHECK);
 			return true;
 		} else if (args.length == 0){
