@@ -68,14 +68,21 @@ public class UPlayer {
 	private Player player;
 
 	public UPlayer(Player player) {
+		if (player == null)
+			throw new IllegalArgumentException("Player must not be null");
+		
 		this.player = player;
 	}
 
 	public UPlayer(UUID uuid) {
+		if (uuid == null)
+			throw new IllegalArgumentException("UUID must not be null");
 		this.player = Bukkit.getPlayer(uuid);
 	}
 
 	public UPlayer(String name) throws PlayerNotFoundException {
+		if (name == null)
+			throw new IllegalArgumentException("Name must not be null");
 		this.player = UUIDUtils.getPlayerFromName(name);
 	}
 
@@ -88,10 +95,15 @@ public class UPlayer {
 	}
 
 	public UPlayer(PlayerEvent event) {
+		if (event == null)
+			throw new IllegalArgumentException("Event must not be null");
 		this.player = event.getPlayer();
 	}
 
 	public UPlayer(EntityEvent event) {
+		if (event == null)
+			throw new IllegalArgumentException("Event must not be null");
+		
 		Entity entity = event.getEntity();
 		if (entity instanceof Player) {
 			this.player = (Player) entity;
@@ -101,6 +113,9 @@ public class UPlayer {
 	}
 
 	public UPlayer(Entity entity) {
+		if (entity == null)
+			throw new IllegalArgumentException("Entity must not be null");
+		
 		if (entity instanceof Player) {
 			this.player = (Player) entity;
 		} else {
@@ -109,6 +124,9 @@ public class UPlayer {
 	}
 
 	public UPlayer(HumanEntity human) {
+		if (human == null)
+			throw new IllegalArgumentException("HumanEntity must not be null");
+		
 		if (human instanceof Player) {
 			this.player = (Player) human;
 		} else {
@@ -117,6 +135,9 @@ public class UPlayer {
 	}
 
 	public UPlayer(OfflinePlayer offline) {
+		if (offline == null)
+			throw new IllegalArgumentException("OfflinePlayer must not be null");
+		
 		if (offline.isOnline()) {
 			this.player = offline.getPlayer();
 		} else {
