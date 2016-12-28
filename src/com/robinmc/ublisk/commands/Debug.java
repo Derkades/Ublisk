@@ -178,27 +178,29 @@ public class Debug implements CommandExecutor {
 						final Block block = player.getLocation().getBlock();
 						block.setType(Material.STONE);
 						new BukkitRunnable() {
+
 							public void run() {
 								block.setType(Material.AIR);
 							}
 						}.runTaskLater(Main.getInstance(), 5);
 						return true;
-					} else if (args[0].equals("sword")){
+					} else if (args[0].equals("sword")) {
 						PlayerInventory inv = player.getInventory();
-						
-						for (Weapon weapon : Weapon.getWeapons()){
-							if (weapon instanceof Sword){
+
+						for (Weapon weapon : Weapon.getWeapons()) {
+							if (weapon instanceof Sword) {
 								inv.addItem(((Sword) weapon).getItemStack());
 							}
 						}
 						return true;
-					} else if (args[0].equals("weapontest")){
-						for (Weapon weapon : Weapon.getWeapons()){
-							player.sendMessage(Weapon.itemStackIsWeapon(player.getInventory().getItemInMainHand(), weapon));
+					} else if (args[0].equals("weapontest")) {
+						for (Weapon weapon : Weapon.getWeapons()) {
+							player.sendMessage(
+									Weapon.itemStackIsWeapon(player.getInventory().getItemInMainHand(), weapon));
 						}
 						return true;
-					} else if (args[0].equals("version")){
-						File pluginJar = new File(Main.getInstance().getDataFolder().getParentFile(), "Ublisk.jar");	
+					} else if (args[0].equals("version")) {
+						File pluginJar = new File(Main.getInstance().getDataFolder().getParentFile(), "Ublisk.jar");
 						long lastModified = pluginJar.lastModified();
 						SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 						String formatted = format.format(lastModified);
