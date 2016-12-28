@@ -36,7 +36,7 @@ public class TestAbility extends Ability {
 					this.cancel();
 					loc.add(x, y, z);
 
-					Ublisk.createExplosion(loc, 1.5f, false);
+					Ublisk.createExplosion(loc, 2.0f, false);
 				}
 			}
 		}.runTaskTimer(Main.getInstance(), 0, 1);
