@@ -696,49 +696,4 @@ public class UPlayer {
 		return player.getUniqueId().toString();
 	}
 
-	@Deprecated
-	public static UPlayer fromUUID(UUID uuid) {
-		return new UPlayer(Bukkit.getPlayer(uuid));
-	}
-
-	@Deprecated
-	public static UPlayer get(Player player) {
-		return new UPlayer(player);
-	}
-
-	@Deprecated
-	public static UPlayer get(CommandSender sender) {
-		return get((Player) sender);
-	}
-
-	@Deprecated
-	public static UPlayer get(String name) throws PlayerNotFoundException {
-		return get(UUIDUtils.getPlayerFromName(name));
-	}
-
-	@Deprecated
-	public static UPlayer get(OptionClickEvent event) {
-		return get(event.getPlayer());
-	}
-
-	@Deprecated
-	public static UPlayer get(InventoryClickEvent event) {
-		return get(event.getWhoClicked());
-	}
-
-	@Deprecated
-	public static UPlayer get(PlayerEvent event) {
-		return get(event.getPlayer());
-	}
-
-	@Deprecated
-	public static UPlayer get(EntityEvent event) {
-		Entity entity = event.getEntity();
-		if (entity instanceof Player) {
-			return UPlayer.get(event.getEntity());
-		} else {
-			return null;
-		}
-	}
-
 }
