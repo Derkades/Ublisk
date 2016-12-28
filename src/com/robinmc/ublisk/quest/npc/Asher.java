@@ -9,7 +9,7 @@ public class Asher extends NPC {
 
 	@Override
 	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Asher", null, false, new NPCLocation(449.3, 70, -10.5));  // TODO Profession
+		return new NPCInfo("Asher", null, false, new NPCLocation(449.3, 70, -10.5));  // XXX Profession
 	}
 	
 	@Override
