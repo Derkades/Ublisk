@@ -18,6 +18,9 @@ import java.util.Set;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.utils.java.ListUtils;
 import com.robinmc.ublisk.weapons.abilities.Ability;
 import com.robinmc.ublisk.weapons.sword.Sword;
 
@@ -168,11 +171,35 @@ public abstract class Weapon {
 	}
 	
 	public static boolean itemStackIsWeapon(ItemStack item, Weapon weapon){
-		if (item.getType() != weapon.getMaterial()) 
-			return false;
+
+		// TODO Make this code readable
 		
-		if (item.getItemMeta().getDisplayName().equals(weapon.getColoredName()))
+		if (!item.getType().equals(weapon.getMaterial())){
 			return false;
+		}
+
+		if (item.getItemMeta() == null){ 
+			Logger.log(LogLevel.DEBUG, "ItemMeta null");
+			return false;
+		} else {
+			if (item.getItemMeta().getDisplayName() == null){
+				Logger.log(LogLevel.DEBUG, "Displayname null");
+				return false;
+			} else {
+				if (!item.getItemMeta().getDisplayName().equals(weapon.getColoredName())){
+					return false;
+				}
+			}
+			
+			if (item.getItemMeta().getLore() == null){
+				Logger.log(LogLevel.DEBUG, "Lore null");
+				return false;
+			} else {
+				if (!ListUtils.stringListContainsString(item.getItemMeta().getLore(), weapon.getTagLine())){
+					return false;
+				}
+			}
+		}
 		
 		return true;
 	}
