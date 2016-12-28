@@ -2,21 +2,12 @@ package com.robinmc.ublisk.weapons.abilities;
 
 import org.bukkit.Location;
 import org.bukkit.Particle;
-import org.bukkit.craftbukkit.v1_11_R1.entity.CraftEntity;
-import org.bukkit.entity.Creeper;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
-
-import net.minecraft.server.v1_11_R1.Entity;
-import net.minecraft.server.v1_11_R1.EntityLiving;
-import net.minecraft.server.v1_11_R1.NBTTagCompound;
 
 public class Meteorite extends Ability {
 
@@ -57,16 +48,7 @@ public class Meteorite extends Ability {
 				if (loc.getY() < (player.getLocation().getY() + 1.5)) {
 					this.cancel();
 
-					Creeper creeper = Var.WORLD.spawn(loc, Creeper.class);
-
-					creeper.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 1000000 * 20, 0, true));
-
-					Entity nms = ((CraftEntity) creeper).getHandle();
-					NBTTagCompound nbt = new NBTTagCompound();
-					nms.c(nbt);
-					nbt.setInt("Fuse", 0);
-					EntityLiving living = (EntityLiving) nms;
-					living.a(nbt);
+					Ublisk.createExplosion(loc, 2.0f, true);
 				}
 
 				loc.subtract(x, y, z);
