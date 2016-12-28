@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.utils;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -32,6 +33,13 @@ public class PacketListener {
 						serverSocket.receive(receivePacket);
 						final String string = new String(receivePacket.getData(), 0, receivePacket.getLength());
 						runnable.onPacketRecieved(string);
+					}
+				} catch (BindException e) {
+					if (e.getMessage().contains("in use")) {
+						Logger.log(LogLevel.WARNING,
+								"Could not start listener on port " + port + ", because this port is already in use.");
+					} else {
+						e.printStackTrace();
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
