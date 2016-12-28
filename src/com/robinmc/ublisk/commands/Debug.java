@@ -200,7 +200,7 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("version")){
 						File pluginJar = new File(Main.getInstance().getDataFolder().getParentFile(), "Ublisk.jar");	
 						long lastModified = pluginJar.lastModified();
-						SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
+						SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 						String formatted = format.format(lastModified);
 						player.sendMessage("Last updated: " + formatted);
 						return true;
