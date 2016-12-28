@@ -1,5 +1,7 @@
 package com.robinmc.ublisk.commands;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -189,7 +191,19 @@ public class Debug implements CommandExecutor {
 								inv.addItem(((Sword) weapon).getItemStack());
 							}
 						}
-						return true;	
+						return true;
+					} else if (args[0].equals("weapontest")){
+						for (Weapon weapon : Weapon.getWeapons()){
+							player.sendMessage(Weapon.itemStackIsWeapon(player.getInventory().getItemInMainHand(), weapon));
+						}
+						return true;
+					} else if (args[0].equals("version")){
+						File pluginJar = new File(Main.getInstance().getDataFolder().getParentFile(), "Ublisk.jar");	
+						long lastModified = pluginJar.lastModified();
+						SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
+						String formatted = format.format(lastModified);
+						player.sendMessage("Last updated: " + formatted);
+						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE);
 						return true;
