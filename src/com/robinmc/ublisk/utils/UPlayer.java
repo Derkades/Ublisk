@@ -23,7 +23,6 @@ import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Player.Spigot;
 import org.bukkit.event.entity.EntityEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -41,7 +40,6 @@ import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
 import com.robinmc.ublisk.task.AfkTimer;
-import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
@@ -392,7 +390,7 @@ public class UPlayer {
 			throw new LastSenderUnknownException();
 		}
 
-		return UPlayer.get(HashMaps.LAST_MESSAGE_SENDER.get(player));
+		return new UPlayer(HashMaps.LAST_MESSAGE_SENDER.get(player));
 	}
 
 	public void sendPrivateMessage(UPlayer sender, String msg) {
