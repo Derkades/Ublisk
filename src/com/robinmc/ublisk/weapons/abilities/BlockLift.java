@@ -1,12 +1,16 @@
 package com.robinmc.ublisk.weapons.abilities;
 
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.FallingBlock;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
@@ -18,8 +22,11 @@ import com.robinmc.ublisk.utils.Ublisk;
 
 public class BlockLift extends Ability {
 
-	public BlockLift() {
+	private int damage;
+	
+	public BlockLift(int damage) {
 		super(1, 0); // TODO Min level TODO Mana
+		this.damage = damage;
 	}
 
 	@Override
@@ -53,6 +60,7 @@ public class BlockLift extends Ability {
 					// If lower block is solid and the two blocks above are air
 					if (below.getType().isSolid() && above.getType() == Material.AIR
 							&& aboveAbove.getType() == Material.AIR) {
+						Ublisk.spawnParticle(Particle.SMOKE_LARGE, blockCenterLocation, 15, 0, 0, 0, 0.365);
 						final FallingBlock fall = block.getWorld().spawnFallingBlock(blockCenterLocation,
 								new MaterialData(block.getType(), block.getData()));
 						final Vector velocity = fall.getVelocity();
@@ -63,17 +71,17 @@ public class BlockLift extends Ability {
 
 							@Override
 							public void run() {
-								velocity.setY(-2.0f); // Quickly drop the block
-								fall.setVelocity(velocity);
-								new BukkitRunnable() {
-
-									@Override
-									public void run() {
-										// Then shortly after than create explosion
-										blockCenterLocation.setY(blockCenterLocation.getY() + 1);
-										Ublisk.createExplosion(blockCenterLocation, 5f);
+								Ublisk.spawnParticle(Particle.FLAME, blockCenterLocation, 48, 1, 1, 1, 0.1);
+								double radius = 3D;
+								List<Entity> near = blockCenterLocation.getWorld().getEntities();
+								for (Entity entity : near) {
+									if (entity instanceof LivingEntity){
+										LivingEntity living = (LivingEntity) entity;
+										double distance = entity.getLocation().distance(blockCenterLocation);
+										if (distance <= radius)
+											living.damage(damage / distance);
 									}
-								}.runTaskLater(Main.getInstance(), 2);
+								}
 							}
 						}, 2 * 20);
 					} else {

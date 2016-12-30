@@ -7,7 +7,7 @@ import com.robinmc.ublisk.weapons.sword.AttackSpeed;
 public class BasicWoodenSword extends WoodenSword {
 
 	public BasicWoodenSword() {
-		super("Basic Wooden Sword", WeaponRarity.COMMON, "The sword you created yourself.", AttackSpeed.NORMAL, 1, -1, -1, new BlockLift());
+		super("Basic Wooden Sword", WeaponRarity.COMMON, "The sword you created yourself.", AttackSpeed.NORMAL, 1, -1, -1, new BlockLift(10));
 	}
 
 }
