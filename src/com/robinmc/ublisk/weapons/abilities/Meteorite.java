@@ -48,7 +48,7 @@ public class Meteorite extends Ability {
 				if (loc.getY() < (player.getLocation().getY() + 1.5)) {
 					this.cancel();
 
-					Ublisk.createExplosion(loc, 2.0f, true);
+					Ublisk.createExplosion(loc, 2.0f);
 				}
 
 				loc.subtract(x, y, z);

@@ -124,8 +124,8 @@ public class Ublisk {
 	 * @param power The explosion radius (e.g. 0.2f)
 	 * @param spawnFire Whether this explosion should spawn fire.
 	 */
-	public static void createExplosion(Location loc, float power, boolean spawnFire){
-		Var.WORLD.createExplosion(loc.getX(), loc.getY(), loc.getZ(), power, spawnFire, false);
+	public static void createExplosion(Location loc, float power) {
+		Var.WORLD.createExplosion(loc.getX(), loc.getY(), loc.getZ(), power, false, false);
 	}
 	
 	public static String getPrefix(){

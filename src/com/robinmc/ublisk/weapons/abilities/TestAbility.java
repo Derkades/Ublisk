@@ -38,7 +38,7 @@ public class TestAbility extends Ability {
 				// Stop if the ability has been going for some time or if it has hit a block.
 				if (t > 20 || block.getType() != Material.AIR) {
 					this.cancel();
-					Ublisk.createExplosion(loc, 2.0f, false);
+					Ublisk.createExplosion(loc, 2.0f);
 				}
 
 				loc.subtract(x, y, z);
