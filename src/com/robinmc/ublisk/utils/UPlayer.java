@@ -232,6 +232,10 @@ public class UPlayer {
 	public void sendMessage(TextComponent text) {
 		player.spigot().sendMessage(text);
 	}
+	
+	public void sendMessage(Message message) {
+		player.sendMessage(message.toString());
+	}
 
 	public void sendMessage(BaseComponent[] text) {
 		player.spigot().sendMessage(text);
@@ -421,9 +425,7 @@ public class UPlayer {
 				+ ChatColor.DARK_GRAY + ": " + ChatColor.RESET + ChatColor.BOLD + msg);
 	}
 
-	public void sendMessage(Message message) {
-		player.sendMessage(message.toString());
-	}
+
 
 	public boolean isInBuilderMode() {
 		// Check if an inventory file exists, because the item is deleted when a player goes out of builder mode.
