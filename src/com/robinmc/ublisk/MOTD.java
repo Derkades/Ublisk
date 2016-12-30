@@ -8,7 +8,7 @@ public enum MOTD {
 
 	MOTD_1(ChatColor.GREEN + "" + ChatColor.STRIKETHROUGH + "Wynncraft", ""),
 	MOTD_2(ChatColor.MAGIC + "OIJAMOIDJMOSAIJCDMOAISJM", ChatColor.YELLOW + "Ok"),
-	MOTD_3("Hello human being reading this!", "Why have you not joined yet!?!?");
+	MOTD_3("Hello human reading this!", "Why have you not joined yet!?!?");
 
 	private String lineOne;
 	private String lineTwo;
