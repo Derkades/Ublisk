@@ -1,7 +1,9 @@
 package com.robinmc.ublisk.weapons.abilities;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Particle;
+import org.bukkit.block.Block;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -12,7 +14,7 @@ import com.robinmc.ublisk.utils.Ublisk;
 public class TestAbility extends Ability {
 
 	public TestAbility() {
-		super(5, 0); //TODO Min level
+		super(5, 0); // TODO Min level
 	}
 
 	@Override
@@ -30,14 +32,16 @@ public class TestAbility extends Ability {
 				double z = direction.getZ() * t;
 				loc.add(x, y, z);
 				Ublisk.spawnParticle(Particle.FIREWORKS_SPARK, loc, 1, 0, 0, 0, 0);
-				loc.subtract(x, y, z);
 
-				if (t > 20) {
+				Block block = loc.getBlock();
+
+				// Stop if the ability has been going for some time or if it has hit a block.
+				if (t > 20 || block.getType() != Material.AIR) {
 					this.cancel();
-					loc.add(x, y, z);
-
 					Ublisk.createExplosion(loc, 2.0f, false);
 				}
+
+				loc.subtract(x, y, z);
 			}
 		}.runTaskTimer(Main.getInstance(), 0, 1);
 	}
