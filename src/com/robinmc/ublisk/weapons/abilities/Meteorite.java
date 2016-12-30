@@ -49,6 +49,9 @@ public class Meteorite extends Ability {
 					this.cancel();
 
 					Ublisk.createExplosion(loc, 2.0f);
+					
+					loc.setY(loc.getY() - 1);
+					Ublisk.spawnParticle(Particle.LAVA, loc, 100, 1, 0, 1, 0.5);
 				}
 
 				loc.subtract(x, y, z);
