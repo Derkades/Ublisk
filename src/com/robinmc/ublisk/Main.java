@@ -8,6 +8,7 @@ import com.robinmc.ublisk.listeners.Listeners;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.task.Task;
 import com.robinmc.ublisk.utils.DoubleXP;
+import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.PacketListener;
 
 public class Main extends JavaPlugin {
@@ -50,6 +51,12 @@ public class Main extends JavaPlugin {
 				DoubleXP.startDoubleXPPacketListener();
 			}
 		}.runTaskLater(this, 25);
+		
+		new BukkitRunnable() {
+			public void run() {
+				Logger.startSiteLogger();
+			}
+		}.runTaskLater(this, 30);
 
 	}
 

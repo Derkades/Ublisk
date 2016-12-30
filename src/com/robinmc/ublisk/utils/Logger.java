@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import org.bukkit.Bukkit;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.utils.PacketListener.PacketRecievedListener;
 import com.robinmc.ublisk.utils.java.FileUtils;
 
 import net.md_5.bungee.api.ChatColor;
@@ -40,6 +41,17 @@ public class Logger {
 
 	public static void log(LogLevel logLevel, Object object) {
 		log(logLevel, "Ublisk", object);
+	}
+	
+	public static void startSiteLogger(){
+		PacketListener.listenForPacket(6789, 256, new PacketRecievedListener(){
+
+			@Override
+			public void onPacketRecieved(String message) {
+				Logger.log(LogLevel.INFO, "Site", message);
+			}
+			
+		});
 	}
 
 	public static enum LogLevel {
