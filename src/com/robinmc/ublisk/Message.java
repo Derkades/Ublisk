@@ -1,17 +1,9 @@
 package com.robinmc.ublisk;
 
-import static org.bukkit.ChatColor.AQUA;
-import static org.bukkit.ChatColor.BOLD;
-import static org.bukkit.ChatColor.DARK_AQUA;
-import static org.bukkit.ChatColor.GOLD;
-import static org.bukkit.ChatColor.GRAY;
 import static org.bukkit.ChatColor.RED;
-import static org.bukkit.ChatColor.RESET;
 import static org.bukkit.ChatColor.YELLOW;
 
-import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
-import com.robinmc.ublisk.utils.guilds.Guild;
 
 public enum Message {
 	
