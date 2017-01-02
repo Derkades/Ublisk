@@ -106,8 +106,16 @@ public class Ublisk {
 	 */
 	public static void broadcastMessage(String message){
 		for (Player player : Bukkit.getOnlinePlayers()){
-			player.sendMessage(message.toString());
+			player.sendMessage(message);
 		}
+	}
+	
+	public static void broadcastPrefixedMessage(String message){
+		broadcastMessage(Ublisk.getPrefix() + message);
+	}
+	
+	public static void broadcastPrefixedMessage(String prefix, String message){
+		broadcastMessage(Ublisk.getPrefix(prefix) + message);
 	}
 	
 	public static Server getServer(){
