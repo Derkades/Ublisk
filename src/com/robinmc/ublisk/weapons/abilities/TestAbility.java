@@ -35,8 +35,8 @@ public class TestAbility extends Ability {
 
 				Block block = loc.getBlock();
 
-				// Stop if the ability has been going for some time or if it has hit a block.
-				if (t > 20 || block.getType() != Material.AIR) {
+				// Stop if the ability has been going for some time or if it has hit a block/entity.
+				if (t > 20 || block.getType() != Material.AIR || (Ublisk.isEntityNearby(loc, false) && t > 5)) {
 					this.cancel();
 					Ublisk.createExplosion(loc, 2.0f);
 				}
