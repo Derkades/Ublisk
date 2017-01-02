@@ -1,5 +1,10 @@
 package com.robinmc.ublisk;
 
+import static org.bukkit.ChatColor.BOLD;
+import static org.bukkit.ChatColor.GOLD;
+import static org.bukkit.ChatColor.RESET;
+import static org.bukkit.ChatColor.YELLOW;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,6 +21,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.java.EnumUtils;
 import com.robinmc.ublisk.utils.java.Random;
 
@@ -56,7 +62,11 @@ public enum Loot {
 				     e.printStackTrace();
 				}
 				fillChestWithLoot();
-				Bukkit.broadcastMessage(Message.Complicated.lootSpawned(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
+				//Bukkit.broadcastMessage(Message.Complicated.lootSpawned(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
+				int x = loc.getBlockX();
+				int y = loc.getBlockY();
+				int z = loc.getBlockZ();
+				Ublisk.broadcastPrefixedMessage("Loot", "A loot chest dropped at " + GOLD + "" + BOLD + x + " " + y + " " + z + RESET + YELLOW + "!");
 			}
 		}, 70);
 	}

@@ -33,7 +33,8 @@ public class FriendsCommand implements CommandExecutor {
 					}
 					
 					if (player.addFriend(friend)){
-						player.sendMessage(Message.Complicated.Friends.friendAdded(friend.getName()));
+						//player.sendMessage(Message.Complicated.Friends.friendAdded(friend.getName()));
+						player.sendPrefixedMessage("Friends", friend.getName() + " has been added to your friends list");
 					} else {
 						player.sendPrefixedMessage("Friends", ChatColor.RED + friend.getName() + " is already in your friends list.");
 					}
@@ -41,7 +42,7 @@ public class FriendsCommand implements CommandExecutor {
 					try {
 						OfflinePlayer friend = UUIDUtils.getOfflinePlayerFromName(args[1]);
 						if (player.removeFriend(friend)){
-							player.sendMessage(Message.Complicated.Friends.friendRemoved(friend.getName()));
+							player.sendMessage(friend.getName() + " has been removed from your friends list");
 						} else {
 							player.sendMessage(Message.FRIEND_NOT_EXIST);
 						}

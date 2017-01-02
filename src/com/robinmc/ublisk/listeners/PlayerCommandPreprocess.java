@@ -5,7 +5,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import com.robinmc.ublisk.HashMaps;
-import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.perm.Permission;
@@ -55,7 +54,7 @@ public class PlayerCommandPreprocess implements Listener {
 			if (player.hasPermission(Permission.COMMANDLOG)){
 				if (!(player.getName() == sender.getName())){
 					if (!(HashMaps.DISABLE_COMMAND_LOG.get(player.getUniqueId()))){
-						player.sendMessage(Message.Complicated.commandLog(pn, cmd));
+						player.sendPrefixedMessage("Command Log", pn + ": " + cmd);
 					}
 				}
 			}

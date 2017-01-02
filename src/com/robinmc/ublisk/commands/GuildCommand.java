@@ -43,7 +43,8 @@ public class GuildCommand implements CommandExecutor {
 				try {
 					Guild guild = player.getInvitedGuild();
 					player.joinGuild(guild);
-					player.sendMessage(Message.Complicated.Guilds.joinedGuild(guild));
+					//player.sendMessage(Message.Complicated.Guilds.joinedGuild(guild));
+					player.sendPrefixedMessage("Guilds", "You have joined " + guild.getName());
 					return true;
 				} catch (NullPointerException e) {
 					Logger.log(LogLevel.DEBUG, "GUILD IS NULL");

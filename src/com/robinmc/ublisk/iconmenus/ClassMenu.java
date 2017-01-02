@@ -31,16 +31,16 @@ public class ClassMenu {
 				startCooldown(player);
 				if (name.equals("swordsman")){
 					DataFile.CLASSES.set("class." + uuid, "Swordsman");
-					player.sendMessage(Message.Complicated.changedClass("Swordsman"));
+					player.sendMessage("You have changed class to Swordsman");
 				} else if (name.equals("archer")){
 					DataFile.CLASSES.set("class." + uuid, "Archer");
-					player.sendMessage(Message.Complicated.changedClass("Archer"));
+					player.sendMessage("You have changed class to Archer");
 				} else if (name.equals("sorcerer")){
 					DataFile.CLASSES.set("class." + uuid, "Sorcerer");
-					player.sendMessage(Message.Complicated.changedClass("Sorcerer"));
+					player.sendMessage("You have changed class to Sorcerer");
 				} else if (name.equals("paladin")){
 					DataFile.CLASSES.set("class." + uuid, "Paladin");
-					player.sendMessage(Message.Complicated.changedClass("Paladin"));
+					player.sendMessage("You have changed class to Paladin");
 				} else {
 					player.sendMessage(Message.ERROR_MENU);
 				}

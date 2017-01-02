@@ -1,6 +1,5 @@
 package com.robinmc.ublisk.task;
 
-import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
@@ -12,10 +11,10 @@ public class RemoveMobs extends BukkitRunnable {
 
 	@Override
 	public void run(){
-		Bukkit.broadcastMessage(Message.Complicated.removeMobsWarning(30));
+		Ublisk.broadcastPrefixedMessage("Clearing all mobs and items in 30 seconds!");
 		new BukkitRunnable(){
 			public void run(){
-				Bukkit.broadcastMessage(Message.Complicated.removeMobsWarning(5));
+				Ublisk.broadcastPrefixedMessage("Clearing all mobs and items in 5 seconds!");
 				new BukkitRunnable(){
 					public void run(){
 						Mob.removeMobs();

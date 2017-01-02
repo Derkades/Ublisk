@@ -1,5 +1,10 @@
 package com.robinmc.ublisk.listeners;
 
+import static org.bukkit.ChatColor.AQUA;
+import static org.bukkit.ChatColor.BOLD;
+import static org.bukkit.ChatColor.DARK_AQUA;
+import static org.bukkit.ChatColor.RESET;
+
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -33,7 +38,7 @@ public class PlayerJoin implements Listener {
 		
 		player.setCollidable(false);
 		
-		event.setJoinMessage(Message.Complicated.JoinQuit.playerJoin(pn));
+		event.setJoinMessage(DARK_AQUA + "" + BOLD + pn + RESET + AQUA + " has joined");
 		
 		player.sendMessage(Message.PACK_SENDING);
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){ 

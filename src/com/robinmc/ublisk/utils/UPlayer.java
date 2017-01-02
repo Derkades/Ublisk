@@ -1,5 +1,8 @@
 package com.robinmc.ublisk.utils;
 
+import static org.bukkit.ChatColor.AQUA;
+import static org.bukkit.ChatColor.YELLOW;
+
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -412,7 +415,8 @@ public class UPlayer {
 	public void inviteToGuild(Guild guild, UPlayer target) {
 		Logger.log(LogLevel.DEBUG, "Invite to guild: " + guild.getName() + " player " + target.getName());
 		Guilds.INVITED_GUILD.put(target, guild);
-		target.sendMessage(Message.Complicated.Guilds.inviteToGuild(guild, this));
+		//target.sendMessage(Message.Complicated.Guilds.inviteToGuild(guild, this));
+		target.sendPrefixedMessage("Guilds", player.getName() + " has invited you to join " + guild.getName() + ". Type " + AQUA + "/guild accept" + YELLOW + " to accept");
 	}
 
 	public void setLastSender(UPlayer player) {
@@ -549,9 +553,10 @@ public class UPlayer {
 	public void setAfk(boolean isAfk) {
 		HashMaps.AFK.put(this.getUniqueId(), isAfk);
 		if (isAfk) {
-			Bukkit.broadcastMessage(Message.Complicated.Commands.nowAfk(getName()));
+			Ublisk.broadcastPrefixedMessage(this.getName() + " is now AFK.");
 		} else {
-			Bukkit.broadcastMessage(Message.Complicated.Commands.noLongerAfk(getName()));
+			//Bukkit.broadcastMessage(Message.Complicated.Commands.noLongerAfk(getName()));
+			Ublisk.broadcastPrefixedMessage(this.getName() + " is no longer AFK.");
 		}
 	}
 

@@ -1,5 +1,7 @@
 package com.robinmc.ublisk.quest;
 
+import static org.bukkit.ChatColor.RED;
+
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
@@ -7,7 +9,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
-import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public class NPCClickListener implements Listener {
@@ -27,7 +28,7 @@ public class NPCClickListener implements Listener {
 		NPC npc = NPC.fromName(entity.getCustomName());
 		
 		if (npc == null){
-			player.sendMessage(Message.Complicated.Quests.npcNotFound(entity.getCustomName()));
+			player.sendPrefixedMessage("NPC", RED + "No dialogue could be found for an npc with name " + entity.getCustomName() + RED + ", please report this error.");
 			return;
 		}
 			

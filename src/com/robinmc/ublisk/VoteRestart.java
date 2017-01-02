@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 
 public class VoteRestart {
 
@@ -20,22 +21,22 @@ public class VoteRestart {
 			restarting = true;
 			new BukkitRunnable(){
 				public void run(){
-					Bukkit.broadcastMessage(Message.Complicated.serverRestartingWarningMinutes(1));
+					Ublisk.broadcastPrefixedMessage("The server will restart in 1 minute.");
 				}
 			}.runTaskLater(Main.getInstance(), 5*20);
 			new BukkitRunnable(){
 				public void run(){
-					Bukkit.broadcastMessage(Message.Complicated.serverRestartingWarningSeconds(30));
+					Ublisk.broadcastPrefixedMessage("The server will restart in 30 seconds minute.");
 				}
 			}.runTaskLater(Main.getInstance(), 5*20 + 30*20);
 			new BukkitRunnable(){
 				public void run(){
-					Bukkit.broadcastMessage(Message.Complicated.serverRestartingWarningSeconds(10));
+					Ublisk.broadcastPrefixedMessage("The server will restart in 10 seconds minute.");
 				}
 			}.runTaskLater(Main.getInstance(), 5*20 + 30*20 + 20*20);
 			new BukkitRunnable(){
 				public void run(){
-					Bukkit.broadcastMessage(Message.Complicated.serverRestartingWarningSeconds(5));
+					Ublisk.broadcastPrefixedMessage("The server will restart in 5 seconds minute.");
 				}
 			}.runTaskLater(Main.getInstance(), 5*20 + 30*20 + 20*20 + 5*20);
 			new BukkitRunnable(){
@@ -48,7 +49,8 @@ public class VoteRestart {
 	
 	public static void voteForRestart(UPlayer player){
 		restartVoters.add(player.getName());
-		Bukkit.broadcastMessage(Message.Complicated.someoneVotedRestart(player.getName(), restartVoters.size()));
+		//Bukkit.broadcastMessage(Message.Complicated.someoneVotedRestart(player.getName(), restartVoters.size()));
+		Ublisk.broadcastPrefixedMessage(player.getName() + " voted for a restart. Vote for a restart using /voterestart. Total votes: " + restartVoters.size());
 		restartIfPossible();
 	}
 	

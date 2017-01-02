@@ -1,8 +1,13 @@
 package com.robinmc.ublisk.quest;
 
+import static org.bukkit.ChatColor.AQUA;
+import static org.bukkit.ChatColor.BOLD;
+import static org.bukkit.ChatColor.DARK_AQUA;
+import static org.bukkit.ChatColor.RESET;
+import static org.bukkit.ChatColor.YELLOW;
+
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -54,7 +59,7 @@ public class QuestParticipant extends UPlayer {
 	
 	@Override
 	public void sendMessage(String message){
-		super.sendMessage(Message.Complicated.Quests.npcMsg(npc.getName(), message));
+		super.sendMessage(DARK_AQUA + "" + BOLD + this.getName() + ": " + RESET + "" + AQUA + message);
 	}
 	
 	public void giveRewardExp(){
@@ -63,9 +68,9 @@ public class QuestParticipant extends UPlayer {
 	
 	public void sendCompletedMessage(){
 		if (quest.noLifeReward()){
-			this.sendMessage(Message.Complicated.Quests.questCompleted(quest.getName(), quest.getRewardExp()));
+			super.sendMessage("You have completed quest " + BOLD + this.getQuest().getName() + YELLOW + " and got " + this.getQuest().getRewardExp() + " XP!");
 		} else {
-			this.sendMessage(Message.Complicated.Quests.questCompleted(quest.getName(), quest.getRewardExp(), quest.getLifeCrystalReward()));
+			this.sendMessage("You have completed quest " + BOLD + this.getQuest().getName() + YELLOW + " and got " + this.getQuest().getRewardExp() + " XP and " + this.getQuest().getRewardExp() + " Life Crystals!");
 		}
 	}
 	
