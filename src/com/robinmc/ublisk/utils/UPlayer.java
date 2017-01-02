@@ -246,6 +246,14 @@ public class UPlayer {
 		player.sendMessage(o + "");
 	}
 
+	public void sendPrefixedMessage(String message){
+		player.sendMessage(Ublisk.getPrefix() + message);
+	}
+	
+	public void sendPrefixedMessage(String prefix, String message){
+		player.sendMessage(Ublisk.getPrefix(prefix) + message);
+	}
+	
 	public void sendSpacer() {
 		player.sendMessage(" ");
 	}
