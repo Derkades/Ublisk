@@ -62,6 +62,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.minecraft.server.v1_11_R1.ChatComponentText;
 import net.minecraft.server.v1_11_R1.Packet;
 import net.minecraft.server.v1_11_R1.PacketPlayOutChat;
+import net.minecraft.server.v1_11_R1.PacketPlayOutGameStateChange;
 
 public class UPlayer {
 
@@ -487,8 +488,16 @@ public class UPlayer {
 		return Money.get(player) >= amount;
 	}
 
-	public void sendPacket(@SuppressWarnings("rawtypes") Packet packet) {
+	public void sendPacket(Packet<?> packet) {
 		((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+	}
+	
+	public void sendActionBarMessage(String message) {
+		this.sendPacket(new PacketPlayOutChat(new ChatComponentText(message), (byte) 2));
+	}
+	
+	public void displayMobAppearanceEffect(){
+		this.sendPacket(new PacketPlayOutGameStateChange(10, 0));
 	}
 
 	public void playNotMovingParticle(Particle particle, double x, double y, double z) {
@@ -621,11 +630,6 @@ public class UPlayer {
 
 	public void setResourcePack(String pack) {
 		player.setResourcePack(pack);
-	}
-
-	public void sendActionBarMessage(String message) {
-		PacketPlayOutChat packet = new PacketPlayOutChat(new ChatComponentText(message), (byte) 2);
-		this.sendPacket(packet);
 	}
 
 	public void setAttribute(Attribute attribute, double d) {
