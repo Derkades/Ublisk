@@ -101,6 +101,7 @@ public enum Message {
 		return Ublisk.getPrefix(string);
 	}
 	
+	@Deprecated
 	public static class Complicated {
 		
 		public static String startSong(String song){
