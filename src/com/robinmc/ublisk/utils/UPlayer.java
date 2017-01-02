@@ -29,6 +29,7 @@ import org.bukkit.event.entity.EntityEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.HashMaps;
@@ -726,6 +727,14 @@ public class UPlayer {
 		}
 
 		ability.run(this);
+	}
+	
+	public void setVelocity(Vector vector) {
+		player.setVelocity(vector);
+	}
+	
+	public Vector getVelocity(){
+		return player.getVelocity();
 	}
 
 	@Override
