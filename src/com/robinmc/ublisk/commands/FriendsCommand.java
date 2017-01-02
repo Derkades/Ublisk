@@ -12,6 +12,8 @@ import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class FriendsCommand implements CommandExecutor {
 	
 	@Override
@@ -33,7 +35,7 @@ public class FriendsCommand implements CommandExecutor {
 					if (player.addFriend(friend)){
 						player.sendMessage(Message.Complicated.Friends.friendAdded(friend.getName()));
 					} else {
-						//TODO Send message if friend is already in friends list
+						player.sendPrefixedMessage("Friends", ChatColor.RED + friend.getName() + " is already in your friends list.");
 					}
 				} else if (args[0].equals("remove") || args[0].equals("delete")){
 					try {
