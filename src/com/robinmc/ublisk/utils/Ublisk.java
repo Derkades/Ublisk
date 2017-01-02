@@ -19,6 +19,7 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Particle;
 import org.bukkit.Server;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Message;
@@ -142,6 +143,17 @@ public class Ublisk {
 	
 	public static String getPrefix(String string){
 		return GOLD + string + GRAY + " >> " + YELLOW;
+	}
+	
+	public static boolean isEntityNearby(Location location, boolean ignorePlayers){
+		for (Entity entity : Var.WORLD.getNearbyEntities(location, 1, 1, 1)){
+			if (entity instanceof Player && ignorePlayers){
+				continue;
+			}
+				
+			return true;
+		}
+		return false;
 	}
 
 }
