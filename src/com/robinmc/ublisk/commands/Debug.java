@@ -25,6 +25,7 @@ import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Lag;
+import com.robinmc.ublisk.utils.PacketListener;
 import com.robinmc.ublisk.utils.Time;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
@@ -205,6 +206,10 @@ public class Debug implements CommandExecutor {
 						SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 						String formatted = format.format(lastModified);
 						player.sendMessage("Last updated: " + formatted);
+						return true;
+					} else if (args[0].equals("saferl")){
+						PacketListener.closeAllOpenSockets();
+						Bukkit.getServer().reload();
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE);
