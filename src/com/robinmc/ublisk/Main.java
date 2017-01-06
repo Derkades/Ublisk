@@ -20,6 +20,8 @@ public class Main extends JavaPlugin {
 		instance = this;
 
 		HashMaps.resetAllPlayers();
+		
+		new WorldEditCUI().onEnable();
 
 		new BukkitRunnable() {
 			public void run() {
