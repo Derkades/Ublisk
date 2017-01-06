@@ -29,6 +29,8 @@ import org.bukkit.event.entity.EntityEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.Clazz;
@@ -735,6 +737,16 @@ public class UPlayer {
 	
 	public Vector getVelocity(){
 		return player.getVelocity();
+	}
+	
+	/**
+	 * Gives the player a potion effect without particles
+	 * @param type The potion effect type
+	 * @param duration How long the effect should last for
+	 * @param amplifier How strong the effect should be. Amplifier 1 -> Speed II
+	 */
+	public void givePotionEffect(PotionEffectType type, int duration, int amplifier){
+		player.addPotionEffect(new PotionEffect(type, duration, amplifier, true, false));
 	}
 
 	@Override
