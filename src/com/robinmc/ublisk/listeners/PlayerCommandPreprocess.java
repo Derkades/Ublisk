@@ -22,7 +22,6 @@ public class PlayerCommandPreprocess implements Listener {
 		
 		String cmd = event.getMessage();
 		UPlayer sender = new UPlayer(event);
-		//String pn = sender.getName();
 		
 		if (cmd.startsWith("/time set")){
 			sender.sendMessage("Please do not use /time set. The command has been cancelled");
@@ -49,17 +48,7 @@ public class PlayerCommandPreprocess implements Listener {
 			event.setCancelled(true);
 			return;
 		}
-		
-		/*
-		for (UPlayer player: Ublisk.getOnlinePlayers()){
-			if (player.hasPermission(Permission.COMMANDLOG)){
-				if (!(player.getName() == sender.getName())){
-					if (!(HashMaps.DISABLE_COMMAND_LOG.get(player.getUniqueId()))){
-						player.sendPrefixedMessage("Command Log", pn + ": " + cmd);
-					}
-				}
-			}
-		}*/
+
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
