@@ -2,7 +2,6 @@ package com.robinmc.ublisk.commands;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -15,7 +14,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
@@ -124,16 +122,6 @@ public class Debug implements CommandExecutor {
 					if (args[0].equalsIgnoreCase("kill")) {
 						Ublisk.broadcastMessage(Message.ENTITIES_REMOVED);
 						Mob.removeMobs();
-						return true;
-					} else if (args[0].equalsIgnoreCase("cmd")) {
-						UUID uuid = player.getUniqueId();
-						if (HashMaps.DISABLE_COMMAND_LOG.get(uuid)) {
-							player.sendMessage("Enabled!");
-							HashMaps.DISABLE_COMMAND_LOG.put(uuid, false);
-						} else {
-							player.sendMessage("Disabled!");
-							HashMaps.DISABLE_COMMAND_LOG.put(uuid, true);
-						}
 						return true;
 					} else if (args[0].equals("loot")) {
 						Loot.getRandomLoot().spawn();
