@@ -67,6 +67,11 @@ public class Logger {
 		 * To be used for messages providing not very important information.
 		 */
 		INFO,
+		
+		/**
+		 * To be used for logging chat messages.
+		 */
+		CHAT,
 
 		/**
 		 * To be used for messages providing more important information, such as
