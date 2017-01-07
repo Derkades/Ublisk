@@ -38,6 +38,7 @@ public class PacketListener {
 					if (e.getMessage().contains("in use")) {
 						Logger.log(LogLevel.WARNING,
 								"Could not start listener on port " + port + ", because this port is already in use.");
+						Ublisk.RESTART_ERROR = true;
 					} else {
 						e.printStackTrace();
 					}
