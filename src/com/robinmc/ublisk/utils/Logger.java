@@ -61,34 +61,24 @@ public class Logger {
 		/**
 		 * To be used for messages that will/should be removed later.
 		 */
-		DEBUG("Debug"),
+		DEBUG,
 
 		/**
 		 * To be used for messages providing not very important information.
 		 */
-		INFO("Info"),
+		INFO,
 
 		/**
 		 * To be used for messages providing more important information, such as
 		 * unexpected player movement.
 		 */
-		WARNING("Warning"),
+		WARNING,
 
 		/**
 		 * To be used to alert the owner of very important information, such as
 		 * a critical error in the code or an unexpected reading from a file.
 		 */
-		SEVERE("Severe");
-
-		private String string;
-
-		LogLevel(String string) {
-			this.string = string;
-		}
-
-		public String getString() {
-			return string;
-		}
+		SEVERE;
 
 	}
 
