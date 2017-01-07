@@ -10,6 +10,7 @@ import org.bukkit.util.Vector;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
+import com.robinmc.ublisk.utils.Ublisk.Explosion;
 
 public class TestAbility extends Ability {
 
@@ -38,7 +39,8 @@ public class TestAbility extends Ability {
 				// Stop if the ability has been going for some time or if it has hit a block/entity.
 				if (t > 20 || block.getType() != Material.AIR || (Ublisk.isEntityNearby(loc, false) && t > 5)) {
 					this.cancel();
-					Ublisk.createExplosion(loc, 2.0f);
+					//Ublisk.createExplosion(loc, 2.0f);
+					Ublisk.createFakeExplosion(loc, 30, 2, Explosion.BLAST_SMALL, Explosion.SMOKE);
 				}
 
 				loc.subtract(x, y, z);
