@@ -70,7 +70,7 @@ public class BlockLift extends Ability {
 						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
 
 							@Override
-							public void run() {
+							public void run() { //TODO Use new fake explosion method
 								Ublisk.spawnParticle(Particle.FLAME, blockCenterLocation, 48, 1, 1, 1, 0.1);
 								double radius = 3D;
 								List<Entity> near = blockCenterLocation.getWorld().getEntities();
