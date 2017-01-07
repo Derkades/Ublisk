@@ -132,7 +132,10 @@ public class Ublisk {
 	 * @param loc Location
 	 * @param power The explosion radius (e.g. 0.2f)
 	 * @param spawnFire Whether this explosion should spawn fire.
+	 * 
+	 * @deprecated You should no longer summon real explosions.
 	 */
+	@Deprecated
 	public static void createExplosion(Location loc, float power) {
 		Var.WORLD.createExplosion(loc.getX(), loc.getY(), loc.getZ(), power, false, false);
 	}
