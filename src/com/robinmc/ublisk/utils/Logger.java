@@ -17,6 +17,7 @@ import net.md_5.bungee.api.ChatColor;
 public class Logger {
 
 	public static void log(LogLevel logLevel, String name, Object object) {
+		//TODO Rewrite this method. It's a mess.
 		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 		String timeStamp = df.format(new Date());
 		
@@ -31,13 +32,15 @@ public class Logger {
 			File file = new File(Main.getInstance().getDataFolder() + "\\logs\\warning\\", fileNameTime + ".txt");
 			FileUtils.appendStringToFile(file, fileMessage);
 		} else Bukkit.getLogger().log(Level.INFO, consoleMessage);
-
-		File file = new File(Main.getInstance().getDataFolder() + "\\logs\\info\\", fileNameTime + ".txt");
-		FileUtils.appendStringToFile(file, fileMessage);
+		
+		if (logLevel != LogLevel.DEBUG){ //Log everything except for debug messages in info log file.
+			File file = new File(Main.getInstance().getDataFolder() + "\\logs\\info\\", fileNameTime + ".txt");
+			FileUtils.appendStringToFile(file, fileMessage);
+		}
 
 		//Send message to online players
 		for (UPlayer player : Ublisk.getOnlinePlayers())
-			if (logLevel != LogLevel.DEBUG)
+			if (logLevel != LogLevel.DEBUG && logLevel != LogLevel.CHAT)
 				player.sendMessage(chatMessage);
 	}
 
