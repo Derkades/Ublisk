@@ -1,13 +1,13 @@
 package com.robinmc.ublisk.listeners;
 
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
-import com.robinmc.ublisk.HashMaps;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.Ublisk;
-import com.robinmc.ublisk.utils.perm.Permission;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -22,7 +22,7 @@ public class PlayerCommandPreprocess implements Listener {
 		
 		String cmd = event.getMessage();
 		UPlayer sender = new UPlayer(event);
-		String pn = sender.getName();
+		//String pn = sender.getName();
 		
 		if (cmd.startsWith("/time set")){
 			sender.sendMessage("Please do not use /time set. The command has been cancelled");
@@ -50,6 +50,7 @@ public class PlayerCommandPreprocess implements Listener {
 			return;
 		}
 		
+		/*
 		for (UPlayer player: Ublisk.getOnlinePlayers()){
 			if (player.hasPermission(Permission.COMMANDLOG)){
 				if (!(player.getName() == sender.getName())){
@@ -58,7 +59,15 @@ public class PlayerCommandPreprocess implements Listener {
 					}
 				}
 			}
-		}
+		}*/
+	}
+	
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+	public void logCommand(PlayerCommandPreprocessEvent event){
+		String playerName = event.getPlayer().getName();
+		String command = event.getMessage();
+		boolean isCancelled = event.isCancelled();
+		Logger.log(LogLevel.INFO, "CommandLog", playerName + ": " + command + " (cancelled: " + isCancelled + ")");
 	}
 
 }
