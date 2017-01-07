@@ -19,6 +19,8 @@ public class Logger {
 	public static void log(LogLevel logLevel, String name, Object object) {
 		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 		String timeStamp = df.format(new Date());
+		
+		String fileNameTime = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
 		String consoleMessage = "[" + name + "] " + object;
 		String fileMessage = "[" + timeStamp + "] [" + logLevel + "] " + consoleMessage + "\n";
@@ -26,11 +28,11 @@ public class Logger {
 
 		if (logLevel == LogLevel.SEVERE || logLevel == LogLevel.WARNING) {
 			Bukkit.getLogger().log(Level.WARNING, consoleMessage);
-			File file = new File(Main.getInstance().getDataFolder() + "\\logs\\", "warning-log.txt");
+			File file = new File(Main.getInstance().getDataFolder() + "\\logs\\warning\\", fileNameTime + ".txt");
 			FileUtils.appendStringToFile(file, fileMessage);
 		} else Bukkit.getLogger().log(Level.INFO, consoleMessage);
 
-		File file = new File(Main.getInstance().getDataFolder() + "\\logs\\", "log.txt");
+		File file = new File(Main.getInstance().getDataFolder() + "\\logs\\info\\", fileNameTime + ".txt");
 		FileUtils.appendStringToFile(file, fileMessage);
 
 		//Send message to online players
