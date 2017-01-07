@@ -59,27 +59,24 @@ public class Logger {
 	public static enum LogLevel {
 
 		/**
-		 * To be used for messages that will/should be removed later. Color:
-		 * White
+		 * To be used for messages that will/should be removed later.
 		 */
 		DEBUG("Debug"),
 
 		/**
-		 * To be used for messages providing not very important information
-		 * Color: Green
+		 * To be used for messages providing not very important information.
 		 */
 		INFO("Info"),
 
 		/**
 		 * To be used for messages providing more important information, such as
-		 * unexpected player movement Color: Yellow
+		 * unexpected player movement.
 		 */
 		WARNING("Warning"),
 
 		/**
 		 * To be used to alert the owner of very important information, such as
 		 * a critical error in the code or an unexpected reading from a file.
-		 * Color: Red
 		 */
 		SEVERE("Severe");
 
