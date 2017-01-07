@@ -742,7 +742,7 @@ public class UPlayer {
 	/**
 	 * Gives the player a potion effect without particles
 	 * @param type The potion effect type
-	 * @param duration How long the effect should last for
+	 * @param duration How long the effect should last for, <b>in ticks</b>
 	 * @param amplifier How strong the effect should be. Amplifier 1 -> Speed II
 	 */
 	public void givePotionEffect(PotionEffectType type, int duration, int amplifier){
