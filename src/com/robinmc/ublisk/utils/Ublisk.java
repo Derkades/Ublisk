@@ -19,7 +19,9 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Particle;
 import org.bukkit.Server;
+import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Message;
@@ -27,6 +29,11 @@ import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 
 public class Ublisk {
+	
+	/**
+	 * Should be set to true if an error occured that will be fixed by restarting. <b>This should never be set to false!</b>
+	 */
+	public static boolean RESTART_ERROR = false;
 	
 	public static UPlayer[] getOnlinePlayers(){
 		List<UPlayer> list = new ArrayList<UPlayer>();
@@ -127,6 +134,10 @@ public class Ublisk {
 		Var.WORLD.spawnParticle(particle, location, count, offsetX, offsetY, offsetZ, speed);
 	}
 	
+	public static void playSound(Location location, Sound sound){
+		Var.WORLD.playSound(location, sound, 1.0f, 1.0f);
+	}
+	
 	/**
 	 * Spawns an explosion at the specified location. This explosion will not destroy blocks
 	 * @param loc Location
@@ -138,6 +149,74 @@ public class Ublisk {
 	@Deprecated
 	public static void createExplosion(Location loc, float power) {
 		Var.WORLD.createExplosion(loc.getX(), loc.getY(), loc.getZ(), power, false, false);
+	}
+	
+	/**
+	 * Creates a fake explosion with sounds and particles.
+	 * @param location The location to spawn the explosion at.
+	 * @param damage Damage to be dealt. This is divided by the number of blocks the entity is away from the explosion. E.g. with damage = 10, a zombie standing 3 blocks away will get 10/3 = 3.33 damage.
+	 * @param damageRadius See damage.
+	 * @param explosions Particles to summon. See Explosion enum.
+	 */
+	public static void createFakeExplosion(Location location, int damage, double damageRadius, Explosion... explosions){
+		
+		//Spawn particles
+		for (Explosion explosion : explosions){
+			if (explosion == Explosion.BLAST_SMALL){
+				Ublisk.spawnParticle(Particle.EXPLOSION_LARGE, location, 1, 0, 0, 0, 0);
+			} else if (explosion == Explosion.BLAST_LARGE){
+				Ublisk.spawnParticle(Particle.EXPLOSION_HUGE, location, 1, 0, 0, 0, 0);
+			} else if (explosion == Explosion.FIRE){
+				Ublisk.spawnParticle(Particle.LAVA, location, 100, 1, 0, 1, 0.5);
+			} else if (explosion == Explosion.FLAMES){
+				Ublisk.spawnParticle(Particle.FLAME, location, 48, 1, 1, 1, 0.1);
+			} else if (explosion == Explosion.SMOKE){
+				Ublisk.spawnParticle(Particle.SMOKE_LARGE, location, 15, 0, 0, 0, 0.1);
+			} 
+		}
+		
+		//Play sounds
+		Ublisk.playSound(location, Sound.ENTITY_GENERIC_EXPLODE);
+		
+		//Do damage
+		List<Entity> near = location.getWorld().getEntities();
+		for (Entity entity : near) {
+			if (entity instanceof LivingEntity){
+				LivingEntity living = (LivingEntity) entity;
+				double distance = entity.getLocation().distance(location);
+				if (distance <= damageRadius)
+					living.damage(damage / distance);
+			}
+		}
+	}
+	
+	public static enum Explosion {
+		
+		/**
+		 * A small explosion. Summons Particle.EXPLOSION_LARGE
+		 */
+		BLAST_SMALL,
+		
+		/**
+		 * A big explosion. Summons Particle.EXPLOSION_HUGE
+		 */
+		BLAST_LARGE,
+		
+		/**
+		 * Spawns lava particles (not drip particles, those particles that jump out of lava and leave a smoke trail)
+		 */
+		FIRE,
+		
+		/**
+		 * Spawns flame particles, those particles torches spawn.
+		 */
+		FLAMES,
+		
+		/**
+		 * Summons SMOKE_LARGE particles.
+		 */
+		SMOKE;
+		
 	}
 	
 	public static String getPrefix(){
