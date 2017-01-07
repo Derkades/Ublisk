@@ -24,11 +24,6 @@ public class Var {
 	public static final String PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures30.zip";
 	
 	/**
-	 * How long double XP will last for. Do not change this value until it's confirmed that it works
-	 */
-	public static final int DOUBLE_XP_TIME = 60; // XXX: Confirm that this actually works
-	
-	/**
 	 * <b>The integer all XP is divided by.</b>
 	 * <br><br>
 	 * Example (if XP_DIVISION is 5): 
