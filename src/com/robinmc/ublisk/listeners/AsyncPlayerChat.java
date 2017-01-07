@@ -12,7 +12,9 @@ import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.database.Tracker;
+import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -50,6 +52,14 @@ public class AsyncPlayerChat implements Listener {
 			player.setAfk(false);
 		}
 		
+	}
+	
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+	public void logChat(AsyncPlayerChatEvent event){
+		String playerName = event.getPlayer().getName();
+		String message = event.getMessage();
+		boolean isCancelled = event.isCancelled();
+		Logger.log(LogLevel.CHAT, playerName, message + " (cancelled: " + isCancelled + ")");
 	}
 
 }
