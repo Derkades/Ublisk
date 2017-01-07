@@ -4,6 +4,7 @@ import static org.bukkit.ChatColor.DARK_GRAY;
 import static org.bukkit.ChatColor.GRAY;
 
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
@@ -17,13 +18,8 @@ import net.md_5.bungee.api.ChatColor;
 
 public class AsyncPlayerChat implements Listener {
 	
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onChat(AsyncPlayerChatEvent event){		
-		
-		if (event.isCancelled()){
-			return;
-		}
-		
 		UPlayer player = new UPlayer(event);
 		
 		if (HashMaps.IS_MUTED.get(player.getUniqueId())){
