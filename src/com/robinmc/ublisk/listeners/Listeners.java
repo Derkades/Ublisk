@@ -5,7 +5,6 @@ import org.bukkit.event.Listener;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.ext.com.sethbling.blinghomingarrows.HomingArrowsListener;
-import com.robinmc.ublisk.mob.CreatureSpawn;
 import com.robinmc.ublisk.mob.listeners.EntityCombust;
 import com.robinmc.ublisk.mob.listeners.EntityDamageByEntity;
 import com.robinmc.ublisk.mob.listeners.EntityDeath;
@@ -27,7 +26,6 @@ public class Listeners {
 		
 		CHAT(new AsyncPlayerChat()),
 		BREAK_BLOCK(new BreakBlock()),
-		CREATURE_SPAWN(new CreatureSpawn()),
 		ENTITY_EXPLODE(new EntityExplode()),
 		INV_CLOSE(new InventoryClose()),
 		INV_CLICK(new InventoryClick()),
