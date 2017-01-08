@@ -22,6 +22,7 @@ public class Zombie implements MobType {
 
 			@Override
 			public void mobCode(LivingEntity entity) {
+				entity.getEquipment().clear();
 				CraftZombie craftZombie = (CraftZombie) entity;
 				craftZombie.setBaby(isBaby);
 			}
