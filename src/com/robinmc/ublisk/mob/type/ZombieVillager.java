@@ -22,7 +22,9 @@ public class ZombieVillager implements MobType {
 
 			@Override
 			public void mobCode(LivingEntity entity) {
+				entity.getEquipment().clear();
 				org.bukkit.entity.ZombieVillager zombie = (org.bukkit.entity.ZombieVillager) entity;
+				zombie.setBaby(false);
 				if (profession != null) zombie.setVillagerProfession(profession);
 			}
 			
