@@ -7,8 +7,6 @@ import org.bukkit.entity.LivingEntity;
 import com.robinmc.ublisk.mob.MobCode;
 import com.robinmc.ublisk.mob.MobType;
 
-import net.minecraft.server.v1_11_R1.EntityZombie;
-
 public class Zombie implements MobType {
 	
 	private boolean isBaby = false;
@@ -25,8 +23,7 @@ public class Zombie implements MobType {
 			@Override
 			public void mobCode(LivingEntity entity) {
 				CraftZombie craftZombie = (CraftZombie) entity;
-				EntityZombie zombie = craftZombie.getHandle();
-				zombie.setBaby(isBaby);
+				craftZombie.setBaby(isBaby);
 			}
 			
 		};
