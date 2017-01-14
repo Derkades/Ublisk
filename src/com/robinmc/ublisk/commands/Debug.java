@@ -114,6 +114,12 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("skull")) {
 						new ItemBuilder(args[1]).addToInventory(player);
 						return true;
+					} else if (args[0].equals("disablepl")){
+						Main.getInstance().getServer().getPluginManager().disablePlugin(Main.getInstance().getServer().getPluginManager().getPlugin(args[1]));
+						return true;
+					} else if (args[0].equals("enablepl")){
+						Main.getInstance().getServer().getPluginManager().enablePlugin(Main.getInstance().getServer().getPluginManager().getPlugin(args[1]));
+						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE);
 						return true;
