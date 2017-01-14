@@ -8,7 +8,7 @@ public enum Helper {
 	
 	CHASPYR("Chaspyr (Casper)", 
 			"https://twitter.com/ItsChaspyr", 
-			"Building, bug reporting"),
+			"Building, bug testing, textures"),
 	
 	GLITCHERDOTBE("GlitcherDOTbe", 
 			"http://www.planetminecraft.com/texture_pack/glitchs-3d-addons-pack-19/", 
