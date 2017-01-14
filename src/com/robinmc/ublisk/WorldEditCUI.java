@@ -52,7 +52,7 @@ public class WorldEditCUI implements Listener {
 	public static void onDisable(){
 		for (Player player : Bukkit.getOnlinePlayers()){
 			if (WorldEditCUI.blockStates.containsKey(player.getUniqueId())) {
-				CUIBlock oldState = (CUIBlock) WorldEditCUI.blockStates.get(player.getUniqueId());
+				CUIBlock oldState = WorldEditCUI.blockStates.get(player.getUniqueId());
 				oldState.location.getBlock().setTypeIdAndData(oldState.type.getId(), oldState.rawData, false);
 				WorldEditCUI.blockStates.remove(player.getUniqueId());
 			}
