@@ -27,14 +27,14 @@ public class WorldEditCUI implements Listener {
 
 	// TODO Better integration with the rest of the plugin
 	
-	public HashMap<UUID, CUIBlock> blockStates;
+	public static HashMap<UUID, CUIBlock> blockStates;
 	public WorldEditPlugin worldEditPlugin;
 
 	@SuppressWarnings({
 			"unchecked", "rawtypes"
 	})
 	public WorldEditCUI() {
-		this.blockStates = new HashMap();
+		WorldEditCUI.blockStates = new HashMap();
 	}
 
 	public void onEnable() {
@@ -46,6 +46,17 @@ public class WorldEditCUI implements Listener {
 				WorldEditCUI.this.updateSelections(0L);
 			}
 		}.runTaskTimer(Main.getInstance(), 10L, 30L);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static void onDisable(){
+		for (Player player : Bukkit.getOnlinePlayers()){
+			if (WorldEditCUI.blockStates.containsKey(player.getUniqueId())) {
+				CUIBlock oldState = (CUIBlock) WorldEditCUI.blockStates.get(player.getUniqueId());
+				oldState.location.getBlock().setTypeIdAndData(oldState.type.getId(), oldState.rawData, false);
+				WorldEditCUI.blockStates.remove(player.getUniqueId());
+			}
+		}
 	}
 
 	@EventHandler
@@ -62,10 +73,10 @@ public class WorldEditCUI implements Listener {
 	@EventHandler
 	public void onPlayerQuitEvent(PlayerQuitEvent event) {
 		Player player = event.getPlayer();
-		if (this.blockStates.containsKey(player.getUniqueId())) {
-			CUIBlock oldState = (CUIBlock) this.blockStates.get(player.getUniqueId());
+		if (WorldEditCUI.blockStates.containsKey(player.getUniqueId())) {
+			CUIBlock oldState = (CUIBlock) WorldEditCUI.blockStates.get(player.getUniqueId());
 			oldState.location.getBlock().setTypeIdAndData(oldState.type.getId(), oldState.rawData, false);
-			this.blockStates.remove(player.getUniqueId());
+			WorldEditCUI.blockStates.remove(player.getUniqueId());
 		}
 	}
 
@@ -78,17 +89,17 @@ public class WorldEditCUI implements Listener {
 					Selection selection = WorldEditCUI.this.worldEditPlugin.getSelection(player);
 					if ((selection != null) && (selection.getHeight() < 33) && (selection.getLength() < 33)) {
 						Location loc = selection.getMinimumPoint().add(0.0D, -1.0D, 0.0D);
-						if (WorldEditCUI.this.blockStates.containsKey(player.getUniqueId())) {
-							WorldEditCUI.CUIBlock oldState = (WorldEditCUI.CUIBlock) WorldEditCUI.this.blockStates
+						if (WorldEditCUI.blockStates.containsKey(player.getUniqueId())) {
+							WorldEditCUI.CUIBlock oldState = (WorldEditCUI.CUIBlock) WorldEditCUI.blockStates
 									.get(player.getUniqueId());
 							if ((!oldState.location.equals(loc))
 									|| (!oldState.locationTop.equals(selection.getMaximumPoint()))) {
 								oldState.location.getBlock().setTypeIdAndData(oldState.type.getId(), oldState.rawData,
 										false);
-								WorldEditCUI.this.blockStates.remove(player.getUniqueId());
+								WorldEditCUI.blockStates.remove(player.getUniqueId());
 							}
 						} else {
-							WorldEditCUI.this.blockStates.put(player.getUniqueId(), new WorldEditCUI.CUIBlock(
+							WorldEditCUI.blockStates.put(player.getUniqueId(), new WorldEditCUI.CUIBlock(
 									loc.getBlock(), selection.getMaximumPoint()));
 							loc.getBlock().setType(Material.STRUCTURE_BLOCK, false);
 							BlockPosition pos = new BlockPosition(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());

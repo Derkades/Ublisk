@@ -70,6 +70,8 @@ public class Main extends JavaPlugin {
 		instance = null;
 
 		PacketListener.closeAllOpenSockets();
+		
+		WorldEditCUI.onDisable();
 	}
 
 	public static Main getInstance() {
