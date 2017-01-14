@@ -21,7 +21,7 @@ public class Var {
 	/**
 	 * Direct URL to resource pack zip. Do not change unless you know what you are doing.
 	 */
-	public static final String PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures32.zip";
+	public static final String PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures33.zip";
 	
 	/**
 	 * <b>The integer all XP is divided by.</b>
