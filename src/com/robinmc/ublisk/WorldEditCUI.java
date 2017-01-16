@@ -28,7 +28,7 @@ public class WorldEditCUI implements Listener {
 	// TODO Better integration with the rest of the plugin
 	
 	public static HashMap<UUID, CUIBlock> blockStates;
-	public WorldEditPlugin worldEditPlugin;
+	public static WorldEditPlugin worldEditPlugin;
 
 	@SuppressWarnings({
 			"unchecked", "rawtypes"
@@ -38,23 +38,20 @@ public class WorldEditCUI implements Listener {
 	}
 
 	public void onEnable() {
-		this.worldEditPlugin = ((WorldEditPlugin) Bukkit.getServer().getPluginManager().getPlugin("WorldEdit"));
+		worldEditPlugin = ((WorldEditPlugin) Bukkit.getServer().getPluginManager().getPlugin("WorldEdit"));
 		Bukkit.getServer().getPluginManager().registerEvents(this, Main.getInstance());
 		new BukkitRunnable() {
 
 			public void run() {
-				WorldEditCUI.this.updateSelections(0L);
+				WorldEditCUI.updateSelections(0L);
 			}
 		}.runTaskTimer(Main.getInstance(), 10L, 30L);
 	}
 	
-	@SuppressWarnings("deprecation")
 	public static void onDisable(){
 		for (Player player : Bukkit.getOnlinePlayers()){
 			if (WorldEditCUI.blockStates.containsKey(player.getUniqueId())) {
-				CUIBlock oldState = WorldEditCUI.blockStates.get(player.getUniqueId());
-				oldState.location.getBlock().setTypeIdAndData(oldState.type.getId(), oldState.rawData, false);
-				WorldEditCUI.blockStates.remove(player.getUniqueId());
+				updateSelections(0);
 			}
 		}
 	}
@@ -80,13 +77,13 @@ public class WorldEditCUI implements Listener {
 		}
 	}
 
-	public void updateSelections(long delay) {
+	public static void updateSelections(long delay) {
 		new BukkitRunnable() {
 
 			@SuppressWarnings("deprecation")
 			public void run() {
 				for (Player player : Bukkit.getOnlinePlayers()) {
-					Selection selection = WorldEditCUI.this.worldEditPlugin.getSelection(player);
+					Selection selection = WorldEditCUI.worldEditPlugin.getSelection(player);
 					if ((selection != null) && (selection.getHeight() < 33) && (selection.getLength() < 33)) {
 						Location loc = selection.getMinimumPoint().add(0.0D, -1.0D, 0.0D);
 						if (WorldEditCUI.blockStates.containsKey(player.getUniqueId())) {
@@ -105,7 +102,7 @@ public class WorldEditCUI implements Listener {
 							BlockPosition pos = new BlockPosition(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
 							TileEntityStructure structure = (TileEntityStructure) ((CraftPlayer) player)
 									.getHandle().world.getTileEntity(pos);
-							structure.a(WorldEditCUI.this.createNBTData(player, selection));
+							structure.a(WorldEditCUI.createNBTData(player, selection));
 						}
 					}
 				}
@@ -113,7 +110,7 @@ public class WorldEditCUI implements Listener {
 		}.runTaskLater(Main.getInstance(), delay);
 	}
 
-	public NBTTagCompound createNBTData(Player player, Selection selection) {
+	public static NBTTagCompound createNBTData(Player player, Selection selection) {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		nbttagcompound.setString("id", "Structure");
 		nbttagcompound.setInt("x", selection.getMinimumPoint().getBlockX());
@@ -145,7 +142,7 @@ public class WorldEditCUI implements Listener {
 		return nbttagcompound;
 	}
 
-	class CUIBlock {
+	static class CUIBlock {
 
 		public Location location;
 		public Location locationTop;
