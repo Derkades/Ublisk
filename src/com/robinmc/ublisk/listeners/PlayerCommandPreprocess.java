@@ -48,6 +48,12 @@ public class PlayerCommandPreprocess implements Listener {
 			event.setCancelled(true);
 			return;
 		}
+		
+		if (cmd.startsWith("/reload") || cmd.startsWith("/rl")){
+			sender.sendMessage("NEE!!!");
+			event.setCancelled(true);
+			return;
+		}
 
 	}
 	
