@@ -18,6 +18,7 @@ import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.WorldEditCUI;
 import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.quest.NPC;
@@ -202,6 +203,7 @@ public class Debug implements CommandExecutor {
 						player.sendMessage("Last updated: " + formatted);
 						return true;
 					} else if (args[0].equals("saferl")){
+						WorldEditCUI.onDisable();
 						PacketListener.closeAllOpenSockets();
 						Bukkit.getServer().reload();
 						return true;

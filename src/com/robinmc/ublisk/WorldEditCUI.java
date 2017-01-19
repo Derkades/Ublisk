@@ -29,6 +29,7 @@ public class WorldEditCUI implements Listener {
 	
 	public static HashMap<UUID, CUIBlock> blockStates;
 	public static WorldEditPlugin worldEditPlugin;
+	public static boolean STOP_UPDATING;
 
 	@SuppressWarnings({
 			"unchecked", "rawtypes"
@@ -38,6 +39,7 @@ public class WorldEditCUI implements Listener {
 	}
 
 	public void onEnable() {
+		STOP_UPDATING = false;
 		worldEditPlugin = ((WorldEditPlugin) Bukkit.getServer().getPluginManager().getPlugin("WorldEdit"));
 		Bukkit.getServer().getPluginManager().registerEvents(this, Main.getInstance());
 		new BukkitRunnable() {
@@ -45,13 +47,18 @@ public class WorldEditCUI implements Listener {
 			public void run() {
 				WorldEditCUI.updateSelections(0L);
 			}
+			
 		}.runTaskTimer(Main.getInstance(), 10L, 30L);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static void onDisable(){
+		STOP_UPDATING = true;
 		for (Player player : Bukkit.getOnlinePlayers()){
 			if (WorldEditCUI.blockStates.containsKey(player.getUniqueId())) {
-				updateSelections(0);
+				CUIBlock oldState = (CUIBlock) WorldEditCUI.blockStates.get(player.getUniqueId());
+				oldState.location.getBlock().setTypeIdAndData(oldState.type.getId(), oldState.rawData, false);
+				WorldEditCUI.blockStates.remove(player.getUniqueId());
 			}
 		}
 	}
@@ -78,10 +85,18 @@ public class WorldEditCUI implements Listener {
 	}
 
 	public static void updateSelections(long delay) {
+		if (STOP_UPDATING){
+			return;
+		}
+		
 		new BukkitRunnable() {
 
 			@SuppressWarnings("deprecation")
 			public void run() {
+				if (STOP_UPDATING){
+					return;
+				}
+				
 				for (Player player : Bukkit.getOnlinePlayers()) {
 					Selection selection = WorldEditCUI.worldEditPlugin.getSelection(player);
 					if ((selection != null) && (selection.getHeight() < 33) && (selection.getLength() < 33)) {

@@ -9,7 +9,6 @@ import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.task.Task;
 import com.robinmc.ublisk.utils.DoubleXP;
 import com.robinmc.ublisk.utils.Logger;
-import com.robinmc.ublisk.utils.PacketListener;
 import com.robinmc.ublisk.utils.Ublisk;
 
 public class Main extends JavaPlugin {
@@ -68,10 +67,6 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		instance = null;
-
-		PacketListener.closeAllOpenSockets();
-		
-		WorldEditCUI.onDisable();
 	}
 
 	public static Main getInstance() {
