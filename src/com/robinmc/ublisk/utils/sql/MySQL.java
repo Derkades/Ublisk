@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import com.robinmc.ublisk.utils.DataFile;
 
+@Deprecated
 public class MySQL {
 	
 	@Deprecated
