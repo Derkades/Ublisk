@@ -6,10 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
-import com.robinmc.ublisk.utils.Logger.LogLevel;
-import com.robinmc.ublisk.utils.exception.NotInGuildException;
 
 public class PlayerInfo {
 	
@@ -62,11 +61,7 @@ public class PlayerInfo {
 			update = connection.prepareStatement("UPDATE `" + TABLE + "` SET xp=?,guild=?,rank=?,last_seen=?,level=?,last_town=? WHERE uuid=?;");
 			
 			update.setInt(1, player.getXP());
-			try {
-				update.setString(2, player.getGuild().getName());
-			} catch (NotInGuildException e) {
-				update.setString(2, "None");
-			}
+			update.setString(2, "None");
 			update.setString(3, player.getGroup().getName());
 			update.setString(4, player.getLastSeenDate());
 			update.setInt(5, player.getLevel());
@@ -94,11 +89,7 @@ public class PlayerInfo {
 			
 			insert.setString(1, player.getUniqueId().toString());
 			insert.setInt(2, player.getXP());
-			try {
-				insert.setString(3, player.getGuild().getName());
-			} catch (NotInGuildException e) {
-				insert.setString(3, "None");
-			}
+			insert.setString(3, "None");
 			insert.setString(4, player.getGroup().getName());
 			insert.setString(5, player.getLastSeenDate());
 			insert.setInt(6, player.getLevel());

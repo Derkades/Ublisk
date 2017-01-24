@@ -1,18 +1,13 @@
 package com.robinmc.ublisk.database;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.utils.Logger;
-import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.Ublisk;
-import com.robinmc.ublisk.utils.guilds.Guild;
-import com.robinmc.ublisk.utils.guilds.Guilds;
 import com.robinmc.ublisk.utils.sql.SyncQueue;
 
 public class AddTrackersInfoToQueue extends BukkitRunnable {
@@ -42,19 +37,6 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 			list.add(new BukkitRunnable(){
 				public void run(){
 					PlayerInfo.syncInfo(player);
-				}
-			});
-		}
-		
-		for (final Guild guild : Guilds.getGuilds()){
-			list.add(new BukkitRunnable(){
-				public void run(){
-					try {
-						guild.syncInfoWithDatabase();
-					} catch (SQLException e){
-						Logger.log(LogLevel.SEVERE, "An error occured while syncing guild info!");
-						e.printStackTrace();
-					}
 				}
 			});
 		}

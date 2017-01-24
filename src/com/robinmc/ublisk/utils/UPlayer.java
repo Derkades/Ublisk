@@ -1,8 +1,5 @@
 package com.robinmc.ublisk.utils;
 
-import static org.bukkit.ChatColor.AQUA;
-import static org.bukkit.ChatColor.YELLOW;
-
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -52,10 +49,7 @@ import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.NotEnoughManaException;
 import com.robinmc.ublisk.utils.exception.NotInATownException;
-import com.robinmc.ublisk.utils.exception.NotInGuildException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
-import com.robinmc.ublisk.utils.guilds.Guild;
-import com.robinmc.ublisk.utils.guilds.Guilds;
 import com.robinmc.ublisk.utils.inventory.InvUtils;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
@@ -382,44 +376,6 @@ public class UPlayer {
 
 	public void setGameMode(GameMode gamemode) {
 		player.setGameMode(gamemode);
-	}
-
-	public void joinGuild(Guild guild) {
-		guild.addPlayer(this);
-	}
-
-	public void leaveGuild(Guild guild) throws NotInGuildException {
-		Logger.log(LogLevel.DEBUG, "Leave guild");
-		guild.removePlayer(this);
-	}
-
-	public boolean isInGuild() {
-		for (Guild guild : Guilds.getGuilds()) {
-			if (guild.hasPlayer(this)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public Guild getGuild() throws NotInGuildException {
-		for (Guild guild : Guilds.getGuilds()) {
-			if (guild.hasPlayer(this)) {
-				return guild;
-			}
-		}
-		throw new NotInGuildException();
-	}
-
-	public Guild getInvitedGuild() {
-		return Guilds.INVITED_GUILD.get(this);
-	}
-
-	public void inviteToGuild(Guild guild, UPlayer target) {
-		Logger.log(LogLevel.DEBUG, "Invite to guild: " + guild.getName() + " player " + target.getName());
-		Guilds.INVITED_GUILD.put(target, guild);
-		//target.sendMessage(Message.Complicated.Guilds.inviteToGuild(guild, this));
-		target.sendPrefixedMessage("Guilds", player.getName() + " has invited you to join " + guild.getName() + ". Type " + AQUA + "/guild accept" + YELLOW + " to accept");
 	}
 
 	public void setLastSender(UPlayer player) {
