@@ -23,12 +23,13 @@ public enum DataFile {
 	LAST_PLAYED("last-played"),
 	PERMISSIONS("permissions"),
 	MYSQL("mysql"),
-	TOWN("town");
+	TOWN("town"),
+	GUILDS("guilds");
 
 	private File file;
 
 	DataFile(String name) {
-		this.file = new File(Main.getInstance().getDataFolder() + "\\data", name + ".yml");
+		this.file = new File(Main.getInstance().getDataFolder() + File.separator + "data", name + ".yml");
 	}
 
 	private YamlConfiguration config;
