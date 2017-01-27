@@ -704,6 +704,40 @@ public class UPlayer {
 	public void givePotionEffect(PotionEffectType type, int duration, int amplifier){
 		player.addPotionEffect(new PotionEffect(type, duration, amplifier, true, false));
 	}
+	
+	public void setGuild(Guild guild){
+		DataFile.GUILDS.set("guild." + this.getUniqueId(), guild.getName());
+	}
+	
+	/**
+	 * Gets the guild the player is in
+	 * @return A guild if player is in a guild, null if the player is not in a guild.
+	 */
+	public Guild getGuild(){
+		String guildName = DataFile.GUILDS.getString("guild." + this.getUniqueId());
+		
+		if (guildName == null){
+			return null;
+		}
+		
+		Guild guild = Guild.getGuild(guildName);
+		
+		// Removes guild from file if the guild no longer exists
+		if (!guild.exists()){
+			DataFile.GUILDS.set("guild." + this.getUniqueId(), null);
+			return null;
+		} else {
+			return guild;
+		}
+	}
+	
+	public boolean isInGuild(){
+		return this.getGuild() != null;
+	}
+	
+	public void leaveGuild(){
+		DataFile.GUILDS.set("guild." + this.getUniqueId(), null);
+	}
 
 	@Override
 	public String toString() {
