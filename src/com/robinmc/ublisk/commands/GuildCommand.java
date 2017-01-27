@@ -35,16 +35,16 @@ public class GuildCommand implements CommandExecutor {
 					GuildInvite invite = Guild.GUILD_INVITES.get(player.getName());
 					Guild guild = invite.getGuild();
 					player.setGuild(guild);
-					player.sendMessage("You joined " + guild.getName() + "!"); // FIXME Fancy message
+					player.sendPrefixedMessage("Guilds", "You joined " + guild.getName() + "!");
 					return true;
 				} else {
 					// Player does not have an invite
-					player.sendMessage("No invites"); // FIXME Fancy message
+					player.sendPrefixedMessage("Guilds", "You don't have any pending invites.");
 					return true;
 				}
 			} else if (args[0].equalsIgnoreCase("leave")) {
 				if (!player.isInGuild()) {
-					player.sendMessage("You are not in a guild"); // FIXME Fancy message
+					player.sendPrefixedMessage("Guilds", "You are not in a guild");
 				} else {
 					player.leaveGuild();
 				}
@@ -72,30 +72,32 @@ public class GuildCommand implements CommandExecutor {
 		} else if (args.length == 2) {
 			if (args[0].equals("create")) {
 				if (args[1].length() > 20) {
-					player.sendMessage("Guild name too long"); // FIXME Fancy message
+					player.sendPrefixedMessage("Guilds", "This guild name is too long.");
 					return true;
 				}
 
 				if (player.isInGuild()) {
-					player.sendMessage("Already in guild"); // FIXME Fancy message
+					player.sendPrefixedMessage("Guilds", "You are already in a guild. Please leave your current guild before creating a new one.");
 					return true;
 				}
 
 				Guild guild = Guild.getGuild(args[1]);
 
 				if (guild.exists()) {
-					player.sendMessage("Guild exists"); // FIXME Fancy message
+					player.sendPrefixedMessage("Guilds", "A guild with this name already exists.");
 					return true;
 				}
 
 				guild.create(player);
-				player.sendMessage("Guild created"); // FIXME Fancy message
+				
+				player.sendPrefixedMessage("Guilds", "The guild has been created.");
+				
 				return true;
 			} else if (args[0].equals("info")) {
 				Guild guild = Guild.getGuild(args[1]);
 
 				if (!guild.exists()) {
-					player.sendMessage("This guild does note exist"); // FIXME Fancy message
+					player.sendPrefixedMessage("Guilds", "This guild does not exist.");
 					return true;
 				}
 
@@ -113,8 +115,9 @@ public class GuildCommand implements CommandExecutor {
 
 				return true;
 			} else if (args[0].equalsIgnoreCase("invite")) {
+				
 				if (!player.isInGuild()) {
-					player.sendMessage("You are not in a guild");
+					player.sendPrefixedMessage("Guilds", "You are not in a guild.");
 					return true;
 				}
 
@@ -122,13 +125,15 @@ public class GuildCommand implements CommandExecutor {
 				try {
 					target = new UPlayer(args[1]);
 				} catch (PlayerNotFoundException e) {
-					player.sendMessage("Player not found"); // FIXME Fancy message
+					player.sendMessage(Message.PLAYER_NOT_FOUND);
 					return true;
 				}
 
 				Guild guild = player.getGuild();
 				guild.invitePlayer(player, target);
-				player.sendMessage("You have invited" + target.getName() + " to your guild"); // FIXME Fancy message
+				
+				player.sendPrefixedMessage("Guilds", "You have invited " + target.getName() + " to your guild.");
+				
 				return true;
 			} else {
 				player.sendMessage(Message.WRONG_USAGE);
