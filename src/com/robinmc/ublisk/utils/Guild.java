@@ -160,6 +160,27 @@ public class Guild {
 		}
 		return list;
 	}
+	
+	public void remove(){
+		Connection connection = null;
+		PreparedStatement delete = null;
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Delete " + this.getName());
+			delete = connection.prepareStatement("DELETE FROM `guilds` WHERE name=?;");
+			delete.setString(1, this.getName());
+			delete.execute();
+		} catch (SQLException e){
+			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to remove " + this.getName());
+			e.printStackTrace();
+		} finally {
+			try {
+				delete.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	/**
 	 * Gets a guild with the specified name.
@@ -207,7 +228,7 @@ public class Guild {
 			result = query.executeQuery();
 			names = ListUtils.getStringListFromResultSet(result, "name");
 		} catch (SQLException e){
-			Logger.log(LogLevel.SEVERE, "Unable to connect to database for getting guild");
+			Logger.log(LogLevel.SEVERE, "Unable to connect to database for getting guild list");
 			e.printStackTrace();
 		} finally {
 			try {

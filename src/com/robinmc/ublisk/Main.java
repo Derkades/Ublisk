@@ -8,7 +8,9 @@ import com.robinmc.ublisk.listeners.Listeners;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.task.Task;
 import com.robinmc.ublisk.utils.DoubleXP;
+import com.robinmc.ublisk.utils.Guild;
 import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.Ublisk;
 
 public class Main extends JavaPlugin {
@@ -61,6 +63,18 @@ public class Main extends JavaPlugin {
 				Logger.startSiteLogger();
 			}
 		}.runTaskLater(this, 30);
+		
+		new BukkitRunnable() {
+			public void run() {
+				Logger.log(LogLevel.INFO, "Guilds", "Deleting empty guilds...");
+				for (Guild guild : Guild.getGuildsList()){
+					if (guild.getMembers().size() == 0){
+						Logger.log(LogLevel.WARNING, "Guilds", "Deleted " + guild.getName() + "!");
+						guild.remove();
+					}
+				}
+			}
+		}.runTaskLater(this, 5*20);
 
 	}
 
