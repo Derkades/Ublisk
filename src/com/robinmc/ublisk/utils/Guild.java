@@ -216,8 +216,6 @@ public class Guild {
 	}
 
 	public static List<Guild> getGuildsList() {
-		//throw new UnsupportedOperationException("This function has not been implemented yet.");
-		
 		Connection connection = null;
 		PreparedStatement query = null;
 		ResultSet result = null;
