@@ -29,12 +29,12 @@ public class Logger {
 
 		if (logLevel == LogLevel.SEVERE || logLevel == LogLevel.WARNING) {
 			Bukkit.getLogger().log(Level.WARNING, consoleMessage);
-			File file = new File(Main.getInstance().getDataFolder() + "/logs/warning/", fileNameTime + ".txt".replace("", File.separator));
+			File file = new File(Main.getInstance().getDataFolder() + "/logs/warning/", fileNameTime + ".txt");
 			FileUtils.appendStringToFile(file, fileMessage);
 		} else Bukkit.getLogger().log(Level.INFO, consoleMessage);
 		
 		if (logLevel != LogLevel.DEBUG){ //Log everything except for debug messages in info log file.
-			File file = new File(Main.getInstance().getDataFolder() + "/logs/info/", fileNameTime + ".txt".replace("", File.separator));
+			File file = new File(Main.getInstance().getDataFolder() + "/logs/info/", fileNameTime + ".txt");
 			FileUtils.appendStringToFile(file, fileMessage);
 		}
 
