@@ -16,7 +16,7 @@ public class PlayerDeath implements Listener {
 	public void onDeath(PlayerDeathEvent event){
 		final UPlayer player = new UPlayer(event);
 		
-		event.setDeathMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + player.getName() + " died near " + player.getTown());
+		event.setDeathMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + player.getName() + " died near " + player.getTown().getName());
 		
 		if (player.getLifeCrystals() > 0){
 			player.setLifeCrystals(player.getLifeCrystals() - 1);
