@@ -1,12 +1,21 @@
 package com.robinmc.ublisk.iconmenus.help;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.inventory.ItemBuilder;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class CommandsHelp {
 	
@@ -28,14 +37,47 @@ public class CommandsHelp {
 	
 	private static void fillMenu(){
 		int i = 0;
+		
+		Map<String, String> commands = new HashMap<>();
+		
+		//Put these commands here in reverse order!!
+		commands.put("AFK", "afk");
+		commands.put("Private Messaging", "pm");
+		commands.put("Guilds", "guild");
+		
+		for (Entry<String, String> entry : commands.entrySet()){
+			ItemStack icon = new ItemBuilder(Material.INK_SACK).setDamage(8).getItemStack();
+			List<String> loreLines = new ArrayList<String>();
+			loreLines.add(getDescription(entry.getValue()));
+			
+			loreLines.add("");
+			
+			String[] usageLines = getUsage(entry.getValue()).split("\n");
+			for (String usageLine : usageLines) loreLines.add(ChatColor.RED + usageLine);
+			
+			menu.setOption(i, icon, entry.getKey() + " - /" + entry.getValue(), loreLines.toArray(new String[]{}));
+			
+			i++;
+		}
+		
+		/*
 		for (Value value : Value.values()){
 			ItemStack icon = new ItemBuilder(Material.INK_SACK).setDamage(8).getItemStack();
 			menu.setOption(i, icon, value.getName(), value.getDescription());
 			i++;
-		}
+		}*/
 		menu.setOption(17, new ItemStack(Material.BARRIER), "Back");
 	}
 	
+	private static String getUsage(String command){
+		return Main.getInstance().getCommand(command).getUsage();
+	}
+	
+	private static String getDescription(String command){
+		return Main.getInstance().getCommand(command).getDescription();
+	}
+	
+	/*
 	private static enum Value {
 		
 		AFK("Afk", 
@@ -60,6 +102,6 @@ public class CommandsHelp {
 		private String getName(){ return name; }
 		private String[] getDescription(){ return description; }
 		
-	}
+	}*/
 
 }
