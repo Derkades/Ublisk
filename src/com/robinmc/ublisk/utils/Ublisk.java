@@ -237,5 +237,12 @@ public class Ublisk {
 		}
 		return false;
 	}
+	
+	public static void setGameRule(String rule, String value){
+		boolean success = Var.WORLD.setGameRuleValue(rule, value);
+		if (!success){
+			throw new IllegalArgumentException("Either the gamerule or value specified is wrong.");
+		}
+	}
 
 }
