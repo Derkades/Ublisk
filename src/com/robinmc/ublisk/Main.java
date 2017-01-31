@@ -27,42 +27,17 @@ public class Main extends JavaPlugin {
 		
 		new WorldEditCUI().onEnable();
 
-		new BukkitRunnable() {
-			public void run() {
-				Listeners.register();
-			}
-		}.runTaskLater(this, 5);
+		Listeners.register();
 
-		new BukkitRunnable() {
-			public void run() {
-				Command.registerAll();
-			}
-		}.runTaskLater(this, 10);
+		Command.registerAll();
 
-		new BukkitRunnable() {
-			public void run() {
-				Mob.startMobSpawning();
-			}
-		}.runTaskLater(this, 15);
+		Mob.startMobSpawning();
 
-		new BukkitRunnable() {
-			public void run() {
-				for (Task task : Task.values())
-					task.start();
-			}
-		}.runTaskLater(this, 20);
+		for (Task task : Task.values())
+			task.start();
 
-		new BukkitRunnable() {
-			public void run() {
-				DoubleXP.startDoubleXPPacketListener();
-			}
-		}.runTaskLater(this, 25);
-		
-		new BukkitRunnable() {
-			public void run() {
-				Logger.startSiteLogger();
-			}
-		}.runTaskLater(this, 30);
+		DoubleXP.startDoubleXPPacketListener();
+		Logger.startSiteLogger();
 		
 		new BukkitRunnable() {
 			public void run() {
