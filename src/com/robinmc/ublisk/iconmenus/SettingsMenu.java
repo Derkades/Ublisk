@@ -38,6 +38,7 @@ public class SettingsMenu {
 				
 			player.sendMessage(Ublisk.getPrefix("Settings") + name + " has been " + enabledDisabled + ".");
 			
+			menu.open(player); //Re-open menu to refresh settings
 		}
 	});
 	
