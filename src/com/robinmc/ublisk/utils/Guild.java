@@ -228,7 +228,7 @@ public class Guild {
 		}
 	}
 
-	public synchronized  static List<Guild> getGuildsList() {
+	public synchronized static List<Guild> getGuildsList() {
 		Connection connection = null;
 		PreparedStatement query = null;
 		ResultSet result = null;
