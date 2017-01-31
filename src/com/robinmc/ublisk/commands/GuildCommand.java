@@ -88,7 +88,7 @@ public class GuildCommand implements CommandExecutor {
 					return true;
 				}
 
-				Guild guild = Guild.getGuild(args[1]);
+				Guild guild = new Guild(args[1]);
 
 				if (guild.exists()) {
 					player.sendPrefixedMessage("Guilds", "A guild with this name already exists.");
@@ -101,7 +101,7 @@ public class GuildCommand implements CommandExecutor {
 				
 				return true;
 			} else if (args[0].equals("info")) {
-				Guild guild = Guild.getGuild(args[1]);
+				Guild guild = new Guild(args[1]);
 
 				if (!guild.exists()) {
 					player.sendPrefixedMessage("Guilds", "This guild does not exist.");

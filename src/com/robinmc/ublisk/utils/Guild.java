@@ -30,15 +30,39 @@ public class Guild {
 	public static final Map<String, GuildInvite> GUILD_INVITES = new HashMap<>();
 
 	private String name;
-	private boolean exists;
 
-	private Guild(String name, boolean exists) {
+	/**
+	 * Creates a new guild object. This guild may or may not exist.
+	 * @param name Guild name
+	 */
+	public Guild(String name) {
 		this.name = name;
-		this.exists = exists;
 	}
 
 	public boolean exists() {
-		return exists;
+		Connection connection = null;
+		PreparedStatement query = null;
+		ResultSet resultSet = null;
+		boolean contains = true;
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Guilds check (" + name + ")");
+			query = connection.prepareStatement("SELECT * FROM `guilds` WHERE name=?;");
+			query.setString(1, name);
+			resultSet = query.executeQuery();
+			contains = resultSet.next();
+		} catch (SQLException e) {
+			Logger.log(LogLevel.SEVERE, "Unable to connect to database for getting guild");
+			e.printStackTrace();
+		} finally {
+			try {
+				query.close();
+				resultSet.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return contains;
 	}
 
 	public String getName() {
@@ -53,7 +77,7 @@ public class Guild {
 	 * @throws UnsupportedOperationException If a guild with that name already exists
 	 */
 	public void create(final UPlayer owner) throws IllegalArgumentException, UnsupportedOperationException {
-		if (exists)
+		if (this.exists())
 			throw new UnsupportedOperationException("A guild with this name already exists.");
 
 		if (owner == null || owner.equals(""))
@@ -84,7 +108,7 @@ public class Guild {
 	}
 
 	public void invitePlayer(final UPlayer source, final UPlayer target) {
-		if (!exists)
+		if (!this.exists())
 			throw new UnsupportedOperationException("Cannot invite player to non-existent guild.");
 
 		final GuildInvite invite = new GuildInvite(this, source);
@@ -182,39 +206,6 @@ public class Guild {
 		}
 	}
 
-	/**
-	 * Gets a guild with the specified name.
-	 * 
-	 * @param name
-	 * @return Guild object or null if the guild could not be found.
-	 */
-	public static Guild getGuild(final String name) {
-		Connection connection = null;
-		PreparedStatement query = null;
-		ResultSet resultSet = null;
-		boolean contains = true;
-		try {
-			connection = Ublisk.getNewDatabaseConnection("Guilds check (" + name + ")");
-			query = connection.prepareStatement("SELECT * FROM `guilds` WHERE name=?;");
-			query.setString(1, name);
-			resultSet = query.executeQuery();
-			contains = resultSet.next();
-		} catch (SQLException e) {
-			Logger.log(LogLevel.SEVERE, "Unable to connect to database for getting guild");
-			e.printStackTrace();
-		} finally {
-			try {
-				query.close();
-				resultSet.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return new Guild(name, contains);
-	}
-
 	public static List<Guild> getGuildsList() {
 		Connection connection = null;
 		PreparedStatement query = null;
@@ -241,7 +232,7 @@ public class Guild {
 		List<Guild> guilds = new ArrayList<Guild>();
 		
 		for (String name : names){
-			Guild guild = Guild.getGuild(name);
+			Guild guild = new Guild(name);
 			guilds.add(guild);
 		}
 		

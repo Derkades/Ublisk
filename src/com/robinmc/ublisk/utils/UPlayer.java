@@ -720,7 +720,7 @@ public class UPlayer {
 			return null;
 		}
 		
-		Guild guild = Guild.getGuild(guildName);
+		Guild guild = new Guild(guildName);
 		
 		// Removes guild from file if the guild no longer exists
 		if (!guild.exists()){
