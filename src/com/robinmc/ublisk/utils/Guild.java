@@ -260,6 +260,40 @@ public class Guild {
 		
 		return guilds;
 	}
+	
+	public synchronized static List<Guild> getGuildsList(int limit) {
+		Connection connection = null;
+		PreparedStatement query = null;
+		ResultSet result = null;
+		List<String> names = null; 
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Guilds list");
+			query = connection.prepareStatement("SELECT * FROM `guilds` ORDER BY `points` LIMIT ?;");
+			query.setInt(1, limit);
+			result = query.executeQuery();
+			names = ListUtils.getStringListFromResultSet(result, "name");
+		} catch (SQLException e){
+			Logger.log(LogLevel.SEVERE, "Unable to connect to database for getting guild list");
+			e.printStackTrace();
+		} finally {
+			try {
+				result.close();
+				query.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
+		
+		List<Guild> guilds = new ArrayList<Guild>();
+		
+		for (String name : names){
+			Guild guild = new Guild(name);
+			guilds.add(guild);
+		}
+		
+		return guilds;
+	}
 
 	public static class GuildInvite {
 
