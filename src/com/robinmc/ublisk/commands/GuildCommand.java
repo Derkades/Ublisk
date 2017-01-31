@@ -54,7 +54,7 @@ public class GuildCommand implements CommandExecutor {
 				player.sendMessage(ChatColor.AQUA + "----------={" + ChatColor.DARK_AQUA + " Guilds " + ChatColor.AQUA
 						+ "}=----------");
 
-				for (Guild guild : Guild.getGuildsList()) {
+				for (Guild guild : Guild.getGuildsList(10)) {
 					List<String> memberNames = new ArrayList<String>();
 
 					for (OfflinePlayer member : guild.getMembers())
