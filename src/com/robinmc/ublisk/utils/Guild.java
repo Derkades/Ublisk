@@ -174,6 +174,28 @@ public class Guild {
 		return points;
 	}
 	
+	public void setPoints(int points){
+		Connection connection = null;
+		PreparedStatement query = null;
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Guild points " + this.getName());
+			query = connection.prepareStatement("UPDATE `guilds` SET points=? WHERE name=?;");
+			query.setInt(1, points);
+			query.setString(2, this.getName());
+			query.executeUpdate();
+		} catch (SQLException e){
+			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to set guild points for " + this.getName());
+			e.printStackTrace();
+		} finally {
+			try {
+				query.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public List<OfflinePlayer> getMembers(){
 		List<OfflinePlayer> list = new ArrayList<OfflinePlayer>();
 		for (String key : DataFile.GUILDS.getConfig().getConfigurationSection("guild").getKeys(false)){
