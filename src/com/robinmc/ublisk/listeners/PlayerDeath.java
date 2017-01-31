@@ -8,11 +8,15 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class PlayerDeath implements Listener {
 
 	@EventHandler
 	public void onDeath(PlayerDeathEvent event){
 		final UPlayer player = new UPlayer(event);
+		
+		event.setDeathMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + player.getName() + " died near " + player.getTown());
 		
 		if (player.getLifeCrystals() > 0){
 			player.setLifeCrystals(player.getLifeCrystals() - 1);
