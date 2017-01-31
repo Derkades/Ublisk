@@ -9,6 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.Guild;
 import com.robinmc.ublisk.utils.Guild.GuildInvite;
@@ -64,6 +65,12 @@ public class GuildCommand implements CommandExecutor {
 							+ String.join(", ", memberNames));
 				}
 
+				return true;
+			} else if (args[0].equalsIgnoreCase("help")){
+				String[] usageLines = Main.getInstance().getCommand("guild").getUsage().split("\n");
+				for (String usageLine : usageLines){
+					player.sendMessage(ChatColor.AQUA + usageLine);
+				}
 				return true;
 			} else {
 				player.sendMessage(Message.WRONG_USAGE);
