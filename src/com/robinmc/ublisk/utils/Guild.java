@@ -39,7 +39,7 @@ public class Guild {
 		this.name = name;
 	}
 
-	public boolean exists() {
+	public synchronized boolean exists() {
 		Connection connection = null;
 		PreparedStatement query = null;
 		ResultSet resultSet = null;
@@ -76,7 +76,7 @@ public class Guild {
 	 * @throws IllegalArgumentException If the owner is null or an empty string.
 	 * @throws UnsupportedOperationException If a guild with that name already exists
 	 */
-	public void create(final UPlayer owner) throws IllegalArgumentException, UnsupportedOperationException {
+	public synchronized void create(final UPlayer owner) throws IllegalArgumentException, UnsupportedOperationException {
 		if (this.exists())
 			throw new UnsupportedOperationException("A guild with this name already exists.");
 
@@ -107,7 +107,7 @@ public class Guild {
 		owner.setGuild(this);
 	}
 
-	public void invitePlayer(final UPlayer source, final UPlayer target) {
+	public synchronized void invitePlayer(final UPlayer source, final UPlayer target) {
 		if (!this.exists())
 			throw new UnsupportedOperationException("Cannot invite player to non-existent guild.");
 
@@ -145,7 +145,7 @@ public class Guild {
 
 	}
 	
-	public int getPoints(){
+	public synchronized int getPoints(){
 		Connection connection = null;
 		PreparedStatement query = null;
 		ResultSet result = null;
@@ -174,7 +174,7 @@ public class Guild {
 		return points;
 	}
 	
-	public void setPoints(int points){
+	public synchronized void setPoints(int points){
 		Connection connection = null;
 		PreparedStatement query = null;
 		try {
@@ -207,7 +207,7 @@ public class Guild {
 		return list;
 	}
 	
-	public void remove(){
+	public synchronized void remove(){
 		Connection connection = null;
 		PreparedStatement delete = null;
 		try {
@@ -228,7 +228,7 @@ public class Guild {
 		}
 	}
 
-	public static List<Guild> getGuildsList() {
+	public synchronized  static List<Guild> getGuildsList() {
 		Connection connection = null;
 		PreparedStatement query = null;
 		ResultSet result = null;
