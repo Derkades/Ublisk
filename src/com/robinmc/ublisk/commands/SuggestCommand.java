@@ -10,7 +10,7 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.java.FileUtils;
 
-public class Report implements CommandExecutor {
+public class SuggestCommand implements CommandExecutor {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
@@ -24,7 +24,7 @@ public class Report implements CommandExecutor {
 		File file = new File(Main.getInstance().getDataFolder(), "suggestions.txt");
 		FileUtils.appendStringToFile(file, String.join(" ", args) + "\n\n");
 		
-		sender.sendMessage(String.join(" ", args)); //TODO Fancy message
+		sender.sendMessage("Your message has been recorded. We'll take a look at it soon, hang tight!");
 		
 		return true;
 	}

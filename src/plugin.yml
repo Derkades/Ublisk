@@ -21,10 +21,8 @@ commands:
     credits:
         description: Credits
         usage: </command> [arguments]
-    report:
-        aliases: [reporthacker, reportplayer, rpplayer, rphacker, rp]
-    contact:
-        aliases: [suggestfeature, newfeature, features, feature, newfeatures, suggestfeatures, suggestion, suggestions, bug, bugs, reportbug, bugreport, admincontact, ownercontant, ask, apply, operatorhelp, ophelp, helpop, askop, askoperator, askmod, askadmin, askowner]
+    suggest:
+        aliases: [contact, todo, suggestfeature, newfeature, features, feature, newfeatures, suggestfeatures, suggestion, suggestions, bug, bugs, reportbug, bugreport, admincontact, ownercontant, ask, apply, operatorhelp, ophelp, helpop, askop, askoperator, askmod, askadmin, askowner]
     afk:
         aliases: [away, brb, awayfromkeyboard, back]
         description: I have no idea what to put here
