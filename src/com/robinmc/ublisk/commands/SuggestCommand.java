@@ -1,14 +1,18 @@
 package com.robinmc.ublisk.commands;
 
-import java.io.File;
+import java.sql.SQLException;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.utils.java.FileUtils;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.utils.TodoList;
+import com.robinmc.ublisk.utils.TodoList.TodoItem;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class SuggestCommand implements CommandExecutor {
 	
@@ -21,10 +25,19 @@ public class SuggestCommand implements CommandExecutor {
 			sender.sendMessage(Message.WRONG_USAGE.toString());
 		}
 		
-		File file = new File(Main.getInstance().getDataFolder(), "suggestions.txt");
-		FileUtils.appendStringToFile(file, String.join(" ", args) + "\n\n");
+		//File file = new File(Main.getInstance().getDataFolder(), "suggestions.txt");
+		//FileUtils.appendStringToFile(file, String.join(" ", args) + "\n\n");
 		
-		sender.sendMessage("Your message has been recorded. We'll take a look at it soon, hang tight!");
+		TodoItem todoItem = new TodoItem(0, "Ublisk", String.join(" ", args));
+		
+		try {
+			TodoList.addTodoItem(todoItem);
+			sender.sendMessage("Your message has been recorded. We'll take a look at it soon!");
+		} catch (SQLException e){
+			Logger.log(LogLevel.SEVERE, "Database error (todo list suggestion)");
+			sender.sendMessage(ChatColor.RED + "An error occured :(");
+			e.printStackTrace();
+		}
 		
 		return true;
 	}

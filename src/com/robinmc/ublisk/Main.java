@@ -7,10 +7,12 @@ import com.robinmc.ublisk.commands.Command;
 import com.robinmc.ublisk.listeners.Listeners;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.task.Task;
+import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.DoubleXP;
 import com.robinmc.ublisk.utils.Guild;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.utils.TodoList;
 import com.robinmc.ublisk.utils.Ublisk;
 
 public class Main extends JavaPlugin {
@@ -38,6 +40,8 @@ public class Main extends JavaPlugin {
 
 		DoubleXP.startDoubleXPPacketListener();
 		Logger.startSiteLogger();
+		
+		TodoList.initialize(DataFile.MYSQL.getString("todo.user"), DataFile.MYSQL.getString("todo.password"));
 		
 		new BukkitRunnable() {
 			public void run() {
