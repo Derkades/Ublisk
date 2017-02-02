@@ -14,6 +14,8 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
+import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.utils.settings.Setting;
 
@@ -30,7 +32,14 @@ public class FriendsMenu {
 		public void onOptionClick(OptionClickEvent event) {
 			UPlayer player = new UPlayer(event.getPlayer());
 			Material item = event.getItem().getType();
-			OfflinePlayer friend = event.getFriend();
+			OfflinePlayer friend;
+			try {
+				friend = Ublisk.getOfflinePlayerFromName(event.getName());
+			} catch (PlayerNotFoundException e) {
+				player.sendMessage(Message.PLAYER_NOT_FOUND);
+				return;
+			}
+			
 			if (item == Material.SPECKLED_MELON){
 				event.setWillClose(false);
 				if (player.getSetting(Setting.FRIENDS_SHOW_HEALTH)){

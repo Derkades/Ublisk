@@ -84,7 +84,13 @@ public class UPlayer {
 	public UPlayer(String name) throws PlayerNotFoundException {
 		if (name == null)
 			throw new IllegalArgumentException("Name must not be null");
-		this.player = UUIDUtils.getPlayerFromName(name);
+		
+		Player player = Bukkit.getPlayer(name);
+		
+		if (player == null)
+			throw new PlayerNotFoundException();
+		
+		this.player = player;
 	}
 
 	public UPlayer(CommandSender sender) {
@@ -296,45 +302,59 @@ public class UPlayer {
 		return player.getName();
 	}
 
-	public boolean addFriend(UPlayer newFriend) {
-		final List<String> list = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
-		if (list.contains(newFriend.toString())) {
-			return false;
-		} else {
-			list.add(newFriend.toString());
-			DataFile.FRIENDS.set("friends." + getUniqueId(), list);
-			return true;
+	public void addFriend(OfflinePlayer newFriend) {
+		final List<String> list = DataFile.FRIENDS.getStringList("friends." + this.getUniqueId());
+		
+		if (list.contains(newFriend.getUniqueId())){
+			throw new UnsupportedOperationException("Friend is already in friends list");
 		}
+		
+		list.add(newFriend.getUniqueId().toString());
+		
+		DataFile.FRIENDS.set("friends." + this.getUniqueId(), list);
 	}
 
-	public boolean removeFriend(int index) {
-		final List<String> list = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
-		if (list.size() >= index) {
-			list.remove(index);
-			DataFile.FRIENDS.set("friends." + getUniqueId(), list);
-			return true;
-		} else {
-			return false;
+	public void removeFriend(int index) {
+		final List<String> friendsUUIDList = DataFile.FRIENDS.getStringList("friends." + this.getUniqueId());
+		
+		if (index > friendsUUIDList.size()){
+			throw new IllegalArgumentException("Index can't be more than list size");
 		}
+		
+		friendsUUIDList.remove(index);
+		
+		DataFile.FRIENDS.set("friends." + this.getUniqueId(), friendsUUIDList);
 	}
 
-	public boolean removeFriend(OfflinePlayer friendToRemove) {
-		final List<String> list = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
-		if (list.contains(friendToRemove.toString())) {
-			list.remove(friendToRemove.toString());
-			DataFile.FRIENDS.set("friends." + getUniqueId(), list);
-			return true;
-		} else {
-			return false;
+	public void removeFriend(OfflinePlayer friendToRemove) {
+		final List<String> list = DataFile.FRIENDS.getStringList("friends." + this.getUniqueId());
+		
+		if (!list.contains(friendToRemove.getUniqueId().toString())){
+			throw new IllegalArgumentException(friendToRemove.getName() + " is not " + this.getName() + "'s friend");
 		}
+		
+		list.remove(friendToRemove);
+		
+		DataFile.FRIENDS.set("friends." + this.getUniqueId(), list);
 	}
 
 	public List<OfflinePlayer> getFriends() {
-		final List<String> strings = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
+		final List<String> uuidStrings = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
 		final List<OfflinePlayer> players = new ArrayList<OfflinePlayer>();
-		for (String string : strings)
-			players.add(Ublisk.getPlayerFromString(string));
+		for (String uuidString : uuidStrings){
+			UUID uuid = UUID.fromString(uuidString);
+			players.add(Bukkit.getOfflinePlayer(uuid));
+		}
 		return players;
+	}
+	
+	public boolean isFriend(OfflinePlayer offlinePlayer){
+		for (OfflinePlayer friend : this.getFriends()){
+			if (friend.getName().equals(offlinePlayer.getName())){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
