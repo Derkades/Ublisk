@@ -165,6 +165,7 @@ public class IconMenu implements Listener {
 			return item;
 		}
 
+		@Deprecated
 		public OfflinePlayer getFriend() {
 			OfflinePlayer friend;
 			try {

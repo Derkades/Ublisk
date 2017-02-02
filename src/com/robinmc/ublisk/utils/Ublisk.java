@@ -27,6 +27,7 @@ import org.bukkit.entity.Player;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 
 public class Ublisk {
 	
@@ -94,8 +95,19 @@ public class Ublisk {
 		return DARK_GRAY + " [" + string + DARK_GRAY + "]";
 	}
 	
+	@Deprecated
 	public static OfflinePlayer getPlayerFromString(String uuid){
 		return UUIDUtils.getPlayerFromId(UUID.fromString(uuid));
+	}
+	
+	public static OfflinePlayer getOfflinePlayerFromName(String name) throws PlayerNotFoundException {
+		String uuidString = DataFile.UUID.getString("uuid." + name);
+		UUID uuid = UUID.fromString(uuidString);
+		OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
+		if (offlinePlayer == null){
+			throw new PlayerNotFoundException();
+		}
+		return offlinePlayer;
 	}
 	
 	/**

@@ -48,7 +48,7 @@ public class PlayerJoin implements Listener {
 			}
 		}, 1*20);
 		
-		//Save player uuid and name for later use
+		//Sync UUID and player name information with database for use by statistics site
 		UUIDUtils.save(player);
 		
 		HashMaps.addPlayerToMaps(player);

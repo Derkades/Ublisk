@@ -15,30 +15,36 @@ import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 
 public class UUIDUtils {
 
+	@Deprecated
 	public static UUID getIdFromName(String name) {
 		String string = DataFile.UUID.getString("uuid." + name);
 		return UUID.fromString(string);
 	}
 
+	@Deprecated
 	public static String getNameFromId(UUID uuid) {
 		String name = DataFile.UUID.getString("name." + uuid);
 		return name;
 	}
 
+	@Deprecated
 	public static UUID fromString(String string) {
 		UUID uuid = UUID.fromString(string);
 		return uuid;
 	}
 
+	@Deprecated
 	public static String getNameFromIdString(String string) {
 		String name = getNameFromId(fromString(string));
 		return name;
 	}
 
+	@Deprecated
 	public static OfflinePlayer getPlayerFromId(UUID uuid) {
 		return Bukkit.getOfflinePlayer(uuid);
 	}
 
+	@Deprecated
 	public static OfflinePlayer getOfflinePlayerFromName(String name) throws PlayerNotFoundException {
 		try {
 			return Bukkit.getOfflinePlayer(getIdFromName(name));
@@ -46,7 +52,8 @@ public class UUIDUtils {
 			throw new PlayerNotFoundException();
 		}
 	}
-
+	
+	@Deprecated
 	public static Player getPlayerFromName(String name) throws PlayerNotFoundException {
 		Player player = Bukkit.getPlayer(name);
 		if (player == null)
