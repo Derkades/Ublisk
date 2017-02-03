@@ -22,6 +22,10 @@ public enum Clazz {
 	}
 	
 	public static Clazz fromString(String text) {
+		if (text == null){
+			return SWORDSMAN;
+		}
+		
 		for (Clazz c: Clazz.values()) {
 			if (text.equalsIgnoreCase(c.name)) {
 				return c;
