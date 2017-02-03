@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
 
@@ -44,7 +45,7 @@ public enum DataFile {
 		return config;
 	}
 
-	private void save() {
+	public void save() {
 		try {
 			getConfig().save(file);
 		} catch (IOException e) {
@@ -54,7 +55,6 @@ public enum DataFile {
 
 	public void set(String path, Object o) {
 		getConfig().set(path, o);
-		save();
 	}
 
 	public String getString(String path) {
@@ -79,6 +79,16 @@ public enum DataFile {
 
 	public boolean isSet(String path) {
 		return getConfig().isSet(path);
+	}
+	
+	public static class SaveFiles extends BukkitRunnable {
+		
+		public void run(){
+			for (DataFile dataFile : DataFile.values()){
+				dataFile.save();
+			}
+		}
+		
 	}
 
 }
