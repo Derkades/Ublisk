@@ -164,19 +164,7 @@ public class IconMenu implements Listener {
 		public ItemStack getItem() {
 			return item;
 		}
-
-		@Deprecated
-		public OfflinePlayer getFriend() {
-			OfflinePlayer friend;
-			try {
-				friend = UUIDUtils.getOfflinePlayerFromName(name);
-			} catch (NullPointerException e) {
-				friend = null;
-			} catch (PlayerNotFoundException e) {
-				friend = null;
-			}
-			return friend;
-		}
+		
 	}
 
 	private ItemStack setItemNameAndLore(ItemStack item, String name, String[] lore) {
