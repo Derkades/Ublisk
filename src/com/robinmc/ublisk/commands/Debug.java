@@ -22,6 +22,7 @@ import com.robinmc.ublisk.WorldEditCUI;
 import com.robinmc.ublisk.chat.Trigger;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.quest.NPC;
+import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.Lag;
 import com.robinmc.ublisk.utils.PacketListener;
@@ -205,6 +206,7 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("saferl")){
 						WorldEditCUI.onDisable();
 						PacketListener.closeAllOpenSockets();
+						for (DataFile file : DataFile.values()) file.save();
 						Bukkit.getServer().reload();
 						return true;
 					} else {
