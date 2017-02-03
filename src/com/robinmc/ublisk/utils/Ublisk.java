@@ -95,11 +95,6 @@ public class Ublisk {
 		return DARK_GRAY + " [" + string + DARK_GRAY + "]";
 	}
 	
-	@Deprecated
-	public static OfflinePlayer getPlayerFromString(String uuid){
-		return UUIDUtils.getPlayerFromId(UUID.fromString(uuid));
-	}
-	
 	public static OfflinePlayer getOfflinePlayerFromName(String name) throws PlayerNotFoundException {
 		String uuidString = DataFile.UUID.getString("uuid." + name);
 		UUID uuid = UUID.fromString(uuidString);
