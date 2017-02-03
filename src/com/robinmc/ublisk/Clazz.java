@@ -27,7 +27,7 @@ public enum Clazz {
 				return c;
 			}
 		}
-		return null;
+		return SWORDSMAN;
 	}
 	
 	public static Clazz getClass(Player player){
