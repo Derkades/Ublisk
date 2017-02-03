@@ -209,6 +209,9 @@ public class Debug implements CommandExecutor {
 						for (DataFile file : DataFile.values()) file.save();
 						Bukkit.getServer().reload();
 						return true;
+					} else if (args[0].equals("save")){
+						for (DataFile file : DataFile.values()) file.save();
+						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE);
 						return true;
