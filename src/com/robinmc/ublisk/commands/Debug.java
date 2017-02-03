@@ -2,6 +2,7 @@ package com.robinmc.ublisk.commands;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Set;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -211,6 +212,22 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("save")){
 						for (DataFile file : DataFile.values()) file.save();
+						return true;
+					} else if (args[0].equals("id")){
+						Block block = player.getPlayer().getTargetBlock(((Set<Material>) null), 10);
+						@SuppressWarnings("deprecation")
+						int id = block.getTypeId();
+						@SuppressWarnings("deprecation")
+						byte data = block.getData();
+						player.sendMessage(ChatColor.BOLD + "" + id + ":" + data);
+						return true;
+					} else if (args[0].equals("night")){
+						while (true) {
+							if (!Time.isDay()) {
+								break;
+							}
+							Time.add(100);
+						}
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE);
