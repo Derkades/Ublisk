@@ -20,7 +20,9 @@ public class InventoryClick implements Listener {
 	@EventHandler
 	public void onItemClick(InventoryClickEvent event){
 
-		if (new UPlayer(event.getWhoClicked()).isInBuilderMode()){
+		UPlayer player = new UPlayer(event.getWhoClicked());
+		
+		if (player.isInBuilderMode()){
 			return;
 		}
 		
