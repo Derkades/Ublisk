@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.PlayerLogin;
 import com.robinmc.ublisk.ext.com.sethbling.blinghomingarrows.HomingArrowsListener;
 import com.robinmc.ublisk.mob.listeners.EntityCombust;
 import com.robinmc.ublisk.mob.listeners.EntityDamageByEntity;
@@ -49,7 +50,9 @@ public class Listeners {
 		
 		SETHBLING_HOMING_ARROWS(new HomingArrowsListener()),
 		
-		NPC_CLICK_LISTENER(new NPCClickListener());
+		NPC_CLICK_LISTENER(new NPCClickListener()),
+		
+		PLAYER_LOGIN(new PlayerLogin());
 		
 		private Listener listener;
 		

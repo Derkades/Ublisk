@@ -24,7 +24,8 @@ public enum DataFile {
 	PERMISSIONS("permissions"),
 	MYSQL("mysql"),
 	TOWN("town"),
-	GUILDS("guilds");
+	GUILDS("guilds"),
+	PLAYER_LOCATION("playerloc");
 
 	private File file;
 
