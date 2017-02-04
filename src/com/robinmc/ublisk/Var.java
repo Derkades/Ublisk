@@ -101,7 +101,8 @@ public class Var {
 	 * Locations of trapdoors players should be able to open
 	 */
 	public static final List<Location> SAFE_TRAPDOORS = Arrays.asList(
-			new Location(Var.WORLD, -23, 74, 3)
+			new Location(Var.WORLD, -23, 74, 3),
+			new Location(Var.WORLD, 132, 81, 289)
 			);
 	
 	/**
