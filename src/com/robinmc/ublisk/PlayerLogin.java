@@ -34,6 +34,11 @@ public class PlayerLogin implements Listener {
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onQuit(PlayerQuitEvent event) {
 		final UPlayer player = new UPlayer(event);
+		
+		if (IN_PORTAL_ROOM.contains(player.getName())){
+			return;
+		}
+		
 		Location location = player.getLocation();
 		String locationString = LocationUtils.getStringFromLocation(location);
 		DataFile.PLAYER_LOCATION.getConfig().set(player.getUniqueId().toString(), locationString);
