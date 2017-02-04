@@ -35,7 +35,7 @@ public enum Clazz {
 	}
 	
 	public static Clazz getClass(Player player){
-		String name = DataFile.CLASSES.getString("class." + player.getUniqueId());
+		String name = DataFile.CLASSES.getConfig().getString("class." + player.getUniqueId());
 		Clazz c = fromString(name);
 		return c;
 	}

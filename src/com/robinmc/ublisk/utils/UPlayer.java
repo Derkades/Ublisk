@@ -157,12 +157,12 @@ public class UPlayer {
 	}
 
 	public void setLifeCrystals(int amount) {
-		DataFile.LIFE_CRYSTAL.set("life." + getUniqueId(), amount);
+		DataFile.LIFE_CRYSTAL.getConfig().set("life." + getUniqueId(), amount);
 	}
 
 	public int getLifeCrystals() {
-		if (DataFile.LIFE_CRYSTAL.isSet("life." + getUniqueId())) {
-			return DataFile.LIFE_CRYSTAL.getInteger("life." + getUniqueId());
+		if (DataFile.LIFE_CRYSTAL.getConfig().isSet("life." + getUniqueId())) {
+			return DataFile.LIFE_CRYSTAL.getConfig().getInt("life." + getUniqueId());
 		} else {
 			return 5;
 		}
@@ -174,8 +174,8 @@ public class UPlayer {
 
 	public int getVotingPoints() {
 		String path = "voting." + getUniqueId();
-		if (DataFile.VOTING.isSet(path)) {
-			return DataFile.VOTING.getInteger(path);
+		if (DataFile.VOTING.getConfig().isSet(path)) {
+			return DataFile.VOTING.getConfig().getInt(path);
 		} else {
 			setVotingPoints(0);
 			return 0;
@@ -184,7 +184,7 @@ public class UPlayer {
 
 	public void setVotingPoints(int i) {
 		String path = "voting." + getUniqueId();
-		DataFile.VOTING.set(path, i);
+		DataFile.VOTING.getConfig().set(path, i);
 	}
 
 	public boolean hasVotingPoints(int i) {
@@ -193,7 +193,7 @@ public class UPlayer {
 
 	public PermissionGroup getGroup() {
 		try {
-			return PermissionGroup.fromString(DataFile.PERMISSIONS.getString("groups." + this.getUniqueId()));
+			return PermissionGroup.fromString(DataFile.PERMISSIONS.getConfig().getString("groups." + this.getUniqueId()));
 		} catch (GroupNotFoundException e) {
 			Logger.log(LogLevel.WARNING, "Permissions", "Could not get group of " + player.getName());
 			return PermissionGroup.DEFAULT;
@@ -201,7 +201,7 @@ public class UPlayer {
 	}
 
 	public void setGroup(PermissionGroup group) {
-		DataFile.PERMISSIONS.set("groups." + getUniqueId(), group.getName().toLowerCase());
+		DataFile.PERMISSIONS.getConfig().set("groups." + getUniqueId(), group.getName().toLowerCase());
 	}
 
 	public boolean hasPermission(Permission perm) {
@@ -303,7 +303,7 @@ public class UPlayer {
 	}
 
 	public void addFriend(OfflinePlayer newFriend) {
-		final List<String> list = DataFile.FRIENDS.getStringList("friends." + this.getUniqueId());
+		final List<String> list = DataFile.FRIENDS.getConfig().getStringList("friends." + this.getUniqueId());
 		
 		if (list.contains(newFriend.getUniqueId())){
 			throw new UnsupportedOperationException("Friend is already in friends list");
@@ -311,11 +311,11 @@ public class UPlayer {
 		
 		list.add(newFriend.getUniqueId().toString());
 		
-		DataFile.FRIENDS.set("friends." + this.getUniqueId(), list);
+		DataFile.FRIENDS.getConfig().set("friends." + this.getUniqueId(), list);
 	}
 
 	public void removeFriend(int index) {
-		final List<String> friendsUUIDList = DataFile.FRIENDS.getStringList("friends." + this.getUniqueId());
+		final List<String> friendsUUIDList = DataFile.FRIENDS.getConfig().getStringList("friends." + this.getUniqueId());
 		
 		if (index > friendsUUIDList.size()){
 			throw new IllegalArgumentException("Index can't be more than list size");
@@ -323,11 +323,11 @@ public class UPlayer {
 		
 		friendsUUIDList.remove(index);
 		
-		DataFile.FRIENDS.set("friends." + this.getUniqueId(), friendsUUIDList);
+		DataFile.FRIENDS.getConfig().set("friends." + this.getUniqueId(), friendsUUIDList);
 	}
 
 	public void removeFriend(OfflinePlayer friendToRemove) {
-		final List<String> list = DataFile.FRIENDS.getStringList("friends." + this.getUniqueId());
+		final List<String> list = DataFile.FRIENDS.getConfig().getStringList("friends." + this.getUniqueId());
 		
 		if (!list.contains(friendToRemove.getUniqueId().toString())){
 			throw new IllegalArgumentException(friendToRemove.getName() + " is not " + this.getName() + "'s friend");
@@ -335,11 +335,11 @@ public class UPlayer {
 		
 		list.remove(friendToRemove);
 		
-		DataFile.FRIENDS.set("friends." + this.getUniqueId(), list);
+		DataFile.FRIENDS.getConfig().set("friends." + this.getUniqueId(), list);
 	}
 
 	public List<OfflinePlayer> getFriends() {
-		final List<String> uuidStrings = DataFile.FRIENDS.getStringList("friends." + getUniqueId());
+		final List<String> uuidStrings = DataFile.FRIENDS.getConfig().getStringList("friends." + getUniqueId());
 		final List<OfflinePlayer> players = new ArrayList<OfflinePlayer>();
 		for (String uuidString : uuidStrings){
 			UUID uuid = UUID.fromString(uuidString);
@@ -448,12 +448,12 @@ public class UPlayer {
 		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 		Date dateobj = new Date();
 		String date = df.format(dateobj);
-		DataFile.LAST_PLAYED.set("last-played." + player.getUniqueId(), date);
+		DataFile.LAST_PLAYED.getConfig().set("last-played." + player.getUniqueId(), date);
 	}
 
 	public String getLastSeenDate() {
-		if (DataFile.LAST_PLAYED.isSet("last-played." + player.getUniqueId())) {
-			return DataFile.LAST_PLAYED.getString("last-played." + player.getUniqueId());
+		if (DataFile.LAST_PLAYED.getConfig().isSet("last-played." + player.getUniqueId())) {
+			return DataFile.LAST_PLAYED.getConfig().getString("last-played." + player.getUniqueId());
 		} else {
 			return "Never";
 		}
@@ -568,7 +568,7 @@ public class UPlayer {
 	 * getLastTown()
 	 */
 	public Town getTown() {
-		String s = DataFile.TOWN.getString("last-town." + player.getUniqueId());
+		String s = DataFile.TOWN.getConfig().getString("last-town." + player.getUniqueId());
 
 		if (s == null)
 			return Town.INTRODUCTION;
@@ -577,7 +577,7 @@ public class UPlayer {
 	}
 
 	public void setLastTown(Town town) {
-		DataFile.TOWN.set("last-town." + player.getUniqueId(), town.getName());
+		DataFile.TOWN.getConfig().set("last-town." + player.getUniqueId(), town.getName());
 	}
 
 	public void sendTitle(String title, String subtitle) {
@@ -726,7 +726,7 @@ public class UPlayer {
 	}
 	
 	public void setGuild(Guild guild){
-		DataFile.GUILDS.set("guild." + this.getUniqueId(), guild.getName());
+		DataFile.GUILDS.getConfig().set("guild." + this.getUniqueId(), guild.getName());
 	}
 	
 	/**
@@ -734,7 +734,7 @@ public class UPlayer {
 	 * @return A guild if player is in a guild, null if the player is not in a guild.
 	 */
 	public Guild getGuild(){
-		String guildName = DataFile.GUILDS.getString("guild." + this.getUniqueId());
+		String guildName = DataFile.GUILDS.getConfig().getString("guild." + this.getUniqueId());
 		
 		if (guildName == null){
 			return null;
@@ -744,7 +744,7 @@ public class UPlayer {
 		
 		// Removes guild from file if the guild no longer exists
 		if (!guild.exists()){
-			DataFile.GUILDS.set("guild." + this.getUniqueId(), null);
+			DataFile.GUILDS.getConfig().set("guild." + this.getUniqueId(), null);
 			return null;
 		} else {
 			return guild;
@@ -756,7 +756,7 @@ public class UPlayer {
 	}
 	
 	public void leaveGuild(){
-		DataFile.GUILDS.set("guild." + this.getUniqueId(), null);
+		DataFile.GUILDS.getConfig().set("guild." + this.getUniqueId(), null);
 	}
 
 	@Override

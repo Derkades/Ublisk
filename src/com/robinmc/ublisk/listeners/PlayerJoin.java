@@ -62,7 +62,7 @@ public class PlayerJoin implements Listener {
         
         String ip = player.getPlayer().getAddress().toString();
         ip = ip.replace("/", "");
-        DataFile.IP.set("ip." + uuid, ip);
+        DataFile.IP.getConfig().set("ip." + uuid, ip);
         
         player.refreshXP();
         

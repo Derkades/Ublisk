@@ -32,23 +32,23 @@ public class QuestParticipant extends UPlayer {
 	}
 	
 	public void saveProgress(QuestProgress data){
-		DataFile.QUESTS.set(this.getUniqueId() + ".progress." + data.toString(), true);
+		DataFile.QUESTS.getConfig().set(this.getUniqueId() + ".progress." + data.toString(), true);
 	}
 	
 	public boolean getProgress(QuestProgress data){
-		if (DataFile.QUESTS.isSet(this.getUniqueId() + ".progress." + data.toString())){
-			return DataFile.QUESTS.getBoolean(this.getUniqueId() + ".progress." + data.toString());
+		if (DataFile.QUESTS.getConfig().isSet(this.getUniqueId() + ".progress." + data.toString())){
+			return DataFile.QUESTS.getConfig().getBoolean(this.getUniqueId() + ".progress." + data.toString());
 		} else {
 			return false;
 		}
 	}
 	
 	public void setQuestCompleted(boolean bool){
-		DataFile.QUESTS.set(this.getUniqueId() + ".quests." + quest.getConfigString(), bool);
+		DataFile.QUESTS.getConfig().set(this.getUniqueId() + ".quests." + quest.getConfigString(), bool);
 	}
 	
 	public boolean getQuestCompleted(){
-		return DataFile.QUESTS.getBoolean(this.getUniqueId() + ".quests." + quest.getConfigString());
+		return DataFile.QUESTS.getConfig().getBoolean(this.getUniqueId() + ".quests." + quest.getConfigString());
 	}
 	
 	public boolean hasRequiredLevel(){

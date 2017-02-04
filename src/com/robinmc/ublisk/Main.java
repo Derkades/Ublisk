@@ -41,7 +41,7 @@ public class Main extends JavaPlugin {
 		DoubleXP.startDoubleXPPacketListener();
 		Logger.startSiteLogger();
 		
-		TodoList.initialize(DataFile.MYSQL.getString("todo.user"), DataFile.MYSQL.getString("todo.password"));
+		TodoList.initialize(DataFile.MYSQL.getConfig().getString("todo.user"), DataFile.MYSQL.getConfig().getString("todo.password"));
 		
 		new BukkitRunnable() {
 			public void run() {

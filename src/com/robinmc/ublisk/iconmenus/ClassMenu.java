@@ -30,16 +30,16 @@ public class ClassMenu {
 			} else {
 				startCooldown(player);
 				if (name.equals("swordsman")){
-					DataFile.CLASSES.set("class." + uuid, "Swordsman");
+					DataFile.CLASSES.getConfig().set("class." + uuid, "Swordsman");
 					player.sendMessage("You have changed class to Swordsman");
 				} else if (name.equals("archer")){
-					DataFile.CLASSES.set("class." + uuid, "Archer");
+					DataFile.CLASSES.getConfig().set("class." + uuid, "Archer");
 					player.sendMessage("You have changed class to Archer");
 				} else if (name.equals("sorcerer")){
-					DataFile.CLASSES.set("class." + uuid, "Sorcerer");
+					DataFile.CLASSES.getConfig().set("class." + uuid, "Sorcerer");
 					player.sendMessage("You have changed class to Sorcerer");
 				} else if (name.equals("paladin")){
-					DataFile.CLASSES.set("class." + uuid, "Paladin");
+					DataFile.CLASSES.getConfig().set("class." + uuid, "Paladin");
 					player.sendMessage("You have changed class to Paladin");
 				} else {
 					player.sendMessage(Message.ERROR_MENU);

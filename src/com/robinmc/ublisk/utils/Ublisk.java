@@ -96,7 +96,7 @@ public class Ublisk {
 	}
 	
 	public static OfflinePlayer getOfflinePlayerFromName(String name) throws PlayerNotFoundException {
-		String uuidString = DataFile.UUID.getString("uuid." + name);
+		String uuidString = DataFile.UUID.getConfig().getString("uuid." + name);
 		UUID uuid = UUID.fromString(uuidString);
 		OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
 		if (offlinePlayer == null){

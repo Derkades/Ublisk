@@ -4,20 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.UUID;
-
-import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.utils.Logger.LogLevel;
-import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 
 public class UUIDUtils {
 
 	public static void save(UPlayer player) {
-		DataFile.UUID.set("uuid." + player.getName(), player.getUniqueId().toString());
-		DataFile.UUID.set("name." + player.getUniqueId(), player.getName());
+		DataFile.UUID.getConfig().set("uuid." + player.getName(), player.getUniqueId().toString());
+		DataFile.UUID.getConfig().set("name." + player.getUniqueId(), player.getName());
 
 		syncWithDatabase(player);
 	}

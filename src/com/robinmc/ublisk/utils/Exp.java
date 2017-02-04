@@ -23,7 +23,7 @@ public class Exp {
 	 *            of experience points
 	 */
 	public static void set(OfflinePlayer player, int n) {
-		DataFile.XP.set("xp." + player.getUniqueId(), n);
+		DataFile.XP.getConfig().set("xp." + player.getUniqueId(), n);
 
 		if (player.isOnline()) {
 			Player online = (Player) player;
@@ -38,8 +38,8 @@ public class Exp {
 	 * @return XP (not level!)
 	 */
 	public static int get(OfflinePlayer player) {
-		if (DataFile.XP.isSet("xp." + player.getUniqueId())) {
-			return DataFile.XP.getInteger("xp." + player.getUniqueId());
+		if (DataFile.XP.getConfig().isSet("xp." + player.getUniqueId())) {
+			return DataFile.XP.getConfig().getInt("xp." + player.getUniqueId());
 		} else { //If XP is not yet set in file set it to 0
 			set(player, 0);
 
