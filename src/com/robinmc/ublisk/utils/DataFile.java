@@ -2,7 +2,6 @@ package com.robinmc.ublisk.utils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -51,41 +50,6 @@ public enum DataFile {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Deprecated
-	public void set(String path, Object o) {
-		getConfig().set(path, o);
-	}
-
-	@Deprecated
-	public String getString(String path) {
-		return getConfig().getString(path);
-	}
-
-	@Deprecated
-	public boolean getBoolean(String path) {
-		return getConfig().getBoolean(path);
-	}
-
-	@Deprecated
-	public int getInteger(String path) {
-		return getConfig().getInt(path);
-	}
-
-	@Deprecated
-	public double getDouble(String path) {
-		return getConfig().getDouble(path);
-	}
-
-	@Deprecated
-	public List<String> getStringList(String path) {
-		return getConfig().getStringList(path);
-	}
-
-	@Deprecated
-	public boolean isSet(String path) {
-		return getConfig().isSet(path);
 	}
 	
 	public static class SaveFiles extends BukkitRunnable {
