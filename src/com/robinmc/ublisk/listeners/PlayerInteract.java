@@ -298,7 +298,7 @@ public class PlayerInteract implements Listener {
 			
 			//If the player is in creative mode, send them a message on how to permanently open the trapdoor.
 			if (player.getGameMode() == GameMode.CREATIVE)
-				player.sendMessage("NOTE: To permamently close or open a trapdoor.");
+				player.sendMessage("Right click with a beetroot to permanently open or close a trapdoor. If this is a safe trapdoor, please add it to the list of safe trapdoors.");
 			
 			event.setCancelled(true);
 		}
