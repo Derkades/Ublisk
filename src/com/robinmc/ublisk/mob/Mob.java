@@ -18,6 +18,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.mob.type.Chicken;
+import com.robinmc.ublisk.mob.type.Pig;
 import com.robinmc.ublisk.mob.type.Sheep;
 import com.robinmc.ublisk.mob.type.Zombie;
 import com.robinmc.ublisk.mob.type.ZombieVillager;
@@ -78,7 +79,12 @@ public enum Mob {
 			new Radius(280, 90, 318, 60)),
 			new Zombie(), 15, 15, 5, 15, 50, "Rhocus Zombie", 5, GoldDrop.LEVEL3,
 			new MobDrop(new ItemStack(Material.ROTTEN_FLESH), 0, 2),
-			new MobDrop(new ItemStack(Material.ROTTEN_FLESH), 2, 3));
+			new MobDrop(new ItemStack(Material.ROTTEN_FLESH), 2, 3)),
+	RHOCUS_PIG(new MobArea(
+			new Radius(148, 90, 261, 4)),
+			new Pig(), 3, 3.5, 2, 4, 6, "Rhocus Pig", 5, GoldDrop.LEVEL1,
+			new MobDrop(new ItemStack(Material.PORK), 0, 2),
+			new MobDrop(new ItemStack(Material.BONE), 1, 2));
 	
 	private Radius[] area;
 	private MobType type;
