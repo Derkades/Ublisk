@@ -14,6 +14,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.potion.PotionEffectType;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
@@ -39,6 +40,11 @@ public class PlayerJoin implements Listener {
 		player.setCollidable(false);
 		
 		event.setJoinMessage(DARK_AQUA + "" + BOLD + pn + RESET + AQUA + " has joined");
+		
+		player.givePotionEffect(PotionEffectType.BLINDNESS, 1*20, 0);
+		player.givePotionEffect(PotionEffectType.NIGHT_VISION, 1*20, 0);
+		
+		player.sendTitle(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Ublisk", ChatColor.YELLOW + "Welcome back, " + player.getName() + "!");
 		
 		player.sendMessage(Message.PACK_SENDING);
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){ 
