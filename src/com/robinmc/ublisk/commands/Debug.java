@@ -2,6 +2,8 @@ package com.robinmc.ublisk.commands;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.bukkit.Bukkit;
@@ -18,6 +20,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.WorldEditCUI;
 import com.robinmc.ublisk.chat.Trigger;
@@ -40,6 +43,9 @@ import com.robinmc.ublisk.weapons.abilities.TestAbility;
 import com.robinmc.ublisk.weapons.sword.Sword;
 
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class Debug implements CommandExecutor {
 
@@ -228,6 +234,24 @@ public class Debug implements CommandExecutor {
 							}
 							Time.add(100);
 						}
+						return true;
+					} else if (args[0].equals("town")){
+						List<BaseComponent> list = new ArrayList<BaseComponent>();
+						
+						for (Town town : Town.values()){
+							TextComponent component = new TextComponent(town.getName() + "   ");
+							double x = town.getSpawnLocation().getX();
+							double y = town.getSpawnLocation().getY();
+							double z = town.getSpawnLocation().getZ();
+							component.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tp @p " + x + " " + y + " " + z));
+							
+							list.add(component);
+						}
+
+						BaseComponent[] components = list.toArray(new BaseComponent[]{});
+						
+						player.sendMessage(components);
+						
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE);
