@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -20,7 +19,6 @@ import org.bukkit.plugin.Plugin;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
-import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 
 import net.md_5.bungee.api.ChatColor;
 
