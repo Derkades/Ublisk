@@ -146,19 +146,6 @@ public class Ublisk {
 	}
 	
 	/**
-	 * Spawns an explosion at the specified location. This explosion will not destroy blocks
-	 * @param loc Location
-	 * @param power The explosion radius (e.g. 0.2f)
-	 * @param spawnFire Whether this explosion should spawn fire.
-	 * 
-	 * @deprecated You should no longer summon real explosions.
-	 */
-	@Deprecated
-	public static void createExplosion(Location loc, float power) {
-		Var.WORLD.createExplosion(loc.getX(), loc.getY(), loc.getZ(), power, false, false);
-	}
-	
-	/**
 	 * Creates a fake explosion with sounds and particles.
 	 * @param location The location to spawn the explosion at.
 	 * @param damage Damage to be dealt. This is divided by the number of blocks the entity is away from the explosion. E.g. with damage = 10, a zombie standing 3 blocks away will get 10/3 = 3.33 damage.

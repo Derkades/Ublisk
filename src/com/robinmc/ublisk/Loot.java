@@ -63,7 +63,6 @@ public enum Loot {
 				     e.printStackTrace();
 				}
 				fillChestWithLoot();
-				//Bukkit.broadcastMessage(Message.Complicated.lootSpawned(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
 				int x = loc.getBlockX();
 				int y = loc.getBlockY();
 				int z = loc.getBlockZ();

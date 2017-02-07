@@ -75,11 +75,6 @@ public enum Message {
 		this.msg = msg;
 	}
 	
-	@Deprecated
-	public String get(){
-		return msg;
-	}
-	
 	@Override
 	public String toString(){
 		return msg;

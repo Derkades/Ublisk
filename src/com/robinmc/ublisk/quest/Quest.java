@@ -3,6 +3,7 @@ package com.robinmc.ublisk.quest;
 public enum Quest {
 	
 	UNKNOWN("Unknown", 0, 0, "unknown", 0),
+	
 	//FIXME: Fix reward xp
 	INTRODUCTION("Introduction", 0, 0, "introduction", 0),
 	WATER_PROBLEM("Problem with the water", 5, 1, "water-problem", 0),

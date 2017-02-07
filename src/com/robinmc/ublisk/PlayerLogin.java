@@ -109,6 +109,7 @@ public class PlayerLogin implements Listener {
 		@Override
 		public void run() {
 			for (UPlayer player : Ublisk.getOnlinePlayers()) {
+				
 				if (IN_PORTAL_ROOM.contains(player.getName())) {
 					return; // Do not save location if player is in portal room
 				}

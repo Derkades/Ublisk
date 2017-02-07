@@ -49,7 +49,6 @@ public class VoteRestart {
 	
 	public static void voteForRestart(UPlayer player){
 		restartVoters.add(player.getName());
-		//Bukkit.broadcastMessage(Message.Complicated.someoneVotedRestart(player.getName(), restartVoters.size()));
 		Ublisk.broadcastPrefixedMessage(player.getName() + " voted for a restart. Vote for a restart using /voterestart. Total votes: " + restartVoters.size());
 		restartIfPossible();
 	}
