@@ -47,6 +47,7 @@ public class GuildCommand implements CommandExecutor {
 				if (!player.isInGuild()) {
 					player.sendPrefixedMessage("Guilds", "You are not in a guild");
 				} else {
+					player.sendPrefixedMessage("Guilds", "You left " + player.getGuild().getName() + ".");
 					player.leaveGuild();
 				}
 				return true;
