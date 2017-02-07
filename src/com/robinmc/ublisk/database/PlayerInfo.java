@@ -55,13 +55,20 @@ public class PlayerInfo {
 		Connection connection = null;
 		PreparedStatement update = null;
 		
+		String guildName;
+		if (player.isInGuild()){
+			guildName = player.getGuild().getName();
+		} else {
+			guildName = "None";
+		}
+		
 		try {
 			connection = Ublisk.getNewDatabaseConnection("Update player info");
 			
 			update = connection.prepareStatement("UPDATE `" + TABLE + "` SET xp=?,guild=?,rank=?,last_seen=?,level=?,last_town=? WHERE uuid=?;");
 			
 			update.setInt(1, player.getXP());
-			update.setString(2, "None");
+			update.setString(2, guildName);
 			update.setString(3, player.getGroup().getName());
 			update.setString(4, player.getLastSeenDate());
 			update.setInt(5, player.getLevel());
