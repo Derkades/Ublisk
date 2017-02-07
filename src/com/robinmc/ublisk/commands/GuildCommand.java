@@ -38,6 +38,14 @@ public class GuildCommand implements CommandExecutor {
 					Guild guild = invite.getGuild();
 					player.setGuild(guild);
 					player.sendPrefixedMessage("Guilds", "You joined " + guild.getName() + "!");
+					
+					for (OfflinePlayer offlinePlayer : guild.getMembers()){
+						if (offlinePlayer.isOnline()){
+							UPlayer guildMember = new UPlayer(offlinePlayer);
+							guildMember.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + player.getName() + " has joined your guild!");
+						}
+					}
+					
 					return true;
 				} else {
 					// Player does not have an invite
