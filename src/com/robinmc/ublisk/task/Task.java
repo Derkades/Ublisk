@@ -31,7 +31,8 @@ public enum Task {
 	UPDATE_INFO(new AddTrackersInfoToQueue(), 10*20, 5*60*20, false),
 	UPDATE_SIDEBAR(new Scoreboard(), 5*20, 2*20, false),
 	TPS_UPDATE(new Lag(), 100, 1, false),
-	PROCESS_QUEUE(new ProcessQueue(), 10*20, 4*20, false),
+	
+	PROCESS_QUEUE(new ProcessQueue(), 10*20, 2*20, false),
 	
 	SAVE_FILES(new SaveFiles(), 30*20, 60*50, false),
 	
