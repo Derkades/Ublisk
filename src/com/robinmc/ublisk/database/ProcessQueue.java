@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.sql;
+package com.robinmc.ublisk.database;
 
 import org.bukkit.scheduler.BukkitRunnable;
 

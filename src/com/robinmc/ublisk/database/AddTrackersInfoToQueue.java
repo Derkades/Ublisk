@@ -8,7 +8,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.Ublisk;
-import com.robinmc.ublisk.utils.sql.SyncQueue;
 
 public class AddTrackersInfoToQueue extends BukkitRunnable {
 
