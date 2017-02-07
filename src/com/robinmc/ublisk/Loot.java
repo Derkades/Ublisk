@@ -31,7 +31,8 @@ public enum Loot {
 	
 	A(Level.ONE, 80, 74, -5),
 	B(Level.ONE, 250, 67, -10),
-	C(Level.ONE, 214, 69, -11);
+	C(Level.ONE, 214, 69, -11),
+	D(Level.TWO, 90, 120, 335);
 	
 	private Level level;
 	private Location loc;
