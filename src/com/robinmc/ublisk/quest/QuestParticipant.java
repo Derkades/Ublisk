@@ -59,7 +59,7 @@ public class QuestParticipant extends UPlayer {
 	
 	@Override
 	public void sendMessage(String message){
-		super.sendMessage(DARK_AQUA + "" + BOLD + this.getName() + ": " + RESET + "" + AQUA + message);
+		super.sendMessage(DARK_AQUA + "" + BOLD + npc.getName() + ": " + RESET + "" + AQUA + message);
 	}
 	
 	public void giveRewardExp(){
