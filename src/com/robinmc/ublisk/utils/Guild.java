@@ -87,10 +87,9 @@ public class Guild {
 		PreparedStatement insert = null;
 		try {
 			connection = Ublisk.getNewDatabaseConnection("Create guild (" + this.getName() + ")");
-			insert = connection.prepareStatement("INSERT INTO `guilds` values(?, ?, ?);");
+			insert = connection.prepareStatement("INSERT INTO `guilds` (name, owner) values(?, ?);");
 			insert.setString(1, this.getName());
-			insert.setInt(2, 0);
-			insert.setString(3, owner.getName());
+			insert.setString(2, owner.getName());
 			insert.execute();
 		} catch (SQLException e) {
 			Logger.log(LogLevel.SEVERE, "Unable to connect to database for creating guild");
