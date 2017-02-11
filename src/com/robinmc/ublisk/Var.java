@@ -120,7 +120,7 @@ public class Var {
 			2, 4
 			);
 	
-	public static final String DATABASE_HOST = "192.168.0.121";
+	public static final String DATABASE_HOST = DataFile.MYSQL.getConfig().getString("ip");
 	public static final int DATABASE_PORT = 3306;
 	public static final String DATABASE_USER = DataFile.MYSQL.getConfig().getString("user");
 	public static final String DATABASE_PASSWORD = DataFile.MYSQL.getConfig().getString("password"); //Admit it, you hoped the password would be here in plain text. Nope!
