@@ -13,7 +13,7 @@ commands:
     debug:
         description: Debugging command
         usage: </command> [args] [args]
-        aliases: [ublisk, u]
+        aliases: [ublisk]
     help:
         description: Shows help menu
         usage: </command> [catagory]
@@ -56,4 +56,6 @@ commands:
         aliases: [resources, resource, resourcepack, texture, textures, texturepack]
     voterestart:
         aliases: [voteforrestart, restart]
-        
+    ublisk:
+        aliases: [u, ub]
+        usage: 'Type /u for help'

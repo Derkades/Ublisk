@@ -22,7 +22,9 @@ public enum Command {
 	MUTE("mute", new MuteCommand()),
 	SUGGEST("suggest", new SuggestCommand()),
 	RESOURCE_PACK("pack", new ResourcePackCommand()),
-	VOTE_RESTART("voterestart", new VoteRestartCommand());
+	VOTE_RESTART("voterestart", new VoteRestartCommand()),
+	
+	UBLISK("ublisk", new UbliskCommand.Executor());
 
 	private String cmd;
 	private CommandExecutor exec;

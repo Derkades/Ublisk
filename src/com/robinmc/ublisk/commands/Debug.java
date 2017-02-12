@@ -1,51 +1,22 @@
 package com.robinmc.ublisk.commands;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.WorldEditCUI;
-import com.robinmc.ublisk.chat.Trigger;
-import com.robinmc.ublisk.mob.Mob;
-import com.robinmc.ublisk.quest.NPC;
-import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.Exp;
-import com.robinmc.ublisk.utils.Lag;
-import com.robinmc.ublisk.utils.PacketListener;
-import com.robinmc.ublisk.utils.Time;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
-import com.robinmc.ublisk.weapons.Weapon;
-import com.robinmc.ublisk.weapons.abilities.TestAbility;
-import com.robinmc.ublisk.weapons.sword.Sword;
-
-import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.TextComponent;
 
 public class Debug implements CommandExecutor {
 
@@ -134,7 +105,7 @@ public class Debug implements CommandExecutor {
 						return true;
 					}
 				} else if (args.length == 1) {
-					if (args[0].equalsIgnoreCase("kill")) {
+					/*if (args[0].equalsIgnoreCase("kill")) {
 						Ublisk.broadcastMessage(Message.ENTITIES_REMOVED);
 						Mob.removeMobs();
 						return true;
@@ -146,8 +117,8 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("lag")) {
 						player.sendMessage("TPS: " + Lag.getTPS());
-						return true;
-					} else if (args[0].equals("list")) {
+						return true;*/
+					/*} else if (args[0].equals("list")) {
 						for (Entity entity : Var.WORLD.getEntities()) {
 							player.sendMessage(entity.getName() + " : " + entity.getCustomName() + " : "
 									+ entity.getLocation().getBlockX() + " : " + entity.getLocation().getBlockZ()
@@ -168,17 +139,17 @@ public class Debug implements CommandExecutor {
 					} else if (args[0].equals("triggers")) {
 						for (Trigger trigger : Trigger.values())
 							player.sendMessage(trigger.getTrigger() + ": " + trigger.getMessage());
-						return true;
-					} else if (args[0].equals("ability")) {
+						return true;*/
+					/*} else if (args[0].equals("ability")) {
 						player.doAbility(new TestAbility());
 						return true;
 					} else if (args[0].equals("pack")) {
 						player.sendMessage("This command is deprecated. Please use /pack instead.");
-						return true;
-					} else if (args[0].equals("actionbar")) {
+						return true;*/
+					/*} else if (args[0].equals("actionbar")) {
 						player.sendActionBarMessage(ChatColor.RED + "TEST!");
-						return true;
-					} else if (args[0].equals("rinv")) {
+						return true;*/
+					/*} else if (args[0].equals("rinv")) {
 						final Block block = player.getLocation().getBlock();
 						block.setType(Material.STONE);
 						new BukkitRunnable() {
@@ -187,8 +158,8 @@ public class Debug implements CommandExecutor {
 								block.setType(Material.AIR);
 							}
 						}.runTaskLater(Main.getInstance(), 5);
-						return true;
-					} else if (args[0].equals("sword")) {
+						return true;*/
+					/*} else if (args[0].equals("sword")) {
 						PlayerInventory inv = player.getInventory();
 
 						for (Weapon weapon : Weapon.getWeapons()) {
@@ -196,14 +167,14 @@ public class Debug implements CommandExecutor {
 								inv.addItem(((Sword) weapon).getItemStack());
 							}
 						}
-						return true;
-					} else if (args[0].equals("weapontest")) {
+						return true;*/
+					/*} else if (args[0].equals("weapontest")) {
 						for (Weapon weapon : Weapon.getWeapons()) {
 							player.sendMessage(
 									Weapon.itemStackIsWeapon(player.getInventory().getItemInMainHand(), weapon));
 						}
-						return true;
-					} else if (args[0].equals("version")) {
+						return true;*/
+					/*} else if (args[0].equals("version")) {
 						File pluginJar = new File(Main.getInstance().getDataFolder().getParentFile(), "Ublisk.jar");
 						long lastModified = pluginJar.lastModified();
 						SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -252,11 +223,12 @@ public class Debug implements CommandExecutor {
 						
 						player.sendMessage(components);
 						
-						return true;
-					} else {
+						return true;*/
+					/*} else {
 						player.sendMessage(Message.WRONG_USAGE);
 						return true;
-					}
+					}*/
+					return false;
 				} else {
 					player.sendMessage(Message.WRONG_USAGE);
 					return true;
