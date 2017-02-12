@@ -45,7 +45,7 @@ public class TodoList {
 	}
 
 	private static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection("jdbc:mysql://192.168.0.121:3306/todo", user, password);
+		return DriverManager.getConnection("jdbc:mysql://192.168.1.107:3306/todo", user, password);
 	}
 
 	public static List<TodoItem> getTodoItemsList() throws SQLException {
