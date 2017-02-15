@@ -45,17 +45,13 @@ public class Main extends JavaPlugin {
 		
 		TodoList.initialize(DataFile.MYSQL.getConfig().getString("todo.user"), DataFile.MYSQL.getConfig().getString("todo.password"));
 		
-		new BukkitRunnable() {
-			public void run() {
-				Logger.log(LogLevel.INFO, "Guilds", "Deleting empty guilds...");
-				for (Guild guild : Guild.getGuildsList()){
-					if (guild.getMembers().size() == 0){
-						Logger.log(LogLevel.WARNING, "Guilds", "Deleted " + guild.getName() + "!");
-						guild.remove();
-					}
-				}
+		Logger.log(LogLevel.INFO, "Guilds", "Deleting empty guilds...");
+		for (Guild guild : Guild.getGuildsList()){
+			if (guild.getMembers().size() == 0){
+				Logger.log(LogLevel.WARNING, "Guilds", "Automatically deleted " + guild.getName() + ", because it does not have any members.");
+				guild.remove();
 			}
-		}.runTaskLater(this, 5*20);
+		}
 
 	}
 
