@@ -34,6 +34,8 @@ public class Main extends JavaPlugin {
 		Command.registerAll();
 
 		Mob.startMobSpawning();
+		
+		PlayerLoginRoom.onReload();
 
 		for (Task task : Task.values())
 			task.start();

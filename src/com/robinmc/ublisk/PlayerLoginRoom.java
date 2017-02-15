@@ -31,6 +31,15 @@ public class PlayerLoginRoom implements Listener {
 	
 	public static final List<String> TELEPORT_COOLDOWN = new ArrayList<String>();
 
+	private static final Location PORTAL_ROOM_LOCATION = new Location(Var.WORLD, 17.5, 74.5, -38.5, 90, 0);
+	
+	public static void onReload(){
+		for (UPlayer player : Ublisk.getOnlinePlayers()){
+			IN_PORTAL_ROOM.add(player.getName());
+			player.teleport(PORTAL_ROOM_LOCATION);
+		}
+	}
+	
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onQuit(PlayerQuitEvent event) {
 		final UPlayer player = new UPlayer(event);
@@ -49,8 +58,7 @@ public class PlayerLoginRoom implements Listener {
 		final UPlayer player = new UPlayer(event);
 		IN_PORTAL_ROOM.add(player.getName());
 		
-		Location teleportRoomLocation = new Location(Var.WORLD, 17.5, 74.5, -38.5, 90, 0);
-		player.teleport(teleportRoomLocation);
+		player.teleport(PORTAL_ROOM_LOCATION);
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
