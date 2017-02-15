@@ -47,6 +47,7 @@ public class BreakBlock implements Listener {
 			if (block.getType() == regeneratingMaterial){
 				if (!Var.BLOCK_REGENERATION_ENABLED){
 					player.sendMessage(ChatColor.DARK_GREEN + "Block regeneration is disabled. This block will not turn back into its original state.");
+					return;
 				}
 								
 				Logger.log(LogLevel.INFO, "Regenerating block broken at (" + block.getX() + ", " + block.getY() + ", " + block.getZ() + ") by " + player.getName());
