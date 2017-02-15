@@ -1,7 +1,6 @@
 package com.robinmc.ublisk;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.commands.Command;
 import com.robinmc.ublisk.listeners.Listeners;
