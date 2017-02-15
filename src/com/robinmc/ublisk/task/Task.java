@@ -24,7 +24,7 @@ public enum Task {
 	REGENERATE_HUNGER(new RegenerateHunger(), 0, 10, false),
 	REMOVE_MOBS(new RemoveMobs(), 5*60*20, 15*60*20, false),
 	RESPAWN_NPC(new RespawnNPC(), 5*20, 5*60*20, false),
-	RESTART_ERROR_MESSAGE(new RestartErrorMessage(), 10*20, 10*20, false),
+	RESTART_ERROR_MESSAGE(new RestartErrorMessage(), 10*20, 30*20, false),
 	SET_MAX_HEALTH(new SetMaxHealth(), 5*20, 5*20, false),
 	SPAWN_RANDOM_LOOT(new SpawnRandomLoot(), 5*60*20, 5*60*20, false),
 	UPDATE_BACKPACK_NAME(new UpdateBackpackName(), 0, 5*20, false),
