@@ -14,12 +14,13 @@ import com.xxmicloxx.NoteBlockAPI.SongPlayer;
 
 public enum Town {
 	
-	//(x < ..., x > ..., z < ..., z > ...
-	//x < 100 x > 22 z < -10 z > 90
+	// x < ..., x > ..., z < ..., z > ...
+	// x < 100 x > 22 z < -10 z > 90
 	INTRODUCTION("Introduction", "ComptineDunAutreEte.nbs", 100, 22, -10, -90, 69, 67, 5),
 	GLAENOR("Glaenor", "Glaenor.nbs", 190, 100, 17, -120, 116, 68, -86),
 	RHOCUS("Rhocus", "Rhocus.nbs", 200, 100, 400, 240, 174, 82, 313),
-	NO_NAME("NoName", null, 645, 516, 60, -70, 604, 74, -41); //TODO Name for sand city
+	NO_NAME("NoName", null, 645, 516, 60, -70, 604, 74, -41), //TODO Name for sand city
+	DAWN_POINT("Dawn Point", null, 1195, 1060, -220, -360, 1152, 69, -319);
 	
 	private String name;
 	private String musicFile;
