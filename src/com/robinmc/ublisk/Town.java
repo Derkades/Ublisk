@@ -92,6 +92,10 @@ public enum Town {
 	}
 	
 	public void playThemeToPlayer(UPlayer player){
+		if (this.getSongFileName() == null){
+			return;
+		}
+		
 		Song song = NBSDecoder.parse(new File(Main.getInstance().getDataFolder() + "\\music", this.getSongFileName()));
 		
 		Logger.log(LogLevel.INFO, "Music", "Playing " + this.getSongFileName() + " for town with name " + this.getName() + " to " + player.getName());
