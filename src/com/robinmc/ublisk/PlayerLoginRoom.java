@@ -83,7 +83,7 @@ public class PlayerLoginRoom implements Listener {
 						TELEPORT_COOLDOWN.remove(player.getName());
 					}
 				}
-			}.runTaskLater(Main.getInstance(), 1*20);
+			}.runTaskLater(Main.getInstance(), 10*20);
 			
 			YamlConfiguration config = DataFile.PLAYER_LOCATION.getConfig();
 			
