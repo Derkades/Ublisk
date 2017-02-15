@@ -120,6 +120,8 @@ public class Var {
 			2, 4
 			);
 	
+	public static final boolean BLOCK_REGENERATION_ENABLED = true;
+	
 	public static final String DATABASE_HOST = DataFile.MYSQL.getConfig().getString("ip");
 	public static final int DATABASE_PORT = 3306;
 	public static final String DATABASE_USER = DataFile.MYSQL.getConfig().getString("user");

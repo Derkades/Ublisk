@@ -1,6 +1,5 @@
 package com.robinmc.ublisk.listeners;
 
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -9,10 +8,23 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class BreakBlock implements Listener {
+	
+	private static final Material[] REGENERATING_MATERIALS = new Material[]{
+			Material.IRON_ORE,
+			Material.HAY_BLOCK
+	};
+	
+	private static final int REGENERATE_TIME = 30;
 	
 	@EventHandler
 	public void onBreakBlock(BlockBreakEvent event){
@@ -21,29 +33,32 @@ public class BreakBlock implements Listener {
 			return;
 		}
 		
-		final Block block = event.getBlock();
 		final Player player = event.getPlayer();
 		final PlayerInventory inv = player.getInventory();
 		
 		if (inv.getItemInMainHand().getType() == Material.BEETROOT && player.getGameMode() == GameMode.CREATIVE){
 			player.sendMessage("Block permanently broken!");
+			return;
 		}
 		
-		if (block.getType() == Material.IRON_ORE && inv.getItemInMainHand().getType() != Material.BEETROOT){
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
-				public void run(){
-					block.setType(Material.IRON_ORE);
+		final Block block = event.getBlock();
+		
+		for (Material regeneratingMaterial : REGENERATING_MATERIALS){
+			if (block.getType() == regeneratingMaterial){
+				if (!Var.BLOCK_REGENERATION_ENABLED){
+					player.sendMessage(ChatColor.DARK_GREEN + "Block regeneration is disabled. This block will not turn back into its original state.");
 				}
-			}, 30*20);
-		} else if (block.getType() == Material.HAY_BLOCK && inv.getItemInMainHand().getType() != Material.BEETROOT){
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
-				public void run(){
-					block.setType(Material.HAY_BLOCK);
-				}
-			}, 10*20);
-		} else if (!(player.getGameMode() == GameMode.CREATIVE)){
-			event.setCancelled(true);
-		}
+								
+				Logger.log(LogLevel.INFO, "Regenerating block broken at (" + block.getX() + ", " + block.getY() + ", " + block.getZ() + ") by " + player.getName());
+				
+				final Material originalMaterial = block.getType();
+				new BukkitRunnable(){
+					public void run(){
+						block.setType(originalMaterial);
+					}
+				}.runTaskLater(Main.getInstance(), REGENERATE_TIME * 20);
+			}
+		}	
 	}
 
 }
