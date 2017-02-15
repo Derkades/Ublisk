@@ -27,9 +27,9 @@ public class PlayerLoginRoom implements Listener {
 	/**
 	 * List of names of players who are in the portal room
 	 */
-	public static final List<String> IN_PORTAL_ROOM = new ArrayList<String>();
+	private static final List<String> IN_PORTAL_ROOM = new ArrayList<String>();
 	
-	public static final List<String> TELEPORT_COOLDOWN = new ArrayList<String>();
+	private static final List<String> TELEPORT_COOLDOWN = new ArrayList<String>();
 
 	private static final Location PORTAL_ROOM_LOCATION = new Location(Var.WORLD, 17.5, 74.5, -38.5, 90, 0);
 	
