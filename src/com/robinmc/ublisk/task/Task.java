@@ -28,7 +28,7 @@ public enum Task {
 	SET_MAX_HEALTH(new SetMaxHealth(), 5*20, 5*20, false),
 	SPAWN_RANDOM_LOOT(new SpawnRandomLoot(), 5*60*20, 5*60*20, false),
 	UPDATE_BACKPACK_NAME(new UpdateBackpackName(), 0, 5*20, false),
-	UPDATE_INFO(new AddTrackersInfoToQueue(), 10*20, 5*60*20, false),
+	UPDATE_INFO(new AddTrackersInfoToQueue(), 10*20, 60*20, false),
 	UPDATE_SIDEBAR(new Scoreboard(), 5*20, 2*20, false),
 	TPS_UPDATE(new Lag(), 100, 1, false),
 	
