@@ -57,6 +57,10 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		instance = null;
+		
+		for (DataFile dataFile : DataFile.values()){
+			dataFile.save();
+		}
 	}
 
 	public static Main getInstance() {
