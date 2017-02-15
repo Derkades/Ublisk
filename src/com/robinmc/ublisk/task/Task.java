@@ -3,7 +3,7 @@ package com.robinmc.ublisk.task;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.PlayerLogin.SavePlayerLocation;
+import com.robinmc.ublisk.PlayerLoginRoom.SavePlayerLocation;
 import com.robinmc.ublisk.Scoreboard;
 import com.robinmc.ublisk.database.AddTrackersInfoToQueue;
 import com.robinmc.ublisk.database.ProcessQueue;

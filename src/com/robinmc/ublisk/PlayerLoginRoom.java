@@ -22,7 +22,7 @@ import com.robinmc.ublisk.utils.LocationUtils;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 
-public class PlayerLogin implements Listener {
+public class PlayerLoginRoom implements Listener {
 
 	/**
 	 * List of names of players who are in the portal room
