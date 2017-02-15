@@ -15,6 +15,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
@@ -22,6 +23,7 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.database.Tracker;
+import com.robinmc.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
@@ -87,5 +89,22 @@ public class PlayerJoin implements Listener {
         		.setItemInInventory(player, 7);
         		
         player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
+        
+        new BukkitRunnable(){
+        	public void run(){
+    			final String[] fancyStrings = new String[]{
+    					"                       ",
+    					" a a aa  a   a aaa a a ",
+    					" a a a a a   a a   a a ",
+    					" a a aa  a   a aaa aa  ",
+    					" a a a a a   a   a aa  ",
+    					" aaa aa  aaa a aaa a a ",
+    					"                       "
+    			};
+    			for (String string : fancyStrings){
+    				player.sendMessage(string.replace("a", ChatColor.GREEN + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()).replace(" ", ChatColor.GRAY + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()));
+    			}
+        	}
+        }.runTaskLater(Main.getInstance(), 4);
 	}
 }
