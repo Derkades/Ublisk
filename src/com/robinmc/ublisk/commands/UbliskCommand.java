@@ -41,6 +41,8 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 
+import com.robinmc.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
+
 public enum UbliskCommand {
 	
 	TEST(new CommandRunnable(){
@@ -149,7 +151,7 @@ public enum UbliskCommand {
 				}
 			}
 		}
-	}, "Gives all swords in Weapon enum", "sword, swords"),
+	}, "Gives all swords in Weapon enum", "sword", "swords"),
 	
 	REMOVE_INVISIBLE(new CommandRunnable(){
 		public void run(UPlayer player){
@@ -236,6 +238,23 @@ public enum UbliskCommand {
 		}
 	}, "Removes entities, potentially improving server performance.", "kill", "removemobs", "clearlag"),
 	
+	FANCY_TEXT_TEST(new CommandRunnable(){
+		public void run(UPlayer player){
+			final String[] fancyStrings = new String[]{
+					"                       ",
+					" a a aa  a   a aaa a a ",
+					" a a a a a   a a   a a ",
+					" a a aa  a   a aaa aa  ",
+					" a a a a a   a   a aa  ",
+					" aaa aa  aaa a aaa a a ",
+					"                       "
+			};
+			for (String string : fancyStrings){
+				player.sendMessage(string.replace("a", ChatColor.AQUA + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()).replace(" ", ChatColor.GREEN + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()));
+			}
+		}
+	}, "Sends fancy Ublisk message", "fancymessage");
+
 	;
 	
 	private CommandRunnable executor;
