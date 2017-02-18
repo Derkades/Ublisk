@@ -2,6 +2,7 @@ package com.robinmc.ublisk.utils.java;
 
 public class StringUtils {
 	
+	@Deprecated
 	public static String getStringFromWords(String[] words){
 		String msg = "";
 		
