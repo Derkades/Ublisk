@@ -19,9 +19,12 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
+import com.robinmc.ublisk.utils.Ublisk.Explosion;
 
 public class BlockLift extends Ability {
 
+	private static final int EXPLOSION_RADIUS = 4;
+	
 	private int damage;
 	
 	public BlockLift(int damage) {
@@ -70,7 +73,8 @@ public class BlockLift extends Ability {
 						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
 
 							@Override
-							public void run() { //TODO Use new fake explosion method
+							public void run() {
+								/*
 								Ublisk.spawnParticle(Particle.FLAME, blockCenterLocation, 48, 1, 1, 1, 0.1);
 								double radius = 3D;
 								List<Entity> near = blockCenterLocation.getWorld().getEntities();
@@ -81,7 +85,8 @@ public class BlockLift extends Ability {
 										if (distance <= radius)
 											living.damage(damage / distance);
 									}
-								}
+								}*/
+								Ublisk.createFakeExplosion(blockCenterLocation, damage, EXPLOSION_RADIUS, Explosion.FLAMES);
 							}
 						}, 2 * 20);
 					} else {
