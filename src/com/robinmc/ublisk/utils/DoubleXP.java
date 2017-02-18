@@ -24,8 +24,9 @@ public class DoubleXP {
 			Bukkit.broadcastMessage(Message.DOUBLE_XP_ALREADY_ACTIVE.toString());
 		}
 
-		Bukkit.broadcastMessage("Double XP started thanks to " + player.getName()); //FIXME: Fancy message
-
+		//Bukkit.broadcastMessage("Double XP started thanks to " + player.getName());
+		Ublisk.broadcastPrefixedMessage("Double XP started thanks to " + player.getName());
+		
 		DoubleXP.DOUBLE_XP_PERCENTAGE = 1.0f;
 		DoubleXP.DOUBLE_XP_SECONDS_LEFT = DoubleXP.DOUBLE_XP_TOTAL_SECONDS;
 
@@ -41,7 +42,8 @@ public class DoubleXP {
 				if (DoubleXP.DOUBLE_XP_SECONDS_LEFT == 0) {
 					this.cancel();
 					DoubleXP.DOUBLE_XP_PERCENTAGE = 0.0f;
-					Bukkit.broadcastMessage("Double XP ended"); //FIXME Fancy message
+					//Bukkit.broadcastMessage("Double XP ended");
+					Ublisk.broadcastPrefixedMessage("Double XP has ended.");
 				}
 			}
 		}.runTaskTimer(Main.getInstance(), 0L, 1 * 20L);
@@ -60,7 +62,8 @@ public class DoubleXP {
 				try {
 					DoubleXP.startDoubleXP(new UPlayer(message));
 				} catch (PlayerNotFoundException e) {
-					Bukkit.broadcastMessage("The player who started DoubleXP is not online.");//FIXME Fancy message
+					//Bukkit.broadcastMessage("The player who started DoubleXP is not online.");
+					Ublisk.broadcastPrefixedMessage("The player who started Double XP is not online.");
 				}
 			}
 
