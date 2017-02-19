@@ -54,6 +54,7 @@ public class Listeners {
 		PLAYER_LOGIN(new PlayerLoginRoom()),
 		RESOURCE_PACK(new ResourcePack()),
 		VOTING(new Voting()),
+		MOTD(new MOTD()),
 		
 		;
 		
