@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.PlayerLoginRoom;
+import com.robinmc.ublisk.ResourcePack;
 import com.robinmc.ublisk.ext.com.sethbling.blinghomingarrows.HomingArrowsListener;
 import com.robinmc.ublisk.mob.listeners.EntityCombust;
 import com.robinmc.ublisk.mob.listeners.EntityDamageByEntity;
@@ -52,7 +53,11 @@ public class Listeners {
 		
 		NPC_CLICK_LISTENER(new NPCClickListener()),
 		
-		PLAYER_LOGIN(new PlayerLoginRoom());
+		PLAYER_LOGIN(new PlayerLoginRoom()),
+		
+		RESOURCE_PACK(new ResourcePack()),
+		
+		;
 		
 		private Listener listener;
 		

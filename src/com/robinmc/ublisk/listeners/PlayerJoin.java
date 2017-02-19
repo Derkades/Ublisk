@@ -7,7 +7,6 @@ import static org.bukkit.ChatColor.RESET;
 
 import java.util.UUID;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
@@ -19,9 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Town;
-import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.database.Tracker;
 import com.robinmc.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
 import com.robinmc.ublisk.utils.DataFile;
@@ -47,14 +44,6 @@ public class PlayerJoin implements Listener {
 		player.givePotionEffect(PotionEffectType.NIGHT_VISION, 1*20, 0);
 		
 		player.sendTitle(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Ublisk", ChatColor.YELLOW + "Welcome back, " + player.getName() + "!");
-		
-		player.sendMessage(Message.PACK_SENDING);
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){ 
-			//For some reason sending the pack has to be delayed, otherwise the client won't get the message
-			public void run(){
-				player.setResourcePack(Var.PACK_URL);
-			}
-		}, 1*20);
 		
 		//Sync UUID and player name information with database for use by statistics site
 		UUIDUtils.save(player);

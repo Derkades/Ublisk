@@ -21,6 +21,7 @@ public class Var {
 	/**
 	 * Direct URL to resource pack zip. Do not change unless you know what you are doing.
 	 */
+	@Deprecated
 	public static final String PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures39.zip";
 	
 	/**
