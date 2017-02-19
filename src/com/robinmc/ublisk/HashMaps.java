@@ -23,15 +23,6 @@ public class HashMaps {
 	public static final Map<Player, Player> LAST_MESSAGE_SENDER = new HashMap<>();
 	
 	public static final Map<UUID, Integer> PREVIOUS_LEVEL = new HashMap<>();
-
-	//Tracker HashMaps. Every 5 minutes, these will be added to the database and reset to 0.
-	public static final Map<UUID, Integer> TRACKER_RIGHT_CLICKED = new HashMap<>();
-	public static final Map<UUID, Integer> TRACKER_LEFT_CLICKED = new HashMap<>();
-	public static final Map<UUID, Integer> TRACKER_MOB_KILLS = new HashMap<>();
-	public static final Map<UUID, Integer> TRACKER_LOOT_FOUND = new HashMap<>();
-	public static final Map<UUID, Integer> TRACKER_JOIN_COUNT = new HashMap<>();
-	public static final Map<UUID, Integer> TRACKER_CHAT_MESSAGES = new HashMap<>();
-	public static final Map<UUID, Integer> TRACKER_VOTING_BOXES_OPENED = new HashMap<>();
 	
 	static void resetAllPlayers(){
 		for (UPlayer player : Ublisk.getOnlinePlayers()){
