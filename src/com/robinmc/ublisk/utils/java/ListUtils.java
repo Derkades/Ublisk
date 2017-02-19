@@ -30,7 +30,7 @@ public class ListUtils {
 	public static <T> T getRandomValueFromList(List<T> list){
 		int size = list.size();
 		int index = Random.getRandomInteger(0, size - 1); //Size -1 because if the list has 1 entry (entry 0) the length is 1.
-		return list.get(index);s
+		return list.get(index);
 	}
 
 }
