@@ -1,10 +1,9 @@
-package com.robinmc.ublisk.utils;
+package com.robinmc.ublisk;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.java.NumberUtils;
 
 public class Voting {

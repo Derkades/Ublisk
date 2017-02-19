@@ -9,7 +9,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.utils.Voting;
+import com.robinmc.ublisk.Voting;
 
 public class InventoryClose implements Listener {
 	
