@@ -14,8 +14,6 @@ public class Afk implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		if (sender instanceof Player){
 			UPlayer player = new UPlayer(sender);
-			//UUID uuid = player.getUniqueId();
-			//String name = player.getName();
 
 			if (player.isAfk())
 				player.setAfk(false);
@@ -23,17 +21,6 @@ public class Afk implements CommandExecutor {
 				player.setAfk(true);
 			
 			return true;
-			
-			/*
-			if (HashMaps.AFK.get(uuid)){ //If player is already afk
-				Bukkit.broadcastMessage(Message.Complicated.Commands.noLongerAfk(name)); //Set as no longer afk
-				HashMaps.AFK.put(uuid, false);
-				return true;
-			} else { //If player is not AFK
-				Bukkit.broadcastMessage(Message.Complicated.Commands.nowAfk(name)); //Set as afk
-				HashMaps.AFK.put(uuid, true);
-				return true;
-			}*/
 		} else {
 			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 			return true;
