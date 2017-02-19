@@ -1,18 +1,7 @@
 package com.robinmc.ublisk.utils.java;
 
 public class StringUtils {
-	
-	@Deprecated
-	public static String getStringFromWords(String[] words){
-		String msg = "";
-		
-		for (String word : words){
-			msg = String.join(msg, word + " ");
-		}
-		
-		return msg;
-	}
-	
+
 	/**
 	 * @param string
 	 * @param spaces False if spaces should be considered as non-alphanumeric characters. (e.g. "hello world" will return false but "helloworld" will return true)
