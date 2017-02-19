@@ -1,14 +1,17 @@
-package com.robinmc.ublisk.commands;
+package com.robinmc.ublisk;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerMoveEvent;
 
-import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
 
-public class Afk implements CommandExecutor {
+public class AFK implements CommandExecutor, Listener {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
@@ -25,6 +28,18 @@ public class Afk implements CommandExecutor {
 			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 			return true;
 		}
+	}
+	
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void onMove(PlayerMoveEvent event){
+		UPlayer player = new UPlayer(event);
+		
+		player.resetAfkTimer();
+		
+		if (player.isAfk())
+			player.setAfk(false);
+		
+		HashMaps.AFK_MINUTES.put(player.getUniqueId(), 0);
 	}
 
 }

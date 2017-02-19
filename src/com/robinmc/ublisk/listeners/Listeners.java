@@ -3,6 +3,7 @@ package com.robinmc.ublisk.listeners;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
+import com.robinmc.ublisk.AFK;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.PlayerLoginRoom;
 import com.robinmc.ublisk.ResourcePack;
@@ -40,7 +41,6 @@ public class Listeners {
 		QUIT(new PlayerQuit()),
 		PING_SERVER(new ServerListPing()),
 		SONG_END(new SongEnd()),
-		PLAYER_MOVE(new PlayerMove()),
 		PLAYER_DEATH(new PlayerDeath()),
 		
 		ENTITY_COMBUST(new EntityCombust()),
@@ -53,6 +53,7 @@ public class Listeners {
 		PLAYER_LOGIN(new PlayerLoginRoom()),
 		RESOURCE_PACK(new ResourcePack()),
 		VOTING(new Voting()),
+		AFK(new AFK()),
 		
 		;
 		
