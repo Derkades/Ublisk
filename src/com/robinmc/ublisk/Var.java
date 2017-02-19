@@ -72,11 +72,6 @@ public class Var {
 			);
 	
 	/**
-	 * Number of seconds after which a player will be automatically set as AFK.
-	 */
-	public static final int AFK_TIME = 60;
-	
-	/**
 	 * Number of half harts a player will have at a level. For example,
 	 * 5, 6
 	 * Will mean that the player has 6 / 2 = 3 hearts at level 5.

@@ -7,16 +7,12 @@ import java.util.UUID;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.database.Tracker;
-import com.robinmc.ublisk.task.AfkTimer;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 
 public class HashMaps {
-
-	public static final Map<UUID, Boolean> AFK = new HashMap<>();
-	public static final Map<UUID, Integer> AFK_MINUTES = new HashMap<>();
 	
 	public static final Map<UUID, Boolean> ENTITY_RIGHT_CLICK_COOLDOWN = new HashMap<>();
 	public static final Map<UUID, Boolean> COOLDOWN_CLASS = new HashMap<>();
@@ -47,14 +43,14 @@ public class HashMaps {
 		Logger.log(LogLevel.INFO, "HashMaps", player.getName() + "'s maps have been reset");
 		UUID uuid = player.getUniqueId();
 		
-		AFK.put(uuid, false);
 		ENTITY_RIGHT_CLICK_COOLDOWN.put(uuid, false);
 		COOLDOWN_CLASS.put(uuid, false);
 		IS_MUTED.put(uuid, false);
 		IS_SOFT_MUTED.put(uuid, false);
 		LAST_MESSAGE_SENDER.put(player.getPlayer(), null);
 		PREVIOUS_LEVEL.put(uuid, player.getLevel());
-		AfkTimer.TIMER.put(uuid, 0);
+		
+		AFK.resetHashMaps(player);
 		
 		Tracker.resetHashMaps(player);
 	}

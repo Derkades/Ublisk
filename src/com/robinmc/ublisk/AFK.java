@@ -1,5 +1,10 @@
 package com.robinmc.ublisk;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -8,10 +13,36 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 
-public class AFK implements CommandExecutor, Listener {
+public class AFK extends BukkitRunnable implements CommandExecutor, Listener {
+	
+	/**
+	 * Number of seconds after which a player will be automatically set as AFK.
+	 */
+	private static final int AFK_TIME = 60;
+	
+	private static final List<String> AFK = new ArrayList<String>();
+	private static final Map<String, Integer> AFK_SECONDS = new HashMap<>();
+	
+	public static void resetHashMaps(UPlayer player){
+		AFK_SECONDS.put(player.getName(), 0);
+	}
+	
+	public static boolean isAfk(UPlayer player){
+		return AFK.contains(player.getName());
+	}
+	
+	public static void setAfk(UPlayer player, boolean setAfk){
+		if (setAfk){
+			AFK.add(player.getName());
+		} else {
+			if (AFK.contains(player.getName())) AFK.remove(player.getName());
+		}
+	}
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
@@ -34,12 +65,25 @@ public class AFK implements CommandExecutor, Listener {
 	public void onMove(PlayerMoveEvent event){
 		UPlayer player = new UPlayer(event);
 		
-		player.resetAfkTimer();
+		if (player.isAfk()) player.setAfk(false);
 		
-		if (player.isAfk())
-			player.setAfk(false);
-		
-		HashMaps.AFK_MINUTES.put(player.getUniqueId(), 0);
+		AFK_SECONDS.put(player.getName(), 0);
+	}
+	
+	@Override
+	public void run() {
+		for (UPlayer player : Ublisk.getOnlinePlayers()){
+			AFK_SECONDS.put(player.getName(), AFK_SECONDS.get(player.getName()) + 1);
+			
+			//If the player has not moved for longer than AFK_TIME, set the player as AFK.
+			if (AFK_SECONDS.get(player.getName()) >= AFK_TIME){
+				
+				AFK_SECONDS.put(player.getName(), 0);
+
+				if (!player.isAfk())
+					player.setAfk(true);
+			}
+		}
 	}
 
 }

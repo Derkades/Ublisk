@@ -2,6 +2,7 @@ package com.robinmc.ublisk.task;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.AFK;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.PlayerLoginRoom.SavePlayerLocation;
 import com.robinmc.ublisk.Scoreboard;
@@ -12,7 +13,7 @@ import com.robinmc.ublisk.utils.Lag;
 
 public enum Task {
 	
-	AFK_TIMER(new AfkTimer(), 30*20, 1*20, false),
+	AFK_TIMER(new AFK(), 30*20, 1*20, false),
 	CHECK_SHIELD(new CheckShield(), 5*20, 5*20, false),
 	CHECK_TOWN(new CheckTown(), 0, 2*20, false),
 	CLEAR_WEATHER(new ClearWeather(), 60*20, 5*60*20, false),

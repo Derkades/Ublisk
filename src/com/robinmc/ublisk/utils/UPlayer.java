@@ -30,6 +30,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
+import com.robinmc.ublisk.AFK;
 import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
@@ -42,7 +43,6 @@ import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
-import com.robinmc.ublisk.task.AfkTimer;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
@@ -529,9 +529,9 @@ public class UPlayer {
 		setMana(getMana() - mana);
 	}
 
-	public void setAfk(boolean isAfk) {
-		HashMaps.AFK.put(this.getUniqueId(), isAfk);
-		if (isAfk) {
+	public void setAfk(boolean setAfk) {
+		AFK.setAfk(this, setAfk);
+		if (setAfk) {
 			Ublisk.broadcastPrefixedMessage(this.getName() + " is now AFK.");
 		} else {
 			Ublisk.broadcastPrefixedMessage(this.getName() + " is no longer AFK.");
@@ -539,11 +539,7 @@ public class UPlayer {
 	}
 
 	public boolean isAfk() {
-		return HashMaps.AFK.get(this.getUniqueId());
-	}
-
-	public void resetAfkTimer() {
-		AfkTimer.TIMER.put(this.getUniqueId(), 0);
+		return AFK.isAfk(this);
 	}
 
 	/**
