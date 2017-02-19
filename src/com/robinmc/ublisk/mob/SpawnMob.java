@@ -4,8 +4,12 @@ import static org.bukkit.ChatColor.DARK_AQUA;
 import static org.bukkit.ChatColor.DARK_GRAY;
 import static org.bukkit.ChatColor.DARK_GREEN;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -17,6 +21,31 @@ import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.java.Random;
 
 class SpawnMob {
+	
+	/**
+	 * List of materials that are on top of a solid block and which mobs should spawn inside of
+	 */
+	private static final List<Material> MOB_SPAWNING_AIR_BLOCKS = Arrays.asList(
+			Material.AIR, 
+			Material.LONG_GRASS,
+			Material.CHORUS_FLOWER,
+			Material.YELLOW_FLOWER,
+			Material.TORCH,
+			Material.SUGAR_CANE_BLOCK
+			);
+	
+	/**
+	 * Do not spawn mobs on top of these blocks
+	 */
+	private static final List<Material> MOB_SPAWNING_CANCEL = Arrays.asList(
+			Material.FENCE,
+			Material.FENCE_GATE,
+			Material.COBBLE_WALL,
+			Material.WATER,
+			Material.STATIONARY_WATER,
+			Material.LEAVES,
+			Material.LEAVES_2
+			);
 	
 	static void spawnMobs(){
 		for (final Mob mob : Mob.values()){
@@ -62,18 +91,18 @@ class SpawnMob {
 							continue;
 						}
 
-						while(Var.MOB_SPAWNING_AIR_BLOCKS.contains(loc.getBlock().getType())){
+						while(MOB_SPAWNING_AIR_BLOCKS.contains(loc.getBlock().getType())){
 							loc.setY(loc.getY() - 1);
 						}
 						
 						//Don't let mobs spawn on top of some blocks
-						if (Var.MOB_SPAWNING_CANCEL.contains(loc.getBlock().getType())){
+						if (MOB_SPAWNING_CANCEL.contains(loc.getBlock().getType())){
 							continue; 
 						}
 						
 						loc.setY(loc.getY() + 1);
 						
-						if (!Var.MOB_SPAWNING_AIR_BLOCKS.contains(loc.getBlock().getType()))
+						if (!MOB_SPAWNING_AIR_BLOCKS.contains(loc.getBlock().getType()))
 								return;
 						
 						String name = DARK_AQUA + mob.getName() + DARK_GRAY + " [" + DARK_GREEN + mob.getLevel() + DARK_GRAY + "]";

@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
 
 import com.robinmc.ublisk.utils.DataFile;
@@ -63,31 +62,6 @@ public class Var {
 	 * Tracker delay = TRACKER_DELAY + [player count] * 50
 	 */
 	public static final int TRACKER_DELAY = 40;
-	
-	/**
-	 * List of materials that are on top of a solid block and which mobs should spawn inside of
-	 */
-	public static final List<Material> MOB_SPAWNING_AIR_BLOCKS = Arrays.asList(
-			Material.AIR, 
-			Material.LONG_GRASS,
-			Material.CHORUS_FLOWER,
-			Material.YELLOW_FLOWER,
-			Material.TORCH,
-			Material.SUGAR_CANE_BLOCK
-			);
-	
-	/**
-	 * Do not spawn mobs on top of these blocks
-	 */
-	public static final List<Material> MOB_SPAWNING_CANCEL = Arrays.asList(
-			Material.FENCE,
-			Material.FENCE_GATE,
-			Material.COBBLE_WALL,
-			Material.WATER,
-			Material.STATIONARY_WATER,
-			Material.LEAVES,
-			Material.LEAVES_2
-			);
 	
 	/**
 	 * Locations of trapdoors players should be able to open
