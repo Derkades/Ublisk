@@ -534,7 +534,6 @@ public class UPlayer {
 		if (isAfk) {
 			Ublisk.broadcastPrefixedMessage(this.getName() + " is now AFK.");
 		} else {
-			//Bukkit.broadcastMessage(Message.Complicated.Commands.noLongerAfk(getName()));
 			Ublisk.broadcastPrefixedMessage(this.getName() + " is no longer AFK.");
 		}
 	}
