@@ -21,7 +21,6 @@ public class ResourcePackCommand implements CommandExecutor {
 		UPlayer player = new UPlayer(sender);
 		
 		if (args.length == 1 && args[0].equalsIgnoreCase("check")){
-			//Ublisk.spawnParticle(Particle.MOB_APPEARANCE, new Location(Var.WORLD, 0, 0, 0), 1, 0, 0, 0, 0);
 			player.displayMobAppearanceEffect();
 			player.sendMessage(Message.PACK_CHECK);
 			return true;
