@@ -26,7 +26,14 @@ public class Random {
 	public static float getRandomFloat(){
 		return random.nextFloat();
 	}
-	
+
+	/**
+	 * @deprecated Use getRandomInteger() instead.
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	@Deprecated
 	public static float getRandomFloat(int min, int max){
 		return ThreadLocalRandom.current().nextInt(min, max + 1);
 	}
