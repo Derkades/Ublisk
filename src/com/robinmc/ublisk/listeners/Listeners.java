@@ -40,7 +40,6 @@ public class Listeners {
 		QUIT(new PlayerQuit()),
 		PING_SERVER(new ServerListPing()),
 		SONG_END(new SongEnd()),
-		VOTE(new Votifier()),
 		PLAYER_MOVE(new PlayerMove()),
 		PLAYER_DEATH(new PlayerDeath()),
 		
