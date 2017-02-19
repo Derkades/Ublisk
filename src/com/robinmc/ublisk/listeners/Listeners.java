@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.PlayerLoginRoom;
 import com.robinmc.ublisk.ResourcePack;
+import com.robinmc.ublisk.Voting;
 import com.robinmc.ublisk.ext.com.sethbling.blinghomingarrows.HomingArrowsListener;
 import com.robinmc.ublisk.mob.listeners.EntityCombust;
 import com.robinmc.ublisk.mob.listeners.EntityDamageByEntity;
@@ -48,14 +49,11 @@ public class Listeners {
 		ENTITY_DEATH(new EntityDeath()),
 		
 		ABILITIES(new AbilityListener()),
-		
 		SETHBLING_HOMING_ARROWS(new HomingArrowsListener()),
-		
 		NPC_CLICK_LISTENER(new NPCClickListener()),
-		
 		PLAYER_LOGIN(new PlayerLoginRoom()),
-		
 		RESOURCE_PACK(new ResourcePack()),
+		VOTING(new Voting()),
 		
 		;
 		
