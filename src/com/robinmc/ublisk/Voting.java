@@ -76,7 +76,7 @@ public class Voting implements Listener {
 		Voting.playerOpeningBox = playerOpeningBox;
 	}
 	
-	@EventHandler(priority = EventPriority.MONITOR)
+	@EventHandler(priority = EventPriority.HIGH)
 	public void onVoteBoxOpen(PlayerInteractEvent event){
 		if (event.getAction() != Action.RIGHT_CLICK_BLOCK){
 			return;
