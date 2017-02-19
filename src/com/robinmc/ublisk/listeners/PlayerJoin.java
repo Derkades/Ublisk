@@ -83,11 +83,11 @@ public class PlayerJoin implements Listener {
         	public void run(){
     			final String[] fancyStrings = new String[]{
     					"                       ",
-    					" a a aa  a   a aaa a a ",
-    					" a a a a a   a a   a a ",
-    					" a a aa  a   a aaa aa  ",
-    					" a a a a a   a   a aa  ",
-    					" aaa aa  aaa a aaa a a ",
+    					" # # ##  #   # ### # # ",
+    					" # # # # #   # #   # # ",
+    					" # # ##  #   # ### ##  ",
+    					" # # # # #   #   # ##  ",
+    					" ### ##  ### # ### # # ",
     					"                       "
     			};
     			for (String string : fancyStrings){
