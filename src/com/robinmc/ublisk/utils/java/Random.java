@@ -7,7 +7,8 @@ public class Random {
 	private static java.util.Random random = new java.util.Random();
 	
 	public static int getRandomInteger(int min, int max){
-		return NumberUtils.randomInteger(min, max);
+		//return NumberUtils.randomInteger(min, max);
+		return ThreadLocalRandom.current().nextInt(min, max + 1);
 	}
 	
 	public static boolean getRandomBoolean(){
