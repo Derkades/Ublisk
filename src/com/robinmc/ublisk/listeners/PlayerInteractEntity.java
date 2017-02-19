@@ -76,11 +76,21 @@ public class PlayerInteractEntity implements Listener {
 							"/friend add " + target.getName()))
 					.create();
 			
-			// TODO Invite to guild clickable message
+			BaseComponent[] inviteToGuild = new ComponentBuilder("Invite to guild")
+					.bold(true)
+					.color(DARK_AQUA)
+					.event(new HoverEvent(
+							HoverEvent.Action.SHOW_TEXT,
+							new ComponentBuilder("Click to run /guild invite " + target.getName()).color(GOLD).create()))
+					.event(new ClickEvent(
+							ClickEvent.Action.RUN_COMMAND,
+							"/guild invite " + target.getName()))
+					.create();
 			
 			player.sendSpacers(2);
 			player.sendMessage(stats);
 			player.sendMessage(addAsFriend);
+			player.sendMessage(inviteToGuild);
 			
 			new BukkitRunnable(){
 				public void run(){
