@@ -1,14 +1,10 @@
 package com.robinmc.ublisk;
 
 import org.bukkit.ChatColor;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
-import org.bukkit.event.server.ServerListPingEvent;
 
 import com.robinmc.ublisk.utils.java.EnumUtils;
 
-public enum MOTD implements Listener {
+public enum MOTD {
 
 	MOTD_1(ChatColor.GREEN + "" + ChatColor.STRIKETHROUGH + "Wynncraft", ""),
 	MOTD_2(ChatColor.MAGIC + "OIJAMOIDJMOSAIJCDMOAISJM", ChatColor.YELLOW + "Ok"),
@@ -30,14 +26,9 @@ public enum MOTD implements Listener {
 		return (lineOne + "\n" + lineTwo).replace("&", "\u00A7");
 	}
 
-	private static String getRandomMotd() {
+	public static String getRandomMotd() {
 		MOTD motd = EnumUtils.getRandomEnum(MOTD.class);
 		return motd.getMotd();
-	}
-	
-	@EventHandler(priority = EventPriority.LOW)
-	public void onServerPing(ServerListPingEvent event){
-		event.setMotd(getRandomMotd());
 	}
 
 }
