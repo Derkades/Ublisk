@@ -64,15 +64,6 @@ public class Var {
 	 */
 	public static final int TRACKER_DELAY = 40;
 	
-	public static final int VOTE_XP_MIN = 20;
-	public static final int VOTE_XP_MAX = 100;
-	
-	public static final int VOTE_GOLD_MIN = 0;
-	public static final int VOTE_GOLD_MAX = 50;
-	
-	public static final int VOTE_LIFE_MIN = 0;
-	public static final int VOTE_LIFE_MAX = 2;
-	
 	/**
 	 * List of materials that are on top of a solid block and which mobs should spawn inside of
 	 */

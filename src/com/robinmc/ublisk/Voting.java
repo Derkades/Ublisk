@@ -23,6 +23,15 @@ import com.robinmc.ublisk.utils.java.NumberUtils;
 import net.md_5.bungee.api.ChatColor;
 
 public class Voting implements Listener {
+	
+	public static final int VOTE_XP_MIN = 20;
+	public static final int VOTE_XP_MAX = 100;
+	
+	public static final int VOTE_GOLD_MIN = 0;
+	public static final int VOTE_GOLD_MAX = 50;
+	
+	public static final int VOTE_LIFE_MIN = 0;
+	public static final int VOTE_LIFE_MAX = 2;
 
 	private static Location oldPlayerLocation;
 	private static boolean playerOpeningBox = false;
@@ -34,15 +43,15 @@ public class Voting implements Listener {
 	}
 
 	public static int getRandomXP() {
-		return NumberUtils.randomInteger(Var.VOTE_XP_MIN, Var.VOTE_XP_MAX);
+		return NumberUtils.randomInteger(VOTE_XP_MIN, VOTE_XP_MAX);
 	}
 
 	public static int getRandomGold() {
-		return NumberUtils.randomInteger(Var.VOTE_GOLD_MIN, Var.VOTE_GOLD_MAX);
+		return NumberUtils.randomInteger(VOTE_GOLD_MIN, VOTE_GOLD_MAX);
 	}
 
 	public static int getRandomLife() {
-		return NumberUtils.randomInteger(Var.VOTE_LIFE_MIN, Var.VOTE_LIFE_MAX);
+		return NumberUtils.randomInteger(VOTE_LIFE_MIN, VOTE_LIFE_MAX);
 	}
 
 	public static boolean isVotingChest(Block block) {
