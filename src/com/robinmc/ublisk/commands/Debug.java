@@ -54,10 +54,6 @@ public class Debug implements CommandExecutor {
 						int xp = Integer.parseInt(args[1]);
 						Exp.set(player.getPlayer(), xp);
 						return true;
-					} else if (args[0].equalsIgnoreCase("hunger")) {
-						Player player2 = Bukkit.getPlayer(args[1]);
-						player.sendMessage("Food: " + player2.getFoodLevel());
-						return true;
 					} else if (args[0].equals("refreshxp")) {
 						Player target = Bukkit.getPlayer(args[1]);
 						player.refreshXP();
