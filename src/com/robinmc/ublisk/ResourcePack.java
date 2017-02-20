@@ -17,7 +17,7 @@ public class ResourcePack implements Listener, CommandExecutor {
 	/**
 	 * Direct URL to resource pack zip. Do not change unless you know what you are doing.
 	 */
-	public static final String RESOURCE_PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures39.zip";
+	public static final String RESOURCE_PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures40.zip";
 	
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onJoin(PlayerJoinEvent event){
