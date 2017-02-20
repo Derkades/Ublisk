@@ -21,7 +21,7 @@ public class ResourcePack implements Listener, CommandExecutor {
 	
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onJoin(PlayerJoinEvent event){
-		UPlayer player = new UPlayer(event);
+		final UPlayer player = new UPlayer(event);
 		player.sendMessage(Message.PACK_SENDING);
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){ 
 			//For some reason sending the pack has to be delayed, otherwise the client won't get the message
