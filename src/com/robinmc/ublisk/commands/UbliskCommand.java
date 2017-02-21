@@ -253,7 +253,7 @@ public enum UbliskCommand {
 				player.sendMessage(string.replace("a", ChatColor.AQUA + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()).replace(" ", ChatColor.GREEN + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()));
 			}
 		}
-	}, "Sends fancy Ublisk message", "fancymessage");
+	}, "Sends fancy Ublisk message", "fancymessage"),
 
 	;
 	
