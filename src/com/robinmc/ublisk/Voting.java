@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.database.Tracker;
+import com.robinmc.ublisk.database.PlayerInfo2;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -128,7 +128,7 @@ public class Voting implements Listener {
 				player.setLifeCrystals(player.getLifeCrystals() + life);
 			}
 			
-			player.tracker(Tracker.VOTE_BOX);
+			player.tracker(PlayerInfo2.VOTE_BOX);
 			
 			Logger.log(LogLevel.DEBUG, "Gold: " + gold + " | XP: " + xp + " | Life: " + life);
 		}

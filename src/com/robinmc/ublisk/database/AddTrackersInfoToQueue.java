@@ -23,6 +23,12 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 			
 			list.add(new BukkitRunnable(){
 				public void run(){
+					PlayerInfo2.syncWithDatabase(player);
+				}
+			});
+			
+			list.add(new BukkitRunnable(){
+				public void run(){
 					Tracker.syncWithDatabase(player);
 				}
 			});

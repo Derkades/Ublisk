@@ -11,10 +11,10 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.chat.Trigger;
-import com.robinmc.ublisk.database.Tracker;
+import com.robinmc.ublisk.database.PlayerInfo2;
 import com.robinmc.ublisk.utils.Logger;
-import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.utils.UPlayer;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -46,7 +46,7 @@ public class AsyncPlayerChat implements Listener {
 		String format = DARK_GRAY + "[" + GRAY + level + DARK_GRAY + "] " + prefix + " " + player.getName() + DARK_GRAY + ": " + chatColor + event.getMessage();
 		event.setFormat(format);
 		
-		player.tracker(Tracker.CHAT_MESSAGES);
+		player.tracker(PlayerInfo2.CHAT_MESSAGES);
 		
 		if (player.isAfk()){
 			player.setAfk(false);

@@ -19,7 +19,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Town;
-import com.robinmc.ublisk.database.Tracker;
+import com.robinmc.ublisk.database.PlayerInfo2;
 import com.robinmc.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -55,7 +55,7 @@ public class PlayerJoin implements Listener {
 			town.playThemeToPlayer(player);
 		}
 		
-		player.tracker(Tracker.JOIN_COUNT);
+		player.tracker(PlayerInfo2.JOIN_COUNT);
         
         String ip = player.getPlayer().getAddress().toString();
         ip = ip.replace("/", "");

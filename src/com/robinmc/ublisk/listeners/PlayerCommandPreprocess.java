@@ -5,6 +5,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
+import com.robinmc.ublisk.database.PlayerInfo2;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -13,13 +14,8 @@ import net.md_5.bungee.api.ChatColor;
 
 public class PlayerCommandPreprocess implements Listener {
 	
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onCommand(PlayerCommandPreprocessEvent event){
-		
-		if (event.isCancelled()){
-			return;
-		}
-		
 		String cmd = event.getMessage();
 		UPlayer sender = new UPlayer(event);
 		
@@ -63,6 +59,12 @@ public class PlayerCommandPreprocess implements Listener {
 		String command = event.getMessage();
 		boolean isCancelled = event.isCancelled();
 		Logger.log(LogLevel.INFO, "CommandLog", playerName + ": " + command + " (cancelled: " + isCancelled + ")");
+	}
+	
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+	public void tracker(PlayerCommandPreprocessEvent event){
+		UPlayer player = new UPlayer(event);
+		player.tracker(PlayerInfo2.COMMANDS_EXECUTED);
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.bukkit.entity.Player;
 
+import com.robinmc.ublisk.database.PlayerInfo2;
 import com.robinmc.ublisk.database.Tracker;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
@@ -44,6 +45,8 @@ public class HashMaps {
 		AFK.resetHashMaps(player);
 		
 		Tracker.resetHashMaps(player);
+		
+		PlayerInfo2.resetHashMaps(player);
 	}
 	
 	public static HashMap<Integer, Integer> build(int... data){
