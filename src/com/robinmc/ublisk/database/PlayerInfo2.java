@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 
@@ -93,7 +95,8 @@ public class PlayerInfo2 {
 			
 			resetHashMaps(player);
 		} catch (SQLException e){
-			e.printStackTrace(); // TODO Some fancy log message?
+			Logger.log(LogLevel.SEVERE, "An error occured while syncing player info for " + player.getName());
+			e.printStackTrace();
 		}
 	}
 	
