@@ -16,11 +16,10 @@ import org.bukkit.inventory.ItemStack;
 import com.robinmc.ublisk.database.Tracker;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
-import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
+import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.ItemBuilder;
-import com.robinmc.ublisk.utils.java.NumberUtils;
 import com.robinmc.ublisk.utils.java.Random;
 import com.vexsoftware.votifier.model.Vote;
 import com.vexsoftware.votifier.model.VotifierEvent;
@@ -48,15 +47,18 @@ public class Voting implements Listener {
 	}
 
 	public static int getRandomXP() {
-		return NumberUtils.randomInteger(VOTE_XP_MIN, VOTE_XP_MAX);
+		//return NumberUtils.randomInteger(VOTE_XP_MIN, VOTE_XP_MAX);
+		return Random.getRandomInteger(VOTE_XP_MIN, VOTE_LIFE_MAX);
 	}
 
 	public static int getRandomGold() {
-		return NumberUtils.randomInteger(VOTE_GOLD_MIN, VOTE_GOLD_MAX);
+		//return NumberUtils.randomInteger(VOTE_GOLD_MIN, VOTE_GOLD_MAX);
+		return Random.getRandomInteger(VOTE_GOLD_MIN, VOTE_GOLD_MAX);
 	}
 
 	public static int getRandomLife() {
-		return NumberUtils.randomInteger(VOTE_LIFE_MIN, VOTE_LIFE_MAX);
+		//return NumberUtils.randomInteger(VOTE_LIFE_MIN, VOTE_LIFE_MAX);
+		return Random.getRandomInteger(VOTE_LIFE_MIN, VOTE_LIFE_MAX);
 	}
 
 	public static boolean isVotingChest(Block block) {
