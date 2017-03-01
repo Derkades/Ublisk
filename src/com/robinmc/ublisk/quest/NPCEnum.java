@@ -8,6 +8,7 @@ import com.robinmc.ublisk.quest.npc.Dianh;
 import com.robinmc.ublisk.quest.npc.Jerrijn;
 import com.robinmc.ublisk.quest.npc.Merek;
 import com.robinmc.ublisk.quest.npc.Rasmus;
+import com.robinmc.ublisk.quest.npc.Roy;
 import com.robinmc.ublisk.quest.npc.TestNPC;
 import com.robinmc.ublisk.quest.npc.Ulric;
 import com.robinmc.ublisk.quest.npc.Zoltar;
@@ -26,7 +27,8 @@ public enum NPCEnum {
 	ZOLTAR(new Zoltar()),
 	ALVIN(new Alvin()),
 	
-	JERRIJN(new Jerrijn());
+	JERRIJN(new Jerrijn()),
+	ROY(new Roy());
 	
 	private NPC npc;
 	
