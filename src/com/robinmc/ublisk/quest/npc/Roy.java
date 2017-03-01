@@ -6,6 +6,8 @@ import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.quest.NPCInfo;
 import com.robinmc.ublisk.quest.NPCInfo.NPCLocation;
+import com.robinmc.ublisk.quest.Quest;
+import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public class Roy extends NPC {
@@ -17,9 +19,10 @@ public class Roy extends NPC {
 
 	@Override
 	public void talk(UPlayer player) {
-		player.sendMessage("Hoi " + player.getName() + ", ik ben Roy");
+		QuestParticipant qp = new QuestParticipant(player.getPlayer(), Quest.UNKNOWN, this);
+		qp.sendMessage("Hoi " + player.getName() + ", ik ben Roy");
 		Town town = player.getTown();
 		String townNaam = town.getName();
-		player.sendMessage("Je bent in: " + townNaam);
+		qp.sendMessage("Je bent in: " + townNaam);
 	}
 }
