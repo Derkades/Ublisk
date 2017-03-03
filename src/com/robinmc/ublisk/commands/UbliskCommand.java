@@ -19,6 +19,7 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Loot;
+import com.robinmc.ublisk.Loot.LootChest;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Town;
@@ -212,7 +213,9 @@ public enum UbliskCommand {
 	
 	REMOVE_LOOT(new CommandRunnable(){
 		public void run(UPlayer player){
-			Loot.removeLoot();
+			for (LootChest loot : Loot.getLootChests()){
+				loot.remove();
+			}
 			player.sendMessage("Removed loot.");
 		}
 	}, "Remove all loot chests", "removeloot"),
@@ -225,7 +228,7 @@ public enum UbliskCommand {
 	
 	SPAWN_ALL_LOOT(new CommandRunnable(){
 		public void run(UPlayer player){
-			for (Loot loot : Loot.values()){
+			for (LootChest loot : Loot.getLootChests()){
 				loot.spawn();
 			}
 		}

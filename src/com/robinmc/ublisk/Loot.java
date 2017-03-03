@@ -22,14 +22,20 @@ import org.bukkit.inventory.ItemStack;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.Ublisk;
-import com.robinmc.ublisk.utils.java.EnumUtils;
 import com.robinmc.ublisk.utils.java.Random;
 
 import net.minecraft.server.v1_11_R1.TileEntityChest;
 
-public enum Loot {
+public class Loot {
 	
-	A(Level.ONE, 80, 74, -5),
+	private static final LootChest[] LOOT = new LootChest[]{
+		new LootChest(Level.ONE, 80, 74, -5),
+		new LootChest(Level.ONE, 214, 69, -11),
+		new LootChest(Level.TWO, 90, 120, 335),
+	};
+	
+	
+	/*
 	B(Level.ONE, 250, 67, -10),
 	C(Level.ONE, 214, 69, -11),
 	D(Level.TWO, 90, 120, 335);
@@ -42,68 +48,106 @@ public enum Loot {
 		this.loc = new Location(Var.WORLD, x, y, z);
 	}
 	
-	public static Loot getRandomLoot(){
-		return EnumUtils.getRandomEnum(Loot.class);	
+	*/
+	
+	public static LootChest getRandomLoot(){
+		//return EnumUtils.getRandomEnum(Loot.class);
+		int index = Random.getRandomInteger(0, LOOT.length - 1);
+		return LOOT[index];
     }
 	
-	public void spawn(){
-		Location shulkerBullet = new Location(Var.WORLD, loc.getX() + 0.5, loc.getY() + 100, loc.getZ() + 0.5);
-		Var.WORLD.spawnEntity(shulkerBullet, EntityType.SHULKER_BULLET);
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
-			public void run(){
-				Block block = loc.getBlock();
-				block.setType(Material.CHEST);
-				CraftChest chest = (CraftChest) block.getState();
-				try {
-				    Field inventoryField = chest.getClass().getDeclaredField("chest");
-				    inventoryField.setAccessible(true);
-				    TileEntityChest teChest = ((TileEntityChest) inventoryField.get(chest));
-				    teChest.a("Loot");
-				} catch (Exception e){
-				     e.printStackTrace();
-				}
-				fillChestWithLoot();
-				int x = loc.getBlockX();
-				int y = loc.getBlockY();
-				int z = loc.getBlockZ();
-				Ublisk.broadcastPrefixedMessage("Loot", "A loot chest dropped at " + GOLD + "" + BOLD + x + " " + y + " " + z + RESET + YELLOW + "!");
-			}
-		}, 70);
+	public static LootChest[] getLootChests(){
+		return LOOT;
 	}
 	
-	private void fillChestWithLoot(){
-		Chest chest = (Chest) loc.getBlock().getState();
-		LootItem[] loot = level.items;
-		List<ItemStack> items = new ArrayList<ItemStack>();
-		for (LootItem item : loot) items.add(new ItemStack(item.getMaterial(), item.getAmount()));
-		List<ItemStack> contents = Arrays.asList(chest.getInventory().getContents());
-		
-		for (ItemStack item : items){
-			int slot = Random.getRandomInteger(0, 27);
-			contents.set(slot, item);
-		}
-		
-		chest.getInventory().setContents((ItemStack[]) contents.toArray());
-	}
-	
+	/*
 	public static void removeLoot(){
 		Logger.log(LogLevel.INFO, "Loot", "Removed all loot chests!");
-		for (Loot loot : Loot.values()){
+		for (LootChest loot : LOOT){
 			Block block = new Location(Var.WORLD, loot.loc.getX(), loot.loc.getY(), loot.loc.getZ()).getBlock();
 			block.setType(Material.AIR);
 		}
-	}
+	}*/
 	
 	public static boolean isLoot(Chest chest){
 		Location loc = chest.getLocation();
-		for (Loot loot : Loot.values()){
-			if (	loot.loc.getX() == loc.getBlockX() &&
-					loot.loc.getY() == loc.getBlockY() &&
-					loot.loc.getZ() == loc.getBlockZ()){
+		for (LootChest loot : LOOT){
+			Location lootLoc = loot.getLocation();
+			if (	lootLoc.getX() == loc.getBlockX() &&
+					lootLoc.getY() == loc.getBlockY() &&
+					lootLoc.getZ() == loc.getBlockZ()){
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public static class LootChest {
+		
+		private Level level;
+		private Location location;
+		
+		LootChest(Level level, int x, int y, int z) {
+			this.level = level;
+			this.location = new Location(Var.WORLD, x, y, z);
+		}
+		
+		public Level getLevel() {
+			return level;
+		}
+		
+		public Location getLocation() {
+			return location;
+		}
+		
+		public void spawn(){
+			final Location loc = this.getLocation();
+			Location shulkerBullet = new Location(Var.WORLD, loc.getX() + 0.5, loc.getY() + 100, loc.getZ() + 0.5);
+			Var.WORLD.spawnEntity(shulkerBullet, EntityType.SHULKER_BULLET);
+			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable(){
+				public void run(){
+					Block block = loc.getBlock();
+					block.setType(Material.CHEST);
+					CraftChest chest = (CraftChest) block.getState();
+					try {
+					    Field inventoryField = chest.getClass().getDeclaredField("chest");
+					    inventoryField.setAccessible(true);
+					    TileEntityChest teChest = ((TileEntityChest) inventoryField.get(chest));
+					    teChest.a("Loot");
+					} catch (Exception e){
+					     e.printStackTrace();
+					}
+					fillChestWithLoot();
+					int x = loc.getBlockX();
+					int y = loc.getBlockY();
+					int z = loc.getBlockZ();
+					Ublisk.broadcastPrefixedMessage("Loot", "A loot chest dropped at " + GOLD + "" + BOLD + x + " " + y + " " + z + RESET + YELLOW + "!");
+				}
+			}, 70);
+		}
+		
+		private void fillChestWithLoot(){
+			Chest chest = (Chest) this.getLocation().getBlock().getState();
+			LootItem[] loot = level.items;
+			List<ItemStack> items = new ArrayList<ItemStack>();
+			for (LootItem item : loot) items.add(new ItemStack(item.getMaterial(), item.getAmount()));
+			List<ItemStack> contents = Arrays.asList(chest.getInventory().getContents());
+			
+			for (ItemStack item : items){
+				int slot = Random.getRandomInteger(0, 27);
+				contents.set(slot, item);
+			}
+			
+			chest.getInventory().setContents((ItemStack[]) contents.toArray());
+		}
+		
+		public void remove(){
+			Location loc = this.getLocation();
+			Block block = new Location(Var.WORLD, loc.getX(), loc.getY(), loc.getZ()).getBlock();
+			block.setType(Material.AIR);
+			Logger.log(LogLevel.INFO, "Loot", "Removed loot chest at (" + loc.getX() + "," + loc.getY() + "," + loc.getZ() + ")!");
+		}
+		
 	}
 	
 	private enum Level {
