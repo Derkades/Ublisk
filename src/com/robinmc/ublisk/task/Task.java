@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.task;
 
+import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.AFK;
@@ -57,6 +58,10 @@ public enum Task {
 		} else {
 			runnable.runTaskTimer(Main.getInstance(), delay, period);
 		}
+	}
+	
+	public static void stopAll(){
+		Bukkit.getServer().getScheduler().cancelTasks(Main.getInstance());
 	}
 
 }

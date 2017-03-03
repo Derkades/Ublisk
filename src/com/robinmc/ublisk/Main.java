@@ -58,6 +58,8 @@ public class Main extends JavaPlugin {
 	public void onDisable() {
 		instance = null;
 		
+		Task.stopAll();
+		
 		for (DataFile dataFile : DataFile.values()){
 			dataFile.save();
 		}
