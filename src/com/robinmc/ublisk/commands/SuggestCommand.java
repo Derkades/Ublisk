@@ -11,6 +11,7 @@ import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.TodoList;
 import com.robinmc.ublisk.utils.TodoList.TodoItem;
+import com.robinmc.ublisk.utils.Ublisk;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -26,7 +27,7 @@ public class SuggestCommand implements CommandExecutor {
 		
 		try {
 			TodoList.addTodoItem(todoItem);
-			sender.sendMessage("Your message has been recorded. We'll take a look at it soon!");
+			sender.sendMessage(Ublisk.getPrefix() + "Your message has been recorded. We'll take a look at it soon!");
 		} catch (SQLException e){
 			Logger.log(LogLevel.SEVERE, "Database error (todo list suggestion)");
 			sender.sendMessage(ChatColor.RED + "An error occured :(");
