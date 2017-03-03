@@ -10,6 +10,7 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -17,6 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.java.Random;
 
@@ -120,6 +122,8 @@ class SpawnMob {
 						//tp.setPitch(Random.getRandomFloat(0, 360));
 						tp.setYaw(Random.getRandomInteger(0, 360));
 						entity.teleport(tp);
+						
+						Ublisk.spawnParticle(Particle.EXPLOSION_NORMAL, tp, 20, 0, 0, 0, 0.1);
 						
 						MobCode code = mob.getMobType().getCode();
 						if (code != null)
