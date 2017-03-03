@@ -26,17 +26,17 @@ public class VoteRestart {
 			}.runTaskLater(Main.getInstance(), 5*20);
 			new BukkitRunnable(){
 				public void run(){
-					Ublisk.broadcastPrefixedMessage("The server will restart in 30 seconds minute.");
+					Ublisk.broadcastPrefixedMessage("The server will restart in 30 seconds.");
 				}
 			}.runTaskLater(Main.getInstance(), 5*20 + 30*20);
 			new BukkitRunnable(){
 				public void run(){
-					Ublisk.broadcastPrefixedMessage("The server will restart in 10 seconds minute.");
+					Ublisk.broadcastPrefixedMessage("The server will restart in 10 seconds.");
 				}
 			}.runTaskLater(Main.getInstance(), 5*20 + 30*20 + 20*20);
 			new BukkitRunnable(){
 				public void run(){
-					Ublisk.broadcastPrefixedMessage("The server will restart in 5 seconds minute.");
+					Ublisk.broadcastPrefixedMessage("The server will restart in 5 seconds.");
 				}
 			}.runTaskLater(Main.getInstance(), 5*20 + 30*20 + 20*20 + 5*20);
 			new BukkitRunnable(){
