@@ -153,12 +153,10 @@ public class GuildCommand implements CommandExecutor {
 				
 				return true;
 			} else {
-				player.sendMessage(Message.WRONG_USAGE);
-				return true;
+				return false;
 			}
 		} else {
-			sender.sendMessage(Message.WRONG_USAGE.toString());
-			return true;
+			return false;
 		}
 	}
 
