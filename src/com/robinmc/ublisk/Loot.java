@@ -34,22 +34,6 @@ public class Loot {
 		new LootChest(Level.TWO, 90, 120, 335),
 	};
 	
-	
-	/*
-	B(Level.ONE, 250, 67, -10),
-	C(Level.ONE, 214, 69, -11),
-	D(Level.TWO, 90, 120, 335);
-	
-	private Level level;
-	private Location loc;
-	
-	Loot(Level level, int x, int y, int z){
-		this.level = level;
-		this.loc = new Location(Var.WORLD, x, y, z);
-	}
-	
-	*/
-	
 	public static LootChest getRandomLoot(){
 		//return EnumUtils.getRandomEnum(Loot.class);
 		int index = Random.getRandomInteger(0, LOOT.length - 1);
@@ -59,15 +43,6 @@ public class Loot {
 	public static LootChest[] getLootChests(){
 		return LOOT;
 	}
-	
-	/*
-	public static void removeLoot(){
-		Logger.log(LogLevel.INFO, "Loot", "Removed all loot chests!");
-		for (LootChest loot : LOOT){
-			Block block = new Location(Var.WORLD, loot.loc.getX(), loot.loc.getY(), loot.loc.getZ()).getBlock();
-			block.setType(Material.AIR);
-		}
-	}*/
 	
 	public static boolean isLoot(Chest chest){
 		Location loc = chest.getLocation();
