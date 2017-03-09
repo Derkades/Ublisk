@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
@@ -12,7 +11,7 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 
-public abstract class UModule implements Listener, CommandExecutor {
+public abstract class UModule implements Listener {
 	
 	public static final UModule[] ALL_MODULES = {new AFK()};
 	
