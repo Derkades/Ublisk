@@ -51,6 +51,10 @@ public class Main extends JavaPlugin {
 				guild.remove();
 			}
 		}
+		
+		for (UModule module : UModule.ALL_MODULES){
+			module.initialize();
+		}
 
 	}
 
@@ -62,6 +66,10 @@ public class Main extends JavaPlugin {
 		
 		for (DataFile dataFile : DataFile.values()){
 			dataFile.save();
+		}
+		
+		for (UModule module : UModule.ALL_MODULES){
+			module.terminate();
 		}
 	}
 
