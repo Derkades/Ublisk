@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.robinmc.ublisk.commands.Command;
 import com.robinmc.ublisk.listeners.Listeners;
 import com.robinmc.ublisk.mob.Mob;
+import com.robinmc.ublisk.modules.UModule;
 import com.robinmc.ublisk.task.Task;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.DoubleXP;

@@ -30,7 +30,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
-import com.robinmc.ublisk.AFK;
 import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
@@ -38,6 +37,7 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.VoteRestart;
+import com.robinmc.ublisk.modules.AFK;
 import com.robinmc.ublisk.money.Money;
 import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.quest.Quest;

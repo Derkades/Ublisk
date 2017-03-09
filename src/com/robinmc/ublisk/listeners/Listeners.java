@@ -3,7 +3,6 @@ package com.robinmc.ublisk.listeners;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
-import com.robinmc.ublisk.AFK;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.PlayerLoginRoom;
 import com.robinmc.ublisk.ResourcePack;
@@ -12,6 +11,7 @@ import com.robinmc.ublisk.ext.com.sethbling.blinghomingarrows.HomingArrowsListen
 import com.robinmc.ublisk.mob.listeners.EntityCombust;
 import com.robinmc.ublisk.mob.listeners.EntityDamageByEntity;
 import com.robinmc.ublisk.mob.listeners.EntityDeath;
+import com.robinmc.ublisk.modules.AFK;
 import com.robinmc.ublisk.quest.NPCClickListener;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
