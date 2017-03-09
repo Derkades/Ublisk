@@ -3,7 +3,6 @@ package com.robinmc.ublisk.task;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.AFK;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.PlayerLoginRoom.SavePlayerLocation;
 import com.robinmc.ublisk.Scoreboard;
@@ -14,7 +13,7 @@ import com.robinmc.ublisk.utils.Lag;
 
 public enum Task {
 	
-	AFK_TIMER(new AFK(), 30*20, 1*20, false),
+	//AFK_TIMER(new AFK(), 30*20, 1*20, false),
 	CHECK_SHIELD(new CheckShield(), 5*20, 5*20, false),
 	CHECK_TOWN(new CheckTown(), 0, 2*20, false),
 	CLEAR_WEATHER(new ClearWeather(), 60*20, 5*60*20, false),
@@ -26,7 +25,7 @@ public enum Task {
 	REGENERATE_HUNGER(new RegenerateHunger(), 0, 10, false),
 	REMOVE_MOBS(new RemoveMobs(), 5*60*20, 15*60*20, false),
 	RESPAWN_NPC(new RespawnNPC(), 5*20, 5*60*20, false),
-	RESTART_ERROR_MESSAGE(new RestartErrorMessage(), 10*20, 30*20, false),
+	RESTART_ERROR_MESSAGE(new RestartErrorMessage(), 10*20, 60*20, false),
 	SET_MAX_HEALTH(new SetMaxHealth(), 5*20, 5*20, false),
 	SPAWN_RANDOM_LOOT(new SpawnRandomLoot(), 5*60*20, 5*60*20, false),
 	UPDATE_BACKPACK_NAME(new UpdateBackpackName(), 0, 5*20, false),
