@@ -79,21 +79,28 @@ public class PlayerJoin implements Listener {
         		
         player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
         
-        new BukkitRunnable(){
-        	public void run(){
-    			final String[] fancyStrings = new String[]{
-    					"                       ",
-    					" # # ##  #   # ### # # ",
-    					" # # # # #   # #   # # ",
-    					" # # ##  #   # ### ##  ",
-    					" # # # # #   #   # ##  ",
-    					" ### ##  ### # ### # # ",
-    					"                       "
-    			};
-    			for (String string : fancyStrings){
-    				player.sendMessage(string.replace("#", ChatColor.GREEN + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()).replace(" ", ChatColor.GRAY + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()));
-    			}
-        	}
-        }.runTaskLater(Main.getInstance(), 4);
+        new BukkitRunnable() {
+			public void run() {
+				for (int i = 0; i < 10; i++) {
+					player.sendMessage("");
+				}
+
+				final String[] fancyStrings = new String[] {
+						"                       ", 
+						" # # ##  #   # ### # # ", 
+						" # # # # #   # #   # # ",
+						" # # ##  #   # ### ##  ", 
+						" # # # # #   #   # ##  ", 
+						" ### ##  ### # ### # # ",
+						"                       "
+				};
+				for (String string : fancyStrings) {
+					player.sendMessage(string
+							.replace("#", ChatColor.DARK_GREEN + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar())
+							.replace(" ", ChatColor.BLACK + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()));
+				}
+			}
+		}.runTaskLater(Main.getInstance(), 4);
 	}
+	
 }
