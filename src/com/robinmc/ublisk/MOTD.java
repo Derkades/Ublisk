@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 
 import com.robinmc.ublisk.utils.java.EnumUtils;
 
+@Deprecated
 public enum MOTD {
 
 	MOTD_1(ChatColor.GREEN + "" + ChatColor.STRIKETHROUGH + "Wynncraft", ""),
