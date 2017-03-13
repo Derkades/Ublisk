@@ -91,7 +91,7 @@ public class PlayerJoin implements Listener {
     					"                       "
     			};
     			for (String string : fancyStrings){
-    				player.sendMessage(string.replace("a", ChatColor.GREEN + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()).replace(" ", ChatColor.GRAY + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()));
+    				player.sendMessage(string.replace("#", ChatColor.GREEN + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()).replace(" ", ChatColor.GRAY + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()));
     			}
         	}
         }.runTaskLater(Main.getInstance(), 4);
