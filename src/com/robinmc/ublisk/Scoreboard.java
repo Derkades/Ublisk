@@ -52,9 +52,13 @@ public class Scoreboard extends BukkitRunnable {
 
 		if (player.getFriends().size() > 1) {
 			strings.add(r + r + DARK_GRAY + "---------------");
-			strings.add(redBold + "Online Friends");
+			boolean displayedOnlineFriends = false;
 			for (OfflinePlayer friend : player.getFriends()) {
 				if (friend != null && friend.isOnline()) {
+					if (!displayedOnlineFriends){
+						strings.add(redBold + "Online Friends");
+						displayedOnlineFriends = true;
+					}
 					UPlayer online = new UPlayer(friend);
 					strings.add(ChatColor.DARK_AQUA + friend.getName() + DARK_GRAY + ": " + ChatColor.AQUA
 							+ Math.round(online.getHealth()) + "HP");
