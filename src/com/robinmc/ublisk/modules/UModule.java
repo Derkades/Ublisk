@@ -16,6 +16,7 @@ public abstract class UModule implements Listener {
 	public static final UModule[] ALL_MODULES = {
 			new AFK(),
 			new CustomMOTD(),
+			new AutoRestart(),
 			};
 	
 	private static final List<UModule> RUNNING_MODULES = new ArrayList<UModule>();
