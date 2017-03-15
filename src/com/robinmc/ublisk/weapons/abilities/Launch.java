@@ -14,7 +14,7 @@ public class Launch extends Ability {
 	@Override
 	public void run(UPlayer player) {
 		player.setVelocity(player.getLocation().getDirection().multiply(3));
-		player.setVelocity(new Vector(player.getVelocity().getX(), 1.0D, player.getVelocity().getZ()));
+		player.setVelocity(new Vector(player.getVelocity().getX(), 1.5D, player.getVelocity().getZ()));
 		player.givePotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 3*20, 4);
 	}
 
