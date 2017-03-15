@@ -753,6 +753,10 @@ public class UPlayer {
 	public void leaveGuild(){
 		DataFile.GUILDS.getConfig().set("guild." + this.getUniqueId(), null);
 	}
+	
+	public boolean onGround(){
+		return !player.isFlying() && player.getLocation().getBlock().getType().isSolid();
+	}
 
 	@Override
 	public String toString() {
