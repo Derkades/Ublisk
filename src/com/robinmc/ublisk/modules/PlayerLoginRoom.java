@@ -1,4 +1,4 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.modules;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +11,20 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.LocationUtils;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 
-public class PlayerLoginRoom implements Listener {
+public class PlayerLoginRoom extends UModule {
 
 	/**
 	 * List of names of players who are in the portal room
@@ -33,11 +35,15 @@ public class PlayerLoginRoom implements Listener {
 
 	private static final Location PORTAL_ROOM_LOCATION = new Location(Var.WORLD, 17.5, 74.5, -38.5, 90, 0);
 	
-	public static void onReload(){
+	@Override
+	public void onEnable(Plugin plugin){
 		for (UPlayer player : Ublisk.getOnlinePlayers()){
 			IN_PORTAL_ROOM.add(player.getName());
 			player.teleport(PORTAL_ROOM_LOCATION);
 		}
+		
+		//Save location every 10 seconds
+		new SavePlayerLocation().runTaskTimer(plugin, 0, 10*20);
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
@@ -112,7 +118,7 @@ public class PlayerLoginRoom implements Listener {
 		return x < 13 && x > 8 && z < -35 && z > -42;
 	}
 
-	public static class SavePlayerLocation extends BukkitRunnable {
+	private static class SavePlayerLocation extends BukkitRunnable {
 
 		@Override
 		public void run() {

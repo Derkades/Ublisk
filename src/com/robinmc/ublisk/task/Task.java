@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.PlayerLoginRoom.SavePlayerLocation;
 import com.robinmc.ublisk.Scoreboard;
 import com.robinmc.ublisk.database.AddTrackersInfoToQueue;
 import com.robinmc.ublisk.database.ProcessQueue;
@@ -35,9 +34,7 @@ public enum Task {
 	
 	PROCESS_QUEUE(new ProcessQueue(), 10*20, 2*20, false),
 	
-	SAVE_FILES(new SaveFiles(), 30*20, 60*50, false),
-	
-	SAVE_LOCATION(new SavePlayerLocation(), 0, 10*20, false);
+	SAVE_FILES(new SaveFiles(), 30*20, 60*50, false);
 	
 	private BukkitRunnable runnable;
 	private long delay;
