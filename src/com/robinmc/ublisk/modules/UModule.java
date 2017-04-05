@@ -21,8 +21,12 @@ public abstract class UModule implements Listener {
 	
 	private static final List<UModule> RUNNING_MODULES = new ArrayList<UModule>();
 	
+	public boolean isRunning(){
+		return RUNNING_MODULES.contains(this);
+	}
+	
 	public void initialize(){
-		if (RUNNING_MODULES.contains(this)){
+		if (isRunning()){
 			throw new UnsupportedOperationException("Module is already initialized and running.");
 		}
 		
@@ -36,7 +40,7 @@ public abstract class UModule implements Listener {
 	}
 	
 	public void terminate(){
-		if (!RUNNING_MODULES.contains(this)){
+		if (!isRunning()){
 			throw new UnsupportedOperationException("Cannot terminate a module that is not running.");
 		}
 		
