@@ -68,6 +68,10 @@ public class Main extends JavaPlugin {
 		}
 		
 		for (UModule module : UModule.ALL_MODULES){
+			if (!module.isRunning()){
+				Logger.log(LogLevel.WARNING, "Modules", module.getClass().getSimpleName() + " is already terminated.");
+			}
+			
 			module.terminate();
 		}
 	}
