@@ -17,6 +17,7 @@ public abstract class UModule implements Listener {
 			new AFK(),
 			new CustomMOTD(),
 			new AutoRestart(),
+			new PlayerLoginRoom(),
 			};
 	
 	private static final List<UModule> RUNNING_MODULES = new ArrayList<UModule>();
