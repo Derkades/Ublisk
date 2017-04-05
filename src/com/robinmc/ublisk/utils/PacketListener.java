@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.BindException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +24,8 @@ public class PacketListener {
 					sockets.add(serverSocket);
 					byte[] receiveData = new byte[packetLength];
 
-					String address = InetAddress.getLocalHost().getHostAddress();
-					Logger.log(LogLevel.INFO, "PacketListener", "Started listening on port " + address + ":" + port);
+					String address = "0.0.0.0";
+					Logger.log(LogLevel.INFO, "PacketListener", "Started listening on " + address + ":" + port);
 					final DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
 					while (true) {
