@@ -4,9 +4,6 @@ import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-
-import org.bukkit.Bukkit;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.PacketListener.PacketRecievedListener;
@@ -28,10 +25,10 @@ public class Logger {
 		String chatMessage = ChatColor.GRAY + "[" + logLevel + "] " + consoleMessage;
 
 		if (logLevel == LogLevel.SEVERE || logLevel == LogLevel.WARNING) {
-			Bukkit.getLogger().log(Level.WARNING, consoleMessage);
+			System.err.println(consoleMessage);
 			File file = new File(Main.getInstance().getDataFolder() + "/logs/warning/", fileNameTime + ".txt");
 			FileUtils.appendStringToFile(file, fileMessage);
-		} else Bukkit.getLogger().log(Level.INFO, consoleMessage);
+		} else System.out.println(consoleMessage);
 		
 		if (logLevel != LogLevel.DEBUG){ //Log everything except for debug messages in info log file.
 			File file = new File(Main.getInstance().getDataFolder() + "/logs/info/", fileNameTime + ".txt");
