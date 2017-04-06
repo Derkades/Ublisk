@@ -51,8 +51,18 @@ public class PacketListener {
 	public static void closeAllOpenSockets() {
 		Logger.log(LogLevel.INFO, "PacketListener", "Closing all open sockets...");
 		for (DatagramSocket socket : sockets) {
-			if (!socket.isClosed())
-				socket.close();
+			Logger.log(LogLevel.DEBUG, "PacketListener", "Attemting to close socket on port " + socket.getPort() + ".");
+			if (socket.isClosed()){
+				Logger.log(LogLevel.DEBUG, "PacketListener", "Socket on port " + socket.getPort() + " is already closed.");
+				continue;
+			} else {
+				try {
+					socket.close();
+					Logger.log(LogLevel.INFO, "PacketListener", "Successfully closed socket on port " + socket.getPort());
+				} catch (Exception e){
+					Logger.log(LogLevel.SEVERE, "PacketListener", "An error occured while trying to close socket on port " + socket.getPort() + ": " + e.getMessage());
+				}
+			}		
 		}
 	}
 
