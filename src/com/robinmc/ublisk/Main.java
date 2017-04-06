@@ -28,6 +28,8 @@ public class Main extends JavaPlugin {
 		instance = this;
 		
 		Ublisk.RESTART_ERROR = false;
+		
+		PacketListener.RUNNING = true;
 
 		HashMaps.resetAllPlayers();
 
