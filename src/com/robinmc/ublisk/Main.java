@@ -92,7 +92,7 @@ public class Main extends JavaPlugin {
 		}
 		
 		// Close all open sockets
-		PacketListener.closeAllOpenSockets();
+		PacketListener.RUNNING = false;
 		
 		// Clear remaining tasks in sync queue
 		SyncQueue.clear();
