@@ -1,5 +1,7 @@
 package com.robinmc.ublisk;
 
+import java.lang.reflect.Field;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.robinmc.ublisk.commands.Command;
@@ -56,17 +58,31 @@ public class Main extends JavaPlugin {
 		}
 
 	}
-
+	
 	@Override
 	public void onDisable() {
-		instance = null;
-		
+	    try {
+	    	//Do some fancy trickery to execute code while the plugin is still enabled
+	        Field field = this.getClass().getField("isEnabled");
+	        field.setAccessible(true);
+	        field.set(this, true);
+
+	        // Call cleanup code
+	        cleanup();
+
+	        field.set(this, false);
+	    } catch (Exception ex) { }
+	}
+	
+	private void cleanup(){
 		Task.stopAll();
 		
+		//Save data files
 		for (DataFile dataFile : DataFile.values()){
 			dataFile.save();
 		}
 		
+		//Stop all running modules
 		for (UModule module : UModule.ALL_MODULES){
 			if (!module.isRunning()){
 				Logger.log(LogLevel.WARNING, "Modules", module.getClass().getSimpleName() + " is already terminated.");
@@ -74,6 +90,8 @@ public class Main extends JavaPlugin {
 			
 			module.terminate();
 		}
+		
+		instance = null;
 	}
 
 	public static Main getInstance() {
