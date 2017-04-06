@@ -1,6 +1,8 @@
 package com.robinmc.ublisk.task;
 
-import org.bukkit.Bukkit;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
@@ -35,6 +37,8 @@ public enum Task {
 	
 	SAVE_FILES(new SaveFiles(), 30*20, 60*50, false);
 	
+	private static final List<BukkitRunnable> RUNNING_TASKS = new ArrayList<BukkitRunnable>();
+	
 	private BukkitRunnable runnable;
 	private long delay;
 	private long period;
@@ -53,10 +57,14 @@ public enum Task {
 		} else {
 			runnable.runTaskTimer(Main.getInstance(), delay, period);
 		}
+		RUNNING_TASKS.add(runnable);
 	}
 	
 	public static void stopAll(){
-		Bukkit.getServer().getScheduler().cancelTasks(Main.getInstance());
+		for (BukkitRunnable runnable : RUNNING_TASKS){
+			runnable.cancel();
+		}
+		RUNNING_TASKS.clear();
 	}
 
 }
