@@ -41,5 +41,9 @@ public class SyncQueue {
 	public static boolean isEmpty(){
 		return LIST.isEmpty();
 	}
+	
+	public static void clear(){
+		LIST.clear();
+	}
 
 }

@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.robinmc.ublisk.commands.Command;
+import com.robinmc.ublisk.database.SyncQueue;
 import com.robinmc.ublisk.listeners.Listeners;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.modules.UModule;
@@ -62,7 +63,7 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable() {
 	    try {
-	    	//Do some fancy trickery to execute code while the plugin is still enabled
+	    	// Do some fancy trickery to execute code while the plugin is still enabled
 	        Field field = this.getClass().getField("isEnabled");
 	        field.setAccessible(true);
 	        field.set(this, true);
@@ -77,12 +78,12 @@ public class Main extends JavaPlugin {
 	private void cleanup(){
 		Task.stopAll();
 		
-		//Save data files
+		// Save data files
 		for (DataFile dataFile : DataFile.values()){
 			dataFile.save();
 		}
 		
-		//Stop all running modules
+		// Stop all running modules
 		for (UModule module : UModule.ALL_MODULES){
 			if (!module.isRunning()){
 				Logger.log(LogLevel.WARNING, "Modules", module.getClass().getSimpleName() + " is already terminated.");
@@ -90,6 +91,9 @@ public class Main extends JavaPlugin {
 			
 			module.terminate();
 		}
+		
+		// Clear remaining tasks in sync queue
+		SyncQueue.clear();
 		
 		instance = null;
 	}
