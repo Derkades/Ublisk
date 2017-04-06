@@ -15,6 +15,7 @@ import com.robinmc.ublisk.utils.DoubleXP;
 import com.robinmc.ublisk.utils.Guild;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.utils.PacketListener;
 import com.robinmc.ublisk.utils.TodoList;
 import com.robinmc.ublisk.utils.Ublisk;
 
@@ -29,8 +30,6 @@ public class Main extends JavaPlugin {
 		Ublisk.RESTART_ERROR = false;
 
 		HashMaps.resetAllPlayers();
-		
-		new WorldEditCUI().onEnable();
 
 		Listeners.register();
 
@@ -91,6 +90,9 @@ public class Main extends JavaPlugin {
 			
 			module.terminate();
 		}
+		
+		// Close all open sockets
+		PacketListener.closeAllOpenSockets();
 		
 		// Clear remaining tasks in sync queue
 		SyncQueue.clear();
