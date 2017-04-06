@@ -1,4 +1,4 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.modules;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -10,12 +10,13 @@ import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.Main;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldedit.bukkit.selections.Selection;
 
@@ -23,9 +24,7 @@ import net.minecraft.server.v1_11_R1.BlockPosition;
 import net.minecraft.server.v1_11_R1.NBTTagCompound;
 import net.minecraft.server.v1_11_R1.TileEntityStructure;
 
-public class WorldEditCUI implements Listener {
-
-	// TODO Better integration with the rest of the plugin
+public class WorldEditCUI extends UModule {
 	
 	public static HashMap<UUID, CUIBlock> blockStates;
 	public static WorldEditPlugin worldEditPlugin;
@@ -38,21 +37,23 @@ public class WorldEditCUI implements Listener {
 		WorldEditCUI.blockStates = new HashMap();
 	}
 
-	public void onEnable() {
+	@Override
+	public void onEnable(Plugin plugin) {
 		STOP_UPDATING = false;
 		worldEditPlugin = ((WorldEditPlugin) Bukkit.getServer().getPluginManager().getPlugin("WorldEdit"));
-		Bukkit.getServer().getPluginManager().registerEvents(this, Main.getInstance());
+
 		new BukkitRunnable() {
 
 			public void run() {
 				WorldEditCUI.updateSelections(0L);
 			}
 			
-		}.runTaskTimer(Main.getInstance(), 10L, 30L);
+		}.runTaskTimer(plugin, 10L, 30L);
 	}
 	
 	@SuppressWarnings("deprecation")
-	public static void onDisable(){
+	@Override
+	public void onDisable(){
 		STOP_UPDATING = true;
 		for (Player player : Bukkit.getOnlinePlayers()){
 			if (WorldEditCUI.blockStates.containsKey(player.getUniqueId())) {

@@ -19,6 +19,7 @@ public abstract class UModule implements Listener {
 			new AutoRestart(),
 			new PlayerLoginRoom(),
 			new RandomTip(),
+			new WorldEditCUI(),
 			};
 	
 	private static final List<UModule> RUNNING_MODULES = new ArrayList<UModule>();
