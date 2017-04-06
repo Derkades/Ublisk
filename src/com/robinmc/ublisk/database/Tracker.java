@@ -13,6 +13,7 @@ import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 
+@Deprecated
 public class Tracker {
 	
 	private static final String TABLE = "trackers";

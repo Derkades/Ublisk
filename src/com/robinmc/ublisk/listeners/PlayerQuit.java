@@ -8,11 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.database.PlayerInfo;
-import com.robinmc.ublisk.database.SyncQueue;
-import com.robinmc.ublisk.database.Tracker;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public class PlayerQuit implements Listener {
@@ -25,12 +21,12 @@ public class PlayerQuit implements Listener {
 		
 		player.refreshLastSeenDate();
 		
-		SyncQueue.addToQueue(new BukkitRunnable(){
+		/*SyncQueue.addToQueue(new BukkitRunnable(){
 			public void run(){
 				Tracker.syncWithDatabase(player);
 				PlayerInfo.syncInfo(player);
 			}
-		});
+		});*/
 	}
 
 }

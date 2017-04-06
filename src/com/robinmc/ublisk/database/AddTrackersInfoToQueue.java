@@ -27,11 +27,11 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 				}
 			});
 			
-			list.add(new BukkitRunnable(){
+			/*list.add(new BukkitRunnable(){
 				public void run(){
 					Tracker.syncWithDatabase(player);
 				}
-			});
+			});*/
 			
 			list.add(new BukkitRunnable(){
 				public void run(){
@@ -39,11 +39,11 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 				}
 			});
 			
-			list.add(new BukkitRunnable(){
+			/*list.add(new BukkitRunnable(){
 				public void run(){
 					PlayerInfo.syncInfo(player);
 				}
-			});
+			});*/
 		}
 		
 		SyncQueue.addToQueue(list);
