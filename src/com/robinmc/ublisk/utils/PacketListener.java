@@ -13,7 +13,7 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 
 public class PacketListener {
-
+	
 	private static List<DatagramSocket> sockets = new ArrayList<>();
 
 	public static void listenForPacket(final int port, final int packetLength, final PacketRecievedListener runnable) {
@@ -24,8 +24,7 @@ public class PacketListener {
 					sockets.add(serverSocket);
 					byte[] receiveData = new byte[packetLength];
 
-					String address = "0.0.0.0";
-					Logger.log(LogLevel.INFO, "PacketListener", "Started listening on " + address + ":" + port);
+					Logger.log(LogLevel.INFO, "PacketListener", "Started listening on " + port);
 					final DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
 					while (true) {
