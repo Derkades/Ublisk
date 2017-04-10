@@ -259,43 +259,8 @@ public enum UbliskCommand {
 	}, "Sends fancy Ublisk message", "fancymessage"),
 	
 	CIRCLE(new CommandRunnable(){
-		public void run(UPlayer player){
-//			player.sendMessage("test");
-//			Location playerLocation = player.getLocation();
-//			double x = playerLocation.getX();
-//			double y = playerLocation.getY();
-//			double z = playerLocation.getZ();
-//			Location[] locations = new Circle().getCoords(x, y, z, 2, Direction.HORIZONTAL);
-//			for (Location location : locations){
-//				player.sendMessage(location.getX() + " : " + location.getY() + " : " + location.getZ());
-//				Ublisk.spawnParticle(Particle.EXPLOSION_NORMAL, location, 1, 0, 0, 0, 0);
-//			}
-			
-//			double radius = 5;
-//			double x, y;
-//		    for (x = -1.0; x <= 1.0; x += 0.2) {
-//		        y = Math.sqrt(radius - Math.pow(x,2)) ;
-//		        Location location = new Location(Var.WORLD, x + player.getLocation().getX(), y + player.getLocation().getY(), player.getLocation().getZ());
-//		        Ublisk.spawnParticle(Particle.FLAME, location, 1, 0, 0, 0, 0);
-//		        player.sendMessage(location.getX() + " : " + location.getY() + " : " + location.getZ());
-//		    }
-		    
-//			double points = 50;
-//			double radius = 2;
-//			double centerX = player.getLocation().getX();
-//			double centerY = player.getLocation().getY() + radius;
-//			
-//		    double slice = 2 * Math.PI / points;
-//			for (int i = 0; i < points; i++) {
-//				double angle = slice * i;
-//				double newX = centerX + radius * Math.cos(angle);
-//				double newY = centerY + radius * Math.sin(angle);
-//				Location location = new Location(Var.WORLD, newX, newY, player.getLocation().getZ());
-//				Ublisk.spawnParticle(Particle.FLAME, location, 1, 0, 0, 0, 0);
-//				player.sendMessage(location.getX() + " : " + location.getY() + " : " + location.getZ());
-//			}
-			
-			for (Location location : Shapes.generateCircle(Direction.HORIZONTAL, player.getLocation(), 30, 3)){
+		public void run(UPlayer player){			
+			for (Location location : Shapes.generateCircle(Direction.HORIZONTAL, player.getLocation(), 100, 3.5)){
 				Ublisk.spawnParticle(Particle.FLAME, location, 1, 0, 0, 0, 0);
 				player.sendMessage(location.getX() + " : " + location.getY() + " : " + location.getZ());
 			}
