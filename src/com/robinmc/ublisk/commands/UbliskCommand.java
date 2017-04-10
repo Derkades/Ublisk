@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -32,6 +34,8 @@ import com.robinmc.ublisk.utils.Lag;
 import com.robinmc.ublisk.utils.Time;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
+import com.robinmc.ublisk.utils.shapes.Direction;
+import com.robinmc.ublisk.utils.shapes.Shapes;
 import com.robinmc.ublisk.weapons.Weapon;
 import com.robinmc.ublisk.weapons.sword.Sword;
 
@@ -253,6 +257,50 @@ public enum UbliskCommand {
 			}
 		}
 	}, "Sends fancy Ublisk message", "fancymessage"),
+	
+	CIRCLE(new CommandRunnable(){
+		public void run(UPlayer player){
+//			player.sendMessage("test");
+//			Location playerLocation = player.getLocation();
+//			double x = playerLocation.getX();
+//			double y = playerLocation.getY();
+//			double z = playerLocation.getZ();
+//			Location[] locations = new Circle().getCoords(x, y, z, 2, Direction.HORIZONTAL);
+//			for (Location location : locations){
+//				player.sendMessage(location.getX() + " : " + location.getY() + " : " + location.getZ());
+//				Ublisk.spawnParticle(Particle.EXPLOSION_NORMAL, location, 1, 0, 0, 0, 0);
+//			}
+			
+//			double radius = 5;
+//			double x, y;
+//		    for (x = -1.0; x <= 1.0; x += 0.2) {
+//		        y = Math.sqrt(radius - Math.pow(x,2)) ;
+//		        Location location = new Location(Var.WORLD, x + player.getLocation().getX(), y + player.getLocation().getY(), player.getLocation().getZ());
+//		        Ublisk.spawnParticle(Particle.FLAME, location, 1, 0, 0, 0, 0);
+//		        player.sendMessage(location.getX() + " : " + location.getY() + " : " + location.getZ());
+//		    }
+		    
+//			double points = 50;
+//			double radius = 2;
+//			double centerX = player.getLocation().getX();
+//			double centerY = player.getLocation().getY() + radius;
+//			
+//		    double slice = 2 * Math.PI / points;
+//			for (int i = 0; i < points; i++) {
+//				double angle = slice * i;
+//				double newX = centerX + radius * Math.cos(angle);
+//				double newY = centerY + radius * Math.sin(angle);
+//				Location location = new Location(Var.WORLD, newX, newY, player.getLocation().getZ());
+//				Ublisk.spawnParticle(Particle.FLAME, location, 1, 0, 0, 0, 0);
+//				player.sendMessage(location.getX() + " : " + location.getY() + " : " + location.getZ());
+//			}
+			
+			for (Location location : Shapes.generateCircle(Direction.HORIZONTAL, player.getLocation(), 30, 3)){
+				Ublisk.spawnParticle(Particle.FLAME, location, 1, 0, 0, 0, 0);
+				player.sendMessage(location.getX() + " : " + location.getY() + " : " + location.getZ());
+			}
+		}
+	}, "Summons particles in a circle", "circle"),
 
 	;
 	
