@@ -26,10 +26,16 @@ public abstract class NPC {
 	public abstract Profession getProfession();
 	
 	public abstract boolean canWalk();
+	
+	public boolean isEnabled(){
+		return true;
+	}
 
 	public abstract void talk(UPlayer player);
 	
 	public void spawn(){
+		if (!isEnabled()) throw new UnsupportedOperationException("Cannot spawn a disabled NPC.");
+		
 		Villager villager = Var.WORLD.spawn(this.getLocation(), Villager.class);
 		villager.setCustomName(ChatColor.DARK_GREEN + this.getName());
 		villager.setSilent(true);
@@ -62,8 +68,9 @@ public abstract class NPC {
 		for (Villager villager : Var.WORLD.getEntitiesByClass(Villager.class))
 			villager.remove();
 
-		for (NPC npc : NPC.getAllNPCs())
-			npc.spawn();
+		for (NPC npc : NPC.getAllNPCs()){
+			if (npc.isEnabled()) npc.spawn();
+		}
 	}
 	
 	public static List<NPC> getAllNPCs(){
