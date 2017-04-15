@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.PacketListener.PacketRecievedListener;
 import com.robinmc.ublisk.utils.java.FileUtils;
 
@@ -35,10 +36,12 @@ public class Logger {
 			FileUtils.appendStringToFile(file, fileMessage);
 		}
 
-		//Send message to online players
-		for (UPlayer player : Ublisk.getOnlinePlayers())
-			if (logLevel != LogLevel.DEBUG && logLevel != LogLevel.CHAT)
-				player.sendMessage(chatMessage);
+		//Send message to online players if debug mode is enabled
+		if (Var.DEBUG){
+			for (UPlayer player : Ublisk.getOnlinePlayers())
+				if (logLevel != LogLevel.DEBUG && logLevel != LogLevel.CHAT)
+					player.sendMessage(chatMessage);
+		}
 	}
 
 	public static void log(LogLevel logLevel, Object object) {
