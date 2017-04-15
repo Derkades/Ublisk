@@ -1,13 +1,13 @@
 package com.robinmc.ublisk.quest.npc;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Villager.Profession;
 import org.bukkit.inventory.ItemStack;
 
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.money.MoneyItem;
 import com.robinmc.ublisk.quest.NPC;
-import com.robinmc.ublisk.quest.NPCInfo;
-import com.robinmc.ublisk.quest.NPCInfo.NPCLocation;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.UPlayer;	
@@ -15,8 +15,23 @@ import com.robinmc.ublisk.utils.UPlayer;
 public class Merek extends NPC {
 	
 	@Override
-	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Merek", Profession.FARMER, false, new NPCLocation(33, 67, -38));
+	public String getName() {
+		return "Merek";
+	}
+
+	@Override
+	public Location getLocation() {
+		return new Location(Var.WORLD, 33, 67, -38);
+	}
+
+	@Override
+	public Profession getProfession() {
+		return Profession.FARMER;
+	}
+
+	@Override
+	public boolean canWalk() {
+		return false;
 	}
 	
 	@Override

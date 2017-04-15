@@ -1,12 +1,13 @@
 package com.robinmc.ublisk.quest.npc;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Villager.Profession;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.quest.NPC;
-import com.robinmc.ublisk.quest.NPCInfo;
-import com.robinmc.ublisk.quest.NPCInfo.NPCLocation;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.QuestProgress;
@@ -15,8 +16,23 @@ import com.robinmc.ublisk.utils.UPlayer;
 public class Alvin extends NPC {
 	
 	@Override
-	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Alvin", null, true, new NPCLocation(121.5, 72, 7.3)); // XXX Profession
+	public String getName() {
+		return "Alvin";
+	}
+
+	@Override
+	public Location getLocation() {
+		return new Location(Var.WORLD, 121.5, 72, 7.3);
+	}
+
+	@Override
+	public Profession getProfession() {
+		return null;
+	}
+
+	@Override
+	public boolean canWalk() {
+		return true;
 	}
 	
 	@Override
@@ -54,7 +70,6 @@ public class Alvin extends NPC {
 		
 		
 	}
-
 
 
 }

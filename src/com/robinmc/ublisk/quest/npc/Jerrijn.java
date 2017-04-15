@@ -1,17 +1,32 @@
 package com.robinmc.ublisk.quest.npc;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Villager.Profession;
 
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.quest.NPC;
-import com.robinmc.ublisk.quest.NPCInfo;
-import com.robinmc.ublisk.quest.NPCInfo.NPCLocation;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public class Jerrijn extends NPC {
+	
+	@Override
+	public String getName() {
+		return "Jerrijn";
+	}
 
 	@Override
-	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Jerrijn", Profession.NITWIT, false, new NPCLocation(678, 74, 387));
+	public Location getLocation() {
+		return new Location(Var.WORLD, 678, 74, 387);
+	}
+
+	@Override
+	public Profession getProfession() {
+		return Profession.NITWIT;
+	}
+
+	@Override
+	public boolean canWalk() {
+		return false;
 	}
 
 	@Override

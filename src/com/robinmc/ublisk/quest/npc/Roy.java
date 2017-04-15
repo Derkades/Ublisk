@@ -1,20 +1,35 @@
 package com.robinmc.ublisk.quest.npc;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Villager.Profession;
 
 import com.robinmc.ublisk.Town;
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.quest.NPC;
-import com.robinmc.ublisk.quest.NPCInfo;
-import com.robinmc.ublisk.quest.NPCInfo.NPCLocation;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public class Roy extends NPC {
+	
+	@Override
+	public String getName() {
+		return "Roy";
+	}
 
 	@Override
-	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Roy", Profession.NITWIT, true, new NPCLocation(322, 82, 410));
+	public Location getLocation() {
+		return new Location(Var.WORLD, 322, 82, 410);
+	}
+
+	@Override
+	public Profession getProfession() {
+		return Profession.NITWIT;
+	}
+
+	@Override
+	public boolean canWalk() {
+		return true;
 	}
 
 	@Override

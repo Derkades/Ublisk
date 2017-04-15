@@ -18,23 +18,14 @@ import net.md_5.bungee.api.ChatColor;
 
 public abstract class NPC {
 	
-	public abstract NPCInfo getNPCInfo();
 	
-	public String getName(){
-		return this.getNPCInfo().getName();
-	}
+	public abstract String getName();
 	
-	public Location getLocation(){
-		return this.getNPCInfo().getLocation();
-	}
+	public abstract Location getLocation();
 	
-	public Profession getProfession(){
-		return this.getNPCInfo().getProfession();
-	}
+	public abstract Profession getProfession();
 	
-	public boolean canWalk(){
-		return this.getNPCInfo().canWalk();
-	}
+	public abstract boolean canWalk();
 
 	public abstract void talk(UPlayer player);
 	

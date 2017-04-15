@@ -1,14 +1,31 @@
 package com.robinmc.ublisk.quest.npc;
 
+import org.bukkit.Location;
+import org.bukkit.entity.Villager.Profession;
+
 import com.robinmc.ublisk.quest.NPC;
-import com.robinmc.ublisk.quest.NPCInfo;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public class Dianh extends NPC {
+	
+	@Override
+	public String getName() {
+		return "Dianh";
+	}
 
 	@Override
-	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Dianh", null, false, null); // TODO Dianh coordinates XXX Profession
+	public Location getLocation() {
+		return null;
+	}
+
+	@Override
+	public Profession getProfession() {
+		return null;
+	}
+
+	@Override
+	public boolean canWalk() {
+		return false;
 	}
 	
 	@Override

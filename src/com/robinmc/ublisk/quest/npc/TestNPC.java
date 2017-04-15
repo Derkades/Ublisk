@@ -1,9 +1,10 @@
 package com.robinmc.ublisk.quest.npc;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Villager.Profession;
 
 import com.robinmc.ublisk.quest.NPC;
-import com.robinmc.ublisk.quest.NPCInfo;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.npcmenu.ClickAction;
@@ -13,10 +14,25 @@ import com.robinmc.ublisk.quest.npcmenu.Option;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public class TestNPC extends NPC {
+	
+	@Override
+	public String getName() {
+		return "TestNPC";
+	}
 
 	@Override
-	public NPCInfo getNPCInfo() {
-		return new NPCInfo("TestNPC", null, false, null);
+	public Location getLocation() {
+		return null;
+	}
+
+	@Override
+	public Profession getProfession() {
+		return null;
+	}
+
+	@Override
+	public boolean canWalk() {
+		return false;
 	}
 	
 	@Override

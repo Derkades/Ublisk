@@ -1,11 +1,12 @@
 package com.robinmc.ublisk.quest.npc;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Villager.Profession;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.quest.NPC;
-import com.robinmc.ublisk.quest.NPCInfo;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.QuestProgress;
@@ -14,8 +15,23 @@ import com.robinmc.ublisk.utils.UPlayer;
 public class Zoltar extends NPC {
 
 	@Override
-	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Zoltar", null, false, null); // TODO Zoltar coordinates XXX Profession
+	public String getName() {
+		return "Zoltar";
+	}
+
+	@Override
+	public Location getLocation() {
+		return null;
+	}
+
+	@Override
+	public Profession getProfession() {
+		return null;
+	}
+
+	@Override
+	public boolean canWalk() {
+		return false;
 	}
 	
 	@Override

@@ -1,22 +1,38 @@
 package com.robinmc.ublisk.quest.npc;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Villager.Profession;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.quest.NPC;
-import com.robinmc.ublisk.quest.NPCInfo;
-import com.robinmc.ublisk.quest.NPCInfo.NPCLocation;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.QuestProgress;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public class Arzhur extends NPC {
+	
+	@Override
+	public String getName() {
+		return "Arzhur";
+	}
 
 	@Override
-	public NPCInfo getNPCInfo() {
-		return new NPCInfo("Arzhur", null, false, new NPCLocation(111.5, 68, -103.5));  // XXX Profession
+	public Location getLocation() {
+		return new Location(Var.WORLD, 111.5, 68, -103.5);
+	}
+
+	@Override
+	public Profession getProfession() {
+		return null;
+	}
+
+	@Override
+	public boolean canWalk() {
+		return false;
 	}
 	
 	@Override
