@@ -8,6 +8,7 @@ import java.net.DatagramSocket;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 
 public class PacketListener {
@@ -15,6 +16,10 @@ public class PacketListener {
 	public static boolean RUNNING;
 
 	public static void listenForPacket(final int port, final int packetLength, final PacketRecievedListener runnable) {
+		if (Var.DEBUG){
+			Logger.log(LogLevel.WARNING, "PacketListener", "Packet listener on port " + port + " has not been started, because debug mode is enabled.");
+		}
+		
 		new BukkitRunnable() {
 
 			public void run() {
