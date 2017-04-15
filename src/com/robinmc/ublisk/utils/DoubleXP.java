@@ -54,20 +54,20 @@ public class DoubleXP {
 	}
 
 	public static void startDoubleXPPacketListener() {
-		PacketListener.listenForPacket(45678, 16, new PacketRecievedListener() {
-
-			@Override
-			public void onPacketRecieved(String message) {
-				Logger.log(LogLevel.DEBUG, message);
-				try {
-					DoubleXP.startDoubleXP(new UPlayer(message));
-				} catch (PlayerNotFoundException e) {
-					//Bukkit.broadcastMessage("The player who started DoubleXP is not online.");
-					Ublisk.broadcastPrefixedMessage("The player who started Double XP is not online.");
-				}
-			}
-
-		});
+//		PacketListener.listenForPacket(45678, 16, new PacketRecievedListener() {
+//
+//			@Override
+//			public void onPacketRecieved(String message) {
+//				Logger.log(LogLevel.DEBUG, message);
+//				try {
+//					DoubleXP.startDoubleXP(new UPlayer(message));
+//				} catch (PlayerNotFoundException e) {
+//					//Bukkit.broadcastMessage("The player who started DoubleXP is not online.");
+//					Ublisk.broadcastPrefixedMessage("The player who started Double XP is not online.");
+//				}
+//			}
+//
+//		});
 	}
 
 }
