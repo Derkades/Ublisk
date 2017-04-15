@@ -12,6 +12,8 @@ import com.robinmc.ublisk.utils.DataFile;
 
 public class Var {
 	
+	public static final boolean DEBUG = true;
+	
 	/**
 	 * Ublisk main world. Do not change unless you know what you are doing.
 	 */
