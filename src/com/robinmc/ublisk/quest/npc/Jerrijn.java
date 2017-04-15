@@ -28,6 +28,11 @@ public class Jerrijn extends NPC {
 	public boolean canWalk() {
 		return false;
 	}
+	
+	@Override
+	public boolean isEnabled() {
+		return false;
+	}
 
 	@Override
 	public void talk(UPlayer player) {

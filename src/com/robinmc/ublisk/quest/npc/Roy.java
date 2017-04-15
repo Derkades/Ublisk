@@ -31,6 +31,11 @@ public class Roy extends NPC {
 	public boolean canWalk() {
 		return true;
 	}
+	
+	@Override
+	public boolean isEnabled() {
+		return false;
+	}
 
 	@Override
 	public void talk(UPlayer player) {
