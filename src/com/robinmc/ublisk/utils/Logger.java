@@ -45,16 +45,16 @@ public class Logger {
 		log(logLevel, "Ublisk", object);
 	}
 	
-//	public static void startSiteLogger(){
-//		PacketListener.listenForPacket(6789, 256, new PacketRecievedListener(){
-//
-//			@Override
-//			public void onPacketRecieved(String message) {
-//				Logger.log(LogLevel.INFO, "Site", message);
-//			}
-//			
-//		});
-//	}
+	public static void startSiteLogger(){
+		PacketListener.listenForPacket(6789, 256, new PacketRecievedListener(){
+
+			@Override
+			public void onPacketRecieved(String message) {
+				Logger.log(LogLevel.INFO, "Site", message);
+			}
+			
+		});
+	}
 
 	public static enum LogLevel {
 

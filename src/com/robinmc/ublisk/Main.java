@@ -16,7 +16,6 @@ import com.robinmc.ublisk.utils.Guild;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.PacketListener;
-import com.robinmc.ublisk.utils.PacketListener.PacketRecievedListener;
 import com.robinmc.ublisk.utils.TodoList;
 import com.robinmc.ublisk.utils.Ublisk;
 
@@ -30,16 +29,8 @@ public class Main extends JavaPlugin {
 		
 		Ublisk.RESTART_ERROR = false;
 		
-		//PacketListener.RUNNING = true;
-		PacketListener.listenForPacket(1324, new PacketRecievedListener(){
+		PacketListener.RUNNING = true;
 
-			@Override
-			public void onPacketRecieved(String message) {
-				Logger.log(LogLevel.INFO, message);
-			}
-			
-		});
-		
 		HashMaps.resetAllPlayers();
 
 		Listeners.register();
@@ -52,7 +43,7 @@ public class Main extends JavaPlugin {
 			task.start();
 
 		DoubleXP.startDoubleXPPacketListener();
-		//Logger.startSiteLogger();
+		Logger.startSiteLogger();
 		
 		TodoList.initialize(DataFile.MYSQL.getConfig().getString("todo.user"), DataFile.MYSQL.getConfig().getString("todo.password"));
 		
@@ -67,6 +58,7 @@ public class Main extends JavaPlugin {
 		for (UModule module : UModule.ALL_MODULES){
 			module.initialize();
 		}
+
 	}
 	
 	@Override
@@ -102,8 +94,8 @@ public class Main extends JavaPlugin {
 		}
 		
 		// Close all open sockets
-		//PacketListener.RUNNING = false;
-		PacketListener.close();
+		PacketListener.RUNNING = false;
+		
 		// Clear remaining tasks in sync queue
 		SyncQueue.clear();
 		
