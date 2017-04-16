@@ -16,6 +16,7 @@ public abstract class UModule implements Listener {
 	public static final UModule[] ALL_MODULES = {
 			new AFK(),
 			new CustomMOTD(),
+			new Groups(),
 			new AutoRestart(),
 			new PlayerLoginRoom(),
 			new RandomTip(),

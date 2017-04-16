@@ -1,8 +1,5 @@
 package com.robinmc.ublisk.listeners;
 
-import static org.bukkit.ChatColor.DARK_GRAY;
-import static org.bukkit.ChatColor.GRAY;
-
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -16,8 +13,6 @@ import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 
-import net.md_5.bungee.api.ChatColor;
-
 public class AsyncPlayerChat implements Listener {
 	
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
@@ -30,21 +25,11 @@ public class AsyncPlayerChat implements Listener {
 			return;
 		}
 		
-		ChatColor chatColor = ChatColor.WHITE;
-		if (HashMaps.IS_SOFT_MUTED.get(player.getUniqueId())){
-			chatColor = ChatColor.GRAY;
-		}
-		
 		for (Trigger trigger : Trigger.values()){
 			if (event.getMessage().equals(trigger.getTrigger())){
 				event.setMessage(trigger.getMessage());
 			}
 		}
-		
-		int level = player.getLevel();
-		String prefix = player.getGroup().getPrefix();
-		String format = DARK_GRAY + "[" + GRAY + level + DARK_GRAY + "] " + prefix + " %s" + DARK_GRAY + ": " + chatColor + "%s";
-		event.setFormat(format);
 		
 		player.tracker(PlayerInfo.CHAT_MESSAGES);
 		
