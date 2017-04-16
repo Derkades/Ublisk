@@ -43,7 +43,7 @@ public class AsyncPlayerChat implements Listener {
 		
 		int level = player.getLevel();
 		String prefix = player.getGroup().getPrefix();
-		String format = DARK_GRAY + "[" + GRAY + level + DARK_GRAY + "] " + prefix + " " + player.getName() + DARK_GRAY + ": " + chatColor + event.getMessage();
+		String format = DARK_GRAY + "[" + GRAY + level + DARK_GRAY + "] " + prefix + " %s" + DARK_GRAY + ": " + chatColor + "%s";
 		event.setFormat(format);
 		
 		player.tracker(PlayerInfo.CHAT_MESSAGES);
