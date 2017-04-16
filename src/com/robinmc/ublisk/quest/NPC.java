@@ -36,7 +36,11 @@ public abstract class NPC {
 	public void spawn(){
 		if (!isEnabled()) throw new UnsupportedOperationException("Cannot spawn a disabled NPC.");
 		
-		Villager villager = Var.WORLD.spawn(this.getLocation(), Villager.class);
+		Location location = this.getLocation();
+		if (location == null)
+			location = new Location(Var.WORLD, 2.5, 71, -16.5, 0, 0);
+		
+		Villager villager = Var.WORLD.spawn(location, Villager.class);
 		villager.setCustomName(ChatColor.DARK_GREEN + this.getName());
 		villager.setSilent(true);
 		villager.setInvulnerable(true);
