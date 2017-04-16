@@ -18,6 +18,7 @@ public class PacketListener {
 	public static void listenForPacket(final int port, final int packetLength, final PacketRecievedListener runnable) {
 		if (Var.DEBUG){
 			Logger.log(LogLevel.WARNING, "PacketListener", "Packet listener on port " + port + " has not been started, because debug mode is enabled.");
+			return;
 		}
 		
 		new BukkitRunnable() {
