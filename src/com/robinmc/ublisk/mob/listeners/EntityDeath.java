@@ -9,7 +9,7 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.database.PlayerInfo2;
+import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.mob.MobDrop;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -34,7 +34,7 @@ public class EntityDeath implements Listener {
 				return;
 			}
 			
-			player.tracker(PlayerInfo2.MOB_KILLS);
+			player.tracker(PlayerInfo.MOB_KILLS);
 			
 			try {
 				player.giveMobXP(entity);

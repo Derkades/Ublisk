@@ -12,7 +12,7 @@ import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 
-public class PlayerInfo2 {
+public class PlayerInfo {
 	
 	/*
 	 * Table layout:

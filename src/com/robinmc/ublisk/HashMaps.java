@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.database.PlayerInfo2;
+import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -43,7 +43,7 @@ public class HashMaps {
 		
 		//Tracker.resetHashMaps(player);
 		
-		PlayerInfo2.resetHashMaps(player);
+		PlayerInfo.resetHashMaps(player);
 	}
 	
 	public static HashMap<Integer, Integer> build(int... data){

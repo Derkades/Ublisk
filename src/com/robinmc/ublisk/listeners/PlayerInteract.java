@@ -26,7 +26,7 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.Voting;
-import com.robinmc.ublisk.database.PlayerInfo2;
+import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.iconmenus.MainMenu;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
@@ -71,17 +71,17 @@ public class PlayerInteract implements Listener {
 		Action action = event.getAction();
 		
 		if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK){
-			player.tracker(PlayerInfo2.RIGHT_CLICKED);
+			player.tracker(PlayerInfo.RIGHT_CLICKED);
 		}
 		
 		if (action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK){
-			player.tracker(PlayerInfo2.LEFT_CLICKED);
+			player.tracker(PlayerInfo.LEFT_CLICKED);
 		}
 		
 		if (action == Action.RIGHT_CLICK_BLOCK){
 			Material type = event.getClickedBlock().getType();
 			if (type == Material.CHEST && !Voting.isVotingChest(event.getClickedBlock())){
-				player.tracker(PlayerInfo2.LOOT_FOUND);
+				player.tracker(PlayerInfo.LOOT_FOUND);
 			}
 		}
 	}

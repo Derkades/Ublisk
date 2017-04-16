@@ -23,7 +23,7 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 			
 			list.add(new BukkitRunnable(){
 				public void run(){
-					PlayerInfo2.syncWithDatabase(player);
+					PlayerInfo.syncWithDatabase(player);
 				}
 			});
 			
