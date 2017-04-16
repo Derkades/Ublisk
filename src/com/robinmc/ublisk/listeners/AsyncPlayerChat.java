@@ -31,12 +31,7 @@ public class AsyncPlayerChat implements Listener {
 			}
 		}
 		
-		player.tracker(PlayerInfo.CHAT_MESSAGES);
-		
-		if (player.isAfk()){
-			player.setAfk(false);
-		}
-		
+		player.tracker(PlayerInfo.CHAT_MESSAGES);		
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)

@@ -11,13 +11,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 
@@ -125,6 +126,14 @@ public class AFK extends UModule implements CommandExecutor {
 
 		if (AFK.contains(player.getName())) {
 			AFK.remove(player.getName());
+		}
+	}
+	
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void onChat(AsyncPlayerChatEvent event){
+		UPlayer player = new UPlayer(event);
+		if (player.isAfk()){
+			player.setAfk(false);
 		}
 	}
 
