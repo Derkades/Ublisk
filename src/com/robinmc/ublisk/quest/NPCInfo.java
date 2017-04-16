@@ -5,6 +5,7 @@ import org.bukkit.entity.Villager.Profession;
 
 import com.robinmc.ublisk.Var;
 
+@Deprecated
 public class NPCInfo {
 	
 	private String name;
