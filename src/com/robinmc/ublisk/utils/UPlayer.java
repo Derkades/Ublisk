@@ -357,27 +357,6 @@ public class UPlayer {
 		return false;
 	}
 
-	/**
-	 * Bans a player for a given amount of time
-	 * 
-	 * @param player
-	 * @param time
-	 *        Time in seconds
-	 */
-	@Deprecated
-	public void tempBan(final int time) {
-		player.setBanned(true);
-		Logger.log(LogLevel.WARNING, "Banning", player.getName() + " has been banned for " + time + " seconds.");
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
-
-			public void run() {
-				player.setBanned(false);
-				Logger.log(LogLevel.INFO, "Banning",
-						player.getName() + " has been unbanned after " + time + " seconds.");
-			}
-		}, time * 20);
-	}
-
 	public boolean getSetting(Setting setting) {
 		return setting.get(player);
 	}
