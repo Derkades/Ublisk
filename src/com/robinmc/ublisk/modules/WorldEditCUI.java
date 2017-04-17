@@ -13,7 +13,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
@@ -38,7 +37,7 @@ public class WorldEditCUI extends UModule {
 	}
 
 	@Override
-	public void onEnable(Plugin plugin) {
+	public void onEnable(Main plugin) {
 		STOP_UPDATING = false;
 		worldEditPlugin = ((WorldEditPlugin) Bukkit.getServer().getPluginManager().getPlugin("WorldEdit"));
 

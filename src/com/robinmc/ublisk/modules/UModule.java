@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.Plugin;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Logger;
@@ -57,7 +56,7 @@ public abstract class UModule implements Listener {
 		Logger.log(level, module.getClass().getSimpleName(), message);
 	}
 	
-	void onEnable(Plugin plugin){
+	void onEnable(Main plugin){
 		
 	}
 	

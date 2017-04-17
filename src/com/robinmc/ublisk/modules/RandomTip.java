@@ -1,8 +1,8 @@
 package com.robinmc.ublisk.modules;
 
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.java.ListUtils;
@@ -22,7 +22,7 @@ public class RandomTip extends UModule {
 	};
 	
 	@Override
-	public void onEnable(Plugin plugin){
+	public void onEnable(Main plugin){
 		new BukkitRunnable(){
 			public void run(){
 				String randomTip = ListUtils.getRandomValueFromArray(TIP_LIST);

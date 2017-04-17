@@ -14,9 +14,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -57,7 +57,7 @@ public class AFK extends UModule implements CommandExecutor {
 	};
 
 	@Override
-	protected void onEnable(Plugin plugin) {
+	protected void onEnable(Main plugin) {
 		log(this, LogLevel.INFO, "Test!");
 
 		timer.runTaskTimer(plugin, 0, 20);

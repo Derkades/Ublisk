@@ -1,8 +1,8 @@
 package com.robinmc.ublisk.modules;
 
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.Ublisk;
@@ -22,7 +22,7 @@ public class AutoRestart extends UModule {
 	};
 	
 	@Override
-	public void onEnable(Plugin plugin){
+	public void onEnable(Main plugin){
 		TASK.runTaskTimer(plugin, 60*60*20, 60*60*20); //Run every hour
 	}
 	

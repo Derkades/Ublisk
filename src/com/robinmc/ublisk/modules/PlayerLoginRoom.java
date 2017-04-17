@@ -14,7 +14,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
@@ -36,7 +35,7 @@ public class PlayerLoginRoom extends UModule {
 	private static final Location PORTAL_ROOM_LOCATION = new Location(Var.WORLD, 17.5, 74.5, -38.5, 90, 0);
 	
 	@Override
-	public void onEnable(Plugin plugin){
+	public void onEnable(Main plugin){
 		for (UPlayer player : Ublisk.getOnlinePlayers()){
 			IN_PORTAL_ROOM.add(player.getName());
 			player.teleport(PORTAL_ROOM_LOCATION);

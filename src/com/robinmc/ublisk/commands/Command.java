@@ -3,8 +3,8 @@ package com.robinmc.ublisk.commands;
 import org.bukkit.command.CommandExecutor;
 
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.ResourcePack;
 import com.robinmc.ublisk.modules.AFK;
+import com.robinmc.ublisk.modules.ResourcePack;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 
