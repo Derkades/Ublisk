@@ -50,7 +50,7 @@ public abstract class NPC {
 			villager.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000000*20, 255, true));
 		if (getProfession() != null)
 			villager.setProfession(getProfession());
-		Logger.log(LogLevel.DEBUG, "NPC", "Spawned " + getName() + " at (" + this.getLocation().getX() + ", " + this.getLocation().getBlockY() + ", " + this.getLocation().getBlockZ() + ")");
+		Logger.log(LogLevel.DEBUG, "NPC", "Spawned " + this.getName() + " at (" + location.getX() + ", " + location.getBlockY() + ", " + location.getBlockZ() + ")");
 	}
 	
 	public static NPC fromName(String text){
