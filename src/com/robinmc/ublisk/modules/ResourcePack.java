@@ -1,4 +1,4 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.modules;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -7,17 +7,23 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
 
-public class ResourcePack implements Listener, CommandExecutor {
+public class ResourcePack extends UModule implements CommandExecutor {
 	
 	/**
 	 * Direct URL to resource pack zip. Do not change unless you know what you are doing.
 	 */
 	public static final String RESOURCE_PACK_URL = "https://ublisk.robinmc.com/texture/UbliskTextures40.zip";
+	
+	@Override
+	public void onEnable(Main plugin){
+		plugin.getCommand("pack").setExecutor(this);
+	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onJoin(PlayerJoinEvent event){

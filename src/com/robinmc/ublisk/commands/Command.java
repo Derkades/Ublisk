@@ -4,7 +4,6 @@ import org.bukkit.command.CommandExecutor;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.modules.AFK;
-import com.robinmc.ublisk.modules.ResourcePack;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 
@@ -23,7 +22,6 @@ public enum Command {
 	MSG("msg", new MsgCommand()),
 	MUTE("mute", new MuteCommand()),
 	SUGGEST("suggest", new SuggestCommand()),
-	RESOURCE_PACK("pack", new ResourcePack()),
 	VOTE_RESTART("voterestart", new VoteRestartCommand()),
 	
 	UBLISK("ublisk", new UbliskCommand.Executor());
