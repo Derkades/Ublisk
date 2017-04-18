@@ -18,7 +18,6 @@ public class ResourcePack extends UModule implements CommandExecutor {
 	/**
 	 * Direct URL to resource pack zip. Do not change unless you know what you are doing.
 	 */
-	public static final String RESOURCE_PACK_URL = "https://ublisk.robinmc.com/texture/UbliskTextures40.zip";
 	
 	@Override
 	public void onEnable(Main plugin){
