@@ -15,8 +15,10 @@ public class Launch extends Ability {
 
 	@Override
 	public void run(UPlayer player) {
-		if (!player.onGround())
+		if (!player.onGround()){
 			player.sendMessage(ChatColor.RED + "You must be on a solid block to use this ability.");
+			return;
+		}
 		
 		player.setVelocity(player.getLocation().getDirection().multiply(3));
 		player.setVelocity(new Vector(player.getVelocity().getX(), 1.5D, player.getVelocity().getZ()));
