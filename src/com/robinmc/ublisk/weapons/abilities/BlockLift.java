@@ -70,18 +70,6 @@ public class BlockLift extends Ability {
 
 							@Override
 							public void run() {
-								/*
-								Ublisk.spawnParticle(Particle.FLAME, blockCenterLocation, 48, 1, 1, 1, 0.1);
-								double radius = 3D;
-								List<Entity> near = blockCenterLocation.getWorld().getEntities();
-								for (Entity entity : near) {
-									if (entity instanceof LivingEntity){
-										LivingEntity living = (LivingEntity) entity;
-										double distance = entity.getLocation().distance(blockCenterLocation);
-										if (distance <= radius)
-											living.damage(damage / distance);
-									}
-								}*/
 								Ublisk.createFakeExplosion(blockCenterLocation, damage, EXPLOSION_RADIUS, Explosion.FLAMES);
 							}
 						}, 2 * 20);
