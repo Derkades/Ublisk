@@ -187,6 +187,9 @@ public class Ublisk {
 		}
 	}
 	
+	/**
+	 * @deprecated You now need to explicitly specify whether sound needs to be played or not.
+	 */
 	@Deprecated
 	public static void createFakeExplosion(Location location, int damage, double damageRadius, Explosion... explosions){
 		createFakeExplosion(location, damage, damageRadius, false, explosions);
