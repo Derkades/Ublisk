@@ -150,9 +150,10 @@ public class Ublisk {
 	 * @param location The location to spawn the explosion at.
 	 * @param damage Damage to be dealt. This is divided by the number of blocks the entity is away from the explosion. E.g. with damage = 10, a zombie standing 3 blocks away will get 10/3 = 3.33 damage.
 	 * @param damageRadius See damage.
+	 * @param sound If an explosion sound should be played.
 	 * @param explosions Particles to summon. See Explosion enum.
 	 */
-	public static void createFakeExplosion(Location location, int damage, double damageRadius, Explosion... explosions){
+	public static void createFakeExplosion(Location location, int damage, double damageRadius, boolean sound, Explosion... explosions){
 		
 		//Spawn particles
 		for (Explosion explosion : explosions){
@@ -170,7 +171,9 @@ public class Ublisk {
 		}
 		
 		//Play sounds
-		Ublisk.playSound(location, Sound.ENTITY_GENERIC_EXPLODE);
+		if (sound){
+			Ublisk.playSound(location, Sound.ENTITY_GENERIC_EXPLODE);
+		}
 		
 		//Do damage
 		List<Entity> near = location.getWorld().getEntities();
@@ -182,6 +185,11 @@ public class Ublisk {
 					living.damage(damage / distance);
 			}
 		}
+	}
+	
+	@Deprecated
+	public static void createFakeExplosion(Location location, int damage, double damageRadius, Explosion... explosions){
+		createFakeExplosion(location, damage, damageRadius, false, explosions);
 	}
 	
 	public static enum Explosion {
