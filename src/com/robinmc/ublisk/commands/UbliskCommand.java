@@ -114,15 +114,6 @@ public enum UbliskCommand {
 		}
 	}, "Saves data files to disk", "save"),
 	
-	/*RELOAD(new CommandRunnable(){
-		public void run(UPlayer player){
-			WorldEditCUI.onDisable();
-			PacketListener.closeAllOpenSockets();
-			for (DataFile file : DataFile.values()) file.save();
-			Bukkit.getServer().reload();
-		}
-	}, "Reloads the server safely", "saferl", "rl", "reload"),*/
-	
 	VERSION(new CommandRunnable(){
 		public void run(UPlayer player){
 			File pluginJar = new File(Main.getInstance().getDataFolder().getParentFile(), "Ublisk.jar");
