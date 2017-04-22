@@ -118,7 +118,17 @@ public enum UbliskCommand {
 		public void run(UPlayer player){
 			File pluginJar = new File(Main.getInstance().getDataFolder().getParentFile(), "Ublisk.jar");
 			long lastModified = pluginJar.lastModified();
-			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+			
+			String currentDate = new SimpleDateFormat("dd-MM-yyyy").format(System.currentTimeMillis());
+			String lastModifiedDate = new SimpleDateFormat("dd-MM-yyyy").format(lastModified);
+			
+			SimpleDateFormat format;
+			if (currentDate.equals(lastModifiedDate)){
+				format = new SimpleDateFormat("hh:mm:ss");
+			} else {
+				format = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+			}
+
 			String formatted = format.format(lastModified);
 			player.sendMessage("Last updated: " + formatted);
 		}
