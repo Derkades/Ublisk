@@ -1,9 +1,12 @@
 package com.robinmc.ublisk.weapons.abilities;
 
-import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
+import com.robinmc.ublisk.utils.Ublisk.Explosion;
 
 public class PewPew extends Ability {
 
@@ -13,18 +16,7 @@ public class PewPew extends Ability {
 
 	@Override
 	public void run(final UPlayer player) {	
-		new BukkitRunnable(){
-			
-			int i = 0;
-			
-			public void run(){
-				player.sendMessage(i);
-				
-				i++;
-				if (i > 5) this.cancel();
-			}
-			
-		}.runTaskTimer(Main.getInstance(), 0, 1*20);	
+		Ublisk.createFakeExplosion(player.getTargetBlock(35).getLocation(), 20, 6, Explosion.BLAST_LARGE);
 	}
 
 }
