@@ -192,7 +192,7 @@ public class Ublisk {
 	 */
 	@Deprecated
 	public static void createFakeExplosion(Location location, int damage, double damageRadius, Explosion... explosions){
-		createFakeExplosion(location, damage, damageRadius, false, explosions);
+		createFakeExplosion(location, damage, damageRadius, true, explosions);
 	}
 	
 	public static enum Explosion {
