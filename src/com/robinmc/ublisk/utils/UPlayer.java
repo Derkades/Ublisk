@@ -7,15 +7,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
@@ -735,6 +738,14 @@ public class UPlayer {
 	
 	public boolean onGround(){
 		return !player.isFlying() && player.getLocation().getBlock().getType().isSolid();
+	}
+	
+	public Block getTargetBlock(int range){
+		return player.getTargetBlock((Set<Material>) null, range);
+	}
+	
+	public Block getTargetBlock(){
+		return this.getTargetBlock(100);
 	}
 
 	@Override
