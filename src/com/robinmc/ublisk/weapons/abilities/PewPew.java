@@ -12,7 +12,7 @@ public class PewPew extends Ability {
 	}
 
 	@Override
-	public void run(UPlayer player) {	
+	public void run(final UPlayer player) {	
 		new BukkitRunnable(){
 			
 			int i = 0;
