@@ -40,7 +40,7 @@ public class TestAbility extends Ability {
 				if (t > 20 || block.getType() != Material.AIR || (Ublisk.isEntityNearby(loc, false) && t > 5)) {
 					this.cancel();
 					//Ublisk.createExplosion(loc, 2.0f);
-					Ublisk.createFakeExplosion(loc, 30, 2, Explosion.BLAST_SMALL, Explosion.SMOKE);
+					Ublisk.createFakeExplosion(loc, 30, 2, true, Explosion.BLAST_SMALL, Explosion.SMOKE);
 				}
 
 				loc.subtract(x, y, z);

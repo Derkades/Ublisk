@@ -64,7 +64,7 @@ public class Meteorite extends Ability {
 					
 					Location lower = new Location(Var.WORLD, loc.getX(), loc.getY(), loc.getZ());
 					lower.setY(loc.getY() - 0.6);
-					Ublisk.createFakeExplosion(loc.getBlock().getRelative(BlockFace.DOWN).getLocation(), damage, 4, Explosion.BLAST_SMALL, Explosion.FIRE, Explosion.SMOKE);
+					Ublisk.createFakeExplosion(loc.getBlock().getRelative(BlockFace.DOWN).getLocation(), damage, 4, true, Explosion.BLAST_SMALL, Explosion.FIRE, Explosion.SMOKE);
 					
 					loc.setY(loc.getY() - 1);
 				}
