@@ -2,7 +2,7 @@ package com.robinmc.ublisk.money;
 
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.utils.DataFile;
+import com.robinmc.ublisk.DataFile;
 
 public class Money {
 	

@@ -8,8 +8,8 @@ import static org.bukkit.ChatColor.YELLOW;
 
 import org.bukkit.entity.Player;
 
+import com.robinmc.ublisk.DataFile;
 import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
-import com.robinmc.ublisk.utils.DataFile;
 import com.robinmc.ublisk.utils.UPlayer;
 
 public class QuestParticipant extends UPlayer {

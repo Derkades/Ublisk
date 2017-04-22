@@ -2,8 +2,6 @@ package com.robinmc.ublisk;
 
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.utils.DataFile;
-
 public enum Clazz {
 	
 	SWORDSMAN("Swordsman"),

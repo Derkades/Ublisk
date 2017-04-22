@@ -1,12 +1,10 @@
-package com.robinmc.ublisk.utils;
+package com.robinmc.ublisk;
 
 import java.io.File;
 import java.io.IOException;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import com.robinmc.ublisk.Main;
 
 public enum DataFile {
 
