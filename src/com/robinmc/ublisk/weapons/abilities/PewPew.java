@@ -1,9 +1,5 @@
 package com.robinmc.ublisk.weapons.abilities;
 
-import org.bukkit.Particle;
-import org.bukkit.Sound;
-
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.Ublisk.Explosion;
