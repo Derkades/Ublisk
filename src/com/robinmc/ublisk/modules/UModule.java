@@ -19,6 +19,7 @@ public abstract class UModule implements Listener {
 			new AutoRestart(),
 			new PlayerLoginRoom(),
 			new RandomTip(),
+			new ResourcePack(),
 			new WorldEditCUI(),
 			};
 	
