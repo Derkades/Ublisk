@@ -58,8 +58,6 @@ public class AFK extends UModule implements CommandExecutor {
 
 	@Override
 	protected void onEnable(Main plugin) {
-		log(this, LogLevel.INFO, "Test!");
-
 		timer.runTaskTimer(plugin, 0, 20);
 	}
 
