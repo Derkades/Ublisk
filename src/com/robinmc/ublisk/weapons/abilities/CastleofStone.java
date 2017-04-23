@@ -18,7 +18,7 @@ public class CastleofStone extends Ability {
 
 	@Override
 	public void run(final UPlayer player) {
-		new BukkitRunnable() {
+		/*new BukkitRunnable() {
 
 			double t = 0;
 			org.bukkit.Location loc = player.getLocation();
@@ -31,6 +31,6 @@ public class CastleofStone extends Ability {
 				}
 			}
 			
-		}.runTaskTimer(Main.getInstance(), 0, 1);
+		}.runTaskTimer(Main.getInstance(), 0, 1);*/
 	}
 }
