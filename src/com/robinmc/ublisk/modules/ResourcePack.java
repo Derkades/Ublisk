@@ -11,7 +11,9 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 
 public class ResourcePack extends UModule implements CommandExecutor {
 	
@@ -23,6 +25,7 @@ public class ResourcePack extends UModule implements CommandExecutor {
 	@Override
 	public void onEnable(Main plugin){
 		plugin.getCommand("pack").setExecutor(this);
+		Logger.log(LogLevel.INFO, "ResourcePack", "Using URL: " + RESOURCE_PACK_URL);
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
