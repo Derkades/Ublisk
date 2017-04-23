@@ -134,15 +134,6 @@ public enum UbliskCommand {
 		}
 	}, "Displays the last date at which the Ublisk plugin was changed.", "version", "changed"),
 	
-	WEAPON_TEST(new CommandRunnable(){
-		public void run(UPlayer player){
-			for (Weapon weapon : Weapon.getWeapons()) {
-				player.sendMessage(
-						Weapon.itemStackIsWeapon(player.getInventory().getItemInMainHand(), weapon));
-			}
-		}
-	}, "Returns true if weapon in weapon enum matches weapon in hand. For developers only.", "weapontest", "weaponcheck"),
-	
 	SWORDS(new CommandRunnable(){
 		public void run(UPlayer player){
 			PlayerInventory inv = player.getInventory();
