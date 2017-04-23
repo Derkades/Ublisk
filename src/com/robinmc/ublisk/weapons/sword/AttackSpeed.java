@@ -3,9 +3,9 @@ package com.robinmc.ublisk.weapons.sword;
 public enum AttackSpeed {
 	
 	/**
-	 * Vanilla attack speed.
+	 * 
 	 */
-	SLOW("Slow", -1),
+	SLOW("Slow", -2),
 	
 	/**
 	 * NBT value of 1.0
