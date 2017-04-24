@@ -146,6 +146,10 @@ public class Ublisk {
 		Var.WORLD.playSound(location, sound, 1.0f, 1.0f);
 	}
 	
+	public static void playSound(Location location, Sound sound, float pitch){
+		Var.WORLD.playSound(location, sound, 1.0f, pitch);
+	}
+	
 	/**
 	 * Creates a fake explosion with sounds and particles.
 	 * @param location The location to spawn the explosion at.
