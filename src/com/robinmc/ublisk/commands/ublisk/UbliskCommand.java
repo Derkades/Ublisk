@@ -31,13 +31,6 @@ public abstract class UbliskCommand {
 		}
 	}, "Spawns ALL loot chests. Avoid using this.", "lootall"),
 	
-	REMOVE_MOBS(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			Ublisk.broadcastMessage(Message.ENTITIES_REMOVED);
-			Mob.removeMobs();
-		}
-	}, "Removes entities, potentially improving server performance.", "kill", "removemobs", "clearlag"),
-	
 	CIRCLE(new CommandRunnable(){
 		public void run(UPlayer player, String[] args){			
 			for (Location location : Shapes.generateCircle(Direction.HORIZONTAL, player.getLocation(), 100, 3.5)){
