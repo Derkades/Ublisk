@@ -20,6 +20,9 @@ public class StoneCastle extends Ability {
 	public StoneCastle() {
 		super(1, 0);
 	}
+	
+	private static final int PERIOD = 5;
+	private static final int TIME = 5*20;
 
 	@Override
 	public void run(final UPlayer player) {
@@ -29,7 +32,7 @@ public class StoneCastle extends Ability {
 		}
 		
 		player.setFrozen(true);
-		player.givePotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 7*20, 3);
+		player.givePotionEffect(PotionEffectType.DAMAGE_RESISTANCE, TIME, 3);
 		
 		new BukkitRunnable() {
 
@@ -48,13 +51,13 @@ public class StoneCastle extends Ability {
 					}
 				}
 					
-				if(t > 7*20){
+				if(t > TIME / PERIOD){
 					player.setFrozen(false);
 					this.cancel();
 					
 				}
 			}
 			
-		}.runTaskTimer(Main.getInstance(), 0, 1);
+		}.runTaskTimer(Main.getInstance(), 0, PERIOD);
 	}
 }
