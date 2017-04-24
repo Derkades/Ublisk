@@ -18,12 +18,6 @@ public class Var {
 	public static final World WORLD = Bukkit.getWorld("ublisk");
 	
 	/**
-	 * Direct URL to resource pack zip. Do not change unless you know what you are doing.
-	 */
-	@Deprecated
-	public static final String PACK_URL = "http://ublisk.robinmc.com/texture/UbliskTextures39.zip";
-	
-	/**
 	 * <b>The integer all XP is divided by.</b>
 	 * <br><br>
 	 * Example (if XP_DIVISION is 5): 
