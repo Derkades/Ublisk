@@ -16,41 +16,23 @@ import net.md_5.bungee.api.ChatColor;
 
 public abstract class UbliskCommand {
 	
-	/*	
-	SPAWN_LOOT(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			Loot.getRandomLoot().spawn();
-		}
+	/*
+	Spawn loot:	
+	Loot.getRandomLoot().spawn();
 	}, "Spawn a loot chest", "loot"),
 	
-	SPAWN_ALL_LOOT(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
+	SPAWN_ALL_LOOT
 			for (LootChest loot : Loot.getLootChests()){
 				loot.spawn();
 			}
-		}
 	}, "Spawns ALL loot chests. Avoid using this.", "lootall"),
 	
-	CIRCLE(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){			
+	CIRCLE
 			for (Location location : Shapes.generateCircle(Direction.HORIZONTAL, player.getLocation(), 100, 3.5)){
 				Ublisk.spawnParticle(Particle.FLAME, location, 1, 0, 0, 0, 0);
 				player.sendMessage(location.getX() + " : " + location.getY() + " : " + location.getZ());
 			}
-		}
-	}, "Summons particles in a circle", "circle")
-
-	;
-	
-	private CommandRunnable executor;
-	private String description;
-	private String[] commands;
-	
-	UbliskCommand(CommandRunnable executor, String description, String... commands){
-		this.executor = executor;
-		this.description = description;
-		this.commands = commands;
-	}*/
+	}, "Summons particles in a circle", "circle")*/
 	
 	private static final UbliskCommand[] COMMANDS = {
 			new BlockIdCommand(),
