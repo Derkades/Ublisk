@@ -32,7 +32,7 @@ public class PlayerLoginRoom extends UModule {
 	
 	private static final List<String> TELEPORT_COOLDOWN = new ArrayList<String>();
 
-	private static final Location PORTAL_ROOM_LOCATION = new Location(Var.WORLD, 17.5, 74.5, -38.5, 90, 0);
+	private static final Location PORTAL_ROOM_LOCATION = new Location(Var.WORLD, 17.5, 83, -38.5, 90, 0);
 	
 	@Override
 	public void onEnable(Main plugin){
