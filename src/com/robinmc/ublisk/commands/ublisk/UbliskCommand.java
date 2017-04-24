@@ -48,51 +48,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 public abstract class UbliskCommand {
 	
-	/*TEST(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			player.sendMessage("test");	
-		}
-	}, "Sends a test message", "test", "test2"),
-	
-	TOWN(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-
-		}
-	}, "EZ town teleporter", "town"),
-	
-	NIGHT(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			while (true) {
-				if (!Time.isDay()) {
-					break;
-				}
-				Time.add(100);
-			}
-		}
-	}, "Changes time to night", "night"),
-	
-	DAY(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			while (true) {
-				if (Time.isDay()) {
-					break;
-				}
-				Time.add(100);
-			}
-		}
-	}, "Changes time to day", "day", "d"),
-	
-	ID(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			Block block = player.getPlayer().getTargetBlock(((Set<Material>) null), 10);
-			@SuppressWarnings("deprecation")
-			int id = block.getTypeId();
-			@SuppressWarnings("deprecation")
-			byte data = block.getData();
-			player.sendMessage(ChatColor.BOLD + "" + id + ":" + data);
-		}
-	}, "Tells you the id of the block you are looking at right now", "id"),
-	
+	/*
 	SAVE(new CommandRunnable(){
 		public void run(UPlayer player, String[] args){
 			for (DataFile file : DataFile.values()){
@@ -101,104 +57,12 @@ public abstract class UbliskCommand {
 			}
 		}
 	}, "Saves data files to disk", "save"),
-	
-	VERSION(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			File pluginJar = new File(Main.getInstance().getDataFolder().getParentFile(), "Ublisk.jar");
-			long lastModified = pluginJar.lastModified();
-			
-			String currentDate = new SimpleDateFormat("dd-MM-yyyy").format(System.currentTimeMillis());
-			String lastModifiedDate = new SimpleDateFormat("dd-MM-yyyy").format(lastModified);
-			
-			SimpleDateFormat format;
-			if (currentDate.equals(lastModifiedDate)){
-				format = new SimpleDateFormat("hh:mm:ss");
-			} else {
-				format = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-			}
-
-			String formatted = format.format(lastModified);
-			player.sendMessage("Last updated: " + formatted);
-		}
-	}, "Displays the last date at which the Ublisk plugin was changed.", "version", "changed"),
-	
-	SWORDS(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			PlayerInventory inv = player.getInventory();
-
-			for (Weapon weapon : Weapon.getWeapons()) {
-				if (weapon instanceof Sword) {
-					inv.addItem(((Sword) weapon).getItemStack());
-				}
-			}
-		}
-	}, "Gives all swords in Weapon enum", "sword", "swords"),
-	
-	REMOVE_INVISIBLE(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			final Block block = player.getLocation().getBlock();
-			block.setType(Material.STONE);
-			new BukkitRunnable() {
-
-				public void run() {
-					block.setType(Material.AIR);
-				}
-				
-			}.runTaskLater(Main.getInstance(), 5);
-		}
-	}, "Removes invisible blocks (stand inside the invisible block)", "rinv"),
 	 
 	ACTION_BAR_TEST(new CommandRunnable(){
 		public void run(UPlayer player, String[] args){
 			player.sendActionBarMessage(ChatColor.RED + "TEST!");
 		}
 	}, "Sends an action bar message. For developers only.", "actionbar"),
-	
-	TRIGGERED(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			for (Trigger trigger : Trigger.values()){
-				player.sendMessage(trigger.getTrigger() + ": " + trigger.getMessage());
-			}
-		}
-	}, "Lists chat triggers", "triggers"),
-	
-	RESPAWN_NPC(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			NPC.respawnAll();
-		}
-	}, "Respawns all NPCs", "npc", "respawnnpc"),
-	
-	LIST_ENTITIES(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			for (Entity entity : Var.WORLD.getEntities()) {
-				player.sendMessage(
-						entity.getName() 
-						+ " : " 
-						+ entity.getCustomName() 
-						+ " : "
-						+ entity.getLocation().getBlockX() 
-						+ " : " 
-						+ entity.getLocation().getBlockZ()
-						+ " : " 
-						+ entity.getLocation().getChunk());
-			}
-		}
-	}, "Displays information about all entities in the world.", "entities"),
-	
-	TPS(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			player.sendMessage("TPS: " + Lag.getTPS());
-		}
-	}, "Gets current tps", "lag", "tps"),
-	
-	REMOVE_LOOT(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			for (LootChest loot : Loot.getLootChests()){
-				loot.remove();
-			}
-			player.sendMessage("Removed loot.");
-		}
-	}, "Remove all loot chests", "removeloot"),
 	
 	SPAWN_LOOT(new CommandRunnable(){
 		public void run(UPlayer player, String[] args){
