@@ -26,7 +26,7 @@ public class InventoryClick implements Listener {
 			return;
 		}
 		
-		if (event.getInventory().getName().contains("Box")){
+		if (event.getInventory() != null && event.getInventory().getName() != null && event.getInventory().getName().contains("Box")){
 			event.setCancelled(true);
 			return;
 		}
