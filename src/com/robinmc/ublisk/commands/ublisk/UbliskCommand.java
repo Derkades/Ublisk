@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.commands;
+package com.robinmc.ublisk.commands.ublisk;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -39,15 +39,16 @@ import com.robinmc.ublisk.utils.shapes.Direction;
 import com.robinmc.ublisk.utils.shapes.Shapes;
 import com.robinmc.ublisk.weapons.Weapon;
 import com.robinmc.ublisk.weapons.sword.Sword;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 
-public enum UbliskCommand {
+public abstract class UbliskCommand {
 	
-	TEST(new CommandRunnable(){
+	/*TEST(new CommandRunnable(){
 		public void run(UPlayer player, String[] args){
 			player.sendMessage("test");	
 		}
@@ -55,21 +56,7 @@ public enum UbliskCommand {
 	
 	TOWN(new CommandRunnable(){
 		public void run(UPlayer player, String[] args){
-			List<BaseComponent> list = new ArrayList<BaseComponent>();
-			
-			for (Town town : Town.values()){
-				TextComponent component = new TextComponent(town.getName() + "   ");
-				double x = town.getSpawnLocation().getX();
-				double y = town.getSpawnLocation().getY();
-				double z = town.getSpawnLocation().getZ();
-				component.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tp @p " + x + " " + y + " " + z));
-				
-				list.add(component);
-			}
 
-			BaseComponent[] components = list.toArray(new BaseComponent[]{});
-			
-			player.sendMessage(components);
 		}
 	}, "EZ town teleporter", "town"),
 	
@@ -259,6 +246,12 @@ public enum UbliskCommand {
 			}
 		}
 	}, "Summons particles in a circle", "circle"),
+	
+	GROUP(new CommandRunnable(){
+		public void run(UPlayer player, String[] args){
+			
+		}
+	}, "Sets player group", "group", "rank");
 
 	;
 	
@@ -270,7 +263,17 @@ public enum UbliskCommand {
 		this.executor = executor;
 		this.description = description;
 		this.commands = commands;
-	}
+	}*/
+	
+	private static final UbliskCommand[] COMMANDS = {
+			new TownCommand(),
+	};
+	
+	protected abstract void onCommand(UPlayer player, String[] args);
+	
+	protected abstract String getDescription();
+	
+	protected abstract String[] getAliases();
 	
 	public static class Executor implements CommandExecutor {
 
@@ -285,11 +288,11 @@ public enum UbliskCommand {
 			if (args.length != 1){
 				player.sendMessage("/u <command>");
 				boolean alternatingColor = false;
-				for (UbliskCommand ubliskCommand : UbliskCommand.values()){
+				for (UbliskCommand ubliskCommand : COMMANDS){
 					if (alternatingColor){
-						player.sendMessage(ChatColor.BLUE + Strings.join(ubliskCommand.commands, ", ") + "  |  " + ubliskCommand.description);
+						player.sendMessage(ChatColor.BLUE + Strings.join(ubliskCommand.getAliases(), ", ") + "  |  " + ubliskCommand.getDescription());
 					} else {
-						player.sendMessage(ChatColor.YELLOW + Strings.join(ubliskCommand.commands, ", ") + "  |  " + ubliskCommand.description);
+						player.sendMessage(ChatColor.YELLOW + Strings.join(ubliskCommand.getAliases(), ", ") + "  |  " + ubliskCommand.getDescription());
 					}
 					alternatingColor = !alternatingColor;
 				}
@@ -298,25 +301,19 @@ public enum UbliskCommand {
 			
 			String commandLabel = args[0];
 			
-			for (UbliskCommand ubliskCommand : UbliskCommand.values()){
-				for (String commandAlias : ubliskCommand.commands){
+			for (UbliskCommand ubliskCommand : COMMANDS){
+				for (String commandAlias : ubliskCommand.getAliases()){
 					if (commandLabel.equalsIgnoreCase(commandAlias)){
 						List<String> argsList = Arrays.asList(args);
 						argsList.remove(0); //Remove first argument, since that is the command name
 						
-						ubliskCommand.executor.run(player, argsList.toArray(new String[]{}));
+						ubliskCommand.onCommand(player, argsList.toArray(new String[]{}));
 						return true;
 					}
 				}
 			}
 			return false;		
 		}
-		
-	}
-	
-	private static abstract class CommandRunnable {
-		
-		public abstract void run(UPlayer player, String[] args);
 		
 	}
 
