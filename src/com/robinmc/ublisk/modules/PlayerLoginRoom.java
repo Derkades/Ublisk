@@ -39,6 +39,7 @@ public class PlayerLoginRoom extends UModule {
 		for (UPlayer player : Ublisk.getOnlinePlayers()){
 			IN_PORTAL_ROOM.add(player.getName());
 			player.teleport(PORTAL_ROOM_LOCATION);
+			player.getPlayer().setFlying(false);
 		}
 		
 		//Save location every 10 seconds
@@ -62,9 +63,7 @@ public class PlayerLoginRoom extends UModule {
 	public void onJoin(PlayerJoinEvent event) {
 		final UPlayer player = new UPlayer(event);
 		IN_PORTAL_ROOM.add(player.getName());
-		
 		player.teleport(PORTAL_ROOM_LOCATION);
-		
 		player.getPlayer().setFlying(false);
 	}
 	
