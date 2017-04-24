@@ -64,6 +64,8 @@ public class PlayerLoginRoom extends UModule {
 		IN_PORTAL_ROOM.add(player.getName());
 		
 		player.teleport(PORTAL_ROOM_LOCATION);
+		
+		player.getPlayer().setFlying(false);
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
