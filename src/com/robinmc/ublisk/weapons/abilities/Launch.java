@@ -4,6 +4,8 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
+import com.robinmc.ublisk.utils.Ublisk.Explosion;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -19,7 +21,7 @@ public class Launch extends Ability {
 			player.sendMessage(ChatColor.RED + "You must be on a solid block to use this ability.");
 			return;
 		}
-		
+		Ublisk.createFakeExplosion(player.getLocation(), 0, 1, true, Explosion.BLAST_SMALL);
 		player.setVelocity(player.getLocation().getDirection().multiply(3));
 		player.setVelocity(new Vector(player.getVelocity().getX(), 1.5D, player.getVelocity().getZ()));
 		player.givePotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 3*20, 4);
