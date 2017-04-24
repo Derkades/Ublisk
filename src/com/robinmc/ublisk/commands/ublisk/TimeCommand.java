@@ -34,7 +34,7 @@ public class TimeCommand extends UbliskCommand {
 
 	@Override
 	protected String[] getAliases() {
-		return null;
+		return new String[]{"time"};
 	}
 
 }
