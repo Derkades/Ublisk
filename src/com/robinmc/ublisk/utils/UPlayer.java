@@ -42,6 +42,7 @@ import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.VoteRestart;
 import com.robinmc.ublisk.modules.AFK;
+import com.robinmc.ublisk.modules.PlayerFreeze;
 import com.robinmc.ublisk.money.Money;
 import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.quest.Quest;
@@ -747,6 +748,14 @@ public class UPlayer {
 	
 	public Block getTargetBlock(){
 		return this.getTargetBlock(100);
+	}
+	
+	public void setFrozen(boolean frozen){
+		PlayerFreeze.setFrozen(player, frozen);
+	}
+	
+	public boolean isFrozen(){
+		return PlayerFreeze.isFrozen(player);
 	}
 
 	@Override
