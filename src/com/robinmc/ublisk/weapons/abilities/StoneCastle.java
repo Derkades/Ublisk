@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bukkit.Location;
 import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -33,6 +34,8 @@ public class StoneCastle extends Ability {
 		
 		player.setFrozen(true);
 		player.givePotionEffect(PotionEffectType.DAMAGE_RESISTANCE, TIME, 3);
+		
+		Ublisk.playSound(player.getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.001f);
 		
 		new BukkitRunnable() {
 
