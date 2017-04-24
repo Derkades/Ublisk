@@ -670,6 +670,10 @@ public class UPlayer {
 		if (ability == null) {
 			return;
 		}
+		
+		if (this.isFrozen()){
+			return; // The player cannot do abilities while frozen
+		}
 
 		if (ability.getMinimumLevel() > player.getLevel()) {
 			this.sendMessage(Message.ABILITY_NOT_ENOUGH_LEVEL);
