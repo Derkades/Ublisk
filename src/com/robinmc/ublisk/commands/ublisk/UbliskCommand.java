@@ -16,22 +16,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public abstract class UbliskCommand {
 	
-	/*
-	SAVE(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			for (DataFile file : DataFile.values()){
-				file.save();
-				player.sendMessage("Saved " + file.toString());
-			}
-		}
-	}, "Saves data files to disk", "save"),
-	 
-	ACTION_BAR_TEST(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			player.sendActionBarMessage(ChatColor.RED + "TEST!");
-		}
-	}, "Sends an action bar message. For developers only.", "actionbar"),
-	
+	/*	
 	SPAWN_LOOT(new CommandRunnable(){
 		public void run(UPlayer player, String[] args){
 			Loot.getRandomLoot().spawn();
@@ -53,23 +38,6 @@ public abstract class UbliskCommand {
 		}
 	}, "Removes entities, potentially improving server performance.", "kill", "removemobs", "clearlag"),
 	
-	FANCY_TEXT_TEST(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			final String[] fancyStrings = new String[]{
-					"                       ",
-					" a a aa  a   a aaa a a ",
-					" a a a a a   a a   a a ",
-					" a a aa  a   a aaa aa  ",
-					" a a a a a   a   a aa  ",
-					" aaa aa  aaa a aaa a a ",
-					"                       "
-			};
-			for (String string : fancyStrings){
-				player.sendMessage(string.replace("a", ChatColor.AQUA + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()).replace(" ", ChatColor.GREEN + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()));
-			}
-		}
-	}, "Sends fancy Ublisk message", "fancymessage"),
-	
 	CIRCLE(new CommandRunnable(){
 		public void run(UPlayer player, String[] args){			
 			for (Location location : Shapes.generateCircle(Direction.HORIZONTAL, player.getLocation(), 100, 3.5)){
@@ -77,13 +45,7 @@ public abstract class UbliskCommand {
 				player.sendMessage(location.getX() + " : " + location.getY() + " : " + location.getZ());
 			}
 		}
-	}, "Summons particles in a circle", "circle"),
-	
-	GROUP(new CommandRunnable(){
-		public void run(UPlayer player, String[] args){
-			
-		}
-	}, "Sets player group", "group", "rank");
+	}, "Summons particles in a circle", "circle")
 
 	;
 	
