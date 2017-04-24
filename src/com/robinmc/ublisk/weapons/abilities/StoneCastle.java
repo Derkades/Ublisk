@@ -44,7 +44,7 @@ public class StoneCastle extends Ability {
 				for (Location circleLocation : circleLocations){
 					List<Location> particleLocations = Shapes.generateCircle(Direction.HORIZONTAL, circleLocation, 30, 2.0);
 					for (Location particleLocation : particleLocations){
-						Ublisk.spawnParticle(Particle.SMOKE_LARGE, particleLocation, 1, 0, 0, 0, 0.1); //Gebruik nu de variable 'particleLocation' als locatie
+						Ublisk.spawnParticle(Particle.EXPLOSION_NORMAL, particleLocation, 1, 0, 0, 0, 0.1); //Gebruik nu de variable 'particleLocation' als locatie
 					}
 				}
 					
