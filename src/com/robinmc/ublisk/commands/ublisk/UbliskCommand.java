@@ -1,8 +1,5 @@
 package com.robinmc.ublisk.commands.ublisk;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
