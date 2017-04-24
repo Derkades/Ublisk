@@ -20,6 +20,7 @@ public abstract class UModule implements Listener {
 			new PlayerLoginRoom(),
 			new RandomTip(),
 			new ResourcePack(),
+			new Scoreboard(),
 			new WorldEditCUI(),
 			};
 	
