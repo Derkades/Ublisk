@@ -3,6 +3,7 @@ package com.robinmc.ublisk.commands;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -47,13 +48,13 @@ import net.md_5.bungee.api.chat.TextComponent;
 public enum UbliskCommand {
 	
 	TEST(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			player.sendMessage("test");	
 		}
 	}, "Sends a test message", "test", "test2"),
 	
 	TOWN(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			List<BaseComponent> list = new ArrayList<BaseComponent>();
 			
 			for (Town town : Town.values()){
@@ -73,7 +74,7 @@ public enum UbliskCommand {
 	}, "EZ town teleporter", "town"),
 	
 	NIGHT(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			while (true) {
 				if (!Time.isDay()) {
 					break;
@@ -84,7 +85,7 @@ public enum UbliskCommand {
 	}, "Changes time to night", "night"),
 	
 	DAY(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			while (true) {
 				if (Time.isDay()) {
 					break;
@@ -95,7 +96,7 @@ public enum UbliskCommand {
 	}, "Changes time to day", "day", "d"),
 	
 	ID(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			Block block = player.getPlayer().getTargetBlock(((Set<Material>) null), 10);
 			@SuppressWarnings("deprecation")
 			int id = block.getTypeId();
@@ -106,7 +107,7 @@ public enum UbliskCommand {
 	}, "Tells you the id of the block you are looking at right now", "id"),
 	
 	SAVE(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			for (DataFile file : DataFile.values()){
 				file.save();
 				player.sendMessage("Saved " + file.toString());
@@ -115,7 +116,7 @@ public enum UbliskCommand {
 	}, "Saves data files to disk", "save"),
 	
 	VERSION(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			File pluginJar = new File(Main.getInstance().getDataFolder().getParentFile(), "Ublisk.jar");
 			long lastModified = pluginJar.lastModified();
 			
@@ -135,7 +136,7 @@ public enum UbliskCommand {
 	}, "Displays the last date at which the Ublisk plugin was changed.", "version", "changed"),
 	
 	SWORDS(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			PlayerInventory inv = player.getInventory();
 
 			for (Weapon weapon : Weapon.getWeapons()) {
@@ -147,7 +148,7 @@ public enum UbliskCommand {
 	}, "Gives all swords in Weapon enum", "sword", "swords"),
 	
 	REMOVE_INVISIBLE(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			final Block block = player.getLocation().getBlock();
 			block.setType(Material.STONE);
 			new BukkitRunnable() {
@@ -161,13 +162,13 @@ public enum UbliskCommand {
 	}, "Removes invisible blocks (stand inside the invisible block)", "rinv"),
 	 
 	ACTION_BAR_TEST(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			player.sendActionBarMessage(ChatColor.RED + "TEST!");
 		}
 	}, "Sends an action bar message. For developers only.", "actionbar"),
 	
 	TRIGGERED(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			for (Trigger trigger : Trigger.values()){
 				player.sendMessage(trigger.getTrigger() + ": " + trigger.getMessage());
 			}
@@ -175,13 +176,13 @@ public enum UbliskCommand {
 	}, "Lists chat triggers", "triggers"),
 	
 	RESPAWN_NPC(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			NPC.respawnAll();
 		}
 	}, "Respawns all NPCs", "npc", "respawnnpc"),
 	
 	LIST_ENTITIES(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			for (Entity entity : Var.WORLD.getEntities()) {
 				player.sendMessage(
 						entity.getName() 
@@ -198,13 +199,13 @@ public enum UbliskCommand {
 	}, "Displays information about all entities in the world.", "entities"),
 	
 	TPS(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			player.sendMessage("TPS: " + Lag.getTPS());
 		}
 	}, "Gets current tps", "lag", "tps"),
 	
 	REMOVE_LOOT(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			for (LootChest loot : Loot.getLootChests()){
 				loot.remove();
 			}
@@ -213,13 +214,13 @@ public enum UbliskCommand {
 	}, "Remove all loot chests", "removeloot"),
 	
 	SPAWN_LOOT(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			Loot.getRandomLoot().spawn();
 		}
 	}, "Spawn a loot chest", "loot"),
 	
 	SPAWN_ALL_LOOT(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			for (LootChest loot : Loot.getLootChests()){
 				loot.spawn();
 			}
@@ -227,14 +228,14 @@ public enum UbliskCommand {
 	}, "Spawns ALL loot chests. Avoid using this.", "lootall"),
 	
 	REMOVE_MOBS(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			Ublisk.broadcastMessage(Message.ENTITIES_REMOVED);
 			Mob.removeMobs();
 		}
 	}, "Removes entities, potentially improving server performance.", "kill", "removemobs", "clearlag"),
 	
 	FANCY_TEXT_TEST(new CommandRunnable(){
-		public void run(UPlayer player){
+		public void run(UPlayer player, String[] args){
 			final String[] fancyStrings = new String[]{
 					"                       ",
 					" a a aa  a   a aaa a a ",
@@ -251,7 +252,7 @@ public enum UbliskCommand {
 	}, "Sends fancy Ublisk message", "fancymessage"),
 	
 	CIRCLE(new CommandRunnable(){
-		public void run(UPlayer player){			
+		public void run(UPlayer player, String[] args){			
 			for (Location location : Shapes.generateCircle(Direction.HORIZONTAL, player.getLocation(), 100, 3.5)){
 				Ublisk.spawnParticle(Particle.FLAME, location, 1, 0, 0, 0, 0);
 				player.sendMessage(location.getX() + " : " + location.getY() + " : " + location.getZ());
@@ -300,7 +301,10 @@ public enum UbliskCommand {
 			for (UbliskCommand ubliskCommand : UbliskCommand.values()){
 				for (String commandAlias : ubliskCommand.commands){
 					if (commandLabel.equalsIgnoreCase(commandAlias)){
-						ubliskCommand.executor.run(player);
+						List<String> argsList = Arrays.asList(args);
+						argsList.remove(0); //Remove first argument, since that is the command name
+						
+						ubliskCommand.executor.run(player, argsList.toArray(new String[]{}));
 						return true;
 					}
 				}
@@ -312,7 +316,7 @@ public enum UbliskCommand {
 	
 	private static abstract class CommandRunnable {
 		
-		public abstract void run(UPlayer player);
+		public abstract void run(UPlayer player, String[] args);
 		
 	}
 
