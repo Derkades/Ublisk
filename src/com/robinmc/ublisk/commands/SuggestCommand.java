@@ -21,6 +21,7 @@ public class SuggestCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		if (args.length < 1) {
 			sender.sendMessage(Message.WRONG_USAGE.toString());
+			return true;
 		}
 		
 		TodoItem todoItem = new TodoItem(0, "Ublisk", String.join(" ", args));
