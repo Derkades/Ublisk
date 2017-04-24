@@ -10,9 +10,9 @@ import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.shapes.Direction;
 import com.robinmc.ublisk.utils.shapes.Shapes;
 
-public class CastleofStone extends Ability {
+public class StoneCastle extends Ability {
 	
-	public CastleofStone() {
+	public StoneCastle() {
 		super(1, 0);
 	}
 
