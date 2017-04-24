@@ -99,6 +99,7 @@ public class PlayerJoin implements Listener {
 							.replace("#", ChatColor.AQUA + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar())
 							.replace(" ", ChatColor.DARK_AQUA + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()));
 				}
+				player.sendMessage(ChatColor.GRAY + "Welcome to Ublisk! If you find any bugs, please report them using /bug [description].");
 			}
 		}.runTaskLater(Main.getInstance(), 4);
 	}
