@@ -64,10 +64,12 @@ public class Main extends JavaPlugin {
 		new BukkitRunnable(){
 			public void run(){
 				for (UPlayer player : Ublisk.getOnlinePlayers()){
-					player.getInventory().remove(Material.FIREWORK);
+					if (player.getInventory().contains(Material.FIREWORK)){
+						player.sendMessage("Ga even serieus doen :)");
+					}
 				}
 			}
-		}.runTaskTimer(this, 1*20, 1*20);
+		}.runTaskTimer(this, 1*20, 10*20);
 
 	}
 	
