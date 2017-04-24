@@ -34,16 +34,20 @@ public class StoneCastle extends Ability {
 		new BukkitRunnable() {
 
 			double t = 0;
-			Location loc = player.getLocation();
-			
+			final Location[] circleLocations = {
+												player.getLocation().add(0, 0.5, 0),
+												player.getLocation().add(0, 1.5, 0)
+												};
 			
 			public void run() {		
 				t = t + 1;
-				List<Location> particleLocations = Shapes.generateCircle(Direction.HORIZONTAL, loc.add(0, 1, 0), 30, 2.0);
-				for (Location particleLocation : particleLocations){
-				    Ublisk.spawnParticle(Particle.DRAGON_BREATH, particleLocation, 1, 0, 0, 0, 0.1); //Gebruik nu de variable 'particleLocation' als locatie
+				for (Location circleLocation : circleLocations){
+					List<Location> particleLocations = Shapes.generateCircle(Direction.HORIZONTAL, circleLocation, 30, 2.0);
+					for (Location particleLocation : particleLocations){
+						Ublisk.spawnParticle(Particle.SMOKE_LARGE, particleLocation, 1, 0, 0, 0, 0.1); //Gebruik nu de variable 'particleLocation' als locatie
+					}
 				}
-
+					
 				if(t > 7*20){
 					player.setFrozen(false);
 					this.cancel();
