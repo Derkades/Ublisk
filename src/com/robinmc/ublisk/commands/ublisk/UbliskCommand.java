@@ -53,7 +53,19 @@ public abstract class UbliskCommand {
 	}*/
 	
 	private static final UbliskCommand[] COMMANDS = {
+			new BlockIdCommand(),
+			new EntityListCommand(),
+			new RemoveInvisibleCommand(),
+			new RemoveLootCommand(),
+			new RemoveMobsCommand(),
+			new RespawnNPCCommand(),
+			new SpawnLootCommand(),
+			new SwordCommand(),
+			new TimeCommand(),
 			new TownCommand(),
+			new TPSCommand(),
+			new TriggeredCommand(),
+			new VersionCommand(),
 	};
 	
 	protected abstract void onCommand(UPlayer player, String[] args);
