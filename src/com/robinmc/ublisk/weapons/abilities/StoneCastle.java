@@ -38,9 +38,9 @@ public class StoneCastle extends Ability {
 
 			double t = 0;
 			final Location[] circleLocations = {
-												player.getLocation().add(0, 0.5, 0),
-												player.getLocation().add(0, 1.5, 0)
-												};
+					player.getLocation().add(0, 0.5, 0),
+					player.getLocation().add(0, 1.5, 0)
+			};
 			
 			public void run() {		
 				t = t + 1;
