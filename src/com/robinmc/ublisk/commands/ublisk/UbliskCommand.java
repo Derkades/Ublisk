@@ -37,6 +37,7 @@ public abstract class UbliskCommand {
 	private static final UbliskCommand[] COMMANDS = {
 			new BlockIdCommand(),
 			new EntityListCommand(),
+			new FreezeCommand(),
 			new RemoveInvisibleCommand(),
 			new RemoveLootCommand(),
 			new RemoveMobsCommand(),
@@ -85,10 +86,12 @@ public abstract class UbliskCommand {
 			for (UbliskCommand ubliskCommand : COMMANDS){
 				for (String commandAlias : ubliskCommand.getAliases()){
 					if (commandLabel.equalsIgnoreCase(commandAlias)){
-						List<String> argsList = Arrays.asList(args);
-						argsList.remove(0); //Remove first argument, since that is the command name
+						//Remove first argument, since that is the command name
+						int n = args.length - 1;
+						String[] newArgs = new String[n];
+						System.arraycopy(args, 1, newArgs, 0, n);
 						
-						ubliskCommand.onCommand(player, argsList.toArray(new String[]{}));
+						ubliskCommand.onCommand(player, newArgs);
 						return true;
 					}
 				}
