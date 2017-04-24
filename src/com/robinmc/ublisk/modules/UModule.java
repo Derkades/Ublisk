@@ -23,7 +23,7 @@ public abstract class UModule implements Listener {
 			new ResetDoors(),
 			new ResourcePack(),
 			new Scoreboard(),
-			new WorldEditCUI(),
+			//new WorldEditCUI(),
 			};
 	
 	private static final List<UModule> RUNNING_MODULES = new ArrayList<UModule>();
