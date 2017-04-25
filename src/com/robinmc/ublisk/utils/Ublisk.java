@@ -142,6 +142,25 @@ public class Ublisk {
 		Var.WORLD.spawnParticle(particle, location, count, offsetX, offsetY, offsetZ, speed);
 	}
 	
+	/**
+	 * @param particle Must be reddust, mobSpell or mobSpellAmbient
+	 * @param location Particle location
+	 * @param red 0-255
+	 * @param green 0-255
+	 * @param blue 0-255
+	 * 
+	 * @throws UnsupportedOperationException if particle is not one of the three listed above.
+	 */
+	public static void spawnParticle(Particle particle, Location location, int red, int green, int blue, int count){
+		if (particle != Particle.BLOCK_DUST && particle != Particle.SPELL_MOB && particle != Particle.SPELL_MOB_AMBIENT){
+			throw new UnsupportedOperationException("Particle must be reddust, mobSpell or mobSpellAmbient");
+		}
+		
+		for (int i = 0; i <= count; i++){
+			spawnParticle(particle, location, 0, red / 255, green / 255, blue / 255, 0);
+		}
+	}
+	
 	public static void playSound(Location location, Sound sound){
 		Var.WORLD.playSound(location, sound, 1.0f, 1.0f);
 	}
