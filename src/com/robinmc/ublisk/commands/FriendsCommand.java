@@ -39,9 +39,7 @@ public class FriendsCommand implements CommandExecutor {
 					
 					player.addFriend(target);
 					
-					player.addFriend(target);
 					player.sendPrefixedMessage("Friends", target.getName() + " has been added to your friends list");
-					
 				} else if (args[0].equals("remove") || args[0].equals("delete")){
 					OfflinePlayer offlinePlayer;
 					try {
