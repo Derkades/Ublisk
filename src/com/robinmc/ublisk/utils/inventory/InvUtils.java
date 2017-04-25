@@ -14,7 +14,7 @@ import net.minecraft.server.v1_11_R1.NBTTagCompound;
 
 public class InvUtils {
 	
-	public static String path = Main.getInstance().getDataFolder() + File.separator + "inv";
+	public static String path = Main.getInstance().getDataFolder() + "/inv";
 	
 	public static void saveIntentory(String path, Player player){
 		YamlConfiguration c = new YamlConfiguration();
