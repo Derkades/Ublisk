@@ -48,7 +48,7 @@ public class Voting implements Listener {
 
 	public static int getRandomXP() {
 		//return NumberUtils.randomInteger(VOTE_XP_MIN, VOTE_XP_MAX);
-		return Random.getRandomInteger(VOTE_XP_MIN, VOTE_LIFE_MAX);
+		return Random.getRandomInteger(VOTE_XP_MIN, VOTE_XP_MAX);
 	}
 
 	public static int getRandomGold() {
@@ -98,7 +98,7 @@ public class Voting implements Listener {
 					.setAmount(gold)
 					.getItemStack();
 			
-			ItemStack xpItem = new ItemBuilder(Material.EMERALD)
+			ItemStack xpItem = new ItemBuilder(Material.EXP_BOTTLE)
 					.setName(ChatColor.GREEN + "" + ChatColor.BOLD + "XP: " + xp)
 					.setAmount(xp)
 					.getItemStack();
