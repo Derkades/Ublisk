@@ -39,7 +39,7 @@ public class PlayerLoginRoom extends UModule {
 		IN_PORTAL_ROOM.add(player.getName());
 		player.teleport(PORTAL_ROOM_LOCATION);
 		player.getPlayer().setFlying(false);
-		player.givePotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 15, 10);
+		player.givePotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 15*20, 10);
 	}
 	
 	@Override
