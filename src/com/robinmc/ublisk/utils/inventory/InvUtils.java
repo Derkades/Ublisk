@@ -8,13 +8,9 @@ import org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.Main;
-
 import net.minecraft.server.v1_11_R1.NBTTagCompound;
 
 public class InvUtils {
-	
-	public static String path = Main.getInstance().getDataFolder() + "/inv";
 	
 	public static void saveIntentory(String path, Player player){
 		YamlConfiguration c = new YamlConfiguration();

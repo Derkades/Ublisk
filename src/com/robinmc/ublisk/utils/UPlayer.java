@@ -402,21 +402,21 @@ public class UPlayer {
 				+ ChatColor.DARK_GRAY + ": " + ChatColor.RESET + ChatColor.BOLD + msg);
 	}
 
-
+	private static final String BUILDER_MODE_INV_PATH = Main.getInstance().getDataFolder() + "/inv";
 
 	public boolean isInBuilderMode() {
 		// Check if an inventory file exists, because the item is deleted when a player goes out of builder mode.
-		return new File(InvUtils.path, player.getName() + ".yml").exists();
+		return new File(BUILDER_MODE_INV_PATH, player.getName() + ".yml").exists();
 	}
 
 	public void setBuilderModeEnabled(boolean bool) {
 		if (bool) { // Enable builder mode
-			this.saveInventoryToFile(Main.getInstance().getDataFolder() + "\\inv"); // Save inventory to file
+			this.saveInventoryToFile(BUILDER_MODE_INV_PATH); // Save inventory to file
 			this.clearInventory();
 			this.setGameMode(GameMode.CREATIVE);
 			this.sendMessage(Message.BUILDER_MODE_ACTIVATED);
 		} else { // Disable builder mode
-			this.fillInventoryFromFile(Main.getInstance().getDataFolder() + "\\inv");
+			this.fillInventoryFromFile(BUILDER_MODE_INV_PATH);
 			this.setGameMode(GameMode.ADVENTURE);
 			this.sendMessage(Message.BUILDER_MODE_DEACTIVATED);
 		}
