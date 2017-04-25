@@ -5,8 +5,9 @@ import java.util.List;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.Ublisk;
 
 public class AddTrackersInfoToQueue extends BukkitRunnable {
@@ -23,27 +24,10 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 			
 			list.add(new BukkitRunnable(){
 				public void run(){
+					Logger.log(LogLevel.INFO, "Synchronising player info for " + player.getName());
 					PlayerInfo.syncWithDatabase(player);
 				}
 			});
-			
-			/*list.add(new BukkitRunnable(){
-				public void run(){
-					Tracker.syncWithDatabase(player);
-				}
-			});*/
-			
-			list.add(new BukkitRunnable(){
-				public void run(){
-					UUIDUtils.save(player);
-				}
-			});
-			
-			/*list.add(new BukkitRunnable(){
-				public void run(){
-					PlayerInfo.syncInfo(player);
-				}
-			});*/
 		}
 		
 		SyncQueue.addToQueue(list);
