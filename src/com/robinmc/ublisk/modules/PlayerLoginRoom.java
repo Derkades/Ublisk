@@ -14,6 +14,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.DataFile;
@@ -34,12 +35,17 @@ public class PlayerLoginRoom extends UModule {
 
 	private static final Location PORTAL_ROOM_LOCATION = new Location(Var.WORLD, 17.5, 83, -38.5, 90, 0);
 	
+	private void teleportToRoom(UPlayer player){
+		IN_PORTAL_ROOM.add(player.getName());
+		player.teleport(PORTAL_ROOM_LOCATION);
+		player.getPlayer().setFlying(false);
+		player.givePotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 15, 10);
+	}
+	
 	@Override
 	public void onEnable(Main plugin){
 		for (UPlayer player : Ublisk.getOnlinePlayers()){
-			IN_PORTAL_ROOM.add(player.getName());
-			player.teleport(PORTAL_ROOM_LOCATION);
-			player.getPlayer().setFlying(false);
+			teleportToRoom(player);
 		}
 		
 		//Save location every 10 seconds
@@ -61,10 +67,7 @@ public class PlayerLoginRoom extends UModule {
 
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onJoin(PlayerJoinEvent event) {
-		final UPlayer player = new UPlayer(event);
-		IN_PORTAL_ROOM.add(player.getName());
-		player.teleport(PORTAL_ROOM_LOCATION);
-		player.getPlayer().setFlying(false);
+		teleportToRoom(new UPlayer(event));
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
