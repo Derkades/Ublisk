@@ -33,7 +33,6 @@ public class GuildCommand implements CommandExecutor {
 			if (args[0].equalsIgnoreCase("accept")) {
 				if (Guild.GUILD_INVITES.containsKey(player.getName())) {
 					// Player has got an invite
-					Guild.GUILD_INVITES.remove(player.getName());
 					GuildInvite invite = Guild.GUILD_INVITES.get(player.getName());
 					Guild guild = invite.getGuild();
 					player.setGuild(guild);
@@ -45,6 +44,8 @@ public class GuildCommand implements CommandExecutor {
 							guildMember.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + player.getName() + " has joined your guild!");
 						}
 					}
+					
+					Guild.GUILD_INVITES.remove(player.getName());
 					
 					return true;
 				} else {
