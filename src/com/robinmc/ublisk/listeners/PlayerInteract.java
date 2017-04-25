@@ -30,6 +30,7 @@ import com.robinmc.ublisk.iconmenus.MainMenu;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.URunnable;
 import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 
 public class PlayerInteract implements Listener {
@@ -123,7 +124,7 @@ public class PlayerInteract implements Listener {
 		
 		Player player = event.getPlayer();
 		String itemName = itemInHand.getItemMeta().getDisplayName();
-		Block block = event.getClickedBlock();
+		final Block block = event.getClickedBlock();
 		
 		event.setCancelled(true);
 		
@@ -143,6 +144,13 @@ public class PlayerInteract implements Listener {
 			block.setData((byte) 0);
 			block.setType(Material.PISTON_MOVING_PIECE);
 			event.getPlayer().sendMessage("Placed invisible block. To remove invisible block, type /u rinv while standing inside an invisible block.");
+		} else if (itemName.contains("coal")){
+			block.setType(Material.GLASS);
+			new URunnable(){
+				public void run(){
+					block.setType(Material.COAL_ORE);
+				}
+			}.runLater(1*20);
 		} else {
 			sendStaffToolInfoMessage(player);
 		}
@@ -153,7 +161,8 @@ public class PlayerInteract implements Listener {
 				"",
 				"Mogelijke namen:",
 				"invis - Plaatst onzichtbaar block",
-				"farmland - Plaatst farmland met wheat"
+				"farmland - Plaatst farmland met wheat",
+				"coal - Plaatst coal ore"
 		};
 		
 		for (String string : strings) player.sendMessage(string);
