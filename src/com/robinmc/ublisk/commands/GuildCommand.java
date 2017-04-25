@@ -78,14 +78,9 @@ public class GuildCommand implements CommandExecutor {
 
 				return true;
 			} else if (args[0].equalsIgnoreCase("help")){
-				String[] usageLines = Main.getInstance().getCommand("guild").getUsage().split("\n");
-				for (String usageLine : usageLines){
-					player.sendMessage(ChatColor.AQUA + usageLine);
-				}
-				return true;
+				return false;
 			} else {
-				player.sendMessage(Message.WRONG_USAGE);
-				return true;
+				return false;
 			}
 		} else if (args.length == 2) {
 			if (args[0].equals("create")) {
