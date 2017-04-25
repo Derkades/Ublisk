@@ -19,9 +19,15 @@ public class DoubleXP {
 		return DoubleXP.DOUBLE_XP_PERCENTAGE != 0.0f;
 	}
 
-	public static void startDoubleXP(UPlayer player) {
+	public static void startDoubleXP(final UPlayer player) {
 		if (DoubleXP.isActive()) {
 			Bukkit.broadcastMessage(Message.DOUBLE_XP_ALREADY_ACTIVE.toString());
+			new URunnable(){
+				public void run(){
+					startDoubleXP(player);
+				}
+			}.runLater(5*60*20);
+			return;
 		}
 
 		//Bukkit.broadcastMessage("Double XP started thanks to " + player.getName());
