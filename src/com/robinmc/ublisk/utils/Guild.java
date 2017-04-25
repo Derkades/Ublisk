@@ -300,7 +300,7 @@ public class Guild {
 		private Guild guild;
 		private UPlayer source;
 
-		public GuildInvite(final Guild guild, final UPlayer source) {
+		public GuildInvite(Guild guild, UPlayer source) {
 			this.guild = guild;
 			this.source = source;
 		}
