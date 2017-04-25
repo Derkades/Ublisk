@@ -83,6 +83,12 @@ public class Voting implements Listener {
 		if (event.getAction() != Action.RIGHT_CLICK_BLOCK){
 			return;
 		}
+		
+		UPlayer player = new UPlayer(event);
+		
+		if (player.isSneaking()){
+			return;
+		}
 
 		Block block = event.getClickedBlock();
 		if (Voting.isVotingChest(block)){
@@ -111,8 +117,6 @@ public class Voting implements Listener {
 			inv.setItem(12, goldItem);
 			inv.setItem(13, xpItem);
 			inv.setItem(14, lifeItem);
-			
-			UPlayer player = new UPlayer(event);
 			
 			if (gold !=0){
 				new ItemBuilder(Material.GOLD_NUGGET)
