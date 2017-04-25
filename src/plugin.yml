@@ -45,13 +45,13 @@ commands:
     guild:
         aliases: [guilds, g]
         description: Create guilds and invite your friends.
-        usage: |
-          §a/guild create [name] - Create a guild
-          /guild leave - Leave the guild you're in
-          /guild invite [player] - Invite a player to your guild
-          /guild accept - Accept an invite
-          /guild list - List of all guilds sorted by points
-          /guild info [guild] - Display information about a guild
+        usage: "
+          §a/guild create [name] - Create a guild\n
+          §a/guild leave - Leave the guild you're in\n
+          §a/guild invite [player] - Invite a player to your guild\n
+          §a/guild accept - Accept an invite\n
+          §a/guild list - List of all guilds sorted by points\n
+          §a/guild info [guild] - Display information about a guild"
     pack:
         aliases: [resources, resource, resourcepack, texture, textures, texturepack]
     voterestart:
