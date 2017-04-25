@@ -1,12 +1,6 @@
 package com.robinmc.ublisk.utils;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import com.robinmc.ublisk.DataFile;
-import com.robinmc.ublisk.utils.Logger.LogLevel;
 
 public class UUIDUtils {
 
@@ -14,10 +8,10 @@ public class UUIDUtils {
 		DataFile.UUID.getConfig().set("uuid." + player.getName(), player.getUniqueId().toString());
 		DataFile.UUID.getConfig().set("name." + player.getUniqueId(), player.getName());
 
-		syncWithDatabase(player);
+		//syncWithDatabase(player);
 	}
 
-	private static void syncWithDatabase(UPlayer player) {
+	/*private static void syncWithDatabase(UPlayer player) {
 		try {
 			if (containsPlayer(player)) {
 				updateInDatabase(player);
@@ -95,6 +89,6 @@ public class UUIDUtils {
 			connection.close();
 		}
 
-	}
+	}*/
 
 }
