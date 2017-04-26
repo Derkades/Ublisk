@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -204,7 +205,7 @@ public class Guild {
 			}
 		}
 		return list;*/
-		
+		/*
 		List<OfflinePlayer> list = new ArrayList<>();
 		
 		for (OfflinePlayer player : Bukkit.getOfflinePlayers()){
@@ -215,6 +216,35 @@ public class Guild {
 				list.add(player);
 			} else {
 				continue;
+			}
+		}
+		
+		return list;*/
+		
+		List<OfflinePlayer> list = new ArrayList<>();
+		
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Get guild members");
+			statement = connection.prepareStatement("SELECT `uuid` FROM `player_info_2` WHERE `guild` = ?;");
+			statement.setString(1, this.getName());
+			result = statement.executeQuery();
+			while (result.next()){
+				UUID uuid = UUID.fromString(result.getString("uuid"));
+				OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
+				list.add(player);
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally {
+			try {
+				if (result != null) result.close();
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e){
+				e.printStackTrace();
 			}
 		}
 		
