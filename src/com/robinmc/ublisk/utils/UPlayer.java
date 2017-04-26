@@ -714,9 +714,29 @@ public class UPlayer {
 		player.addPotionEffect(new PotionEffect(type, duration, amplifier, true, false));
 	}
 	
+	/**
+	 * Sets a player's guild. Warning: does not perform any checks regarding if the player is already in a guild, etc.
+	 * @param guild
+	 */
 	public void setGuild(Guild guild){
-		//DataFile.GUILDS.getConfig().set("guild." + this.getUniqueId(), guild.getName());
-		
+		Connection connection = null;
+		PreparedStatement statement = null;
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Set guild");
+			statement = connection.prepareStatement("UPDATE " + PlayerInfo.TABLE_NAME + " SET guild=? WHERE uuid=?;");
+			statement.setString(1, guild.getName());
+			statement.setString(2, this.getUniqueId().toString());
+			statement.executeUpdate();
+		} catch (SQLException e){
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e){
+				throw new RuntimeException(e.getMessage());
+			}
+		}
 	}
 	
 	/**
