@@ -4,7 +4,6 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -38,8 +37,8 @@ public class ShieldCircle extends Ability {
 					        	if (e.getLocation().distance(loc) < 1.0){
 					        		if (e.getType() == EntityType.PLAYER){
 					        			player.givePotionEffect(PotionEffectType.SATURATION, 10*20, 1);
-					        			new BukkitRunnable(){ //add potion effect saturation
-					        				Location locp = e.getLocation();//fix e = entity
+					        			new BukkitRunnable(){ 
+					        				Location locp = e.getLocation();
 					        				double b = 0;
 					        				public void run(){
 					        					b += Math.PI/10;
@@ -48,9 +47,9 @@ public class ShieldCircle extends Ability {
 					        						double x = r*Math.cos(c)*Math.sin(b);
 					        						double y = r*Math.cos(b) + 1;
 					        						double z = r*Math.sin(c)*Math.sin(b);
-					        						loc.add(x, y, z);
-					                                Ublisk.spawnParticle(Particle.REDSTONE, loc, 255, 140, 0, 0);
-					                                loc.subtract(x, y, z);
+					        						locp.add(x, y, z);
+					                                Ublisk.spawnParticle(Particle.REDSTONE, locp, 255, 140, 0, 0);
+					                                locp.subtract(x, y, z);
 					                                
 					                                if (b > Math.PI){
 					                                	this.cancel();
