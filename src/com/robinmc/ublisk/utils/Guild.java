@@ -344,6 +344,7 @@ public class Guild {
 			statement = connection.prepareStatement("SELECT guild FROM " + PlayerInfo.TABLE_NAME + " WHERE uuid=?;");
 			statement.setString(1, player.getUniqueId().toString());
 			result = statement.executeQuery();
+			result.next();
 			guildName = result.getString("guild");
 		} catch (SQLException e){
 			e.printStackTrace();
