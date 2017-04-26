@@ -341,7 +341,7 @@ public class Guild {
 		String guildName = null;
 		try {
 			connection = Ublisk.getNewDatabaseConnection("Get player guild");
-			statement = connection.prepareStatement("SELECT guild FROM " + PlayerInfo.TABLE_NAME + " WHERE uuid=?;");
+			statement = connection.prepareStatement("SELECT * FROM `player_info_2` WHERE uuid=?;");
 			statement.setString(1, player.getUniqueId().toString());
 			result = statement.executeQuery();
 			result.next();
@@ -351,6 +351,7 @@ public class Guild {
 			throw new RuntimeException(e.getMessage());
 		} finally {
 			try {
+				if (result != null) result.close();
 				if (statement != null) statement.close();
 				if (connection != null) connection.close();
 			} catch (SQLException e){
