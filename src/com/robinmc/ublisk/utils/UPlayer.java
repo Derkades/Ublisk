@@ -786,7 +786,33 @@ public class UPlayer {
 	}
 	
 	public void leaveGuild(){
-		throw new UnsupportedOperationException(); // TODO Add leaveGuild() method
+		if (!this.isInGuild()){
+			throw new UnsupportedOperationException("Player is not in a guild");
+		}
+		
+		Guild guild = this.getGuild();
+		
+		if (!guild.exists()){
+			throw new UnsupportedOperationException("The player's guild no longer exists");
+		}
+		
+		Connection connection = null;
+		PreparedStatement statement = null;
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Leave guild");
+			statement = connection.prepareStatement("UPDATE " + PlayerInfo.TABLE_NAME + " SET guild='None' WHERE uuid=?;");
+			statement.setString(1, this.getUniqueId().toString());
+			statement.executeUpdate();
+		} catch (SQLException e){
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e){
+				throw new RuntimeException(e.getMessage());
+			}
+		}
 	}
 	
 	public boolean onGround(){
