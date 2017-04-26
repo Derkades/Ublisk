@@ -4,6 +4,8 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
@@ -32,9 +34,10 @@ public class ShieldCircle extends Ability {
 					loc.add(x, y + 1.5, z);
 					Ublisk.spawnParticle(Particle.REDSTONE, loc, 255, 140, 0, 0);
 
-					/*                   for (Entity e : loc.getChunk().getEntities()){ //fix e = entity
+		                   for (Entity e : loc.getChunk().getEntities()){ //fix e = entity
 					        	if (e.getLocation().distance(loc) < 1.0){
 					        		if (e.getType() == EntityType.PLAYER){
+					        			player.givePotionEffect(PotionEffectType.SATURATION, 10*20, 1);
 					        			new BukkitRunnable(){ //add potion effect saturation
 					        				Location locp = e.getLocation();//fix e = entity
 					        				double b = 0;
@@ -48,23 +51,16 @@ public class ShieldCircle extends Ability {
 					        						loc.add(x, y, z);
 					                                Ublisk.spawnParticle(Particle.REDSTONE, loc, 255, 140, 0, 0);
 					                                loc.subtract(x, y, z);
+					                                
+					                                if (b > Math.PI){
+					                                	this.cancel();
+					                                }
 					        					}
-					        				} // add if cancel
-					        			} //fix ;
+					        				}
+					        			}.runTaskTimer(Main.getInstance(), 0, 1); 
 					        		}
 					        	}
-					        }  add runtasktimer  */
-
-					loc.subtract(x, y, z);
-
-					a = a + Math.PI / 64;
-
-					x = t * Math.cos(a);
-					y = 2 * Math.exp(-0.1 * t) * Math.sin(t) + 1.5;
-					z = t * Math.sin(a);
-					loc.add(x, y, z);
-					Ublisk.spawnParticle(Particle.SPELL_MOB, loc, 255, 0, 0, 0);
-					loc.subtract(x, y, z);
+					        }
 				}
 				if (t > 20) {
 					this.cancel();
