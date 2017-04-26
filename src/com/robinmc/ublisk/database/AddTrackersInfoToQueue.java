@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.database;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,19 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 				}
 			});
 		}
+		
+		list.add(new BukkitRunnable(){
+			public void run(){
+				
+				try {
+					ServerInfo.syncWithDatabase();
+					Logger.log(LogLevel.INFO, "Synced server info.");
+				} catch (SQLException e) {
+					e.printStackTrace();
+					Logger.log(LogLevel.SEVERE, "An error occured while attempting to sync server info: " + e.getMessage());
+				}
+			}
+		});
 		
 		SyncQueue.addToQueue(list);
 	}
