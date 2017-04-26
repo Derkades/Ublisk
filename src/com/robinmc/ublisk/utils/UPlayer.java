@@ -748,6 +748,10 @@ public class UPlayer {
 	public boolean isFrozen(){
 		return PlayerFreeze.isFrozen(player);
 	}
+	
+	public Entity getEntity(){
+		return this.getPlayer();
+	}
 
 	@Override
 	public String toString() {
