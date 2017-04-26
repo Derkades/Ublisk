@@ -23,6 +23,7 @@ public abstract class UModule implements Listener {
 			new ResetDoors(),
 			new ResourcePack(),
 			new Scoreboard(),
+			new TPS(),
 			//new WorldEditCUI(),
 			};
 	
