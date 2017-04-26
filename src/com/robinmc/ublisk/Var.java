@@ -71,8 +71,26 @@ public class Var {
 	 * Will mean that the player has 6 / 2 = 3 hearts at level 5.
 	 */
 	public static final HashMap<Integer, Integer> LEVEL_HEALTH = HashMaps.build(
-			1, 3,
-			2, 4
+			0, 1,
+			1, 4,
+			2, 5,
+			3, 6,
+			4, 7,
+			5, 7,
+			6, 8,
+			7, 8,
+			8, 9,
+			10, 10,
+			11, 10,
+			12, 11,
+			13, 11,
+			14, 12,
+			15, 12,
+			16, 13,
+			17, 13,
+			18, 14,
+			19, 14,
+			20, 15
 			);
 	
 	public static final boolean BLOCK_REGENERATION_ENABLED = false;
