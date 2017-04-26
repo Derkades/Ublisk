@@ -31,7 +31,7 @@ public class ShieldCircle extends Ability {
 					double y = 2 * Math.exp(-0.1 * t) * Math.sin(t) + 1.5;
 					double z = t * Math.sin(a);
 					loc.add(x, y + 1.5, z);
-					Ublisk.spawnParticle(Particle.REDSTONE, loc, 255, 140, 0, 0);
+					Ublisk.spawnParticle(Particle.BLOCK_DUST, loc, 255, 140, 0, 0);
 
 		                   for (final Entity e : loc.getChunk().getEntities()){ //fix e = entity
 					        	if (e.getLocation().distance(loc) < 1.0){
@@ -48,7 +48,7 @@ public class ShieldCircle extends Ability {
 					        						double y = r*Math.cos(b) + 1;
 					        						double z = r*Math.sin(c)*Math.sin(b);
 					        						locp.add(x, y, z);
-					                                Ublisk.spawnParticle(Particle.REDSTONE, locp, 255, 140, 0, 0);
+					                                Ublisk.spawnParticle(Particle.BLOCK_DUST, locp, 255, 140, 0, 0);
 					                                locp.subtract(x, y, z);
 					                                
 					                                if (b > Math.PI){
