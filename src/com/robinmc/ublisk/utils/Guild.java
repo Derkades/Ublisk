@@ -207,7 +207,20 @@ public class Guild {
 		}
 		return list;*/
 		
+		List<OfflinePlayer> list = new ArrayList<>();
 		
+		for (OfflinePlayer player : Bukkit.getOfflinePlayers()){
+			Guild guild = getGuild(player);
+			if (guild == null){
+				continue;
+			} else if (guild.getName().equals(this.getName())){
+				list.add(player);
+			} else {
+				continue;
+			}
+		}
+		
+		return list;
 	}
 	
 	public synchronized void remove(){
