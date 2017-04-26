@@ -20,6 +20,6 @@ public abstract class Ability {
 		return minLevel;
 	}
 
-	public abstract void run(UPlayer player);
+	public abstract boolean run(UPlayer player);
 	
 }

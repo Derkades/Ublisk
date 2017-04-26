@@ -16,10 +16,10 @@ public class Launch extends Ability {
 	}
 
 	@Override
-	public void run(UPlayer player) {
+	public boolean run(UPlayer player) {
 		if (!player.onGround()){
 			player.sendMessage(ChatColor.RED + "You must be on a solid block to use this ability.");
-			return;
+			return false;
 		}
 
 		Ublisk.spawnParticle(Particle.SMOKE_NORMAL, player.getLocation(), 5, 0, 0, 0, 0.2);
@@ -27,6 +27,8 @@ public class Launch extends Ability {
 		player.setVelocity(player.getLocation().getDirection().multiply(3));
 		player.setVelocity(new Vector(player.getVelocity().getX(), 1.5D, player.getVelocity().getZ()));
 		player.givePotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 3*20, 4);
+		
+		return true;
 	}
 
 }

@@ -26,10 +26,10 @@ public class StoneCastle extends Ability {
 	private static final int TIME = 5*20;
 
 	@Override
-	public void run(final UPlayer player) {
+	public boolean run(final UPlayer player) {
 		if (!player.onGround()){
 			player.sendMessage(ChatColor.RED + "You must be on a solid block to use this ability.");
-			return;
+			return false;
 		}
 		
 		player.setFrozen(true);
@@ -62,5 +62,7 @@ public class StoneCastle extends Ability {
 			}
 			
 		}.runTaskTimer(Main.getInstance(), 0, PERIOD);
+		
+		return true;
 	}
 }

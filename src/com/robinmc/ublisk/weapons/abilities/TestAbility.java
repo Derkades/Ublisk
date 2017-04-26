@@ -19,7 +19,7 @@ public class TestAbility extends Ability {
 	}
 
 	@Override
-	public void run(final UPlayer player) {
+	public boolean run(final UPlayer player) {
 		new BukkitRunnable() {
 
 			double t = 0;
@@ -46,6 +46,8 @@ public class TestAbility extends Ability {
 				loc.subtract(x, y, z);
 			}
 		}.runTaskTimer(Main.getInstance(), 0, 1);
+		
+		return true; 
 	}
 
 }

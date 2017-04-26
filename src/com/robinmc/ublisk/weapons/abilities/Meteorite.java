@@ -22,10 +22,10 @@ public class Meteorite extends Ability {
 	}
 
 	@Override
-	public void run(final UPlayer player) {
+	public boolean run(final UPlayer player) {
 		Block clickedBlock = player.getTargetBlock(50);
 		if (clickedBlock.getType().equals(Material.AIR)){
-			return;
+			return false;
 		}
 		
 		final Location clickedLocation = clickedBlock.getLocation();
@@ -52,6 +52,8 @@ public class Meteorite extends Ability {
 				Ublisk.spawnParticle(Particle.FLAME, location, 5, 0, 1, 0, 0);
 			}
 		}.runTaskTimer(Main.getInstance(), 0, 1);
+		
+		return true;
 	}
 
 }

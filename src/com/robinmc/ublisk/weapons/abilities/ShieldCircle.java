@@ -18,7 +18,7 @@ public class ShieldCircle extends Ability {
 	}
 
 	@Override
-	public void run(final UPlayer player) {
+	public boolean run(final UPlayer player) {
 		new BukkitRunnable() {
 
 			double t = Math.PI / 4;
@@ -67,5 +67,7 @@ public class ShieldCircle extends Ability {
 			}
 
 		}.runTaskTimer(Main.getInstance(), 0, 1);
+		
+		return true;
 	}
 }
