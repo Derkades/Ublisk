@@ -27,6 +27,7 @@ import org.bukkit.entity.Player;
 import com.robinmc.ublisk.DataFile;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.database.ServerInfo;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 
@@ -54,6 +55,8 @@ public class Ublisk {
 	}
 	
 	public static Connection getNewDatabaseConnection(String reason) throws SQLException {
+		ServerInfo.DATABASE_REQUESTS++;
+
 		Logger.log(LogLevel.DEBUG, "New connection: " + reason);
 		String ip = Var.DATABASE_HOST;
 		int port = Var.DATABASE_PORT;
