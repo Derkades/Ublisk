@@ -507,6 +507,7 @@ public class UPlayer {
 		player.setFoodLevel(mana);
 	}
 
+	@Deprecated
 	public void removeMana(int mana) throws NotEnoughManaException {
 		if (getMana() - mana < 0)
 			throw new NotEnoughManaException();
@@ -681,17 +682,13 @@ public class UPlayer {
 			return;
 		}
 
-		try {
-			this.removeMana(ability.getMana());
-		} catch (NotEnoughManaException e) {
+		if (this.getMana() < ability.getMana()){
 			this.sendMessage(Message.ABILITY_NOT_ENOUGH_MANA);
 			return;
 		}
 
-		try {
-			ability.run(this);
-		} catch (Exception e){
-			this.sendMessage("An error occured: " + e.getMessage());
+		if (ability.run(this)){
+			this.setMana(this.getMana() - ability.getMana());
 		}
 	}
 	
