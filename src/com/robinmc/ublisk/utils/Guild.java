@@ -346,6 +346,7 @@ public class Guild {
 			result = statement.executeQuery();
 			guildName = result.getString("guild");
 		} catch (SQLException e){
+			e.printStackTrace();
 			throw new RuntimeException(e.getMessage());
 		} finally {
 			try {
