@@ -1,10 +1,6 @@
 package com.robinmc.ublisk.utils;
 
 import java.io.File;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,7 +42,6 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.VoteRestart;
-import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.modules.AFK;
 import com.robinmc.ublisk.modules.PlayerFreeze;
 import com.robinmc.ublisk.money.Money;
@@ -723,96 +718,15 @@ public class UPlayer {
 	 * @param guild
 	 */
 	public void setGuild(Guild guild){
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = Ublisk.getNewDatabaseConnection("Set guild");
-			statement = connection.prepareStatement("UPDATE " + PlayerInfo.TABLE_NAME + " SET guild=? WHERE uuid=?;");
-			statement.setString(1, guild.getName());
-			statement.setString(2, this.getUniqueId().toString());
-			statement.executeUpdate();
-		} catch (SQLException e){
-			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				if (statement != null) statement.close();
-				if (connection != null) connection.close();
-			} catch (SQLException e){
-				throw new RuntimeException(e.getMessage());
-			}
-		}
+		Guild.setGuild(guild, player);
 	}
 	
-	/**
-	 * Gets the guild the player is in
-	 * @return A guild if player is in a guild, null if the player is not in a guild.
-	 */
-	public Guild getGuild() {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet result = null;
-		
-		String guildName = null;
-		try {
-			connection = Ublisk.getNewDatabaseConnection("Get player guild");
-			statement = connection.prepareStatement("SELECT guild FROM " + PlayerInfo.TABLE_NAME + " WHERE uuid=?;");
-			statement.setString(1, this.getUniqueId().toString());
-			result = statement.executeQuery();
-			guildName = result.getString("guild");
-		} catch (SQLException e){
-			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				if (statement != null) statement.close();
-				if (connection != null) connection.close();
-			} catch (SQLException e){
-				throw new RuntimeException(e.getMessage());
-			}
-		}
-		
-		if (guildName == null) return null;
-		
-		Guild guild = new Guild(guildName);
-		
-		if (guild.exists()){
-			return guild;
-		} else {
-			return null;
-		}
-	}
-	
-	public boolean isInGuild(){
-		return this.getGuild() != null;
+	public Guild getGuild(){
+		return Guild.getGuild(player);
 	}
 	
 	public void leaveGuild(){
-		if (!this.isInGuild()){
-			throw new UnsupportedOperationException("Player is not in a guild");
-		}
-		
-		Guild guild = this.getGuild();
-		
-		if (!guild.exists()){
-			throw new UnsupportedOperationException("The player's guild no longer exists");
-		}
-		
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = Ublisk.getNewDatabaseConnection("Leave guild");
-			statement = connection.prepareStatement("UPDATE " + PlayerInfo.TABLE_NAME + " SET guild='None' WHERE uuid=?;");
-			statement.setString(1, this.getUniqueId().toString());
-			statement.executeUpdate();
-		} catch (SQLException e){
-			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				if (statement != null) statement.close();
-				if (connection != null) connection.close();
-			} catch (SQLException e){
-				throw new RuntimeException(e.getMessage());
-			}
-		}
+		Guild.leaveGuild(player);
 	}
 	
 	public boolean onGround(){

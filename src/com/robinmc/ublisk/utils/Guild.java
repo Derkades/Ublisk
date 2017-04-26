@@ -16,6 +16,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.DataFile;
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.java.ListUtils;
 
@@ -197,14 +198,16 @@ public class Guild {
 	}
 	
 	public List<OfflinePlayer> getMembers(){
-		List<OfflinePlayer> list = new ArrayList<OfflinePlayer>();
+		/*List<OfflinePlayer> list = new ArrayList<OfflinePlayer>();
 		for (String key : DataFile.GUILDS.getConfig().getConfigurationSection("guild").getKeys(false)){
 			if (DataFile.GUILDS.getConfig().getString("guild." + key).equalsIgnoreCase(this.getName())){
 				UUID uuid = UUID.fromString(key);
 				list.add(Bukkit.getOfflinePlayer(uuid));
 			}
 		}
-		return list;
+		return list;*/
+		
+		
 	}
 	
 	public synchronized void remove(){
@@ -313,6 +316,94 @@ public class Guild {
 			return source;
 		}
 
+	}
+	
+	/**
+	 * Gets the guild the player is in
+	 * @return A guild if player is in a guild, null if the player is not in a guild.
+	 */
+	public static Guild getGuild(OfflinePlayer player) {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+		
+		String guildName = null;
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Get player guild");
+			statement = connection.prepareStatement("SELECT guild FROM " + PlayerInfo.TABLE_NAME + " WHERE uuid=?;");
+			statement.setString(1, player.getUniqueId().toString());
+			result = statement.executeQuery();
+			guildName = result.getString("guild");
+		} catch (SQLException e){
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e){
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		
+		if (guildName == null) return null;
+		
+		Guild guild = new Guild(guildName);
+		
+		if (guild.exists()){
+			return guild;
+		} else {
+			return null;
+		}
+	}
+	
+	public static void leaveGuild(OfflinePlayer player){
+		Guild guild = getGuild(player);	
+		if (guild == null){
+			throw new UnsupportedOperationException("Player is not in a guild");
+		}
+		
+		if (!guild.exists()){
+			throw new UnsupportedOperationException("The player's guild no longer exists");
+		}
+		
+		Connection connection = null;
+		PreparedStatement statement = null;
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Leave guild");
+			statement = connection.prepareStatement("UPDATE " + PlayerInfo.TABLE_NAME + " SET guild='None' WHERE uuid=?;");
+			statement.setString(1, player.getUniqueId().toString());
+			statement.executeUpdate();
+		} catch (SQLException e){
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e){
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+	}
+	
+	public static void setGuild(Guild guild, OfflinePlayer player){
+		Connection connection = null;
+		PreparedStatement statement = null;
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Set guild");
+			statement = connection.prepareStatement("UPDATE " + PlayerInfo.TABLE_NAME + " SET guild=? WHERE uuid=?;");
+			statement.setString(1, guild.getName());
+			statement.setString(2, player.getUniqueId().toString());
+			statement.executeUpdate();
+		} catch (SQLException e){
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e){
+				throw new RuntimeException(e.getMessage());
+			}
+		}
 	}
 
 }
