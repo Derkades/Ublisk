@@ -50,7 +50,7 @@ public class ServerInfo {
 						+ "tps," //3
 						+ "players_online," //4
 						+ "autorestart_count," //5
-						+ "database_requests," //6
+						+ "database_requests) " //6
 						+ "VALUES (?, ?, ?, ?, ?, ?)"
 						
 						+ "ON DUPLICATE KEY UPDATE "
