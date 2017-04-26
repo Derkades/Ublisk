@@ -20,6 +20,7 @@ public class ServerInfo {
 	 * players_online - int
 	 * autorestart_count - int
 	 * database_requests - int
+	 * chunks_loaded - int
 	 */
 	
 	private static final String TABLE_NAME = "server_info";
@@ -27,6 +28,7 @@ public class ServerInfo {
 	
 	public static int AUTORESTART_COUNT = 0;
 	public static int DATABASE_REQUESTS = 0;
+	public static int CHUNKS_LOADED = 0;
 	
 	public static void syncWithDatabase() throws SQLException {
 		String time = new SimpleDateFormat("HH:mm").format(System.currentTimeMillis());
@@ -36,6 +38,8 @@ public class ServerInfo {
 		int databaseRequests = DATABASE_REQUESTS;
 		DATABASE_REQUESTS = 0;
 		double tps = TPS.getAverageTPS();
+		int chunksLoaded = CHUNKS_LOADED;
+		CHUNKS_LOADED = 0;
 		
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -50,15 +54,17 @@ public class ServerInfo {
 						+ "tps," //3
 						+ "players_online," //4
 						+ "autorestart_count," //5
-						+ "database_requests) " //6
-						+ "VALUES (?, ?, ?, ?, ?, ?)"
+						+ "database_requests," //6
+						+ "chunks_loaded) " //7
+						+ "VALUES (?, ?, ?, ?, ?, ?, ?)"
 						
 						+ "ON DUPLICATE KEY UPDATE "
-						+ "time=?," //7
-						+ "tps=?," //8
-						+ "players_online=?," //9
-						+ "autorestart_count=autorestart_count+?," //10
-						+ "database_requests=database_requests+?;"); //11
+						+ "time=?," //8
+						+ "tps=?," //9
+						+ "players_online=?," //10
+						+ "autorestart_count=autorestart_count+?," //11
+						+ "database_requests=database_requests+?," //12
+						+ "chunks_loaded=chunks_loaded+?;"); //13
 			
 			statement.setString(1, DUMMY);
 			statement.setString(2, time);
@@ -66,12 +72,14 @@ public class ServerInfo {
 			statement.setInt(4, playersOnline);
 			statement.setInt(5, autoRestart);
 			statement.setInt(6, databaseRequests);
+			statement.setInt(7, chunksLoaded);
 			
-			statement.setString(7, time);
-			statement.setDouble(8, tps);
-			statement.setInt(9, playersOnline);
-			statement.setInt(10, autoRestart);
-			statement.setInt(11, databaseRequests);
+			statement.setString(8, time);
+			statement.setDouble(9, tps);
+			statement.setInt(10, playersOnline);
+			statement.setInt(11, autoRestart);
+			statement.setInt(12, databaseRequests);
+			statement.setInt(13, chunksLoaded);
 			
 			statement.execute();
 			

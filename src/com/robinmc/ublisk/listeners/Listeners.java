@@ -29,6 +29,7 @@ public class Listeners {
 		
 		CHAT(new AsyncPlayerChat()),
 		BREAK_BLOCK(new BreakBlock()),
+		CHUNK_LOAD(new ChunkLoad()),
 		ENTITY_EXPLODE(new EntityExplode()),
 		INV_CLOSE(new InventoryClose()),
 		INV_CLICK(new InventoryClick()),
