@@ -37,7 +37,7 @@ public class Meteorite extends Ability {
 			public void run() {
 				
 				if (y <= 2.5){
-					Ublisk.createFakeExplosion(clickedLocation, damage, 4, true, Explosion.BLAST_SMALL, Explosion.FIRE, Explosion.SMOKE);
+					Ublisk.createFakeExplosion(clickedLocation, player, damage, 4, true, Explosion.BLAST_SMALL, Explosion.FIRE, Explosion.SMOKE);
 					this.cancel();
 					return;
 				}
