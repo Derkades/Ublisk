@@ -22,7 +22,7 @@ public enum DataFile {
 	PERMISSIONS("permissions"),
 	MYSQL("mysql"),
 	TOWN("town"),
-	GUILDS("guilds"),
+	@Deprecated GUILDS("guilds"),
 	PLAYER_LOCATION("playerloc");
 
 	private File file;
