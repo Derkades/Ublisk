@@ -8,13 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.DataFile;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
@@ -359,6 +357,8 @@ public class Guild {
 		}
 		
 		if (guildName == null) return null;
+		
+		if (guildName.equalsIgnoreCase("None")) return null;
 		
 		Guild guild = new Guild(guildName);
 		
