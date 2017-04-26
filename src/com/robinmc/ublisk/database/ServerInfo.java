@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 
 import org.bukkit.Bukkit;
 
+import com.robinmc.ublisk.modules.TPS;
 import com.robinmc.ublisk.utils.Ublisk;
 
 public class ServerInfo {
@@ -34,7 +35,7 @@ public class ServerInfo {
 		AUTORESTART_COUNT = 0;
 		int databaseRequests = DATABASE_REQUESTS;
 		DATABASE_REQUESTS = 0;
-		double tps = 10.0; // TODO TPS average
+		double tps = TPS.getAverageTPS();
 		
 		Connection connection = null;
 		PreparedStatement statement = null;
