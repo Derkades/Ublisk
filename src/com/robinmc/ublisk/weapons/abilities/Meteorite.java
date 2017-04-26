@@ -16,13 +16,13 @@ public class Meteorite extends Ability {
 
 	private int damage;
 	
-	public Meteorite(int damage) throws Exception {
+	public Meteorite(int damage) {
 		super(4, 0); // TODO Min level
 		this.damage = damage;
 	}
 
 	@Override
-	public void run(final UPlayer player) {
+	public void run(final UPlayer player) throws Exception {
 		Block clickedBlock = player.getTargetBlock(50);
 		if (clickedBlock.getType().equals(Material.AIR)){
 			return;
