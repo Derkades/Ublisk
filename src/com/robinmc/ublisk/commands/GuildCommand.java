@@ -53,7 +53,7 @@ public class GuildCommand implements CommandExecutor {
 					return true;
 				}
 			} else if (args[0].equalsIgnoreCase("leave")) {
-				if (!player.isInGuild()) {
+				if (player.getGuild() == null) {
 					player.sendPrefixedMessage("Guilds", "You are not in a guild");
 				} else {
 					player.sendPrefixedMessage("Guilds", "You left " + player.getGuild().getName() + ".");
@@ -88,7 +88,7 @@ public class GuildCommand implements CommandExecutor {
 					return true;
 				}
 
-				if (player.isInGuild()) {
+				if (player.getGuild() != null) {
 					player.sendPrefixedMessage("Guilds", "You are already in a guild. Please leave your current guild before creating a new one.");
 					return true;
 				}
@@ -128,7 +128,7 @@ public class GuildCommand implements CommandExecutor {
 				return true;
 			} else if (args[0].equalsIgnoreCase("invite")) {
 				
-				if (!player.isInGuild()) {
+				if (player.getGuild() == null) {
 					player.sendPrefixedMessage("Guilds", "You are not in a guild.");
 					return true;
 				}
