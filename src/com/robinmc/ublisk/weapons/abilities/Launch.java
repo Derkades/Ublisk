@@ -6,7 +6,6 @@ import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
-import com.robinmc.ublisk.utils.Ublisk.Explosion;
 
 import net.md_5.bungee.api.ChatColor;
 
