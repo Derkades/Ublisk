@@ -180,7 +180,7 @@ public class Ublisk {
 	 * @param sound If an explosion sound should be played.
 	 * @param explosions Particles to summon. See Explosion enum.
 	 */
-	public static void createFakeExplosion(Location location, Entity source, int damage, double damageRadius, boolean sound, Explosion... explosions){
+	public static void createFakeExplosion(Location location, UPlayer source, int damage, double damageRadius, boolean sound, Explosion... explosions){
 		
 		//Spawn particles
 		for (Explosion explosion : explosions){
@@ -209,7 +209,7 @@ public class Ublisk {
 				LivingEntity living = (LivingEntity) entity;
 				double distance = entity.getLocation().distance(location);
 				if (distance <= damageRadius)
-					living.damage(damage / distance, source);
+					living.damage(damage / distance, source.getEntity());
 			}
 		}
 	}
