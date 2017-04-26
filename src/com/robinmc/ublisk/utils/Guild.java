@@ -247,6 +247,35 @@ public class Guild {
 			}
 		}
 	}
+	
+	public synchronized OfflinePlayer getOwner(){
+		Connection connection = null;
+		PreparedStatement query = null;
+		ResultSet result = null;
+		
+		String uuid = null;
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Get guild owner");
+			query = connection.prepareStatement("SELECT `owner` FROM `guilds` WHERE name=?");
+			query.setString(1, this.getName());
+			result = query.executeQuery();
+			result.next();
+			uuid = result.getString("owner");
+		} catch (SQLException e){
+			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to get guild points for " + this.getName());
+			e.printStackTrace();
+		} finally {
+			try {
+				result.close();
+				query.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return Bukkit.getOfflinePlayer(UUID.fromString(uuid));
+	}
 
 	public synchronized static List<Guild> getGuildsList() {
 		Connection connection = null;
