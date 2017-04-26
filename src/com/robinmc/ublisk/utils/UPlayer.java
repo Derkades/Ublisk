@@ -693,7 +693,11 @@ public class UPlayer {
 			return;
 		}
 
-		ability.run(this);
+		try {
+			ability.run(this);
+		} catch (Exception e){
+			this.sendMessage("An error occured: " + e.getMessage());
+		}
 	}
 	
 	public void setVelocity(Vector vector) {
