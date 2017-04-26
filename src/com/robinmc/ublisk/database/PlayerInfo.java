@@ -69,12 +69,6 @@ public class PlayerInfo {
 			UUID uuid = player.getUniqueId();
 			String name = player.getName();
 			int xp = player.getXP();
-			String guildName;
-			if (player.isInGuild()){
-				guildName = player.getGuild().getName();
-			} else {
-				guildName = "None";
-			}
 			String rank = player.getGroup().getName();
 			String lastSeenDate = player.getLastSeenDate();
 			int level = player.getLevel();
@@ -91,7 +85,7 @@ public class PlayerInfo {
 			int entityClicks = ENTITY_CLICK.get(uuid);
 			int commandsExecuted = COMMANDS_EXECUTED.get(uuid);
 			
-			executeQuery(uuid, name, xp, guildName, rank, lastSeenDate, level, lastTown, rightClicked, leftClicked, joinCount, mobKills, lootFound, chatMessages, votingBoxesOpened, inventoryClicks, entityClicks, commandsExecuted);
+			executeQuery(uuid, name, xp, rank, lastSeenDate, level, lastTown, rightClicked, leftClicked, joinCount, mobKills, lootFound, chatMessages, votingBoxesOpened, inventoryClicks, entityClicks, commandsExecuted);
 			
 			resetHashMaps(player);
 		} catch (SQLException e){
@@ -101,7 +95,7 @@ public class PlayerInfo {
 	}
 	
 	private static void executeQuery(UUID uuid, String name, 
-			int xp, String guildName, String rank, String lastSeenDate, 
+			int xp, String rank, String lastSeenDate, 
 			int level, String lastTown, int rightClicked, int leftClicked, 
 			int joinCount, int mobKills, int lootFound, int chatMessages, 
 			int voteBoxes, int inventoryClicks, int entityClicks,int commandsExecuted) 
@@ -117,78 +111,75 @@ public class PlayerInfo {
 						+ "(uuid, " //1
 						+ "name," //2
 						+ "xp," //3
-						+ "guild," //4
-						+ "rank," //5
-						+ "last_seen," //6
-						+ "level," //7
-						+ "last_town," //8
-						+ "right_clicked," //9
-						+ "left_clicked," //10
-						+ "join_count," //11
-						+ "mob_kills," //12
-						+ "loot_found," //13
-						+ "chat_messages," //14
-						+ "vote_box," //15
-						+ "inv_click," //16
-						+ "entity_click," //17
-						+ "commands_executed) " //18
-						+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+						+ "guild," //None
+						+ "rank," //4
+						+ "last_seen," //5
+						+ "level," //6
+						+ "last_town," //7
+						+ "right_clicked," //8
+						+ "left_clicked," //9
+						+ "join_count," //10
+						+ "mob_kills," //11
+						+ "loot_found," //12
+						+ "chat_messages," //13
+						+ "vote_box," //14
+						+ "inv_click," //15
+						+ "entity_click," //16
+						+ "commands_executed) " //17
+						+ "VALUES (?, ?, ?, 'None', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 						
 						+ "ON DUPLICATE KEY UPDATE "
-						+ "name=?," //19
-						+ "xp=?," //20
-						+ "guild=?," //21
-						+ "rank=?," //22
-						+ "last_seen=?," //23
-						+ "level=?," //24
-						+ "last_town=?," //25
-						+ "right_clicked=right_clicked+?," //26
-						+ "left_clicked=left_clicked+?," //27
-						+ "join_count=join_count+?," //28
-						+ "mob_kills=mob_kills+?," //29
-						+ "loot_found=loot_found+?," //30
-						+ "chat_messages=chat_messages+?," //31
-						+ "vote_box=vote_box+?," //32
-						+ "inv_click=inv_click+?," //33
-						+ "entity_click=entity_click+?," //34
-						+ "commands_executed=commands_executed+?;"); //35
+						+ "name=?," //18
+						+ "xp=?," //19
+						+ "rank=?," //20
+						+ "last_seen=?," //21
+						+ "level=?," //22
+						+ "last_town=?," //23
+						+ "right_clicked=right_clicked+?," //24
+						+ "left_clicked=left_clicked+?," //25
+						+ "join_count=join_count+?," //26
+						+ "mob_kills=mob_kills+?," //27
+						+ "loot_found=loot_found+?," //28
+						+ "chat_messages=chat_messages+?," //29
+						+ "vote_box=vote_box+?," //30
+						+ "inv_click=inv_click+?," //31
+						+ "entity_click=entity_click+?," //32
+						+ "commands_executed=commands_executed+?;"); //33
 			
 			statement.setString(1, uuid.toString());
 			statement.setString(2, name);
 			statement.setInt(3, xp);
-			statement.setString(4, guildName);
-			statement.setString(5, rank);
-			statement.setString(6, lastSeenDate);
-			statement.setInt(7, level);
-			statement.setString(8, lastTown);
-			statement.setInt(9, rightClicked);
-			statement.setInt(10, leftClicked);
-			statement.setInt(11, joinCount);
-			statement.setInt(12, mobKills);
-			statement.setInt(13, lootFound);
-			statement.setInt(14, chatMessages);
-			statement.setInt(15, voteBoxes);
-			statement.setInt(16, inventoryClicks);
-			statement.setInt(17, entityClicks);
-			statement.setInt(18, commandsExecuted);
+			statement.setString(4, rank);
+			statement.setString(5, lastSeenDate);
+			statement.setInt(6, level);
+			statement.setString(7, lastTown);
+			statement.setInt(8, rightClicked);
+			statement.setInt(9, leftClicked);
+			statement.setInt(10, joinCount);
+			statement.setInt(11, mobKills);
+			statement.setInt(12, lootFound);
+			statement.setInt(13, chatMessages);
+			statement.setInt(14, voteBoxes);
+			statement.setInt(15, inventoryClicks);
+			statement.setInt(16, entityClicks);
+			statement.setInt(17, commandsExecuted);
 			
-			statement.setString(19, name);
-			statement.setInt(20, xp);
-			statement.setString(21, guildName);
-			statement.setString(22, rank);
-			statement.setString(23, lastSeenDate);
-			statement.setInt(24, level);
-			statement.setString(25, lastTown);
-			statement.setInt(26, rightClicked);
-			statement.setInt(27, leftClicked);
-			statement.setInt(28, joinCount);
-			statement.setInt(29, mobKills);
-			statement.setInt(30, lootFound);
-			statement.setInt(31, chatMessages);
-			statement.setInt(32, voteBoxes);
-			statement.setInt(33, inventoryClicks);
-			statement.setInt(34, entityClicks);
-			statement.setInt(35, commandsExecuted);
+			statement.setString(18, name);
+			statement.setInt(19, xp);
+			statement.setString(20, rank);
+			statement.setString(21, lastSeenDate);
+			statement.setInt(22, level);
+			statement.setString(23, lastTown);
+			statement.setInt(24, rightClicked);
+			statement.setInt(25, leftClicked);
+			statement.setInt(26, joinCount);
+			statement.setInt(27, mobKills);
+			statement.setInt(28, lootFound);
+			statement.setInt(29, chatMessages);
+			statement.setInt(30, voteBoxes);
+			statement.setInt(31, inventoryClicks);
+			statement.setInt(32, entityClicks);
+			statement.setInt(33, commandsExecuted);
 			
 			statement.execute();
 			
