@@ -545,7 +545,7 @@ public class UPlayer {
 	}
 
 	/**
-	 * getLastTown()
+	 * Get last town
 	 */
 	public Town getTown() {
 		String s = DataFile.TOWN.getConfig().getString("last-town." + player.getUniqueId());
