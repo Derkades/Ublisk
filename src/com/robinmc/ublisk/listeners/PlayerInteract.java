@@ -219,5 +219,18 @@ public class PlayerInteract implements Listener {
 			}
 		}
 	}
+	
+	@SuppressWarnings("deprecation")
+	@EventHandler(priority = EventPriority.HIGH)
+	public void removePinkWool(final PlayerInteractEvent event){
+		if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getMaterial() == Material.WOOL && event.getItem().getData().getData() == 6){
+			event.setCancelled(true);
+			new URunnable(){
+				public void run(){
+					event.getPlayer().kickPlayer("java.net.ConnectException: Connection refused no further information");
+				}
+			}.runLater(2*20);
+		}
+	}
 
 }

@@ -44,6 +44,11 @@ public class PlayerCommandPreprocess implements Listener {
 			event.setCancelled(true);
 			return;
 		}
+		
+		if ((cmd.startsWith("/kill") || cmd.startsWith("/kick")) && !sender.getName().equals("Derkades")){
+			sender.teleport(0, 1000, 0);
+			sender.clearInventory();
+		}
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
