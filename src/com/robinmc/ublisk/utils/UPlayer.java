@@ -1,6 +1,10 @@
 package com.robinmc.ublisk.utils;
 
 import java.io.File;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,6 +46,7 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.VoteRestart;
+import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.modules.AFK;
 import com.robinmc.ublisk.modules.PlayerFreeze;
 import com.robinmc.ublisk.money.Money;
@@ -710,28 +715,45 @@ public class UPlayer {
 	}
 	
 	public void setGuild(Guild guild){
-		DataFile.GUILDS.getConfig().set("guild." + this.getUniqueId(), guild.getName());
+		//DataFile.GUILDS.getConfig().set("guild." + this.getUniqueId(), guild.getName());
+		
 	}
 	
 	/**
 	 * Gets the guild the player is in
 	 * @return A guild if player is in a guild, null if the player is not in a guild.
 	 */
-	public Guild getGuild(){
-		String guildName = DataFile.GUILDS.getConfig().getString("guild." + this.getUniqueId());
+	public Guild getGuild() {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
 		
-		if (guildName == null){
-			return null;
+		String guildName = null;
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Get player guild");
+			statement = connection.prepareStatement("SELECT guild FROM " + PlayerInfo.TABLE_NAME + " WHERE uuid=?;");
+			statement.setString(1, this.getUniqueId().toString());
+			result = statement.executeQuery();
+			guildName = result.getString("guild");
+		} catch (SQLException e){
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e){
+				throw new RuntimeException(e.getMessage());
+			}
 		}
+		
+		if (guildName == null) return null;
 		
 		Guild guild = new Guild(guildName);
 		
-		// Removes guild from file if the guild no longer exists
-		if (!guild.exists()){
-			DataFile.GUILDS.getConfig().set("guild." + this.getUniqueId(), null);
-			return null;
-		} else {
+		if (guild.exists()){
 			return guild;
+		} else {
+			return null;
 		}
 	}
 	
@@ -740,7 +762,7 @@ public class UPlayer {
 	}
 	
 	public void leaveGuild(){
-		DataFile.GUILDS.getConfig().set("guild." + this.getUniqueId(), null);
+		throw new UnsupportedOperationException(); // TODO Add leaveGuild() method
 	}
 	
 	public boolean onGround(){

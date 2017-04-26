@@ -37,7 +37,7 @@ public class PlayerInfo {
 	 * commands_executed - int - 0
 	 */
 	
-	private static final String TABLE_NAME = "player_info_2";
+	public static final String TABLE_NAME = "player_info_2";
 	
 	public static final Map<UUID, Integer> RIGHT_CLICKED = new HashMap<>();
 	public static final Map<UUID, Integer> LEFT_CLICKED = new HashMap<>();
