@@ -55,9 +55,9 @@ public class ServerInfo {
 						
 						+ "ON DUPLICATE KEY UPDATE "
 						+ "time=?," //7
-						+ "tps=?" //8
-						+ "players_online=?" //9
-						+ "autorestart_count=autorestart_count+?" //10
+						+ "tps=?," //8
+						+ "players_online=?," //9
+						+ "autorestart_count=autorestart_count+?," //10
 						+ "database_requests=database_requests+?;"); //11
 			
 			statement.setString(1, DUMMY);
