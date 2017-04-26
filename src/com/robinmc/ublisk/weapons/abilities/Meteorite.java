@@ -22,7 +22,7 @@ public class Meteorite extends Ability {
 	}
 
 	@Override
-	public void run(final UPlayer player) throws Exception {
+	public void run(final UPlayer player) {
 		Block clickedBlock = player.getTargetBlock(50);
 		if (clickedBlock.getType().equals(Material.AIR)){
 			return;

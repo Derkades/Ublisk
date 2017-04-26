@@ -12,7 +12,7 @@ public class PewPew extends Ability {
 	}
 
 	@Override
-	public void run(final UPlayer player) throws Exception {
+	public void run(final UPlayer player) {
 		
 		Ublisk.createFakeExplosion(player.getTargetBlock(35).getLocation(), 20, 6, true, Explosion.BLAST_LARGE);
 	}
