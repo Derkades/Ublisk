@@ -196,31 +196,7 @@ public class Guild {
 		}
 	}
 	
-	public List<OfflinePlayer> getMembers(){
-		/*List<OfflinePlayer> list = new ArrayList<OfflinePlayer>();
-		for (String key : DataFile.GUILDS.getConfig().getConfigurationSection("guild").getKeys(false)){
-			if (DataFile.GUILDS.getConfig().getString("guild." + key).equalsIgnoreCase(this.getName())){
-				UUID uuid = UUID.fromString(key);
-				list.add(Bukkit.getOfflinePlayer(uuid));
-			}
-		}
-		return list;*/
-		/*
-		List<OfflinePlayer> list = new ArrayList<>();
-		
-		for (OfflinePlayer player : Bukkit.getOfflinePlayers()){
-			Guild guild = getGuild(player);
-			if (guild == null){
-				continue;
-			} else if (guild.getName().equals(this.getName())){
-				list.add(player);
-			} else {
-				continue;
-			}
-		}
-		
-		return list;*/
-		
+	public List<OfflinePlayer> getMembers(){	
 		List<OfflinePlayer> list = new ArrayList<>();
 		
 		Connection connection = null;
