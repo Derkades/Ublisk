@@ -9,7 +9,6 @@ import com.robinmc.ublisk.DataFile.SaveFiles;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.database.AddTrackersInfoToQueue;
 import com.robinmc.ublisk.database.ProcessQueue;
-import com.robinmc.ublisk.utils.Lag;
 
 public enum Task {
 	
@@ -29,7 +28,6 @@ public enum Task {
 	SPAWN_RANDOM_LOOT(new SpawnRandomLoot(), 5*60*20, 5*60*20, false),
 	UPDATE_BACKPACK_NAME(new UpdateBackpackName(), 0, 5*20, false),
 	UPDATE_INFO(new AddTrackersInfoToQueue(), 10*20, 30*20, false),
-	TPS_UPDATE(new Lag(), 100, 1, false),
 	
 	PROCESS_QUEUE(new ProcessQueue(), 10*20, 2*20, false),
 	
