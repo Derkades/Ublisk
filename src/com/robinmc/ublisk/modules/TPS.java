@@ -41,7 +41,6 @@ public class TPS extends UModule {
 		
 		public static int tickCount = 0;
 		public static long[] tick = new long[600];
-		public static long lastTick = 0L;
 
 		public static double getTPS() {
 			return getTPS(100);
@@ -56,11 +55,6 @@ public class TPS extends UModule {
 			long elapsed = System.currentTimeMillis() - tick[target];
 
 			return ticks / (elapsed / 1000.0D);
-		}
-
-		public static long getElapsed(int tickID) {
-			long time = tick[(tickID % tick.length)];
-			return System.currentTimeMillis() - time;
 		}
 
 		@Override
