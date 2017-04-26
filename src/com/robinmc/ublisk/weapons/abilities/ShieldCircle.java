@@ -18,7 +18,7 @@ public class ShieldCircle extends Ability {
 	}
 
 	@Override
-	public void run(final UPlayer player) {
+	public void run(final UPlayer player) throws Exception {
 		new BukkitRunnable() {
 
 			double t = Math.PI / 4;

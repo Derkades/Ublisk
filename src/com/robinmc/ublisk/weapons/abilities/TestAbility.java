@@ -19,7 +19,7 @@ public class TestAbility extends Ability {
 	}
 
 	@Override
-	public void run(final UPlayer player) {
+	public void run(final UPlayer player) throws Exception {
 		new BukkitRunnable() {
 
 			double t = 0;

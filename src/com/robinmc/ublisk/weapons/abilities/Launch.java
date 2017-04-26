@@ -16,7 +16,7 @@ public class Launch extends Ability {
 	}
 
 	@Override
-	public void run(UPlayer player) {
+	public void run(UPlayer player) throws Exception {
 		if (!player.onGround()){
 			player.sendMessage(ChatColor.RED + "You must be on a solid block to use this ability.");
 			return;
