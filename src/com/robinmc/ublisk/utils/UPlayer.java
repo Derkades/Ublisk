@@ -53,7 +53,6 @@ import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
-import com.robinmc.ublisk.utils.exception.NotEnoughManaException;
 import com.robinmc.ublisk.utils.exception.NotInATownException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.InvUtils;
@@ -505,14 +504,6 @@ public class UPlayer {
 	 */
 	public void setMana(int mana) {
 		player.setFoodLevel(mana);
-	}
-
-	@Deprecated
-	public void removeMana(int mana) throws NotEnoughManaException {
-		if (getMana() - mana < 0)
-			throw new NotEnoughManaException();
-
-		setMana(getMana() - mana);
 	}
 
 	public void setAfk(boolean setAfk) {
