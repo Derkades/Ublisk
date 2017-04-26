@@ -33,7 +33,7 @@ public class ShieldCircle extends Ability {
 					loc.add(x, y + 1.5, z);
 					Ublisk.spawnParticle(Particle.REDSTONE, loc, 255, 140, 0, 0);
 
-		                   for (Entity e : loc.getChunk().getEntities()){ //fix e = entity
+		                   for (final Entity e : loc.getChunk().getEntities()){ //fix e = entity
 					        	if (e.getLocation().distance(loc) < 1.0){
 					        		if (e.getType() == EntityType.PLAYER){
 					        			player.givePotionEffect(PotionEffectType.SATURATION, 10*20, 1);
