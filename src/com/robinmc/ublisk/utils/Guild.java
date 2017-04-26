@@ -196,7 +196,7 @@ public class Guild {
 		}
 	}
 	
-	public List<OfflinePlayer> getMembers(){	
+	public synchronized List<OfflinePlayer> getMembers(){	
 		List<OfflinePlayer> list = new ArrayList<>();
 		
 		Connection connection = null;
