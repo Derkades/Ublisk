@@ -28,7 +28,6 @@ public class MobDrop {
 	 * @param item Item to be dropped
 	 * @param min Minimum for random item amount
 	 * @param max Maximum for random item amount
-	 * @param percentage Random chance (1-100)
 	 */
 	public MobDrop(ItemStack item, int min, int max){
 		this.min = min;
