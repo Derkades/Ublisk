@@ -78,6 +78,7 @@ public class Exp {
 	 *             If the entity specified is not in an area
 	 * @throws MobInfoMissingException
 	 */
+	@Deprecated
 	public static void giveMobExp(UPlayer player, Entity entity) throws MobNotFoundException {
 		com.robinmc.ublisk.mob.v2.Mob mob = Mobs.SPAWNED_MOBS.get(entity.getUniqueId());
 		String name = mob.getName();

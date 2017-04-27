@@ -43,7 +43,6 @@ public class Listeners {
 		PLAYER_DEATH(new PlayerDeath()),
 		
 		ENTITY_COMBUST(new EntityCombust()),
-		@Deprecated
 		ENTITY_DEATH(new EntityDeath()),
 		
 		ABILITIES(new AbilityListener()),
