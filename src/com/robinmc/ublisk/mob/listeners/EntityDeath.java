@@ -48,7 +48,9 @@ public class EntityDeath implements Listener {
 		Mob mob = Mobs.SPAWNED_MOBS.get(entity.getUniqueId());
 		
 		//Drop gold and items
-		for (MobDrop drop : mob.getMobDrops()) drop.drop(entity.getLocation());
+		if (mob.getMobDrops().length > 0){
+			for (MobDrop drop : mob.getMobDrops()) drop.drop(entity.getLocation());
+		}
 		for (MobDrop drop : mob.getGoldDrop().getMobDrops()) drop.drop(entity.getLocation());
 		
 		String name = mob.getName();
