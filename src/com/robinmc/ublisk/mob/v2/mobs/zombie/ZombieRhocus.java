@@ -16,7 +16,7 @@ public class ZombieRhocus extends Zombie {
 	
 	@Override
 	public Radius getArea() {
-		return new Radius(280, 90, 318, 60);
+		return new Radius(327, 80, 316, 100);
 	}
 
 	@Override
