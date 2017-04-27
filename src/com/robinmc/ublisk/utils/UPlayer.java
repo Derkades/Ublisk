@@ -299,6 +299,7 @@ public class UPlayer {
 		setXP(getXP() + xp);
 	}
 
+	@Deprecated
 	public void giveMobXP(Entity entity) throws MobNotFoundException {
 		Exp.giveMobExp(this, entity);
 	}

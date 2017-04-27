@@ -1,7 +1,7 @@
 package com.robinmc.ublisk.commands.ublisk;
 
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.mob.Mob;
+import com.robinmc.ublisk.mob.v2.Mobs;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 
@@ -10,7 +10,7 @@ public class RemoveMobsCommand extends UbliskCommand {
 	@Override
 	protected void onCommand(UPlayer player, String[] args) {
 		Ublisk.broadcastMessage(Message.ENTITIES_REMOVED);
-		Mob.removeMobs();
+		Mobs.clearMobs();
 	}
 
 	@Override
