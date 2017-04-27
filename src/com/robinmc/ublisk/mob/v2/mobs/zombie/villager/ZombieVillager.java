@@ -1,16 +1,13 @@
-package com.robinmc.ublisk.mob.type;
+package com.robinmc.ublisk.mob.v2.mobs.zombie.villager;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Villager.Profession;
 
 import com.robinmc.ublisk.mob.MobCode;
-import com.robinmc.ublisk.mob.MobType;
+import com.robinmc.ublisk.mob.v2.mobs.zombie.Zombie;
 
-@Deprecated
-public class ZombieVillager implements MobType {
-
-	private Profession profession = null;
+public abstract class ZombieVillager extends Zombie {
 	
 	@Override
 	public EntityType getEntityType() {
@@ -18,23 +15,22 @@ public class ZombieVillager implements MobType {
 	}
 
 	@Override
-	public MobCode getCode() {
+	public MobCode getMobCode() {
 		return new MobCode(){
 
 			@Override
 			public void mobCode(LivingEntity entity) {
 				entity.getEquipment().clear();
 				org.bukkit.entity.ZombieVillager zombie = (org.bukkit.entity.ZombieVillager) entity;
-				zombie.setBaby(false);
-				if (profession != null) zombie.setVillagerProfession(profession);
+				zombie.setBaby(isBaby());
+				if (getProfession() != null) zombie.setVillagerProfession(getProfession());
 			}
 			
 		};
 	}
 	
-	public ZombieVillager withProfession(Profession profession){
-		this.profession = profession;
-		return this;
-	}
+	public abstract Profession getProfession();
+	
+	public abstract boolean isBaby();
 
 }

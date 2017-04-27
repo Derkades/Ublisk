@@ -25,6 +25,7 @@ import com.robinmc.ublisk.mob.type.ZombieVillager;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.java.Random;
 
+@Deprecated
 public enum Mob {
 	
 	/*

@@ -5,6 +5,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.mob.Mob;
+import com.robinmc.ublisk.mob.v2.Mobs;
 import com.robinmc.ublisk.utils.Ublisk;
 
 public class RemoveMobs extends BukkitRunnable {
@@ -17,7 +18,8 @@ public class RemoveMobs extends BukkitRunnable {
 				Ublisk.broadcastPrefixedMessage("Clearing all mobs and items in 5 seconds!");
 				new BukkitRunnable(){
 					public void run(){
-						Mob.removeMobs();
+						//Mob.removeMobs();
+						Mobs.clearMobs();
 						Ublisk.broadcastMessage(Message.ENTITIES_REMOVED);
 					}
 				}.runTaskLater(Main.getInstance(), 5*20);

@@ -15,6 +15,7 @@ import com.robinmc.ublisk.mob.MobDrop;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 
+@Deprecated
 public class EntityDeath implements Listener {
 	
 	@EventHandler

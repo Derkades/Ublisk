@@ -33,9 +33,13 @@ public abstract class Zombie extends Mob {
 				equipment.setHelmet(air);
 				equipment.setItemInMainHand(air);
 				equipment.setItemInOffHand(air);
+				
+				zombie.setBaby(isBaby());
 			}
 			
 		};
 	}
+	
+	public abstract boolean isBaby();
 
 }

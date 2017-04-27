@@ -5,6 +5,7 @@ import org.bukkit.entity.EntityType;
 import com.robinmc.ublisk.mob.MobCode;
 import com.robinmc.ublisk.mob.MobType;
 
+@Deprecated
 public class Pig implements MobType {
 
 	@Override

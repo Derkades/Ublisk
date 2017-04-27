@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.mob;
 
+@Deprecated
 public class MobArea {
 
 	private Radius[] radius;

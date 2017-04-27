@@ -22,6 +22,7 @@ import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.java.Random;
 
+@Deprecated
 class SpawnMob {
 	
 	/**

@@ -10,6 +10,8 @@ import com.robinmc.ublisk.commands.Command;
 import com.robinmc.ublisk.database.SyncQueue;
 import com.robinmc.ublisk.listeners.Listeners;
 import com.robinmc.ublisk.mob.Mob;
+import com.robinmc.ublisk.mob.v2.MobSpawn;
+import com.robinmc.ublisk.mob.v2.Mobs;
 import com.robinmc.ublisk.modules.UModule;
 import com.robinmc.ublisk.task.Task;
 import com.robinmc.ublisk.utils.DoubleXP;
@@ -39,7 +41,9 @@ public class Main extends JavaPlugin {
 
 		Command.registerAll();
 
-		Mob.startMobSpawning();
+		//Mob.startMobSpawning();
+		Mobs.clearMobs();
+		MobSpawn.startMobSpawning();
 
 		for (Task task : Task.values())
 			task.start();

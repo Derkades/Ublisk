@@ -7,7 +7,6 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Voting;
 import com.robinmc.ublisk.ext.com.sethbling.blinghomingarrows.HomingArrowsListener;
 import com.robinmc.ublisk.mob.listeners.EntityCombust;
-import com.robinmc.ublisk.mob.listeners.EntityDamageByEntity;
 import com.robinmc.ublisk.mob.listeners.EntityDeath;
 import com.robinmc.ublisk.modules.AFK;
 import com.robinmc.ublisk.modules.ResourcePack;
@@ -44,7 +43,7 @@ public class Listeners {
 		PLAYER_DEATH(new PlayerDeath()),
 		
 		ENTITY_COMBUST(new EntityCombust()),
-		ENTITY_DAMAGE(new EntityDamageByEntity()),
+		@Deprecated
 		ENTITY_DEATH(new EntityDeath()),
 		
 		ABILITIES(new AbilityListener()),

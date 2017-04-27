@@ -10,6 +10,7 @@ import com.robinmc.ublisk.DataFile;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.mob.Mob;
+import com.robinmc.ublisk.mob.v2.Mobs;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.UnknownAreaException;
@@ -78,7 +79,7 @@ public class Exp {
 	 * @throws MobInfoMissingException
 	 */
 	public static void giveMobExp(UPlayer player, Entity entity) throws MobNotFoundException {
-		Mob mob = Mob.getMob(entity);
+		com.robinmc.ublisk.mob.v2.Mob mob = Mobs.SPAWNED_MOBS.get(entity.getUniqueId());
 		String name = mob.getName();
 		int xp = mob.getXP();
 

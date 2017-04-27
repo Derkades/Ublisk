@@ -7,6 +7,7 @@ import org.bukkit.entity.LivingEntity;
 import com.robinmc.ublisk.mob.MobCode;
 import com.robinmc.ublisk.mob.MobType;
 
+@Deprecated
 public class Sheep implements MobType {
 
 	private DyeColor color = DyeColor.WHITE;
