@@ -58,24 +58,18 @@ public abstract class Mob {
 	public List<LivingEntity> getAllLivingEntitiesOfType(){
 		List<LivingEntity> list = new ArrayList<LivingEntity>();
 		for (LivingEntity entity : Var.WORLD.getLivingEntities()){
-			if (this.equals(entity)){
-				list.add(entity);
+			if (Mobs.SPAWNED_MOBS.containsKey(entity.getUniqueId())){
+				Mob mob = Mobs.SPAWNED_MOBS.get(entity.getUniqueId());
+				if (mob.getName().equals(this.getName()) &&
+						mob.getHealth() == this.getHealth() &&
+						mob.getMinimumXP() == this.getMinimumXP() &&
+						mob.getMaximumXP() == this.getMaximumXP()){
+					list.add(entity);
+					
+				}
 			}
 		}
 		return list;
-	}
-	
-	@Override
-	public boolean equals(Object other){
-		if (other instanceof Mob){
-			Mob otherMob = (Mob) other;
-			return otherMob.getName().equals(this.getName()) &&
-					otherMob.getMinimumXP() == this.getMinimumXP() &&
-					otherMob.getMaximumXP() == this.getMaximumXP() &&
-					otherMob.getLevel() == this.getLevel();
-		} else {
-			return false;
-		}
 	}
 	
 	@Override
