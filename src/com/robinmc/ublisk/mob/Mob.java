@@ -1,30 +1,5 @@
 package com.robinmc.ublisk.mob;
 
-
-import static net.md_5.bungee.api.ChatColor.DARK_AQUA;
-import static net.md_5.bungee.api.ChatColor.DARK_GRAY;
-import static net.md_5.bungee.api.ChatColor.DARK_GREEN;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.bukkit.Material;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Villager.Profession;
-import org.bukkit.inventory.ItemStack;
-
-import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.mob.type.Chicken;
-import com.robinmc.ublisk.mob.type.Pig;
-import com.robinmc.ublisk.mob.type.Sheep;
-import com.robinmc.ublisk.mob.type.Zombie;
-import com.robinmc.ublisk.mob.type.ZombieVillager;
-import com.robinmc.ublisk.utils.exception.MobNotFoundException;
-import com.robinmc.ublisk.utils.java.Random;
-
 @Deprecated
 public enum Mob {
 	
@@ -57,7 +32,7 @@ public enum Mob {
 	 * NOTE: Do not create multiple mobs with the same level and name
 	 */
 	
-	SHEEP_LEVEL_1(new MobArea(
+	/*SHEEP_LEVEL_1(new MobArea(
 			new Radius(27, -50, 5), // Introduction
 			new Radius(29, -45, 2), // Introduction
 			new Radius(135, 85, 10)), // Route from Glaenor to Rhocus
@@ -211,6 +186,6 @@ public enum Mob {
 	
 	public static void startMobSpawning(){
 		SpawnMob.spawnMobs();
-	}
+	}*/
 
 }

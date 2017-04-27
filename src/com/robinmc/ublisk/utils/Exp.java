@@ -3,16 +3,11 @@ package com.robinmc.ublisk.utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.DataFile;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.mob.v2.Mobs;
-import com.robinmc.ublisk.utils.Logger.LogLevel;
-import com.robinmc.ublisk.utils.exception.MobNotFoundException;
-import com.robinmc.ublisk.utils.exception.UnknownAreaException;
 
 public class Exp {
 
@@ -62,36 +57,6 @@ public class Exp {
 	 */
 	public static int getLevel(Player player) {
 		return player.getLevel();
-	}
-
-	/**
-	 * Gives the player the amount of XP that is rewarded when the specified mob
-	 * is killed
-	 * 
-	 * @param Player
-	 * @param Mob
-	 *            type
-	 * @throws MobNotFoundException
-	 *             If the entity specified could not be associated with a Mob.
-	 * @throws UnknownAreaException
-	 *             If the entity specified is not in an area
-	 * @throws MobInfoMissingException
-	 */
-	@Deprecated
-	public static void giveMobExp(UPlayer player, Entity entity) throws MobNotFoundException {
-		com.robinmc.ublisk.mob.v2.Mob mob = Mobs.SPAWNED_MOBS.get(entity.getUniqueId());
-		String name = mob.getName();
-		int xp = mob.getXP();
-
-		if (DoubleXP.isActive()) { //If double XP is active
-			player.sendActionBarMessage(ChatColor.GOLD + "You have killed a " + name + " and got " + xp * 2 + " XP");
-			player.addXP(xp * 2);
-			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp * 2 + " for killing a " + name);
-		} else {
-			player.sendActionBarMessage(ChatColor.GREEN + "You have killed a " + name + " and got " + xp + " XP");
-			player.addXP(xp);
-			Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp + " for killing a " + name);
-		}
 	}
 
 	/**

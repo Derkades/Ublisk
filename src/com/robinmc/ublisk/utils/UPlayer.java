@@ -52,7 +52,6 @@ import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
-import com.robinmc.ublisk.utils.exception.MobNotFoundException;
 import com.robinmc.ublisk.utils.exception.NotInATownException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.InvUtils;
@@ -297,11 +296,6 @@ public class UPlayer {
 
 	public void addXP(int xp) {
 		setXP(getXP() + xp);
-	}
-
-	@Deprecated
-	public void giveMobXP(Entity entity) throws MobNotFoundException {
-		Exp.giveMobExp(this, entity);
 	}
 
 	public String getName() {
