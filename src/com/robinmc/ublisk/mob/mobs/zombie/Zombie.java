@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.mob.v2.mobs.zombie;
+package com.robinmc.ublisk.mob.mobs.zombie;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -6,8 +6,8 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 
+import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.mob.MobCode;
-import com.robinmc.ublisk.mob.v2.Mob;
 
 public abstract class Zombie extends Mob {
 	

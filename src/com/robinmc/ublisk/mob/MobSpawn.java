@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.mob.v2;
+package com.robinmc.ublisk.mob;
 
 import static org.bukkit.ChatColor.DARK_AQUA;
 import static org.bukkit.ChatColor.DARK_GRAY;
@@ -17,8 +17,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.mob.MobCode;
-import com.robinmc.ublisk.mob.Radius;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.Ublisk;

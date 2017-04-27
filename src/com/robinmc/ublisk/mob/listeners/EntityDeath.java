@@ -9,9 +9,9 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 import com.robinmc.ublisk.database.PlayerInfo;
+import com.robinmc.ublisk.mob.Mob;
 import com.robinmc.ublisk.mob.MobDrop;
-import com.robinmc.ublisk.mob.v2.Mob;
-import com.robinmc.ublisk.mob.v2.Mobs;
+import com.robinmc.ublisk.mob.Mobs;
 import com.robinmc.ublisk.utils.DoubleXP;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;

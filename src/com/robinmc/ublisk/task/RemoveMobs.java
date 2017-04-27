@@ -4,7 +4,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.mob.v2.Mobs;
+import com.robinmc.ublisk.mob.Mobs;
 import com.robinmc.ublisk.utils.Ublisk;
 
 public class RemoveMobs extends BukkitRunnable {

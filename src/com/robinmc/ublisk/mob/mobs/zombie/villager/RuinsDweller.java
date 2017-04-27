@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.mob.v2.mobs.zombie.villager;
+package com.robinmc.ublisk.mob.mobs.zombie.villager;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Villager.Profession;

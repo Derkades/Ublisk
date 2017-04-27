@@ -1,7 +1,7 @@
 package com.robinmc.ublisk.commands.ublisk;
 
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.mob.v2.Mobs;
+import com.robinmc.ublisk.mob.Mobs;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 

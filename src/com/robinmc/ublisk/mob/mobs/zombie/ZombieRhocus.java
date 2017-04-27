@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.mob.v2.mobs.zombie;
+package com.robinmc.ublisk.mob.mobs.zombie;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

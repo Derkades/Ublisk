@@ -1,11 +1,11 @@
-package com.robinmc.ublisk.mob.v2.mobs.zombie.villager;
+package com.robinmc.ublisk.mob.mobs.zombie.villager;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Villager.Profession;
 
 import com.robinmc.ublisk.mob.MobCode;
-import com.robinmc.ublisk.mob.v2.mobs.zombie.Zombie;
+import com.robinmc.ublisk.mob.mobs.zombie.Zombie;
 
 public abstract class ZombieVillager extends Zombie {
 	

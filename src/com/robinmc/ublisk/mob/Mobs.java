@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.mob.v2;
+package com.robinmc.ublisk.mob;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,8 +9,8 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.mob.v2.mobs.zombie.ZombieRhocus;
-import com.robinmc.ublisk.mob.v2.mobs.zombie.villager.RuinsDweller;
+import com.robinmc.ublisk.mob.mobs.zombie.ZombieRhocus;
+import com.robinmc.ublisk.mob.mobs.zombie.villager.RuinsDweller;
 
 public class Mobs {
 	
