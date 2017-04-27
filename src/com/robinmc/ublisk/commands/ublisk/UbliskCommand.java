@@ -35,7 +35,6 @@ public abstract class UbliskCommand {
 			new BlockIdCommand(),
 			new EntityListCommand(),
 			new FreezeCommand(),
-			new NBT(),
 			new RemoveInvisibleCommand(),
 			new RemoveLootCommand(),
 			new RemoveMobsCommand(),
