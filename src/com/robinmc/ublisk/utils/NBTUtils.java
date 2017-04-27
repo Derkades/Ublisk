@@ -9,6 +9,7 @@ import net.minecraft.server.v1_11_R1.NBTTagCompound;
 
 public class NBTUtils {
 	
+	@Deprecated
 	public static NBTTagCompound getEntityNBT(Entity entity){
 		NBTTagCompound compound = new NBTTagCompound();
 		CraftEntity craftEntity = (CraftEntity) entity;
@@ -17,6 +18,7 @@ public class NBTUtils {
 		return compound;
 	}
 	
+	@Deprecated
 	public static void applyNBTToEntity(Entity entity, NBTTagCompound compound){
 	    CraftEntity craft = ((CraftEntity) entity);
 	    net.minecraft.server.v1_11_R1.Entity nms = craft.getHandle();
