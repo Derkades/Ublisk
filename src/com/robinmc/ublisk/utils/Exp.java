@@ -15,8 +15,7 @@ public class Exp {
 	 * Set a player's experience points
 	 * 
 	 * @param Player
-	 * @param Number
-	 *            of experience points
+	 * @param Number of experience points
 	 */
 	public static void set(OfflinePlayer player, int n) {
 		DataFile.XP.getConfig().set("xp." + player.getUniqueId(), n);
@@ -30,7 +29,7 @@ public class Exp {
 	/**
 	 * Gets a player's XP as stored in file
 	 * 
-	 * @param Player
+	 * @param player Offline player
 	 * @return XP (not level!)
 	 */
 	public static int get(OfflinePlayer player) {
@@ -51,8 +50,7 @@ public class Exp {
 	/**
 	 * Get a player's level
 	 * 
-	 * @param A
-	 *            player
+	 * @param player
 	 * @return Player's level
 	 */
 	public static int getLevel(Player player) {
