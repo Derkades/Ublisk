@@ -17,7 +17,7 @@ public class Launch extends Ability {
 
 	@Override
 	public boolean run(UPlayer player) {
-		if (!player.onGround()){
+		if (!player.isOnGround()){
 			player.sendMessage(ChatColor.RED + "You must be on a solid block to use this ability.");
 			return false;
 		}
