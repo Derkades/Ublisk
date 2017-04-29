@@ -712,8 +712,17 @@ public class UPlayer {
 		Guild.leaveGuild(player);
 	}
 	
+	/**
+	 * Use isOnGround()
+	 * @return
+	 */
+	@Deprecated
 	public boolean onGround(){
 		return !player.isFlying() && player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType().isSolid();
+	}
+	
+	public boolean isOnGround() {
+		return player.isOnGround();
 	}
 	
 	public Block getTargetBlock(int range){
