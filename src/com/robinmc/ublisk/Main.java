@@ -18,6 +18,7 @@ import com.robinmc.ublisk.utils.Guild;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.PacketListener;
+import com.robinmc.ublisk.utils.RecipeUtils;
 import com.robinmc.ublisk.utils.TodoList;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
@@ -63,6 +64,8 @@ public class Main extends JavaPlugin {
 		for (UModule module : UModule.ALL_MODULES){
 			module.initialize();
 		}
+		
+		RecipeUtils.removeVanillaRecipes();
 		
 		new BukkitRunnable(){
 			public void run(){
