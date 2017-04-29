@@ -13,6 +13,7 @@ import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
@@ -94,7 +95,20 @@ public class MobSpawn {
 					Location loc = new Location(Var.WORLD, x, area.getY(), z);
 						
 					if (!loc.getChunk().isLoaded()){
-						Logger.log(LogLevel.INFO, "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because the chunk is not loaded.");
+						Logger.log(LogLevel.DEBUG, "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because the chunk is not loaded.");
+						return;
+					}
+					
+					boolean noPlayerNearby = true;
+					for (Player player : Var.WORLD.getEntitiesByClass(Player.class)){
+						if (player.getLocation().distanceSquared(loc) < 200){
+							noPlayerNearby = false;
+							break;
+						}
+					}
+					
+					if (noPlayerNearby){
+						Logger.log(LogLevel.DEBUG, "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because no players are nearby.");
 						return;
 					}
 
