@@ -69,7 +69,7 @@ public class MobSpawn {
 			new BukkitRunnable(){
 				public void run(){
 					if (Bukkit.getOnlinePlayers().size() == 0 || mob.hasReachedSpawnLimit()){
-						Logger.log(LogLevel.DEBUG, "Spawning of a " + mob.getName() + " has been cancelled, because this mob has reached its spawn limit or no players are online.");
+						Logger.log(LogLevel.DEBUG, "Mobs", "Spawning of a " + mob.getName() + " has been cancelled, because this mob has reached its spawn limit or no players are online.");
 						return;
 					}
 
@@ -101,13 +101,12 @@ public class MobSpawn {
 					Location loc = new Location(Var.WORLD, x, area.getY(), z);
 						
 					if (!loc.getChunk().isLoaded()){
-						Logger.log(LogLevel.DEBUG, "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because the chunk is not loaded.");
+						Logger.log(LogLevel.DEBUG, "Mobs", "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because the chunk is not loaded.");
 						return;
 					}
 					
 					boolean noPlayerNearby = true;
 					for (Player player : Var.WORLD.getEntitiesByClass(Player.class)){
-						Logger.log(LogLevel.INFO, player.getName() + " : " + mob.getName() + " : " + x  + " : " + z + " : " + Math.sqrt(player.getLocation().distanceSquared(loc)));
 						if (player.getLocation().distanceSquared(loc) < Math.pow(MAXIMUM_DISTANCE + area.getY(), 2)){
 							noPlayerNearby = false;
 							break;
@@ -115,7 +114,7 @@ public class MobSpawn {
 					}
 					
 					if (noPlayerNearby){
-						Logger.log(LogLevel.DEBUG, "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because no players are nearby.");
+						Logger.log(LogLevel.DEBUG, "Mobs", "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because no players are nearby.");
 						return;
 					}
 
