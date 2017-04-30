@@ -26,7 +26,7 @@ public class Mobs {
 			EntityType.PLAYER,
 			EntityType.ARMOR_STAND,
 			EntityType.VILLAGER,
-	})S;
+	});
 	
 	public static void clearMobs(){
 		SPAWNED_MOBS.clear();
