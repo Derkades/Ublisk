@@ -11,9 +11,14 @@ public class CustomMOTD extends UModule {
 	public static final MOTD[] MOTD_LIST = {
 			new MOTD(ChatColor.GREEN + "" + ChatColor.STRIKETHROUGH + "Wynncraft", ""),
 			new MOTD(ChatColor.MAGIC + "OIJAMOIDJMOSAIJCDMOAISJM", ChatColor.YELLOW + "Ok"),
-			new MOTD("hi", ""),
-			new MOTD(ChatColor.AQUA + "Ublisk is fantastic.", ChatColor.DARK_AQUA + "It really is!"),
-			new MOTD(ChatColor.RED + "Strong insanity end lands donkey anger attribute dinner series.", ""),
+			//new MOTD("hi", ""),
+			//new MOTD(ChatColor.AQUA + "Ublisk is fantastic.", ChatColor.DARK_AQUA + "It really is!"),
+			//new MOTD(ChatColor.RED + "Strong insanity end lands donkey anger attribute dinner series.", ""),
+			new MOTD(ChatColor.AQUA + "" + ChatColor.BOLD + "HEY! DUBBELKLIKKEN! NU!!", ""),
+			new MOTD("Ik zweer, volgende vakantie is het wel af!", ""),
+			new MOTD("oeblisk", ""),
+			new MOTD("Al gaat Josh nou wat bouwen, is de server sneller af.", ""),
+			new MOTD("Ublisk - Waar bungalowhuisjes middeleeuws zijn.", ""),
 	};
 	
 	@EventHandler
