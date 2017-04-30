@@ -46,7 +46,7 @@ public enum Command {
 	public static void registerAll() {
 		Logger.log(LogLevel.INFO, "Commands", "Registering commands...");
 		for (Command cmd : Command.values()) {
-			Logger.log(LogLevel.INFO, "Commands",
+			Logger.log(LogLevel.DEBUG, "Commands",
 					"Registered command with class " + cmd.getExecutor().getClass().getSimpleName());
 			String command = cmd.getCommand();
 			CommandExecutor executor = cmd.getExecutor();
