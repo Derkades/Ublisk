@@ -36,7 +36,7 @@ public class AFK extends UModule implements CommandExecutor {
 			for (UPlayer player : Ublisk.getOnlinePlayers()){
 				
 				if (!AFK_SECONDS.containsKey(player.getName())){
-					log(AFK.this, LogLevel.WARNING, "Player " + player.getName() + " not in AFK_SECONDS hashmap.");
+					log(AFK.this, LogLevel.DEBUG, "Player " + player.getName() + " not in AFK_SECONDS hashmap.");
 					resetHashMaps(player);
 					return;
 				}
