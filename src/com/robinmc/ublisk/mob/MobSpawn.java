@@ -50,6 +50,11 @@ public class MobSpawn {
 			Material.LEAVES_2
 			);
 	
+	/**
+	 * Maximum distance a player can to be away from a mob for it to spawn
+	 */
+	private static final int MAXIMUM_DISTANCE = 100;
+	
 	private static boolean MOB_SPAWNING_ACTIVE = false;
 	
 	public static void startMobSpawning(){
@@ -101,7 +106,8 @@ public class MobSpawn {
 					
 					boolean noPlayerNearby = true;
 					for (Player player : Var.WORLD.getEntitiesByClass(Player.class)){
-						if (player.getLocation().distanceSquared(loc) < 200){
+						Logger.log(LogLevel.INFO, player.getName() + " : " + mob.getName() + " : " + x  + " : " + z + " : " + Math.sqrt(player.getLocation().distanceSquared(loc)));
+						if (player.getLocation().distanceSquared(loc) < Math.pow(MAXIMUM_DISTANCE + area.getY(), 2)){
 							noPlayerNearby = false;
 							break;
 						}
@@ -112,7 +118,7 @@ public class MobSpawn {
 						return;
 					}
 
-					while(MOB_SPAWNING_AIR_BLOCKS.contains(loc.getBlock().getType())){
+					while (MOB_SPAWNING_AIR_BLOCKS.contains(loc.getBlock().getType())){
 						loc.setY(loc.getY() - 1);
 					}
 						
@@ -151,6 +157,8 @@ public class MobSpawn {
 						code.mobCode(entity);
 					
 					Mobs.SPAWNED_MOBS.put(entity.getUniqueId(), mob);
+					Logger.log(LogLevel.DEBUG, "Mobs", "Spawned a " + mob.getName() + " at (" + x + "," + loc.getY() + "," + z + ")");
+					
 				}
 			}.runTaskTimer(Main.getInstance(), 2*20, (long) rate);
 		}	
