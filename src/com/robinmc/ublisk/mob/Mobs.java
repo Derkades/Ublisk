@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.mob;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -21,11 +22,11 @@ public class Mobs {
 			new ZombieRhocus()
 	};
 	
-	public static final EntityType[] NON_MOB_ENTITIES = new EntityType[]{
+	public static final List<EntityType> NON_MOB_ENTITIES = Arrays.asList(new EntityType[]{
 			EntityType.PLAYER,
 			EntityType.ARMOR_STAND,
 			EntityType.VILLAGER,
-	};
+	})S;
 	
 	public static void clearMobs(){
 		SPAWNED_MOBS.clear();
