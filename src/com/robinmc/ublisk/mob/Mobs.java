@@ -21,6 +21,12 @@ public class Mobs {
 			new ZombieRhocus()
 	};
 	
+	public static final EntityType[] NON_MOB_ENTITIES = new EntityType[]{
+			EntityType.PLAYER,
+			EntityType.ARMOR_STAND,
+			EntityType.VILLAGER,
+	};
+	
 	public static void clearMobs(){
 		SPAWNED_MOBS.clear();
 		for (LivingEntity entity : Var.WORLD.getLivingEntities()){
