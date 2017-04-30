@@ -69,6 +69,7 @@ public class MobSpawn {
 			new BukkitRunnable(){
 				public void run(){
 					if (Bukkit.getOnlinePlayers().size() == 0 || mob.hasReachedSpawnLimit()){
+						Logger.log(LogLevel.DEBUG, "Spawning of a " + mob.getName() + " has been cancelled, because this mob has reached its spawn limit or no players are online.");
 						return;
 					}
 
