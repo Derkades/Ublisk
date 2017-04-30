@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -63,7 +64,13 @@ public class Ublisk {
 		String user = Var.DATABASE_USER;
 		String pass = Var.DATABASE_PASSWORD;
 		String db = Var.DATABASE_DB_NAME;
-		return DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + db, user, pass);	
+		
+		Properties properties = new Properties();
+		properties.setProperty("user", user);
+		properties.setProperty("password", pass);
+		properties.setProperty("useSSL", "false");
+		
+		return DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + db, properties);	
 	}
 	
 	public static void dealWithException(Exception exception, String message){
