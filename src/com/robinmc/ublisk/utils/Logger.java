@@ -23,7 +23,11 @@ public class Logger {
 
 		String consoleMessage = "[" + name + "] " + object;
 		String fileMessage = "[" + timeStamp + "] [" + logLevel + "] " + consoleMessage + "\n";
-		String chatMessage = ChatColor.GRAY + "[" + logLevel + "] " + consoleMessage;
+		String chatMessage;
+		if (logLevel == LogLevel.WARNING || logLevel == LogLevel.SEVERE)
+			chatMessage = ChatColor.RED + "[" + logLevel + "] " + consoleMessage;
+		else 
+			chatMessage = ChatColor.GRAY + "[" + logLevel + "] " + consoleMessage;
 
 		if (logLevel == LogLevel.SEVERE || logLevel == LogLevel.WARNING) {
 			System.err.println(consoleMessage);
