@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class TodoList {
 	
@@ -36,16 +37,26 @@ public class TodoList {
 
 	}
 	
+	private static String ip;
+	private static int port;
+	private static String database;
 	private static String user;
 	private static String password;
 	
-	public static void initialize(String user, String password){
+	public static void initialize(String ip, int port, String database, String user, String password){
+		TodoList.ip = ip;
+		TodoList.port = port;
+		TodoList.database = database;
 		TodoList.user = user;
 		TodoList.password = password;
 	}
 
 	private static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection("jdbc:mysql://192.168.1.107:3306/todo", user, password);
+		Properties properties = new Properties();
+		properties.setProperty("user", user);
+		properties.setProperty("password", password);
+		properties.setProperty("useSSL", "false");
+		return DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + database, properties);
 	}
 
 	public static List<TodoItem> getTodoItemsList() throws SQLException {

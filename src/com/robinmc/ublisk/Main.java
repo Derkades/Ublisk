@@ -51,7 +51,12 @@ public class Main extends JavaPlugin {
 		DoubleXP.startDoubleXPPacketListener();
 		Logger.startSiteLogger();
 		
-		TodoList.initialize(DataFile.MYSQL.getConfig().getString("todo.user"), DataFile.MYSQL.getConfig().getString("todo.password"));
+		TodoList.initialize(
+				DataFile.MYSQL.getConfig().getString("todo.ip"), 
+				DataFile.MYSQL.getConfig().getInt("todo.port"),
+				DataFile.MYSQL.getConfig().getString("todo.database"), 
+				DataFile.MYSQL.getConfig().getString("todo.user"), 
+				DataFile.MYSQL.getConfig().getString("todo.password"));
 		
 		Logger.log(LogLevel.INFO, "Guilds", "Deleting empty guilds...");
 		for (Guild guild : Guild.getGuildsList()){
