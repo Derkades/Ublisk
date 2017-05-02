@@ -7,59 +7,59 @@ depend: [Votifier, SidebarAPI, WorldEdit]
 website: http://ublisk.robinmc.com/
 
 commands:
-    menu:
-        description: Opens the main menu
-        usage: /<command>
-    debug:
-        description: Debugging command
-        usage: </command> [args] [args]
-        aliases: [ublisk]
-    help:
-        description: Shows help menu
-        usage: </command> [catagory]
-        aliases: [support]
-    credits:
-        description: Credits
-        usage: </command> [arguments]
-    suggest:
-        aliases: [contact, todo, suggestfeature, newfeature, features, feature, newfeatures, suggestfeatures, suggestion, suggestions, bug, bugs, reportbug, bugreport, admincontact, ownercontant, ask, apply, operatorhelp, ophelp, helpop, askop, askoperator, askmod, askadmin, askowner]
-    afk:
-        aliases: [away, brb, awayfromkeyboard, back]
-        description: I have no idea what to put here
-        usage: |
-          /afk - Toggles AFK mode
-    class:
-        usage: </command>
-    friends:
-        aliases: [friend, f, friendlist, friendslist]
-    mute:
-        aliases: [holdyourbekpls, stfu]
-    msg:
-        aliases: [w, write, tell, pm, mail, email, m, msg, message, privatem, pmessage,t]
-        description: Send private messages
-        usage: |
-          /tell [player] [message] - Send a player a private message
-          /r [message] - Quickly reply to the last person who sent you a message
-    builder:
-        usage: </command>
-    guild:
-        aliases: [guilds, g]
-        description: Create guilds and invite your friends.
-        usage: |
-          /guild create [name] - Create a guild
-          /guild leave - Leave the guild you're in
-          /guild invite [player] - Invite a player to your guild
-          /guild accept - Accept an invite
-          /guild list - List of all guilds sorted by points
-          /guild info [guild] - Display information about a guild
-    pack:
-        aliases: [resources, resource, resourcepack, texture, textures, texturepack]
-    voterestart:
-        aliases: [voteforrestart, restart]
-    ublisk:
-        aliases: [u, ub]
-        usage: 'Type /u for help'
-    stats:
-        aliases: [statistics, playerinfo]
-        usage: |
-          /stats
+  menu:
+    description: Opens the main menu
+    usage: /<command>
+  debug:
+    description: Debugging command
+    usage: </command> [args] [args]
+    aliases: [ublisk]
+  help:
+    description: Shows help menu
+    usage: </command> [catagory]
+    aliases: [support]
+  credits:
+    description: Credits
+    usage: </command> [arguments]
+  suggest:
+    aliases: [contact, todo, suggestfeature, newfeature, features, feature, newfeatures, suggestfeatures, suggestion, suggestions, bug, bugs, reportbug, bugreport, admincontact, ownercontant, ask, apply, operatorhelp, ophelp, helpop, askop, askoperator, askmod, askadmin, askowner]
+  afk:
+    aliases: [away, brb, awayfromkeyboard, back]
+    description: I have no idea what to put here
+    usage: |
+      /afk - Toggles AFK mode
+  class:
+    usage: </command>
+  friends:
+    aliases: [friend, f, friendlist, friendslist]
+  mute:
+    aliases: [holdyourbekpls, stfu]
+  msg:
+    aliases: [w, write, tell, pm, mail, email, m, msg, message, privatem, pmessage,t]
+    description: Send private messages
+    usage: |
+      /tell [player] [message] - Send a player a private message
+      /r [message] - Quickly reply to the last person who sent you a message
+  builder:
+    usage: </command>
+  guild:
+    aliases: [guilds, g]
+    description: Create guilds and invite your friends.
+    usage: |
+      /guild create [name] - Create a guild
+      /guild leave - Leave the guild you're in
+      /guild invite [player] - Invite a player to your guild
+      /guild accept - Accept an invite
+      /guild list - List of all guilds sorted by points
+      /guild info [guild] - Display information about a guild
+  pack:
+    aliases: [resources, resource, resourcepack, texture, textures, texturepack]
+  voterestart:
+    aliases: [voteforrestart, restart]
+  ublisk:
+    aliases: [u, ub]
+    usage: 'Type /u for help'
+  stats:
+    aliases: [statistics, playerinfo]
+    usage: |
+      /stats
