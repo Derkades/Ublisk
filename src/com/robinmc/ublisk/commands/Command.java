@@ -22,6 +22,7 @@ public enum Command {
 	MENU("menu", new Menu()),
 	MSG("msg", new MsgCommand()),
 	MUTE("mute", new MuteCommand()),
+	REPLY("reply", new ReplyCommand()),
 	SUGGEST("suggest", new SuggestCommand()),
 	VOTE_RESTART("voterestart", new VoteRestartCommand()),
 	
