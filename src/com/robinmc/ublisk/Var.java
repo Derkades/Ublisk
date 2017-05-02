@@ -100,5 +100,7 @@ public class Var {
 	public static final String DATABASE_USER = DataFile.MYSQL.getConfig().getString("user");
 	public static final String DATABASE_PASSWORD = DataFile.MYSQL.getConfig().getString("password"); //Admit it, you hoped the password would be here in plain text. Nope!
 	public static final String DATABASE_DB_NAME = DataFile.MYSQL.getConfig().getString("database");
+	
+	public static final String WEBSITE_ROOT = "https://ublisk.robinmc.com/";
 
 }

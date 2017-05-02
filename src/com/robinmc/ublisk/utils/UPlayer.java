@@ -744,6 +744,10 @@ public class UPlayer {
 	public Entity getEntity(){
 		return this.getPlayer();
 	}
+	
+	public String getStatsURL(){
+		return Var.WEBSITE_ROOT + "stats/player.php?" + this.getName();
+	}
 
 	@Override
 	public String toString() {
