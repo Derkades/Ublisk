@@ -59,3 +59,7 @@ commands:
     ublisk:
         aliases: [u, ub]
         usage: 'Type /u for help'
+    stats:
+        aliases: [statistics, playerinfo]
+        usage: |
+          /stats
