@@ -1,7 +1,8 @@
 name: Ublisk
 main: com.robinmc.ublisk.Main
 version: 6.9
-author: RobinMCDev
+author: Derkades
+authors: [Jerrijn, Sander, Casper]
 description: Ublisk plugin
 depend: [Votifier, SidebarAPI, WorldEdit]
 website: http://ublisk.robinmc.com/
