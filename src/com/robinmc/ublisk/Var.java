@@ -102,5 +102,8 @@ public class Var {
 	public static final String DATABASE_DB_NAME = DataFile.MYSQL.getConfig().getString("database");
 	
 	public static final String WEBSITE_ROOT = "https://ublisk.robinmc.com/";
+	
+	//public static final String GITHUB_LOGIN = DataFile.MYSQL.getConfig().getString("github.login");
+	public static final String GITHUB_ACCESS_TOKEN = DataFile.MYSQL.getConfig().getString("github.token");
 
 }
