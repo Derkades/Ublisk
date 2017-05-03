@@ -6,6 +6,13 @@
 	
 	<version>1.0.0</version>
 	<name>Ublisk</name>
+
+	<properties>
+		<jdk.version>1.8</jdk.version>
+		<github.version>1.85</github.version>
+		<worldedit.version>6.1.5</worldedit.version>
+		<spigot.version>1.11.2-R0.1-SNAPSHOT</spigot.version>
+	</properties>
 	
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -17,30 +24,116 @@
 				</excludes>
 			</resource>
 		</resources>
+
+		<!-- Plugins -->
+
 		<plugins>
+
 			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
 				<configuration>
-					<source/>
-					<target/>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+
+			<!--<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>com.robinmc.ublisk.Main</mainClass>
+								</transformer>
+							</transformers>
+							<artifactSet>
+								<excludes>
+									<exclude></exclude>
+								</excludes>
+							</artifactSet>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>-->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
 		</plugins>
+
 	</build>
+
+	<!-- Dependencies -->
 	
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.kohsuke/github-api -->
 		<dependency>
-			<groupId>org.kohsuke</groupId>
+			<groupId>org.kohsuke</groupId> <!-- GitHub API -->
 			<artifactId>github-api</artifactId>
-			<version>1.85</version>
+			<version>${github.version}</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.kohsuke</groupId>
-			<artifactId>github-api</artifactId>
-			<version>1.85</version>
+
+		<dependency> <!-- WorldEdit -->
+			<groupId>com.sk89q.worldedit</groupId>
+			<artifactId>worldedit-bukkit</artifactId>
+			<version>${worldedit.version}</version>
+			<scope>provided</scope>
 		</dependency>
+
+	    <dependency> <!--Spigot API-->
+	        <groupId>org.spigotmc</groupId>
+	        <artifactId>spigot-api</artifactId>
+	        <version>${spigot.version}</version>
+	        <scope>provided</scope>
+	    </dependency>
+
+	    <dependency> <!-- CraftBukkit for NMS -->
+            <groupId>org.bukkit</groupId>
+            <artifactId>craftbukkit</artifactId>
+            <version>${spigot.version}</version>
+            <scope>provided</scope>
+    	</dependency>
 	</dependencies>
+
+	<!-- Repositories -->
+	
+	<repositories>
+
+		<repository>
+			<id>sk89q</id>
+			<url>http://maven.sk89q.com/repo</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>spigot-repo</id>
+			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+		</repository>
+	</repositories>
+
 </project>
