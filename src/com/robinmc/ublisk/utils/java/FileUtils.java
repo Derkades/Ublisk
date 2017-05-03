@@ -1,7 +1,10 @@
 package com.robinmc.ublisk.utils.java;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 
 public class FileUtils {
 	
@@ -15,11 +18,19 @@ public class FileUtils {
 	}
 	
 	public static void appendStringToFile(File file, String string){
+		/*try {
+			org.apache.commons.io.FileUtils.writeStringToFile(file, string, Charset.defaultCharset(), true);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}*/
 		try {
-			org.apache.commons.io.FileUtils.writeStringToFile(file, string, true);
+			Writer writer = new BufferedWriter(new FileWriter(file, true));
+			writer.append(string);
+			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 }
