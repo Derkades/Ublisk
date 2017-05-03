@@ -16,7 +16,9 @@ public class GitHubModule extends UModule {
 	private static final String PREFIX = "[BOT]";
 	
 	private static GitHub github;
+	
 	private static GHRepository ubliskRepository;
+	private static GHRepository texturesRepository;
 	
 	private boolean initialized = false;
 	
@@ -52,8 +54,16 @@ public class GitHubModule extends UModule {
 		initialized = true;		
 	}
 	
+	public static GHRepository getUbliskRepository(){
+		return ubliskRepository;
+	}
+	
+	public static GHRepository getUbliskTexturesRepository(){
+		return texturesRepository;
+	}
+	
 	public static GHIssue createIssue(String description) throws IOException {
 		return ubliskRepository.createIssue(PREFIX + description).body(description + "").label("bot").create();
 	}
-	
+
 } 
