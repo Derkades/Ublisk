@@ -23,7 +23,9 @@ public class Item {
 	}
 	
 	public Item(String skullOwner){
-		item = new ItemBuilder(Material.SKULL_ITEM).setDamage(3).setSkullOwner(skullOwner).getItemStack();
+		item = new ItemStack(Material.SKULL_ITEM);
+		this.setDamage(3);
+		this.setSkullOwner(skullOwner);
 	}
 	
 	public Item setAmount(int amount){
