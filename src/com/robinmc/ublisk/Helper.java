@@ -4,23 +4,23 @@ public enum Helper {
 	
 	ROBINMC("RobinMC (Robin)", 
 			"https://goo.gl/Aay9Ry", 
-			"Plugin development, bug testing, landscaping, a bit of building, textures, quests, music"),
+			"Plugin development, bug testing, landscaping, a bit of building, textures, quests, abilities, music"),
 	
 	JARICK("EpicC4Build (Jarick)", 
 			"No link provided", 
-			"Main builder for Rhocus and Dawn Point"),
+			"Building (a lot of building)"),
 	
 	SANDERP("SenpaiSander (Sander)", 
 			"https://www.youtube.com/channel/UC7gVEC704565MNzCB6OS3Ew", 
-			"Building, quests, weapons, textures"),
+			"Building, quests, 3D models for weapons"),
 	
 	JERRIJN("Jerrijn (Jerrijn)", 
 			"No link provided", 
-			"Custom sword textures, ideas and inspiration"),
+			"3D models for weapons, abilities"),
 	
 	CHASPYR("Chaspyr (Casper)", 
 			"https://twitter.com/ItsChaspyr", 
-			"Building, bug testing, textures, complaining that he can't play yet"),
+			"A bit of building, bug testing, 3D models for weapons, complaining that he can't play yet"),
 	
 	/*GLITCHERDOTBE("GlitcherDOTbe", 
 			"http://www.planetminecraft.com/texture_pack/glitchs-3d-addons-pack-19/", 
@@ -32,7 +32,7 @@ public enum Helper {
 	
 	PARKER("MrParkerl11", 
 			"https://goo.gl/WFW9zm", 
-			"Built one windmill. Yep, that's it."),
+			"Built one windmill. Yep, that's it."), // Might remove him soon from this list
 	
 	SYDAN("SirSydan (Sydan)", 
 			"https://www.youtube.com/channel/UCFl5VN9R5uEszEoLrYgTOoA", 
@@ -42,13 +42,13 @@ public enum Helper {
 			"https://www.youtube.com/user/xisumavoid", 
 			"I used some of his modular resourcepacks in the Ublisk pack."),
 	
-	BREECKO("Breecko (Brecht)", 
+	/*BREECKO("Breecko (Brecht)", 
 			"https://www.youtube.com/channel/UC4Slc9O6dLsia_fWrgN8Q9Q", 
-			"A but of building, but mainly being awesome and motivating :D"),
+			"A bit of building, but mainly being awesome and motivating :D"),*/
 	
 	SANDER_GAMING("Sander_Gaming (Sander)", 
 			"https://www.youtube.com/channel/UCW-jqEMRdjgimFtarWZGGsg", 
-			"Providing me with his great humor while programming"),
+			"???"),
 	
 	LARISSA("LarissaMC (Larissa)", 
 			"No link provided", 
