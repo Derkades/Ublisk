@@ -74,7 +74,7 @@ public class GitHubModule extends UModule {
 	}
 	
 	public static GHIssue createIssue(String description) throws IOException {
-		return ubliskRepository.createIssue(PREFIX + description).body(description + "").label("bot").create();
+		return ubliskRepository.createIssue(PREFIX + " " + description).body(description + "").label("bot").create();
 	}
 
 } 
