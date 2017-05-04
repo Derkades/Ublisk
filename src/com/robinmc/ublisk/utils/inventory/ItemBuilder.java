@@ -9,8 +9,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import com.robinmc.ublisk.utils.UPlayer;
-
+@Deprecated
 public class ItemBuilder {
 	
 	private ItemStack item;
@@ -66,14 +65,6 @@ public class ItemBuilder {
 	
 	public ItemStack getItemStack(){
 		return item;
-	}
-	
-	public void addToInventory(UPlayer player){
-		player.getInventory().addItem(item);
-	}
-	
-	public void setItemInInventory(UPlayer player, int slot){
-		player.getInventory().setItem(slot, item);
 	}
 
 }
