@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.utils.inventory;
 
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 public class UInventory {
@@ -104,6 +105,16 @@ public class UInventory {
 	
 	public UInventory removeAllItemsWithType(Material material){
 		inv.remove(material);
+		return this;
+	}
+	
+	public UInventory setHelmet(Item helmet){
+		inv.setHelmet(helmet.getItemStack());
+		return this;
+	}
+	
+	public UInventory setHelmet(Material material){
+		inv.setHelmet(new ItemStack(material));
 		return this;
 	}
 
