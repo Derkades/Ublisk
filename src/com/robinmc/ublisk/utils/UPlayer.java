@@ -55,6 +55,7 @@ import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
 import com.robinmc.ublisk.utils.exception.NotInATownException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.InvUtils;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
@@ -172,8 +173,8 @@ public class UPlayer {
 		}
 	}
 
-	public PlayerInventory getInventory() {
-		return player.getInventory();
+	public UInventory getInventory() {
+		return new UInventory(player.getInventory());
 	}
 
 	public int getVotingPoints() {
