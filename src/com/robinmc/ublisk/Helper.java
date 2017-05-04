@@ -19,7 +19,7 @@ public enum Helper {
 			"3D models for weapons, abilities"),
 	
 	CHASPYR("Chaspyr (Casper)", 
-			"https://twitter.com/ItsChaspyr", 
+			"https://twitter.com/Chaspyrr", 
 			"A bit of building, bug testing, 3D models for weapons, complaining that he can't play yet"),
 	
 	/*GLITCHERDOTBE("GlitcherDOTbe", 
