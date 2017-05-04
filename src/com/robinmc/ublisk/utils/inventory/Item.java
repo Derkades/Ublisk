@@ -28,6 +28,10 @@ public class Item {
 		this.setSkullOwner(skullOwner);
 	}
 	
+	public Item(Material material) {
+		this.item = new ItemStack(material);
+	}
+
 	public Item setAmount(int amount){
 		item.setAmount(amount);
 		return this;
