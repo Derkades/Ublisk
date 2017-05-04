@@ -54,7 +54,7 @@ public class GitHubModule extends UModule {
 		Logger.log(LogLevel.DEBUG, "Initializing textures repository..");
 		
 		try {
-			ubliskRepository = github.getRepository("Derkades/UbliskTextures");
+			texturesRepository = github.getRepository("Derkades/UbliskTextures");
 		} catch (IOException e) {
 			Logger.log(LogLevel.SEVERE, "GitHub", "Failed to initialize repository");
 			e.printStackTrace();
