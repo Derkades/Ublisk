@@ -1,12 +1,15 @@
 package com.robinmc.ublisk.database;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 import org.bukkit.Bukkit;
+import org.kohsuke.github.GHIssueState;
 
+import com.robinmc.ublisk.modules.GitHubModule;
 import com.robinmc.ublisk.modules.TPS;
 import com.robinmc.ublisk.utils.Ublisk;
 
@@ -40,7 +43,16 @@ public class ServerInfo {
 		double tps = TPS.getAverageTPS();
 		int chunksLoaded = CHUNKS_LOADED;
 		CHUNKS_LOADED = 0;
-		
+		int openIssues;
+		int closedIssues;
+		try {
+			openIssues = GitHubModule.getUbliskRepository().getOpenIssueCount() + GitHubModule.getUbliskTexturesRepository().getOpenIssueCount();
+			closedIssues = GitHubModule.getUbliskRepository().getIssues(GHIssueState.CLOSED).size() + GitHubModule.getUbliskTexturesRepository().getIssues(GHIssueState.CLOSED).size();
+		} catch (IOException  | NullPointerException e){
+			openIssues = 0;
+			closedIssues = 0;
+			e.printStackTrace();
+		}
 		Connection connection = null;
 		PreparedStatement statement = null;
 		
@@ -55,16 +67,20 @@ public class ServerInfo {
 						+ "players_online," //4
 						+ "autorestart_count," //5
 						+ "database_requests," //6
-						+ "chunks_loaded) " //7
-						+ "VALUES (?, ?, ?, ?, ?, ?, ?)"
+						+ "chunks_loaded," //7
+						+ "open_issues," //8
+						+ "closed_issues) " //9
+						+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
 						
 						+ "ON DUPLICATE KEY UPDATE "
-						+ "time=?," //8
-						+ "tps=?," //9
-						+ "players_online=?," //10
-						+ "autorestart_count=autorestart_count+?," //11
-						+ "database_requests=database_requests+?," //12
-						+ "chunks_loaded=chunks_loaded+?;"); //13
+						+ "time=?," //10
+						+ "tps=?," //11
+						+ "players_online=?," //12
+						+ "autorestart_count=autorestart_count+?," //13
+						+ "database_requests=database_requests+?," //14
+						+ "chunks_loaded=chunks_loaded+?," //15
+						+ "open_issues=?," //16
+						+ "closed_issues=?;"); //17
 			
 			statement.setString(1, DUMMY);
 			statement.setString(2, time);
@@ -73,13 +89,17 @@ public class ServerInfo {
 			statement.setInt(5, autoRestart);
 			statement.setInt(6, databaseRequests);
 			statement.setInt(7, chunksLoaded);
+			statement.setInt(8, openIssues);
+			statement.setInt(9, openIssues);
 			
-			statement.setString(8, time);
-			statement.setDouble(9, tps);
-			statement.setInt(10, playersOnline);
-			statement.setInt(11, autoRestart);
-			statement.setInt(12, databaseRequests);
-			statement.setInt(13, chunksLoaded);
+			statement.setString(10, time);
+			statement.setDouble(11, tps);
+			statement.setInt(12, playersOnline);
+			statement.setInt(13, autoRestart);
+			statement.setInt(14, databaseRequests);
+			statement.setInt(15, chunksLoaded);
+			statement.setInt(16, openIssues);
+			statement.setInt(17, closedIssues);
 			
 			statement.execute();
 			
