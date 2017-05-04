@@ -123,6 +123,11 @@ public class UInventory {
 		return this;
 	}
 	
+	public UInventory remove(Item item){
+		inv.remove(item.getItemStack());
+		return this;
+	}
+	
 	public UInventory setHelmet(Item helmet){
 		inv.setHelmet(helmet.getItemStack());
 		return this;
