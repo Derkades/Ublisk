@@ -11,7 +11,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.utils.Logger;
@@ -19,7 +18,7 @@ import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
-import com.robinmc.ublisk.utils.inventory.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.Item;
 import com.robinmc.ublisk.utils.java.Random;
 import com.vexsoftware.votifier.model.Vote;
 import com.vexsoftware.votifier.model.VotifierEvent;
@@ -99,29 +98,24 @@ public class Voting implements Listener {
 			int xp = Voting.getRandomXP();
 			int life = Voting.getRandomLife();
 			
-			ItemStack goldItem = new ItemBuilder(Material.GOLD_NUGGET)
+			Item goldItem = new Item(Material.GOLD_NUGGET)
 					.setName(ChatColor.GOLD + "" + ChatColor.BOLD + "Gold: " + gold)
-					.setAmount(gold)
-					.getItemStack();
+					.setAmount(gold);
 			
-			ItemStack xpItem = new ItemBuilder(Material.EXP_BOTTLE)
+			Item xpItem = new Item(Material.EXP_BOTTLE)
 					.setName(ChatColor.GREEN + "" + ChatColor.BOLD + "XP: " + xp)
-					.setAmount(xp)
-					.getItemStack();
+					.setAmount(xp);
 			
-			ItemStack lifeItem = new ItemBuilder(Material.NETHER_STAR)
+			Item lifeItem = new Item(Material.NETHER_STAR)
 					.setName(ChatColor.BOLD + "Life Crystals: " + life)
-					.setAmount(life)
-					.getItemStack();
+					.setAmount(life);
 			
-			inv.setItem(12, goldItem);
-			inv.setItem(13, xpItem);
-			inv.setItem(14, lifeItem);
+			inv.setItem(12, goldItem.getItemStack());
+			inv.setItem(13, xpItem.getItemStack());
+			inv.setItem(14, lifeItem.getItemStack());
 			
 			if (gold !=0){
-				new ItemBuilder(Material.GOLD_NUGGET)
-				.setAmount(gold)
-				.addToInventory(player);
+				player.getInventory().addItem(Material.GOLD_NUGGET, gold);
 			}
 			
 			if (xp != 0){
