@@ -106,6 +106,11 @@ public class Item {
 		return item.getType();
 	}
 	
+	public Item setType(Material type){
+		item.setType(type);
+		return this;
+	}
+	
 	public ItemStack getItemStack(){
 		return item;
 	}
