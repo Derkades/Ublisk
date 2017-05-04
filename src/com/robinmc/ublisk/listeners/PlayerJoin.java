@@ -56,30 +56,28 @@ public class PlayerJoin implements Listener {
 		}
 		
 		player.tracker(PlayerInfo.JOIN_COUNT);
-        
-        String ip = player.getPlayer().getAddress().toString();
-        ip = ip.replace("/", "");
-        DataFile.IP.getConfig().set("ip." + uuid, ip);
-        
-        player.refreshXP();
-        
-        //If the player is not a Builder, Moderator or Owner disable builder mode to prevent griefing
-        PermissionGroup group = player.getGroup();
-        if (!(	group == PermissionGroup.BUILDER ||
-        		group == PermissionGroup.MODERATOR ||
-        		group == PermissionGroup.OWNER
-        		) &&
-        		player.isInBuilderMode()){
-        	player.setBuilderModeEnabled(false);
-        }
-        
-        new ItemBuilder(Material.CHEST)
-        		.setName(ChatColor.BLUE + "" + ChatColor.BOLD + "Menu")
-        		.setItemInInventory(player, 7);
-        		
-        player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
-        
-        new BukkitRunnable() {
+
+		String ip = player.getPlayer().getAddress().toString();
+		ip = ip.replace("/", "");
+		DataFile.IP.getConfig().set("ip." + uuid, ip);
+
+		player.refreshXP();
+
+		// If the player is not a Builder, Moderator or Owner disable builder mode to prevent griefing
+		PermissionGroup group = player.getGroup();
+		if (!(group == PermissionGroup.BUILDER || group == PermissionGroup.MODERATOR || group == PermissionGroup.OWNER)
+				&& player.isInBuilderMode()) {
+			player.setBuilderModeEnabled(false);
+		}
+
+		new ItemBuilder(Material.CHEST)
+		.setName(ChatColor.BLUE + "" + ChatColor.BOLD + "Menu")
+				.setItemInInventory(player, 7);
+
+		player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
+
+		new BukkitRunnable() {
+
 			public void run() {
 				for (int i = 0; i < 10; i++) {
 					player.sendMessage("");
@@ -99,9 +97,10 @@ public class PlayerJoin implements Listener {
 							.replace("#", ChatColor.AQUA + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar())
 							.replace(" ", ChatColor.DARK_AQUA + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()));
 				}
-				player.sendMessage(ChatColor.GRAY + "Welcome to Ublisk! If you find any bugs, please report them using /bug [description].");
+				player.sendMessage(ChatColor.GRAY
+						+ "Welcome to Ublisk! If you find any bugs, please report them using /bug [description].");
 			}
 		}.runTaskLater(Main.getInstance(), 4);
 	}
-	
+
 }
