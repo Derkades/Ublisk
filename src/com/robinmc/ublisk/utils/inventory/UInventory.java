@@ -98,6 +98,13 @@ public class UInventory {
 		return this;
 	}
 	
+	/**
+	 * {@link #addItem(Item)}
+	 */
+	public UInventory addItem(Material material, int amount){
+		return this.addItem(new Item(material, amount));
+	}
+	
 	public UInventory removeItem(Item item){
 		inv.remove(item.getItemStack());
 		return this;
