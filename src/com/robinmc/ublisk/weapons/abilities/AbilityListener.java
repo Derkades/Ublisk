@@ -24,7 +24,7 @@ public class AbilityListener implements Listener {
 		
 		if (action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK) {
 			for (Weapon weapon : weapons){
-				if (Weapon.itemStackIsWeapon(player.getInventory().getItemInMainHand(), weapon)){
+				if (Weapon.itemStackIsWeapon(player.getInventory().getItemInMainHand().getItemStack(), weapon)){
 					player.doAbility(weapon.getLeftClickAbility());
 				}
 			}
@@ -32,7 +32,7 @@ public class AbilityListener implements Listener {
 		
 		if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
 			for (Weapon weapon : weapons){
-				if (Weapon.itemStackIsWeapon(player.getInventory().getItemInMainHand(), weapon)){
+				if (Weapon.itemStackIsWeapon(player.getInventory().getItemInMainHand().getItemStack(), weapon)){
 					player.doAbility(weapon.getRightClickAbility());
 				}
 			}
