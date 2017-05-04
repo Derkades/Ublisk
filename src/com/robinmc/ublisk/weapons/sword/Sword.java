@@ -3,8 +3,7 @@ package com.robinmc.ublisk.weapons.sword;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.utils.inventory.InvUtils;
-import com.robinmc.ublisk.utils.inventory.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.Item;
 import com.robinmc.ublisk.weapons.Weapon;
 import com.robinmc.ublisk.weapons.WeaponRarity;
 import com.robinmc.ublisk.weapons.abilities.Ability;
@@ -28,10 +27,9 @@ public abstract class Sword extends Weapon {
 	}
 	
 	public ItemStack getItemStack(){
-		ItemStack item = new ItemBuilder(this.getMaterial())
+		Item item = new Item(this.getMaterial())
 				.setName(this.getColoredName())
-				.setLore(this.getLore())
-				.getItemStack();
+				.setLore(this.getLore());
 		
 		NBTTagList modifiers = new NBTTagList();
 
@@ -77,15 +75,15 @@ public abstract class Sword extends Weapon {
 			modifiers.add(knockback);
 		}
 		
-		NBTTagCompound compound = InvUtils.getCompound(item);
+		NBTTagCompound compound = item.getNBT();
 		
 		compound.set("AttributeModifiers", modifiers);
 		compound.setInt("HideFlags", 7);
 		compound.setBoolean("Unbreakable", true);
 		
-		ItemStack nbtItem = InvUtils.applyCompound(item, compound);
+		item.setNBT(compound);
 		
-		return nbtItem;
+		return item.getItemStack(); // TODO Return item instead of itemstack
 	}
 
 }
