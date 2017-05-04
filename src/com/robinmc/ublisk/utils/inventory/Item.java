@@ -16,7 +16,7 @@ import net.minecraft.server.v1_11_R1.NBTTagCompound;
 
 public class Item {
 	
-	public ItemStack item;
+	private ItemStack item;
 	
 	public Item(ItemStack item){
 		this.item = item;
