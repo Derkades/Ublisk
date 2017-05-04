@@ -52,7 +52,7 @@ public class UInventory {
 		return inv.contains(item.getItemStack(), amount);
 	}
 	
-	public boolean containsMaterial(Material material){
+	public boolean contains(Material material){
 		return inv.contains(material);
 	}
 	
