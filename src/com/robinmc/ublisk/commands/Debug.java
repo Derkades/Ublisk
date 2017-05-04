@@ -14,7 +14,7 @@ import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
-import com.robinmc.ublisk.utils.inventory.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.Item;
 import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 
@@ -88,7 +88,7 @@ public class Debug implements CommandExecutor {
 						player.getPlayer().openInventory(inv);
 						return true;
 					} else if (args[0].equals("skull")) {
-						new ItemBuilder(args[1]).addToInventory(player);
+						player.getInventory().addItem(new Item(args[1]));
 						return true;
 					} else if (args[0].equals("disablepl")){
 						Main.getInstance().getServer().getPluginManager().disablePlugin(Main.getInstance().getServer().getPluginManager().getPlugin(args[1]));
