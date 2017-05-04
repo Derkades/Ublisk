@@ -31,6 +31,10 @@ public class Item {
 		return this;
 	}
 	
+	public int getAmount(){
+		return item.getAmount();
+	}
+	
 	public Item setDamage(int i){
 		item.setDurability((short) i);
 		return this;
