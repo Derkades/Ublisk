@@ -31,6 +31,10 @@ public class Item {
 	public Item(Material material) {
 		this.item = new ItemStack(material);
 	}
+	
+	public Item(Material material, int amount) {
+		this.item = new ItemStack(material, amount);
+	}
 
 	public Item setAmount(int amount){
 		item.setAmount(amount);
