@@ -74,7 +74,7 @@ public class BlockLift extends Ability {
 							}
 						}, 2 * 20);
 					} else {
-						player.sendMessage("Can't lift block"); // TODO Fancy message
+						return;
 					}
 				}
 
