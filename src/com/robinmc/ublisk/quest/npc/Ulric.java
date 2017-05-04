@@ -4,7 +4,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Villager.Profession;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.Var;
@@ -12,6 +11,8 @@ import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.inventory.Item;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 import com.robinmc.ublisk.weapons.sword.wood.BasicWoodenSword;
 
 public class Ulric extends NPC {
@@ -39,7 +40,7 @@ public class Ulric extends NPC {
 	@Override
 	public void talk(UPlayer player){
 		QuestParticipant qp = player.getQuestParticipant(Quest.INTRODUCTION, this);
-		PlayerInventory inv = qp.getInventory();
+		UInventory inv = qp.getInventory();
 		
 		if (qp.inventoryContains(new ItemStack(Material.LOG, 10),
 			new ItemStack(Material.STRING, 16),
@@ -50,10 +51,10 @@ public class Ulric extends NPC {
 				return;
 			}
 			
-			inv.addItem(new BasicWoodenSword().getItemStack());
-			inv.remove(new ItemStack(Material.LOG, 10));
-			inv.remove(new ItemStack(Material.STRING, 16));
-			inv.remove(new ItemStack(Material.GOLD_NUGGET, 10));
+			inv.addItem(new Item(new BasicWoodenSword().getItemStack()));
+			inv.remove(Material.LOG, 10);
+			inv.remove(Material.STRING, 16);
+			inv.remove(Material.GOLD_NUGGET, 10);
 		} else {
 			qp.sendMessage("I can make a weapon for you if you bring me the required materials.");
 		}

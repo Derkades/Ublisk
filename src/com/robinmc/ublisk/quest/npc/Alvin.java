@@ -3,8 +3,6 @@ package com.robinmc.ublisk.quest.npc;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Villager.Profession;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.quest.NPC;
@@ -12,6 +10,7 @@ import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.QuestProgress;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 
 public class Alvin extends NPC {
 	
@@ -38,7 +37,7 @@ public class Alvin extends NPC {
 	@Override
 	public void talk(UPlayer player) {
 		QuestParticipant qp = player.getQuestParticipant(Quest.WATER_PROBLEM, this);
-		PlayerInventory inv = qp.getInventory();
+		UInventory inv = qp.getInventory();
 		
 		if (qp.getQuestCompleted()){
 			qp.sendMessage("I'm looking for the biggest rose in the world!");
@@ -48,7 +47,7 @@ public class Alvin extends NPC {
 		if (qp.getProgress(QuestProgress.DAM_REPORTED_BACK) && inv.contains(Material.LOG, 5)){
 			//If the player has 5 wood logs (last step)
 			qp.sendMessage("This will do the trick!");
-			inv.remove(new ItemStack(Material.LOG, 5)); //Remove the 5 wood logs
+			inv.remove(Material.LOG, 5); //Remove the 5 wood logs
 			qp.sendCompletedMessage(); //Send a message
 			qp.giveRewardExp(); //Give reward experience
 			qp.setQuestCompleted(true); //Set the quest as completed for this player
