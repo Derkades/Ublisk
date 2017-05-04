@@ -13,15 +13,15 @@ commands:
     usage: /<command>
   debug:
     description: Debugging command
-    usage: </command> [args] [args]
+    usage: /<command> [args] [args]
     aliases: [ublisk]
   help:
     description: Shows help menu
-    usage: </command> [catagory]
+    usage: /<command> [catagory]
     aliases: [support]
   credits:
     description: Credits
-    usage: </command> [arguments]
+    usage: /<command> [arguments]
   suggest:
     aliases: [contact, todo, suggestfeature, newfeature, features, feature, newfeatures, suggestfeatures, suggestion, suggestions, bug, bugs, reportbug, bugreport, admincontact, ownercontant, ask, apply, operatorhelp, ophelp, helpop, askop, askoperator, askmod, askadmin, askowner]
   afk:
@@ -30,7 +30,7 @@ commands:
     usage: |
       /afk - Toggles AFK mode
   class:
-    usage: </command>
+    usage: /<command>
   friends:
     aliases: [friend, f, friendlist, friendslist]
   mute:
@@ -42,7 +42,7 @@ commands:
       /tell [player] [message] - Send a player a private message
       /r [message] - Quickly reply to the last person who sent you a message
   builder:
-    usage: </command>
+    usage: /<command>
   guild:
     aliases: [guilds, g]
     description: Create guilds and invite your friends.
