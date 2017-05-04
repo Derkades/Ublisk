@@ -24,7 +24,7 @@ import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
-import com.robinmc.ublisk.utils.inventory.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.Item;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
 
@@ -70,9 +70,7 @@ public class PlayerJoin implements Listener {
 			player.setBuilderModeEnabled(false);
 		}
 
-		new ItemBuilder(Material.CHEST)
-		.setName(ChatColor.BLUE + "" + ChatColor.BOLD + "Menu")
-				.setItemInInventory(player, 7);
+		player.getInventory().set(7, new Item(Material.CHEST).setName(ChatColor.BLUE + "" + ChatColor.BOLD + "Menu"));
 
 		player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
 

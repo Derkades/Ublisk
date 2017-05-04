@@ -2,11 +2,11 @@ package com.robinmc.ublisk.mob.mobs.zombie.villager;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Villager.Profession;
-import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.mob.GoldDrop;
 import com.robinmc.ublisk.mob.MobDrop;
 import com.robinmc.ublisk.mob.Radius;
+import com.robinmc.ublisk.utils.inventory.Item;
 
 public class RuinsDweller extends ZombieVillager {
 
@@ -68,7 +68,7 @@ public class RuinsDweller extends ZombieVillager {
 	@Override
 	public MobDrop[] getMobDrops() {
 		return new MobDrop[]{
-				new MobDrop(new ItemStack(Material.ROTTEN_FLESH), 0, 2)
+				new MobDrop(new Item(Material.ROTTEN_FLESH), 0, 2)
 		};
 	}
 

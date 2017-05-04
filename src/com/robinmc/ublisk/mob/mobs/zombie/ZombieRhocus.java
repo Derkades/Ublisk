@@ -1,11 +1,11 @@
 package com.robinmc.ublisk.mob.mobs.zombie;
 
 import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.mob.GoldDrop;
 import com.robinmc.ublisk.mob.MobDrop;
 import com.robinmc.ublisk.mob.Radius;
+import com.robinmc.ublisk.utils.inventory.Item;
 
 public class ZombieRhocus extends Zombie {
 
@@ -62,8 +62,8 @@ public class ZombieRhocus extends Zombie {
 	@Override
 	public MobDrop[] getMobDrops() {
 		return new MobDrop[]{
-				new MobDrop(new ItemStack(Material.ROTTEN_FLESH), 0, 2),
-				new MobDrop(new ItemStack(Material.ROTTEN_FLESH), 2, 3)
+				new MobDrop(new Item(Material.ROTTEN_FLESH), 0, 2),
+				new MobDrop(new Item(Material.ROTTEN_FLESH), 2, 3)
 		};
 	}
 

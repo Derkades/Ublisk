@@ -1,14 +1,14 @@
 package com.robinmc.ublisk.mob;
 
 import org.bukkit.Location;
-import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.utils.inventory.Item;
 import com.robinmc.ublisk.utils.java.Random;
 
 public class MobDrop {
 	
-	private ItemStack item;
+	private Item item;
 	private int min = 9001;
 	private int max = 9001;
 	private int percentage;
@@ -18,7 +18,7 @@ public class MobDrop {
 	 * @param item Item to be dropped
 	 * @param percentage Random chance (1-100)
 	 */
-	public MobDrop(ItemStack item, int percentage){
+	public MobDrop(Item item, int percentage){
 		this.item = item;
 		this.percentage = percentage;
 	}
@@ -29,7 +29,7 @@ public class MobDrop {
 	 * @param min Minimum for random item amount
 	 * @param max Maximum for random item amount
 	 */
-	public MobDrop(ItemStack item, int min, int max){
+	public MobDrop(Item item, int min, int max){
 		this.min = min;
 		this.max = max;
 		this.item = item;
@@ -43,7 +43,7 @@ public class MobDrop {
 		
 		
 		if (canDrop()){
-			org.bukkit.entity.Item entity = Var.WORLD.dropItemNaturally(loc, item);
+			org.bukkit.entity.Item entity = Var.WORLD.dropItemNaturally(loc, item.getItemStack());
 			entity.setPickupDelay(10);
 		}
 	}
@@ -57,7 +57,7 @@ public class MobDrop {
 		return Random.getRandomDouble() <= d;
 	}
 	
-	public ItemStack getItemStack(){
+	public Item getItem(){
 		return item;
 	}
 

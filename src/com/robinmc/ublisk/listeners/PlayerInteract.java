@@ -14,7 +14,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -31,7 +30,8 @@ import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.URunnable;
-import com.robinmc.ublisk.utils.inventory.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.Item;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 
 public class PlayerInteract implements Listener {
 	
@@ -40,7 +40,7 @@ public class PlayerInteract implements Listener {
 		UPlayer player = new UPlayer(event);
 		Action action = event.getAction();
 		if (action == Action.RIGHT_CLICK_BLOCK || action == Action.RIGHT_CLICK_AIR){
-			PlayerInventory inv = player.getInventory();
+			UInventory inv = player.getInventory();
 			Material item = inv.getItemInMainHand().getType();
 			Material offhand = inv.getItemInOffHand().getType();
 			
@@ -166,7 +166,7 @@ public class PlayerInteract implements Listener {
 		};
 		
 		for (String string : strings) player.sendMessage(string);
-		player.getInventory().addItem(new ItemBuilder(Material.ANVIL).setName("Use this to rename the coal block.").getItemStack());
+		new UPlayer(player).getInventory().addItem(new Item(Material.ANVIL).setName("Use this to rename the coal block."));
 	}
 	
 	/*
