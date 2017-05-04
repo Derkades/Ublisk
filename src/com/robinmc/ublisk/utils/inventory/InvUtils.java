@@ -33,12 +33,14 @@ public class InvUtils {
         file.delete();
     }
     
+    @Deprecated
 	public static ItemStack applyCompound(ItemStack item, NBTTagCompound compound){
 		net.minecraft.server.v1_11_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
 		nms.setTag(compound);
 		return CraftItemStack.asBukkitCopy(nms);
 	}
 	
+    @Deprecated
 	public static NBTTagCompound getCompound(ItemStack item){
 		return CraftItemStack.asNMSCopy(item).getTag();
 	}
