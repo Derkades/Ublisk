@@ -13,7 +13,7 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.inventory.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.Item;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -46,7 +46,7 @@ public class CommandsHelp {
 		commands.put("Guilds", "guild");
 		
 		for (Entry<String, String> entry : commands.entrySet()){
-			ItemStack icon = new ItemBuilder(Material.INK_SACK).setDamage(8).getItemStack();
+			ItemStack icon = new Item(Material.INK_SACK).setDamage(8).getItemStack();
 			List<String> loreLines = new ArrayList<String>();
 			loreLines.add(getDescription(entry.getValue()));
 			

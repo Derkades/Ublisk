@@ -10,7 +10,7 @@ import com.robinmc.ublisk.money.MoneyItem;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.inventory.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.Item;
 
 public class MainMenu {
 	
@@ -45,9 +45,9 @@ public class MainMenu {
 	private static void fillMenu(UPlayer player){
 		menu.setOption(0, new ItemStack(Material.REDSTONE_COMPARATOR), "Settings", "Toggle various options on and off");
 		menu.setOption(1, new ItemStack(Material.PAPER), "Voting");
-		menu.setOption(2, new ItemBuilder(player.getName()).getItemStack(), "Friends");
-		menu.setOption(3, new ItemBuilder("MHF_Question").getItemStack(), "Help", "Help for commands and more");
-		menu.setOption(4, MoneyItem.BAR.getItem(), "Bank", "This will later be removed and", "replaced with a proper bank");
+		menu.setOption(2, new Item(player.getName()).getItemStack(), "Friends");
+		menu.setOption(3, new Item("MHF_Question").getItemStack(), "Help", "Help for commands and more");
+		menu.setOption(4, MoneyItem.BAR.getItem().getItemStack(), "Bank", "This will later be removed and", "replaced with a proper bank");
 	}
 
 }

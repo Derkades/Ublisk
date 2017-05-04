@@ -7,8 +7,8 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.iconmenus.MainMenu;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
-import com.robinmc.ublisk.utils.inventory.ItemBuilder;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.inventory.Item;
 
 public class HelpMenu {
 	
@@ -39,7 +39,7 @@ public class HelpMenu {
 	private static void fillMenu(){
 		int i = 0;
 		for (Value value : Value.values()){
-			ItemStack icon = new ItemBuilder(Material.INK_SACK).setDamage(8).getItemStack();
+			ItemStack icon = new Item(Material.INK_SACK).setDamage(8).getItemStack();
 			menu.setOption(i, icon, value.getName(), value.getDescription());
 			i++;
 		}
