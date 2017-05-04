@@ -1,9 +1,8 @@
 package com.robinmc.ublisk.money;
 
 import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
 
-import com.robinmc.ublisk.utils.inventory.ItemBuilder;
+import com.robinmc.ublisk.utils.inventory.Item;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -57,25 +56,24 @@ public enum MoneyItem {
 		return value;
 	}
 	
-	public ItemStack getItem(){
+	public Item getItem(){
 		return getItem(1);
 	}
 	
-	public ItemStack getItem(int amount){
+	public Item getItem(int amount){
 		int damage = 0;
 		if (this == MoneyItem.CHUNK){
 			damage = 11; //Yellow dye
 		}
 		
-		return new ItemBuilder(material)
+		return new Item(material)
 				.setName(ChatColor.GOLD + name)
 				.setLore(ChatColor.YELLOW + "Value: $" + value)
 				.setDamage(damage)
-				.setAmount(amount)
-				.getItemStack();
+				.setAmount(amount);
 	}
 	
-	public static MoneyItem fromItemStack(ItemStack item){
+	public static MoneyItem fromItem(Item item){
 		for (MoneyItem money : MoneyItem.values()){
 			if (money.getItem().getType() == item.getType()){
 				return money;

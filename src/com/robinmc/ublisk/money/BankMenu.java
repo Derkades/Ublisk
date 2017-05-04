@@ -1,13 +1,13 @@
 package com.robinmc.ublisk.money;
 
-import org.bukkit.inventory.PlayerInventory;
-
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.inventory.Item;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -18,14 +18,14 @@ public class BankMenu {
 		@Override
 		public void onOptionClick(OptionClickEvent event) {
 			UPlayer player = new UPlayer(event.getPlayer());
-			MoneyItem item = MoneyItem.fromItemStack(event.getItem());
+			MoneyItem item = MoneyItem.fromItem(new Item(event.getItem()));
 			
 			if (item == null){
 				player.sendMessage(Message.ERROR_MENU);
 				return;
 			}
 			
-			PlayerInventory inv = player.getInventory();
+			UInventory inv = player.getInventory();
 			
 			if (event.getName().contains("Deposit")){
 				if (!inv.contains(item.getItem())){
@@ -59,17 +59,17 @@ public class BankMenu {
 	
 	private static void fillMenu(UPlayer player){
 		menu.fillEdgesWithGlass();
-		menu.setOption(4, MoneyItem.BAR.getItem(),
+		menu.setOption(4, MoneyItem.BAR.getItem().getItemStack(),
 				ChatColor.GOLD + "" + ChatColor.BOLD + "Bank",
 				ChatColor.YELLOW + "Your balance: " + player.getMoney());
 		
-		menu.setOption(20, MoneyItem.NUGGET.getItem(), "Deposit", "Gold nugget");
-		menu.setOption(22, MoneyItem.COIN.getItem(), "Deposit", "Gold coin");
-		menu.setOption(24, MoneyItem.BAR.getItem(), "Deposit", "Gold bar");
+		menu.setOption(20, MoneyItem.NUGGET.getItem().getItemStack(), "Deposit", "Gold nugget");
+		menu.setOption(22, MoneyItem.COIN.getItem().getItemStack(), "Deposit", "Gold coin");
+		menu.setOption(24, MoneyItem.BAR.getItem().getItemStack(), "Deposit", "Gold bar");
 		
-		menu.setOption(29, MoneyItem.NUGGET.getItem(), "Withdraw", "Gold nugget");
-		menu.setOption(31, MoneyItem.COIN.getItem(), "Withdraw", "Gold coin");
-		menu.setOption(33, MoneyItem.BAR.getItem(), "Withdraw", "Gold bar");
+		menu.setOption(29, MoneyItem.NUGGET.getItem().getItemStack(), "Withdraw", "Gold nugget");
+		menu.setOption(31, MoneyItem.COIN.getItem().getItemStack(), "Withdraw", "Gold coin");
+		menu.setOption(33, MoneyItem.BAR.getItem().getItemStack(), "Withdraw", "Gold bar");
 		
 	}
 
