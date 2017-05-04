@@ -660,8 +660,8 @@ public class UPlayer {
 			return;
 		}
 		
-		if (this.isFrozen()){
-			return; // The player cannot do abilities while frozen
+		if (!this.abilitiesEnabled()){
+			return;
 		}
 
 		if (ability.getMinimumLevel() > player.getLevel()) {
@@ -748,6 +748,16 @@ public class UPlayer {
 	
 	public String getStatsURL(){
 		return Var.WEBSITE_ROOT + "stats/player.php?" + this.getName();
+	}
+	
+	private boolean abilitiesEnabled = true;
+	
+	public boolean abilitiesEnabled(){
+		return abilitiesEnabled;
+	}
+	
+	public void setAbilitiesEnabled(boolean enabled){
+		abilitiesEnabled = enabled;
 	}
 
 	@Override
