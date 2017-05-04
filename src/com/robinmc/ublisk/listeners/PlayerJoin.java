@@ -79,9 +79,7 @@ public class PlayerJoin implements Listener {
 		new BukkitRunnable() {
 
 			public void run() {
-				for (int i = 0; i < 10; i++) {
-					player.sendMessage("");
-				}
+				player.sendSpacers(10);
 
 				final String[] fancyStrings = new String[] {
 						"                       ", 
