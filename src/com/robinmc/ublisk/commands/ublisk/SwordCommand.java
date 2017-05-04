@@ -1,8 +1,8 @@
 package com.robinmc.ublisk.commands.ublisk;
 
-import org.bukkit.inventory.PlayerInventory;
-
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.inventory.Item;
+import com.robinmc.ublisk.utils.inventory.UInventory;
 import com.robinmc.ublisk.weapons.Weapon;
 import com.robinmc.ublisk.weapons.sword.Sword;
 
@@ -10,11 +10,11 @@ public class SwordCommand extends UbliskCommand {
 
 	@Override
 	protected void onCommand(UPlayer player, String[] args) {
-		PlayerInventory inv = player.getInventory();
+		UInventory inv = player.getInventory();
 
 		for (Weapon weapon : Weapon.getWeapons()) {
 			if (weapon instanceof Sword) {
-				inv.addItem(((Sword) weapon).getItemStack());
+				inv.addItem(new Item(((Sword) weapon).getItemStack()));
 			}
 		}
 	}
