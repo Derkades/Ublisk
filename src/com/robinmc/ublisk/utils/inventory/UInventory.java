@@ -56,7 +56,7 @@ public class UInventory {
 		return inv.contains(material);
 	}
 	
-	public boolean containsMaterial(Material material, int amount){
+	public boolean contains(Material material, int amount){
 		return inv.contains(material, amount);
 	}
 	
