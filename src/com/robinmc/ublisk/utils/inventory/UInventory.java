@@ -108,6 +108,11 @@ public class UInventory {
 		return this;
 	}
 	
+	public UInventory set(int slot, Item item){
+		inv.setItem(slot, item.getItemStack());
+		return this;
+	}
+	
 	public UInventory setHelmet(Item helmet){
 		inv.setHelmet(helmet.getItemStack());
 		return this;
