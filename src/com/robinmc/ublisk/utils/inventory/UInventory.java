@@ -112,6 +112,16 @@ public class UInventory {
 		inv.setItem(slot, item.getItemStack());
 		return this;
 	}
+
+	public UInventory remove(Material material, int amount){
+		inv.remove(new ItemStack(material, amount));
+		return this;
+	}
+	
+	public UInventory removeAll(Material material){
+		inv.remove(material);
+		return this;
+	}
 	
 	public UInventory setHelmet(Item helmet){
 		inv.setHelmet(helmet.getItemStack());
