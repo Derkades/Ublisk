@@ -46,7 +46,7 @@ public class ServerInfo {
 		int openIssues;
 		int closedIssues;
 		try {
-			openIssues = GitHubModule.getUbliskRepository().getOpenIssueCount() + GitHubModule.getUbliskTexturesRepository().getOpenIssueCount();
+			openIssues = GitHubModule.getUbliskRepository().getIssues(GHIssueState.OPEN).size() + GitHubModule.getUbliskTexturesRepository().getIssues(GHIssueState.OPEN).size();
 			closedIssues = GitHubModule.getUbliskRepository().getIssues(GHIssueState.CLOSED).size() + GitHubModule.getUbliskTexturesRepository().getIssues(GHIssueState.CLOSED).size();
 		} catch (IOException  | NullPointerException e){
 			openIssues = 0;
