@@ -33,6 +33,7 @@ public abstract class UbliskCommand {
 	
 	private static final UbliskCommand[] COMMANDS = {
 			new BlockIdCommand(),
+			new CustomItemCommand(),
 			new EntityListCommand(),
 			new FixGrassCommand(),
 			new FreezeCommand(),
