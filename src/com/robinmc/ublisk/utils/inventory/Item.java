@@ -11,6 +11,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import com.robinmc.ublisk.utils.Logger;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
+
 import net.minecraft.server.v1_11_R1.NBTBase;
 import net.minecraft.server.v1_11_R1.NBTTagCompound;
 
@@ -89,7 +92,12 @@ public class Item {
 	
 	public NBTTagCompound getNBT(){
 		net.minecraft.server.v1_11_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
-		return nms.getTag();
+		NBTTagCompound compound = nms.getTag();
+		if (compound == null){
+			return new NBTTagCompound();
+		} else {
+			return compound;
+		}
 	}
 	
 	public Item setNBT(NBTTagCompound nbtTagCompound){
