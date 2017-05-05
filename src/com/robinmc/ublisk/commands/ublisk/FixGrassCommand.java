@@ -1,6 +1,7 @@
 package com.robinmc.ublisk.commands.ublisk;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Location;
@@ -14,6 +15,45 @@ import net.md_5.bungee.api.ChatColor;
 
 public class FixGrassCommand extends UbliskCommand {
 
+	private static final List<Material> TRANSPARENT_BLOCKS = Arrays.asList(
+			Material.COBBLE_WALL,
+			Material.FENCE,
+			Material.FENCE_GATE,
+			Material.ACACIA_FENCE,
+			Material.ACACIA_FENCE_GATE,
+			Material.BIRCH_FENCE,
+			Material.BIRCH_FENCE_GATE,
+			Material.DARK_OAK_FENCE,
+			Material.DARK_OAK_FENCE_GATE,
+			Material.IRON_FENCE,
+			Material.JUNGLE_FENCE,
+			Material.JUNGLE_FENCE_GATE,
+			Material.NETHER_FENCE,
+			Material.SPRUCE_FENCE,
+			Material.SPRUCE_FENCE_GATE,
+			Material.IRON_TRAPDOOR,
+			Material.TRAP_DOOR,
+			Material.IRON_DOOR_BLOCK,
+			Material.WOODEN_DOOR,
+			Material.WOOD_DOOR,
+			Material.ACACIA_DOOR,
+			Material.BIRCH_DOOR,
+			Material.DARK_OAK_DOOR,
+			Material.JUNGLE_DOOR,
+			Material.SPRUCE_DOOR,
+			Material.LEAVES,
+			Material.LEAVES_2,
+			Material.ANVIL,
+			Material.TORCH,
+			Material.REDSTONE_TORCH_OFF,
+			Material.REDSTONE_TORCH_ON,
+			Material.GLASS,
+			Material.THIN_GLASS,
+			Material.STAINED_GLASS,
+			Material.STAINED_GLASS_PANE,
+			Material.END_ROD
+	);
+	
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCommand(UPlayer player, String[] args) {
@@ -33,7 +73,10 @@ public class FixGrassCommand extends UbliskCommand {
 				// If the block above a grass block is solid or if it's under water, change grass to dirt
 				if (block.getRelative(BlockFace.UP).getType().isSolid() ||
 						block.getRelative(BlockFace.UP).getType() == Material.WATER || 
-						block.getRelative(BlockFace.UP).getType() == Material.STATIONARY_WATER){ 
+						block.getRelative(BlockFace.UP).getType() == Material.STATIONARY_WATER){
+					if (TRANSPARENT_BLOCKS.contains(block.getType())){
+						return;
+					}
 					block.setType(Material.DIRT);
 					changed++;
 				}
