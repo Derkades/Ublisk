@@ -14,6 +14,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class FixGrassCommand extends UbliskCommand {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCommand(UPlayer player, String[] args) {
 		Location location = player.getLocation();
@@ -36,7 +37,7 @@ public class FixGrassCommand extends UbliskCommand {
 					block.setType(Material.DIRT);
 					changed++;
 				}
-			} else if (block.getType() == Material.DIRT){
+			} else if (block.getType() == Material.DIRT && block.getData() == 0){
 				if (block.getRelative(BlockFace.UP).getType() == Material.WATER || 
 						block.getRelative(BlockFace.UP).getType() == Material.STATIONARY_WATER){
 					// Don't do anything if the dirt block is under water
