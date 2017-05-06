@@ -70,13 +70,15 @@ public class FixGrassCommand extends UbliskCommand {
 		int changed = 0;
 		for (Block block : blocks){
 			if (block.getType() == Material.GRASS){
-				// If the block above a grass block is solid or if it's under water, change grass to dirt
-				if (block.getRelative(BlockFace.UP).getType().isSolid() ||
-						block.getRelative(BlockFace.UP).getType() == Material.WATER || 
+				// If the block above a grass block is under water, change grass to dirt
+				if (block.getRelative(BlockFace.UP).getType() == Material.WATER || 
 						block.getRelative(BlockFace.UP).getType() == Material.STATIONARY_WATER){
-					if (TRANSPARENT_BLOCKS.contains(block.getRelative(BlockFace.UP).getType())){
-						return;
-					}
+					block.setType(Material.DIRT);
+					changed++;
+				} else if (TRANSPARENT_BLOCKS.contains(block.getRelative(BlockFace.UP).getType())){
+					return;
+				} else if (block.getRelative(BlockFace.UP).getType().isSolid()){
+					// If the block above a grass block is solid, change grass to dirt
 					block.setType(Material.DIRT);
 					changed++;
 				}
