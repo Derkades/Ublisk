@@ -21,6 +21,7 @@ public abstract class UModule implements Listener {
 			new Groups(),
 			new PlayerFreeze(),
 			new PlayerLoginRoom(),
+			new PlayerLogins(),
 			new RandomTip(),
 			new ResetDoors(),
 			new ResourcePack(),
