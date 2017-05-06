@@ -21,6 +21,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
@@ -69,7 +70,7 @@ import net.minecraft.server.v1_11_R1.Packet;
 import net.minecraft.server.v1_11_R1.PacketPlayOutChat;
 import net.minecraft.server.v1_11_R1.PacketPlayOutGameStateChange;
 
-public class UPlayer {
+public class UPlayer implements ConfigurationSerializable {
 
 	private Player player;
 
@@ -760,6 +761,11 @@ public class UPlayer {
 		abilitiesEnabled = enabled;
 	}
 
+	@Override
+	public Map<String, Object> serialize() {
+		return null; // TODO Config serialization
+	}
+	
 	@Override
 	public String toString() {
 		return player.getUniqueId().toString();
