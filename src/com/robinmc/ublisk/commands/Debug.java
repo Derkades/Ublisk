@@ -12,11 +12,9 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.Item;
 import com.robinmc.ublisk.utils.perm.Permission;
-import com.robinmc.ublisk.utils.perm.PermissionGroup;
 
 public class Debug implements CommandExecutor {
 
