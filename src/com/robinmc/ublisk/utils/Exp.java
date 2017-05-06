@@ -89,6 +89,11 @@ public class Exp {
 				}
 			}, 10 * 20);
 		}
+		
+		if (player.getGuild() != null){
+			Guild guild = player.getGuild();
+			guild.setPoints(guild.getPoints() + 1);
+		}
 	}
 
 }
