@@ -92,7 +92,7 @@ public class Exp {
 		
 		if (player.getGuild() != null){
 			Guild guild = player.getGuild();
-			guild.setPoints(guild.getPoints() + 1);
+			guild.addPoints(1);
 		}
 	}
 
