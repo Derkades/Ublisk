@@ -75,19 +75,19 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency> <!--Spigot API-->
+		<!--<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
 			<version>${spigot.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency> <!-- CraftBukkit for NMS -->
+		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>craftbukkit</artifactId>
 			<version>${spigot.version}</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency>-->
 
 		 <dependency> <!-- Discord Java API -->
 			<groupId>com.github.austinv11</groupId>
@@ -124,10 +124,10 @@
 			</snapshots>
 		</repository>
 
-		<repository>
+		<!--<repository>
 			<id>spigot-repo</id>
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-		</repository>
+		</repository>-->
 
 		<repository>
 			<id>jcenter</id>
