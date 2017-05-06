@@ -40,6 +40,7 @@ public class PlayerLoginRoom extends UModule {
 		player.teleport(PORTAL_ROOM_LOCATION);
 		player.getPlayer().setFlying(false);
 		player.givePotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 15*20, 10);
+		player.setAbilitiesEnabled(false);
 	}
 	
 	@Override
@@ -111,6 +112,8 @@ public class PlayerLoginRoom extends UModule {
 			if (IN_PORTAL_ROOM.contains(player.getName())){
 				IN_PORTAL_ROOM.remove(player.getName());
 			}
+			
+			player.setAbilitiesEnabled(true);
 		}
 	}
 	
