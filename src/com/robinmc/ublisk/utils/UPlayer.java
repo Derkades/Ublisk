@@ -50,8 +50,6 @@ import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
-import com.robinmc.ublisk.utils.Logger.LogLevel;
-import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
 import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
 import com.robinmc.ublisk.utils.exception.NotInATownException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
@@ -198,11 +196,11 @@ public class UPlayer implements ConfigurationSerializable {
 	}
 
 	public PermissionGroup getGroup() {
-		try {
-			return PermissionGroup.fromString(DataFile.PERMISSIONS.getConfig().getString("groups." + this.getUniqueId()));
-		} catch (GroupNotFoundException e) {
-			Logger.log(LogLevel.WARNING, "Permissions", "Could not get group of " + player.getName());
+		PermissionGroup group = PermissionGroup.fromString(DataFile.PERMISSIONS.getConfig().getString("groups." + this.getUniqueId()));
+		if (group == null){
 			return PermissionGroup.DEFAULT;
+		} else {
+			return group;
 		}
 	}
 

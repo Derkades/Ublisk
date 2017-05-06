@@ -3,8 +3,6 @@ package com.robinmc.ublisk.utils.perm;
 import java.util.Arrays;
 import java.util.List;
 
-import com.robinmc.ublisk.utils.exception.GroupNotFoundException;
-
 public enum PermissionGroup {
 	
 	DEFAULT("Default", "&7&lMember&8:"),
@@ -48,14 +46,13 @@ public enum PermissionGroup {
 		return permissions.contains(perm);
 	}
 	
-	public static PermissionGroup fromString(String string) throws GroupNotFoundException{
+	public static PermissionGroup fromString(String string) {
 		for (PermissionGroup group : PermissionGroup.values()){
 			if (group.getName().equalsIgnoreCase(string)){
 				return group;
 			}
 		}
-		
-		throw new GroupNotFoundException();
+		return null;
 	}
 
 }
