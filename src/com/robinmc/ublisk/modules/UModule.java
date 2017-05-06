@@ -14,11 +14,12 @@ public abstract class UModule implements Listener {
 	
 	public static final UModule[] ALL_MODULES = {
 			new AFK(),
+			new AutoRestart(),
 			new CustomMOTD(),
+			new DiscordBot(),
 			new GitHubModule(),
 			new Groups(),
 			new PlayerFreeze(),
-			new AutoRestart(),
 			new PlayerLoginRoom(),
 			new RandomTip(),
 			new ResetDoors(),
