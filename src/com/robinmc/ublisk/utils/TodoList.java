@@ -83,10 +83,10 @@ public class TodoList {
 		} catch (SQLException e) {
 			throw e;
 		} finally {
-			result.close();
-			select.close();
+			if (result != null) result.close();
+			if (select != null) select.close();
 
-			connection.close();
+			if (connection != null) connection.close();
 		}
 
 		return list;
@@ -105,8 +105,8 @@ public class TodoList {
 		} catch (SQLException e) {
 			throw e;
 		} finally {
-			insert.close();
-			connection.close();
+			if (insert != null) insert.close();
+			if (connection != null) connection.close();
 		}
 	}
 	
@@ -122,8 +122,8 @@ public class TodoList {
 		} catch (SQLException e){
 			throw e;
 		} finally {
-			delete.close();
-			connection.close();
+			if (delete != null) delete.close();
+			if (connection != null) connection.close();
 		}
 	}
 
