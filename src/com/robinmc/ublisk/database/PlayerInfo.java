@@ -49,6 +49,8 @@ public class PlayerInfo {
 	public static final Map<UUID, Integer> INV_CLICK = new HashMap<>();
 	public static final Map<UUID, Integer> ENTITY_CLICK = new HashMap<>();
 	public static final Map<UUID, Integer> COMMANDS_EXECUTED = new HashMap<>();
+	public static final Map<UUID, Integer> ABILITIES = new HashMap<>();
+	public static final Map<UUID, Integer> BLOCKS_WALKED = new HashMap<>();
 	
 	public static void resetHashMaps(UPlayer player){
 		UUID uuid = player.getUniqueId();
@@ -62,6 +64,8 @@ public class PlayerInfo {
 		INV_CLICK.put(uuid, 0);
 		ENTITY_CLICK.put(uuid, 0);
 		COMMANDS_EXECUTED.put(uuid, 0);
+		ABILITIES.put(uuid, 0); // TODO Sync with database
+		BLOCKS_WALKED.put(uuid, 0); // TOOD Sync with database
 	}
 	
 	public static void syncWithDatabase(UPlayer player){
