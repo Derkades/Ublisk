@@ -13,6 +13,8 @@ import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.util.DiscordException;
+import sx.blah.discord.util.MissingPermissionsException;
+import sx.blah.discord.util.RateLimitException;
 
 public class DiscordBot extends UModule {
 	
@@ -43,9 +45,17 @@ public class DiscordBot extends UModule {
 		Player player = event.getPlayer();
 		String message = "[" + player.getName() + "] " + event.getMessage();
 		
-		IChannel channel = client.getChannelByID(310155421719724052L);
+		IChannel channel = client.getChannelByID("310155421719724052");
 		
-		channel.sendMessage(message);
+		try {
+			channel.sendMessage(message);
+		} catch (MissingPermissionsException e) {
+			e.printStackTrace();
+		} catch (RateLimitException e) {
+			e.printStackTrace();
+		} catch (DiscordException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
