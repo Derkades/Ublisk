@@ -20,12 +20,11 @@ public class LifeCrystalInventory extends BukkitRunnable {
 					.setLore("You have " + player.getLifeCrystals() + " life crystals");
 			
 			if (player.isInBuilderMode()){
-				item.setType(Material.WOOD_AXE);
 				Item helmet = new Item(Material.GOLD_HELMET).setName(ChatColor.GOLD + "Builder's Helmet");
 				player.getInventory().setHelmet(helmet);
+			} else {
+				player.getInventory().set(8, item);
 			}
-			
-			player.getInventory().set(8, item);
 		}
 	}
 
