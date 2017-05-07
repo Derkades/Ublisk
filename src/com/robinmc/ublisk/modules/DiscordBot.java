@@ -20,6 +20,7 @@ import sx.blah.discord.util.RateLimitException;
 public class DiscordBot extends UModule {
 	
 	private IDiscordClient client;
+	private boolean enabled = false;
 	
 	@Override
 	public void onEnable(Main plugin){
@@ -44,10 +45,16 @@ public class DiscordBot extends UModule {
 		}
 		
 		super.log(this, LogLevel.INFO, "Discord module has been initialized successfully!");
+		enabled = true;
 	}
 	
-	@EventHandler(priority = EventPriority.MONITOR)
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void onChat(AsyncPlayerChatEvent event){
+		if (!enabled){
+			super.log(this, LogLevel.DEBUG, "Skipping discord bot for this message - module has not been initialized successfully.");
+			return;
+		}
+		
 		Player player = event.getPlayer();
 		String message = "[" + player.getName() + "] " + event.getMessage();
 		
