@@ -704,8 +704,23 @@ public class UPlayer implements ConfigurationSerializable {
 		Guild.setGuild(guild, player);
 	}
 	
+	/**
+	 * @return The player's guild, or <kbd>null</kbd> if the player is not in a guild.
+	 */
 	public Guild getGuild(){
 		return Guild.getGuild(player);
+	}
+	
+	/**
+	 * @return "None" if player is not in a guild, otherwise a guild name.
+	 */
+	public String getGuildName(){
+		Guild guild = this.getGuild();
+		if (guild.getName() == null){
+			return "None";
+		} else {
+			return guild.getName();
+		}
 	}
 	
 	public void leaveGuild(){
