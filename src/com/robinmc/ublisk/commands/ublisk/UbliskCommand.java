@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.perm.PermissionGroup;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -66,6 +67,11 @@ public abstract class UbliskCommand {
 			}
 			
 			UPlayer player = new UPlayer(sender);
+			
+			if (player.getGroup() != PermissionGroup.BUILDER && player.getGroup() != PermissionGroup.MODERATOR && player.getGroup() != PermissionGroup.OWNER){
+				player.sendMessage("u no has permisions");
+				return true;
+			}
 			
 			if (args.length != 1){
 				player.sendMessage("/u <command>");
