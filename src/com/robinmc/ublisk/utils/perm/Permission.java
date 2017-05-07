@@ -6,7 +6,5 @@ public enum Permission {
 	COMMAND_MUTE,
 	
 	BUILDER_MODE,
-	
-	COMMANDLOG;
 
 }
