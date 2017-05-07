@@ -208,8 +208,8 @@ public class UPlayer implements ConfigurationSerializable {
 		DataFile.PERMISSIONS.getConfig().set("groups." + getUniqueId(), group.getName().toLowerCase());
 	}
 
-	public boolean hasPermission(Permission perm) {
-		return getGroup().hasPermission(perm);
+	public boolean hasPermission(Permission permission) {
+		return this.getGroup().getPermissions().contains(permission);
 	}
 
 	public Location getLocation() {

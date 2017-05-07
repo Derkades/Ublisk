@@ -27,17 +27,16 @@ public class Groups extends UModule {
 			chatColor = ChatColor.GRAY;
 		
 		int level = player.getLevel();
-		//String prefix = player.getGroup().getPrefix();
-		//String message = DARK_GRAY + "[" + GRAY + level + DARK_GRAY + "] " + prefix + " " + player.getName() + DARK_GRAY + ": " + chatColor + event.getMessage();
 		
 		BaseComponent[] message = new ComponentBuilder("")
 				.append("[").reset().color(ChatColor.DARK_GRAY)
 				.append(level + "").reset().color(ChatColor.GRAY)
 				.append("] ").reset().color(ChatColor.DARK_GRAY)
-				.append("Prefix")
-				.append(": ").reset().color(ChatColor.DARK_GRAY)
+				.append(player.getGroup().getName()).color(player.getGroup().getPrefixColor()).bold(player.getGroup().nameBold())
+				.append(":").reset().color(ChatColor.DARK_GRAY)
 				.append(" ")
-				.append(player.getName()).reset().event(new HoverEvent(
+				.append(player.getName()).reset().color(player.getGroup().getNameColor()).bold(player.getGroup().nameBold())
+					.event(new HoverEvent(
 						HoverEvent.Action.SHOW_TEXT,
 						new ComponentBuilder("XP: " + player.getXP()).color(ChatColor.AQUA)
 						.append("\n")
@@ -45,7 +44,7 @@ public class Groups extends UModule {
 						.append("\n\n")
 						.append("Click to open statistics").color(ChatColor.GRAY).italic(true)
 						.create()
-						)).event(new ClickEvent(
+					)).event(new ClickEvent(
 								ClickEvent.Action.OPEN_URL, player.getStatsURL()
 							))
 				.append(": ").reset().color(ChatColor.DARK_GRAY).bold(true)
