@@ -60,7 +60,6 @@ public class GuildCommand implements CommandExecutor {
 					if (guild.getMembers().size() <= 1){
 						player.sendPrefixedMessage("Guilds", "You left " + guild.getName() + ". Because you were the last player in the guild, your guild has been queued for deletion. If you regret leaving this guild, ask a staff member to add you back.");
 						player.leaveGuild();
-						guild.remove();
 						return true;
 					} else if (guild.getOwner().getUniqueId().equals(player.getUniqueId())){
 						player.sendMessage("You are owner of this guild. You can only leave this guild if you transfer ownership to another guild member.");
