@@ -716,7 +716,7 @@ public class UPlayer implements ConfigurationSerializable {
 	 */
 	public String getGuildName(){
 		Guild guild = this.getGuild();
-		if (guild.getName() == null){
+		if (guild == null){
 			return "None";
 		} else {
 			return guild.getName();
