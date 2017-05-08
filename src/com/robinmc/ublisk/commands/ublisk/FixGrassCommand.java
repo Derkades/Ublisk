@@ -51,7 +51,8 @@ public class FixGrassCommand extends UbliskCommand {
 			Material.THIN_GLASS,
 			Material.STAINED_GLASS,
 			Material.STAINED_GLASS_PANE,
-			Material.END_ROD
+			Material.END_ROD,
+			Material.SIGN
 	);
 	
 	@SuppressWarnings("deprecation")
