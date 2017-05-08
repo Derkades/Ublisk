@@ -37,6 +37,7 @@ public class Listeners {
 		INTERACT_ENTITY(new PlayerInteractEntity()),
 		CONSUME(new PlayerItemConsume()),
 		JOIN(new PlayerJoin()),
+		MOVE(new PlayerMove()),
 		QUIT(new PlayerQuit()),
 		PING_SERVER(new ServerListPing()),
 		SONG_END(new SongEnd()),

@@ -43,6 +43,7 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.VoteRestart;
+import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.modules.AFK;
 import com.robinmc.ublisk.modules.PlayerFreeze;
 import com.robinmc.ublisk.money.Money;
@@ -681,6 +682,8 @@ public class UPlayer implements ConfigurationSerializable {
 		}
 
 		if (ability.run(this)){
+			//If the ability casted successfully
+			PlayerInfo.ABILITIES.put(this.getUniqueId(), PlayerInfo.ABILITIES.get(this.getUniqueId()) + 1);
 			this.setMana(this.getMana() - ability.getMana());
 		}
 	}
