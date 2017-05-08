@@ -36,7 +36,7 @@ public class Jerrijn extends NPC {
 
 	@Override
 	public void talk(UPlayer player) {
-		player.sendMessage("Town: "+ player.getTown().getName());
+		player.sendMessage("Town: "+ player.getLastTown().getName());
 	}
 
 }

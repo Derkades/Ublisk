@@ -16,7 +16,7 @@ public class PlayerDeath implements Listener {
 	public void onDeath(PlayerDeathEvent event){
 		final UPlayer player = new UPlayer(event);
 		
-		event.setDeathMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + player.getName() + " died near " + player.getTown().getName());
+		event.setDeathMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + player.getName() + " died near " + player.getLastTown().getName());
 		
 		if (player.getLifeCrystals() > 0){
 			player.setLifeCrystals(player.getLifeCrystals() - 1);
@@ -36,7 +36,7 @@ public class PlayerDeath implements Listener {
 				player.setMana(20);
 				player.setMaxHealth(player.getCorrectMaxHealth());
 				player.setHealth(player.getCorrectMaxHealth());
-				player.teleport(player.getTown().getSpawnLocation());
+				player.teleport(player.getLastTown().getSpawnLocation());
 			}
 		}.runTaskLater(Main.getInstance(), 25L);
 	}

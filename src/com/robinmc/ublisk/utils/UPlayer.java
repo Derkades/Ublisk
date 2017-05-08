@@ -51,7 +51,6 @@ import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
 import com.robinmc.ublisk.quest.npcmenu.NPCMenu;
 import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
-import com.robinmc.ublisk.utils.exception.NotInATownException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.InvUtils;
 import com.robinmc.ublisk.utils.inventory.UInventory;
@@ -515,12 +514,9 @@ public class UPlayer implements ConfigurationSerializable {
 	}
 
 	/**
-	 * Please avoid using this, unless you are sure that you need this instead of UPlayer#getTown()
-	 * 
-	 * @throws NotInATownException
-	 *         If the player is not in a town
+	 * @return Town the player is currently in, or null if the player is not in one.
 	 */
-	public Town getCurrentTown() throws NotInATownException {
+	public Town getTown() {
 		for (Town town : Town.values()) {
 			Location loc = player.getLocation();
 			if (loc.getX() < town.lessX() && loc.getX() > town.moreX() && loc.getZ() < town.lessZ()
@@ -528,21 +524,32 @@ public class UPlayer implements ConfigurationSerializable {
 				return town;
 			}
 		}
-		throw new NotInATownException();
+		return null;
 	}
 
 	/**
-	 * Get last town
+	 * @return Current town, or last town if the player is no longer in a town.
 	 */
-	public Town getTown() {
+	public Town getLastTown() {
 		String s = DataFile.TOWN.getConfig().getString("last-town." + player.getUniqueId());
 
-		if (s == null)
+		if (s == null){
 			return Town.INTRODUCTION;
+		}
 
-		return Town.fromString(s);
+		Town town = Town.fromString(s);
+		
+		if (town == null){
+			return Town.INTRODUCTION;
+		}
+		
+		return town;
 	}
 
+	/**
+	 * You should not use this. It is called automatically every time the players enters a new town.
+	 * @param town
+	 */
 	public void setLastTown(Town town) {
 		DataFile.TOWN.getConfig().set("last-town." + player.getUniqueId(), town.getName());
 	}

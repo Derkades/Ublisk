@@ -41,7 +41,7 @@ public class Roy extends NPC {
 	public void talk(UPlayer player) {
 		QuestParticipant qp = new QuestParticipant(player.getPlayer(), Quest.UNKNOWN, this);
 		qp.sendMessage("Hoi " + player.getName() + ", ik ben Roy");
-		Town town = player.getTown();
+		Town town = player.getLastTown();
 		String townNaam = town.getName();
 		qp.sendMessage("Je bent in: " + townNaam);
 	}

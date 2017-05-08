@@ -52,7 +52,8 @@ public class PlayerJoin implements Listener {
 		
 		if (player.getSetting(Setting.PLAY_MUSIC)){
 			Town town = player.getTown();
-			town.playThemeToPlayer(player);
+			if (town != null)
+				town.playThemeToPlayer(player);
 		}
 		
 		player.tracker(PlayerInfo.JOIN_COUNT);

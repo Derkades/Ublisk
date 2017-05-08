@@ -76,7 +76,7 @@ public class PlayerInfo {
 			String rank = player.getGroup().getName();
 			String lastSeenDate = player.getLastSeenDate();
 			int level = player.getLevel();
-			String lastTown = player.getTown().getName();
+			String lastTown = player.getLastTown().getName();
 			
 			int rightClicked = RIGHT_CLICKED.get(uuid);
 			int leftClicked = LEFT_CLICKED.get(uuid);

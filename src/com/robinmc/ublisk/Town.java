@@ -78,7 +78,7 @@ public enum Town {
 	
 	public static Town fromString(String text) throws IllegalArgumentException {
 		if (text == null) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Town name can not be null");
 		}
 		
 		for (Town town: Town.values()) {
@@ -86,9 +86,7 @@ public enum Town {
 				return town;
 			}
 		}
-		
-		throw new IllegalArgumentException();
-		
+		return null;		
 	}
 	
 	public void playThemeToPlayer(UPlayer player){
