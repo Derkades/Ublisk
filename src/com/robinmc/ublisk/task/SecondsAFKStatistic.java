@@ -2,20 +2,22 @@ package com.robinmc.ublisk.task;
 
 import java.util.UUID;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.database.PlayerInfo;
+import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 
 public class SecondsAFKStatistic extends BukkitRunnable {
 
 	@Override
 	public void run() {
-		for (Player player : Bukkit.getOnlinePlayers()){
+		for (UPlayer player : Ublisk.getOnlinePlayers()){
 			UUID uuid = player.getUniqueId();
-			PlayerInfo.SECONDS_AFK.put(uuid, PlayerInfo.SECONDS_AFK.get(uuid) + 1);
-			PlayerInfo.SECONDS_NOT_AFK.put(uuid, PlayerInfo.SECONDS_NOT_AFK.get(uuid) + 1);
+			if (player.isAfk())
+				PlayerInfo.SECONDS_AFK.put(uuid, PlayerInfo.SECONDS_AFK.get(uuid) + 1);
+			else
+				PlayerInfo.SECONDS_NOT_AFK.put(uuid, PlayerInfo.SECONDS_NOT_AFK.get(uuid) + 1);
 		}
 	}
 
