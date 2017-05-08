@@ -12,6 +12,10 @@ public class PlayerMove implements Listener {
 	
 	@EventHandler
 	public void onMove(PlayerMoveEvent event){
+		if (!event.getPlayer().isOnGround()){
+			return;
+		}
+		
 		if (!event.getFrom().getBlock().equals(event.getTo().getBlock())){
 			UUID uuid = event.getPlayer().getUniqueId();
 			PlayerInfo.BLOCKS_WALKED.put(uuid, PlayerInfo.BLOCKS_WALKED.get(uuid) + 1);
