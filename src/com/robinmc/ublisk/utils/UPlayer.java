@@ -546,6 +546,18 @@ public class UPlayer implements ConfigurationSerializable {
 		
 		return town;
 	}
+	
+	/**
+	 * @return Town name if in one, otherwise "None"
+	 */
+	public String getTownName() {
+		Town town = this.getTown();
+		if (town == null){
+			return "None";
+		} else {
+			return town.getName();
+		}
+	}
 
 	/**
 	 * You should not use this. It is called automatically every time the players enters a new town.
