@@ -38,6 +38,7 @@ public abstract class UbliskCommand {
 			new EntityListCommand(),
 			new FixGrassCommand(),
 			new FreezeCommand(),
+			new GitHubCommand(),
 			new InvalidEntityCommand(),
 			new RemoveInvisibleCommand(),
 			new RemoveLootCommand(),
