@@ -118,6 +118,7 @@ public class Guild {
 		owner.setGuild(this);
 		
 		exists = true;
+		existsCached = true;
 		this.owner = owner.getPlayer();
 	}
 
