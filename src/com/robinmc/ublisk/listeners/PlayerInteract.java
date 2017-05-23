@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.Chest;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
@@ -20,6 +21,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import com.robinmc.ublisk.Clazz;
+import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
@@ -32,6 +34,8 @@ import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.URunnable;
 import com.robinmc.ublisk.utils.inventory.Item;
 import com.robinmc.ublisk.utils.inventory.UInventory;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class PlayerInteract implements Listener {
 	
@@ -217,6 +221,27 @@ public class PlayerInteract implements Listener {
 		        	}
 		        }.runTaskTimer(Main.getInstance(), 0, 20);
 			}
+		}
+	}
+	
+	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+	public void chestOpen(PlayerInteractEvent event){
+		if (event.getAction() != Action.RIGHT_CLICK_BLOCK ||
+				event.getClickedBlock().getType() != Material.CHEST)
+			return;
+		
+		UPlayer player = new UPlayer(event);
+		if (player.isInBuilderMode()){
+			//Skip check if player is in builder mode
+			player.sendMessage(ChatColor.RED + "Warning: Regular players won't be able to open this chest.");
+			return;
+		}
+		
+		//Now we know that the player has clicked on a chest.
+		Chest chest = (Chest) event.getClickedBlock().getState();
+		
+		if (!Loot.isLoot(chest)){
+			event.setCancelled(true); //Cancel chest right click if chest is not loot
 		}
 	}
 	
