@@ -83,6 +83,8 @@ public abstract class Sword extends Weapon {
 		
 		item.setNBT(compound);
 		
+		item.setDamage(this.getDamage());
+		
 		return item.getItemStack(); // TODO Return item instead of itemstack
 	}
 
