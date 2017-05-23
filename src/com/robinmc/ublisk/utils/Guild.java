@@ -36,6 +36,7 @@ public class Guild {
 	private boolean existsCached = false;
 	private int points = -1;
 	private OfflinePlayer owner;
+	private String description;
 
 	/**
 	 * Creates a new guild object. This guild may or may not exist.
@@ -332,6 +333,66 @@ public class Guild {
 		this.owner = owner;
 		
 		return owner;
+	}
+	
+	public synchronized void setDescription(String description){
+		this.description = description; //Update cached description value
+		
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Guilds description update");
+			statement = connection.prepareStatement("UPDATE guilds SET description=? WHERE name=?");
+			statement.setString(1, description);
+			statement.setString(2, name);
+			statement.executeUpdate();
+		} catch (SQLException e){
+			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to set description");
+			e.printStackTrace();
+		} finally {
+			try {
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public synchronized String getDescription(){
+		if (description != null){
+			return description;
+		}
+		
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+		
+		String description = null;
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Get description");
+			statement = connection.prepareStatement("SELECT description FROM guilds WHERE name=?");
+			statement.setString(1, name);
+			result = statement.executeQuery();
+			result.next();
+			description = result.getString("description");
+		} catch (SQLException e){
+			Logger.log(LogLevel.SEVERE, "Guilds", "A database error occured while trying to get description for " + this.getName());
+			e.printStackTrace();
+		} finally {
+			try {
+				if (result != null) result.close();
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+		}
+		
+		this.description = description;
+		
+		return description;
 	}
 
 	public synchronized static List<Guild> getGuildsList() {
