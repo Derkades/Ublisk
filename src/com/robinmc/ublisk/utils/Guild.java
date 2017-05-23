@@ -292,6 +292,9 @@ public class Guild {
 				e.printStackTrace();
 			}
 		}
+		
+		exists = false;
+		existsCached = false;
 	}
 	
 	public synchronized OfflinePlayer getOwner(){
