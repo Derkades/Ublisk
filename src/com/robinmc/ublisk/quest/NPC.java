@@ -1,8 +1,5 @@
 package com.robinmc.ublisk.quest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Location;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Villager.Profession;
@@ -10,6 +7,18 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import com.robinmc.ublisk.Var;
+import com.robinmc.ublisk.quest.npc.Alvin;
+import com.robinmc.ublisk.quest.npc.Arzhur;
+import com.robinmc.ublisk.quest.npc.Asher;
+import com.robinmc.ublisk.quest.npc.David;
+import com.robinmc.ublisk.quest.npc.Dianh;
+import com.robinmc.ublisk.quest.npc.Jerrijn;
+import com.robinmc.ublisk.quest.npc.Merek;
+import com.robinmc.ublisk.quest.npc.Rasmus;
+import com.robinmc.ublisk.quest.npc.Roy;
+import com.robinmc.ublisk.quest.npc.TestNPC;
+import com.robinmc.ublisk.quest.npc.Ulric;
+import com.robinmc.ublisk.quest.npc.Zoltar;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -18,6 +27,22 @@ import net.md_5.bungee.api.ChatColor;
 
 public abstract class NPC {
 	
+	private static final NPC[] NPC_LIST = new NPC[]{
+			new TestNPC(),
+			
+			new David(),
+			new Merek(),
+			new Ulric(),
+			new Arzhur(),
+			new Asher(),
+			new Rasmus(),
+			new Dianh(),
+			new Zoltar(),
+			new Alvin(),
+			
+			new Jerrijn(),
+			new Roy(),
+	};
 	
 	public abstract String getName();
 	
@@ -77,11 +102,8 @@ public abstract class NPC {
 		}
 	}
 	
-	public static List<NPC> getAllNPCs(){
-		List<NPC> list = new ArrayList<NPC>();
-		for (NPCEnum npc : NPCEnum.values())
-			list.add(npc.getNPC());
-		return list;
+	public static NPC[] getAllNPCs(){
+		return NPC_LIST;
 	}
 
 }

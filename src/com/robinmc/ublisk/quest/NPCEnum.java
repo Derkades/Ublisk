@@ -13,6 +13,7 @@ import com.robinmc.ublisk.quest.npc.TestNPC;
 import com.robinmc.ublisk.quest.npc.Ulric;
 import com.robinmc.ublisk.quest.npc.Zoltar;
 
+@Deprecated
 public enum NPCEnum {
 	
 	TEST_NPC(new TestNPC()),
