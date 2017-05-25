@@ -16,7 +16,9 @@ public class GitHubCommand extends UbliskCommand {
 	protected void onCommand(UPlayer player, String[] args) {
 		if (args.length == 0){
 			player.sendMessage("Wrong usage: /u " + this.getAliases()[0] + " [description]");
+			return;
 		}
+		
 		String description = String.join(" ", args);
 		
 		try {
