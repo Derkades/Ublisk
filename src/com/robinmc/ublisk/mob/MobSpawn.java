@@ -18,8 +18,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.utils.Logger;
-import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.java.Random;
 
@@ -69,7 +67,7 @@ public class MobSpawn {
 			new BukkitRunnable(){
 				public void run(){
 					if (Bukkit.getOnlinePlayers().size() == 0 || mob.hasReachedSpawnLimit()){
-						Logger.log(LogLevel.DEBUG, "Mobs", "Spawning of a " + mob.getName() + " has been cancelled, because this mob has reached its spawn limit or no players are online.");
+						//Logger.log(LogLevel.DEBUG, "Mobs", "Spawning of a " + mob.getName() + " has been cancelled, because this mob has reached its spawn limit or no players are online.");
 						return;
 					}
 
@@ -101,7 +99,7 @@ public class MobSpawn {
 					Location loc = new Location(Var.WORLD, x + 0.5, area.getY(), z + 0.5);
 						
 					if (!loc.getChunk().isLoaded()){
-						Logger.log(LogLevel.DEBUG, "Mobs", "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because the chunk is not loaded.");
+						//Logger.log(LogLevel.DEBUG, "Mobs", "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because the chunk is not loaded.");
 						return;
 					}
 					
@@ -114,7 +112,7 @@ public class MobSpawn {
 					}
 					
 					if (noPlayerNearby){
-						Logger.log(LogLevel.DEBUG, "Mobs", "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because no players are nearby.");
+						//Logger.log(LogLevel.DEBUG, "Mobs", "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because no players are nearby.");
 						return;
 					}
 
@@ -157,7 +155,7 @@ public class MobSpawn {
 						code.mobCode(entity);
 					
 					Mobs.SPAWNED_MOBS.put(entity.getUniqueId(), mob);
-					Logger.log(LogLevel.DEBUG, "Mobs", "Spawned a " + mob.getName() + " at (" + x + "," + loc.getY() + "," + z + ")");
+					//Logger.log(LogLevel.DEBUG, "Mobs", "Spawned a " + mob.getName() + " at (" + x + "," + loc.getY() + "," + z + ")");
 					
 				}
 			}.runTaskTimer(Main.getInstance(), 2*20, (long) rate);
