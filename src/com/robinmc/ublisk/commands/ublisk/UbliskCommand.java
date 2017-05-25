@@ -74,7 +74,7 @@ public abstract class UbliskCommand {
 				return true;
 			}
 			
-			if (args.length != 1){
+			if (args.length == 0){
 				player.sendMessage("/u <command>");
 				boolean alternatingColor = false;
 				for (UbliskCommand ubliskCommand : COMMANDS){
