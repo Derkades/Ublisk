@@ -13,7 +13,9 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.Guild;
 import com.robinmc.ublisk.utils.Guild.GuildInvite;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
+import com.robinmc.ublisk.utils.java.StringUtils;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -137,7 +139,6 @@ public class GuildCommand implements CommandExecutor {
 
 				return true;
 			} else if (args[0].equalsIgnoreCase("invite")) {
-				
 				if (player.getGuild() == null) {
 					player.sendPrefixedMessage("Guilds", "You are not in a guild.");
 					return true;
@@ -156,6 +157,27 @@ public class GuildCommand implements CommandExecutor {
 				
 				player.sendPrefixedMessage("Guilds", "You have invited " + target.getName() + " to your guild.");
 				
+				return true;
+			} else if (args[0].equalsIgnoreCase("rename")){
+				if (player.getGuild() == null){
+					player.sendPrefixedMessage("Guilds", "You are not in a guild.");
+					return true;
+				}
+				
+				if (!StringUtils.validateString(args[1])){
+					player.sendPrefixedMessage("Guilds", "Guild names can only contain alphanumerical characters and underscores (a-z, A-Z, 0-9, _)");
+					return true;
+				}
+				
+				Guild guild = new Guild(args[1]);
+				
+				if (guild.exists()){
+					player.sendPrefixedMessage("Guilds", "A guild with this name already exists.");
+					return true;
+				}
+				
+				guild.rename(args[1]);
+				player.sendPrefixedMessage("Guilds", "Your guild has been renamed to " + args[1]);
 				return true;
 			} else {
 				return false;
