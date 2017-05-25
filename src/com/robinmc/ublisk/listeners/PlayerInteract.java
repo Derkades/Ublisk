@@ -5,6 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
+import org.bukkit.craftbukkit.v1_11_R1.CraftChunk;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
@@ -36,6 +37,7 @@ import com.robinmc.ublisk.utils.inventory.Item;
 import com.robinmc.ublisk.utils.inventory.UInventory;
 
 import net.md_5.bungee.api.ChatColor;
+import net.minecraft.server.v1_11_R1.Chunk;
 
 public class PlayerInteract implements Listener {
 	
@@ -155,6 +157,9 @@ public class PlayerInteract implements Listener {
 					block.setType(Material.COAL_ORE);
 				}
 			}.runLater(1*20);
+		} else if (itemName.contains("lighting")){
+			Chunk chunk = ((CraftChunk) block.getChunk()).getHandle();
+			chunk.initLighting();
 		} else {
 			sendStaffToolInfoMessage(player);
 		}
@@ -166,7 +171,8 @@ public class PlayerInteract implements Listener {
 				"Mogelijke namen:",
 				"invis - Plaatst onzichtbaar block",
 				"farmland - Plaatst farmland met wheat",
-				"coal - Plaatst coal ore"
+				"coal - Plaatst coal ore",
+				"lighting - Force lighting updates in a chunk"
 		};
 		
 		for (String string : strings) player.sendMessage(string);
