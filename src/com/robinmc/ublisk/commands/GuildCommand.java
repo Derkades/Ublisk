@@ -13,7 +13,6 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.Guild;
 import com.robinmc.ublisk.utils.Guild.GuildInvite;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.java.StringUtils;
 
