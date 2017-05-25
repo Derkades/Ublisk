@@ -18,7 +18,7 @@ public enum MobOld {
 			new ZombieVillager().withProfession(Profession.FARMER), 4, 10, 2, 7, 7, "Ruins Dweller", 10, GoldDrop.LEVEL3,
 			new MobDrop(new ItemStack(Material.ROTTEN_FLESH), 0, 2)),
 	ZOMBIE_LEVEL_3(new MobArea(
-			new Radius(160, 89, 100), //TODO Merge into one big radius
+			new Radius(160, 89, 100),
 			new Radius(214, -66, 60),
 			new Radius(111, 19, 50)),
 			new Zombie(), 3, 7, 0, 5, 50, "Zombie", 5, GoldDrop.LEVEL2),
