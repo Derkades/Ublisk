@@ -417,6 +417,29 @@ public class Guild {
 			}
 		}
 	}
+	
+	public synchronized void rename(String newName){
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Guilds name change");
+			statement = connection.prepareStatement("UPDATE guilds SET name=? WHERE name=?");
+			statement.setString(1, newName);
+			statement.setString(2, name);
+			statement.executeUpdate();
+		} catch (SQLException e){
+			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to change guild name");
+			e.printStackTrace();
+		} finally {
+			try {
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public synchronized static List<Guild> getGuildsList() {
 		Connection connection = null;
