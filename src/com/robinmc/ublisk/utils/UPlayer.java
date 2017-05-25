@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -22,6 +23,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.configuration.serialization.SerializableAs;
 import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
@@ -68,6 +70,7 @@ import net.minecraft.server.v1_11_R1.Packet;
 import net.minecraft.server.v1_11_R1.PacketPlayOutChat;
 import net.minecraft.server.v1_11_R1.PacketPlayOutGameStateChange;
 
+@SerializableAs("UPlayer")
 public class UPlayer implements ConfigurationSerializable {
 
 	private Player player;
@@ -798,7 +801,18 @@ public class UPlayer implements ConfigurationSerializable {
 
 	@Override
 	public Map<String, Object> serialize() {
-		return null; // TODO Config serialization
+		Map<String, Object> map = new HashMap<>();
+		map.put("uuid", this.getUniqueId().toString());
+		return map;
+	}
+	
+	public static UPlayer deserialize(Map<String, Object> map){
+		UUID uuid = UUID.fromString(String.valueOf(map.get("uuid")));
+		return new UPlayer(uuid);
+	}
+	
+	public static UPlayer valueOf(Map<String, Object> map){
+		return deserialize(map);
 	}
 	
 	@Override
