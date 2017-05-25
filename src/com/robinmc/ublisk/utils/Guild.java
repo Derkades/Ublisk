@@ -394,6 +394,29 @@ public class Guild {
 		
 		return description;
 	}
+	
+	public synchronized void setIconURL(String icon){
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = Ublisk.getNewDatabaseConnection("Guilds icon update");
+			statement = connection.prepareStatement("UPDATE guilds SET icon=? WHERE name=?");
+			statement.setString(1, icon);
+			statement.setString(2, name);
+			statement.executeUpdate();
+		} catch (SQLException e){
+			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to set icon");
+			e.printStackTrace();
+		} finally {
+			try {
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public synchronized static List<Guild> getGuildsList() {
 		Connection connection = null;
