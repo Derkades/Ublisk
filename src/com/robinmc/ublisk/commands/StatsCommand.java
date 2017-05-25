@@ -4,7 +4,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -19,7 +21,24 @@ public class StatsCommand implements CommandExecutor {
 		UPlayer player = new UPlayer(sender);
 		
 		if (args.length == 1){
-			player.sendMessage("Viewing other player's statistics is not yet supported. Please check back later."); // TODO Allow viewing of other player's stats
+			UPlayer target = null;
+			try {
+				target = new UPlayer(args[1]);
+			} catch (PlayerNotFoundException e) {
+				player.sendMessage(Message.PLAYER_NOT_FOUND);
+				return true;
+			}
+			
+			BaseComponent[] hoverText = new ComponentBuilder("yes click me pls").create();
+			
+			BaseComponent[] text = new ComponentBuilder("Click here to open " + target.getName() + "'s statistics page in your browser.")
+					.color(ChatColor.AQUA)
+					.bold(true)
+					.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText))
+					.event(new ClickEvent(ClickEvent.Action.OPEN_URL, target.getStatsURL()))
+					.create();
+			
+			player.sendMessage(text);
 			return true;
 		} else if (args.length == 0){
 			BaseComponent[] hoverText = new ComponentBuilder("yes click me pls").create();
