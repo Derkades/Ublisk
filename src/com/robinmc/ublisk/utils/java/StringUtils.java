@@ -19,5 +19,18 @@ public class StringUtils {
 		//If the string is the same as the original it did not contain any non-alphanumeric characters
 		return withoutSpecialCharacters.equals(string);
 	}
+	
+	/**
+	 * @param string
+	 * @return true if the string contains only numbers, letters and underscores.
+	 */
+	public static boolean validateString(String string){
+		for (char c : string.toCharArray()){
+			if (!Character.isLetterOrDigit(c) & c != '_'){
+				return false;
+			}
+		}
+		return true;
+	}
 
 }
