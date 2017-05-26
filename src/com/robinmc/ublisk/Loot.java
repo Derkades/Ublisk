@@ -15,7 +15,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
-import org.bukkit.craftbukkit.v1_11_R1.block.CraftChest;
+import org.bukkit.craftbukkit.v1_12_R1.block.CraftChest;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
@@ -23,8 +23,6 @@ import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.java.Random;
-
-import net.minecraft.server.v1_11_R1.TileEntityChest;
 
 public class Loot {
 	
@@ -87,8 +85,8 @@ public class Loot {
 					try {
 					    Field inventoryField = chest.getClass().getDeclaredField("chest");
 					    inventoryField.setAccessible(true);
-					    TileEntityChest teChest = ((TileEntityChest) inventoryField.get(chest));
-					    teChest.a("Loot");
+					    //TileEntityChest teChest = ((TileEntityChest) inventoryField.get(chest));
+					    //teChest.a("Loot", TileEntityChest.class);
 					} catch (Exception e){
 					     e.printStackTrace();
 					}

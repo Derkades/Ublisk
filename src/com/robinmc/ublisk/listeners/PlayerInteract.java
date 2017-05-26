@@ -5,7 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
-import org.bukkit.craftbukkit.v1_11_R1.CraftChunk;
+import org.bukkit.craftbukkit.v1_12_R1.CraftChunk;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
@@ -37,7 +37,7 @@ import com.robinmc.ublisk.utils.inventory.Item;
 import com.robinmc.ublisk.utils.inventory.UInventory;
 
 import net.md_5.bungee.api.ChatColor;
-import net.minecraft.server.v1_11_R1.Chunk;
+import net.minecraft.server.v1_12_R1.Chunk;
 
 public class PlayerInteract implements Listener {
 	

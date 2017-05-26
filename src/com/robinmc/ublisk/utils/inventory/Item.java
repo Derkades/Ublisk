@@ -5,14 +5,14 @@ import java.util.List;
 
 import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import net.minecraft.server.v1_11_R1.NBTBase;
-import net.minecraft.server.v1_11_R1.NBTTagCompound;
+import net.minecraft.server.v1_12_R1.NBTBase;
+import net.minecraft.server.v1_12_R1.NBTTagCompound;
 
 public class Item {
 	
@@ -88,7 +88,7 @@ public class Item {
 	}
 	
 	public NBTTagCompound getNBT(){
-		net.minecraft.server.v1_11_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
+		net.minecraft.server.v1_12_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
 		NBTTagCompound compound = nms.getTag();
 		if (compound == null){
 			return new NBTTagCompound();
@@ -98,7 +98,7 @@ public class Item {
 	}
 	
 	public Item setNBT(NBTTagCompound nbtTagCompound){
-		net.minecraft.server.v1_11_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
+		net.minecraft.server.v1_12_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
 		nms.setTag(nbtTagCompound);
 		item = CraftItemStack.asBukkitCopy(nms);
 		return this;

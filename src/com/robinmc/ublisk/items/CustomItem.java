@@ -4,7 +4,7 @@ import org.bukkit.Material;
 
 import com.robinmc.ublisk.utils.inventory.Item;
 
-import net.minecraft.server.v1_11_R1.NBTTagString;
+import net.minecraft.server.v1_12_R1.NBTTagString;
 
 public class CustomItem extends Item {
 	

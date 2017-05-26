@@ -24,7 +24,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.configuration.serialization.SerializableAs;
-import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -65,10 +65,8 @@ import com.robinmc.ublisk.weapons.abilities.Ability;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.minecraft.server.v1_11_R1.ChatComponentText;
-import net.minecraft.server.v1_11_R1.Packet;
-import net.minecraft.server.v1_11_R1.PacketPlayOutChat;
-import net.minecraft.server.v1_11_R1.PacketPlayOutGameStateChange;
+import net.minecraft.server.v1_12_R1.Packet;
+import net.minecraft.server.v1_12_R1.PacketPlayOutGameStateChange;
 
 @SerializableAs("UPlayer")
 public class UPlayer implements ConfigurationSerializable {
@@ -466,7 +464,8 @@ public class UPlayer implements ConfigurationSerializable {
 	}
 	
 	public void sendActionBarMessage(String message) {
-		this.sendPacket(new PacketPlayOutChat(new ChatComponentText(message), (byte) 2));
+		//this.sendPacket(new PacketPlayOutChat(new ChatComponentText(message), (byte) 2));
+		throw new UnsupportedOperationException();
 	}
 	
 	public void displayMobAppearanceEffect(){

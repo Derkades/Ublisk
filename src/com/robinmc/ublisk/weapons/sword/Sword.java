@@ -8,8 +8,8 @@ import com.robinmc.ublisk.weapons.Weapon;
 import com.robinmc.ublisk.weapons.WeaponRarity;
 import com.robinmc.ublisk.weapons.abilities.Ability;
 
-import net.minecraft.server.v1_11_R1.NBTTagCompound;
-import net.minecraft.server.v1_11_R1.NBTTagList;
+import net.minecraft.server.v1_12_R1.NBTTagCompound;
+import net.minecraft.server.v1_12_R1.NBTTagList;
 
 public abstract class Sword extends Weapon {
 	
