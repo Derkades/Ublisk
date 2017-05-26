@@ -62,7 +62,11 @@ import com.robinmc.ublisk.weapons.abilities.Ability;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.minecraft.server.v1_12_R1.ChatMessageType;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent.ChatSerializer;
 import net.minecraft.server.v1_12_R1.Packet;
+import net.minecraft.server.v1_12_R1.PacketPlayOutChat;
 import net.minecraft.server.v1_12_R1.PacketPlayOutGameStateChange;
 
 //@SerializableAs("UPlayer")
@@ -461,10 +465,11 @@ public class UPlayer /*implements ConfigurationSerializable*/ {
 	}
 	
 	public void sendActionBarMessage(String message) {
-		//IChatBaseComponent base = ChatSerializer.a(message);
+		IChatBaseComponent base = ChatSerializer.a(message);
+		this.sendPacket(new PacketPlayOutChat(base, ChatMessageType.GAME_INFO));
 		//this.sendPacket(new PacketPlayOutChat(base, ChatMessageType.ACTION_BAR));
 		//throw new UnsupportedOperationException("Action bar messages are temporarely unsupported.");
-		player.sendMessage(ChatColor.RED + "Warning: tried to send action bar message which is temporarely unsupported.");
+		//player.sendMessage(ChatColor.RED + "Warning: tried to send action bar message which is temporarely unsupported.");
 	}
 	
 	public void displayMobAppearanceEffect(){
