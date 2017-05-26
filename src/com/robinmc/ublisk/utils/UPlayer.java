@@ -463,7 +463,8 @@ public class UPlayer /*implements ConfigurationSerializable*/ {
 	public void sendActionBarMessage(String message) {
 		//IChatBaseComponent base = ChatSerializer.a(message);
 		//this.sendPacket(new PacketPlayOutChat(base, ChatMessageType.ACTION_BAR));
-		throw new UnsupportedOperationException("Action bar messages are temporarely unsupported.");
+		//throw new UnsupportedOperationException("Action bar messages are temporarely unsupported.");
+		player.sendMessage(ChatColor.RED + "Warning: tried to send action bar message which is temporarely unsupported.");
 	}
 	
 	public void displayMobAppearanceEffect(){
