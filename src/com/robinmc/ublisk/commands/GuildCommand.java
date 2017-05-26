@@ -57,21 +57,22 @@ public class GuildCommand implements CommandExecutor {
 			} else if (args[0].equalsIgnoreCase("leave")) {
 				if (player.getGuild() == null) {
 					player.sendPrefixedMessage("Guilds", "You are not in a guild");
-				} else {
-					Guild guild = player.getGuild();
-					if (guild.getMembers().size() <= 1){
-						player.sendPrefixedMessage("Guilds", "You left " + guild.getName() + ". Because you were the last player in the guild, your guild has been queued for deletion. If you regret leaving this guild, ask a staff member to add you back.");
-						player.leaveGuild();
-						return true;
-					} else if (guild.getOwner().getUniqueId().equals(player.getUniqueId())){
-						player.sendMessage("You are owner of this guild. You can only leave this guild if you transfer ownership to another guild member.");
-						return true;
-					} else {
-						player.sendPrefixedMessage("Guilds", "You have left " + guild.getName());
-					}
-					
+					return true;
 				}
-				return true;
+				
+				Guild guild = player.getGuild();
+				if (guild.getMembers().size() <= 1){ //If player is last person in guild (player can be owner if they're the only one left)
+					player.sendPrefixedMessage("Guilds", "You left " + guild.getName() + ". Because you were the last player in the guild, your guild has been queued for deletion. If you regret leaving this guild, ask a staff member to add you back.");
+					player.leaveGuild();
+					return true;
+				} else if (guild.getOwner().getUniqueId().equals(player.getUniqueId())){ //If player is owner - don't allow them to leave
+					player.sendMessage("You are owner of this guild. You can only leave this guild if you transfer ownership to another guild member.");
+					return true;
+				} else { //Otherwise it's just a normal player - allow leaving
+					player.sendPrefixedMessage("Guilds", "You have left " + guild.getName());
+					player.leaveGuild();
+					return true;
+				}
 			} else if (args[0].equalsIgnoreCase("list")) {
 				player.sendMessage(ChatColor.AQUA + "----------={" + ChatColor.DARK_AQUA + " Guilds " + ChatColor.AQUA
 						+ "}=----------");
