@@ -68,8 +68,8 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.minecraft.server.v1_12_R1.Packet;
 import net.minecraft.server.v1_12_R1.PacketPlayOutGameStateChange;
 
-@SerializableAs("UPlayer")
-public class UPlayer implements ConfigurationSerializable {
+//@SerializableAs("UPlayer")
+public class UPlayer /*implements ConfigurationSerializable*/ {
 
 	private Player player;
 
@@ -797,7 +797,7 @@ public class UPlayer implements ConfigurationSerializable {
 	public void setAbilitiesEnabled(boolean enabled){
 		abilitiesEnabled = enabled;
 	}
-
+/*
 	@Override
 	public Map<String, Object> serialize() {
 		Map<String, Object> map = new HashMap<>();
@@ -812,7 +812,7 @@ public class UPlayer implements ConfigurationSerializable {
 	
 	public static UPlayer valueOf(Map<String, Object> map){
 		return deserialize(map);
-	}
+	}*/
 	
 	@Override
 	public String toString() {

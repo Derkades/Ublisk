@@ -3,7 +3,6 @@ package com.robinmc.ublisk;
 import java.lang.reflect.Field;
 
 import org.bukkit.Material;
-import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -19,7 +18,6 @@ import com.robinmc.ublisk.utils.Guild;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.PacketListener;
-import com.robinmc.ublisk.utils.RecipeUtils;
 import com.robinmc.ublisk.utils.TodoList;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
@@ -87,8 +85,6 @@ public class Main extends JavaPlugin {
 				}
 			}
 		}.runTaskTimer(this, 1*20, 10*20);
-		
-		ConfigurationSerialization.registerClass(UPlayer.class, "UPlayer");
 	}
 	
 	@Override
