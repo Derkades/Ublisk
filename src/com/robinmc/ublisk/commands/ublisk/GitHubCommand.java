@@ -6,6 +6,7 @@ import org.kohsuke.github.GHIssue;
 
 import com.robinmc.ublisk.modules.GitHubModule;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.URunnable;
 import com.robinmc.ublisk.utils.Ublisk;
 
 import net.md_5.bungee.api.ChatColor;
@@ -19,15 +20,20 @@ public class GitHubCommand extends UbliskCommand {
 			return;
 		}
 		
-		String description = String.join(" ", args);
+		final String description = String.join(" ", args);
 		
-		try {
-			GHIssue issue = GitHubModule.createIssue(description);
-			player.sendMessage(Ublisk.getPrefix() + "Your message has been recorded. We'll take a look at it soon! View your issue at " + issue.getHtmlUrl());
-		} catch (IOException e) {
-			player.sendMessage(ChatColor.RED + "An error has occured :(");
-			e.printStackTrace();
-		}
+		new URunnable(){
+			public void run(){
+				try {
+					GHIssue issue = GitHubModule.createIssue(description);
+					player.sendMessage(Ublisk.getPrefix() + "Your message has been recorded. We'll take a look at it soon! View your issue at " + issue.getHtmlUrl());
+				} catch (IOException e) {
+					player.sendMessage(ChatColor.RED + "An error has occured :(");
+					e.printStackTrace();
+				}
+			}
+		}.runAsync();
+
 	}
 
 	@Override
