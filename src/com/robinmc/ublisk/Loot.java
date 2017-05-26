@@ -85,6 +85,7 @@ public class Loot {
 					try {
 					    Field inventoryField = chest.getClass().getDeclaredField("chest");
 					    inventoryField.setAccessible(true);
+					    chest.setCustomName("Loot");
 					    //TileEntityChest teChest = ((TileEntityChest) inventoryField.get(chest));
 					    //teChest.a("Loot", TileEntityChest.class);
 					} catch (Exception e){
