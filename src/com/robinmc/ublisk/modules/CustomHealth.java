@@ -33,7 +33,7 @@ public class CustomHealth extends UModule {
 		player.setMaxHealth(calculateHealth(player.getLevel()));
 	}
 	
-	private static int calculateHealth(int level){
+	public static int calculateHealth(int level){
 		return level * HEALTH_INCREMENT + 1;
 	}
 	
