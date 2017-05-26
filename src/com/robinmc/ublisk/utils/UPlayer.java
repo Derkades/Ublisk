@@ -633,7 +633,8 @@ public class UPlayer /*implements ConfigurationSerializable*/ {
 	}
 
 	public void setCollidable(boolean bool) {
-		((CraftPlayer) player).setCollidable(bool);
+		//((CraftPlayer) player).setCollidable(bool);
+		player.setCollidable(false);
 	}
 
 	public void saveInventoryToFile(String path) {
