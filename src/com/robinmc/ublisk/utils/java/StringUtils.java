@@ -32,5 +32,18 @@ public class StringUtils {
 		}
 		return true;
 	}
+	
+	/**
+	 * Adds a dot to a string if it does not end with ? ! or .
+	 * @param string
+	 * @return
+	 */
+	public static String addDotIfNecessary(String string){
+		if (string.endsWith(".") || string.endsWith("?") || string.endsWith("!")){
+			return string;
+		} else {
+			return string + ".";
+		}
+	}
 
 }
