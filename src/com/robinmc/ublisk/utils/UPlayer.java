@@ -461,8 +461,9 @@ public class UPlayer /*implements ConfigurationSerializable*/ {
 	}
 	
 	public void sendActionBarMessage(String message) {
-		//this.sendPacket(new PacketPlayOutChat(new ChatComponentText(message), (byte) 2));
-		throw new UnsupportedOperationException();
+		//IChatBaseComponent base = ChatSerializer.a(message);
+		//this.sendPacket(new PacketPlayOutChat(base, ChatMessageType.ACTION_BAR));
+		throw new UnsupportedOperationException("Action bar messages are temporarely unsupported.");
 	}
 	
 	public void displayMobAppearanceEffect(){
