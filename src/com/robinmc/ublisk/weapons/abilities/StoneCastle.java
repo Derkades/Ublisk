@@ -33,6 +33,7 @@ public class StoneCastle extends Ability {
 		}
 		
 		player.setFrozen(true);
+		player.setAbilitiesEnabled(false);
 		player.givePotionEffect(PotionEffectType.DAMAGE_RESISTANCE, TIME, 3);
 		
 		Ublisk.playSound(player.getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 0.001f);
@@ -56,6 +57,7 @@ public class StoneCastle extends Ability {
 					
 				if(t > TIME / PERIOD){
 					player.setFrozen(false);
+					player.setAbilitiesEnabled(true);
 					this.cancel();
 					
 				}
