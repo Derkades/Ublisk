@@ -38,5 +38,12 @@ public class ListUtils {
 		int index = Random.getRandomInteger(0, size - 1); //Size -1 because if the list has 1 entry (entry 0) the length is 1.
 		return array[index];
 	}
+	
+	public static String[] removeFirstStringFromArray(String[] array){
+		int n = array.length - 1;
+		String[] newArray = new String[n];
+		System.arraycopy(array, 1, newArray, 0, n);
+		return newArray;
+	}
 
 }
