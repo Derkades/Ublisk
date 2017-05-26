@@ -13,6 +13,7 @@ import com.robinmc.ublisk.utils.Logger.LogLevel;
 public abstract class UModule implements Listener {
 	
 	public static final UModule[] ALL_MODULES = {
+			new Advancements(),
 			new AFK(),
 			new AutoRestart(),
 			new CustomMOTD(),
