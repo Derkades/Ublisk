@@ -27,7 +27,7 @@ public class CheckTown extends BukkitRunnable {
 				player.sendSubTitle(ChatColor.GRAY + "You left " + lastTown.getName());
 				SENT_LEFT_MESSAGE.add(player.getUniqueId());
 				Logger.log(LogLevel.INFO, "Town", player.getName() + " left " + lastTown.getName());
-			} else if (SENT_LEFT_MESSAGE.contains(player.getUniqueId())){ //As soon as the player enters a town and has got a left message
+			} else if (town != null && SENT_LEFT_MESSAGE.contains(player.getUniqueId())){ //As soon as the player enters a town and has got a left message
 				player.sendSubTitle(ChatColor.GRAY + "You are now in " + town.getName());
 				player.setLastTown(town);
 				SENT_LEFT_MESSAGE.remove(player.getUniqueId());
