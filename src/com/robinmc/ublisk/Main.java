@@ -76,7 +76,7 @@ public class Main extends JavaPlugin {
 			}
 		}
 		
-		RecipeUtils.removeVanillaRecipes();
+		//RecipeUtils.removeVanillaRecipes();
 		
 		new BukkitRunnable(){
 			public void run(){

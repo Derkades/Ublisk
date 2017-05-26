@@ -7,6 +7,7 @@ import org.bukkit.inventory.Recipe;
 
 public class RecipeUtils {
 	
+	@Deprecated
 	public static void removeVanillaRecipes(){
 		Iterator<Recipe> iterator = Bukkit.getServer().recipeIterator();
 		while (iterator.hasNext()){
