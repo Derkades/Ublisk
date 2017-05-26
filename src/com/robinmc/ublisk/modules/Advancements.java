@@ -13,7 +13,7 @@ public class Advancements extends UModule {
 	}
 	
 	public static void grantAdvancement(Player player, Advancement advancement){
-		Ublisk.sendConsoleCommand("advancement grant " + player.getName() + " until ");
+		Ublisk.sendConsoleCommand("advancement grant " + player.getName() + " until " + advancement.toString());
 	}
 	
 	public static enum Advancement {
