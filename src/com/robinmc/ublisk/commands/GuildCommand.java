@@ -14,6 +14,7 @@ import com.robinmc.ublisk.utils.Guild;
 import com.robinmc.ublisk.utils.Guild.GuildInvite;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
+import com.robinmc.ublisk.utils.java.ListUtils;
 import com.robinmc.ublisk.utils.java.StringUtils;
 
 import net.md_5.bungee.api.ChatColor;
@@ -169,7 +170,7 @@ public class GuildCommand implements CommandExecutor {
 				}
 				
 				if (!StringUtils.validateString(args[1])){
-					player.sendPrefixedMessage("Guilds", "Guild names can only contain alphanumerical characters and underscores (a-z, A-Z, 0-9, _)");
+					player.sendPrefixedMessage("Guilds", "Guild names can only contain alphanumerical characters and underscores (a-z, A-Z, 0-9, _).");
 					return true;
 				}
 				
@@ -186,6 +187,28 @@ public class GuildCommand implements CommandExecutor {
 			} else {
 				return false;
 			}
+		} else if (args[0].equalsIgnoreCase("description") || args[0].equalsIgnoreCase("desc")){
+			String description = String.join(" ", ListUtils.removeFirstStringFromArray(args));
+			
+			if (description.length() > 100){
+				player.sendPrefixedMessage("Guilds", "This description is too long.");
+				return true;
+			}
+			
+			if (description.length() < 6){
+				player.sendPrefixedMessage("Guilds", "This description is too short.");
+				return true;
+			}
+			
+			Guild guild = player.getGuild();
+			if (guild == null){
+				player.sendPrefixedMessage("Guilds", "You are not in a guild.");
+				return true;
+			}
+			
+			guild.setDescription(description);
+			player.sendPrefixedMessage("Guilds", "You have changed your guild's description to " + StringUtils.addDotIfNecessary(description));
+			return true;
 		} else {
 			return false;
 		}
