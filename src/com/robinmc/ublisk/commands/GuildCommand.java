@@ -98,6 +98,11 @@ public class GuildCommand implements CommandExecutor {
 					player.sendPrefixedMessage("Guilds", "This guild name is too long.");
 					return true;
 				}
+				
+				if (!StringUtils.validateString(args[1])){
+					player.sendPrefixedMessage("Guilds", "Guild names can only contain alphanumerical characters and underscores (a-z, A-Z, 0-9, _)");
+					return true;
+				}
 
 				if (player.getGuild() != null) {
 					player.sendPrefixedMessage("Guilds", "You are already in a guild. Please leave your current guild before creating a new one.");
