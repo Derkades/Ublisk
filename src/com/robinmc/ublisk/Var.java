@@ -70,6 +70,7 @@ public class Var {
 	 * 5, 6
 	 * Will mean that the player has 6 / 2 = 3 hearts at level 5.
 	 */
+	@Deprecated
 	public static final HashMap<Integer, Integer> LEVEL_HEALTH = HashMaps.build(
 			0, 1,
 			1, 4,

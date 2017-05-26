@@ -593,20 +593,30 @@ public class UPlayer /*implements ConfigurationSerializable*/ {
 		player.setHealth(health);
 	}
 
-	public void setMaxHealth(double maxHealth) {
-		player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(maxHealth);
+	public void setMaxHealth(int maxHealth) {
+		//player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(maxHealth);
+		
+		//max health = max health attribute * health scale, so if we set max health attribute to 1 real max health = health scale
+		player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(1);
+		player.setHealthScale(maxHealth);
 	}
 
+	@Deprecated
 	public double getMaxHealth() {
 		return player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
 	}
 
+	@Deprecated
 	public int getCorrectMaxHealth() {
 		if (!Var.LEVEL_HEALTH.containsKey(this.getLevel())) {
 			return 1;
 		} else {
 			return Var.LEVEL_HEALTH.get(this.getLevel());
 		}
+	}
+	
+	public void heal(){
+		this.givePotionEffect(PotionEffectType.REGENERATION, 20, 255);
 	}
 
 	public Spigot spigot() {

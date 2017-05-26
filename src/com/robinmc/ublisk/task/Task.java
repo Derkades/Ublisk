@@ -25,7 +25,6 @@ public enum Task {
 	RESPAWN_NPC(new RespawnNPC(), 5*20, 5*60*20, false),
 	RESTART_ERROR_MESSAGE(new RestartErrorMessage(), 10*20, 60*20, false),
 	SECONDS_AFK_STATISTIC(new SecondsAFKStatistic(), 1*20, 1*20, false),
-	SET_MAX_HEALTH(new SetMaxHealth(), 5*20, 5*20, false),
 	SPAWN_RANDOM_LOOT(new SpawnRandomLoot(), 5*60*20, 5*60*20, false),
 	UPDATE_BACKPACK_NAME(new UpdateBackpackName(), 0, 5*20, false),
 	UPDATE_INFO(new AddTrackersInfoToQueue(), 10*20, 30*20, false),

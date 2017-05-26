@@ -6,6 +6,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.modules.CustomHealth;
 import com.robinmc.ublisk.utils.UPlayer;
 
 import net.md_5.bungee.api.ChatColor;
@@ -34,8 +35,10 @@ public class PlayerDeath implements Listener {
 		new BukkitRunnable(){
 			public void run(){
 				player.setMana(20);
-				player.setMaxHealth(player.getCorrectMaxHealth());
-				player.setHealth(player.getCorrectMaxHealth());
+				//player.setMaxHealth(player.getCorrectMaxHealth());
+				//player.setHealth(player.getCorrectMaxHealth());
+				CustomHealth.setCorrectMaxHealth(player);
+				player.heal();
 				player.teleport(player.getLastTown().getSpawnLocation());
 			}
 		}.runTaskLater(Main.getInstance(), 25L);
