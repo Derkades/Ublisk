@@ -813,6 +813,15 @@ public class UPlayer /*implements ConfigurationSerializable*/ {
 	public void setAbilitiesEnabled(boolean enabled){
 		abilitiesEnabled = enabled;
 	}
+	
+	/**
+	 * Executes a command by the player.
+	 * @param command
+	 * @return True if the command executed successfully, false otherwise.
+	 */
+	public boolean executeCommand(String command){
+		return Bukkit.dispatchCommand(player, command);
+	}
 /*
 	@Override
 	public Map<String, Object> serialize() {
