@@ -42,6 +42,9 @@ public class Scoreboard extends UModule {
 		strings.add(" ");
 		strings.add(redBold + "XP");
 		strings.add(GRAY + "" + player.getXP());
+		strings.add(r + " ");
+		strings.add(redBold + "Health");
+		strings.add(GRAY + "" + player.getHealth() + " / " + player.getMaxHealth());
 
 		if (DoubleXP.isActive()) {
 			strings.add(r + DARK_GRAY + "---------------");
