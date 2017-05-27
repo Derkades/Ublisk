@@ -91,6 +91,15 @@ public class GuildCommand implements CommandExecutor {
 				return true;
 			} else if (args[0].equalsIgnoreCase("help")){
 				return false;
+			} else if (args[0].equalsIgnoreCase("info")){
+				Guild guild = player.getGuild();
+				if (guild == null){
+					player.sendPrefixedMessage("Guilds", "You are not in a guild. Use /guild info [guild] to check information about another guild.");
+					return true;
+				}
+				
+				player.executeCommand("guild info " + guild.getName());
+				return true;
 			} else {
 				return false;
 			}
