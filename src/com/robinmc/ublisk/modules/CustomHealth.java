@@ -1,5 +1,6 @@
 package com.robinmc.ublisk.modules;
 
+import org.bukkit.attribute.Attribute;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -20,21 +21,30 @@ public class CustomHealth extends UModule {
 	}
 	
 	@EventHandler(priority = EventPriority.HIGH)
-	public void onJoin(PlayerJoinEvent event){
-		setCorrectMaxHealth(new UPlayer(event));
+	public void onJoin(final PlayerJoinEvent event){
+		new URunnable(){
+			public void run(){
+				updateMaxHealth(new UPlayer(event));
+			}
+		}.runLater(2*20);
+		
 	}
 	
 	@EventHandler(priority = EventPriority.HIGH)
 	public void levelUp(PlayerLevelChangeEvent event){
-		setCorrectMaxHealth(new UPlayer(event));
+		updateMaxHealth(new UPlayer(event));
 	}
 	
-	public static void setCorrectMaxHealth(UPlayer player){
-		player.setMaxHealth(calculateHealth(player.getLevel()));
+	public static void updateMaxHealth(UPlayer player){
+		//player.setMaxHealth(calculateHealth(player.getLevel()));
+		int health = getMaxHealth(player);
+		player.setAttribute(Attribute.GENERIC_MAX_HEALTH, health);
+		//double scale = 1 / (health / 20.0);
+		player.getPlayer().setHealthScale(20);
 	}
 	
-	public static int calculateHealth(int level){
-		return level * HEALTH_INCREMENT + 1;
+	public static int getMaxHealth(UPlayer player){
+		return player.getLevel() * HEALTH_INCREMENT + 1;
 	}
 	
 	private static class UpdateHealthTask extends URunnable {
@@ -42,7 +52,7 @@ public class CustomHealth extends UModule {
 		@Override
 		public void run(){
 			for (UPlayer player : Ublisk.getOnlinePlayers()){
-				setCorrectMaxHealth(player);
+				updateMaxHealth(player);
 			}
 		}
 		

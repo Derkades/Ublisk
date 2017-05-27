@@ -37,7 +37,7 @@ public class PlayerDeath implements Listener {
 				player.setMana(20);
 				//player.setMaxHealth(player.getCorrectMaxHealth());
 				//player.setHealth(player.getCorrectMaxHealth());
-				CustomHealth.setCorrectMaxHealth(player);
+				CustomHealth.updateMaxHealth(player);
 				player.heal();
 				player.teleport(player.getLastTown().getSpawnLocation());
 			}

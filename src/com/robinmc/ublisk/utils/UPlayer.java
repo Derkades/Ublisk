@@ -44,6 +44,7 @@ import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.VoteRestart;
 import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.modules.AFK;
+import com.robinmc.ublisk.modules.CustomHealth;
 import com.robinmc.ublisk.modules.PlayerFreeze;
 import com.robinmc.ublisk.money.Money;
 import com.robinmc.ublisk.quest.NPC;
@@ -367,10 +368,6 @@ public class UPlayer /*implements ConfigurationSerializable*/ {
 		setting.put(player, bool);
 	}
 
-	public double getHealth() {
-		return player.getHealth();
-	}
-
 	public GameMode getGameMode() {
 		return player.getGameMode();
 	}
@@ -589,21 +586,25 @@ public class UPlayer /*implements ConfigurationSerializable*/ {
 		return player.isDead();
 	}
 
+	public int getHealth() {
+		return (int) player.getHealth();
+	}
+	
 	public void setHealth(double health) {
 		player.setHealth(health);
 	}
 
+	/*
 	public void setMaxHealth(int maxHealth) {
 		//player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(maxHealth);
 		
 		//max health = max health attribute * health scale, so if we set max health attribute to 1 real max health = health scale
 		player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(1);
 		player.setHealthScale(maxHealth);
-	}
+	}*/
 
-	@Deprecated
-	public double getMaxHealth() {
-		return player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
+	public int getMaxHealth() {
+		return CustomHealth.getMaxHealth(this);
 	}
 
 	@Deprecated
