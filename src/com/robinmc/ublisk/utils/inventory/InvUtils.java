@@ -10,11 +10,11 @@ import org.bukkit.inventory.ItemStack;
 public class InvUtils {
 	
 	public static void saveIntentory(String path, Player player){
-		YamlConfiguration c = new YamlConfiguration();
-		c.set("inventory.armor", player.getInventory().getArmorContents());
-		c.set("inventory.content", player.getInventory().getContents());
+		YamlConfiguration config = new YamlConfiguration();
+		config.set("inventory.armor", player.getInventory().getArmorContents());
+		config.set("inventory.content", player.getInventory().getContents());
 		try {
-			c.save(new File(path, player.getName()+".yml"));
+			config.save(new File(path, player.getName() + ".yml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -22,10 +22,10 @@ public class InvUtils {
 	
     public static void restoreInventory(String path, Player player){
     	File file = new File(path, player.getName()+".yml");
-        YamlConfiguration c = YamlConfiguration.loadConfiguration(file);
-        ItemStack[] content = c.getList("inventory.armor").toArray(new ItemStack[]{});
+        YamlConfiguration cconfig = YamlConfiguration.loadConfiguration(file);
+        ItemStack[] content = cconfig.getList("inventory.armor").toArray(new ItemStack[]{});
         player.getInventory().setArmorContents(content);
-        content = c.getList("inventory.content").toArray(new ItemStack[]{});
+        content = cconfig.getList("inventory.content").toArray(new ItemStack[]{});
         player.getInventory().setContents(content);
         file.delete();
     }
