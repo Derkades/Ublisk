@@ -42,6 +42,7 @@ public class Listeners {
 		PING_SERVER(new ServerListPing()),
 		SONG_END(new SongEnd()),
 		PLAYER_DEATH(new PlayerDeath()),
+		DROP_ITEM(new PlayerDropItem()),
 		
 		ENTITY_COMBUST(new EntityCombust()),
 		ENTITY_DEATH(new EntityDeath()),
