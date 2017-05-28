@@ -89,22 +89,8 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
-	    try {
-	    	// Do some fancy trickery to execute code while the plugin is still enabled
-	        Field field = this.getClass().getField("isEnabled");
-	        field.setAccessible(true);
-	        field.set(this, true);
+		Logger.log(LogLevel.INFO, "Core", "Shutting down...");    
 
-	        // Call cleanup code
-	        cleanup();
-
-	        field.set(this, false);
-	    } catch (Exception e) {
-	    	e.printStackTrace();
-	    }
-	}
-	
-	private void cleanup(){
 		Task.stopAll();
 		
 		// Save data files
@@ -126,6 +112,8 @@ public class Main extends JavaPlugin {
 		
 		// Clear remaining tasks in sync queue
 		SyncQueue.clear();
+		
+		Logger.log(LogLevel.INFO, "Core", "Plugin has been shut down.");
 		
 		instance = null;
 	}
