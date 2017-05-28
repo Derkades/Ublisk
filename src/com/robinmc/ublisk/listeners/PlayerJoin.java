@@ -71,8 +71,6 @@ public class PlayerJoin implements Listener {
 			player.setBuilderModeEnabled(false);
 		}
 
-		player.getInventory().set(7, new Item(Material.CHEST).setName(ChatColor.BLUE + "" + ChatColor.BOLD + "Menu"));
-
 		player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
 
 		new BukkitRunnable() {
