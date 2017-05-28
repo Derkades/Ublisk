@@ -55,6 +55,10 @@ public class Item {
 		return this;
 	}
 	
+	public int getDamage(){
+		return item.getDurability();
+	}
+	
 	public Item setName(String name){
 		ItemMeta meta = item.getItemMeta();
 		meta.setDisplayName(name);
@@ -158,7 +162,7 @@ public class Item {
 	
 	@Override
 	public String toString(){
-		return "Item[" + item.getType() + "]"; 
+		return String.format("Item[type=%s,amount=%s,data=%s]", this.getType().toString(), String.valueOf(this.getAmount()), String.valueOf(this.getDamage())); 
 	}
 
 }
