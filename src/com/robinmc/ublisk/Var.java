@@ -1,7 +1,6 @@
 package com.robinmc.ublisk;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -63,35 +62,6 @@ public class Var {
 	public static final List<Location> SAFE_TRAPDOORS = Arrays.asList(
 			new Location(Var.WORLD, -23, 74, 3),
 			new Location(Var.WORLD, 132, 81, 289)
-			);
-	
-	/**
-	 * Number of half harts a player will have at a level. For example,
-	 * 5, 6
-	 * Will mean that the player has 6 / 2 = 3 hearts at level 5.
-	 */
-	@Deprecated
-	public static final HashMap<Integer, Integer> LEVEL_HEALTH = HashMaps.build(
-			0, 1,
-			1, 4,
-			2, 5,
-			3, 6,
-			4, 7,
-			5, 7,
-			6, 8,
-			7, 8,
-			8, 9,
-			10, 10,
-			11, 10,
-			12, 11,
-			13, 11,
-			14, 12,
-			15, 12,
-			16, 13,
-			17, 13,
-			18, 14,
-			19, 14,
-			20, 15
 			);
 	
 	public static final boolean BLOCK_REGENERATION_ENABLED = false;
