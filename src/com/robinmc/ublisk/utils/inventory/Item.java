@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import net.minecraft.server.v1_12_R1.NBTBase;
 import net.minecraft.server.v1_12_R1.NBTTagCompound;
+import net.minecraft.server.v1_12_R1.NBTTagInt;
 
 public class Item {
 	
@@ -140,6 +141,19 @@ public class Item {
 	public boolean isDroppable(){
 		NBTTagCompound nbt = this.getNBT();
 		return nbt.hasKey(UbliskNBT.ITEM_DROPPABLE.toString()) && nbt.getBoolean(UbliskNBT.ITEM_DROPPABLE.toString());
+	}
+	
+	public Item setHealthBonusPercentage(int percentage){
+		return this.setNBTValue(UbliskNBT.HEALTH_BONUS.toString(), new NBTTagInt(percentage));
+	}
+	
+	public int getHealthBonusPercentage(){
+		NBTTagCompound nbt = this.getNBT();
+		if (nbt.hasKey(UbliskNBT.HEALTH_BONUS.toString())){
+			return this.getNBT().getInt(UbliskNBT.HEALTH_BONUS.toString());
+		} else {
+			return 0;
+		}
 	}
 	
 	@Override

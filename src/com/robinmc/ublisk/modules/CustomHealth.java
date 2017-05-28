@@ -10,6 +10,7 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.URunnable;
 import com.robinmc.ublisk.utils.Ublisk;
+import com.robinmc.ublisk.utils.inventory.Item;
 
 public class CustomHealth extends UModule {
 	
@@ -37,7 +38,15 @@ public class CustomHealth extends UModule {
 	
 	public static void updateMaxHealth(UPlayer player){
 		int health = getMaxHealth(player);
-		player.setAttribute(Attribute.GENERIC_MAX_HEALTH, health);
+		
+		int bonusHealth = 0;
+		for (Item item : player.getInventory().getItems(true, true, true)){
+			double percentage = item.getHealthBonusPercentage() / 100.0;
+			bonusHealth += bonusHealth * percentage;
+		}
+		
+		int totalHealth = health + bonusHealth;
+		player.setAttribute(Attribute.GENERIC_MAX_HEALTH, totalHealth);
 		player.getPlayer().setHealthScale(20);
 	}
 	

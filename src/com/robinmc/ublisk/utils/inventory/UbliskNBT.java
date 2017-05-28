@@ -3,6 +3,7 @@ package com.robinmc.ublisk.utils.inventory;
 public enum UbliskNBT {
 	
 	ITEM_DROPPABLE("UbliskItemDroppable"),
+	HEALTH_BONUS("UbliskHealthBonus"),
 	
 	;
 	
