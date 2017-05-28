@@ -53,7 +53,7 @@ public class Logger {
 	}
 
 	public static void log(LogLevel logLevel, Object object) {
-		log(logLevel, "Ublisk", object);
+		log(logLevel, "Misc", object);
 	}
 	
 	public static void startSiteLogger(){
