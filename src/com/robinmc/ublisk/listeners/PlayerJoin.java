@@ -43,8 +43,9 @@ public class PlayerJoin implements Listener {
 		
 		player.sendTitle(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Ublisk", ChatColor.YELLOW + "Welcome back, " + player.getName() + "!");
 		
-		//Sync UUID and player name information with database for use by statistics site
-		UUIDUtils.save(player);
+		//Sync UUID and player name information with database for later use XXX Is it actually used?
+		DataFile.UUID.getConfig().set("uuid." + player.getName(), player.getUniqueId().toString());
+		DataFile.UUID.getConfig().set("name." + player.getUniqueId(), player.getName());
 		
 		HashMaps.addPlayerToMaps(player);
 		
