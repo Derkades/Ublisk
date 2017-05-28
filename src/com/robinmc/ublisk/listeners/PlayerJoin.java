@@ -8,7 +8,6 @@ import static org.bukkit.ChatColor.RESET;
 import java.util.UUID;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,7 +23,6 @@ import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.UUIDUtils;
-import com.robinmc.ublisk.utils.inventory.Item;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
 
