@@ -17,7 +17,8 @@ public class LifeCrystalInventory extends BukkitRunnable {
 			Item item = new Item(Material.NETHER_STAR)
 					.setAmount(player.getLifeCrystals())
 					.setName(ChatColor.BLUE + "Life Crystals: " + ChatColor.AQUA + player.getLifeCrystals())
-					.setLore("You have " + player.getLifeCrystals() + " life crystals");
+					.setLore("You have " + player.getLifeCrystals() + " life crystals")
+					.setDroppable(false);
 			
 			if (player.isInBuilderMode()){
 				Item helmet = new Item(Material.GOLD_HELMET).setName(ChatColor.GOLD + "Builder's Helmet");
