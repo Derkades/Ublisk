@@ -71,8 +71,7 @@ import net.minecraft.server.v1_12_R1.Packet;
 import net.minecraft.server.v1_12_R1.PacketPlayOutChat;
 import net.minecraft.server.v1_12_R1.PacketPlayOutGameStateChange;
 
-//@SerializableAs("UPlayer")
-public class UPlayer /*implements ConfigurationSerializable*/ {
+public class UPlayer {
 
 	private Player player;
 
@@ -594,26 +593,8 @@ public class UPlayer /*implements ConfigurationSerializable*/ {
 		player.setHealth(health);
 	}
 
-	/*
-	public void setMaxHealth(int maxHealth) {
-		//player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(maxHealth);
-		
-		//max health = max health attribute * health scale, so if we set max health attribute to 1 real max health = health scale
-		player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(1);
-		player.setHealthScale(maxHealth);
-	}*/
-
 	public int getMaxHealth() {
 		return CustomHealth.getMaxHealth(this);
-	}
-
-	@Deprecated
-	public int getCorrectMaxHealth() {
-		if (!Var.LEVEL_HEALTH.containsKey(this.getLevel())) {
-			return 1;
-		} else {
-			return Var.LEVEL_HEALTH.get(this.getLevel());
-		}
 	}
 	
 	public void heal(){
@@ -649,7 +630,6 @@ public class UPlayer /*implements ConfigurationSerializable*/ {
 	}
 
 	public void setCollidable(boolean bool) {
-		//((CraftPlayer) player).setCollidable(bool);
 		player.setCollidable(false);
 	}
 
@@ -822,23 +802,7 @@ public class UPlayer /*implements ConfigurationSerializable*/ {
 	public boolean executeCommand(String command){
 		return Bukkit.dispatchCommand(player, command);
 	}
-/*
-	@Override
-	public Map<String, Object> serialize() {
-		Map<String, Object> map = new HashMap<>();
-		map.put("uuid", this.getUniqueId().toString());
-		return map;
-	}
-	
-	public static UPlayer deserialize(Map<String, Object> map){
-		UUID uuid = UUID.fromString(String.valueOf(map.get("uuid")));
-		return new UPlayer(uuid);
-	}
-	
-	public static UPlayer valueOf(Map<String, Object> map){
-		return deserialize(map);
-	}*/
-	
+
 	@Override
 	public String toString() {
 		return player.getUniqueId().toString();
