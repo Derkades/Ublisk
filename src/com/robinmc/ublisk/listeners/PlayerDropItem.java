@@ -1,12 +1,12 @@
 package com.robinmc.ublisk.listeners;
 
-import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerDropItemEvent;
 
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.inventory.Item;
 
 public class PlayerDropItem implements Listener {
 	
@@ -18,9 +18,9 @@ public class PlayerDropItem implements Listener {
 			return;
 		}
 		
-		if (event.getItemDrop().getItemStack().getType() == Material.NETHER_STAR || event.getItemDrop().getItemStack().getType() == Material.CHEST){
-			event.setCancelled(true);
-		}
+		Item item = new Item(event.getItemDrop());
+		
+		event.setCancelled(!item.isDroppable());
 	}
 	
 

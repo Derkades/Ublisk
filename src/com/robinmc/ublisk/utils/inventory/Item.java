@@ -35,6 +35,10 @@ public class Item {
 	public Item(Material material, int amount) {
 		this.item = new ItemStack(material, amount);
 	}
+	
+	public Item(org.bukkit.entity.Item itemEntity){
+		this.item = itemEntity.getItemStack();
+	}
 
 	public Item setAmount(int amount){
 		item.setAmount(amount);
@@ -107,8 +111,13 @@ public class Item {
 	public Item setNBTValue(String key, NBTBase value){
 		NBTTagCompound nbt = this.getNBT();
 		nbt.set(key, value);
-		this.setNBT(nbt);
-		return this;
+		return this.setNBT(nbt);
+	}
+	
+	public Item setNBTValue(String key, boolean bool){
+		NBTTagCompound compound = this.getNBT();
+		compound.setBoolean(key, bool);
+		return this.setNBT(compound);
 	}
 	
 	public Material getType(){
@@ -122,6 +131,15 @@ public class Item {
 	
 	public ItemStack getItemStack(){
 		return item;
+	}
+	
+	public Item setDroppable(boolean droppable){
+		return this.setNBTValue(UbliskNBT.ITEM_DROPPABLE.toString(), droppable);
+	}
+	
+	public boolean isDroppable(){
+		NBTTagCompound nbt = this.getNBT();
+		return nbt.hasKey(UbliskNBT.ITEM_DROPPABLE.toString()) && nbt.getBoolean(UbliskNBT.ITEM_DROPPABLE.toString());
 	}
 	
 	@Override

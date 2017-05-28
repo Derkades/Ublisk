@@ -1,8 +1,6 @@
-package com.robinmc.ublisk.items;
+package com.robinmc.ublisk.utils.inventory;
 
 import org.bukkit.Material;
-
-import com.robinmc.ublisk.utils.inventory.Item;
 
 import net.minecraft.server.v1_12_R1.NBTTagString;
 

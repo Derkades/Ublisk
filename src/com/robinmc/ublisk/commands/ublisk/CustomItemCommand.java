@@ -1,7 +1,7 @@
 package com.robinmc.ublisk.commands.ublisk;
 
-import com.robinmc.ublisk.items.CustomItem;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.inventory.CustomItem;
 import com.robinmc.ublisk.utils.inventory.UInventory;
 
 public class CustomItemCommand extends UbliskCommand {
