@@ -99,7 +99,9 @@ public class Main extends JavaPlugin {
 	        cleanup();
 
 	        field.set(this, false);
-	    } catch (Exception ex) { }
+	    } catch (Exception e) {
+	    	e.printStackTrace();
+	    }
 	}
 	
 	private void cleanup(){
