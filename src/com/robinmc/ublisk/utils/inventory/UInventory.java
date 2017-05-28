@@ -1,5 +1,8 @@
 package com.robinmc.ublisk.utils.inventory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -143,6 +146,30 @@ public class UInventory {
 	public UInventory setHelmet(Material material){
 		inv.setHelmet(new ItemStack(material));
 		return this;
+	}
+	
+	public List<Item> getItems(boolean includeStorage, boolean includeArmor, boolean includeExtra){
+		List<Item> items = new ArrayList<>();
+		
+		if (includeStorage){
+			for (ItemStack item : inv.getStorageContents()){
+				items.add(new Item(item));
+			}
+		}
+		
+		if (includeArmor){
+			for (ItemStack item : inv.getArmorContents()){
+				items.add(new Item(item));
+			}
+		}
+		
+		if (includeExtra){
+			for (ItemStack item : inv.getExtraContents()){
+				items.add(new Item(item));
+			}
+		}
+		
+		return items;
 	}
 
 }
