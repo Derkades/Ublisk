@@ -20,13 +20,13 @@ public class CustomHealth extends UModule {
 		new UpdateHealthTask().runTimer(60*20); //Update health every minute just in case
 	}
 	
-	@EventHandler(priority = EventPriority.HIGH)
+	@EventHandler(priority = EventPriority.MONITOR)
 	public void onJoin(final PlayerJoinEvent event){
 		new URunnable(){
 			public void run(){
 				updateMaxHealth(new UPlayer(event));
 			}
-		}.runLater(2*20);
+		}.runLater(20);
 		
 	}
 	
@@ -36,10 +36,8 @@ public class CustomHealth extends UModule {
 	}
 	
 	public static void updateMaxHealth(UPlayer player){
-		//player.setMaxHealth(calculateHealth(player.getLevel()));
 		int health = getMaxHealth(player);
 		player.setAttribute(Attribute.GENERIC_MAX_HEALTH, health);
-		//double scale = 1 / (health / 20.0);
 		player.getPlayer().setHealthScale(20);
 	}
 	

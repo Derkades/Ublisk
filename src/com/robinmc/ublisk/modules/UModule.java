@@ -16,6 +16,7 @@ public abstract class UModule implements Listener {
 			new Advancements(),
 			new AFK(),
 			new AutoRestart(),
+			new CustomHealth(),
 			new CustomMOTD(),
 			new DiscordBot(),
 			new GitHubModule(),
