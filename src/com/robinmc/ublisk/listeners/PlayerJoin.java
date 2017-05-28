@@ -22,7 +22,6 @@ import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.UUIDUtils;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
 
