@@ -33,7 +33,6 @@ public class Loot {
 	};
 	
 	public static LootChest getRandomLoot(){
-		//return EnumUtils.getRandomEnum(Loot.class);
 		int index = Random.getRandomInteger(0, LOOT.length - 1);
 		return LOOT[index];
     }
@@ -86,8 +85,6 @@ public class Loot {
 					    Field inventoryField = chest.getClass().getDeclaredField("chest");
 					    inventoryField.setAccessible(true);
 					    chest.setCustomName("Loot");
-					    //TileEntityChest teChest = ((TileEntityChest) inventoryField.get(chest));
-					    //teChest.a("Loot", TileEntityChest.class);
 					} catch (Exception e){
 					     e.printStackTrace();
 					}

@@ -74,7 +74,6 @@ public class Var {
 	
 	public static final String WEBSITE_ROOT = "https://ublisk.derkades.xyz/";
 	
-	//public static final String GITHUB_LOGIN = DataFile.MYSQL.getConfig().getString("github.login");
 	public static final String GITHUB_ACCESS_TOKEN = DataFile.MYSQL.getConfig().getString("github.token");
 
 }

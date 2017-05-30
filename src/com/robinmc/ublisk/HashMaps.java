@@ -41,8 +41,6 @@ public class HashMaps {
 		LAST_MESSAGE_SENDER.put(player.getPlayer(), null);
 		PREVIOUS_LEVEL.put(uuid, player.getLevel());
 		
-		//Tracker.resetHashMaps(player);
-		
 		PlayerInfo.resetHashMaps(player);
 	}
 	

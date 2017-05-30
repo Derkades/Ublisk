@@ -46,17 +46,14 @@ public class Voting implements Listener {
 	}
 
 	public static int getRandomXP() {
-		//return NumberUtils.randomInteger(VOTE_XP_MIN, VOTE_XP_MAX);
 		return Random.getRandomInteger(VOTE_XP_MIN, VOTE_XP_MAX);
 	}
 
 	public static int getRandomGold() {
-		//return NumberUtils.randomInteger(VOTE_GOLD_MIN, VOTE_GOLD_MAX);
 		return Random.getRandomInteger(VOTE_GOLD_MIN, VOTE_GOLD_MAX);
 	}
 
 	public static int getRandomLife() {
-		//return NumberUtils.randomInteger(VOTE_LIFE_MIN, VOTE_LIFE_MAX);
 		return Random.getRandomInteger(VOTE_LIFE_MIN, VOTE_LIFE_MAX);
 	}
 

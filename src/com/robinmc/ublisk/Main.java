@@ -38,7 +38,6 @@ public class Main extends JavaPlugin {
 
 		Command.registerAll();
 
-		//Mob.startMobSpawning();
 		Mobs.clearMobs();
 		MobSpawn.startMobSpawning();
 
@@ -71,8 +70,6 @@ public class Main extends JavaPlugin {
 				e.printStackTrace();
 			}
 		}
-		
-		//RecipeUtils.removeVanillaRecipes();
 		
 		new BukkitRunnable(){
 			public void run(){
