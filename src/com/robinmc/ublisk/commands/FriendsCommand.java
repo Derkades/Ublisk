@@ -10,7 +10,6 @@ import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.iconmenus.FriendsMenu;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
-import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -24,10 +23,9 @@ public class FriendsCommand implements CommandExecutor {
 				FriendsMenu.open(player);
 			} else if (args.length == 2){
 				if (args[0].equals("add")){
-					OfflinePlayer target;
-					try {
-						target = Ublisk.getOfflinePlayerFromName(args[1]);
-					} catch (PlayerNotFoundException e) {
+					OfflinePlayer target = Ublisk.getOfflinePlayer(args[1]);
+					
+					if (target == null){
 						player.sendMessage(Message.PLAYER_NOT_FOUND);
 						return true;
 					}
@@ -41,21 +39,20 @@ public class FriendsCommand implements CommandExecutor {
 					
 					player.sendPrefixedMessage("Friends", target.getName() + " has been added to your friends list");
 				} else if (args[0].equals("remove") || args[0].equals("delete")){
-					OfflinePlayer offlinePlayer;
-					try {
-						offlinePlayer = Ublisk.getOfflinePlayerFromName(args[1]);
-					} catch (PlayerNotFoundException e) {
+					OfflinePlayer target = Ublisk.getOfflinePlayer(args[1]);
+					
+					if (target == null){
 						player.sendMessage(Message.PLAYER_NOT_FOUND);
 						return true;
 					}
 					
-					if (!player.isFriend(offlinePlayer)){
+					if (!player.isFriend(target)){
 						player.sendMessage(Message.FRIEND_NOT_EXIST);
 						return true;
 					}
 					
-					player.removeFriend(offlinePlayer);
-					player.sendMessage(offlinePlayer.getName() + " has been removed from your friends list");
+					player.removeFriend(target);
+					player.sendMessage(target.getName() + " has been removed from your friends list");
 					// XXX Add ability to remove friend by index
 				} else {
 					player.sendMessage(Message.WRONG_USAGE);
