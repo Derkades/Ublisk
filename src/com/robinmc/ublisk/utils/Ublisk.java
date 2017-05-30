@@ -106,6 +106,7 @@ public class Ublisk {
 		return DARK_GRAY + " [" + string + DARK_GRAY + "]";
 	}
 	
+	@Deprecated
 	public static OfflinePlayer getOfflinePlayerFromName(String name) throws PlayerNotFoundException {
 		String uuidString = DataFile.UUID.getConfig().getString("uuid." + name);
 		UUID uuid = UUID.fromString(uuidString);
@@ -114,6 +115,19 @@ public class Ublisk {
 			throw new PlayerNotFoundException();
 		}
 		return offlinePlayer;
+	}
+	
+	/**
+	 * @param name
+	 * @return An OfflinePlayer object or null if the player could not be found
+	 */
+	public static OfflinePlayer getOfflinePlayer(String name){
+		for (OfflinePlayer offlinePlayer : Bukkit.getOfflinePlayers()){
+			if (offlinePlayer.getName().equals(name)){
+				return offlinePlayer;
+			}
+		}
+		return null;
 	}
 	
 	/**

@@ -9,6 +9,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public enum DataFile {
 
 	QUESTS("quests"),
+	@Deprecated
 	UUID("uuid"),
 	SETTINGS("settings"),
 	FRIENDS("friends"),
