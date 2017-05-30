@@ -23,31 +23,7 @@ public class Debug implements CommandExecutor {
 		if (sender instanceof Player) {
 			UPlayer player = new UPlayer(sender);
 			if (player.hasPermission(Permission.COMMAND_DEBUG)) {
-				/*if (args.length == 3) {
-					if (args[0].equals("group")) {
-						PermissionGroup group;
-						try {
-							group = PermissionGroup.fromString(args[2]);
-						} catch (GroupNotFoundException e) {
-							player.sendMessage("unknown group");
-							return true;
-						}
-						UPlayer target;
-						try {
-							target = new UPlayer(args[1]);
-						} catch (PlayerNotFoundException e) {
-							player.sendMessage("player not found");
-							return true;
-						}
-						player.sendMessage("old: " + group.getName());
-						target.setGroup(group);
-						player.sendMessage("group successful: " + target.getGroup().getName());
-						return true;
-					} else {
-						player.sendMessage(Message.WRONG_USAGE);
-						return true;
-					} FIXME Set group, get group, list perms command
-				} else*/ if (args.length == 2) {
+				if (args.length == 2) {
 					if (args[0].equalsIgnoreCase("xp")) {
 						int xp = Integer.parseInt(args[1]);
 						Exp.set(player.getPlayer(), xp);
