@@ -289,6 +289,7 @@ public class UPlayer {
 
 	public void setXP(int xp) {
 		CustomXP.setXP(player, xp);
+		CustomXP.updateXPBar(player);
 	}
 
 	public int getXP() {
@@ -307,6 +308,7 @@ public class UPlayer {
 
 	public void addXP(int xp) {
 		setXP(getXP() + xp);
+		CustomXP.updateXPBar(player);
 	}
 
 	public String getName() {
