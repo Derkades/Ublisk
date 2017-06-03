@@ -16,6 +16,7 @@ public enum DataFile {
 	CLASSES("classes"),
 	IP("ip"),
 	LIFE_CRYSTAL("life"),
+	@Deprecated
 	XP("xp"),
 	VOTING("voting"),
 	MONEY("money"),

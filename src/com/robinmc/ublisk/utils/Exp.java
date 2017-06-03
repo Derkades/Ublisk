@@ -9,6 +9,7 @@ import com.robinmc.ublisk.DataFile;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
 
+@Deprecated
 public class Exp {
 
 	/**

@@ -18,7 +18,7 @@ public enum Task {
 	CLEAR_WEATHER(new ClearWeather(), 60*20, 5*60*20, false),
 	FAST_DAY_NIGHT(new FastNight(), 0, 1, false),
 	LIFE_CRYSTAL_INVENTORY(new LifeCrystalInventory(), 5*20, 5*20, false),
-	PLAYER_LEVEL_UP(new PlayerLevelUp(), 0, 5*20, false),
+	//PLAYER_LEVEL_UP(new PlayerLevelUp(), 0, 5*20, false),
 	REFRESH_LAST_SEEN_DATE(new RefreshLastSeenDate(), 0, 5*20, false),
 	REGENERATE_HUNGER(new RegenerateHunger(), 0, 10, false),
 	REMOVE_MOBS(new RemoveMobs(), 5*60*20, 15*60*20, false),

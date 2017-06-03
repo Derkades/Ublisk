@@ -45,6 +45,7 @@ import com.robinmc.ublisk.VoteRestart;
 import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.modules.AFK;
 import com.robinmc.ublisk.modules.CustomHealth;
+import com.robinmc.ublisk.modules.CustomXP;
 import com.robinmc.ublisk.modules.PlayerFreeze;
 import com.robinmc.ublisk.money.Money;
 import com.robinmc.ublisk.quest.NPC;
@@ -282,19 +283,26 @@ public class UPlayer {
 	}
 
 	public int getLevel() {
-		return Exp.getLevel(player);
+		//return Exp.getLevel(player);
+		return CustomXP.getLevel(player);
 	}
 
-	private void setXP(int xp) {
-		Exp.set(player, xp);
+	public void setXP(int xp) {
+		CustomXP.setXP(player, xp);
 	}
 
 	public int getXP() {
-		return Exp.get(player);
+		//return Exp.get(player);
+		return CustomXP.getXP(player);
 	}
 
+	@Deprecated
 	public void refreshXP() {
 		Exp.refresh(player);
+	}
+	
+	public void updateXPBar(){
+		CustomXP.updateXPBar(player);
 	}
 
 	public void addXP(int xp) {

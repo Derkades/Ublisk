@@ -22,6 +22,7 @@ public class HashMaps {
 	
 	public static final Map<Player, Player> LAST_MESSAGE_SENDER = new HashMap<>();
 	
+	@Deprecated
 	public static final Map<UUID, Integer> PREVIOUS_LEVEL = new HashMap<>();
 	
 	static void resetAllPlayers(){

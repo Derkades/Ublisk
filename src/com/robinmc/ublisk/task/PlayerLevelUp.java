@@ -7,6 +7,7 @@ import com.robinmc.ublisk.utils.Exp;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 
+@Deprecated
 public class PlayerLevelUp extends BukkitRunnable {
 
 	@Override

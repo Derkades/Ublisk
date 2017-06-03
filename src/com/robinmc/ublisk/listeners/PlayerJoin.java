@@ -60,7 +60,7 @@ public class PlayerJoin implements Listener {
 		ip = ip.replace("/", "");
 		DataFile.IP.getConfig().set("ip." + uuid, ip);
 
-		player.refreshXP();
+		player.updateXPBar();
 
 		// If the player is not a Builder, Moderator or Owner disable builder mode to prevent griefing
 		PermissionGroup group = player.getGroup();
