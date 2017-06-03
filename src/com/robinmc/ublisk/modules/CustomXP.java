@@ -15,9 +15,11 @@ import org.bukkit.entity.Player;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.DoubleXP;
 import com.robinmc.ublisk.utils.Guild;
+import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.URunnable;
 import com.robinmc.ublisk.utils.Ublisk;
+import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.caching.Cache;
 
 public class CustomXP extends UModule {
@@ -122,12 +124,17 @@ public class CustomXP extends UModule {
 	
 	public static void updateXPBar(Player player){
 		int level = getLevel(player);
+		
 		player.setLevel(level);
 		
 		int zeroProgressXP = getRequiredXP(level);
+		Logger.log(LogLevel.DEBUG, "zero progress XP: " + zeroProgressXP);
 		int fullProgressXP = getRequiredXP(level + 1);
+		Logger.log(LogLevel.DEBUG, "full progress xp: " + fullProgressXP);
 		int currentXP = getXP(player);
+		Logger.log(LogLevel.DEBUG, "currentXP: " + currentXP);
 		float progress = (currentXP - zeroProgressXP) / (float) (fullProgressXP - currentXP);
+		Logger.log(LogLevel.DEBUG, "progress: " + progress);
 		player.setExp(progress);
 	}
 	
