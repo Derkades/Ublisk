@@ -65,8 +65,7 @@ public class EntityDeath implements Listener {
 			color = ChatColor.GREEN.toString();
 		}
 		
-		
-		player.sendActionBarMessage(color + "You have killed a " + name + " and got " + xp * 2 + " XP");
+		player.sendActionBarMessage(color + "You have killed a " + name + " and got " + xp + " XP");
 		player.addXP(xp);
 		Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp + " for killing a " + name);
 	}
