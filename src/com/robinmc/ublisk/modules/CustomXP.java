@@ -39,7 +39,7 @@ public class CustomXP extends UModule {
 	}
 	
 	private static int getLevel(int xp){
-		for (int level = 0; level <= LEVEL_LIMIT; level++){
+		for (int level = LEVEL_LIMIT; level > 0; level--){
 			int requiredXP = getRequiredXP(level);
 			if (xp > requiredXP){
 				return level;
