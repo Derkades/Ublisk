@@ -15,11 +15,9 @@ import org.bukkit.entity.Player;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.DoubleXP;
 import com.robinmc.ublisk.utils.Guild;
-import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.URunnable;
 import com.robinmc.ublisk.utils.Ublisk;
-import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.caching.Cache;
 
 public class CustomXP extends UModule {
