@@ -25,7 +25,7 @@ import com.robinmc.ublisk.utils.caching.Cache;
 public class CustomXP extends UModule {
 	
 	private static final int INITIAL_XP = 100;
-	private static final float XP_INCREMENT = 1.05f;
+	private static final float XP_INCREMENT = 1.35f;
 	
 	private static final int LEVEL_LIMIT = 100;
 	
