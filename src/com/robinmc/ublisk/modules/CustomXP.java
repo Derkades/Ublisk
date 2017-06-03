@@ -128,13 +128,9 @@ public class CustomXP extends UModule {
 		player.setLevel(level);
 		
 		int zeroProgressXP = getRequiredXP(level);
-		Logger.log(LogLevel.DEBUG, "zero progress XP: " + zeroProgressXP);
 		int fullProgressXP = getRequiredXP(level + 1);
-		Logger.log(LogLevel.DEBUG, "full progress xp: " + fullProgressXP);
 		int currentXP = getXP(player);
-		Logger.log(LogLevel.DEBUG, "currentXP: " + currentXP);
-		float progress = (currentXP - zeroProgressXP) / (float) (fullProgressXP - currentXP);
-		Logger.log(LogLevel.DEBUG, "progress: " + progress);
+		float progress = (currentXP - zeroProgressXP) / (float) (fullProgressXP - zeroProgressXP);
 		player.setExp(progress);
 	}
 	
@@ -175,15 +171,15 @@ public class CustomXP extends UModule {
 			for (UPlayer player : Ublisk.getOnlinePlayers()){
 				if (!PREVIOUS_LEVEL.containsKey(player.getUniqueId())){
 					PREVIOUS_LEVEL.put(player.getUniqueId(), player.getLevel());
+					continue;
 				}
-				
-				if (player.getLevel() <= PREVIOUS_LEVEL.get(player.getUniqueId())){
-					//If level is lower
-					PREVIOUS_LEVEL.put(player.getUniqueId(), player.getLevel());
-				} else {
+
+				if (player.getLevel() > PREVIOUS_LEVEL.get(player.getUniqueId())){
 					//If level is higher
 					levelUp(player);
 				}
+			
+				PREVIOUS_LEVEL.put(player.getUniqueId(), player.getLevel());
 			}
 		}
 		
