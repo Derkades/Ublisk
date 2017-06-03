@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Cache {
 	
-	private static final List<CacheObject> CACHE_OBJECT_LIST = new ArrayList<>();
+	public static final List<CacheObject> CACHE_OBJECT_LIST = new ArrayList<>();
 	
 	/**
 	 * @param identifier
