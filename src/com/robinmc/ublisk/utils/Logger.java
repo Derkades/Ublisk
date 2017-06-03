@@ -72,7 +72,7 @@ public class Logger {
 		/**
 		 * To be used for messages that will/should be removed later.
 		 */
-		DEBUG(Level.FINE),
+		DEBUG(Level.INFO),
 
 		/**
 		 * To be used for messages providing not very important information.
