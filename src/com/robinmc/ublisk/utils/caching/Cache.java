@@ -13,6 +13,12 @@ public class Cache {
 	 * @param timeout In seconds
 	 */
 	public static void addCachedObject(String identifier, Object object, long timeout){
+		removeCachedObject(identifier); //Remove existing cached object
+		
+		if (timeout < 0){
+			timeout = Long.MAX_VALUE;
+		}
+		
 		CacheObject cachedObject = new CacheObject(identifier, object, timeout);
 		CACHE_OBJECT_LIST.add(cachedObject);
 	}
