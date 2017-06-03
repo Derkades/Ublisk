@@ -14,7 +14,7 @@ import com.robinmc.ublisk.utils.inventory.Item;
 
 public class CustomHealth extends UModule {
 	
-	private static final int HEALTH_INCREMENT = 5;
+	private static final int HEALTH_INCREMENT = 7;
 	
 	@Override
 	public void onEnable(Main plugin){
