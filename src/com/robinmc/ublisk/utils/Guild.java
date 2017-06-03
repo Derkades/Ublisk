@@ -17,6 +17,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.utils.caching.Cache;
 import com.robinmc.ublisk.utils.java.ListUtils;
 
 import net.md_5.bungee.api.ChatColor;
@@ -32,12 +33,14 @@ public class Guild {
 
 	private String name;
 	
+	/*
 	private boolean exists;
 	private boolean existsCached = false;
 	private int points = -1;
 	private OfflinePlayer owner;
 	private String description;
-
+*/
+	
 	/**
 	 * Creates a new guild object. This guild may or may not exist.
 	 * @param name Guild name
@@ -47,8 +50,9 @@ public class Guild {
 	}
 
 	public synchronized boolean exists() {
-		if (existsCached){
-			return exists;
+		Object cache = Cache.getCachedObject("exists:" + this.getName());
+		if (cache != null){
+			return (boolean) cache;
 		}
 		
 		Connection connection = null;
@@ -74,8 +78,7 @@ public class Guild {
 			}
 		}
 		
-		exists = contains;
-		existsCached = true;
+		Cache.addCachedObject("exists" + this.getName(), contains, 300);
 		
 		return contains;
 	}
@@ -118,9 +121,7 @@ public class Guild {
 		
 		owner.setGuild(this);
 		
-		exists = true;
-		existsCached = true;
-		this.owner = owner.getPlayer();
+		Cache.addCachedObject("exists:" + this.getName(), true, 300);
 	}
 
 	public synchronized void invitePlayer(final UPlayer source, final UPlayer target) {
@@ -161,8 +162,10 @@ public class Guild {
 	}
 	
 	public synchronized int getPoints(){
-		if (points != -1){
-			return points;
+		Object cache =  Cache.getCachedObject("points:" + this.getName());
+		
+		if (cache != null){
+			return (int) cache;
 		}
 		
 		Connection connection = null;
@@ -190,7 +193,7 @@ public class Guild {
 			}
 		}
 		
-		this.points = points;
+		Cache.addCachedObject("points:" + this.getName(), points, 300);
 		
 		return points;
 	}
@@ -216,7 +219,7 @@ public class Guild {
 			}
 		}
 		
-		this.points = points;
+		Cache.addCachedObject("points:" + this.getName(), points, 300);
 	}
 	
 	public synchronized void addPoints(int points){
@@ -240,7 +243,7 @@ public class Guild {
 			}
 		}
 		
-		this.points += points;
+		Cache.removeCachedObject("points:" + this.getName());
 	}
 	
 	public synchronized List<OfflinePlayer> getMembers(){	
@@ -294,13 +297,13 @@ public class Guild {
 			}
 		}
 		
-		exists = false;
-		existsCached = false;
+		Cache.addCachedObject("exists:" + this.getName(), false, 600);
 	}
 	
 	public synchronized OfflinePlayer getOwner(){
-		if (owner != null){
-			return owner;
+		Object cache = Cache.getCachedObject("owner:" + this.getName());
+		if (cache != null){
+			return (OfflinePlayer) cache;
 		}
 		
 		Connection connection = null;
@@ -330,13 +333,14 @@ public class Guild {
 		
 		OfflinePlayer owner = Bukkit.getOfflinePlayer(UUID.fromString(uuid));
 		
-		this.owner = owner;
+		Cache.addCachedObject("owner:" + this.getName(), owner, 1000);
 		
 		return owner;
 	}
 	
 	public synchronized void setDescription(String description){
-		this.description = description; //Update cached description value
+		//this.description = description; //Update cached description value
+		Cache.addCachedObject("description:" + this.getName(), description, 300);
 		
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -361,8 +365,9 @@ public class Guild {
 	}
 	
 	public synchronized String getDescription(){
-		if (description != null){
-			return description;
+		Object cache = Cache.getCachedObject("description:" + this.getName());
+		if (cache != null){
+			return (String) cache;
 		}
 		
 		Connection connection = null;
@@ -390,7 +395,7 @@ public class Guild {
 			}
 		}
 		
-		this.description = description;
+		Cache.addCachedObject("description:" + this.getName(), description, 600);
 		
 		return description;
 	}
