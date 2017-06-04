@@ -21,9 +21,7 @@ public class HashMaps {
 	public static final Map<UUID, Boolean> IS_SOFT_MUTED = new HashMap<>();
 	
 	public static final Map<Player, Player> LAST_MESSAGE_SENDER = new HashMap<>();
-	
-	@Deprecated
-	public static final Map<UUID, Integer> PREVIOUS_LEVEL = new HashMap<>();
+
 	
 	static void resetAllPlayers(){
 		for (UPlayer player : Ublisk.getOnlinePlayers()){
@@ -40,33 +38,8 @@ public class HashMaps {
 		IS_MUTED.put(uuid, false);
 		IS_SOFT_MUTED.put(uuid, false);
 		LAST_MESSAGE_SENDER.put(player.getPlayer(), null);
-		PREVIOUS_LEVEL.put(uuid, player.getLevel());
 		
 		PlayerInfo.resetHashMaps(player);
-	}
-	
-	public static HashMap<Integer, Integer> build(int... data){
-	    HashMap<Integer, Integer> result = new HashMap<>();
-
-	    if(data.length % 2 != 0) 
-	        throw new IllegalArgumentException("Odd number of arguments");      
-
-	    int key = 0;
-	    Integer step = -1;
-
-	    for(int value : data){
-	        step++;
-	        switch(step % 2){
-	        case 0: 
-	            key = value;
-	            continue;
-	        case 1:             
-	            result.put(key, value);
-	            break;
-	        }
-	    }
-
-	    return result;
 	}
 	
 }
