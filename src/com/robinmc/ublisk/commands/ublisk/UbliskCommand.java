@@ -23,14 +23,7 @@ public abstract class UbliskCommand {
 			for (LootChest loot : Loot.getLootChests()){
 				loot.spawn();
 			}
-	}, "Spawns ALL loot chests. Avoid using this.", "lootall"),
-	
-	CIRCLE
-			for (Location location : Shapes.generateCircle(Direction.HORIZONTAL, player.getLocation(), 100, 3.5)){
-				Ublisk.spawnParticle(Particle.FLAME, location, 1, 0, 0, 0, 0);
-				player.sendMessage(location.getX() + " : " + location.getY() + " : " + location.getZ());
-			}
-	}, "Summons particles in a circle", "circle")*/
+	}, "Spawns ALL loot chests. Avoid using this.", "lootall" */
 	
 	private static final UbliskCommand[] COMMANDS = {
 			new BlockIdCommand(),

@@ -30,7 +30,6 @@ public class DoubleXP {
 			return;
 		}
 
-		//Bukkit.broadcastMessage("Double XP started thanks to " + player.getName());
 		Ublisk.broadcastPrefixedMessage("Double XP started thanks to " + player.getName());
 		
 		DoubleXP.DOUBLE_XP_PERCENTAGE = 1.0f;
@@ -48,7 +47,6 @@ public class DoubleXP {
 				if (DoubleXP.DOUBLE_XP_SECONDS_LEFT == 0) {
 					this.cancel();
 					DoubleXP.DOUBLE_XP_PERCENTAGE = 0.0f;
-					//Bukkit.broadcastMessage("Double XP ended");
 					Ublisk.broadcastPrefixedMessage("Double XP has ended.");
 				}
 			}
@@ -68,7 +66,6 @@ public class DoubleXP {
 				try {
 					DoubleXP.startDoubleXP(new UPlayer(message));
 				} catch (PlayerNotFoundException e) {
-					//Bukkit.broadcastMessage("The player who started DoubleXP is not online.");
 					Ublisk.broadcastPrefixedMessage("The player who started Double XP is not online.");
 				}
 			}

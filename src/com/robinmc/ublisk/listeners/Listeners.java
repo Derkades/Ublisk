@@ -27,7 +27,6 @@ public class Listeners {
 		BREAK_BLOCK(new BreakBlock()),
 		CHUNK_LOAD(new ChunkLoad()),
 		ENTITY_EXPLODE(new EntityExplode()),
-		//INV_CLOSE(new InventoryClose()),
 		INV_CLICK(new InventoryClick()),
 		PLAYER_COMMAND(new PlayerCommandPreprocess()),
 		INTERACT(new PlayerInteract()),

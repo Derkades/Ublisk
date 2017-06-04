@@ -38,8 +38,7 @@ public class AsyncPlayerChat implements Listener {
 	public void logChat(AsyncPlayerChatEvent event){
 		String playerName = event.getPlayer().getName();
 		String message = event.getMessage();
-		//boolean isCancelled = event.isCancelled();
-		Logger.log(LogLevel.CHAT, playerName, message /*+ " (cancelled: " + isCancelled + ")"*/);
+		Logger.log(LogLevel.CHAT, playerName, message);
 	}
 
 }

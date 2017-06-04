@@ -18,11 +18,6 @@ public class FileUtils {
 	}
 	
 	public static void appendStringToFile(File file, String string){
-		/*try {
-			org.apache.commons.io.FileUtils.writeStringToFile(file, string, Charset.defaultCharset(), true);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
 		try {
 			Writer writer = new BufferedWriter(new FileWriter(file, true));
 			writer.append(string);

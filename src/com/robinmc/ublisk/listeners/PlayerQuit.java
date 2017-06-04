@@ -20,13 +20,6 @@ public class PlayerQuit implements Listener {
 		event.setQuitMessage(DARK_AQUA + "" + BOLD + player.getName() + AQUA + " has left");
 		
 		player.refreshLastSeenDate();
-		
-		/*SyncQueue.addToQueue(new BukkitRunnable(){
-			public void run(){
-				Tracker.syncWithDatabase(player);
-				PlayerInfo.syncInfo(player);
-			}
-		});*/
 	}
 
 }

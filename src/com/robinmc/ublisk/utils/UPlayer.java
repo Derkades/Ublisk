@@ -19,7 +19,6 @@ import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
@@ -753,15 +752,6 @@ public class UPlayer {
 	
 	public void leaveGuild(){
 		Guild.leaveGuild(player);
-	}
-	
-	/**
-	 * Use isOnGround()
-	 * @return
-	 */
-	@Deprecated
-	public boolean onGround(){
-		return !player.isFlying() && player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType().isSolid();
 	}
 	
 	public boolean isOnGround() {

@@ -45,19 +45,7 @@ public class PlayerInteract implements Listener {
 		if (action == Action.RIGHT_CLICK_BLOCK || action == Action.RIGHT_CLICK_AIR){
 			UInventory inv = player.getInventory();
 			Material item = inv.getItemInMainHand().getType();
-			//Material offhand = inv.getItemInOffHand().getType();
-			
-			/*if (item == Material.BOW || offhand == Material.BOW){
-				if (!(player.getClazz() == Clazz.ARCHER)){
-					player.sendMessage(Message.CLASS_WRONG_WEAPON);
-					event.setCancelled(true);
-				}
-			} else if (item == Material.STICK || offhand == Material.STICK){
-				if (!(player.getClazz() == Clazz.SORCERER)){
-					player.sendMessage(Message.CLASS_WRONG_WEAPON);
-					event.setCancelled(true);
-				}
-			} else */if (item == Material.CHEST && !player.isInBuilderMode()){
+			if (item == Material.CHEST && !player.isInBuilderMode()){
 				MainMenu.open(player);
 				event.setCancelled(true);
 			} else if (item == Material.END_CRYSTAL){
@@ -177,10 +165,7 @@ public class PlayerInteract implements Listener {
 		for (String string : strings) player.sendMessage(string);
 		new UPlayer(player).getInventory().addItem(new Item(Material.ANVIL).setName("Use this to rename the coal block."));
 	}
-	
-	/*
-	 * Inspiration from http://dev.bukkit.org/bukkit-plugins/anticroptrample/. 
-	 */
+
 	@SuppressWarnings("deprecation")
 	@EventHandler(priority=EventPriority.LOWEST, ignoreCancelled = false)
 	public void onTrample(PlayerInteractEvent event){

@@ -33,14 +33,6 @@ public class Guild {
 
 	private String name;
 	
-	/*
-	private boolean exists;
-	private boolean existsCached = false;
-	private int points = -1;
-	private OfflinePlayer owner;
-	private String description;
-*/
-	
 	/**
 	 * Creates a new guild object. This guild may or may not exist.
 	 * @param name Guild name
@@ -339,7 +331,6 @@ public class Guild {
 	}
 	
 	public synchronized void setDescription(String description){
-		//this.description = description; //Update cached description value
 		Cache.addCachedObject("description:" + this.getName(), description, 300);
 		
 		Connection connection = null;

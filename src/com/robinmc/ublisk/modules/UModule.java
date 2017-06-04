@@ -70,12 +70,8 @@ public abstract class UModule implements Listener {
 		Logger.log(level, module.getClass().getSimpleName(), message);
 	}
 	
-	void onEnable(Main plugin){
-		
-	}
+	void onEnable(Main plugin){}
 	
-	void onDisable(){
-		
-	}
+	void onDisable(){}
 
 }

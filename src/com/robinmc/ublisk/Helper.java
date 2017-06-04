@@ -30,9 +30,9 @@ public enum Helper {
 			"https://www.reddit.com/r/Minecraft/comments/2922fb/3d_models_resource_pack/", 
 			"3D models for some blocks and items"),
 	
-	PARKER("MrParkerl11", 
+	/*PARKER("MrParkerl11", 
 			"https://goo.gl/WFW9zm", 
-			"Built one windmill. Yep, that's it."), // Might remove him soon from this list
+			"Built one windmill. Yep, that's it."), */
 	
 	SYDAN("SirSydan (Sydan)", 
 			"https://www.youtube.com/channel/UCFl5VN9R5uEszEoLrYgTOoA", 
@@ -41,10 +41,6 @@ public enum Helper {
 	XISUMA("xisumavoid", 
 			"https://www.youtube.com/user/xisumavoid", 
 			"I used some of his modular resourcepacks in the Ublisk pack."),
-	
-	/*BREECKO("Breecko (Brecht)", 
-			"https://www.youtube.com/channel/UC4Slc9O6dLsia_fWrgN8Q9Q", 
-			"A bit of building, but mainly being awesome and motivating :D"),*/
 	
 	SANDER_GAMING("Sander_Gaming (Sander)", 
 			"https://www.youtube.com/channel/UCW-jqEMRdjgimFtarWZGGsg", 

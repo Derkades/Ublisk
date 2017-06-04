@@ -23,7 +23,6 @@ public class Debug implements CommandExecutor {
 				if (args.length == 2) {
 					if (args[0].equalsIgnoreCase("xp")) {
 						int xp = Integer.parseInt(args[1]);
-						//Exp.set(player.getPlayer(), xp);
 						player.setXP(xp);
 						return true;
 					} else if (args[0].equals("refreshxp")) {
@@ -34,7 +33,7 @@ public class Debug implements CommandExecutor {
 							player.sendMessage("player not found");
 							return true;
 						}
-						//player.refreshXP();
+
 						player.updateXPBar();
 						player.sendMessage("XP refreshed!");
 						player.sendMessage("XP: " + target.getXP());

@@ -17,7 +17,6 @@ public class RemoveMobs extends BukkitRunnable {
 				Ublisk.broadcastPrefixedMessage("Clearing all mobs and items in 5 seconds!");
 				new BukkitRunnable(){
 					public void run(){
-						//Mob.removeMobs();
 						Mobs.clearMobs();
 						Ublisk.broadcastMessage(Message.ENTITIES_REMOVED);
 					}

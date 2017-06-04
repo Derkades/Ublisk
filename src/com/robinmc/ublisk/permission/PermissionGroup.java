@@ -68,11 +68,6 @@ public enum PermissionGroup {
 		return permissions;
 	}
 	
-	@Deprecated
-	public boolean hasPermission(Permission perm){
-		return permissions.contains(perm);
-	}
-	
 	public static PermissionGroup fromString(String string) {
 		for (PermissionGroup group : PermissionGroup.values()){
 			if (group.getName().equalsIgnoreCase(string)){

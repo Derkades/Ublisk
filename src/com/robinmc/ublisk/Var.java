@@ -17,19 +17,6 @@ public class Var {
 	public static final World WORLD = Bukkit.getWorld("ublisk");
 	
 	/**
-	 * <b>The integer all XP is divided by.</b>
-	 * <br><br>
-	 * Example (if XP_DIVISION is 5): 
-	 * <br>
-	 * Player has 80 xp
-	 * <br>
-	 * 80 / 5 = 16
-	 * <br>
-	 * Actual player xp will be 16
-	 */
-	public static final int XP_DIVISION = 20;
-	
-	/**
 	 * Double XP cooldown, in minutes
 	 */
 	public static final int DOUBLE_XP_COOLDOWN = 10;

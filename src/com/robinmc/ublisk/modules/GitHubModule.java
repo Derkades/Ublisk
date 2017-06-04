@@ -30,7 +30,6 @@ public class GitHubModule extends UModule {
 		Logger.log(LogLevel.DEBUG, "Initializing GitHub..");
 		
 		try {
-			//github = GitHub.connect(Var.GITHUB_LOGIN, Var.GITHUB_ACCESS_TOKEN);
 			github = GitHub.connectUsingOAuth(Var.GITHUB_ACCESS_TOKEN);
 		} catch (IOException e) {
 			Logger.log(LogLevel.SEVERE, "GitHub", "Failed to initialize GitHub");

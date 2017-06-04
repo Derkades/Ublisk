@@ -15,17 +15,6 @@ import com.robinmc.ublisk.utils.Ublisk;
 
 public class ServerInfo {
 	
-	/*
-	 * Table layout:
-	 * dummy - varchar(10) primary key
-	 * time - varchar(30)
-	 * tps - double
-	 * players_online - int
-	 * autorestart_count - int
-	 * database_requests - int
-	 * chunks_loaded - int
-	 */
-	
 	private static final String TABLE_NAME = "server_info";
 	private static final String DUMMY = "ublisk";
 	

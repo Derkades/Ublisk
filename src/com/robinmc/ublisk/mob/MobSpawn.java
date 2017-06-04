@@ -67,7 +67,6 @@ public class MobSpawn {
 			new BukkitRunnable(){
 				public void run(){
 					if (Bukkit.getOnlinePlayers().size() == 0 || mob.hasReachedSpawnLimit()){
-						//Logger.log(LogLevel.DEBUG, "Mobs", "Spawning of a " + mob.getName() + " has been cancelled, because this mob has reached its spawn limit or no players are online.");
 						return;
 					}
 
@@ -152,9 +151,7 @@ public class MobSpawn {
 					if (code != null)
 						code.mobCode(entity);
 					
-					Mobs.SPAWNED_MOBS.put(entity.getUniqueId(), mob);
-					//Logger.log(LogLevel.DEBUG, "Mobs", "Spawned a " + mob.getName() + " at (" + x + "," + loc.getY() + "," + z + ")");
-					
+					Mobs.SPAWNED_MOBS.put(entity.getUniqueId(), mob);					
 				}
 			}.runTaskTimer(Main.getInstance(), 2*20, (long) rate);
 		}	

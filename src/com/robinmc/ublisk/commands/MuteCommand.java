@@ -33,7 +33,6 @@ public class MuteCommand implements CommandExecutor {
 		if (args.length == 1){
 			UPlayer target;
 			try {
-				//target = UUIDUtils.getPlayerFromName(args[0]);
 				target = new UPlayer(args[0]);
 			} catch (PlayerNotFoundException e) {
 				player.sendMessage(Message.PLAYER_NOT_FOUND);
@@ -44,16 +43,12 @@ public class MuteCommand implements CommandExecutor {
 			String targetName = target.getName();
 			String playerName = player.getName();
 			if (HashMaps.IS_MUTED.get(uuid)){
-				//player.sendMessage(Message.Complicated.Commands.Mute.unMutedOther(targetName));
 				player.sendPrefixedMessage("Chat", targetName + " has been unmuted.");
-				//target.sendMessage(Message.Complicated.Commands.Mute.unMuted(playerName));
 				target.sendPrefixedMessage("Chat", "You have been unmuted by " + playerName);
 				HashMaps.IS_MUTED.put(uuid, false);
 				return true;
 			} else {
-				//player.sendMessage(Message.Complicated.Commands.Mute.mutedOther(targetName));
 				player.sendPrefixedMessage("Chat", targetName + " has been muted.");
-				//target.sendMessage(Message.Complicated.Commands.Mute.muted(playerName));
 				target.sendPrefixedMessage("Chat", "You have been muted by " + playerName);
 				HashMaps.IS_MUTED.put(uuid, true);
 				return true;
@@ -62,7 +57,6 @@ public class MuteCommand implements CommandExecutor {
 			UPlayer target;
 			
 			try {
-				//target = UUIDUtils.getPlayerFromName(args[2]);
 				target = new UPlayer(args[1]);
 			} catch (PlayerNotFoundException e){
 				player.sendMessage(Message.PLAYER_NOT_FOUND);
@@ -73,16 +67,12 @@ public class MuteCommand implements CommandExecutor {
 			String targetName = target.getName();
 			String playerName = player.getName();
 			if (HashMaps.IS_SOFT_MUTED.get(uuid)){
-				//player.sendMessage(Message.Complicated.Commands.Mute.unSoftMutedOther(targetName));
 				player.sendPrefixedMessage("Chat", targetName + " has been un-soft-muted.");
-				//target.sendMessage(Message.Complicated.Commands.Mute.unSoftMuted(playerName));
 				target.sendPrefixedMessage("Chat", "You have been un-soft-muted by " + playerName);
 				HashMaps.IS_MUTED.put(uuid, false);
 				return true;
 			} else {
-				//player.sendMessage(Message.Complicated.Commands.Mute.softMutedOther(targetName));
 				player.sendPrefixedMessage("Chat", targetName + " has been soft-muted.");
-				//target.sendMessage(Message.Complicated.Commands.Mute.softMuted(playerName));
 				target.sendPrefixedMessage("Chat", "You have been soft-muted by " + playerName);
 				HashMaps.IS_MUTED.put(uuid, true);
 				return true;

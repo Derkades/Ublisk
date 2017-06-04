@@ -37,9 +37,6 @@ public class Scoreboard extends UModule {
 		List<String> strings = new ArrayList<String>();
 
 		strings.add(DARK_GRAY + "---------------");
-		//strings.add(redBold + "Class");
-		//strings.add(GRAY + player.getClazz().getName());
-		//strings.add(" ");
 		strings.add(redBold + "XP");
 		strings.add(GRAY + "" + player.getXP() + " / " + CustomXP.getRequiredXP(player.getLevel() + 1));
 		strings.add(r + " ");

@@ -29,7 +29,6 @@ public class Cache {
 		for (CacheObject cacheObject : CACHE_OBJECT_LIST){
 			//Remove any old cached objects
 			if (System.currentTimeMillis() - cacheObject.timeCreated > cacheObject.timeout){
-				//CACHE_OBJECT_LIST.remove(cacheObject);
 				toRemove.add(cacheObject);
 				continue;
 			}
@@ -52,7 +51,6 @@ public class Cache {
 		for (CacheObject cacheObject : CACHE_OBJECT_LIST){
 			if (System.currentTimeMillis() - cacheObject.timeCreated > cacheObject.timeout ||
 					cacheObject.identifier.equals(identifier)){
-				//CACHE_OBJECT_LIST.remove(cacheObject);
 				toRemove.add(cacheObject);
 				continue;
 			}
