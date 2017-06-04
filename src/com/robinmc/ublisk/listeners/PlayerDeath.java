@@ -37,8 +37,6 @@ public class PlayerDeath implements Listener {
 		new BukkitRunnable(){
 			public void run(){
 				player.setMana(20);
-				//player.setMaxHealth(player.getCorrectMaxHealth());
-				//player.setHealth(player.getCorrectMaxHealth());
 				CustomHealth.updateMaxHealth(player);
 				player.heal();
 				player.teleport(player.getLastTown().getSpawnLocation());
