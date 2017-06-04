@@ -25,7 +25,6 @@ public enum Command {
 	REPLY("reply", new ReplyCommand()),
 	STATS("stats", new StatsCommand()),
 	SUGGEST("suggest", new SuggestCommand()),
-	VOTE_RESTART("voterestart", new VoteRestartCommand()),
 	
 	UBLISK("ublisk", new UbliskCommand.Executor());
 
