@@ -1,5 +1,6 @@
 package com.robinmc.ublisk;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -80,6 +81,8 @@ public class Main extends JavaPlugin {
 				}
 			}
 		}.runTaskTimer(this, 1*20, 10*20);
+		
+		Bukkit.clearRecipes();
 	}
 	
 	@Override
