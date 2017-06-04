@@ -293,7 +293,16 @@ public class Ublisk {
 		}
 	}
 	
+	/**
+	 * Drops item at location. Will fail silently if item or item.getItemStack() is null
+	 * @param location
+	 * @param item
+	 */
 	public static void dropItem(Location location, Item item){
+		if (item == null || item.getItemStack() == null){
+			return;
+		}
+		
 		Var.WORLD.dropItemNaturally(location, item.getItemStack());
 	}
 
