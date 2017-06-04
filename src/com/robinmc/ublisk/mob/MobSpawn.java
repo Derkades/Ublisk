@@ -99,7 +99,6 @@ public class MobSpawn {
 					Location loc = new Location(Var.WORLD, x + 0.5, area.getY(), z + 0.5);
 						
 					if (!loc.getChunk().isLoaded()){
-						//Logger.log(LogLevel.DEBUG, "Mobs", "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because the chunk is not loaded.");
 						return;
 					}
 					
@@ -112,7 +111,6 @@ public class MobSpawn {
 					}
 					
 					if (noPlayerNearby){
-						//Logger.log(LogLevel.DEBUG, "Mobs", "Spawning of a " + mob.getName() + " at " + loc.getX() + "," + loc.getY() + "," + loc.getZ() + " has been cancelled, because no players are nearby.");
 						return;
 					}
 
