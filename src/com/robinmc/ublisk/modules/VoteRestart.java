@@ -1,15 +1,26 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.modules;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
 
-public class VoteRestart {
+public class VoteRestart extends UModule {
+	
+	@Override
+	public void onEnable(Main plugin){
+		plugin.getCommand("voterestart").setExecutor(new VoteRestartCommand());
+	}
 
 	private static List<String> restartVoters = new ArrayList<String>();
 	private static boolean restarting = false;
@@ -55,6 +66,27 @@ public class VoteRestart {
 	
 	public static boolean hasVotedForRestart(UPlayer player){
 		return restartVoters.contains(player.getName());
+	}
+	
+	public static class VoteRestartCommand implements CommandExecutor {
+
+		@Override
+		public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+			if (!(sender instanceof Player)){
+				sender.sendMessage(Message.NOT_A_PLAYER.toString());
+			}
+			
+			UPlayer player = new UPlayer(sender);
+			
+			if (player.hasVotedForRestart()){
+				player.sendMessage(Message.ALREADY_VOTED_RESTART);
+				return true;
+			}
+			
+			player.voteRestart();
+			return true;
+		}
+
 	}
 
 }
