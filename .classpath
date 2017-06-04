@@ -18,6 +18,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Jars/Minecraft/Server Jars/spigot-1.12-pre5.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Minecraft/Server Jars/spigot-1.12-pre5.jar" sourcepath="C:/Jars/Minecraft/Spigot Source Code 1.11.2"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
