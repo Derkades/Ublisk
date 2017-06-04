@@ -70,7 +70,7 @@ public class BlockLift extends Ability {
 
 							@Override
 							public void run() {
-								Ublisk.createFakeExplosion(blockCenterLocation, damage, EXPLOSION_RADIUS, Explosion.FLAMES);
+								Ublisk.createFakeExplosion(blockCenterLocation, player, damage, EXPLOSION_RADIUS, true, Explosion.FLAMES);
 							}
 						}, 2 * 20);
 					} else {

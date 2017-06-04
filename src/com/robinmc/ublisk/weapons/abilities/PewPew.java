@@ -13,7 +13,7 @@ public class PewPew extends Ability {
 
 	@Override
 	public boolean run(final UPlayer player) {
-		Ublisk.createFakeExplosion(player.getTargetBlock(35).getLocation(), 20, 6, true, Explosion.BLAST_LARGE);
+		Ublisk.createFakeExplosion(player.getTargetBlock(35).getLocation(), player, 20, 6, true, Explosion.BLAST_LARGE);
 		return true;
 	}
 

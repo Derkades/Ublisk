@@ -222,22 +222,6 @@ public class Ublisk {
 		}
 	}
 	
-	/**
-	 * @deprecated You now need to specify damage source
-	 */
-	@Deprecated
-	public static void createFakeExplosion(Location location, int damage, double damageRadius, boolean sound, Explosion... explosions){
-		throw new UnsupportedOperationException("Specify damage source you fool!");
-	}
-	
-	/**
-	 * @deprecated You now need to explicitly specify whether sound needs to be played or not.
-	 */
-	@Deprecated
-	public static void createFakeExplosion(Location location, int damage, double damageRadius, Explosion... explosions){
-		createFakeExplosion(location, damage, damageRadius, true, explosions);
-	}
-	
 	public static enum Explosion {
 		
 		/**
