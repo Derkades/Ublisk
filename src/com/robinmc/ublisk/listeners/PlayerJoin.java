@@ -69,6 +69,8 @@ public class PlayerJoin implements Listener {
 		} else {
 			player.setGameMode(GameMode.ADVENTURE);
 		}
+		
+		player.setFlying(false);
 
 		player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
 

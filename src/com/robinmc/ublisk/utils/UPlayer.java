@@ -810,6 +810,22 @@ public class UPlayer {
 	public boolean executeCommand(String command){
 		return Bukkit.dispatchCommand(player, command);
 	}
+	
+	public void setAllowFlight(boolean allow){
+		player.setAllowFlight(allow);
+	}
+	
+	public void setFlying(boolean flying){
+		player.setFlying(flying);
+	}
+	
+	public boolean getAllowFlight(){
+		return player.getAllowFlight();
+	}
+	
+	public boolean isFlying(){
+		return player.isFlying();
+	}
 
 	@Override
 	public String toString() {
