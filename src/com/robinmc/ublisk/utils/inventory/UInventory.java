@@ -3,9 +3,12 @@ package com.robinmc.ublisk.utils.inventory;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+
+import com.robinmc.ublisk.utils.Ublisk;
 
 public class UInventory {
 	
@@ -170,6 +173,18 @@ public class UInventory {
 		}
 		
 		return items;
+	}
+	
+	public void clear(){
+		for (Item item : this.getItems(true, true, true)){
+			this.removeAll(item.getType());
+		}
+	}
+	
+	public void dropItems(Location location){
+		for (Item item : this.getItems(true, true, true)){
+			Ublisk.dropItem(location, item);
+		}
 	}
 
 }

@@ -31,6 +31,7 @@ import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.database.ServerInfo;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
+import com.robinmc.ublisk.utils.inventory.Item;
 
 public class Ublisk {
 	
@@ -304,6 +305,10 @@ public class Ublisk {
 		if (!success){
 			throw new IllegalArgumentException("Either the gamerule or value specified is wrong.");
 		}
+	}
+	
+	public static void dropItem(Location location, Item item){
+		Var.WORLD.dropItemNaturally(location, item.getItemStack());
 	}
 
 }

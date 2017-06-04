@@ -19,11 +19,13 @@ public class PlayerDeath implements Listener {
 		
 		event.setDeathMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + player.getName() + " died near " + player.getLastTown().getName());
 		
+		event.setKeepInventory(true);
+		
 		if (player.getLifeCrystals() > 0){
 			player.setLifeCrystals(player.getLifeCrystals() - 1);
-			event.setKeepInventory(true);
 		} else {
-			event.setKeepInventory(false);
+			player.getInventory().dropItems(player.getLocation());
+			player.getInventory().clear();
 		}
 		
 		new BukkitRunnable(){
