@@ -8,6 +8,7 @@ import static org.bukkit.ChatColor.RESET;
 import java.util.UUID;
 
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -63,6 +64,12 @@ public class PlayerJoin implements Listener {
 		if (!(group == PermissionGroup.BUILDER || group == PermissionGroup.MODERATOR || group == PermissionGroup.OWNER)
 				&& player.isInBuilderMode()) {
 			player.setBuilderModeEnabled(false);
+		}
+		
+		if (player.isInBuilderMode()){
+			player.setGameMode(GameMode.CREATIVE);
+		} else {
+			player.setGameMode(GameMode.ADVENTURE);
 		}
 
 		player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
