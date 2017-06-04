@@ -143,6 +143,7 @@ public class GuildCommand implements CommandExecutor {
 				List<String> messages = new ArrayList<String>();
 				messages.add("Name: " + guild.getName());
 				messages.add("Points: " + guild.getPoints());
+				messages.add("Description: " + guild.getDescription());
 				messages.add("Members:");
 
 				for (OfflinePlayer member : guild.getMembers()) {
