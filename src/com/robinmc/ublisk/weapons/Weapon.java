@@ -11,9 +11,8 @@ import static net.md_5.bungee.api.ChatColor.WHITE;
 import static net.md_5.bungee.api.ChatColor.YELLOW;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -22,9 +21,20 @@ import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.java.ListUtils;
 import com.robinmc.ublisk.weapons.abilities.Ability;
+import com.robinmc.ublisk.weapons.sword.Purifier;
 import com.robinmc.ublisk.weapons.sword.Sword;
+import com.robinmc.ublisk.weapons.sword.wood.BasicWoodenSword;
+import com.robinmc.ublisk.weapons.sword.wood.WoodenLongSword;
+import com.robinmc.ublisk.weapons.sword.wood.WoodenShortSword;
 
 public abstract class Weapon {
+	
+	public static final List<Weapon> WEAPONS = Arrays.asList(
+			new BasicWoodenSword(),
+			new WoodenLongSword(),
+			new WoodenShortSword(),
+			new Purifier()
+	);
 	
 	private String name;
 	private Material material;
@@ -160,14 +170,6 @@ public abstract class Weapon {
 			lore.add(YELLOW + "Knockback resistance: " + GOLD + this.getKnockbackResistance());
 		
 		return lore.toArray(new String[]{});
-	}
-	
-	public static Set<Weapon> getWeapons(){
-		Set<Weapon> set = new HashSet<Weapon>();
-		for (WeaponEnum we : WeaponEnum.values()){
-			set.add(we.getWeapon());
-		}
-		return set;
 	}
 	
 	public static boolean itemStackIsWeapon(ItemStack item, Weapon weapon){

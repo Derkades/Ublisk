@@ -12,7 +12,7 @@ public class SwordCommand extends UbliskCommand {
 	protected void onCommand(UPlayer player, String[] args) {
 		UInventory inv = player.getInventory();
 
-		for (Weapon weapon : Weapon.getWeapons()) {
+		for (Weapon weapon : Weapon.WEAPONS) {
 			if (weapon instanceof Sword) {
 				inv.addItem(new Item(((Sword) weapon).getItemStack()));
 			}

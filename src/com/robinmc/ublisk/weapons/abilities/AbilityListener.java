@@ -1,7 +1,5 @@
 package com.robinmc.ublisk.weapons.abilities;
 
-import java.util.Set;
-
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -20,10 +18,9 @@ public class AbilityListener implements Listener {
 			return;
 		
 		UPlayer player = new UPlayer(event);
-		Set<Weapon> weapons = Weapon.getWeapons();
 		
 		if (action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK) {
-			for (Weapon weapon : weapons){
+			for (Weapon weapon : Weapon.WEAPONS){
 				if (Weapon.itemStackIsWeapon(player.getInventory().getItemInMainHand().getItemStack(), weapon)){
 					player.doAbility(weapon.getLeftClickAbility());
 				}
@@ -31,7 +28,7 @@ public class AbilityListener implements Listener {
 		}
 		
 		if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
-			for (Weapon weapon : weapons){
+			for (Weapon weapon : Weapon.WEAPONS){
 				if (Weapon.itemStackIsWeapon(player.getInventory().getItemInMainHand().getItemStack(), weapon)){
 					player.doAbility(weapon.getRightClickAbility());
 				}
