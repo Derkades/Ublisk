@@ -171,7 +171,7 @@ public class Ublisk {
 		}
 		
 		for (int i = 0; i <= count; i++){
-			spawnParticle(particle, location, 0, red / 255, green / 255, blue / 255, 0);
+			spawnParticle(particle, location, 0, red / 255.0, green / 255.0, blue / 255.0, 0);
 		}
 	}
 	
