@@ -4,7 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import com.robinmc.ublisk.Message;
-import com.robinmc.ublisk.Voting;
+import com.robinmc.ublisk.modules.Voting;
 import com.robinmc.ublisk.utils.IconMenu;
 import com.robinmc.ublisk.utils.IconMenu.OptionClickEvent;
 import com.robinmc.ublisk.utils.UPlayer;

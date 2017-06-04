@@ -32,6 +32,7 @@ public abstract class UModule implements Listener {
 			new Scoreboard(),
 			new TPS(),
 			new VoteRestart(),
+			new Voting(),
 			//new WorldEditCUI(),
 			};
 	

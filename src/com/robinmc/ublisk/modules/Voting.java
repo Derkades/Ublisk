@@ -1,18 +1,22 @@
-package com.robinmc.ublisk;
+package com.robinmc.ublisk.modules;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.scheduler.BukkitRunnable;
 
+import com.robinmc.ublisk.Main;
+import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
@@ -26,7 +30,7 @@ import com.vexsoftware.votifier.model.VotifierEvent;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class Voting implements Listener {
+public class Voting extends UModule {
 	
 	public static final int VOTE_XP_MIN = 20;
 	public static final int VOTE_XP_MAX = 100;
@@ -140,6 +144,28 @@ public class Voting implements Listener {
 		player.setVotingPoints(player.getVotingPoints() + points);
 		Ublisk.broadcastPrefixedMessage(player.getName() + " has voted and got " + points + " points! Vote at " + Var.VOTE_URL);
 		Logger.log(LogLevel.INFO, "Vote", player.getName() + " has voted at " + vote.getServiceName() + " (" + vote.getAddress() + ") and got " + points + " points.");
+	}
+	
+	@EventHandler
+	public void onInvClose(final InventoryCloseEvent event){
+		if (event.getInventory().getName().contains("Box") && !event.getInventory().getName().contains("Shulker")){
+			Voting.playerOpeningBox = null;
+			new BukkitRunnable(){
+				public void run(){
+					HumanEntity human = event.getPlayer();
+					human.teleport(Voting.oldPlayerLocation);
+					Voting.oldPlayerLocation = null;
+				}
+			}.runTaskLater(Main.getInstance(), 2L);
+		}
+		
+		if (event.getInventory().getName().contains("Loot")){
+			new BukkitRunnable(){
+				public void run(){
+					Var.WORLD.getBlockAt(event.getInventory().getLocation()).setType(Material.AIR);
+				}
+			}.runTaskLater(Main.getInstance(), 5*20);
+		}
 	}
 
 }
