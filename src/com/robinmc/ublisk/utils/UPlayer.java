@@ -34,7 +34,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
-import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.DataFile;
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Main;
@@ -452,10 +451,6 @@ public class UPlayer {
 
 	public void tracker(Map<UUID, Integer> map) {
 		map.put(this.getUniqueId(), map.get(this.getUniqueId()) + 1);
-	}
-
-	public Clazz getClazz() {
-		return Clazz.getClass(player);
 	}
 
 	public void setMoney(int amount) {

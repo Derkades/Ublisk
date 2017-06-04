@@ -12,7 +12,7 @@ public enum Command {
 
 	AFK("afk", new AFK()),
 	BUILDER("builder", new Builder()),
-	CLASS("class", new ClassCommand()),
+	//CLASS("class", new ClassCommand()),
 	CONTACT("contact", new Contact()),
 	CREDITS("credits", new Credits()),
 	DEBUG("debug", new Debug()),

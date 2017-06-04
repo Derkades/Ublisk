@@ -29,8 +29,6 @@ commands:
     description: I have no idea what to put here
     usage: |
       /afk - Toggles AFK mode
-  class:
-    usage: /<command>
   friends:
     aliases: [friend, f, friendlist, friendslist]
   mute:

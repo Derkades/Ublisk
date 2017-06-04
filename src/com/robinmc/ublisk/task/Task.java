@@ -13,7 +13,7 @@ import com.robinmc.ublisk.database.ProcessQueue;
 public enum Task {
 	
 	//AFK_TIMER(new AFK(), 30*20, 1*20, false),
-	CHECK_SHIELD(new CheckShield(), 5*20, 5*20, false),
+	//CHECK_SHIELD(new CheckShield(), 5*20, 5*20, false),
 	CHECK_TOWN(new CheckTown(), 0, 2*20, false),
 	CLEAR_WEATHER(new ClearWeather(), 60*20, 5*60*20, false),
 	FAST_DAY_NIGHT(new FastNight(), 0, 1, false),

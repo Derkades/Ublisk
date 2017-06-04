@@ -21,10 +21,8 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import com.robinmc.ublisk.Clazz;
 import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
-import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.iconmenus.MainMenu;
@@ -47,9 +45,9 @@ public class PlayerInteract implements Listener {
 		if (action == Action.RIGHT_CLICK_BLOCK || action == Action.RIGHT_CLICK_AIR){
 			UInventory inv = player.getInventory();
 			Material item = inv.getItemInMainHand().getType();
-			Material offhand = inv.getItemInOffHand().getType();
+			//Material offhand = inv.getItemInOffHand().getType();
 			
-			if (item == Material.BOW || offhand == Material.BOW){
+			/*if (item == Material.BOW || offhand == Material.BOW){
 				if (!(player.getClazz() == Clazz.ARCHER)){
 					player.sendMessage(Message.CLASS_WRONG_WEAPON);
 					event.setCancelled(true);
@@ -59,7 +57,7 @@ public class PlayerInteract implements Listener {
 					player.sendMessage(Message.CLASS_WRONG_WEAPON);
 					event.setCancelled(true);
 				}
-			} else if (item == Material.CHEST && !player.isInBuilderMode()){
+			} else */if (item == Material.CHEST && !player.isInBuilderMode()){
 				MainMenu.open(player);
 				event.setCancelled(true);
 			} else if (item == Material.END_CRYSTAL){

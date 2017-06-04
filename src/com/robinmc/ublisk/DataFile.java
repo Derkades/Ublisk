@@ -11,7 +11,6 @@ public enum DataFile {
 	QUESTS("quests"),
 	SETTINGS("settings"),
 	FRIENDS("friends"),
-	CLASSES("classes"),
 	IP("ip"),
 	LIFE_CRYSTAL("life"),
 	VOTING("voting"),
