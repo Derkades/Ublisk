@@ -23,6 +23,7 @@ import com.robinmc.ublisk.Town;
 import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.perm.Permission;
 import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
 
@@ -59,10 +60,8 @@ public class PlayerJoin implements Listener {
 
 		player.updateXPBar();
 
-		// If the player is not a Builder, Moderator or Owner disable builder mode to prevent griefing
-		PermissionGroup group = player.getGroup();
-		if (!(group == PermissionGroup.BUILDER || group == PermissionGroup.MODERATOR || group == PermissionGroup.OWNER)
-				&& player.isInBuilderMode()) {
+		// Disable builder mode if the player no longer has permission
+		if (player.hasPermission(Permission.BUILDER_MODE)){
 			player.setBuilderModeEnabled(false);
 		}
 		
