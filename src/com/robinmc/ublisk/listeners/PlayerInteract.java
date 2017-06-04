@@ -26,9 +26,9 @@ import com.robinmc.ublisk.Loot;
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
-import com.robinmc.ublisk.Voting;
 import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.iconmenus.MainMenu;
+import com.robinmc.ublisk.modules.Voting;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
@@ -85,9 +85,11 @@ public class PlayerInteract implements Listener {
 		}
 		
 		if (action == Action.RIGHT_CLICK_BLOCK){
-			Material type = event.getClickedBlock().getType();
-			if (type == Material.CHEST && !Voting.isVotingChest(event.getClickedBlock())){
-				player.tracker(PlayerInfo.LOOT_FOUND);
+			if (event.getClickedBlock().getType() == Material.CHEST){
+				Chest chest = (Chest) event.getClickedBlock().getState();
+				if (Loot.isLoot(chest)){
+					player.tracker(PlayerInfo.LOOT_FOUND);
+				}
 			}
 		}
 	}
