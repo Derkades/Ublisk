@@ -354,6 +354,16 @@ public class UPlayer {
 		return players;
 	}
 	
+	public List<UPlayer> getOnlineFriends(){
+		List<UPlayer> list = new ArrayList<>();
+		for (OfflinePlayer offlineFriend : this.getFriends()){
+			if (offlineFriend.isOnline()){
+				list.add(new UPlayer(offlineFriend));
+			}
+		}
+		return list;
+	}
+	
 	public boolean isFriend(OfflinePlayer offlinePlayer){
 		for (OfflinePlayer friend : this.getFriends()){
 			if (friend.getName().equals(offlinePlayer.getName())){

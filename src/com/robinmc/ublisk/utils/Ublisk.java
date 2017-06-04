@@ -20,6 +20,9 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.Particle;
 import org.bukkit.Server;
 import org.bukkit.Sound;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -288,6 +291,10 @@ public class Ublisk {
 		}
 		
 		Var.WORLD.dropItemNaturally(location, item.getItemStack());
+	}
+	
+	public static BossBar showBossBar(String text, BarColor color, BarStyle style){
+		return Bukkit.createBossBar(text, color, style);
 	}
 
 }
