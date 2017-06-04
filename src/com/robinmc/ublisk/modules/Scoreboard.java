@@ -41,7 +41,7 @@ public class Scoreboard extends UModule {
 		strings.add(GRAY + player.getClazz().getName());
 		strings.add(" ");
 		strings.add(redBold + "XP");
-		strings.add(GRAY + "" + player.getXP());
+		strings.add(GRAY + "" + player.getXP() + " / " + CustomXP.getRequiredXP(player.getLevel() + 1));
 		strings.add(r + " ");
 		strings.add(redBold + "Health");
 		strings.add(GRAY + "" + player.getHealth() + " / " + player.getMaxHealth());
