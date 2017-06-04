@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.perm;
+package com.robinmc.ublisk.permission;
 
 public enum Permission {
 	

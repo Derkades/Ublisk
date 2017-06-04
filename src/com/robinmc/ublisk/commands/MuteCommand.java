@@ -9,9 +9,9 @@ import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.HashMaps;
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.permission.Permission;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
-import com.robinmc.ublisk.utils.perm.Permission;
 
 public class MuteCommand implements CommandExecutor {
 	

@@ -1,4 +1,4 @@
-package com.robinmc.ublisk.utils.perm;
+package com.robinmc.ublisk.permission;
 
 import java.util.ArrayList;
 import java.util.Arrays;

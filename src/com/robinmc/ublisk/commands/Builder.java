@@ -6,8 +6,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.permission.Permission;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.perm.Permission;
 
 public class Builder implements CommandExecutor {
 

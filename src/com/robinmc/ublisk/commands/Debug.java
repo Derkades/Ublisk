@@ -8,10 +8,10 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.permission.Permission;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.Item;
-import com.robinmc.ublisk.utils.perm.Permission;
 
 public class Debug implements CommandExecutor {
 

@@ -48,6 +48,8 @@ import com.robinmc.ublisk.modules.CustomHealth;
 import com.robinmc.ublisk.modules.CustomXP;
 import com.robinmc.ublisk.modules.PlayerFreeze;
 import com.robinmc.ublisk.money.Money;
+import com.robinmc.ublisk.permission.Permission;
+import com.robinmc.ublisk.permission.PermissionGroup;
 import com.robinmc.ublisk.quest.NPC;
 import com.robinmc.ublisk.quest.Quest;
 import com.robinmc.ublisk.quest.QuestParticipant;
@@ -56,8 +58,6 @@ import com.robinmc.ublisk.utils.exception.LastSenderUnknownException;
 import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.InvUtils;
 import com.robinmc.ublisk.utils.inventory.UInventory;
-import com.robinmc.ublisk.utils.perm.Permission;
-import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
 import com.robinmc.ublisk.weapons.abilities.Ability;
 

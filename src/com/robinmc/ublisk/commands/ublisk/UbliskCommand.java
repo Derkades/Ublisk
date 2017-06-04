@@ -7,8 +7,8 @@ import org.bukkit.craftbukkit.libs.joptsimple.internal.Strings;
 import org.bukkit.entity.Player;
 
 import com.robinmc.ublisk.Message;
+import com.robinmc.ublisk.permission.PermissionGroup;
 import com.robinmc.ublisk.utils.UPlayer;
-import com.robinmc.ublisk.utils.perm.PermissionGroup;
 
 import net.md_5.bungee.api.ChatColor;
 
