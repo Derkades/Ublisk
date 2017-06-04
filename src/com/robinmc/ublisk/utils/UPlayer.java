@@ -283,7 +283,6 @@ public class UPlayer {
 	}
 
 	public int getLevel() {
-		//return Exp.getLevel(player);
 		return CustomXP.getLevel(player);
 	}
 
@@ -293,13 +292,7 @@ public class UPlayer {
 	}
 
 	public int getXP() {
-		//return Exp.get(player);
 		return CustomXP.getXP(player);
-	}
-
-	@Deprecated
-	public void refreshXP() {
-		Exp.refresh(player);
 	}
 	
 	public void updateXPBar(){

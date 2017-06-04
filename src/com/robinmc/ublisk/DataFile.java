@@ -9,15 +9,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 public enum DataFile {
 
 	QUESTS("quests"),
-	@Deprecated
-	UUID("uuid"),
 	SETTINGS("settings"),
 	FRIENDS("friends"),
 	CLASSES("classes"),
 	IP("ip"),
 	LIFE_CRYSTAL("life"),
-	@Deprecated
-	XP("xp"),
 	VOTING("voting"),
 	MONEY("money"),
 	LAST_PLAYED("last-played"),

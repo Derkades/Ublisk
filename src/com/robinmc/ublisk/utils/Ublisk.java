@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -25,12 +24,10 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
-import com.robinmc.ublisk.DataFile;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.database.ServerInfo;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
-import com.robinmc.ublisk.utils.exception.PlayerNotFoundException;
 import com.robinmc.ublisk.utils.inventory.Item;
 
 public class Ublisk {
@@ -105,17 +102,6 @@ public class Ublisk {
 		}
 		
 		return DARK_GRAY + " [" + string + DARK_GRAY + "]";
-	}
-	
-	@Deprecated
-	public static OfflinePlayer getOfflinePlayerFromName(String name) throws PlayerNotFoundException {
-		String uuidString = DataFile.UUID.getConfig().getString("uuid." + name);
-		UUID uuid = UUID.fromString(uuidString);
-		OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
-		if (offlinePlayer == null){
-			throw new PlayerNotFoundException();
-		}
-		return offlinePlayer;
 	}
 	
 	/**
