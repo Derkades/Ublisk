@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 
@@ -36,11 +37,11 @@ public class Voting implements Listener {
 	public static final int VOTE_LIFE_MIN = 0;
 	public static final int VOTE_LIFE_MAX = 2;
 
-	private static Location oldPlayerLocation;
-	private static boolean playerOpeningBox = false;
+	public static Location oldPlayerLocation = null;
+	public static Player playerOpeningBox = null;
 
 	public static void openVotingBox(Player player) {
-		setPlayerOpeningBox(true);
+		playerOpeningBox = player;
 		oldPlayerLocation = player.getLocation();
 		player.teleport(new Location(Var.WORLD, 3.5, 71, -62.5, 0, 0));
 	}
@@ -60,18 +61,6 @@ public class Voting implements Listener {
 	public static boolean isVotingChest(Block block) {
 		Location loc = block.getLocation();
 		return loc.getBlockX() == 3 && loc.getBlockY() == 71 && loc.getBlockZ() == -55;
-	}
-
-	public static Location getOldPlayerLocation() {
-		return oldPlayerLocation;
-	}
-
-	public static boolean isPlayerOpeningBox() {
-		return playerOpeningBox;
-	}
-
-	public static void setPlayerOpeningBox(boolean playerOpeningBox) {
-		Voting.playerOpeningBox = playerOpeningBox;
 	}
 	
 	@EventHandler(priority = EventPriority.HIGH)
@@ -125,8 +114,15 @@ public class Voting implements Listener {
 			
 			player.tracker(PlayerInfo.VOTE_BOX);
 			
-			Logger.log(LogLevel.DEBUG, "Gold: " + gold + " | XP: " + xp + " | Life: " + life);
+			Logger.log(LogLevel.DEBUG, "Voting", "Gold: " + gold + " | XP: " + xp + " | Life: " + life);
 		}
+	}
+	
+	@EventHandler(priority = EventPriority.HIGH)
+	public void onItemMove(InventoryMoveItemEvent event){
+		event.setCancelled(playerOpeningBox != null && 
+				event.getInitiator().getHolder() instanceof Player && 
+				((Player) event.getInitiator().getHolder()).getName().equals(playerOpeningBox.getName()));
 	}
 	
 	@EventHandler(priority = EventPriority.HIGH)

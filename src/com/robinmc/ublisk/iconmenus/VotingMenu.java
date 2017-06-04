@@ -19,7 +19,7 @@ public class VotingMenu {
 			if (name.contains("points")){
 				event.setWillClose(false);
 			} else {
-				if (Voting.isPlayerOpeningBox()){
+				if (Voting.playerOpeningBox != null){
 					player.sendMessage(Message.VOTE_BOX_BUSY);
 					event.setWillDestroy(false);
 				} else if (!player.hasVotingPoints(3)){
