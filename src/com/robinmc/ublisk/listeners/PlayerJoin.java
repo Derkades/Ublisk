@@ -24,7 +24,6 @@ import com.robinmc.ublisk.database.PlayerInfo;
 import com.robinmc.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.perm.Permission;
-import com.robinmc.ublisk.utils.perm.PermissionGroup;
 import com.robinmc.ublisk.utils.settings.Setting;
 
 public class PlayerJoin implements Listener {
