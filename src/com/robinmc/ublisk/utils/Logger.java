@@ -24,8 +24,10 @@ public class Logger {
 		//Send message to online players if debug mode is enabled
 		if (Var.DEBUG && logLevel != LogLevel.DEBUG && logLevel != LogLevel.CHAT){
 			String chatMessage = "[" + logLevel + "] [" + name + "] " + message;
-			if (logLevel == LogLevel.WARNING || logLevel == LogLevel.SEVERE){
+			if (logLevel == LogLevel.SEVERE){
 				chatMessage = ChatColor.RED + chatMessage;
+			} else if (logLevel == LogLevel.WARNING){
+				chatMessage = ChatColor.YELLOW + chatMessage;
 			} else {
 				chatMessage = ChatColor.GRAY + chatMessage;
 			}
