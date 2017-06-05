@@ -23,6 +23,14 @@ public class Cache {
 		CACHE_OBJECT_LIST.add(cachedObject);
 	}
 	
+	/**
+	 * Caches object for an hour. <br>
+	 * See also: {@link #addCachedObject(String, Object, long)}
+	 */
+	public static void addCachedObject(String identifier, Object object){
+		addCachedObject(identifier, object, 3600);
+	}
+	
 	public static Object getCachedObject(String identifier){
 		List<CacheObject> toRemove = new ArrayList<>();
 		

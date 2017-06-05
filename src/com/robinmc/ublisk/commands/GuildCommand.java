@@ -195,6 +195,31 @@ public class GuildCommand implements CommandExecutor {
 				guild.rename(args[1]);
 				player.sendPrefixedMessage("Guilds", "Your guild has been renamed to " + args[1]);
 				return true;
+			} else if (args[0].equalsIgnoreCase("owner")){
+				if (player.getGuild() == null){
+					player.sendPrefixedMessage("Guilds", "You are not in a guild.");
+					return true;
+				}
+				
+				UPlayer target;
+				try {
+					target = new UPlayer(args[1]);
+				} catch (PlayerNotFoundException e) {
+					player.sendPrefixedMessage("Guilds", "This player could not be found.");
+					return true;
+				}
+				
+				if (target.getGuild() != null){
+					player.sendPrefixedMessage("Guilds", "This player is already in a guild.");
+					return true;
+				}
+				
+				Guild guild = player.getGuild();
+				
+				guild.setOwner(target);
+				
+				player.sendPrefixedMessage("Guilds", target.getName() + " is now the owner of " + guild.getName());
+				return true;
 			} else {
 				return false;
 			}

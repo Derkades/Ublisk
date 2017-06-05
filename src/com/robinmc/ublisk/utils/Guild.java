@@ -435,6 +435,36 @@ public class Guild {
 				e.printStackTrace();
 			}
 		}
+		
+		this.name = newName;
+	}
+	
+	public synchronized void setOwner(UPlayer player){
+		setOwner(player.getPlayer());
+	}
+	
+	public synchronized void setOwner(OfflinePlayer newOwner){
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = Ublisk.getNewDatabaseConnection(this.getName() + " set owner to " + newOwner.getName());
+			statement = connection.prepareStatement("UPDATE guilds SET owner=? WHERE name=?");
+			statement.setString(1, newOwner.getUniqueId().toString());
+			statement.setString(2, this.getName());
+			statement.executeUpdate();
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally {
+			try {
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+		}
+		
+		Cache.addCachedObject("owner:" + this.getName(), newOwner);
 	}
 
 	public synchronized static List<Guild> getGuildsList() {
