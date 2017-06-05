@@ -44,6 +44,10 @@ public class EntityDeath implements Listener {
 		//Track player kills for statistics
 		player.tracker(PlayerInfo.MOB_KILLS);
 		
+		if (!Mobs.SPAWNED_MOBS.containsKey(entity.getUniqueId())){
+			player.sendActionBarMessage(ChatColor.RED + "Error :(", 0);
+		}
+		
 		//Get mob from entity UUID
 		Mob mob = Mobs.SPAWNED_MOBS.get(entity.getUniqueId());
 		
@@ -65,7 +69,7 @@ public class EntityDeath implements Listener {
 			color = ChatColor.GREEN.toString();
 		}
 		
-		player.sendActionBarMessage(color + "You have killed a " + name + " and got " + xp + " XP");
+		player.sendActionBarMessage(color + "+ " + xp + " XP", 15);
 		player.addXP(xp);
 		Logger.log(LogLevel.INFO, "XP", "Given " + player.getName() + " " + xp + " for killing a " + name);
 	}
