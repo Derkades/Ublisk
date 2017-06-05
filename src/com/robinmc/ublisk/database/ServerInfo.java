@@ -32,11 +32,11 @@ public class ServerInfo {
 		double tps = TPS.getAverageTPS();
 		int chunksLoaded = CHUNKS_LOADED;
 		CHUNKS_LOADED = 0;
-		int openIssues = -1;
+		int openIssues = 0;
 		int closedIssues = 0;
 		try {
-			openIssues += GitHubModule.getUbliskRepository().getIssues(GHIssueState.OPEN).size() + GitHubModule.getUbliskTexturesRepository().getIssues(GHIssueState.OPEN).size();
-			closedIssues += GitHubModule.getUbliskRepository().getIssues(GHIssueState.CLOSED).size() + GitHubModule.getUbliskTexturesRepository().getIssues(GHIssueState.CLOSED).size();
+			openIssues = GitHubModule.getUbliskRepository().getIssues(GHIssueState.OPEN).size() + GitHubModule.getUbliskTexturesRepository().getIssues(GHIssueState.OPEN).size();
+			closedIssues = GitHubModule.getUbliskRepository().getIssues(GHIssueState.CLOSED).size() + GitHubModule.getUbliskTexturesRepository().getIssues(GHIssueState.CLOSED).size();
 		} catch (IOException  | NullPointerException e){
 			e.printStackTrace();
 		}
