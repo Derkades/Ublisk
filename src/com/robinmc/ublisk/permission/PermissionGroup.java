@@ -17,8 +17,8 @@ public enum PermissionGroup {
 	BUILDER(PermissionGroup.MODERATOR, "Builder", ChatColor.RED,
 			Permission.BUILDER_MODE),
 	
-	HELPER(PermissionGroup.BUILDER, "Helper", ChatColor.DARK_AQUA,
-			Permission.COMMAND_DEBUG),
+	HELPER(PermissionGroup.BUILDER, "Helper", ChatColor.DARK_AQUA
+			),
 
 	OWNER(PermissionGroup.HELPER, "Owner", ChatColor.DARK_GREEN);
 	
