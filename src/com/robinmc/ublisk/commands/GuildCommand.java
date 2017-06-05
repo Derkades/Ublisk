@@ -209,14 +209,9 @@ public class GuildCommand implements CommandExecutor {
 					return true;
 				}
 				
-				if (target.getGuild() != null){
-					player.sendPrefixedMessage("Guilds", "This player is already in a guild.");
-					return true;
-				}
-				
 				Guild guild = player.getGuild();
 				
-				if (!guild.getMembers().contains(target)){
+				if (!player.getGuild().getName().equals(target.getGuild().getName())){
 					player.sendPrefixedMessage("Guilds", "You cannot transfer ownership to a player who is not in your guild.");
 					return true;
 				}
