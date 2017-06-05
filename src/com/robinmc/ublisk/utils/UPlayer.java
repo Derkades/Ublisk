@@ -20,7 +20,6 @@ import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -62,13 +61,6 @@ import com.robinmc.ublisk.weapons.abilities.Ability;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.chat.ComponentSerializer;
-import net.minecraft.server.v1_12_R1.ChatMessageType;
-import net.minecraft.server.v1_12_R1.IChatBaseComponent;
-import net.minecraft.server.v1_12_R1.IChatBaseComponent.ChatSerializer;
-import net.minecraft.server.v1_12_R1.Packet;
-import net.minecraft.server.v1_12_R1.PacketPlayOutChat;
-import net.minecraft.server.v1_12_R1.PacketPlayOutGameStateChange;
 
 public class UPlayer {
 
@@ -464,20 +456,17 @@ public class UPlayer {
 		return Money.get(player) >= amount;
 	}
 
-	public void sendPacket(Packet<?> packet) {
-		((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
-	}
+	//public void sendPacket(Packet<?> packet) {
+	//	((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+	//}
 	
 	public void sendActionBarMessage(String message) {
-		BaseComponent[] components = TextComponent.fromLegacyText(message); //Convert string with color codes to BaseComponent array
-		String json = ComponentSerializer.toString(components); //Convert to JSON string
-		IChatBaseComponent base = ChatSerializer.a(json);
-		this.sendPacket(new PacketPlayOutChat(base, ChatMessageType.GAME_INFO));
+		Ublisk.NMS.sendActionBarMessage(player, message);
 	}
 	
-	public void displayMobAppearanceEffect(){
+	/*public void displayMobAppearanceEffect(){
 		this.sendPacket(new PacketPlayOutGameStateChange(10, 0));
-	}
+	}*/
 
 	public void playNotMovingParticle(Particle particle, double x, double y, double z) {
 		player.spawnParticle(particle, x, y, z, 0, 0, 0, 0, 1);
@@ -577,15 +566,15 @@ public class UPlayer {
 	}
 
 	public void sendTitle(String title, String subtitle) {
-		((CraftPlayer) player).sendTitle(title, subtitle);
+		Ublisk.NMS.sendTitle(player, title, subtitle);
 	}
 
 	public void sendTitle(String title) {
-		((CraftPlayer) player).sendTitle(title, "");
+		this.sendTitle(title, "");
 	}
 
 	public void sendSubTitle(String subtitle) {
-		((CraftPlayer) player).sendTitle("", subtitle);
+		this.sendTitle("", subtitle);
 	}
 
 	public boolean isDead() {

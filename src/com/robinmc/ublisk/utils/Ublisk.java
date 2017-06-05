@@ -32,8 +32,7 @@ import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.database.ServerInfo;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.inventory.Item;
-import com.robinmc.ublisk.utils.nms.NMS;
-import com.robinmc.ublisk.utils.nms.V1_12_R1;
+import com.robinmc.ublisk.utils.version_helper.NMS;
 
 public class Ublisk {
 	
@@ -41,6 +40,8 @@ public class Ublisk {
 	 * Should be set to true if an error occured that will be fixed by restarting. <b>This should never be set to false!</b>
 	 */
 	public static boolean RESTART_ERROR = false;
+	
+	public static NMS NMS;
 	
 	public static UPlayer[] getOnlinePlayers(){
 		List<UPlayer> list = new ArrayList<UPlayer>();
@@ -297,10 +298,6 @@ public class Ublisk {
 	
 	public static BossBar showBossBar(String text, BarColor color, BarStyle style){
 		return Bukkit.createBossBar(text, color, style);
-	}
-	
-	public static NMS getNMS(){
-		return new V1_12_R1();
 	}
 
 }

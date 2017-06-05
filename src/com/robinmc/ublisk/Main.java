@@ -20,6 +20,7 @@ import com.robinmc.ublisk.utils.PacketListener;
 import com.robinmc.ublisk.utils.TodoList;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.Ublisk;
+import com.robinmc.ublisk.utils.version_helper.V1_12_R1;
 
 public class Main extends JavaPlugin {
 
@@ -83,6 +84,8 @@ public class Main extends JavaPlugin {
 		}.runTaskTimer(this, 1*20, 10*20);
 		
 		Bukkit.clearRecipes();
+		
+		Ublisk.NMS = new V1_12_R1();
 	}
 	
 	@Override
