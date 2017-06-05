@@ -34,8 +34,8 @@ public class PlayerCommandPreprocess implements Listener {
 		}
 		
 		if (cmd.contains("gamemode")){
-			sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + 
-					"WARNING: Please don't use /gamemode. Use /builder instead to keep survival and creative inventory seperated.");
+			sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Use /builder for building or /u spec to go into spectator mode.");
+			event.setCancelled(true);
 			return;
 		}
 		
