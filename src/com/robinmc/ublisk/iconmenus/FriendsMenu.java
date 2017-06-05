@@ -59,6 +59,10 @@ public class FriendsMenu {
 	});
 	
 	public static void open(UPlayer player){
+		if (player.getName().equals("TheBigBadJosh")){
+			menu.setName("Friendzone");
+		}
+		
 		fillMenu(player);
 		menu.open(player);
 	}

@@ -47,6 +47,10 @@ public class IconMenu implements Listener {
 		optionIcons[position] = setItemNameAndLore(icon, name, info);
 		return this;
 	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
 
 	public void setSpecificTo(Player player) {
 		this.player = player;
