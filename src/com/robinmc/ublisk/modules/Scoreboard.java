@@ -44,18 +44,18 @@ public class Scoreboard extends UModule {
 		strings.add(GRAY + "" + player.getHealth() + " / " + player.getMaxHealth());
 
 		if (DoubleXP.isActive()) {
-			strings.add(r + DARK_GRAY + "---------------");
+			strings.add(r + r + "");
 			strings.add(redBold + "Double XP");
 			strings.add(DoubleXP.getDoubleXPSidebarString());
 		}
 
 		if (player.getFriends().size() > 1) {
-			strings.add(r + r + DARK_GRAY + "---------------");
 			boolean displayedOnlineFriends = false;
 			for (OfflinePlayer friend : player.getFriends()) {
 				if (friend != null && friend.isOnline()) {
 					if (!displayedOnlineFriends){
 						strings.add(redBold + "Online Friends");
+						strings.add(r + r + r + "");
 						displayedOnlineFriends = true;
 					}
 					UPlayer online = new UPlayer(friend);
@@ -64,16 +64,16 @@ public class Scoreboard extends UModule {
 				}
 			}
 		}
+		
+		strings.add(r + DARK_GRAY + "---------------");
 
 		List<SidebarString> sidebarStrings = new ArrayList<SidebarString>();
 		for (String string : strings)
 			sidebarStrings.add(new SidebarString(string));
 
 		String title = DARK_AQUA + "" + BOLD + "Information";
-
-		int aLot = 9999 * 9999;
-
-		return new Sidebar(title, Main.getInstance(), aLot, sidebarStrings.toArray(new SidebarString[] {}));
+		
+		return new Sidebar(title, Main.getInstance(), Integer.MAX_VALUE, sidebarStrings.toArray(new SidebarString[] {}));
 	}
 	
 	private static class UpdateScoreboard extends URunnable {
