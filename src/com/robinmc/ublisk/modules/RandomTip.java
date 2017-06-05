@@ -19,6 +19,7 @@ public class RandomTip extends UModule {
 			"Toggle showing friend's health in the friends menu",
 			"Add a friend using /friend add [player]",
 			"Open your friends menu using /friend",
+			"Create a guild using /guild create <name>",
 	};
 	
 	@Override
