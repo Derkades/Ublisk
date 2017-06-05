@@ -73,16 +73,6 @@ public class Main extends JavaPlugin {
 			}
 		}
 		
-		new BukkitRunnable(){
-			public void run(){
-				for (UPlayer player : Ublisk.getOnlinePlayers()){
-					if (player.getInventory().contains(Material.FIREWORK)){
-						player.sendMessage("Ga even serieus doen :)");
-					}
-				}
-			}
-		}.runTaskTimer(this, 1*20, 10*20);
-		
 		Bukkit.clearRecipes();
 		
 		Ublisk.NMS = new V1_12_R1();
