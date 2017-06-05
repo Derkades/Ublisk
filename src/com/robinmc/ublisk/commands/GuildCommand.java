@@ -216,6 +216,11 @@ public class GuildCommand implements CommandExecutor {
 				
 				Guild guild = player.getGuild();
 				
+				if (!guild.getMembers().contains(target)){
+					player.sendPrefixedMessage("Guilds", "You cannot transfer ownership to a player who is not in your guild.");
+					return true;
+				}
+				
 				guild.setOwner(target);
 				
 				player.sendPrefixedMessage("Guilds", target.getName() + " is now the owner of " + guild.getName());
