@@ -32,6 +32,8 @@ import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.database.ServerInfo;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.inventory.Item;
+import com.robinmc.ublisk.utils.nms.NMS;
+import com.robinmc.ublisk.utils.nms.V1_12_R1;
 
 public class Ublisk {
 	
@@ -295,6 +297,10 @@ public class Ublisk {
 	
 	public static BossBar showBossBar(String text, BarColor color, BarStyle style){
 		return Bukkit.createBossBar(text, color, style);
+	}
+	
+	public static NMS getNMS(){
+		return new V1_12_R1();
 	}
 
 }
