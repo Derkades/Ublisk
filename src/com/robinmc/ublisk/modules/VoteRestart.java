@@ -18,8 +18,9 @@ import com.robinmc.ublisk.utils.Ublisk;
 public class VoteRestart extends UModule {
 	
 	@Override
-	public void onEnable(Main plugin){
-		plugin.getCommand("voterestart").setExecutor(new VoteRestartCommand());
+	public void onEnable(){
+		//plugin.getCommand("voterestart").setExecutor(new VoteRestartCommand());
+		super.registerCommand("voterestart", new VoteRestartCommand());
 	}
 
 	private static List<String> restartVoters = new ArrayList<String>();

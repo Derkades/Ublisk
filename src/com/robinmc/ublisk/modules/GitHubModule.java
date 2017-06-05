@@ -6,7 +6,6 @@ import org.kohsuke.github.GHIssue;
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GitHub;
 
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.Logger;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
@@ -21,7 +20,7 @@ public class GitHubModule extends UModule {
 	private boolean initialized = false;
 	
 	@Override
-	public void onEnable(Main plugin){
+	public void onEnable(){
 		if (initialized)
 			throw new UnsupportedOperationException("GitHub module is already initialized");
 		

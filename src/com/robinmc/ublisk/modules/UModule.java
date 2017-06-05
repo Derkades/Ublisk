@@ -50,7 +50,7 @@ public abstract class UModule implements Listener {
 		
 		RUNNING_MODULES.add(this);
 		
-		onEnable(Main.getInstance());
+		onEnable();
 		
 		Bukkit.getServer().getPluginManager().registerEvents(this, Main.getInstance());
 		
@@ -75,7 +75,7 @@ public abstract class UModule implements Listener {
 		Main.getInstance().getCommand(command).setExecutor(executor);
 	}
 	
-	void onEnable(Main plugin){}
+	void onEnable(){}
 	
 	void onDisable(){}
 

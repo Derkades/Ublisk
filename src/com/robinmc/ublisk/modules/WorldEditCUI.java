@@ -37,7 +37,7 @@ public class WorldEditCUI extends UModule {
 	}
 
 	@Override
-	public void onEnable(Main plugin) {
+	public void onEnable() {
 		STOP_UPDATING = false;
 		worldEditPlugin = ((WorldEditPlugin) Bukkit.getServer().getPluginManager().getPlugin("WorldEdit"));
 
@@ -47,7 +47,7 @@ public class WorldEditCUI extends UModule {
 				WorldEditCUI.updateSelections(0L);
 			}
 			
-		}.runTaskTimer(plugin, 10L, 30L);
+		}.runTaskTimer(Main.getInstance(), 10L, 30L);
 	}
 	
 	@SuppressWarnings("deprecation")

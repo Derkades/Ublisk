@@ -1,14 +1,12 @@
 package com.robinmc.ublisk.modules;
 
-import org.bukkit.scheduler.BukkitRunnable;
-
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
+import com.robinmc.ublisk.utils.URunnable;
 import com.robinmc.ublisk.utils.Ublisk;
 
 public class AutoRestart extends UModule {
 	
-	private final BukkitRunnable TASK = new BukkitRunnable(){
+	private final URunnable TASK = new URunnable(){
 		public void run(){
 			if (Ublisk.getOnlinePlayers().length == 0){
 				//If there are no online players, restart.
@@ -21,8 +19,8 @@ public class AutoRestart extends UModule {
 	};
 	
 	@Override
-	public void onEnable(Main plugin){
-		TASK.runTaskTimer(plugin, 60*60*20, 60*60*20); //Run every hour
+	public void onEnable(){
+		TASK.runTimer(60*60*20, 60*60*20); //Run every hour
 	}
 	
 	@Override

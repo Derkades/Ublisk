@@ -1,9 +1,7 @@
 package com.robinmc.ublisk.modules;
 
-import org.bukkit.scheduler.BukkitRunnable;
-
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.URunnable;
 import com.robinmc.ublisk.utils.Ublisk;
 import com.robinmc.ublisk.utils.java.ListUtils;
 
@@ -23,15 +21,15 @@ public class RandomTip extends UModule {
 	};
 	
 	@Override
-	public void onEnable(Main plugin){
-		new BukkitRunnable(){
+	public void onEnable(){
+		new URunnable(){
 			public void run(){
 				String randomTip = ListUtils.getRandomValueFromArray(TIP_LIST);
 				for (UPlayer player : Ublisk.getOnlinePlayers()){
 					player.sendActionBarMessage(ChatColor.GOLD + randomTip, 60);
 				}
 			}
-		}.runTaskTimer(plugin, 30*20, 5*60*20);
+		}.runTimer(30*20, 5*60*20);
 	}
 	
 

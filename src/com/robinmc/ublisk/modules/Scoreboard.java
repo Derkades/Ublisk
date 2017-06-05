@@ -24,7 +24,7 @@ import net.md_5.bungee.api.ChatColor;
 public class Scoreboard extends UModule {
 	
 	@Override
-	public void onEnable(Main plugin){
+	public void onEnable(){
 		new UpdateScoreboard().runTimer(5*20, 2*20);
 	}
 	

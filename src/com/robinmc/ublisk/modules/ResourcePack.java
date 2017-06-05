@@ -22,8 +22,9 @@ public class ResourcePack extends UModule implements CommandExecutor {
 	public static final String RESOURCE_PACK_URL = "http://ut.derkades.xyz/UbliskTextures57.zip";
 	
 	@Override
-	public void onEnable(Main plugin){
-		plugin.getCommand("pack").setExecutor(this);
+	public void onEnable(){
+		//plugin.getCommand("pack").setExecutor(this);
+		registerCommand("pack", this);
 		log(this, LogLevel.INFO, "Using URL: " + RESOURCE_PACK_URL);
 	}
 	

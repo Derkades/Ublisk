@@ -14,12 +14,11 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Message;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.URunnable;
 import com.robinmc.ublisk.utils.Ublisk;
 
 public class AFK extends UModule implements CommandExecutor {
@@ -29,7 +28,7 @@ public class AFK extends UModule implements CommandExecutor {
 	 */
 	private static final int AFK_TIME = 60;
 
-	private final BukkitRunnable timer = new BukkitRunnable(){
+	private final URunnable timer = new URunnable(){
 		
 		@Override
 		public void run() {
@@ -57,8 +56,8 @@ public class AFK extends UModule implements CommandExecutor {
 	};
 
 	@Override
-	protected void onEnable(Main plugin) {
-		timer.runTaskTimer(plugin, 0, 20);
+	protected void onEnable() {
+		timer.runTimer(0, 20);
 	}
 
 	@Override

@@ -3,7 +3,6 @@ package com.robinmc.ublisk.modules;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.URunnable;
 import com.robinmc.ublisk.utils.java.NumberUtils;
 
@@ -12,7 +11,7 @@ public class TPS extends UModule {
 	private static final List<Double> TPS_AVERAGE_LIST = new ArrayList<>();
 	
 	@Override
-	public void onEnable(Main plugin){
+	public void onEnable(){
 		new TPSMeasureTask().runTimer(100, 1);
 		new TPSAverageTask().runTimer(5*20, 10*20);
 	}

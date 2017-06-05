@@ -6,7 +6,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import com.robinmc.ublisk.DataFile;
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.Logger.LogLevel;
 
@@ -23,7 +22,7 @@ public class DiscordBot extends UModule {
 	private boolean enabled = false;
 	
 	@Override
-	public void onEnable(Main plugin){
+	public void onEnable(){
 		if (!DataFile.MYSQL.getConfig().getBoolean("discord.enabled")){
 			super.log(this, LogLevel.WARNING, "Discord bot is not enabled in the config!");
 			return;

@@ -12,7 +12,6 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 
-import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.utils.UPlayer;
 import com.robinmc.ublisk.utils.URunnable;
 import com.robinmc.ublisk.utils.Ublisk;
@@ -25,7 +24,7 @@ public class FriendsBossBar extends UModule {
 	private static final Map<UUID, List<FriendsBar>> FRIENDS_BARS = new HashMap<>();
 	
 	@Override
-	public void onEnable(Main plugin){
+	public void onEnable(){
 		new CleanupHashMap().runTimer(60*20, 60*20);
 		new UpdateProgress().runTimer(UPDATE_TIME);
 		new AddBars().runTimer(5*20, 5*20);

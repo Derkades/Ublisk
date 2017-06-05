@@ -17,7 +17,7 @@ public class CustomHealth extends UModule {
 	private static final int HEALTH_INCREMENT = 7;
 	
 	@Override
-	public void onEnable(Main plugin){
+	public void onEnable(){
 		new UpdateHealthTask().runTimer(60*20); //Update health every minute just in case
 	}
 	

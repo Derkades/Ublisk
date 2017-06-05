@@ -28,7 +28,7 @@ public class CustomXP extends UModule {
 	private static final int LEVEL_LIMIT = 100;
 	
 	@Override
-	public void onEnable(Main plugin){
+	public void onEnable(){
 		new LevelChangeTask().runTimer(5);
 	}
 	

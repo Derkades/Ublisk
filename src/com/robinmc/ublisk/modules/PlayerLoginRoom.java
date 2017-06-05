@@ -22,6 +22,7 @@ import com.robinmc.ublisk.Main;
 import com.robinmc.ublisk.Var;
 import com.robinmc.ublisk.utils.LocationUtils;
 import com.robinmc.ublisk.utils.UPlayer;
+import com.robinmc.ublisk.utils.URunnable;
 import com.robinmc.ublisk.utils.Ublisk;
 
 public class PlayerLoginRoom extends UModule {
@@ -44,13 +45,13 @@ public class PlayerLoginRoom extends UModule {
 	}
 	
 	@Override
-	public void onEnable(Main plugin){
+	public void onEnable(){
 		for (UPlayer player : Ublisk.getOnlinePlayers()){
 			teleportToRoom(player);
 		}
 		
 		//Save location every 10 seconds
-		new SavePlayerLocation().runTaskTimer(plugin, 0, 10*20);
+		new SavePlayerLocation().runTimer(0, 10*20);
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
@@ -124,7 +125,7 @@ public class PlayerLoginRoom extends UModule {
 		return x < 13 && x > 8 && z < -35 && z > -42;
 	}
 
-	private static class SavePlayerLocation extends BukkitRunnable {
+	private static class SavePlayerLocation extends URunnable {
 
 		@Override
 		public void run() {
