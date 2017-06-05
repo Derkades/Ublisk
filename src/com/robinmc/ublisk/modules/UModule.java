@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 
 import com.robinmc.ublisk.Main;
@@ -68,6 +69,10 @@ public abstract class UModule implements Listener {
 	
 	void log(UModule module, LogLevel level, String message) {
 		Logger.log(level, module.getClass().getSimpleName(), message);
+	}
+	
+	void registerCommand(String command, CommandExecutor executor){
+		Main.getInstance().getCommand(command).setExecutor(executor);
 	}
 	
 	void onEnable(Main plugin){}
