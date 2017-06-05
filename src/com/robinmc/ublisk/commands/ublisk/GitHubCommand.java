@@ -25,7 +25,7 @@ public class GitHubCommand extends UbliskCommand {
 		new URunnable(){
 			public void run(){
 				try {
-					GHIssue issue = GitHubModule.createIssue(description);
+					GHIssue issue = GitHubModule.createIssue(player.getName(), description);
 					player.sendMessage(Ublisk.getPrefix() + "Your message has been recorded. We'll take a look at it soon! View your issue at " + issue.getHtmlUrl());
 				} catch (IOException e) {
 					player.sendMessage(ChatColor.RED + "An error has occured :(");

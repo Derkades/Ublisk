@@ -13,8 +13,6 @@ import com.robinmc.ublisk.utils.Logger.LogLevel;
 
 public class GitHubModule extends UModule {
 	
-	private static final String PREFIX = "[BOT]";
-	
 	private static GitHub github;
 	
 	private static GHRepository ubliskRepository;
@@ -72,8 +70,8 @@ public class GitHubModule extends UModule {
 		return texturesRepository;
 	}
 	
-	public static GHIssue createIssue(String description) throws IOException {
-		return ubliskRepository.createIssue(PREFIX + " " + description).body(description + "").label("bot").create();
+	public static GHIssue createIssue(String author, String description) throws IOException {
+		return ubliskRepository.createIssue("[" + author + "] " + description).body(description + "").label("bot").create();
 	}
 
 } 
