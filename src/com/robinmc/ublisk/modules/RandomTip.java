@@ -27,7 +27,7 @@ public class RandomTip extends UModule {
 			public void run(){
 				String randomTip = ListUtils.getRandomValueFromArray(TIP_LIST);
 				for (UPlayer player : Ublisk.getOnlinePlayers()){
-					player.sendActionBarMessage(ChatColor.GOLD + randomTip);
+					player.sendActionBarMessage(ChatColor.GOLD + randomTip, 60);
 				}
 			}
 		}.runTaskTimer(plugin, 30*20, 5*60*20);
