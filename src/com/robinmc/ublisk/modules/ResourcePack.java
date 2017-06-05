@@ -47,12 +47,8 @@ public class ResourcePack extends UModule implements CommandExecutor {
 		}
 		
 		UPlayer player = new UPlayer(sender);
-		
-		if (args.length == 1 && args[0].equalsIgnoreCase("check")){
-			player.displayMobAppearanceEffect();
-			player.sendMessage(Message.PACK_CHECK);
-			return true;
-		} else if (args.length == 0){
+
+		if (args.length == 0){
 			player.setResourcePack(RESOURCE_PACK_URL);
 			return true;
 		} else {
