@@ -455,19 +455,27 @@ public class UPlayer {
 	public boolean hasMoney(int amount) {
 		return Money.get(player) >= amount;
 	}
-
-	//public void sendPacket(Packet<?> packet) {
-	//	((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
-	//}
 	
-	public void sendActionBarMessage(String message) {
-		Ublisk.NMS.sendActionBarMessage(player, message);
+	public void sendActionBarMessage(String message, long time) {
+		new URunnable (){
+			
+			long ticksRan = 20;
+			
+			@Override
+			public void run(){
+				ticksRan++;
+				
+				Ublisk.NMS.sendActionBarMessage(player, message);
+
+				if (ticksRan > time){
+					this.cancel();
+					return;
+				}
+			}
+			
+		}.runTimer(1);
 	}
 	
-	/*public void displayMobAppearanceEffect(){
-		this.sendPacket(new PacketPlayOutGameStateChange(10, 0));
-	}*/
-
 	public void playNotMovingParticle(Particle particle, double x, double y, double z) {
 		player.spawnParticle(particle, x, y, z, 0, 0, 0, 0, 1);
 	}
