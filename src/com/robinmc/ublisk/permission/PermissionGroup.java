@@ -20,7 +20,7 @@ public enum PermissionGroup {
 	HELPER(PermissionGroup.BUILDER, "Helper", ChatColor.DARK_AQUA,
 			Permission.COMMAND_DEBUG),
 
-	OWNER(PermissionGroup.MODERATOR, "Owner", ChatColor.DARK_GREEN);
+	OWNER(PermissionGroup.HELPER, "Owner", ChatColor.DARK_GREEN);
 	
 	private PermissionGroup parent;
 	private String name;
