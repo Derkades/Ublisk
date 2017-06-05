@@ -39,6 +39,7 @@ public abstract class UbliskCommand {
 			new RemoveMobsCommand(),
 			new RespawnNPCCommand(),
 			new SpawnLootCommand(),
+			new SpectatorCommand(),
 			new SwordCommand(),
 			new TimeCommand(),
 			new TownCommand(),
