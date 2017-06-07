@@ -1,5 +1,5 @@
 name: Ublisk
-main: com.robinmc.ublisk.Main
+main: xyz.derkades.ublisk.Main
 version: 6.9
 author: Derkades
 authors: [Jerrijn, Sander, Casper]

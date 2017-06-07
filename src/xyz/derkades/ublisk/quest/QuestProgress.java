@@ -1,0 +1,19 @@
+package xyz.derkades.ublisk.quest;
+
+public enum QuestProgress {
+	
+	CHECKED_DAM,
+	DAM_FIRST_TALK,
+	DAM_REPORTED_BACK,
+	
+	HAY_TRANSPORT_STARTED,
+	HAY_DELIVERED,
+	
+	CHICKENHUNT_TALK_TO_RASMUS,
+	CHICKEN_HUNT_TALK_TO_ARZHUR,
+	
+	SEARCH_FOR_MEAT_TALK_TO_ARZHUR,
+	;
+	
+
+}
