@@ -110,6 +110,12 @@
 			<version>${slf4jVersion}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>xyz.derkades</groupId>
+			<artifactId>Derkutils</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<!-- Repositories -->
@@ -141,6 +147,12 @@
 			<id>jitpack.io</id>
 			<url>https://jitpack.io</url>
 		</repository>
+
+		<repository>
+			<id>derkades</id>
+			<url>https://derkades.xyz/maven</url>
+		</repository>
+
 	</repositories>
 
 </project>
