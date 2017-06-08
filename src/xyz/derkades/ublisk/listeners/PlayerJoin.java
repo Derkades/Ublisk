@@ -60,7 +60,7 @@ public class PlayerJoin implements Listener {
 		player.updateXPBar();
 
 		// Disable builder mode if the player no longer has permission
-		if (player.hasPermission(Permission.BUILDER_MODE)){
+		if (!player.hasPermission(Permission.BUILDER_MODE)){
 			player.setBuilderModeEnabled(false);
 		}
 		
