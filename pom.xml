@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>com.robinmc</groupId>
+	<groupId>xyz.derkades</groupId>
 	<artifactId>ublisk</artifactId>
 	
 	<version>1.0.0</version>
@@ -78,20 +78,13 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency> <!-- Spigot API -->
+		<dependency> <!-- Spigot (this includes Spigot API, Bukkit API, Craftbukkit and NMS) -->
 			<groupId>org.spigotmc</groupId>
-			<artifactId>spigot-api</artifactId>
+			<artifactId>spigot</artifactId>
 			<version>${spigot.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
-		<dependency> <!-- Craftbukkit for NMS -->
-			<groupId>org.bukkit</groupId>
-			<artifactId>craftbukkit</artifactId>
-			<version>${spigot.version}</version>
-			<scope>provided</scope>
-		</dependency>
-
+ 
 		 <dependency> <!-- Discord Java API -->
 			<groupId>com.github.austinv11</groupId>
 			<artifactId>Discord4J</artifactId>
