@@ -17,9 +17,9 @@ import java.util.List;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import xyz.derkades.derkutils.ListUtils;
 import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
-import xyz.derkades.ublisk.utils.java.ListUtils;
 import xyz.derkades.ublisk.weapons.abilities.Ability;
 import xyz.derkades.ublisk.weapons.sword.Purifier;
 import xyz.derkades.ublisk.weapons.sword.Sword;

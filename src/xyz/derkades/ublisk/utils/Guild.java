@@ -20,11 +20,11 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import xyz.derkades.derkutils.ListUtils;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.caching.Cache;
-import xyz.derkades.ublisk.utils.java.ListUtils;
 
 public class Guild {
 

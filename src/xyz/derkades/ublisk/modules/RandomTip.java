@@ -1,10 +1,10 @@
 package xyz.derkades.ublisk.modules;
 
 import net.md_5.bungee.api.ChatColor;
+import xyz.derkades.derkutils.ListUtils;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.URunnable;
 import xyz.derkades.ublisk.utils.Ublisk;
-import xyz.derkades.ublisk.utils.java.ListUtils;
 
 public class RandomTip extends UModule {
 	

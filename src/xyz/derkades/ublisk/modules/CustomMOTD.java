@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.server.ServerListPingEvent;
 
-import xyz.derkades.ublisk.utils.java.ListUtils;
+import xyz.derkades.derkutils.ListUtils;
 
 public class CustomMOTD extends UModule {
 

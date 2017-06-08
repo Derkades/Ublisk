@@ -3,8 +3,8 @@ package xyz.derkades.ublisk.modules;
 import java.util.ArrayList;
 import java.util.List;
 
+import xyz.derkades.derkutils.NumberUtils;
 import xyz.derkades.ublisk.utils.URunnable;
-import xyz.derkades.ublisk.utils.java.NumberUtils;
 
 public class TPS extends UModule {
 	

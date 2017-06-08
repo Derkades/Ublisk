@@ -2,8 +2,8 @@ package xyz.derkades.ublisk.task;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
+import xyz.derkades.derkutils.Random;
 import xyz.derkades.ublisk.Loot;
-import xyz.derkades.ublisk.utils.java.Random;
 
 public class SpawnRandomLoot extends BukkitRunnable {
 

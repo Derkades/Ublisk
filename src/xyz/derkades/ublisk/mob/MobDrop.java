@@ -2,9 +2,9 @@ package xyz.derkades.ublisk.mob;
 
 import org.bukkit.Location;
 
+import xyz.derkades.derkutils.Random;
 import xyz.derkades.ublisk.Var;
 import xyz.derkades.ublisk.utils.inventory.Item;
-import xyz.derkades.ublisk.utils.java.Random;
 
 public class MobDrop {
 	

@@ -16,10 +16,10 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import xyz.derkades.derkutils.Random;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Var;
 import xyz.derkades.ublisk.utils.Ublisk;
-import xyz.derkades.ublisk.utils.java.Random;
 
 public class MobSpawn {
 

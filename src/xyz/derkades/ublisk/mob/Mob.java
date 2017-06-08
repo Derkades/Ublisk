@@ -10,8 +10,8 @@ import java.util.List;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 
+import xyz.derkades.derkutils.Random;
 import xyz.derkades.ublisk.Var;
-import xyz.derkades.ublisk.utils.java.Random;
 
 public abstract class Mob {
 	

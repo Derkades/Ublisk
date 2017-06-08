@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.logging.Level;
 
 import net.md_5.bungee.api.ChatColor;
+import xyz.derkades.derkutils.FileUtils;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Var;
 import xyz.derkades.ublisk.utils.PacketListener.PacketRecievedListener;
-import xyz.derkades.ublisk.utils.java.FileUtils;
 
 public class Logger {
 

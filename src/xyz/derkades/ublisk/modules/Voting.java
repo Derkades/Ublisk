@@ -19,16 +19,16 @@ import com.vexsoftware.votifier.model.Vote;
 import com.vexsoftware.votifier.model.VotifierEvent;
 
 import net.md_5.bungee.api.ChatColor;
+import xyz.derkades.derkutils.Random;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Var;
 import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.utils.Logger;
+import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.Ublisk;
-import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
 import xyz.derkades.ublisk.utils.inventory.Item;
-import xyz.derkades.ublisk.utils.java.Random;
 
 public class Voting extends UModule {
 	

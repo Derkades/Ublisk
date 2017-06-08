@@ -19,10 +19,10 @@ import org.bukkit.craftbukkit.v1_12_R1.block.CraftChest;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
+import xyz.derkades.derkutils.Random;
 import xyz.derkades.ublisk.utils.Logger;
-import xyz.derkades.ublisk.utils.Ublisk;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
-import xyz.derkades.ublisk.utils.java.Random;
+import xyz.derkades.ublisk.utils.Ublisk;
 
 public class Loot {
 	
