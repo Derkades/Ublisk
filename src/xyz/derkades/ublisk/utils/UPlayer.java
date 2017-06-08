@@ -405,6 +405,10 @@ public class UPlayer {
 	}
 
 	public void setBuilderModeEnabled(boolean bool) {
+		if (bool == this.isInBuilderMode()){
+			return;
+		}
+		
 		if (bool) { // Enable builder mode
 			this.saveInventoryToFile(BUILDER_MODE_INV_PATH); // Save inventory to file
 			this.clearInventory();
