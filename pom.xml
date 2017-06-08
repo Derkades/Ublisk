@@ -11,7 +11,7 @@
 		<jdk.version>1.8</jdk.version>
 		<github.version>1.85</github.version>
 		<worldedit.version>6.1.5</worldedit.version>
-		<spigot.version>1.11.2-R0.1-SNAPSHOT</spigot.version>
+		<spigot.version>1.12-R0.1-SNAPSHOT</spigot.version>
 		<slf4jVersion>1.6.1</slf4jVersion>
 	</properties>
 	
@@ -65,8 +65,8 @@
 	<!-- Dependencies -->
 	
 	<dependencies>
-		<dependency>
-			<groupId>org.kohsuke</groupId> <!-- GitHub API -->
+		<dependency> <!-- GitHub API -->
+			<groupId>org.kohsuke</groupId>
 			<artifactId>github-api</artifactId>
 			<version>${github.version}</version>
 		</dependency>
@@ -78,19 +78,19 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!--<dependency>
+		<dependency> <!-- Spigot API -->
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
 			<version>${spigot.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
+		<dependency> <!-- Craftbukkit for NMS -->
 			<groupId>org.bukkit</groupId>
 			<artifactId>craftbukkit</artifactId>
 			<version>${spigot.version}</version>
 			<scope>provided</scope>
-		</dependency>-->
+		</dependency>
 
 		 <dependency> <!-- Discord Java API -->
 			<groupId>com.github.austinv11</groupId>
@@ -98,19 +98,19 @@
 			<version>2.6.1</version>
 		</dependency>
 
-		<dependency>
+		<dependency> <!-- SLF4J -->
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4jVersion}</version>
 		</dependency>
 
-		<dependency>
+		<dependency> <!-- SLF4J -->
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
 			<version>${slf4jVersion}</version>
 		</dependency>
 
-		<dependency>
+		<dependency> <!-- Derkutils -->
 			<groupId>xyz.derkades</groupId>
 			<artifactId>Derkutils</artifactId>
 			<version>1.0.0</version>
@@ -133,10 +133,10 @@
 			</snapshots>
 		</repository>
 
-		<!--<repository>
+		<repository>
 			<id>spigot-repo</id>
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-		</repository>-->
+		</repository>
 
 		<repository>
 			<id>jcenter</id>
