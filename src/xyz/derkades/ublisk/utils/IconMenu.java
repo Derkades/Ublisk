@@ -21,6 +21,7 @@ import net.md_5.bungee.api.ChatColor;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
 
+@Deprecated
 public class IconMenu implements Listener {
 
 	private String name;
