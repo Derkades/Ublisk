@@ -45,7 +45,7 @@ public class PlayerInteract implements Listener {
 			UInventory inv = player.getInventory();
 			Material item = inv.getItemInMainHand().getType();
 			if (item == Material.CHEST && !player.isInBuilderMode()){
-				MainMenu.open(player);
+				new MainMenu(player).open();
 				event.setCancelled(true);
 			} else if (item == Material.END_CRYSTAL){
 				player.openEnderchest();
