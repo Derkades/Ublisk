@@ -39,9 +39,9 @@ public class MainMenu extends Menu {
 		if (name.equals("settings")){
 			new SettingsMenu(player).open();
 		} else if (name.equals("voting")){
-			VotingMenu.open(player);
+			new VotingMenu(player).open();
 		} else if (name.equals("friends")){
-			FriendsMenu.open(player);
+			new FriendsMenu(player).open();
 		} else if (name.equals("help")){
 			HelpMenu.open(player);
 		} else if (name.equals("bank")){

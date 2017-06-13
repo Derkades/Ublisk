@@ -24,7 +24,7 @@ public class HelpMenu {
 			} else if (name.contains("faq")){
 				// TODO Open faq menu
 			} else if (name.equals("back")){
-					MainMenu.open(player);
+					new MainMenu(player).open();
 			} else {
 				player.sendMessage(Message.ERROR_MENU);
 			}

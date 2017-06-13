@@ -15,7 +15,7 @@ public class Menu implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (sender instanceof Player){
 			UPlayer player = new UPlayer(sender);
-			MainMenu.open(player); //Open menu
+			new MainMenu(player).open();
 			return true;
 		} else {
 			sender.sendMessage(Message.NOT_A_PLAYER.toString());

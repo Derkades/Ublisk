@@ -19,7 +19,7 @@ public class FriendsCommand implements CommandExecutor {
 		if (sender instanceof Player){
 			UPlayer player = new UPlayer(sender);
 			if (args.length == 0){
-				FriendsMenu.open(player);
+				new FriendsMenu(player).open();
 			} else if (args.length == 2){
 				if (args[0].equals("add")){
 					OfflinePlayer target = Ublisk.getOfflinePlayer(args[1]);
