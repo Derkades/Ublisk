@@ -1,53 +1,56 @@
 package xyz.derkades.ublisk.iconmenus;
 
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
+import java.util.Arrays;
+import java.util.List;
 
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+
+import xyz.derkades.derkutils.bukkit.ItemBuilder;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.iconmenus.help.HelpMenu;
 import xyz.derkades.ublisk.money.BankMenu;
 import xyz.derkades.ublisk.money.MoneyItem;
-import xyz.derkades.ublisk.utils.IconMenu;
+import xyz.derkades.ublisk.utils.Menu;
 import xyz.derkades.ublisk.utils.UPlayer;
-import xyz.derkades.ublisk.utils.IconMenu.OptionClickEvent;
-import xyz.derkades.ublisk.utils.inventory.Item;
 
-public class MainMenu {
-	
-	private static IconMenu menu = new IconMenu("Main menu", 1*9, new IconMenu.OptionClickEventHandler(){
+public class MainMenu extends Menu {
 
-		@Override
-		public void onOptionClick(OptionClickEvent event) {
-			String name = event.getName().toLowerCase();
-			final UPlayer player = new UPlayer(event.getPlayer());
-			event.setWillClose(false);
-			if (name.equals("settings")){
-				SettingsMenu.open(player); 
-			} else if (name.equals("voting")){
-				VotingMenu.open(player);
-			} else if (name.equals("friends")){
-				FriendsMenu.open(player);
-			} else if (name.equals("help")){
-				HelpMenu.open(player);
-			} else if (name.equals("bank")){
-				BankMenu.open(player);
-			} else {
-				player.sendMessage(Message.ERROR_MENU);
-			}
-		}
-	});
-	
-	public static void open(UPlayer player){
-		fillMenu(player);
-		menu.open(player);
+	public MainMenu(UPlayer player) {
+		super("Main menu", 9, player);
 	}
-	
-	private static void fillMenu(UPlayer player){
-		menu.setOption(0, new ItemStack(Material.REDSTONE_COMPARATOR), "Settings", "Toggle various options on and off");
-		menu.setOption(1, new ItemStack(Material.PAPER), "Voting");
-		menu.setOption(2, new Item(player.getName()).getItemStack(), "Friends");
-		menu.setOption(3, new Item("MHF_Question").getItemStack(), "Help", "Help for commands and more");
-		menu.setOption(4, MoneyItem.BAR.getItem().getItemStack(), "Bank", "This will later be removed and", "replaced with a proper bank");
+
+	@Override
+	public List<MenuItem> getMenuItems(Player player) {
+		return Arrays.asList(
+				new MenuItem(0, Material.REDSTONE_COMPARATOR, "Settings", "Toggle various options on and off"),
+				new MenuItem(1, Material.PAPER, "Voting"),
+				new MenuItem(2, new ItemBuilder(player.getName()).create(), "Friends"),
+				new MenuItem(3, new ItemBuilder("MHF_Question").create(), "Help", "Help for commands and more"),
+				new MenuItem(4, MoneyItem.BAR.getItem().getItemStack(), "Bank", "This will later be removed and", "replaced with a proper bank")
+			);
+	}
+
+	@Override
+	public boolean onOptionClick(OptionClickEvent event) {
+		String name = event.getName().toLowerCase();
+		final UPlayer player = new UPlayer(event.getPlayer());
+
+		if (name.equals("settings")){
+			new SettingsMenu(player).open();
+		} else if (name.equals("voting")){
+			VotingMenu.open(player);
+		} else if (name.equals("friends")){
+			FriendsMenu.open(player);
+		} else if (name.equals("help")){
+			HelpMenu.open(player);
+		} else if (name.equals("bank")){
+			BankMenu.open(player);
+		} else {
+			player.sendMessage(Message.ERROR_MENU);
+		}
+		
+		return false;
 	}
 
 }
