@@ -55,7 +55,7 @@ public class Merek extends NPC {
 		} else if (inv.contains(Material.GOLD_NUGGET, 10)){
 			qp.sendMessage("Now bring me 4 wool by killing sheep.");
 		} else {
-			qp.sendMessage("What are you doing out here? You don’t even have a weapon yet! I\'ll tell you what you’ll need to make a weapon. First, get 10 gold dust by killing animals.");
+			qp.sendMessage("What are you doing out here? You don't even have a weapon yet! I'll tell you what you'll need to make a weapon. First, get 10 gold dust by killing animals.");
 		}
 			
 	}

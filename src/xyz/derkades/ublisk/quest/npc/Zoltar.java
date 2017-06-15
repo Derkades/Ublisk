@@ -40,7 +40,7 @@ public class Zoltar extends NPC {
 		
 		if (qp.getProgress(QuestProgress.HAY_TRANSPORT_STARTED) && inv.contains(Material.HAY_BLOCK, 10)){
 			inv.remove(Material.HAY_BLOCK, 10);
-			qp.sendMessage("There you are! That took you a while, didn’t it. Anyway, thanks for helping.");
+			qp.sendMessage("There you are! That took you a while, didn't it? Anyway, thanks for helping.");
 			qp.sendCompletedMessage(); //Send a message
 			qp.giveRewardExp(); //Give reward experience
 			qp.setQuestCompleted(true); //Set the quest as completed for this player

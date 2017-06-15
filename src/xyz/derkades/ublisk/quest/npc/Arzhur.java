@@ -67,7 +67,7 @@ public class Arzhur extends NPC {
 		QuestParticipant qp = player.getQuestParticipant(Quest.CHICKEN_HUNT, this);
 	
 		if (qp.getProgress(QuestProgress.CHICKENHUNT_TALK_TO_RASMUS)){	
-			qp.sendMessage("You were sent by Rasmus, weren’t you? That old man always bothers himself of the so called monsters in his farm. Just between you and me, he has gotten a little crazy over the last few years and now thinks that the chickens in his farm are monsters! Here take this. It will help you to scare those chickens away.");
+			qp.sendMessage("You were sent by Rasmus, weren't you? That old man always bothers himself of the so called monsters in his farm. Just between you and me, he has gotten a little crazy over the last few years and now thinks that the chickens in his farm are monsters! Here take this. It will help you to scare those chickens away.");
 			qp.saveProgress(QuestProgress.CHICKEN_HUNT_TALK_TO_ARZHUR);
 		} else {
 			qp.sendMessage("Thank you for fixing up the dam!");
