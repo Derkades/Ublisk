@@ -81,7 +81,9 @@ public class FriendsMenu extends Menu {
 				player.sendMessage(Message.FRIEND_HEALTH_ENABLED);
 			}
 			return false;
-		} else {
+		} else if (player.getFriends().isEmpty()){
+			return false;
+		} else { //Clicked item is a player
 			OfflinePlayer friend = Ublisk.getOfflinePlayer(event.getName());
 			
 			if (friend == null) player.sendMessage("error");
