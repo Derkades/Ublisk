@@ -19,7 +19,7 @@ import xyz.derkades.ublisk.utils.settings.Setting;
 
 public class FriendsBossBar extends UModule {
 	
-	public static final long UPDATE_TIME = 5;
+	private static final long UPDATE_TIME = 5;
 	
 	private static final Map<UUID, List<FriendsBar>> FRIENDS_BARS = new HashMap<>();
 	
@@ -113,6 +113,10 @@ public class FriendsBossBar extends UModule {
 			}
 		}
 
+	}
+	
+	public static void resetBars(UPlayer player){
+		FRIENDS_BARS.remove(player.getUniqueId());
 	}
 	
 	/*private static class CleanupHashMap extends URunnable {

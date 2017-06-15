@@ -45,6 +45,7 @@ import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.modules.AFK;
 import xyz.derkades.ublisk.modules.CustomHealth;
 import xyz.derkades.ublisk.modules.CustomXP;
+import xyz.derkades.ublisk.modules.FriendsBossBar;
 import xyz.derkades.ublisk.modules.PlayerFreeze;
 import xyz.derkades.ublisk.modules.VoteRestart;
 import xyz.derkades.ublisk.money.Money;
@@ -307,6 +308,8 @@ public class UPlayer {
 		list.add(newFriend.getUniqueId().toString());
 		
 		DataFile.FRIENDS.getConfig().set("friends." + this.getUniqueId(), list);
+		
+		FriendsBossBar.resetBars(this);
 	}
 
 	public void removeFriend(int index) {
@@ -319,6 +322,8 @@ public class UPlayer {
 		friendsUUIDList.remove(index);
 		
 		DataFile.FRIENDS.getConfig().set("friends." + this.getUniqueId(), friendsUUIDList);
+		
+		FriendsBossBar.resetBars(this);
 	}
 
 	public void removeFriend(OfflinePlayer friendToRemove) {
@@ -331,6 +336,8 @@ public class UPlayer {
 		list.remove(friendToRemove);
 		
 		DataFile.FRIENDS.getConfig().set("friends." + this.getUniqueId(), list);
+		
+		FriendsBossBar.resetBars(this);
 	}
 
 	public List<OfflinePlayer> getFriends() {
