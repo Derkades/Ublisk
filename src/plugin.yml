@@ -39,6 +39,8 @@ commands:
     usage: |
       /tell [player] [message] - Send a player a private message
       /r [message] - Quickly reply to the last person who sent you a message
+  reply:
+    aliases: [r]
   builder:
     usage: /<command>
   guild:
