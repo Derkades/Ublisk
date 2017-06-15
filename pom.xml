@@ -109,6 +109,13 @@
 			<version>1.1.2.1</version>
 		</dependency>
 
+		<dependency> <!-- NuVotifier -->
+			<groupId>com.vexsoftware</groupId>
+			<artifactId>nuvotifier-universal</artifactId>
+			<version>2.3.4</version>
+			<scope>provided</scope>
+		</dependency>		
+
 	</dependencies>
 
 	<!-- Repositories -->
@@ -144,6 +151,11 @@
 		<repository>
 			<id>derkades</id>
 			<url>https://derkades.xyz/maven</url>
+		</repository>
+
+		<repository>
+			<id>vex</id>
+			<url>https://dl.bintray.com/nuvotifier/maven/</url>
 		</repository>
 
 	</repositories>
