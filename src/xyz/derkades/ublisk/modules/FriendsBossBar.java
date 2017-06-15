@@ -45,6 +45,11 @@ public class FriendsBossBar extends UModule {
 				}
 				
 				List<FriendsBar> barsList = FRIENDS_BARS.get(player.getUniqueId());
+				
+				if (barsList == null){
+					continue; //Bars haven't been added for this player (yet)
+				}
+				
 				List<FriendsBar> barsToRemove = new ArrayList<>();
 				
 				for (FriendsBar bar : barsList){
