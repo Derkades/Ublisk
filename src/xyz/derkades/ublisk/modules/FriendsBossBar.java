@@ -25,7 +25,6 @@ public class FriendsBossBar extends UModule {
 	
 	@Override
 	public void onEnable(){
-		//new CleanupHashMap().runTimer(60*20, 60*20);
 		new UpdateProgress().runTimer(UPDATE_TIME);
 		new AddBars().runTimer(5*20, 5*20);
 	}
@@ -118,20 +117,6 @@ public class FriendsBossBar extends UModule {
 	public static void resetBars(UPlayer player){
 		FRIENDS_BARS.remove(player.getUniqueId());
 	}
-	
-	/*private static class CleanupHashMap extends URunnable {
-		
-		@Override
-		public void run(){
-			for (UUID uuid : FRIENDS_BARS.keySet()){
-				OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
-				if (!player.isOnline()){
-					FRIENDS_BARS.remove(uuid);
-				}
-			}
-		}
-		
-	}*/
 	
 	private static class FriendsBar {
 		
