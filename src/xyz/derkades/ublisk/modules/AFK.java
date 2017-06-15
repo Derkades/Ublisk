@@ -19,7 +19,6 @@ import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.URunnable;
 import xyz.derkades.ublisk.utils.Ublisk;
-import xyz.derkades.ublisk.utils.Logger.LogLevel;
 
 public class AFK extends UModule implements CommandExecutor {
 
@@ -35,7 +34,6 @@ public class AFK extends UModule implements CommandExecutor {
 			for (UPlayer player : Ublisk.getOnlinePlayers()){
 				
 				if (!AFK_SECONDS.containsKey(player.getName())){
-					log(AFK.this, LogLevel.DEBUG, "Player " + player.getName() + " not in AFK_SECONDS hashmap.");
 					resetHashMaps(player);
 					return;
 				}
