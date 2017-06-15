@@ -9,7 +9,7 @@ import xyz.derkades.ublisk.utils.Ublisk;
 public class RandomTip extends UModule {
 	
 	private static final String[] TIP_LIST = {
-			"Change class using /class (Note: you can only switch class every 15 minutes)",
+			//"Change class using /class (Note: you can only switch class every 15 minutes)",
 			//"Please set your in-game language to US English to enable custom item names",
 			"Experiencing lag? Vote for a restart using /voterestart",
 			"Enable or disable music by right clicking the chest",
