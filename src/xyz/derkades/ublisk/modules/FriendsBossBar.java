@@ -25,7 +25,7 @@ public class FriendsBossBar extends UModule {
 	
 	@Override
 	public void onEnable(){
-		new CleanupHashMap().runTimer(60*20, 60*20);
+		//new CleanupHashMap().runTimer(60*20, 60*20);
 		new UpdateProgress().runTimer(UPDATE_TIME);
 		new AddBars().runTimer(5*20, 5*20);
 	}
@@ -37,6 +37,7 @@ public class FriendsBossBar extends UModule {
 			for (UPlayer player : Ublisk.getOnlinePlayers()){
 				
 				if (!player.getSetting(Setting.FRIENDS_SHOW_HEALTH)){
+					//Remove bar if this player has turned off health
 					if (FRIENDS_BARS.containsKey(player.getUniqueId())){
 						FRIENDS_BARS.remove(player.getUniqueId());
 					}
@@ -50,7 +51,6 @@ public class FriendsBossBar extends UModule {
 					OfflinePlayer offlineFriend = Bukkit.getOfflinePlayer(bar.friendUUID);
 					
 					if (!offlineFriend.isOnline()){
-						bar.bar.setVisible(false);
 						barsToRemove.add(bar); //Friend is not online -> remove bar
 						continue;
 					}
@@ -65,7 +65,6 @@ public class FriendsBossBar extends UModule {
 					}
 					
 					if (!isStillFriend){
-						bar.bar.setVisible(false);
 						barsToRemove.add(bar);
 						continue;
 					}
@@ -74,6 +73,7 @@ public class FriendsBossBar extends UModule {
 				}
 				
 				for (FriendsBar bar : barsToRemove){
+					bar.bar.removeAll();
 					barsList.remove(bar);
 				}
 				
@@ -106,7 +106,7 @@ public class FriendsBossBar extends UModule {
 
 	}
 	
-	private static class CleanupHashMap extends URunnable {
+	/*private static class CleanupHashMap extends URunnable {
 		
 		@Override
 		public void run(){
@@ -118,7 +118,7 @@ public class FriendsBossBar extends UModule {
 			}
 		}
 		
-	}
+	}*/
 	
 	private static class FriendsBar {
 		
