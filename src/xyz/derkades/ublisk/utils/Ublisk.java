@@ -296,7 +296,7 @@ public class Ublisk {
 		Var.WORLD.dropItemNaturally(location, item.getItemStack());
 	}
 	
-	public static BossBar showBossBar(String text, BarColor color, BarStyle style){
+	public static BossBar createBossBar(String text, BarColor color, BarStyle style){
 		return Bukkit.createBossBar(text, color, style);
 	}
 
