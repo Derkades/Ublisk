@@ -82,7 +82,7 @@
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot</artifactId>
 			<version>${spigot.version}</version>
-			<scope>system</scope>
+			<scope>provided</scope>
 		</dependency>
  
 		 <dependency> <!-- Discord Java API -->
