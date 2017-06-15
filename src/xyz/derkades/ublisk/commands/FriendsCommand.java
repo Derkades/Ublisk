@@ -51,7 +51,7 @@ public class FriendsCommand implements CommandExecutor {
 					}
 					
 					player.removeFriend(target);
-					player.sendMessage(target.getName() + " has been removed from your friends list");
+					player.sendPrefixedMessage("Friends", target.getName() + " has been removed from your friends list");
 					// XXX Add ability to remove friend by index
 				} else {
 					player.sendMessage(Message.WRONG_USAGE);
