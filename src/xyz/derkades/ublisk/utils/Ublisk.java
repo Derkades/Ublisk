@@ -28,6 +28,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
 import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.TextComponent;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.Var;
 import xyz.derkades.ublisk.database.ServerInfo;
@@ -270,6 +271,14 @@ public class Ublisk {
 	
 	public static String getPrefix(String string){
 		return GOLD + string + GRAY + " >> " + YELLOW;
+	}
+	
+	public static BaseComponent[] getPrefixComponents(){
+		return TextComponent.fromLegacyText(getPrefix());
+	}
+	
+	public static BaseComponent[] getPrefixComponents(String prefix){
+		return TextComponent.fromLegacyText(getPrefix(prefix));
 	}
 	
 	public static boolean isEntityNearby(Location location, boolean ignorePlayers){
