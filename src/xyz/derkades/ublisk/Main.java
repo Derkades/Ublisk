@@ -24,8 +24,6 @@ public class Main extends JavaPlugin {
 
 	private static Main instance;
 
-	private SidebarAPI sidebarApi;
-
 	@Override
 	public void onEnable() {
 		instance = this;
@@ -77,8 +75,7 @@ public class Main extends JavaPlugin {
 		
 		Ublisk.NMS = new V1_12_R1();
 		
-		sidebarApi = new SidebarAPI();
-		sidebarApi.onEnable();
+		new SidebarAPI().onEnable();
 	}
 	
 	@Override
@@ -106,9 +103,6 @@ public class Main extends JavaPlugin {
 		
 		// Clear remaining tasks in sync queue
 		SyncQueue.clear();
-		
-		sidebarApi.onDisable();
-		sidebarApi = null;
 		
 		Logger.log(LogLevel.INFO, "Core", "Plugin has been shut down.");
 		

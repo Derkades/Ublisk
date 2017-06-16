@@ -4,61 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
+
+import xyz.derkades.ublisk.utils.Logger;
+import xyz.derkades.ublisk.utils.Logger.LogLevel;
 
 /**
  * All rights reserved.
  * @version 2.8
  * @author ColoredCarrot
  */
-public class SidebarAPI
-extends JavaPlugin
-{
-	
-	private static SidebarAPI instance;
-	private static String version;
+public class SidebarAPI {
+
 	private static List<Sidebar> sidebars = new ArrayList<Sidebar>();
 
-	@Override
-	public void onEnable()
-	{
-		
-		instance = this;
-		version = getDescription().getVersion();
-		
-		Config.load();
-		
-		getLogger().info("Enabled SidebarAPI v" + version);
-		
+	public void onEnable(){
+		Logger.log(LogLevel.INFO, "SidebarAPI", "Enabled SidebarAPI");
 	}
-	
-	@Override
-	public void onDisable()
-	{
-		
-		getLogger().info("Disabled SidebarAPI v" + version);
-		
-	}
-	
-	public static SidebarAPI getInstance()
-	{
-		return instance;
-	}
-	
-	public static String getVersion()
-	{
-		return version;
-	}
-	
-	protected static void registerSidebar(Sidebar sidebar)
-	{
+
+	protected static void registerSidebar(Sidebar sidebar) {
 		sidebars.add(sidebar);
 	}
-	
-	protected static void unregisterSidebar(Sidebar sidebar)
-	{
+
+	protected static void unregisterSidebar(Sidebar sidebar) {
 		sidebars.remove(sidebar);
 	}
 	
