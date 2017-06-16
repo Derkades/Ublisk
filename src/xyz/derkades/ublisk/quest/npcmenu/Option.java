@@ -3,6 +3,7 @@ package xyz.derkades.ublisk.quest.npcmenu;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+@Deprecated
 public class Option {
 
 	private int position;

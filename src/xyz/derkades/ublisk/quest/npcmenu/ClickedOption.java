@@ -3,6 +3,7 @@ package xyz.derkades.ublisk.quest.npcmenu;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
+@Deprecated
 public class ClickedOption {
 
 	private String name;

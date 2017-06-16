@@ -1,15 +1,15 @@
 package xyz.derkades.ublisk.quest.npcmenu;
 
-import xyz.derkades.ublisk.utils.IconMenu;
-import xyz.derkades.ublisk.utils.Logger;
+import xyz.derkades.ublisk.utils.Menu;
 import xyz.derkades.ublisk.utils.UPlayer;
-import xyz.derkades.ublisk.utils.IconMenu.OptionClickEvent;
-import xyz.derkades.ublisk.utils.IconMenu.OptionClickEventHandler;
-import xyz.derkades.ublisk.utils.Logger.LogLevel;
 
-public class NPCMenu {
+public abstract class NPCMenu extends Menu {
+
+	public NPCMenu(String name, int size, UPlayer player) {
+		super(name, size, player);
+	}
 	
-	private Option[] options;
+	/*private Option[] options;
 	
 	private IconMenu menu;
 	
@@ -41,6 +41,6 @@ public class NPCMenu {
 		for (Option option : options){
 			menu.setOption(option.getPosition(), option.getItemStack(), option.getName(), option.getLore());
 		}
-	}
+	}*/
 
 }

@@ -58,7 +58,6 @@ import xyz.derkades.ublisk.permission.PermissionGroup;
 import xyz.derkades.ublisk.quest.NPC;
 import xyz.derkades.ublisk.quest.Quest;
 import xyz.derkades.ublisk.quest.QuestParticipant;
-import xyz.derkades.ublisk.quest.npcmenu.NPCMenu;
 import xyz.derkades.ublisk.utils.exception.LastSenderUnknownException;
 import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
 import xyz.derkades.ublisk.utils.inventory.InvUtils;
@@ -513,10 +512,6 @@ public class UPlayer {
 
 	public void voteRestart() {
 		VoteRestart.voteForRestart(this);
-	}
-
-	public void openNpcMenu(NPCMenu menu) {
-		menu.open(this);
 	}
 
 	/**
