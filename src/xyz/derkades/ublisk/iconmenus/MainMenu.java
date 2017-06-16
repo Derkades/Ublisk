@@ -43,7 +43,7 @@ public class MainMenu extends Menu {
 		} else if (name.equals("friends")){
 			new FriendsMenu(player).open();
 		} else if (name.equals("help")){
-			HelpMenu.open(player);
+			new HelpMenu(player).open();
 		} else if (name.equals("bank")){
 			new BankMenu(player).open();
 		} else {

@@ -17,7 +17,7 @@ public class Help implements CommandExecutor {
 			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 		}
 		
-		HelpMenu.open(new UPlayer(sender));
+		new HelpMenu(new UPlayer(sender)).open();
 		
 		return true;
 	}
