@@ -1,14 +1,13 @@
 package xyz.derkades.ublisk.modules;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
 import xyz.derkades.ublisk.HashMaps;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.Ublisk;
@@ -34,21 +33,14 @@ public class FormatChat extends UModule {
 				.append(player.getGroup().getName()).color(player.getGroup().getPrefixColor()).bold(player.getGroup().nameBold())
 				.append(":").reset().color(ChatColor.DARK_GRAY)
 				.append(" ")
-				.append(player.getName()).reset().color(player.getGroup().getNameColor()).bold(player.getGroup().nameBold())
-					.event(new HoverEvent(
-						HoverEvent.Action.SHOW_TEXT,
-						new ComponentBuilder("XP: " + player.getXP()).color(ChatColor.AQUA)
-						.append("\n")
-						.append("Guild: " + player.getGuildName()).color(ChatColor.AQUA)
-						.append("\n\n")
-						.append("Click to open statistics").color(ChatColor.GRAY).italic(true)
-						.create()
-					)).event(new ClickEvent(
-								ClickEvent.Action.OPEN_URL, player.getStatsURL()
-							))
+				.create();
+		
+		message = ArrayUtils.addAll(message, player.getDisplayName(player.getGroup().getNameColor(), player.getGroup().nameBold()));
+
+		message = ArrayUtils.addAll(message, new ComponentBuilder("")
 				.append(": ").reset().color(ChatColor.DARK_GRAY).bold(true)
 				.append(event.getMessage()).reset().color(chatColor)
-				.create();
+				.create());
 		
 		Ublisk.getServer().spigot().broadcast(message);		
 	}
