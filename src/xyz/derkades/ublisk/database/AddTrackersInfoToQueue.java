@@ -27,6 +27,7 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 				public void run(){
 					if (player.isAfk()){
 						Logger.log(LogLevel.INFO, "PlayerInfo", "Skipping " + player.getName() + " (afk)");
+						return;
 					}
 					
 					PlayerInfo.syncWithDatabase(player);
