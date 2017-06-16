@@ -11,6 +11,9 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.URunnable;
@@ -127,6 +130,11 @@ public class FriendsBossBar extends UModule {
 	
 	public static void resetBars(UPlayer player){
 		FRIENDS_BARS.remove(player.getUniqueId());
+	}
+	
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void onQuit(PlayerQuitEvent event){
+		FRIENDS_BARS.remove(event.getPlayer().getUniqueId());
 	}
 	
 	private static class FriendsBar {
