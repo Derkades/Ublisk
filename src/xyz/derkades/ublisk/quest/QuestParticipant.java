@@ -9,7 +9,6 @@ import static org.bukkit.ChatColor.YELLOW;
 import org.bukkit.entity.Player;
 
 import xyz.derkades.ublisk.DataFile;
-import xyz.derkades.ublisk.quest.npcmenu.NPCMenu;
 import xyz.derkades.ublisk.utils.UPlayer;
 
 public class QuestParticipant extends UPlayer {
@@ -72,10 +71,6 @@ public class QuestParticipant extends UPlayer {
 		} else {
 			this.sendMessage("You have completed quest " + BOLD + this.getQuest().getName() + YELLOW + " and got " + this.getQuest().getRewardExp() + " XP and " + this.getQuest().getRewardExp() + " Life Crystals!");
 		}
-	}
-	
-	public void openMenu(NPCMenu menu){
-		menu.open(this);
 	}
 
 }

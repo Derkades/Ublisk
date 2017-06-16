@@ -45,7 +45,7 @@ public class MainMenu extends Menu {
 		} else if (name.equals("help")){
 			HelpMenu.open(player);
 		} else if (name.equals("bank")){
-			BankMenu.open(player);
+			new BankMenu(player).open();
 		} else {
 			player.sendMessage(Message.ERROR_MENU);
 		}
