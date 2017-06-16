@@ -29,6 +29,17 @@ public class FriendsBossBar extends UModule {
 		new AddBars().runTimer(5*20, 5*20);
 	}
 	
+	@Override
+	public void onDisable(){
+		for (List<FriendsBar> list : FRIENDS_BARS.values()){
+			for (FriendsBar bar : list){
+				bar.bar.removeAll();
+			}
+		}
+		
+		FRIENDS_BARS.clear();
+	}
+	
 	private static class UpdateProgress extends URunnable {
 		
 		@Override
