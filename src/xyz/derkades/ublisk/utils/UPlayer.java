@@ -34,6 +34,9 @@ import org.bukkit.util.Vector;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import xyz.derkades.ublisk.DataFile;
 import xyz.derkades.ublisk.HashMaps;
@@ -822,6 +825,26 @@ public class UPlayer {
 	
 	public boolean isFlying(){
 		return player.isFlying();
+	}
+	
+	public BaseComponent[] getDisplayName(ChatColor color, boolean bold){
+		return new ComponentBuilder(this.getName())
+				.color(color)
+				.bold(bold)
+				.event(new HoverEvent(
+					HoverEvent.Action.SHOW_TEXT,
+					new ComponentBuilder("XP: " + this.getXP() + " / " + CustomXP.getRequiredXP(this.getLevel() + 1))
+					.color(ChatColor.AQUA)
+					.append("\n")
+					.append("Health: " + this.getHealth() + " / " + this.getMaxHealth())
+					.append("\n")
+					.append("Guild: " + this.getGuildName())
+					.append("\n\n")
+					.append("Click to open statistics").color(ChatColor.GRAY).italic(true)
+					.create()))
+				.event(new ClickEvent(
+							ClickEvent.Action.OPEN_URL, this.getStatsURL()
+						)).create();
 	}
 
 	@Override
