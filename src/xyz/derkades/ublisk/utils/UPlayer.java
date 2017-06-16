@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -247,6 +248,13 @@ public class UPlayer {
 
 	public void sendMessage(BaseComponent[] text) {
 		player.spigot().sendMessage(text);
+	}
+	
+	public void sendMessage(BaseComponent[]... text){
+		this.sendMessage(ArrayUtils.addAll(text));
+		for (BaseComponent[] components : text){
+			this.sendMessage(components);
+		}
 	}
 
 	public void sendMessage(Object o) {
