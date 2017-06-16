@@ -23,7 +23,7 @@ import xyz.derkades.ublisk.utils.version_helper.V1_12_R1;
 public class Main extends JavaPlugin {
 
 	private static Main instance;
-	
+
 	private SidebarAPI sidebarApi;
 
 	@Override
