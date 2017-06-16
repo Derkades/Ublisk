@@ -11,11 +11,10 @@ import java.util.List;
 
 import org.bukkit.OfflinePlayer;
 
-import com.coloredcarrot.api.sidebar.Sidebar;
-import com.coloredcarrot.api.sidebar.SidebarString;
-
 import net.md_5.bungee.api.ChatColor;
 import xyz.derkades.ublisk.Main;
+import xyz.derkades.ublisk.ext.com.coloredcarrot.api.sidebar.Sidebar;
+import xyz.derkades.ublisk.ext.com.coloredcarrot.api.sidebar.SidebarString;
 import xyz.derkades.ublisk.utils.DoubleXP;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.URunnable;
