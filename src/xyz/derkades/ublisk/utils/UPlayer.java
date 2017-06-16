@@ -251,10 +251,16 @@ public class UPlayer {
 	}
 	
 	public void sendMessage(BaseComponent[]... text){
-		this.sendMessage(ArrayUtils.addAll(text));
-		for (BaseComponent[] components : text){
-			this.sendMessage(components);
+		//this.sendMessage(ArrayUtils.addAll(text));
+		//for (BaseComponent[] components : text){
+		//	this.sendMessage(components);
+		//}
+		BaseComponent[] newArray = new TextComponent[]{};
+		for (BaseComponent[] componentArray : text){
+			newArray = ArrayUtils.addAll(newArray, componentArray);
 		}
+		
+		this.sendMessage(newArray);
 	}
 
 	public void sendMessage(Object o) {
