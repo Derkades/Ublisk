@@ -789,7 +789,7 @@ public class UPlayer {
 	}
 	
 	public String getStatsURL(){
-		return Var.WEBSITE_ROOT + "stats/player.php?" + this.getName();
+		return Var.WEBSITE_ROOT + "stats/player.php?player=" + this.getName();
 	}
 	
 	private boolean abilitiesEnabled = true;
