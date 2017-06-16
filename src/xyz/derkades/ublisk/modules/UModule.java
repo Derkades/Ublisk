@@ -23,7 +23,7 @@ public abstract class UModule implements Listener {
 			new DiscordBot(),
 			new FriendsBossBar(),
 			new GitHubModule(),
-			new Groups(),
+			new FormatChat(),
 			new PlayerFreeze(),
 			new PlayerLoginRoom(),
 			new PlayerLogins(),

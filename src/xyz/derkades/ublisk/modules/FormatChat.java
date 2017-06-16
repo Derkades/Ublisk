@@ -13,7 +13,7 @@ import xyz.derkades.ublisk.HashMaps;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.Ublisk;
 
-public class Groups extends UModule {
+public class FormatChat extends UModule {
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void onChat(AsyncPlayerChatEvent event){
