@@ -27,6 +27,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
+import net.md_5.bungee.api.chat.BaseComponent;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.Var;
 import xyz.derkades.ublisk.database.ServerInfo;
@@ -149,6 +150,12 @@ public class Ublisk {
 	
 	public static void broadcastPrefixedMessage(String prefix, String message){
 		broadcastMessage(Ublisk.getPrefix(prefix) + message);
+	}
+	
+	public static void broadcastMessage(BaseComponent[]... message){
+		for (UPlayer player : Ublisk.getOnlinePlayers()){
+			player.sendMessage(message);
+		}
 	}
 	
 	public static Server getServer(){
