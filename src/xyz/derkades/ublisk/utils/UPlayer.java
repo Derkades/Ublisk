@@ -531,9 +531,19 @@ public class UPlayer {
 	public void setAfk(boolean setAfk) {
 		AFK.setAfk(this, setAfk);
 		if (setAfk) {
-			Ublisk.broadcastPrefixedMessage(this.getName() + " is now AFK.");
+			//Ublisk.broadcastPrefixedMessage(this.getName() + " is now AFK.");
+			Ublisk.broadcastMessage(
+					Ublisk.getPrefixComponents(),
+					this.getDisplayName(ChatColor.YELLOW, false),
+					TextComponent.fromLegacyText(ChatColor.YELLOW + " is now AFK")
+					);
 		} else {
-			Ublisk.broadcastPrefixedMessage(this.getName() + " is no longer AFK.");
+			//Ublisk.broadcastPrefixedMessage(this.getName() + " is no longer AFK.");
+			Ublisk.broadcastMessage(
+					Ublisk.getPrefixComponents(),
+					this.getDisplayName(ChatColor.YELLOW, false),
+					TextComponent.fromLegacyText(ChatColor.YELLOW + " is no longer AFK")
+					);
 		}
 	}
 
