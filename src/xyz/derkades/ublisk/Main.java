@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import xyz.derkades.ublisk.commands.Command;
 import xyz.derkades.ublisk.database.SyncQueue;
+import xyz.derkades.ublisk.ext.com.coloredcarrot.api.sidebar.SidebarAPI;
 import xyz.derkades.ublisk.listeners.Listeners;
 import xyz.derkades.ublisk.mob.MobSpawn;
 import xyz.derkades.ublisk.mob.Mobs;
@@ -13,15 +14,17 @@ import xyz.derkades.ublisk.task.Task;
 import xyz.derkades.ublisk.utils.DoubleXP;
 import xyz.derkades.ublisk.utils.Guild;
 import xyz.derkades.ublisk.utils.Logger;
+import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.PacketListener;
 import xyz.derkades.ublisk.utils.TodoList;
 import xyz.derkades.ublisk.utils.Ublisk;
-import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.version_helper.V1_12_R1;
 
 public class Main extends JavaPlugin {
 
 	public static Main instance;
+	
+	private SidebarAPI sidebarApi;
 
 	@Override
 	public void onEnable() {
@@ -73,6 +76,9 @@ public class Main extends JavaPlugin {
 		Bukkit.clearRecipes();
 		
 		Ublisk.NMS = new V1_12_R1();
+		
+		sidebarApi = new SidebarAPI();
+		sidebarApi.onEnable();
 	}
 	
 	@Override
@@ -100,6 +106,9 @@ public class Main extends JavaPlugin {
 		
 		// Clear remaining tasks in sync queue
 		SyncQueue.clear();
+		
+		sidebarApi.onDisable();
+		sidebarApi = null;
 		
 		Logger.log(LogLevel.INFO, "Core", "Plugin has been shut down.");
 		
