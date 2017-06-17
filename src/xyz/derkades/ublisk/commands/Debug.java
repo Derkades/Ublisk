@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
+import xyz.derkades.ublisk.DataFile;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.permission.Permission;
@@ -72,6 +73,16 @@ public class Debug implements CommandExecutor {
 						return true;
 					} else if (args[0].equals("enablepl")){
 						Main.getInstance().getServer().getPluginManager().enablePlugin(Main.getInstance().getServer().getPluginManager().getPlugin(args[1]));
+						return true;
+					} else {
+						player.sendMessage(Message.WRONG_USAGE);
+						return true;
+					}
+				} else if (args.length == 0){
+					if (args[0].equals("save")){
+						for (DataFile file : DataFile.values()){
+							file.save();
+						}
 						return true;
 					} else {
 						player.sendMessage(Message.WRONG_USAGE);
