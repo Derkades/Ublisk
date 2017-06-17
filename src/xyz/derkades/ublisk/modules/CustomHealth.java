@@ -13,7 +13,7 @@ import xyz.derkades.ublisk.utils.inventory.Item;
 
 public class CustomHealth extends UModule {
 	
-	private static final int HEALTH_INCREMENT = 7;
+	private static final int HEALTH_INCREMENT = 18;
 	
 	@Override
 	public void onEnable(){
