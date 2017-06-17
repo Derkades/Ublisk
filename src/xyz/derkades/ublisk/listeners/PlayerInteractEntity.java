@@ -53,7 +53,7 @@ public class PlayerInteractEntity implements Listener {
 			HashMaps.ENTITY_RIGHT_CLICK_COOLDOWN.put(player.getPlayer().getUniqueId(), true);
 			UPlayer target = new UPlayer(entity);
 			
-			BaseComponent[] stats = new ComponentBuilder("Click here to view statistics")
+			BaseComponent[] stats = new ComponentBuilder("View statistics")
 					.bold(true)
 					.color(DARK_AQUA)
 					.event(new HoverEvent(

@@ -14,10 +14,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
 import xyz.derkades.derkutils.bukkit.ItemBuilder;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.utils.Menu;
@@ -45,7 +43,7 @@ public class FriendsMenu extends Menu {
 			for (OfflinePlayer friend : player.getFriends()){
 				ItemStack head = new Item(player.getName()).getItemStack();
 				
-				list.add(new MenuItem(i, head, friend.getName()));
+				list.add(new MenuItem(i, head, friend.getName(), ChatColor.GRAY + "Click for more info"));
 				
 				i++;
 				
@@ -88,7 +86,7 @@ public class FriendsMenu extends Menu {
 			
 			if (friend == null) player.sendMessage("error");
 			
-			BaseComponent[] text = new ComponentBuilder("Click here")
+			/*BaseComponent[] text = new ComponentBuilder("Click here")
 					.bold(true)
 					.color(ChatColor.DARK_AQUA)
 					.event(new HoverEvent(
@@ -97,8 +95,21 @@ public class FriendsMenu extends Menu {
 					.event(new ClickEvent(
 							ClickEvent.Action.OPEN_URL,
 							"http://ublisk.robinmc.com/stats/player.php?player=" + friend.getName()))
-					.create();
-			player.sendMessage(text);
+					.create();*/
+			
+			player.sendMessage(
+					player.getDisplayName(ChatColor.DARK_AQUA, true),
+					new ComponentBuilder(" - ")
+							.color(ChatColor.DARK_GRAY)
+							.bold(true)
+							.create(),
+					new ComponentBuilder("Remove friend")
+							.color(ChatColor.RED)
+							.italic(true)
+							.event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/friend remove " + friend.getName()))
+							.create()
+					);
+			
 			return true;
 		}
 	}
