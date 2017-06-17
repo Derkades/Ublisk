@@ -241,9 +241,8 @@ public class Guild {
 		
 		Cache.removeCachedObject("points:" + this.getName());
 		
-		for (OfflinePlayer offline : this.getMembers()){
-			if (offline.isOnline()){
-				UPlayer player = new UPlayer(offline);
+		for (UPlayer player : this.getMembers()){
+			if (player.isOnline()){
 				if (player.getName() != playerName){ //Do not send message to the player who got the points
 					player.sendPrefixedMessage("Guilds", playerName + " got " + points + " points for your guild.");
 				}
@@ -251,8 +250,8 @@ public class Guild {
 		}
 	}
 	
-	public synchronized List<OfflinePlayer> getMembers(){	
-		List<OfflinePlayer> list = new ArrayList<>();
+	public synchronized List<UPlayer> getMembers(){	
+		List<UPlayer> list = new ArrayList<>();
 		
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -265,7 +264,7 @@ public class Guild {
 			while (result.next()){
 				UUID uuid = UUID.fromString(result.getString("uuid"));
 				OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
-				list.add(player);
+				list.add(new UPlayer(player));
 			}
 		} catch (SQLException e){
 			e.printStackTrace();

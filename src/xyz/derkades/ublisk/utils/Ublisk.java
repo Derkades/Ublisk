@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
 
@@ -51,6 +53,14 @@ public class Ublisk {
 			list.add(new UPlayer(player));
 		}
 		return list.toArray(new UPlayer[0]);
+	}
+	
+	public static Collection<UPlayer> getOfflinePlayers(){
+		Collection<UPlayer> players = new HashSet<>();
+		for (OfflinePlayer player : Bukkit.getOfflinePlayers()){
+			players.add(new UPlayer(player));
+		}
+		return players;
 	}
 	
 	/**

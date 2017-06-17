@@ -3,13 +3,16 @@ package xyz.derkades.ublisk.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.OfflinePlayer;
+import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.TextComponent;
 import xyz.derkades.derkutils.ListUtils;
 import xyz.derkades.derkutils.StringUtils;
 import xyz.derkades.ublisk.Message;
@@ -38,9 +41,8 @@ public class GuildCommand implements CommandExecutor {
 					player.setGuild(guild);
 					player.sendPrefixedMessage("Guilds", "You joined " + guild.getName() + "!");
 					
-					for (OfflinePlayer offlinePlayer : guild.getMembers()){
-						if (offlinePlayer.isOnline()){
-							UPlayer guildMember = new UPlayer(offlinePlayer);
+					for (UPlayer guildMember : guild.getMembers()){
+						if (guildMember.isOnline()){
 							guildMember.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + player.getName() + " has joined your guild!");
 						}
 					}
@@ -77,14 +79,15 @@ public class GuildCommand implements CommandExecutor {
 						+ "}=----------");
 
 				for (Guild guild : Guild.getGuildsList(10)) {
-					List<String> memberNames = new ArrayList<String>();
-
-					for (OfflinePlayer member : guild.getMembers())
-						memberNames.add(member.getName());
-
-					player.sendMessage(ChatColor.YELLOW + guild.getName() + ChatColor.DARK_GRAY + " | " + ChatColor.RED
-							+ guild.getPoints() + " Points" + ChatColor.DARK_GRAY + " | " + ChatColor.BLUE
-							+ String.join(", ", memberNames));
+					List<BaseComponent[]> members = new ArrayList<>();
+					for (UPlayer member : guild.getMembers()){
+						members.add(member.getDisplayName(ChatColor.BLUE, false));
+					}
+					
+					player.sendMessage(ArrayUtils.addAll(
+							TextComponent.fromLegacyText(ChatColor.YELLOW + guild.getName() + ChatColor.DARK_GRAY + " | " + ChatColor.RED + guild.getPoints() + " Points" + ChatColor.DARK_GRAY + " | "),
+							members.toArray(new BaseComponent[]{})
+							));
 				}
 
 				return true;
@@ -138,19 +141,24 @@ public class GuildCommand implements CommandExecutor {
 					player.sendPrefixedMessage("Guilds", "This guild does not exist.");
 					return true;
 				}
-
-				List<String> messages = new ArrayList<String>();
-				messages.add("Name: " + guild.getName());
-				messages.add("Points: " + guild.getPoints());
-				messages.add("Description: " + guild.getDescription());
-				messages.add("Members:");
-
-				for (OfflinePlayer member : guild.getMembers()) {
-					messages.add("- " + member.getName());
+				
+				player.sendMessage(
+						new ComponentBuilder("Name: " + guild.getName()).color(ChatColor.DARK_AQUA).create(),
+						new ComponentBuilder(guild.getName()).color(ChatColor.AQUA).create());
+				player.sendMessage(
+						new ComponentBuilder("Points: ").color(ChatColor.DARK_AQUA).create(),
+						new ComponentBuilder(guild.getPoints() + "").color(ChatColor.AQUA).create());
+				player.sendMessage(
+						new ComponentBuilder("Description: ").color(ChatColor.DARK_AQUA).create(),
+						new ComponentBuilder(guild.getDescription()).color(ChatColor.AQUA).create());
+				player.sendMessage(
+						new ComponentBuilder("Members: ").color(ChatColor.DARK_AQUA).create());
+				
+				for (UPlayer member : guild.getMembers()){
+					player.sendMessage(
+							new ComponentBuilder("- ").color(ChatColor.DARK_GRAY).bold(true).create(),
+							member.getDisplayName(ChatColor.AQUA, false));
 				}
-
-				for (String message : messages)
-					player.sendMessage(message);
 
 				return true;
 			} else if (args[0].equalsIgnoreCase("invite")) {
