@@ -70,19 +70,22 @@ import xyz.derkades.ublisk.weapons.abilities.Ability;
 
 public class UPlayer {
 
-	private Player player;
+	final private Player player;
+	final private OfflinePlayer offline;
 
 	public UPlayer(Player player) {
 		if (player == null)
 			throw new IllegalArgumentException("Player must not be null");
 		
 		this.player = player;
+		this.offline = player;
 	}
 
 	public UPlayer(UUID uuid) {
 		if (uuid == null)
 			throw new IllegalArgumentException("UUID must not be null");
 		this.player = Bukkit.getPlayer(uuid);
+		this.offline = this.player;
 	}
 
 	public UPlayer(String name) throws PlayerNotFoundException {
@@ -95,11 +98,13 @@ public class UPlayer {
 			throw new PlayerNotFoundException();
 		
 		this.player = player;
+		this.offline = this.player;
 	}
 
 	public UPlayer(CommandSender sender) {
 		if (sender instanceof Player) {
 			this.player = (Player) sender;
+			this.offline = this.player;
 		} else {
 			throw new IllegalArgumentException("CommandSender is not a player");
 		}
@@ -109,6 +114,7 @@ public class UPlayer {
 		if (event == null)
 			throw new IllegalArgumentException("Event must not be null");
 		this.player = event.getPlayer();
+		this.offline = this.player;
 	}
 
 	public UPlayer(EntityEvent event) {
@@ -118,6 +124,7 @@ public class UPlayer {
 		Entity entity = event.getEntity();
 		if (entity instanceof Player) {
 			this.player = (Player) entity;
+			this.offline = this.player;
 		} else {
 			throw new IllegalArgumentException("Entity is not a player");
 		}
@@ -129,6 +136,7 @@ public class UPlayer {
 		
 		if (entity instanceof Player) {
 			this.player = (Player) entity;
+			this.offline = this.player;
 		} else {
 			throw new IllegalArgumentException("Entity is not a player");
 		}
@@ -140,24 +148,35 @@ public class UPlayer {
 		
 		if (human instanceof Player) {
 			this.player = (Player) human;
+			this.offline = this.player;
 		} else {
 			throw new IllegalArgumentException("Human is not a player");
 		}
 	}
 
+	/**
+	 * Warning: exceptions will be thrown if you execute any methods where the player requires to be online
+	 * @param offline
+	 */
 	public UPlayer(OfflinePlayer offline) {
 		if (offline == null)
 			throw new IllegalArgumentException("OfflinePlayer must not be null");
 		
 		if (offline.isOnline()) {
 			this.player = offline.getPlayer();
+			this.offline = this.player;
 		} else {
-			throw new IllegalArgumentException("Player " + player.getName() + " is not online.");
+			this.offline = offline;
+			this.player = null;
 		}
 	}
 
 	public Player getPlayer() {
 		return player;
+	}
+	
+	public OfflinePlayer getOfflinePlayer() {
+		return offline;
 	}
 
 	public void setLifeCrystals(int amount) {
@@ -233,7 +252,7 @@ public class UPlayer {
 	}
 
 	public UUID getUniqueId() {
-		return player.getUniqueId();
+		return offline.getUniqueId();
 	}
 
 	public void sendMessage(String msg) {
@@ -314,7 +333,7 @@ public class UPlayer {
 	}
 
 	public String getName() {
-		return player.getName();
+		return offline.getName();
 	}
 
 	public void addFriend(OfflinePlayer newFriend) {
@@ -458,12 +477,12 @@ public class UPlayer {
 		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 		Date dateobj = new Date();
 		String date = df.format(dateobj);
-		DataFile.LAST_PLAYED.getConfig().set("last-played." + player.getUniqueId(), date);
+		DataFile.LAST_PLAYED.getConfig().set("last-played." + this.getUniqueId(), date);
 	}
 
 	public String getLastSeenDate() {
-		if (DataFile.LAST_PLAYED.getConfig().isSet("last-played." + player.getUniqueId())) {
-			return DataFile.LAST_PLAYED.getConfig().getString("last-played." + player.getUniqueId());
+		if (DataFile.LAST_PLAYED.getConfig().isSet("last-played." + this.getUniqueId())) {
+			return DataFile.LAST_PLAYED.getConfig().getString("last-played." + this.getUniqueId());
 		} else {
 			return "Never";
 		}
@@ -573,7 +592,7 @@ public class UPlayer {
 	 * @return Current town, or last town if the player is no longer in a town.
 	 */
 	public Town getLastTown() {
-		String s = DataFile.TOWN.getConfig().getString("last-town." + player.getUniqueId());
+		String s = DataFile.TOWN.getConfig().getString("last-town." + this.getUniqueId());
 
 		if (s == null){
 			return Town.INTRODUCTION;
@@ -605,7 +624,7 @@ public class UPlayer {
 	 * @param town
 	 */
 	public void setLastTown(Town town) {
-		DataFile.TOWN.getConfig().set("last-town." + player.getUniqueId(), town.getName());
+		DataFile.TOWN.getConfig().set("last-town." + this.getUniqueId(), town.getName());
 	}
 
 	public void sendTitle(String title, String subtitle) {
@@ -724,7 +743,7 @@ public class UPlayer {
 		
 		Logger.log(LogLevel.DEBUG, "class name: " + ability.getName());
 		
-		UUID uuid = player.getUniqueId();
+		UUID uuid = this.getUniqueId();
 		
 		Logger.log(LogLevel.DEBUG, "Contains: " + ABILITIES_COOLDOWN.containsKey(uuid));
 		
@@ -918,7 +937,7 @@ public class UPlayer {
 
 	@Override
 	public String toString() {
-		return player.getUniqueId().toString();
+		return this.getUniqueId().toString();
 	}
 
 }
