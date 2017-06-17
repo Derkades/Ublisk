@@ -60,7 +60,6 @@ import xyz.derkades.ublisk.permission.PermissionGroup;
 import xyz.derkades.ublisk.quest.NPC;
 import xyz.derkades.ublisk.quest.Quest;
 import xyz.derkades.ublisk.quest.QuestParticipant;
-import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.exception.LastSenderUnknownException;
 import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
 import xyz.derkades.ublisk.utils.inventory.InvUtils;
@@ -737,18 +736,12 @@ public class UPlayer {
 			return;
 		}
 		
-		Logger.log(LogLevel.DEBUG, "class name: " + ability.getName());
-		
 		UUID uuid = this.getUniqueId();
-		
-		Logger.log(LogLevel.DEBUG, "Contains: " + ABILITIES_COOLDOWN.containsKey(uuid));
 		
 		if (ABILITIES_COOLDOWN.containsKey(uuid) && ABILITIES_COOLDOWN.get(uuid).contains(ability.getName())){
 			this.sendPrefixedMessage(ChatColor.RED + "You can't do this ability yet. Please wait a few seconds.");
 			return;
 		}
-		
-		player.sendMessage("test");
 		
 		List<String> cooldownAbilities;
 		if (ABILITIES_COOLDOWN.containsKey(uuid))
@@ -758,11 +751,8 @@ public class UPlayer {
 		cooldownAbilities.add(ability.getName());
 		ABILITIES_COOLDOWN.put(uuid, cooldownAbilities);
 		
-		Logger.log(LogLevel.DEBUG, "Contains after: " + ABILITIES_COOLDOWN.containsKey(uuid));
-		
 		new URunnable(){
 			public void run(){
-				player.sendMessage("done");
 				List<String> list = ABILITIES_COOLDOWN.get(uuid);
 				list.remove(ability.getName());
 				ABILITIES_COOLDOWN.put(uuid, list);
@@ -783,18 +773,6 @@ public class UPlayer {
 			//If the ability casted successfully
 			PlayerInfo.ABILITIES.put(this.getUniqueId(), PlayerInfo.ABILITIES.get(this.getUniqueId()) + 1);
 			this.setMana(this.getMana() - ability.getMana());
-		}
-	}
-	
-	public static class Test extends URunnable {
-		public void run(){
-			for (UPlayer player : Ublisk.getOnlinePlayers()){
-				if (!ABILITIES_COOLDOWN.containsKey(player.getUniqueId())){
-					Logger.log(LogLevel.DEBUG, "does not contain");
-				} else {
-					Logger.log(LogLevel.DEBUG, String.join(", ", ABILITIES_COOLDOWN.get(player.getUniqueId())));
-				}
-			}
 		}
 	}
 	

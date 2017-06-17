@@ -17,7 +17,6 @@ import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.PacketListener;
 import xyz.derkades.ublisk.utils.TodoList;
-import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.Ublisk;
 import xyz.derkades.ublisk.utils.version_helper.V1_12_R1;
 
@@ -77,8 +76,6 @@ public class Main extends JavaPlugin {
 		Ublisk.NMS = new V1_12_R1();
 		
 		new SidebarAPI().onEnable();
-		
-		new UPlayer.Test().runTimer(5);
 	}
 	
 	@Override
