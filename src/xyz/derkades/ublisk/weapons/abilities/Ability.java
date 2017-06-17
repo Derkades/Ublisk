@@ -11,6 +11,7 @@ public abstract class Ability {
 	public Ability(int mana, int minLevel, long cooldown) {
 		this.mana = mana;
 		this.minLevel = minLevel;
+		this.cooldown = cooldown;
 	}
 
 	public int getMana() {
