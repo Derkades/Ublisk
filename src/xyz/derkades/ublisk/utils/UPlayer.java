@@ -748,6 +748,8 @@ public class UPlayer {
 			return;
 		}
 		
+		player.sendMessage("test");
+		
 		List<String> cooldownAbilities;
 		if (ABILITIES_COOLDOWN.containsKey(uuid))
 			 cooldownAbilities = ABILITIES_COOLDOWN.get(uuid);
@@ -760,6 +762,7 @@ public class UPlayer {
 		
 		new URunnable(){
 			public void run(){
+				player.sendMessage("done");
 				List<String> list = ABILITIES_COOLDOWN.get(uuid);
 				list.remove(ability.getName());
 				ABILITIES_COOLDOWN.put(uuid, list);
