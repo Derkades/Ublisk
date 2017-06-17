@@ -18,6 +18,7 @@ import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.WeatherType;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
@@ -864,6 +865,10 @@ public class UPlayer {
 				.event(new ClickEvent(
 							ClickEvent.Action.OPEN_URL, this.getStatsURL()
 						)).create();
+	}
+	
+	public void setWeather(WeatherType weather){
+		player.setPlayerWeather(weather);
 	}
 
 	@Override

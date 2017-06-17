@@ -33,6 +33,11 @@ public class CheckTown extends BukkitRunnable {
 				player.setLastTown(town);
 				SENT_LEFT_MESSAGE.remove(player.getUniqueId());
 			}
+			
+			if (town != null){
+				player.setWeather(town.getWeather());
+			}
+			
 		}
 	}
 
