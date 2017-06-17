@@ -86,7 +86,7 @@ public class GuildCommand implements CommandExecutor {
 					
 					player.sendMessage(ArrayUtils.addAll(
 							TextComponent.fromLegacyText(ChatColor.YELLOW + guild.getName() + ChatColor.DARK_GRAY + " | " + ChatColor.RED + guild.getPoints() + " Points" + ChatColor.DARK_GRAY + " | "),
-							members.toArray(new BaseComponent[]{})
+							members.toArray(new BaseComponent[][]{})
 							));
 				}
 
