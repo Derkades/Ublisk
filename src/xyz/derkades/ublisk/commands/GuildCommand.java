@@ -143,7 +143,7 @@ public class GuildCommand implements CommandExecutor {
 				}
 				
 				player.sendMessage(
-						new ComponentBuilder("Name: " + guild.getName()).color(ChatColor.DARK_AQUA).create(),
+						new ComponentBuilder("Name: ").color(ChatColor.DARK_AQUA).create(),
 						new ComponentBuilder(guild.getName()).color(ChatColor.AQUA).create());
 				player.sendMessage(
 						new ComponentBuilder("Points: ").color(ChatColor.DARK_AQUA).create(),
