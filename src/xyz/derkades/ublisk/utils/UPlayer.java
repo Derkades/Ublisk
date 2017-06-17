@@ -934,6 +934,30 @@ public class UPlayer {
 	public void setWeather(WeatherType weather){
 		player.setPlayerWeather(weather);
 	}
+	
+	public boolean isOnline() {
+		return offline.isOnline();
+	}
+	
+	public boolean isOp(){
+		return offline.isOp();
+	}
+
+	public void setOp(boolean isOp){
+		offline.setOp(isOp);
+	}
+	
+	public boolean isWhitelisted(){
+		return offline.isWhitelisted();
+	}
+	
+	public void setWhitelisted(boolean whitelisted){
+		offline.setWhitelisted(whitelisted);
+	}
+	
+	public boolean isBanned(){
+		return offline.isBanned();
+	}
 
 	@Override
 	public String toString() {
