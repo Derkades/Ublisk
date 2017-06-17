@@ -213,7 +213,12 @@ public class Guild {
 		Cache.addCachedObject("points:" + this.getName(), points, 300);
 	}
 	
-	public synchronized void addPoints(int points){
+	/**
+	 * This will also send a message to all guild members.
+	 * @param points
+	 * @param playerName Name of the player who got the points for the guild
+	 */
+	public synchronized void addPoints(int points, String playerName){
 		Connection connection = null;
 		PreparedStatement statement = null;
 		try {
@@ -235,6 +240,15 @@ public class Guild {
 		}
 		
 		Cache.removeCachedObject("points:" + this.getName());
+		
+		for (OfflinePlayer offline : this.getMembers()){
+			if (offline.isOnline()){
+				UPlayer player = new UPlayer(offline);
+				if (player.getName() != playerName){ //Do not send message to the player who got the points
+					player.sendPrefixedMessage("Guilds", playerName + " got " + points + " points for your guild.");
+				}
+			}
+		}
 	}
 	
 	public synchronized List<OfflinePlayer> getMembers(){	
