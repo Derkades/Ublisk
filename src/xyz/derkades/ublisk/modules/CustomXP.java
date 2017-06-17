@@ -156,7 +156,7 @@ public class CustomXP extends UModule {
 		
 		Guild guild = player.getGuild();
 		if (guild != null){
-			guild.addPoints(1);
+			guild.addPoints(1, player.getName());
 		}
 	}
 	
