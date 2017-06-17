@@ -78,7 +78,7 @@ public class Debug implements CommandExecutor {
 						player.sendMessage(Message.WRONG_USAGE);
 						return true;
 					}
-				} else if (args.length == 0){
+				} else if (args.length == 1){
 					if (args[0].equals("save")){
 						for (DataFile file : DataFile.values()){
 							file.save();
