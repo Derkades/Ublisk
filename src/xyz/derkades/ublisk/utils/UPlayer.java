@@ -350,7 +350,7 @@ public class UPlayer {
 			throw new IllegalArgumentException(friendToRemove.getName() + " is not " + this.getName() + "'s friend");
 		}
 		
-		list.remove(friendToRemove);
+		list.remove(friendToRemove.getUniqueId().toString());
 		
 		DataFile.FRIENDS.getConfig().set("friends." + this.getUniqueId(), list);
 		
