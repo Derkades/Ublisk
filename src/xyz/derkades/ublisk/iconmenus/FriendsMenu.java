@@ -86,17 +86,6 @@ public class FriendsMenu extends Menu {
 			
 			if (friend == null) player.sendMessage("error");
 			
-			/*BaseComponent[] text = new ComponentBuilder("Click here")
-					.bold(true)
-					.color(ChatColor.DARK_AQUA)
-					.event(new HoverEvent(
-							HoverEvent.Action.SHOW_TEXT,
-							new ComponentBuilder("Click to open website").color(GOLD).create()))
-					.event(new ClickEvent(
-							ClickEvent.Action.OPEN_URL,
-							"http://ublisk.robinmc.com/stats/player.php?player=" + friend.getName()))
-					.create();*/
-			
 			player.sendMessage(
 					player.getDisplayName(ChatColor.DARK_AQUA, true),
 					new ComponentBuilder(" - ")
