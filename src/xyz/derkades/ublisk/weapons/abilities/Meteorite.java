@@ -17,7 +17,7 @@ public class Meteorite extends Ability {
 	private int damage;
 	
 	public Meteorite(int damage) {
-		super(4, 0); // TODO Min level
+		super(4, 0, 4*20); // TODO Min level
 		this.damage = damage;
 	}
 

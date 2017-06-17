@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -703,20 +704,46 @@ public class UPlayer {
 		}
 		return hasItems;
 	}
+	
+	private static final Map<UUID, List<String>> ABILITIES_COOLDOWN = new HashMap<>();
 
 	/**
-	 * Checks if the player has enough mana and if their level is high enough. If both or one of these conditions is not true, it will send message(s). Null value is permitted.
+	 * Checks if the player has enough mana and if their level is high enough (also for cooldown). If both or one of these conditions is not true, it will send message(s). Null value is permitted.
 	 * 
 	 * @param ability
 	 */
 	public void doAbility(Ability ability) {
 		if (ability == null) {
-			return;
+			throw new IllegalArgumentException("Ability is cannot be null.");
 		}
 		
 		if (!this.abilitiesEnabled()){
 			return;
 		}
+		
+		UUID uuid = player.getUniqueId();
+		
+		if (ABILITIES_COOLDOWN.containsKey(uuid) && ABILITIES_COOLDOWN.get(uuid).contains(ability.getName())){
+			this.sendPrefixedMessage(ChatColor.RED + "You can't do this ability yet. Please wait a few seconds.");
+			return;
+		}
+		
+		List<String> cooldownAbilities;
+		if (ABILITIES_COOLDOWN.containsKey(uuid))
+			 cooldownAbilities = ABILITIES_COOLDOWN.get(uuid);
+		else cooldownAbilities = new ArrayList<>();
+		
+		cooldownAbilities.add(ability.getName());
+		ABILITIES_COOLDOWN.put(uuid, cooldownAbilities);
+		
+		new URunnable(){
+			public void run(){
+				List<String> list = ABILITIES_COOLDOWN.get(uuid);
+				list.remove(ability.getName());
+				ABILITIES_COOLDOWN.put(uuid, list);
+			}
+		}.runLater(ability.getCooldown());
+		
 
 		if (ability.getMinimumLevel() > player.getLevel()) {
 			this.sendMessage(Message.ABILITY_NOT_ENOUGH_LEVEL);

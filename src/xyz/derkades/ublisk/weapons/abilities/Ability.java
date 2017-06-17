@@ -6,8 +6,9 @@ public abstract class Ability {
 
 	private int mana;
 	private int minLevel;
+	private long cooldown;
 
-	public Ability(int mana, int minLevel) {
+	public Ability(int mana, int minLevel, long cooldown) {
 		this.mana = mana;
 		this.minLevel = minLevel;
 	}
@@ -18,6 +19,14 @@ public abstract class Ability {
 
 	public int getMinimumLevel() {
 		return minLevel;
+	}
+	
+	public long getCooldown() {
+		return cooldown;
+	}
+	
+	public String getName() {
+		return this.getClass().getSimpleName();
 	}
 
 	public abstract boolean run(UPlayer player);
