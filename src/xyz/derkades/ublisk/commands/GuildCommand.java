@@ -3,7 +3,7 @@ package xyz.derkades.ublisk.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -79,14 +79,15 @@ public class GuildCommand implements CommandExecutor {
 						+ "}=----------");
 
 				for (Guild guild : Guild.getGuildsList(10)) {
-					List<BaseComponent[]> members = new ArrayList<>();
+					BaseComponent[] members = new BaseComponent[]{};
 					for (UPlayer member : guild.getMembers()){
-						members.add(member.getDisplayName(ChatColor.BLUE, false));
+						BaseComponent[] components = member.getDisplayName(ChatColor.BLUE, false);
+						members = ArrayUtils.addAll(members, components);
 					}
 					
 					player.sendMessage(ArrayUtils.addAll(
 							TextComponent.fromLegacyText(ChatColor.YELLOW + guild.getName() + ChatColor.DARK_GRAY + " | " + ChatColor.RED + guild.getPoints() + " Points" + ChatColor.DARK_GRAY + " | "),
-							members.toArray(new BaseComponent[][]{})
+							members
 							));
 				}
 
