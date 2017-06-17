@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import net.md_5.bungee.api.ChatColor;
+import xyz.derkades.ublisk.Var;
 import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.UPlayer;
@@ -47,6 +48,12 @@ public class PlayerCommandPreprocess implements Listener {
 		if ((cmd.startsWith("/kill") || cmd.startsWith("/kick")) && !sender.getName().equals("Derkades")){
 			sender.teleport(0, 1000, 0);
 			sender.clearInventory();
+			event.setCancelled(true);
+		}
+		
+		if ((cmd.equalsIgnoreCase("/rl") || cmd.equalsIgnoreCase("/reload")) && !Var.DEBUG){
+			sender.sendMessage("You can't reload when the server is in debug mode");
+			event.setCancelled(true);
 		}
 	}
 	
