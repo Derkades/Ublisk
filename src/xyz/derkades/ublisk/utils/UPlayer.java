@@ -722,6 +722,8 @@ public class UPlayer {
 			return;
 		}
 		
+		Logger.log(LogLevel.DEBUG, "class name: " + ability.getName());
+		
 		UUID uuid = player.getUniqueId();
 		
 		Logger.log(LogLevel.DEBUG, "Contains: " + ABILITIES_COOLDOWN.containsKey(uuid));
