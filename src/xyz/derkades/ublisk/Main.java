@@ -57,14 +57,6 @@ public class Main extends JavaPlugin {
 				DataFile.MYSQL.getConfig().getString("todo.user"), 
 				DataFile.MYSQL.getConfig().getString("todo.password"));
 		
-		Logger.log(LogLevel.INFO, "Guilds", "Deleting empty guilds...");
-		for (Guild guild : Guild.getGuildsList()){
-			if (guild.getMembers().size() == 0){
-				Logger.log(LogLevel.WARNING, "Guilds", "Automatically deleted " + guild.getName() + ", because it does not have any members.");
-				guild.remove();
-			}
-		}
-		
 		for (UModule module : UModule.ALL_MODULES){
 			try {
 				module.initialize();
@@ -94,8 +86,18 @@ public class Main extends JavaPlugin {
 					player.getXP();
 				}
 				Logger.log(LogLevel.INFO, "Cache", "Complete! No containing " + Cache.size() + " objects.");
+				
+				Logger.log(LogLevel.INFO, "Guilds", "Deleting empty guilds...");
+				for (Guild guild : Guild.getGuildsList()){
+					if (guild.getMembers().size() == 0){
+						Logger.log(LogLevel.WARNING, "Guilds", "Automatically deleted " + guild.getName() + ", because it does not have any members.");
+						guild.remove();
+					}
+				}
+				
 			}
-		}.runLater(5*20);
+		}.runLater(10*20);
+	
 	}
 	
 	@Override
