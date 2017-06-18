@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.utils.UPlayer;
-import xyz.derkades.ublisk.utils.exception.LastSenderUnknownException;
 
 public class ReplyCommand implements CommandExecutor {
 	
@@ -20,12 +19,9 @@ public class ReplyCommand implements CommandExecutor {
 		
 		UPlayer player = new UPlayer(sender);
 		
-		UPlayer target;
-		try {
-			target = player.getLastSender();
-		} catch (LastSenderUnknownException e) {
+		UPlayer target = player.getLastSender();
+		if (target == null){
 			// TODO Last sender unknown message
-			return true;
 		}
 		
 		String msg = String.join("", args);

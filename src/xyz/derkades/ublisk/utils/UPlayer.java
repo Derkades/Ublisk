@@ -60,7 +60,6 @@ import xyz.derkades.ublisk.permission.PermissionGroup;
 import xyz.derkades.ublisk.quest.NPC;
 import xyz.derkades.ublisk.quest.Quest;
 import xyz.derkades.ublisk.quest.QuestParticipant;
-import xyz.derkades.ublisk.utils.exception.LastSenderUnknownException;
 import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
 import xyz.derkades.ublisk.utils.inventory.InvUtils;
 import xyz.derkades.ublisk.utils.inventory.UInventory;
@@ -422,9 +421,9 @@ public class UPlayer {
 		HashMaps.LAST_MESSAGE_SENDER.put(this.player, player.getPlayer());
 	}
 
-	public UPlayer getLastSender() throws LastSenderUnknownException {
+	public UPlayer getLastSender() {
 		if (!HashMaps.LAST_MESSAGE_SENDER.containsKey(player)) {
-			throw new LastSenderUnknownException();
+			return null;
 		}
 
 		return new UPlayer(HashMaps.LAST_MESSAGE_SENDER.get(player));
