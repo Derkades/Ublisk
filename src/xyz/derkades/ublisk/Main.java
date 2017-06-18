@@ -85,7 +85,7 @@ public class Main extends JavaPlugin {
 				for (UPlayer player : Ublisk.getOnlinePlayers()){
 					player.getXP();
 				}
-				Logger.log(LogLevel.INFO, "Cache", "Complete! No containing " + Cache.size() + " objects.");
+				Logger.log(LogLevel.INFO, "Cache", "Complete! Now containing " + Cache.size() + " objects.");
 				
 				Logger.log(LogLevel.INFO, "Guilds", "Deleting empty guilds...");
 				for (Guild guild : Guild.getGuildsList()){
