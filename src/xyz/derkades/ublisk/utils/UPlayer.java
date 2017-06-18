@@ -102,8 +102,13 @@ public class UPlayer {
 		if (player == null)
 			throw new PlayerNotFoundException();
 		
-		this.player = player;
-		this.offline = this.player;
+		OfflinePlayer offline = Ublisk.getOfflinePlayer(name);
+		this.offline = offline;
+		if (offline.isOnline()){
+			this.player = (Player) offline;
+		} else {
+			this.player = player;
+		}
 	}
 
 	public UPlayer(CommandSender sender) {
