@@ -16,6 +16,7 @@ public class HashMaps {
 	
 	@Deprecated
 	public static final Map<UUID, Boolean> ENTITY_RIGHT_CLICK_COOLDOWN = new HashMap<>();
+	@Deprecated
 	public static final Map<UUID, Boolean> COOLDOWN_CLASS = new HashMap<>();
 	
 	public static final Map<UUID, Boolean> IS_MUTED = new HashMap<>();
