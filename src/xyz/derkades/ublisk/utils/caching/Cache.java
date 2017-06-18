@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 
 public class Cache {
 	
-	public static final Map<String, CacheObject> CACHE_OBJECT_MAP = new HashMap<>();
+	private static final Map<String, CacheObject> CACHE_OBJECT_MAP = new HashMap<>();
 	
 	/**
 	 * @param identifier
@@ -61,6 +61,10 @@ public class Cache {
 		for (String identifier : removeQueue){
 			removeCachedObject(identifier);
 		}
+	}
+	
+	public static int size(){
+		return CACHE_OBJECT_MAP.size();
 	}
 
 }

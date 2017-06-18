@@ -15,8 +15,11 @@ import xyz.derkades.ublisk.utils.DoubleXP;
 import xyz.derkades.ublisk.utils.Guild;
 import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
+import xyz.derkades.ublisk.utils.caching.Cache;
 import xyz.derkades.ublisk.utils.PacketListener;
 import xyz.derkades.ublisk.utils.TodoList;
+import xyz.derkades.ublisk.utils.UPlayer;
+import xyz.derkades.ublisk.utils.URunnable;
 import xyz.derkades.ublisk.utils.Ublisk;
 import xyz.derkades.ublisk.utils.version_helper.V1_12_R1;
 
@@ -76,6 +79,23 @@ public class Main extends JavaPlugin {
 		Ublisk.NMS = new V1_12_R1();
 		
 		new SidebarAPI().onEnable();
+		
+		new URunnable(){
+			public void run(){
+				Logger.log(LogLevel.INFO, "Cache", "Building up cache, expect some lag..");
+				for (Guild guild : Guild.getGuildsList()){
+					guild.getDescription();
+					guild.getMembers();
+					guild.getOwner();
+					guild.getPoints();
+				}
+				
+				for (UPlayer player : Ublisk.getOnlinePlayers()){
+					player.getXP();
+				}
+				Logger.log(LogLevel.INFO, "Cache", "Complete! No containing " + Cache.size() + " objects.");
+			}
+		}.runLater(5*20);
 	}
 	
 	@Override

@@ -9,7 +9,7 @@ public class DebugCommand extends UbliskCommand {
 	protected void onCommand(UPlayer player, String[] args) {
 		//Feel free to delete everything below this to test your own stuff
 		
-		player.sendMessage(Cache.CACHE_OBJECT_MAP.size());
+		player.sendMessage(Cache.size());
 	}
 
 	@Override
