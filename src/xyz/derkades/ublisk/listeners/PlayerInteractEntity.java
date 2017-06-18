@@ -11,14 +11,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.inventory.EquipmentSlot;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
-import xyz.derkades.ublisk.HashMaps;
-import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.utils.UPlayer;
 
@@ -26,6 +24,8 @@ public class PlayerInteractEntity implements Listener {
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
 	public void tracker(PlayerInteractEntityEvent event){
+		if (event.getHand() != EquipmentSlot.HAND) return;
+		
 		UPlayer player = new UPlayer(event);
 		player.tracker(PlayerInfo.ENTITY_CLICK);
 	}
@@ -37,6 +37,8 @@ public class PlayerInteractEntity implements Listener {
 			return;
 		}
 		
+		if (event.getHand() != EquipmentSlot.HAND) return;
+		
 		Entity entity = event.getRightClicked();
 		
 		final UPlayer player = new UPlayer(event);
@@ -45,12 +47,7 @@ public class PlayerInteractEntity implements Listener {
 			event.setCancelled(true);
 		}
 		
-		if (entity instanceof Player && player.isSneaking()){
-			if (HashMaps.ENTITY_RIGHT_CLICK_COOLDOWN.get(player.getUniqueId())){
-				return;
-			}
-			
-			HashMaps.ENTITY_RIGHT_CLICK_COOLDOWN.put(player.getPlayer().getUniqueId(), true);
+		if (entity instanceof Player && player.isSneaking()){			
 			UPlayer target = new UPlayer(entity);
 			
 			BaseComponent[] stats = new ComponentBuilder("View statistics")
@@ -90,12 +87,6 @@ public class PlayerInteractEntity implements Listener {
 			player.sendMessage(stats);
 			player.sendMessage(addAsFriend);
 			player.sendMessage(inviteToGuild);
-			
-			new BukkitRunnable(){
-				public void run(){
-					HashMaps.ENTITY_RIGHT_CLICK_COOLDOWN.put(player.getPlayer().getUniqueId(), false);
-				}
-			}.runTaskLater(Main.getInstance(), 5L);
 		}
 
 	}
