@@ -84,11 +84,10 @@ public class UPlayer {
 		//this.player = Bukkit.getPlayer(uuid);
 		//this.offline = this.player;
 		OfflinePlayer offline = Bukkit.getOfflinePlayer(uuid);
+		this.offline = offline;
 		if (offline.isOnline()){
-			this.offline = offline;
 			this.player = (Player) offline;
 		} else {
-			this.offline = offline;
 			this.player = null;
 		}
 	}
