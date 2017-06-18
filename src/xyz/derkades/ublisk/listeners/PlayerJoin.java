@@ -17,7 +17,6 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import xyz.derkades.ublisk.DataFile;
-import xyz.derkades.ublisk.HashMaps;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Town;
 import xyz.derkades.ublisk.database.PlayerInfo;
@@ -42,8 +41,6 @@ public class PlayerJoin implements Listener {
 		player.givePotionEffect(PotionEffectType.NIGHT_VISION, 1*20, 0);
 		
 		player.sendTitle(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Ublisk", ChatColor.YELLOW + "Welcome back, " + player.getName() + "!");
-		
-		HashMaps.addPlayerToMaps(player);
 		
 		if (player.getSetting(Setting.PLAY_MUSIC)){
 			Town town = player.getTown();
