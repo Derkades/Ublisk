@@ -36,6 +36,9 @@ public class Cache {
 	
 	public static Object getCachedObject(String identifier){
 		CacheObject cache = CACHE_OBJECT_MAP.get(identifier);
+		
+		if (cache == null) return null;
+		
 		if (System.currentTimeMillis() - cache.timeCreated > cache.timeout){
 			CACHE_OBJECT_MAP.remove(identifier);
 			return null;
