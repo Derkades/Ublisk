@@ -81,8 +81,16 @@ public class UPlayer {
 	public UPlayer(UUID uuid) {
 		if (uuid == null)
 			throw new IllegalArgumentException("UUID must not be null");
-		this.player = Bukkit.getPlayer(uuid);
-		this.offline = this.player;
+		//this.player = Bukkit.getPlayer(uuid);
+		//this.offline = this.player;
+		OfflinePlayer offline = Bukkit.getOfflinePlayer(uuid);
+		if (offline.isOnline()){
+			this.offline = offline;
+			this.player = (Player) offline;
+		} else {
+			this.offline = offline;
+			this.player = null;
+		}
 	}
 
 	public UPlayer(String name) throws PlayerNotFoundException {
