@@ -42,7 +42,6 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import xyz.derkades.ublisk.DataFile;
-import xyz.derkades.ublisk.HashMaps;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.Town;
@@ -416,17 +415,19 @@ public class UPlayer {
 	public void setGameMode(GameMode gamemode) {
 		player.setGameMode(gamemode);
 	}
+	
+	public static final Map<UUID, UUID> LAST_MESSAGE_SENDER = new HashMap<>();
 
 	public void setLastSender(UPlayer player) {
-		HashMaps.LAST_MESSAGE_SENDER.put(this.player, player.getPlayer());
+		LAST_MESSAGE_SENDER.put(this.getUniqueId(), player.getUniqueId());
 	}
 
 	public UPlayer getLastSender() {
-		if (!HashMaps.LAST_MESSAGE_SENDER.containsKey(player)) {
+		if (!LAST_MESSAGE_SENDER.containsKey(player)) {
 			return null;
 		}
 
-		return new UPlayer(HashMaps.LAST_MESSAGE_SENDER.get(player));
+		return new UPlayer(LAST_MESSAGE_SENDER.get(player));
 	}
 
 	public void sendPrivateMessage(UPlayer sender, String msg) {
