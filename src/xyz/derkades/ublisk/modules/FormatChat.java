@@ -1,27 +1,56 @@
 package xyz.derkades.ublisk.modules;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import org.apache.commons.lang3.ArrayUtils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
-import xyz.derkades.ublisk.HashMaps;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.Ublisk;
 
 public class FormatChat extends UModule {
 	
-	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+	// TODO Use arraylist instead
+	public static final Map<UUID, Boolean> IS_MUTED = new HashMap<>();
+	public static final Map<UUID, Boolean> IS_SOFT_MUTED = new HashMap<>();
+	
+	@Override
+	public void onEnable(){
+		for (UPlayer player : Ublisk.getOnlinePlayers()){
+			IS_MUTED.put(player.getUniqueId(), false);
+			IS_SOFT_MUTED.put(player.getUniqueId(), false);
+		}
+	}
+	
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void onJoin(PlayerJoinEvent event){
+		UUID uuid = event.getPlayer().getUniqueId();
+		
+		if (!IS_MUTED.containsKey(uuid)){
+			IS_MUTED.put(uuid, false);
+		}
+		
+		if (!IS_SOFT_MUTED.containsKey(uuid)){
+			IS_SOFT_MUTED.put(uuid, false);
+		}
+	}
+	
+	@EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
 	public void onChat(AsyncPlayerChatEvent event){
 		event.setCancelled(true); // Don't send chat message, we'll send a custom message
 		
 		UPlayer player = new UPlayer(event);
 		
 		ChatColor chatColor = ChatColor.WHITE;
-		if (HashMaps.IS_SOFT_MUTED.get(player.getUniqueId()))
+		if (IS_SOFT_MUTED.get(player.getUniqueId()))
 			chatColor = ChatColor.GRAY;
 		
 		int level = player.getLevel();

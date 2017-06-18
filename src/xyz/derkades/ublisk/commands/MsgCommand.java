@@ -9,8 +9,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import xyz.derkades.ublisk.HashMaps;
 import xyz.derkades.ublisk.Message;
+import xyz.derkades.ublisk.modules.FormatChat;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
 import xyz.derkades.ublisk.utils.settings.Setting;
@@ -27,7 +27,7 @@ public class MsgCommand implements CommandExecutor {
 		UPlayer player = new UPlayer(sender);
 		
 		//If player is muted don't send private message
-		if (HashMaps.IS_MUTED.get(player.getUniqueId())){
+		if (FormatChat.IS_MUTED.get(player.getUniqueId())){
 			player.sendMessage(Message.CANT_PM_MUTED);
 			return true;
 		}

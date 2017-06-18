@@ -35,8 +35,6 @@ public class Main extends JavaPlugin {
 		
 		PacketListener.RUNNING = true;
 
-		HashMaps.resetAllPlayers();
-
 		Listeners.register();
 
 		Command.registerAll();
