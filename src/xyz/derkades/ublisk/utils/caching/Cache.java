@@ -1,11 +1,14 @@
 package xyz.derkades.ublisk.utils.caching;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Cache {
 	
-	public static final List<CacheObject> CACHE_OBJECT_LIST = new ArrayList<>();
+	public static final Map<String, CacheObject> CACHE_OBJECT_MAP = new HashMap<>();
 	
 	/**
 	 * @param identifier
@@ -19,8 +22,8 @@ public class Cache {
 			timeout = Long.MAX_VALUE;
 		}
 		
-		CacheObject cachedObject = new CacheObject(identifier, object, timeout);
-		CACHE_OBJECT_LIST.add(cachedObject);
+		CacheObject cachedObject = new CacheObject(object, timeout);
+		CACHE_OBJECT_MAP.put(identifier, cachedObject);
 	}
 	
 	/**
@@ -32,40 +35,31 @@ public class Cache {
 	}
 	
 	public static Object getCachedObject(String identifier){
-		List<CacheObject> toRemove = new ArrayList<>();
-		
-		for (CacheObject cacheObject : CACHE_OBJECT_LIST){
-			//Remove any old cached objects
-			if (System.currentTimeMillis() - cacheObject.timeCreated > cacheObject.timeout){
-				toRemove.add(cacheObject);
-				continue;
-			}
-			
-			if (cacheObject.identifier.equals(identifier)){
-				return cacheObject.object;
-			}
+		CacheObject cache = CACHE_OBJECT_MAP.get(identifier);
+		if (System.currentTimeMillis() - cache.timeCreated > cache.timeout){
+			CACHE_OBJECT_MAP.remove(identifier);
+			return null;
+		} else {
+			return cache.object;
 		}
-		
-		for (CacheObject cacheObject : toRemove){
-			CACHE_OBJECT_LIST.remove(cacheObject);
-		}
-		
-		return null;
 	}
 	
 	public static void removeCachedObject(String identifier){
-		List<CacheObject> toRemove = new ArrayList<>();
+		CACHE_OBJECT_MAP.remove(identifier);
+	}
+	
+	public static void cleanCache(){
+		List<String> removeQueue = new ArrayList<>();
 		
-		for (CacheObject cacheObject : CACHE_OBJECT_LIST){
-			if (System.currentTimeMillis() - cacheObject.timeCreated > cacheObject.timeout ||
-					cacheObject.identifier.equals(identifier)){
-				toRemove.add(cacheObject);
-				continue;
+		for (Entry<String, CacheObject> entry : CACHE_OBJECT_MAP.entrySet()){
+			CacheObject cache = entry.getValue();
+			if (System.currentTimeMillis() - cache.timeCreated > cache.timeout){
+				removeQueue.add(entry.getKey());
 			}
 		}
 		
-		for (CacheObject cacheObject : toRemove){
-			CACHE_OBJECT_LIST.remove(cacheObject);
+		for (String identifier : removeQueue){
+			removeCachedObject(identifier);
 		}
 	}
 
