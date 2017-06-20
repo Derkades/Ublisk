@@ -41,6 +41,7 @@ public class PlayerLoginRoom extends UModule {
 		player.teleport(PORTAL_ROOM_LOCATION);
 		player.getPlayer().setFlying(false);
 		player.givePotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 15*20, 10);
+		player.givePotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 0);
 		player.setAbilitiesEnabled(false);
 	}
 	
@@ -109,6 +110,8 @@ public class PlayerLoginRoom extends UModule {
 			
 			player.teleport(location);
 			Ublisk.spawnParticle(Particle.EXPLOSION_NORMAL, location, 20, 0, 0, 0, 0.1);
+			
+			player.removePotionEffect(PotionEffectType.INVISIBILITY);
 			
 			if (IN_PORTAL_ROOM.contains(player.getName())){
 				IN_PORTAL_ROOM.remove(player.getName());

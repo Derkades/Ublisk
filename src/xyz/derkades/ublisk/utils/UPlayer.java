@@ -807,6 +807,24 @@ public class UPlayer {
 	}
 	
 	/**
+	 * Removes potion effects with the type specified from the player
+	 * @see #removePotionEffect(PotionEffectType...)
+	 * @param type
+	 */
+	public void removePotionEffect(PotionEffectType type){
+		player.removePotionEffect(type);
+	}
+	
+	/**
+	 * @see #removePotionEffect(PotionEffectType)
+	 * @param effectTypes
+	 */
+	public void removePotionEffect(PotionEffectType... effectTypes){
+		for (PotionEffectType type : effectTypes)
+			this.removePotionEffect(type);
+	}
+	
+	/**
 	 * Sets a player's guild. Warning: does not perform any checks regarding if the player is already in a guild, etc.
 	 * @param guild
 	 */
