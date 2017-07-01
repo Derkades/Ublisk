@@ -21,10 +21,8 @@ public class SyncQueue {
 	
 	public static void syncNext(){
 		if (LIST.isEmpty()){
-			//Logger.log(LogLevel.DEBUG, "Sync queue is empty!");
 			return; //If list is empty do nothing
 		} else {
-			//Logger.log(LogLevel.DEBUG, "Sync queue is not empty, it contains " + LIST.size() + " entries.");
 		}
 		
 		BukkitRunnable runnable = LIST.get(0); //Get first in list
