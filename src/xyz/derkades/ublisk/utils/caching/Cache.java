@@ -51,7 +51,10 @@ public class Cache {
 		CACHE_OBJECT_MAP.remove(identifier);
 	}
 	
-	public static void cleanCache(){
+	/**
+	 * @return Number of objects removed from cache
+	 */
+	public static int cleanCache(){
 		List<String> removeQueue = new ArrayList<>();
 		
 		for (Entry<String, CacheObject> entry : CACHE_OBJECT_MAP.entrySet()){
@@ -64,6 +67,8 @@ public class Cache {
 		for (String identifier : removeQueue){
 			removeCachedObject(identifier);
 		}
+		
+		return removeQueue.size();
 	}
 	
 	public static int size(){
