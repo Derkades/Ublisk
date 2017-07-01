@@ -14,12 +14,12 @@ public enum Message {
 	NO_PERMISSION(prefix() + RED + "You don't have the required permissions to execute this command"),
 	PLAYER_NOT_FOUND(prefix() + RED + "That player could not be found."),
 	
-	NOT_IN_GUILD(prefix("Guilds") + RED + "You are not in a guild."),
-	ALREADY_IN_GUILD(prefix("Guilds") + RED + "You are already in a guild. Please leave your guild first."),
-	GUILD_NOT_INVITED(prefix("Guilds") + RED + "You are not invited to join a guild."),
-	GUILD_ALREADY_EXISTS(prefix("Guilds") + RED + "This guild already exists!"),
-	INVALID_GUILD_IMAGE_URL(prefix("Guilds") + RED + "Invalid image URL. Make sure your URL starts with http:// and does not contain quotation marks (\' / \")."),
-	GUILD_IMAGE_SET(prefix("Guilds") + "You successfully changed your guild's icon. It may take some time to update."),
+	//NOT_IN_GUILD(prefix("Guilds") + RED + "You are not in a guild."),
+	//ALREADY_IN_GUILD(prefix("Guilds") + RED + "You are already in a guild. Please leave your guild first."),
+	//GUILD_NOT_INVITED(prefix("Guilds") + RED + "You are not invited to join a guild."),
+	//GUILD_ALREADY_EXISTS(prefix("Guilds") + RED + "This guild already exists!"),
+	//INVALID_GUILD_IMAGE_URL(prefix("Guilds") + RED + "Invalid image URL. Make sure your URL starts with http:// and does not contain quotation marks (\' / \")."),
+	//GUILD_IMAGE_SET(prefix("Guilds") + "You successfully changed your guild's icon. It may take some time to update."),
 	
 	CANT_PM_MUTED(prefix("Chat") + RED + "You cannot send private messages while muted."),
 	CANT_CHAT_MUTED(prefix("Chat") + RED + "You cannot chat while muted."),
@@ -27,11 +27,11 @@ public enum Message {
 	MUSIC_DISABLED(prefix("Music") + "Music has been disabled. After this song no more songs will play."),
 	MUSIC_ENABLED(prefix("Music") + "Music has been enabled"),
 	
-	PACK_DECLINED(RED + "You have declined the automatic installation of the server resource pack. We recommend installing our resource pack for the best experience. For information on how to download our resource pack, go to http://ublisk.robinmc.com/pack/."),
-	PACK_FAILED_DOWNLOAD(prefix() + RED + "We failed in sending you our resource pack. You'll have to play without. Please report this issue."),
-	PACK_LOADED(prefix() + "The resource pack has been successfully loaded."),
+	//PACK_DECLINED(RED + "You have declined the automatic installation of the server resource pack. We recommend installing our resource pack for the best experience. For information on how to download our resource pack, go to http://ublisk.robinmc.com/pack/."),
+	//PACK_FAILED_DOWNLOAD(prefix() + RED + "We failed in sending you our resource pack. You'll have to play without. Please report this issue."),
+	//PACK_LOADED(prefix() + "The resource pack has been successfully loaded."),
 	PACK_SENDING(prefix() + "Sending you our resource pack..."),
-	PACK_CHECK(prefix() + "If you see a green object, the pack is enabled. If you see a normal guardian, you do not have the resource pack installed. If you see neither, particles are turned off."),
+	//PACK_CHECK(prefix() + "If you see a green object, the pack is enabled. If you see a normal guardian, you do not have the resource pack installed. If you see neither, particles are turned off."),
 	
 	CLASS_COOLDOWN(prefix() + "You have to wait 15 minutes before you can change class again"),
 	CLASS_WRONG_WEAPON(prefix() + "This weapon is not for your class"),
@@ -51,7 +51,7 @@ public enum Message {
 	
 	QUEST_LOW_LEVEL(prefix() + "You have not yet reached the right level needed to start this quest. Please come back later."),
 	
-	DOUBLE_XP_COOLDOWN(prefix() + RED + "Hi there, person who tried to activate double xp, there's a cooldown to prevent people like you from abusing the system!"),
+	//DOUBLE_XP_COOLDOWN(prefix() + RED + "Hi there, person who tried to activate double xp, there's a cooldown to prevent people like you from abusing the system!"),
 	DOUBLE_XP_ALREADY_ACTIVE(prefix() + RED + "Double XP is already active. Activating double XP again in 5 minutes."),
 	
 	BUILDER_MODE_ACTIVATED(prefix() + YELLOW + "You are now in builder mode. When you're done, simply type /builder again to exit out of builder mode and to get your inventory back."),
