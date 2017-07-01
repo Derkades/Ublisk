@@ -17,6 +17,7 @@ public abstract class UModule implements Listener {
 			new Advancements(),
 			new AFK(),
 			new AutoRestart(),
+			new CleanCache(),
 			new CustomHealth(),
 			new CustomMOTD(),
 			new CustomXP(),
