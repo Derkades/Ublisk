@@ -344,7 +344,7 @@ public class UPlayer {
 	public void addFriend(OfflinePlayer newFriend) {
 		final List<String> list = DataFile.FRIENDS.getConfig().getStringList("friends." + this.getUniqueId());
 		
-		if (list.contains(newFriend.getUniqueId())){
+		if (list.contains(newFriend.getUniqueId().toString())){
 			throw new UnsupportedOperationException("Friend is already in friends list");
 		}
 		
@@ -435,11 +435,11 @@ public class UPlayer {
 	}
 
 	public UPlayer getLastSender() {
-		if (!LAST_MESSAGE_SENDER.containsKey(player)) {
+		if (!LAST_MESSAGE_SENDER.containsKey(player.getUniqueId())) {
 			return null;
 		}
 
-		return new UPlayer(LAST_MESSAGE_SENDER.get(player));
+		return new UPlayer(LAST_MESSAGE_SENDER.get(player.getUniqueId()));
 	}
 
 	public void sendPrivateMessage(UPlayer sender, String msg) {
