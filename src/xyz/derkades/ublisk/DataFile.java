@@ -3,6 +3,7 @@ package xyz.derkades.ublisk;
 import java.io.File;
 import java.io.IOException;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -40,11 +41,13 @@ public enum DataFile {
 	}
 
 	public void save() {
-		try {
-			getConfig().save(file);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
+			try {
+				getConfig().save(file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
 	}
 	
 	public static class SaveFiles extends BukkitRunnable {
