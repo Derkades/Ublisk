@@ -434,6 +434,10 @@ public class UPlayer {
 		LAST_MESSAGE_SENDER.put(this.getUniqueId(), player.getUniqueId());
 	}
 
+	/**
+	 * Get the last player who sent this player a message. <b>This player may be offline</b>
+	 * @return A player or null if no player has sent a message to this player since server restart.
+	 */
 	public UPlayer getLastSender() {
 		if (!LAST_MESSAGE_SENDER.containsKey(player.getUniqueId())) {
 			return null;
@@ -451,11 +455,18 @@ public class UPlayer {
 
 	private static final String BUILDER_MODE_INV_PATH = Main.getInstance().getDataFolder() + "/inv";
 
+	/**
+	 * @return If the player is in builder mode
+	 */
 	public boolean isInBuilderMode() {
 		// Check if an inventory file exists, because the item is deleted when a player goes out of builder mode.
 		return new File(BUILDER_MODE_INV_PATH, player.getName() + ".yml").exists();
 	}
 
+	/**
+	 * Enables or disables builder mode for the player. If the specified boolean is equal to the current status, the method will return silently.
+	 * @param bool If builder mode should be enabled or disabled for the player
+	 */
 	public void setBuilderModeEnabled(boolean bool) {
 		if (bool == this.isInBuilderMode()){
 			return;
