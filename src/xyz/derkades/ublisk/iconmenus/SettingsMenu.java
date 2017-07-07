@@ -1,12 +1,8 @@
 package xyz.derkades.ublisk.iconmenus;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
+import net.md_5.bungee.api.ChatColor;
 import xyz.derkades.derkutils.bukkit.ItemBuilder;
 import xyz.derkades.ublisk.utils.Menu;
 import xyz.derkades.ublisk.utils.UPlayer;
@@ -17,12 +13,7 @@ public class SettingsMenu extends Menu {
 
 	public SettingsMenu(UPlayer player) {
 		super("Settings", 9, player);
-	}
-
-	@Override
-	public List<MenuItem> getMenuItems(Player bukkitPlayer) {
-		List<MenuItem> list = new ArrayList<MenuItem>();
-		UPlayer player = new UPlayer(bukkitPlayer);
+		
 		int slot = 0;
 		for (Setting setting : Setting.values()){
 			//If setting is on, set dye color to green, otherwise to gray
@@ -33,14 +24,16 @@ public class SettingsMenu extends Menu {
 				damage = 8;
 			}
 			
-			list.add(new MenuItem(slot, new ItemBuilder(Material.INK_SACK).setDamage(damage).create(), setting.getName(), setting.getInfo()));
+			items.put(slot, new ItemBuilder(Material.INK_SACK)
+					.data(damage)
+					.name(setting.getName())
+					.lore(setting.getInfo())
+					.create());
 			
 			slot++;
 		}
 		
-		list.add(new MenuItem(8, new ItemStack(Material.BARRIER), "Back"));
-		
-		return list;
+		items.put(8, new ItemBuilder(Material.BARRIER).name(ChatColor.RED + "Back").create());
 	}
 
 	@Override

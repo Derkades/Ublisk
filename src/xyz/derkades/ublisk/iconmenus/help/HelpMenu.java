@@ -1,17 +1,13 @@
 package xyz.derkades.ublisk.iconmenus.help;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
+import net.md_5.bungee.api.ChatColor;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.iconmenus.MainMenu;
+import xyz.derkades.ublisk.utils.ItemBuilder;
 import xyz.derkades.ublisk.utils.Menu;
 import xyz.derkades.ublisk.utils.UPlayer;
-import xyz.derkades.ublisk.utils.inventory.Item;
 
 public class HelpMenu extends Menu {
 	
@@ -51,21 +47,14 @@ public class HelpMenu extends Menu {
 	
 	public HelpMenu(UPlayer player) {
 		super("Help", 2*9, player);
-	}
-	
-	@Override
-	public List<MenuItem> getMenuItems(Player player) {
-		List<MenuItem> items = new ArrayList<>();
 		
-		int i = 0;
-		for (Value value : Value.values()){
-			ItemStack icon = new Item(Material.INK_SACK).setDamage(8).getItemStack();
-			items.add(new MenuItem(i, icon, value.getName(), value.getDescription()));
-			i++;
-		}
-		items.add(new MenuItem(17, new ItemStack(Material.BARRIER), "Back"));
+		items.put(0, new ItemBuilder(Material.INK_SACK)
+				.data(8)
+				.name(ChatColor.DARK_AQUA + "Commands")
+				.lore(ChatColor.GRAY + "Help for commands")
+				.create());
 		
-		return items;
+		items.put(17, new ItemBuilder(Material.BARRIER).coloredName("&cBack").create());
 	}
 
 	@Override
@@ -82,23 +71,6 @@ public class HelpMenu extends Menu {
 			player.sendMessage(Message.ERROR_MENU);
 		}
 		return false;
-	}
-	
-	private static enum Value {
-		
-		COMMANDS("Commands", "Help for commands");
-		
-		private String name;
-		private String[] description;
-		
-		Value(String name, String... description){
-			this.name = name;
-			this.description = description;
-		}
-		
-		private String getName(){ return name; }
-		private String[] getDescription(){ return description; }
-		
 	}
 
 }

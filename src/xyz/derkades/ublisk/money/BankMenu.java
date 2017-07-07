@@ -1,11 +1,7 @@
 package xyz.derkades.ublisk.money;
 
-import java.util.Arrays;
-import java.util.List;
-
-import org.bukkit.entity.Player;
-
 import net.md_5.bungee.api.ChatColor;
+import xyz.derkades.derkutils.bukkit.ItemBuilder;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.utils.Menu;
 import xyz.derkades.ublisk.utils.UPlayer;
@@ -16,23 +12,18 @@ public class BankMenu extends Menu {
 
 	public BankMenu(UPlayer player) {
 		super("Bank", 6*9, player);
-	}
-
-	@Override
-	public List<MenuItem> getMenuItems(Player player) {
-		return Arrays.asList(
-				new MenuItem(4, MoneyItem.BAR.getItem().getItemStack(),
-						ChatColor.GOLD + "" + ChatColor.BOLD + "Bank",
-						ChatColor.YELLOW + "Your balance: " + new UPlayer(player).getMoney()),
-				
-				new MenuItem(20, MoneyItem.NUGGET.getItem().getItemStack(), "Deposit", "Gold nugget"),
-				new MenuItem(22, MoneyItem.COIN.getItem().getItemStack(), "Deposit", "Gold coin"),
-				new MenuItem(24, MoneyItem.BAR.getItem().getItemStack(), "Deposit", "Gold bar"),
-				
-				new MenuItem(29, MoneyItem.NUGGET.getItem().getItemStack(), "Withdraw", "Gold nugget"),
-				new MenuItem(31, MoneyItem.COIN.getItem().getItemStack(), "Withdraw", "Gold coin"),
-				new MenuItem(33, MoneyItem.BAR.getItem().getItemStack(), "Withdraw", "Gold bar")
-				);
+		
+		items.put(4, new ItemBuilder(MoneyItem.BAR.getItem().getItemStack())
+				.name(ChatColor.GOLD + "" + ChatColor.BOLD + "Bank")
+				.lore(ChatColor.YELLOW + "Your balance: " + player.getMoney()).create());
+		
+		items.put(20, new ItemBuilder(MoneyItem.NUGGET.getItem().getItemStack()).name("Deposit").lore("Gold nugget").create());
+		items.put(22, new ItemBuilder(MoneyItem.COIN.getItem().getItemStack()).name("Deposit").lore("Gold coin").create());
+		items.put(24, new ItemBuilder(MoneyItem.BAR.getItem().getItemStack()).name("Deposit").lore("Gold bar").create());
+		
+		items.put(29, new ItemBuilder(MoneyItem.NUGGET.getItem().getItemStack()).name("Withdraw").lore("Gold nugget").create());
+		items.put(31, new ItemBuilder(MoneyItem.COIN.getItem().getItemStack()).name("Withdraw").lore("Gold coin").create());
+		items.put(33, new ItemBuilder(MoneyItem.BAR.getItem().getItemStack()).name("Withdraw").lore("Gold bar").create());
 	}
 
 	@Override

@@ -5,12 +5,8 @@ import static net.md_5.bungee.api.ChatColor.GOLD;
 import static net.md_5.bungee.api.ChatColor.GREEN;
 import static net.md_5.bungee.api.ChatColor.RED;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import net.md_5.bungee.api.ChatColor;
@@ -21,29 +17,25 @@ import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.utils.Menu;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.Ublisk;
-import xyz.derkades.ublisk.utils.inventory.Item;
 import xyz.derkades.ublisk.utils.settings.Setting;
 
 public class FriendsMenu extends Menu {
 
 	public FriendsMenu(UPlayer player) {
 		super("Friends", 3*9, player);
-	}
-
-	@Override
-	public List<MenuItem> getMenuItems(Player bukkitPlayer) {
-		List<MenuItem> list = new ArrayList<>();
-		UPlayer player = new UPlayer(bukkitPlayer);
-		
+				
 		if (player.getFriends().isEmpty()){
-			ItemStack head = new ItemBuilder(player.getName()).create();
-			list.add(new MenuItem(0, head, GOLD + "You don't have any friends!"));
+			ItemStack head = new ItemBuilder(player.getName()).name(GOLD + "You don't have any friends!").create();
+			items.put(0, head);
 		} else {
 			int i = 0;
 			for (OfflinePlayer friend : player.getFriends()){
-				ItemStack head = new Item(player.getName()).getItemStack();
+				ItemStack head = new ItemBuilder(player.getName())
+						.name(ChatColor.DARK_AQUA + friend.getName())
+						.lore(ChatColor.GRAY + "Click for more info")
+						.create();
 				
-				list.add(new MenuItem(i, head, friend.getName(), ChatColor.GRAY + "Click for more info"));
+				items.put(i, head);
 				
 				i++;
 				
@@ -59,12 +51,10 @@ public class FriendsMenu extends Menu {
 			 displayName = GOLD + "Show friend's health: " + GREEN + BOLD + "Enabled";
 		else displayName = GOLD + "Show friend's health: " + RED + BOLD + "Disabled";
 		
-		ItemStack friendsHealth = new ItemStack(Material.SPECKLED_MELON, 1);
-		list.add(new MenuItem(18, friendsHealth, displayName));
-		
-		return list;
+		ItemStack friendsHealth = new ItemBuilder(Material.SPECKLED_MELON).name(displayName).create();
+		items.put(18, friendsHealth);
 	}
-
+	
 	@Override
 	public boolean onOptionClick(OptionClickEvent event) {
 		UPlayer player = new UPlayer(event);

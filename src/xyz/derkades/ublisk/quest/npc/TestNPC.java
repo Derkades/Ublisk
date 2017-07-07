@@ -1,13 +1,10 @@
 package xyz.derkades.ublisk.quest.npc;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager.Profession;
 
+import xyz.derkades.derkutils.bukkit.ItemBuilder;
 import xyz.derkades.ublisk.quest.NPC;
 import xyz.derkades.ublisk.quest.Quest;
 import xyz.derkades.ublisk.quest.QuestParticipant;
@@ -57,11 +54,10 @@ public class TestNPC extends NPC {
 		new NPCMenu("Test Menu", 3*9, qp){
 
 			@Override
-			public List<MenuItem> getMenuItems(Player player) {
-				List<MenuItem> list = new ArrayList<>();
-				list.add(new MenuItem(10, Material.STONE, "Some random option", "Some lore!", "Line 2"));
-				list.add(new MenuItem(11, Material.WOOD, "Option without lore"));
-				return list;
+			public void open() {
+				items.put(10, new ItemBuilder(Material.STONE).name("Some random option").lore("Some lore!", "Lines 2").create());
+				items.put(11, new ItemBuilder(Material.WOOD).name("Option without lore").create());
+				super.open();
 			}
 
 			@Override

@@ -7,24 +7,18 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import net.md_5.bungee.api.ChatColor;
 import xyz.derkades.ublisk.Main;
+import xyz.derkades.ublisk.utils.ItemBuilder;
 import xyz.derkades.ublisk.utils.Menu;
 import xyz.derkades.ublisk.utils.UPlayer;
-import xyz.derkades.ublisk.utils.inventory.Item;
 
 public class CommandsHelp extends Menu {
 
 	public CommandsHelp(UPlayer player) {
 		super("Help", 2*9, player);
-	}
-
-	@Override
-	public List<MenuItem> getMenuItems(Player player) {
-		List<MenuItem> options = new ArrayList<>();
 		
 		int i = 0;
 		
@@ -36,7 +30,7 @@ public class CommandsHelp extends Menu {
 		commands.put("Guilds", "guild");
 		
 		for (Entry<String, String> entry : commands.entrySet()){
-			ItemStack icon = new Item(Material.INK_SACK).setDamage(8).getItemStack();
+
 			List<String> loreLines = new ArrayList<String>();
 			loreLines.add(getDescription(entry.getValue()));
 			
@@ -45,14 +39,18 @@ public class CommandsHelp extends Menu {
 			String[] usageLines = getUsage(entry.getValue()).split("\n");
 			for (String usageLine : usageLines) loreLines.add(ChatColor.RED + usageLine);
 			
-			options.add(new MenuItem(i, icon, entry.getKey() + " - /" + entry.getValue(), loreLines.toArray(new String[]{})));
+			ItemStack icon = new ItemBuilder(Material.INK_SACK)
+					.data(8)
+					.name(entry.getKey() + " - /" + entry.getValue())
+					.lore(loreLines)
+					.create();
+			
+			items.put(i, icon);
 			
 			i++;
 		}
 		
-		options.add(new MenuItem(17, new ItemStack(Material.BARRIER), "Back"));
-		
-		return options;
+		items.put(17, new ItemBuilder(Material.BARRIER).name(ChatColor.RED + "Back").create());
 	}
 
 	@Override
