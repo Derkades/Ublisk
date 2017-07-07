@@ -1,6 +1,6 @@
 package xyz.derkades.ublisk.commands.ublisk;
 
-import xyz.derkades.ublisk.Loot;
+import xyz.derkades.ublisk.modules.Loot;
 import xyz.derkades.ublisk.utils.UPlayer;
 
 public class SpawnLootCommand extends UbliskCommand {
