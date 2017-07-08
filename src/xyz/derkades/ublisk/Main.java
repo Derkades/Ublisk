@@ -101,6 +101,8 @@ public class Main extends JavaPlugin {
 			PlayerInfo.resetHashMaps(player);
 		}
 	
+		Ublisk.openDatabaseConnection();
+		
 	}
 	
 	@Override
@@ -128,6 +130,8 @@ public class Main extends JavaPlugin {
 		
 		// Clear remaining tasks in sync queue
 		SyncQueue.clear();
+		
+		Ublisk.closeDatabaseConnection();
 		
 		Logger.log(LogLevel.INFO, "Core", "Plugin has been shut down.");
 		

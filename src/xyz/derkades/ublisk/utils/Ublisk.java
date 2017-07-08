@@ -72,7 +72,7 @@ public class Ublisk {
 		Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), cmd);
 	}
 	
-	public static void openDatabaseConnection() throws SQLException {
+	public static void openDatabaseConnection() {
 		String ip = Var.DATABASE_HOST;
 		int port = Var.DATABASE_PORT;
 		String user = Var.DATABASE_USER;
@@ -101,7 +101,7 @@ public class Ublisk {
 		}
 	}
 	
-	public static Connection getDatabaseConnection(String reason) throws SQLException {
+	public static Connection getDatabaseConnection(String reason) {
 		ServerInfo.DATABASE_REQUESTS++;
 
 		Logger.log(LogLevel.DEBUG, "Database", "New connection: " + reason);
