@@ -75,7 +75,7 @@ public class Ublisk {
 	public static Connection getNewDatabaseConnection(String reason) throws SQLException {
 		ServerInfo.DATABASE_REQUESTS++;
 
-		Logger.log(LogLevel.DEBUG, "New connection: " + reason);
+		Logger.log(LogLevel.DEBUG, "Database", "New connection: " + reason);
 		String ip = Var.DATABASE_HOST;
 		int port = Var.DATABASE_PORT;
 		String user = Var.DATABASE_USER;

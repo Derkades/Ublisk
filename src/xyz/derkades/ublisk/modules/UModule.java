@@ -56,7 +56,7 @@ public abstract class UModule implements Listener {
 		
 		Bukkit.getServer().getPluginManager().registerEvents(this, Main.getInstance());
 		
-		Logger.log(LogLevel.DEBUG, "Initialized module " + this.getClass().getSimpleName());
+		Logger.log(LogLevel.DEBUG, "Modules", "Initialized module " + this.getClass().getSimpleName());
 	}
 	
 	public void terminate(){
