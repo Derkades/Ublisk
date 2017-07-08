@@ -175,10 +175,24 @@ public class UPlayer {
 		}
 	}
 
+	/**
+	 * This will throw an UnsupportedOperationException if the player is offline. 
+	 * The use of this method is discouraged and should be avoided whenever possible
+	 * @return Bukkit player
+	 */
 	public Player getPlayer() {
+		if (player == null) {
+			throw new UnsupportedOperationException("The player is not online");
+		}
+		
 		return player;
 	}
 	
+	/**
+	 * @deprecated Use UPlayer methods
+	 * @return Bukkit OfflinePlayer object.
+	 */
+	@Deprecated
 	public OfflinePlayer getOfflinePlayer() {
 		return offline;
 	}
