@@ -44,7 +44,7 @@ public class ServerInfo {
 		PreparedStatement statement = null;
 		
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Player info 2 sync");
+			connection = Ublisk.getDatabaseConnection("Player info 2 sync");
 			
 			statement = connection.prepareStatement(
 						"INSERT INTO " + TABLE_NAME + " "
@@ -94,7 +94,6 @@ public class ServerInfo {
 			throw e;
 		} finally {
 			if (statement != null) statement.close();
-			if (connection != null) connection.close();
 		}
 	}
 

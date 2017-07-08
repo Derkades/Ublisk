@@ -51,7 +51,7 @@ public class Guild {
 		ResultSet resultSet = null;
 		boolean contains = true;
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Guilds check (" + name + ")");
+			connection = Ublisk.getDatabaseConnection("Guilds check (" + name + ")");
 			query = connection.prepareStatement("SELECT * FROM `guilds` WHERE name=?;");
 			query.setString(1, name);
 			resultSet = query.executeQuery();
@@ -63,7 +63,6 @@ public class Guild {
 			try {
 				if (query != null) query.close();
 				if (resultSet != null) resultSet.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -93,7 +92,7 @@ public class Guild {
 		Connection connection = null;
 		PreparedStatement insert = null;
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Create guild (" + this.getName() + ")");
+			connection = Ublisk.getDatabaseConnection("Create guild (" + this.getName() + ")");
 			insert = connection.prepareStatement("INSERT INTO `guilds` (name, owner) values(?, ?);");
 			insert.setString(1, this.getName());
 			insert.setString(2, owner.getUniqueId().toString());
@@ -104,7 +103,6 @@ public class Guild {
 		} finally {
 			try {
 				insert.close();
-				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -165,7 +163,7 @@ public class Guild {
 		
 		int points = 0;
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Guild points " + this.getName());
+			connection = Ublisk.getDatabaseConnection("Guild points " + this.getName());
 			statement = connection.prepareStatement("SELECT `points` FROM `guilds` WHERE name=?");
 			statement.setString(1, this.getName());
 			result = statement.executeQuery();
@@ -178,7 +176,6 @@ public class Guild {
 			try {
 				if (result != null) result.close();
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -193,7 +190,7 @@ public class Guild {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Guild points " + this.getName());
+			connection = Ublisk.getDatabaseConnection("Guild points " + this.getName());
 			statement = connection.prepareStatement("UPDATE `guilds` SET points=? WHERE name=?;");
 			statement.setInt(1, points);
 			statement.setString(2, this.getName());
@@ -204,7 +201,6 @@ public class Guild {
 		} finally {
 			try {
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -222,7 +218,7 @@ public class Guild {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Add points " + this.getName());
+			connection = Ublisk.getDatabaseConnection("Add points " + this.getName());
 			statement = connection.prepareStatement("UPDATE `guilds` SET points=points+? WHERE name=?");
 			statement.setInt(1, points);
 			statement.setString(2, this.getName());
@@ -233,7 +229,6 @@ public class Guild {
 		} finally {
 			try {
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e){
 				e.printStackTrace();
 			}
@@ -257,7 +252,7 @@ public class Guild {
 		PreparedStatement statement = null;
 		ResultSet result = null;
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Get guild members");
+			connection = Ublisk.getDatabaseConnection("Get guild members");
 			statement = connection.prepareStatement("SELECT `uuid` FROM `player_info_2` WHERE `guild` = ?;");
 			statement.setString(1, this.getName());
 			result = statement.executeQuery();
@@ -272,7 +267,6 @@ public class Guild {
 			try {
 				if (result != null) result.close();
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e){
 				e.printStackTrace();
 			}
@@ -285,7 +279,7 @@ public class Guild {
 		Connection connection = null;
 		PreparedStatement delete = null;
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Delete " + this.getName());
+			connection = Ublisk.getDatabaseConnection("Delete " + this.getName());
 			delete = connection.prepareStatement("DELETE FROM `guilds` WHERE name=?;");
 			delete.setString(1, this.getName());
 			delete.execute();
@@ -295,7 +289,6 @@ public class Guild {
 		} finally {
 			try {
 				if (delete != null) delete.close();
-				if (delete != null) connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -316,7 +309,7 @@ public class Guild {
 		
 		String uuid = null;
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Get guild owner");
+			connection = Ublisk.getDatabaseConnection("Get guild owner");
 			query = connection.prepareStatement("SELECT `owner` FROM `guilds` WHERE name=?");
 			query.setString(1, this.getName());
 			result = query.executeQuery();
@@ -329,7 +322,6 @@ public class Guild {
 			try {
 				if (result != null) result.close();
 				if (query != null) query.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -349,7 +341,7 @@ public class Guild {
 		PreparedStatement statement = null;
 		
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Guilds description update");
+			connection = Ublisk.getDatabaseConnection("Guilds description update");
 			statement = connection.prepareStatement("UPDATE guilds SET description=? WHERE name=?");
 			statement.setString(1, description);
 			statement.setString(2, name);
@@ -360,7 +352,6 @@ public class Guild {
 		} finally {
 			try {
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e){
 				e.printStackTrace();
 			}
@@ -379,7 +370,7 @@ public class Guild {
 		
 		String description = null;
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Get description");
+			connection = Ublisk.getDatabaseConnection("Get description");
 			statement = connection.prepareStatement("SELECT description FROM guilds WHERE name=?");
 			statement.setString(1, name);
 			result = statement.executeQuery();
@@ -392,7 +383,6 @@ public class Guild {
 			try {
 				if (result != null) result.close();
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e){
 				e.printStackTrace();
 			}
@@ -408,7 +398,7 @@ public class Guild {
 		PreparedStatement statement = null;
 		
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Guilds icon update");
+			connection = Ublisk.getDatabaseConnection("Guilds icon update");
 			statement = connection.prepareStatement("UPDATE guilds SET icon=? WHERE name=?");
 			statement.setString(1, icon);
 			statement.setString(2, name);
@@ -419,7 +409,6 @@ public class Guild {
 		} finally {
 			try {
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e){
 				e.printStackTrace();
 			}
@@ -431,7 +420,7 @@ public class Guild {
 		PreparedStatement statement = null;
 		
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Guilds name change");
+			connection = Ublisk.getDatabaseConnection("Guilds name change");
 			statement = connection.prepareStatement("UPDATE guilds SET name=? WHERE name=?");
 			statement.setString(1, newName);
 			statement.setString(2, name);
@@ -442,7 +431,6 @@ public class Guild {
 		} finally {
 			try {
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e){
 				e.printStackTrace();
 			}
@@ -460,7 +448,7 @@ public class Guild {
 		PreparedStatement statement = null;
 		
 		try {
-			connection = Ublisk.getNewDatabaseConnection(this.getName() + " set owner to " + newOwner.getName());
+			connection = Ublisk.getDatabaseConnection(this.getName() + " set owner to " + newOwner.getName());
 			statement = connection.prepareStatement("UPDATE guilds SET owner=? WHERE name=?");
 			statement.setString(1, newOwner.getUniqueId().toString());
 			statement.setString(2, this.getName());
@@ -470,7 +458,6 @@ public class Guild {
 		} finally {
 			try {
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e){
 				e.printStackTrace();
 			}
@@ -485,7 +472,7 @@ public class Guild {
 		ResultSet result = null;
 		List<String> names = null; 
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Guilds list");
+			connection = Ublisk.getDatabaseConnection("Guilds list");
 			query = connection.prepareStatement("SELECT * FROM `guilds` ORDER BY `points`;");
 			result = query.executeQuery();
 			names = ListUtils.getStringListFromResultSet(result, "name");
@@ -496,7 +483,6 @@ public class Guild {
 			try {
 				if (result != null) result.close();
 				if (query != null) query.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -518,7 +504,7 @@ public class Guild {
 		ResultSet result = null;
 		List<String> names = null; 
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Guilds list");
+			connection = Ublisk.getDatabaseConnection("Guilds list");
 			query = connection.prepareStatement("SELECT * FROM `guilds` ORDER BY `points` LIMIT ?;");
 			query.setInt(1, limit);
 			result = query.executeQuery();
@@ -530,7 +516,6 @@ public class Guild {
 			try {
 				if (result != null) result.close();
 				if (query != null) query.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -577,7 +562,7 @@ public class Guild {
 		
 		String guildName = null;
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Get player guild");
+			connection = Ublisk.getDatabaseConnection("Get player guild");
 			statement = connection.prepareStatement("SELECT * FROM `player_info_2` WHERE uuid=?;");
 			statement.setString(1, player.getUniqueId().toString());
 			result = statement.executeQuery();
@@ -590,7 +575,6 @@ public class Guild {
 			try {
 				if (result != null) result.close();
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e){
 				throw new RuntimeException(e.getMessage());
 			}
@@ -622,7 +606,7 @@ public class Guild {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Leave guild");
+			connection = Ublisk.getDatabaseConnection("Leave guild");
 			statement = connection.prepareStatement("UPDATE " + PlayerInfo.TABLE_NAME + " SET guild='None' WHERE uuid=?;");
 			statement.setString(1, player.getUniqueId().toString());
 			statement.executeUpdate();
@@ -631,7 +615,6 @@ public class Guild {
 		} finally {
 			try {
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e){
 				throw new RuntimeException(e.getMessage());
 			}
@@ -642,7 +625,7 @@ public class Guild {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		try {
-			connection = Ublisk.getNewDatabaseConnection("Set guild");
+			connection = Ublisk.getDatabaseConnection("Set guild");
 			statement = connection.prepareStatement("UPDATE " + PlayerInfo.TABLE_NAME + " SET guild=? WHERE uuid=?;");
 			statement.setString(1, guild.getName());
 			statement.setString(2, player.getUniqueId().toString());
@@ -652,7 +635,6 @@ public class Guild {
 		} finally {
 			try {
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e){
 				throw new RuntimeException(e.getMessage());
 			}

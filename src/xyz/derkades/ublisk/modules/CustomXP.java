@@ -60,7 +60,7 @@ public class CustomXP extends UModule {
 				Connection connection = null;
 				PreparedStatement statement = null;
 				try {
-					connection = Ublisk.getNewDatabaseConnection(player.getName() + " set xp");
+					connection = Ublisk.getDatabaseConnection(player.getName() + " set xp");
 					statement = connection.prepareStatement("UPDATE player_info_2 SET xp=? WHERE uuid=?");
 					statement.setInt(1, xp);
 					statement.setString(2, player.getUniqueId().toString());
@@ -70,7 +70,6 @@ public class CustomXP extends UModule {
 				} finally {
 					try {
 						if (statement != null) statement.close();
-						if (connection != null) connection.close();
 					} catch (SQLException e){
 						e.printStackTrace();
 					}
@@ -94,7 +93,7 @@ public class CustomXP extends UModule {
 		
 		int xp = -1;
 		try {
-			connection = Ublisk.getNewDatabaseConnection(player.getName() + " set xp");
+			connection = Ublisk.getDatabaseConnection(player.getName() + " set xp");
 			statement = connection.prepareStatement("SELECT xp FROM player_info_2 WHERE uuid=?");
 			statement.setString(1, player.getUniqueId().toString());
 			result = statement.executeQuery();
@@ -105,7 +104,6 @@ public class CustomXP extends UModule {
 		} finally {
 			try {
 				if (statement != null) statement.close();
-				if (connection != null) connection.close();
 			} catch (SQLException e){
 				e.printStackTrace();
 			}

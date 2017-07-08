@@ -48,6 +48,8 @@ public class Ublisk {
 	
 	public static NMS NMS;
 	
+	private static Connection DATABASE_CONNECTION;
+	
 	public static UPlayer[] getOnlinePlayers(){
 		List<UPlayer> list = new ArrayList<UPlayer>();
 		for (Player player : Bukkit.getOnlinePlayers()){
@@ -72,10 +74,7 @@ public class Ublisk {
 		Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), cmd);
 	}
 	
-	public static Connection getNewDatabaseConnection(String reason) throws SQLException {
-		ServerInfo.DATABASE_REQUESTS++;
-
-		Logger.log(LogLevel.DEBUG, "Database", "New connection: " + reason);
+	public static void openDatabaseConnection() throws SQLException {
 		String ip = Var.DATABASE_HOST;
 		int port = Var.DATABASE_PORT;
 		String user = Var.DATABASE_USER;
@@ -87,11 +86,37 @@ public class Ublisk {
 		properties.setProperty("password", pass);
 		properties.setProperty("useSSL", "false");
 		
-		return DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + db, properties);	
+		try {
+			DATABASE_CONNECTION = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + db, properties);
+		} catch (SQLException e) {
+			Ublisk.exception(e, Ublisk.class);
+		}
 	}
 	
-	public static void dealWithException(Exception exception, String message){
-		Logger.log(LogLevel.SEVERE, message);
+	public static void closeDatabaseConnection() {
+		if (DATABASE_CONNECTION != null) {
+			try {
+				DATABASE_CONNECTION.close();
+			} catch (SQLException e) {
+				Ublisk.exception(e, Ublisk.class);
+			}
+		}
+	}
+	
+	public static Connection getDatabaseConnection(String reason) throws SQLException {
+		ServerInfo.DATABASE_REQUESTS++;
+
+		Logger.log(LogLevel.DEBUG, "Database", "New connection: " + reason);
+		return DATABASE_CONNECTION;
+	}
+	
+	public static void exception(Exception exception, Class<?> source, String message){
+		Logger.log(LogLevel.SEVERE, source.getSimpleName(), message);
+		exception.printStackTrace();
+	}
+	
+	public static void exception(Exception exception, Class<?> source){
+		Logger.log(LogLevel.SEVERE, source.getSimpleName(), exception.getMessage());
 		exception.printStackTrace();
 	}
 	

@@ -6,8 +6,6 @@ import java.io.IOException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import xyz.derkades.ublisk.utils.Ublisk;
-
 public enum DataFile {
 
 	QUESTS("quests"),

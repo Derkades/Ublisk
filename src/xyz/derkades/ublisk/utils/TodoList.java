@@ -85,8 +85,6 @@ public class TodoList {
 		} finally {
 			if (result != null) result.close();
 			if (select != null) select.close();
-
-			if (connection != null) connection.close();
 		}
 
 		return list;
@@ -106,7 +104,6 @@ public class TodoList {
 			throw e;
 		} finally {
 			if (insert != null) insert.close();
-			if (connection != null) connection.close();
 		}
 	}
 	
@@ -123,7 +120,6 @@ public class TodoList {
 			throw e;
 		} finally {
 			if (delete != null) delete.close();
-			if (connection != null) connection.close();
 		}
 	}
 
