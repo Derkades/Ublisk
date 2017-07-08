@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import xyz.derkades.ublisk.Main;
@@ -46,12 +47,12 @@ public class CustomXP extends UModule {
 		return 0;
 	}
 	
-	public static int getLevel(Player player){
+	public static int getLevel(OfflinePlayer player){
 		int xp = getXP(player);
 		return getLevel(xp);
 	}
 	
-	public static void setXP(Player player, final int xp){
+	public static void setXP(OfflinePlayer player, final int xp){
 		Cache.removeCachedObject("xp:" + player.getUniqueId());
 		
 		new URunnable(){
@@ -80,7 +81,7 @@ public class CustomXP extends UModule {
 		Cache.addCachedObject("xp:" + player.getUniqueId(), xp, 1000);
 	}
 	
-	public static int getXP(Player player){
+	public static int getXP(OfflinePlayer player){
 		//Check for cached values first
 		Object cache = Cache.getCachedObject("xp:" + player.getUniqueId());
 		if (cache != null){

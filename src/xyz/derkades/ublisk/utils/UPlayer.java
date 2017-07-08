@@ -325,16 +325,17 @@ public class UPlayer {
 	}
 
 	public int getLevel() {
-		return CustomXP.getLevel(player);
+		return CustomXP.getLevel(offline);
 	}
 
 	public void setXP(int xp) {
-		CustomXP.setXP(player, xp);
-		CustomXP.updateXPBar(player);
+		CustomXP.setXP(offline, xp);
+		
+		if (player != null) CustomXP.updateXPBar(player);
 	}
 
 	public int getXP() {
-		return CustomXP.getXP(player);
+		return CustomXP.getXP(offline);
 	}
 	
 	public void updateXPBar(){
