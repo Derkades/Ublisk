@@ -33,6 +33,8 @@ public class PlayerJoin implements Listener {
 		String pn = player.getName();
 		UUID uuid = player.getUniqueId();
 		
+		PlayerInfo.resetHashMaps(player);
+		
 		player.setCollidable(false);
 		
 		event.setJoinMessage(DARK_AQUA + "" + BOLD + pn + RESET + AQUA + " has joined");
@@ -94,8 +96,6 @@ public class PlayerJoin implements Listener {
 						+ "Welcome to Ublisk! If you find any bugs, please report them using /bug [description].");
 			}
 		}.runTaskLater(Main.getInstance(), 4);
-		
-		PlayerInfo.resetHashMaps(player);
 	}
 
 }
