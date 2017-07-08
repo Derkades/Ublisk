@@ -15,7 +15,6 @@ import net.minecraft.server.v1_12_R1.EntityCreature;
 import net.minecraft.server.v1_12_R1.EntityLiving;
 import net.minecraft.server.v1_12_R1.IChatBaseComponent;
 import net.minecraft.server.v1_12_R1.IChatBaseComponent.ChatSerializer;
-import xyz.derkades.ublisk.utils.Ublisk;
 import net.minecraft.server.v1_12_R1.PacketPlayOutChat;
 
 public class V1_12_R1 implements NMS {
@@ -40,15 +39,11 @@ public class V1_12_R1 implements NMS {
 	
 	@Override
 	public void sendActionBarMessage(Player player, String message) {
-		try {
-			IChatBaseComponent dummyComponent = ChatSerializer.a("{\"text\":\"herobrine1337\"}");
-			PacketPlayOutChat packet = new PacketPlayOutChat(dummyComponent, ChatMessageType.GAME_INFO);
-			packet.components = new BaseComponent[]{new TextComponent(message)};
-			CraftPlayer craftPlayer = (CraftPlayer) player;
-			craftPlayer.getHandle().playerConnection.sendPacket(packet);
-		} catch (SecurityException | IllegalArgumentException e) {
-			Ublisk.exception(e, this.getClass());
-		}
+		IChatBaseComponent dummyComponent = ChatSerializer.a("{\"text\":\"herobrine1337\"}");
+		PacketPlayOutChat packet = new PacketPlayOutChat(dummyComponent, ChatMessageType.GAME_INFO);
+		packet.components = new BaseComponent[] { new TextComponent(message) };
+		CraftPlayer craftPlayer = (CraftPlayer) player;
+		craftPlayer.getHandle().playerConnection.sendPacket(packet);
 	}
 
 	@Override
