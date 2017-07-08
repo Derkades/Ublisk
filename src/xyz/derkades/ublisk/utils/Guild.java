@@ -69,7 +69,7 @@ public class Guild {
 			}
 		}
 		
-		Cache.addCachedObject("exists" + this.getName(), contains, 300);
+		Cache.addCachedObject("exists:" + this.getName(), contains, 300);
 		
 		return contains;
 	}
