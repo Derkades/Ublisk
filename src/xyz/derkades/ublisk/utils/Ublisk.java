@@ -31,6 +31,7 @@ import org.bukkit.entity.Player;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
+import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.Var;
 import xyz.derkades.ublisk.database.ServerInfo;
@@ -324,6 +325,10 @@ public class Ublisk {
 	
 	public static BossBar createBossBar(String text, BarColor color, BarStyle style){
 		return Bukkit.createBossBar(text, color, style);
+	}
+	
+	public static void runAsync(Runnable runnable) {
+		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), runnable);
 	}
 
 }

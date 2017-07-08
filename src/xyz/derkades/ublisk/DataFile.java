@@ -7,6 +7,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import xyz.derkades.ublisk.utils.Ublisk;
+
 public enum DataFile {
 
 	QUESTS("quests"),
@@ -41,7 +43,7 @@ public enum DataFile {
 	}
 
 	public void save() {
-		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
+		Ublisk.runAsync(() -> {
 			try {
 				getConfig().save(file);
 			} catch (IOException e) {
