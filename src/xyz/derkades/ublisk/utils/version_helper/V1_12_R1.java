@@ -15,6 +15,7 @@ import net.minecraft.server.v1_12_R1.EntityCreature;
 import net.minecraft.server.v1_12_R1.EntityLiving;
 import net.minecraft.server.v1_12_R1.IChatBaseComponent;
 import net.minecraft.server.v1_12_R1.IChatBaseComponent.ChatSerializer;
+import xyz.derkades.ublisk.utils.Ublisk;
 import net.minecraft.server.v1_12_R1.PacketPlayOutChat;
 
 public class V1_12_R1 implements NMS {
@@ -46,7 +47,7 @@ public class V1_12_R1 implements NMS {
 			CraftPlayer craftPlayer = (CraftPlayer) player;
 			craftPlayer.getHandle().playerConnection.sendPacket(packet);
 		} catch (SecurityException | IllegalArgumentException e) {
-			throw new NMSException(e);
+			Ublisk.exception(e, this.getClass());
 		}
 	}
 

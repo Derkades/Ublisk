@@ -1,5 +1,6 @@
 package xyz.derkades.ublisk.utils.version_helper;
 
+@Deprecated
 public class NMSException extends RuntimeException {
 
 	public NMSException(Exception cause){
