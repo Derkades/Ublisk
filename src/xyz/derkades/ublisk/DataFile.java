@@ -42,13 +42,11 @@ public enum DataFile {
 	}
 
 	public void save() {
-		Ublisk.runAsync(() -> {
-			try {
-				getConfig().save(file);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		});
+		try {
+			getConfig().save(file);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static class SaveFiles extends BukkitRunnable {

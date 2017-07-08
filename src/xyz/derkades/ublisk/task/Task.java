@@ -27,7 +27,7 @@ public enum Task {
 	
 	PROCESS_QUEUE(new ProcessQueue(), 10*20, 2*20, false),
 	
-	SAVE_FILES(new SaveFiles(), 30*20, 60*50, false);
+	SAVE_FILES(new SaveFiles(), 30*20, 60*50, true);
 	
 	private static final List<BukkitRunnable> RUNNING_TASKS = new ArrayList<BukkitRunnable>();
 	
