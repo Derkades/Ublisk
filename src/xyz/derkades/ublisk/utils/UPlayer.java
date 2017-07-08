@@ -96,17 +96,12 @@ public class UPlayer {
 		if (name == null)
 			throw new IllegalArgumentException("Name must not be null");
 		
-		Player player = Bukkit.getPlayer(name);
-		
-		if (player == null)
-			throw new PlayerNotFoundException();
-		
 		OfflinePlayer offline = Ublisk.getOfflinePlayer(name);
 		this.offline = offline;
 		if (offline.isOnline()){
 			this.player = (Player) offline;
 		} else {
-			this.player = player;
+			this.player = null;
 		}
 	}
 
