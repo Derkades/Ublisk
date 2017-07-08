@@ -52,9 +52,7 @@ public class Ublisk {
 	
 	public static UPlayer[] getOnlinePlayers(){
 		List<UPlayer> list = new ArrayList<UPlayer>();
-		for (Player player : Bukkit.getOnlinePlayers()){
-			list.add(new UPlayer(player));
-		}
+		Bukkit.getOnlinePlayers().forEach(player -> list.add(new UPlayer(player)));
 		return list.toArray(new UPlayer[0]);
 	}
 	
