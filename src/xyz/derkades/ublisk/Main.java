@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import xyz.derkades.ublisk.commands.Command;
+import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.database.SyncQueue;
 import xyz.derkades.ublisk.ext.com.coloredcarrot.api.sidebar.SidebarAPI;
 import xyz.derkades.ublisk.listeners.Listeners;
@@ -95,6 +96,10 @@ public class Main extends JavaPlugin {
 				
 			}
 		}.runLater(10*20);
+		
+		for (UPlayer player : Ublisk.getOnlinePlayers()) {
+			PlayerInfo.resetHashMaps(player);
+		}
 	
 	}
 	

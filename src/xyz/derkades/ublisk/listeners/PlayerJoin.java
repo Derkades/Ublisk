@@ -94,6 +94,8 @@ public class PlayerJoin implements Listener {
 						+ "Welcome to Ublisk! If you find any bugs, please report them using /bug [description].");
 			}
 		}.runTaskLater(Main.getInstance(), 4);
+		
+		PlayerInfo.resetHashMaps(player);
 	}
 
 }
