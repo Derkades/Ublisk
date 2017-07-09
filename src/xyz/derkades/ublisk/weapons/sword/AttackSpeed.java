@@ -5,7 +5,7 @@ public enum AttackSpeed {
 	/**
 	 * 
 	 */
-	SLOW("Slow", -1),
+	SLOW("Slow", 0.1),
 	
 	/**
 	 * NBT value of 1.0
