@@ -16,7 +16,6 @@ import xyz.derkades.derkutils.bukkit.ItemBuilder;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.utils.Menu;
 import xyz.derkades.ublisk.utils.UPlayer;
-import xyz.derkades.ublisk.utils.Ublisk;
 import xyz.derkades.ublisk.utils.settings.Setting;
 
 public class FriendsMenu extends Menu {
