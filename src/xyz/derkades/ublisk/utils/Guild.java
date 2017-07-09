@@ -78,7 +78,7 @@ public class Guild {
 	}
 
 	/**
-	 * @param owner The name of the guild owner, for example "Derkades"
+	 * @param owner Guild owner. Can be offline
 	 * @throws IllegalArgumentException If the owner is null or an empty string.
 	 * @throws UnsupportedOperationException If a guild with that name already exists
 	 */
