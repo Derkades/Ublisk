@@ -86,8 +86,8 @@ public class Guild {
 		if (this.exists())
 			throw new UnsupportedOperationException("A guild with this name already exists.");
 
-		if (owner == null || owner.equals(""))
-			throw new IllegalArgumentException("Owner cannot be null or an empty string.");
+		if (owner == null)
+			throw new IllegalArgumentException("Owner cannot be null");
 		
 		Connection connection = null;
 		PreparedStatement insert = null;
