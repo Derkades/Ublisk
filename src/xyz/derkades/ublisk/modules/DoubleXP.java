@@ -25,7 +25,7 @@ public class DoubleXP extends UModule {
 	}
 
 	private static float DOUBLE_XP_PROGRESS = 0.0f;
-	private static int DOUBLE_XP_SECONDS_LEFT = 0;
+	private static double DOUBLE_XP_SECONDS_LEFT = 0;
 	private static final int DOUBLE_XP_TOTAL_SECONDS = 150;
 
 	public static boolean isActive() {
@@ -47,11 +47,14 @@ public class DoubleXP extends UModule {
 		
 		DoubleXP.DOUBLE_XP_PROGRESS = 1.0f;
 		DoubleXP.DOUBLE_XP_SECONDS_LEFT = DoubleXP.DOUBLE_XP_TOTAL_SECONDS;
+		
+		final BossBar bar = Ublisk.createBossBar("Double XP - " + player.getName(), BarColor.GREEN, BarStyle.SOLID);
+		Ublisk.showBossBar(bar, DoubleXP.DOUBLE_XP_TOTAL_SECONDS * 20, Ublisk.getOnlinePlayers());
 
 		new BukkitRunnable() {
 
 			public void run() {
-				//Every second: remove 1 second from `DOUBLE_XP_SECONDS_LEFT` and recalculate percentage.
+				//Every second: remove 0.2 seconds from `DOUBLE_XP_SECONDS_LEFT` and recalculate percentage (0.2 seconds because this is ran 5 times every second).
 				DoubleXP.DOUBLE_XP_SECONDS_LEFT--;
 				float percent = ((float) DoubleXP.DOUBLE_XP_SECONDS_LEFT) / ((float) DoubleXP.DOUBLE_XP_TOTAL_SECONDS);
 				DoubleXP.DOUBLE_XP_PROGRESS = percent;
@@ -62,18 +65,10 @@ public class DoubleXP extends UModule {
 					DoubleXP.DOUBLE_XP_PROGRESS = 0.0f;
 					Ublisk.broadcastPrefixedMessage("Double XP has ended.");
 				}
+				
+				bar.setProgress(DOUBLE_XP_PROGRESS); //Update bossbar
 			}
-		}.runTaskTimer(Main.getInstance(), 0L, 1 * 20L);
-		
-		final BossBar bar = Ublisk.createBossBar("Double XP - " + player.getName(), BarColor.GREEN, BarStyle.SOLID);
-		Ublisk.showBossBar(bar, DoubleXP.DOUBLE_XP_TOTAL_SECONDS * 20, Ublisk.getOnlinePlayers());
-		
-		new URunnable() {
-			
-			public void run() {
-				bar.setProgress(DOUBLE_XP_PROGRESS);
-			}
-		}.runTimer(5);
+		}.runTaskTimer(Main.getInstance(), 0L, 4);
 	}
 
 	/*public static String getDoubleXPSidebarString() {
