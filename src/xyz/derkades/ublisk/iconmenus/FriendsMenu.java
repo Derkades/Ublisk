@@ -72,7 +72,8 @@ public class FriendsMenu extends Menu {
 		} else if (player.getFriends().isEmpty()){
 			return false;
 		} else { //Clicked item is a player
-			OfflinePlayer friend = Ublisk.getOfflinePlayer(event.getName());
+			//OfflinePlayer friend = Ublisk.getOfflinePlayer(event.getName());
+			OfflinePlayer friend = player.getFriends().get(event.getPosition());
 			
 			if (friend == null) player.sendMessage("error");
 			
