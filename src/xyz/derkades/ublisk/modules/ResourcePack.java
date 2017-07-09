@@ -25,7 +25,7 @@ public class ResourcePack extends UModule implements CommandExecutor {
 	public void onEnable(){
 		//plugin.getCommand("pack").setExecutor(this);
 		registerCommand("pack", this);
-		log(this, LogLevel.INFO, "Using URL: " + RESOURCE_PACK_URL);
+		log(this, LogLevel.DEBUG, "Using URL: " + RESOURCE_PACK_URL);
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
