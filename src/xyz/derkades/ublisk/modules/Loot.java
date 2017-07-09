@@ -45,7 +45,7 @@ public class Loot extends UModule {
 		new URunnable() {
 			public void run() {
 				for (Location location : SPAWNED_LOOT_LOCATIONS) {
-					Ublisk.spawnParticle(Particle.TOTEM, location, 2, 0, 0, 0, 0.35);
+					Ublisk.spawnParticle(Particle.TOTEM, location.add(0.5, 0.5, 0.5), 2, 0, 0, 0, 0.35);
 				}
 			}
 		}.runTimer(3);
