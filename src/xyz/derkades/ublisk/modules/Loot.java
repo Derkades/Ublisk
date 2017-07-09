@@ -5,7 +5,6 @@ import static org.bukkit.ChatColor.GOLD;
 import static org.bukkit.ChatColor.RESET;
 import static org.bukkit.ChatColor.YELLOW;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +16,6 @@ import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
-import org.bukkit.craftbukkit.v1_12_R1.block.CraftChest;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -139,14 +137,8 @@ public class Loot extends UModule {
 				public void run() {
 					Block block = loc.getBlock();
 					block.setType(Material.CHEST);
-					CraftChest craftChest = (CraftChest) block.getState();
-					try {
-						Field inventoryField = craftChest.getClass().getDeclaredField("chest");
-						inventoryField.setAccessible(true);
-						craftChest.setCustomName("Loot");
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+					
+					Ublisk.NMS.setChestName((Chest) block.getState(), "Loot");
 					
 					org.bukkit.material.Chest data = (org.bukkit.material.Chest) block.getState().getData();
 					data.setFacingDirection(LootChest.this.getDirection());

@@ -1,5 +1,9 @@
 package xyz.derkades.ublisk.utils.version_helper;
 
+import java.lang.reflect.Field;
+
+import org.bukkit.block.Chest;
+import org.bukkit.craftbukkit.v1_12_R1.block.CraftChest;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftCreature;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftLivingEntity;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
@@ -49,6 +53,18 @@ public class V1_12_R1 implements NMS {
 	@Override
 	public void sendTitle(Player player, String title, String subtitle) {
 		((CraftPlayer) player).sendTitle(title, subtitle);
+	}
+
+	@Override
+	public void setChestName(Chest chest, String name) {
+		CraftChest craftChest = (CraftChest) chest;
+		try {
+			Field inventoryField = craftChest.getClass().getDeclaredField("chest");
+			inventoryField.setAccessible(true);
+			craftChest.setCustomName(name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
