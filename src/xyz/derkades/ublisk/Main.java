@@ -1,10 +1,13 @@
 package xyz.derkades.ublisk;
 
+import java.sql.SQLException;
+
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import xyz.derkades.ublisk.commands.Command;
 import xyz.derkades.ublisk.database.PlayerInfo;
+import xyz.derkades.ublisk.database.ServerInfo;
 import xyz.derkades.ublisk.database.SyncQueue;
 import xyz.derkades.ublisk.ext.com.coloredcarrot.api.sidebar.SidebarAPI;
 import xyz.derkades.ublisk.listeners.Listeners;
@@ -16,12 +19,12 @@ import xyz.derkades.ublisk.utils.DoubleXP;
 import xyz.derkades.ublisk.utils.Guild;
 import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
-import xyz.derkades.ublisk.utils.caching.Cache;
 import xyz.derkades.ublisk.utils.PacketListener;
 import xyz.derkades.ublisk.utils.TodoList;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.URunnable;
 import xyz.derkades.ublisk.utils.Ublisk;
+import xyz.derkades.ublisk.utils.caching.Cache;
 import xyz.derkades.ublisk.utils.version_helper.V1_12_R1;
 
 public class Main extends JavaPlugin {
@@ -130,6 +133,12 @@ public class Main extends JavaPlugin {
 		
 		// Clear remaining tasks in sync queue
 		SyncQueue.clear();
+		
+		try {
+			ServerInfo.syncWithDatabase();
+		} catch (SQLException e) {
+			Ublisk.exception(e, getClass());
+		}
 		
 		Ublisk.closeDatabaseConnection();
 		

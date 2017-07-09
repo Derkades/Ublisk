@@ -1,8 +1,11 @@
 package xyz.derkades.ublisk.modules;
 
+import java.sql.SQLException;
+
+import xyz.derkades.ublisk.database.ServerInfo;
+import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.URunnable;
 import xyz.derkades.ublisk.utils.Ublisk;
-import xyz.derkades.ublisk.utils.Logger.LogLevel;
 
 public class AutoRestart extends UModule {
 	
@@ -11,7 +14,18 @@ public class AutoRestart extends UModule {
 			if (Ublisk.getOnlinePlayers().length == 0){
 				//If there are no online players, restart.
 				AutoRestart.this.log(AutoRestart.this, LogLevel.WARNING, "Restarting server!");
-				Ublisk.getServer().spigot().restart();
+				Ublisk.runAsync(() -> {
+					ServerInfo.AUTORESTART_COUNT++;
+					try {
+						ServerInfo.syncWithDatabase();
+					} catch (SQLException e) {
+						Ublisk.exception(e, AutoRestart.class);
+					} finally {
+						Ublisk.runSync(() -> {
+							Ublisk.getServer().spigot().restart();
+						});
+					}
+				});
 			} else {
 				AutoRestart.this.log(AutoRestart.this, LogLevel.INFO, "Did not restart because there were players online.");
 			}
