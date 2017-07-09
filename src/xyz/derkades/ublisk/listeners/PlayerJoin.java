@@ -42,7 +42,7 @@ public class PlayerJoin implements Listener {
 		player.givePotionEffect(PotionEffectType.BLINDNESS, 1*20, 0);
 		player.givePotionEffect(PotionEffectType.NIGHT_VISION, 1*20, 0);
 		
-		player.sendTitle(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Ublisk", ChatColor.YELLOW + "Welcome back, " + player.getName() + "!");
+		player.sendTitle(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Ublisk", ChatColor.YELLOW + "Welcome back, " + pn + "!");
 		
 		if (player.getSetting(Setting.PLAY_MUSIC)){
 			Town town = player.getTown();
