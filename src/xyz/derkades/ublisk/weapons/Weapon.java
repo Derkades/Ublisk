@@ -174,20 +174,15 @@ public abstract class Weapon {
 		return lore.toArray(new String[]{});
 	}
 	
-	public static boolean itemStackIsWeapon(ItemStack item, Weapon weapon){
-
-		// TODO Make this code readable
-		
+	public static boolean itemStackIsWeapon(ItemStack item, Weapon weapon){		
 		if (!item.getType().equals(weapon.getMaterial())){
 			return false;
 		}
 
 		if (item.getItemMeta() == null){ 
-			Logger.log(LogLevel.DEBUG, "ItemMeta null");
 			return false;
 		} else {
 			if (item.getItemMeta().getDisplayName() == null){
-				Logger.log(LogLevel.DEBUG, "Displayname null");
 				return false;
 			} else {
 				if (!item.getItemMeta().getDisplayName().equals(weapon.getColoredName())){
@@ -196,7 +191,6 @@ public abstract class Weapon {
 			}
 			
 			if (item.getItemMeta().getLore() == null){
-				Logger.log(LogLevel.DEBUG, "Lore null");
 				return false;
 			} else {
 				if (!ListUtils.stringListContainsString(item.getItemMeta().getLore(), weapon.getTagLine())){

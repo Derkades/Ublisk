@@ -103,7 +103,6 @@ public class Main extends JavaPlugin {
 		}
 	
 		Ublisk.openDatabaseConnection();
-		
 	}
 	
 	@Override

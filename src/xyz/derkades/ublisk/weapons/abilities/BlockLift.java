@@ -24,7 +24,7 @@ public class BlockLift extends Ability {
 	private int damage;
 	
 	public BlockLift(int damage) {
-		super(1, 0, 5*20); // TODO Min level TODO Mana
+		super(1, 0, 5*20);
 		this.damage = damage;
 	}
 
