@@ -13,6 +13,7 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.craftbukkit.v1_12_R1.block.CraftChest;
@@ -39,7 +40,23 @@ public class Loot extends UModule {
 				}
 			}
 		}.runTimer(5*60*20, 5*60*20);
+		
+		//Spawn particles
+		new URunnable() {
+			public void run() {
+				for (Location location : SPAWNED_LOOT_LOCATIONS) {
+					Ublisk.spawnParticle(Particle.TOTEM, location, 2, 0, 0, 0, 0.35);
+				}
+			}
+		}.runTimer(3);
 	}
+	
+	@Override
+	public void onDisable() {
+		Loot.removeLootChests();
+	}
+	
+	private static final List<Location> SPAWNED_LOOT_LOCATIONS = new ArrayList<>();
 	
 	private static final LootChest[] LOOT = new LootChest[]{
 			new LootChest(Level.ONE, 80, 74, -5),
@@ -65,6 +82,14 @@ public class Loot extends UModule {
 			}
 		}
 		return false;
+	}
+	
+	public static void removeLootChests() {
+		Logger.log(LogLevel.INFO, "Loot", "Removed all loot chets.");
+		SPAWNED_LOOT_LOCATIONS.clear();
+		for (LootChest lootChest : LOOT) {
+			lootChest.getLocation().getBlock().setType(Material.AIR);
+		}
 	}
 		
 	public static class LootChest {
@@ -105,6 +130,8 @@ public class Loot extends UModule {
 					int x = loc.getBlockX();
 					int y = loc.getBlockY();
 					int z = loc.getBlockZ();
+					
+					SPAWNED_LOOT_LOCATIONS.add(block.getLocation());
 					Ublisk.broadcastPrefixedMessage("Loot", "A loot chest dropped at " + GOLD + "" + BOLD + x + " " + y
 							+ " " + z + RESET + YELLOW + "!");
 				}
@@ -125,13 +152,6 @@ public class Loot extends UModule {
 			}
 
 			chest.getInventory().setContents((ItemStack[]) contents.toArray());
-		}
-			
-		public void remove() {
-			Location loc = this.getLocation();
-			Block block = new Location(Var.WORLD, loc.getX(), loc.getY(), loc.getZ()).getBlock();
-			block.setType(Material.AIR);
-			Logger.log(LogLevel.INFO, "Loot", "Removed loot chest at (" + loc.getX() + "," + loc.getY() + "," + loc.getZ() + ")!");
 		}
 
 	}

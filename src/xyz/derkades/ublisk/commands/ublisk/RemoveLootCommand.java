@@ -1,16 +1,13 @@
 package xyz.derkades.ublisk.commands.ublisk;
 
 import xyz.derkades.ublisk.modules.Loot;
-import xyz.derkades.ublisk.modules.Loot.LootChest;
 import xyz.derkades.ublisk.utils.UPlayer;
 
 public class RemoveLootCommand extends UbliskCommand {
 
 	@Override
 	protected void onCommand(UPlayer player, String[] args) {
-		for (LootChest loot : Loot.getLootChests()){
-			loot.remove();
-		}
+		Loot.removeLootChests();
 		player.sendMessage("Removed loot.");
 	}
 
