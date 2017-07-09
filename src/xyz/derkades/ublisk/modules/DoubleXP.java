@@ -55,7 +55,7 @@ public class DoubleXP extends UModule {
 
 			public void run() {
 				//Every second: remove 0.2 seconds from `DOUBLE_XP_SECONDS_LEFT` and recalculate percentage (0.2 seconds because this is ran 5 times every second).
-				DoubleXP.DOUBLE_XP_SECONDS_LEFT--;
+				DoubleXP.DOUBLE_XP_SECONDS_LEFT -= 0.2;
 				float percent = ((float) DoubleXP.DOUBLE_XP_SECONDS_LEFT) / ((float) DoubleXP.DOUBLE_XP_TOTAL_SECONDS);
 				DoubleXP.DOUBLE_XP_PROGRESS = percent;
 				Logger.log(LogLevel.DEBUG, "Seconds left: " + DoubleXP.DOUBLE_XP_SECONDS_LEFT + " | Total seconds: "
