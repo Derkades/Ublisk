@@ -138,7 +138,7 @@ public class Loot extends UModule {
 					Block block = loc.getBlock();
 					block.setType(Material.CHEST);
 					
-					Ublisk.NMS.setChestName((Chest) block.getState(), "Loot");
+					Ublisk.NMS.setChestName((Chest) block.getState(), "Loot - Level " + LootChest.this.getLevel().level);
 					
 					org.bukkit.material.Chest data = (org.bukkit.material.Chest) block.getState().getData();
 					data.setFacingDirection(LootChest.this.getDirection());
@@ -183,9 +183,21 @@ public class Loot extends UModule {
 		THREE();
 
 		private LootItem[] items;
-
+		private int level;
+		
 		Level(LootItem... items) {
 			this.items = items;
+			
+			switch (this.toString()){
+				case "ONE":
+					level = 1; break;
+				case "TWO":
+					level = 2; break;
+				case "THREE":
+					level = 3; break;
+				default:
+					level = -1;
+			}
 		}
 
 	}
