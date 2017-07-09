@@ -12,7 +12,7 @@ public class CustomMOTD extends UModule {
 			new MOTD(ChatColor.GREEN + "" + ChatColor.STRIKETHROUGH + "Wynncraft"),
 			new MOTD(ChatColor.MAGIC + "OIJAMOIDJMOSAIJCDMOAISJM", ChatColor.YELLOW + "Ok"),
 			new MOTD(ChatColor.AQUA + "" + ChatColor.BOLD + "HEY! DUBBELKLIKKEN! NU!!"),
-			new MOTD("Ik zweer, volgende vakantie is het wel af!"),
+			new MOTD("Ik zweer, volgende vakantie is het wel af!", "maar serieus, deze zomervakantie moet het wel speelbaar zijn"),
 			new MOTD("oeblisk"),
 			new MOTD("Al gaat Josh nou wat bouwen, is de server sneller af."),
 			new MOTD("Ublisk - Waar bungalowhuisjes middeleeuws zijn."),
