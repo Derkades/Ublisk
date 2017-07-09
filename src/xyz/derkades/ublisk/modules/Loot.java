@@ -138,11 +138,15 @@ public class Loot extends UModule {
 					Block block = loc.getBlock();
 					block.setType(Material.CHEST);
 					
-					Ublisk.NMS.setChestName((Chest) block.getState(), "Loot - Level " + LootChest.this.getLevel().level);
+					Chest chest = (Chest) block.getState();
+					
+					Ublisk.NMS.setChestName(chest, "Loot - Level " + LootChest.this.getLevel().level);
 					
 					org.bukkit.material.Chest data = (org.bukkit.material.Chest) block.getState().getData();
 					data.setFacingDirection(LootChest.this.getDirection());
 					block.getState().setData(data);
+					
+					chest.update();
 					
 					fillChestWithLoot();
 					int x = loc.getBlockX();
