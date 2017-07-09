@@ -25,6 +25,7 @@ public abstract class Sword extends Weapon {
 		return attackSpeed;
 	}
 	
+	@Override
 	public ItemStack getItemStack(){
 		Item item = new Item(this.getMaterial())
 				.setName(this.getColoredName())

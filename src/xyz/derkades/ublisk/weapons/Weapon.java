@@ -134,6 +134,8 @@ public abstract class Weapon {
 		return rightClickAbility;
 	}
 	
+	public abstract ItemStack getItemStack();
+	
 	public String getColoredName(){
 		String color = WHITE + "";
 		
