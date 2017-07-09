@@ -346,8 +346,39 @@ public class Ublisk {
 		Var.WORLD.dropItemNaturally(location, item.getItemStack());
 	}
 	
+	/**
+	 * Creates a new BossBar object. Does not show the bossbar to players.
+	 * 
+	 * @param text
+	 * @param color
+	 * @param style
+	 * @return
+	 * 
+	 * @see #showBossBar(BossBar, long, List)
+	 */
 	public static BossBar createBossBar(String text, BarColor color, BarStyle style){
 		return Bukkit.createBossBar(text, color, style);
+	}
+	
+	/**
+	 * Shows a bossbar to all players in the list for a specified amount of time
+	 * 
+	 * @param bar BossBar
+	 * @param timeout Number of ticks after which the bar should disappear
+	 * @param players Players to show the bar to
+	 * 
+	 * @see #createBossBar(String, BarColor, BarStyle)
+	 */
+	public static void showBossBar(BossBar bar, long timeout, List<UPlayer> players) {
+		for (UPlayer player : players) {
+			bar.addPlayer(player.getPlayer());
+		}
+		
+		new URunnable() {
+			public void run() {
+				bar.removeAll();
+			}
+		}.runLater(timeout);
 	}
 	
 	public static void runAsync(Runnable runnable) {
