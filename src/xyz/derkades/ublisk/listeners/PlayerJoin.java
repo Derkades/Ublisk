@@ -70,7 +70,7 @@ public class PlayerJoin implements Listener {
 		
 		player.setFlying(false);
 
-		player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
+		player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 0.1);
 
 		new URunnable() {
 
