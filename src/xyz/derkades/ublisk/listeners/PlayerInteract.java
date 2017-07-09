@@ -219,16 +219,17 @@ public class PlayerInteract implements Listener {
 				event.getClickedBlock().getType() != Material.CHEST)
 			return;
 		
-		UPlayer player = new UPlayer(event);
-		if (player.isInBuilderMode()){
-			//Skip check if player is in builder mode
-			player.sendMessage(ChatColor.RED + "Warning: Regular players won't be able to open this chest.");
-			return;
-		}
-		
-		//Now we know that the player has clicked on a chest.
 		Chest chest = (Chest) event.getClickedBlock().getState();
 		
+		UPlayer player = new UPlayer(event);
+		if (player.isInBuilderMode()){
+			if (!Loot.isLoot(chest)) {
+				//Send message if chest is not loot
+				player.sendMessage(ChatColor.RED + "Warning: Regular players won't be able to open this chest.");
+			}
+			return;
+		}
+
 		if (!Loot.isLoot(chest)){
 			event.setCancelled(true); //Cancel chest right click if chest is not loot
 		}

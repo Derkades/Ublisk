@@ -158,14 +158,6 @@ public class Voting extends UModule {
 				}
 			}.runTaskLater(Main.getInstance(), 2L);
 		}
-		
-		if (event.getInventory().getName().contains("Loot")){
-			new BukkitRunnable(){
-				public void run(){
-					Var.WORLD.getBlockAt(event.getInventory().getLocation()).setType(Material.AIR);
-				}
-			}.runTaskLater(Main.getInstance(), 5*20);
-		}
 	}
 
 }

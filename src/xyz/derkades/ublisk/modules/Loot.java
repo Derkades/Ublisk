@@ -15,10 +15,14 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
 import org.bukkit.craftbukkit.v1_12_R1.block.CraftChest;
 import org.bukkit.entity.EntityType;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import xyz.derkades.derkutils.Random;
 import xyz.derkades.ublisk.Main;
@@ -56,12 +60,23 @@ public class Loot extends UModule {
 		Loot.removeLootChests();
 	}
 	
+	@EventHandler
+	public void onInvClose(InventoryCloseEvent event) {
+		if (event.getInventory().getName().contains("Loot")){
+			new BukkitRunnable(){
+				public void run(){
+					Var.WORLD.getBlockAt(event.getInventory().getLocation()).setType(Material.AIR);
+				}
+			}.runTaskLater(Main.getInstance(), 5*20);
+		}
+	}
+	
 	private static final List<Location> SPAWNED_LOOT_LOCATIONS = new ArrayList<>();
 	
 	private static final LootChest[] LOOT = new LootChest[]{
-			new LootChest(Level.ONE, 80, 74, -5),
-			new LootChest(Level.ONE, 214, 69, -11),
-			new LootChest(Level.TWO, 90, 120, 335),
+			new LootChest(Level.ONE, 80, 74, -5, BlockFace.SOUTH),
+			new LootChest(Level.ONE, 214, 69, -11, BlockFace.NORTH),
+			new LootChest(Level.TWO, 90, 120, 335, BlockFace.WEST),
 		};
 		
 	public static LootChest getRandomLoot() {
@@ -96,10 +111,12 @@ public class Loot extends UModule {
 
 		private Level level;
 		private Location location;
+		private BlockFace direction;
 
-		LootChest(Level level, int x, int y, int z) {
+		LootChest(Level level, int x, int y, int z, BlockFace direction) {
 			this.level = level;
 			this.location = new Location(Var.WORLD, x, y, z);
+			this.direction = direction;
 		}
 
 		public Level getLevel() {
@@ -108,6 +125,10 @@ public class Loot extends UModule {
 
 		public Location getLocation() {
 			return location;
+		}
+		
+		public BlockFace getDirection() {
+			return direction;
 		}
 
 		public void spawn() {
@@ -118,14 +139,19 @@ public class Loot extends UModule {
 				public void run() {
 					Block block = loc.getBlock();
 					block.setType(Material.CHEST);
-					CraftChest chest = (CraftChest) block.getState();
+					CraftChest craftChest = (CraftChest) block.getState();
 					try {
-						Field inventoryField = chest.getClass().getDeclaredField("chest");
+						Field inventoryField = craftChest.getClass().getDeclaredField("chest");
 						inventoryField.setAccessible(true);
-						chest.setCustomName("Loot");
+						craftChest.setCustomName("Loot");
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+					
+					org.bukkit.material.Chest data = (org.bukkit.material.Chest) block.getState().getData();
+					data.setFacingDirection(LootChest.this.getDirection());
+					block.getState().setData(data);
+					
 					fillChestWithLoot();
 					int x = loc.getBlockX();
 					int y = loc.getBlockY();
