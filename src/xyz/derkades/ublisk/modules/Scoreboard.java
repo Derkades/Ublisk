@@ -15,7 +15,6 @@ import net.md_5.bungee.api.ChatColor;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.ext.com.coloredcarrot.api.sidebar.Sidebar;
 import xyz.derkades.ublisk.ext.com.coloredcarrot.api.sidebar.SidebarString;
-import xyz.derkades.ublisk.utils.DoubleXP;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.URunnable;
 import xyz.derkades.ublisk.utils.Ublisk;
@@ -42,11 +41,11 @@ public class Scoreboard extends UModule {
 		strings.add(redBold + "Health");
 		strings.add(GRAY + "" + player.getHealth() + " / " + player.getMaxHealth());
 
-		if (DoubleXP.isActive()) {
+		/*if (DoubleXP.isActive()) {
 			strings.add(r + r + "");
 			strings.add(redBold + "Double XP");
 			strings.add(DoubleXP.getDoubleXPSidebarString());
-		}
+		}*/
 
 		if (player.getFriends().size() > 1) {
 			boolean displayedOnlineFriends = false;

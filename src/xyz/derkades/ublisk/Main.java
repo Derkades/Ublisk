@@ -15,7 +15,6 @@ import xyz.derkades.ublisk.mob.MobSpawn;
 import xyz.derkades.ublisk.mob.Mobs;
 import xyz.derkades.ublisk.modules.UModule;
 import xyz.derkades.ublisk.task.Task;
-import xyz.derkades.ublisk.utils.DoubleXP;
 import xyz.derkades.ublisk.utils.Guild;
 import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
@@ -49,7 +48,6 @@ public class Main extends JavaPlugin {
 		for (Task task : Task.values())
 			task.start();
 
-		DoubleXP.startDoubleXPPacketListener();
 		Logger.startSiteLogger();
 		
 		TodoList.initialize(

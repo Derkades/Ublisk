@@ -1,22 +1,35 @@
-package xyz.derkades.ublisk.utils;
+package xyz.derkades.ublisk.modules;
 
 import org.bukkit.Bukkit;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Message;
+import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
+import xyz.derkades.ublisk.utils.PacketListener;
 import xyz.derkades.ublisk.utils.PacketListener.PacketRecievedListener;
+import xyz.derkades.ublisk.utils.UPlayer;
+import xyz.derkades.ublisk.utils.URunnable;
+import xyz.derkades.ublisk.utils.Ublisk;
 import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
 
-public class DoubleXP {
+public class DoubleXP extends UModule {
+	
+	@Override
+	public void onEnable() {
+		startDoubleXPPacketListener();
+	}
 
-	private static float DOUBLE_XP_PERCENTAGE = 0.0f;
+	private static float DOUBLE_XP_PROGRESS = 0.0f;
 	private static int DOUBLE_XP_SECONDS_LEFT = 0;
 	private static final int DOUBLE_XP_TOTAL_SECONDS = 150;
 
 	public static boolean isActive() {
-		return DoubleXP.DOUBLE_XP_PERCENTAGE != 0.0f;
+		return DoubleXP.DOUBLE_XP_PROGRESS != 0.0f;
 	}
 
 	public static void startDoubleXP(final UPlayer player) {
@@ -32,7 +45,7 @@ public class DoubleXP {
 
 		Ublisk.broadcastPrefixedMessage("Double XP started thanks to " + player.getName());
 		
-		DoubleXP.DOUBLE_XP_PERCENTAGE = 1.0f;
+		DoubleXP.DOUBLE_XP_PROGRESS = 1.0f;
 		DoubleXP.DOUBLE_XP_SECONDS_LEFT = DoubleXP.DOUBLE_XP_TOTAL_SECONDS;
 
 		new BukkitRunnable() {
@@ -41,23 +54,33 @@ public class DoubleXP {
 				//Every second: remove 1 second from `DOUBLE_XP_SECONDS_LEFT` and recalculate percentage.
 				DoubleXP.DOUBLE_XP_SECONDS_LEFT--;
 				float percent = ((float) DoubleXP.DOUBLE_XP_SECONDS_LEFT) / ((float) DoubleXP.DOUBLE_XP_TOTAL_SECONDS);
-				DoubleXP.DOUBLE_XP_PERCENTAGE = percent;
+				DoubleXP.DOUBLE_XP_PROGRESS = percent;
 				Logger.log(LogLevel.DEBUG, "Seconds left: " + DoubleXP.DOUBLE_XP_SECONDS_LEFT + " | Total seconds: "
-						+ DoubleXP.DOUBLE_XP_TOTAL_SECONDS + " | Percentage float: " + DoubleXP.DOUBLE_XP_PERCENTAGE);
+						+ DoubleXP.DOUBLE_XP_TOTAL_SECONDS + " | Percentage float: " + DoubleXP.DOUBLE_XP_PROGRESS);
 				if (DoubleXP.DOUBLE_XP_SECONDS_LEFT == 0) {
 					this.cancel();
-					DoubleXP.DOUBLE_XP_PERCENTAGE = 0.0f;
+					DoubleXP.DOUBLE_XP_PROGRESS = 0.0f;
 					Ublisk.broadcastPrefixedMessage("Double XP has ended.");
 				}
 			}
 		}.runTaskTimer(Main.getInstance(), 0L, 1 * 20L);
+		
+		final BossBar bar = Ublisk.createBossBar("Double XP - " + player.getName(), BarColor.GREEN, BarStyle.SOLID);
+		Ublisk.showBossBar(bar, DoubleXP.DOUBLE_XP_TOTAL_SECONDS * 20, Ublisk.getOnlinePlayers());
+		
+		new URunnable() {
+			
+			public void run() {
+				bar.setProgress(DOUBLE_XP_PROGRESS);
+			}
+		}.runTimer(5);
 	}
 
-	public static String getDoubleXPSidebarString() {
+	/*public static String getDoubleXPSidebarString() {
 		return Ublisk.getProgressString(DOUBLE_XP_PERCENTAGE);
-	}
+	}*/
 
-	public static void startDoubleXPPacketListener() {
+	private void startDoubleXPPacketListener() {
 		PacketListener.listenForPacket(45678, 16, new PacketRecievedListener() {
 
 			@Override

@@ -12,7 +12,7 @@ import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.mob.Mob;
 import xyz.derkades.ublisk.mob.MobDrop;
 import xyz.derkades.ublisk.mob.Mobs;
-import xyz.derkades.ublisk.utils.DoubleXP;
+import xyz.derkades.ublisk.modules.DoubleXP;
 import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
