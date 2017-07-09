@@ -11,7 +11,7 @@ public class AutoRestart extends UModule {
 	
 	private final URunnable TASK = new URunnable(){
 		public void run(){
-			if (Ublisk.getOnlinePlayers().length == 0){
+			if (Ublisk.getOnlinePlayers().size() == 0){
 				//If there are no online players, restart.
 				AutoRestart.this.log(AutoRestart.this, LogLevel.WARNING, "Restarting server!");
 				Ublisk.runAsync(() -> {

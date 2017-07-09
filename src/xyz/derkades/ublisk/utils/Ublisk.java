@@ -50,10 +50,10 @@ public class Ublisk {
 	
 	private static Connection DATABASE_CONNECTION;
 	
-	public static UPlayer[] getOnlinePlayers(){
+	public static List<UPlayer> getOnlinePlayers(){
 		List<UPlayer> list = new ArrayList<UPlayer>();
 		Bukkit.getOnlinePlayers().forEach(player -> list.add(new UPlayer(player)));
-		return list.toArray(new UPlayer[0]);
+		return list;
 	}
 	
 	public static Collection<UPlayer> getOfflinePlayers(){
