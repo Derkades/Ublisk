@@ -14,15 +14,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import xyz.derkades.ublisk.DataFile;
-import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Town;
 import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
 import xyz.derkades.ublisk.permission.Permission;
 import xyz.derkades.ublisk.utils.UPlayer;
+import xyz.derkades.ublisk.utils.URunnable;
 import xyz.derkades.ublisk.utils.settings.Setting;
 
 public class PlayerJoin implements Listener {
@@ -73,7 +72,7 @@ public class PlayerJoin implements Listener {
 
 		player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 1);
 
-		new BukkitRunnable() {
+		new URunnable() {
 
 			public void run() {
 				player.sendSpacers(10);
@@ -95,7 +94,7 @@ public class PlayerJoin implements Listener {
 				player.sendMessage(ChatColor.GRAY
 						+ "Welcome to Ublisk! If you find any bugs, please report them using /bug [description].");
 			}
-		}.runTaskLater(Main.getInstance(), 4);
+		}.runLater(4);
 	}
 
 }
