@@ -16,6 +16,7 @@ import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.utils.Guild;
 import xyz.derkades.ublisk.utils.Guild.GuildInvite;
 import xyz.derkades.ublisk.utils.UPlayer;
+import xyz.derkades.ublisk.utils.Ublisk;
 import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
 
 public class GuildCommand implements CommandExecutor {
@@ -105,31 +106,35 @@ public class GuildCommand implements CommandExecutor {
 			}
 		} else if (args.length == 2) {
 			if (args[0].equals("create")) {
-				if (args[1].length() > 20) {
-					player.sendPrefixedMessage("Guilds", "This guild name is too long.");
-					return true;
-				}
-				
-				if (!StringUtils.validateString(args[1])){
-					player.sendPrefixedMessage("Guilds", "Guild names can only contain alphanumerical characters and underscores (a-z, A-Z, 0-9, _)");
-					return true;
-				}
+				Ublisk.runAsync(() -> {
+					
+					if (args[1].length() > 20) {
+						Ublisk.runSync(() -> player.sendPrefixedMessage("Guilds", "This guild name is too long."));
+						return;
+					}
+					
+					if (!StringUtils.validateString(args[1])){
+						Ublisk.runSync(() -> player.sendPrefixedMessage("Guilds", "Guild names can only contain alphanumerical characters and underscores (a-z, A-Z, 0-9, _)"));
+						return;
+					}
 
-				if (player.getGuild() != null) {
-					player.sendPrefixedMessage("Guilds", "You are already in a guild. Please leave your current guild before creating a new one.");
-					return true;
-				}
+					if (player.getGuild() != null) {
+						Ublisk.runSync(() -> player.sendPrefixedMessage("Guilds", "You are already in a guild. Please leave your current guild before creating a new one."));
+						return;
+					}
 
-				Guild guild = new Guild(args[1]);
+					Guild guild = new Guild(args[1]);
 
-				if (guild.exists()) {
-					player.sendPrefixedMessage("Guilds", "A guild with this name already exists.");
-					return true;
-				}
+					if (guild.exists()) {
+						Ublisk.runSync(() -> player.sendPrefixedMessage("Guilds", "A guild with this name already exists."));
+						return;
+					}
 
-				guild.create(player);
-				
-				player.sendPrefixedMessage("Guilds", "The guild has been created.");
+					guild.create(player);
+					
+					Ublisk.runSync(() -> player.sendPrefixedMessage("Guilds", "The guild has been created."));
+					
+				});
 				
 				return true;
 			} else if (args[0].equals("info")) {
@@ -197,8 +202,12 @@ public class GuildCommand implements CommandExecutor {
 					return true;
 				}
 				
-				guild.rename(args[1]);
 				player.sendPrefixedMessage("Guilds", "Your guild has been renamed to " + args[1]);
+				
+				Ublisk.runAsync(() -> {
+					guild.rename(args[1]);
+				});
+				
 				return true;
 			} else if (args[0].equalsIgnoreCase("owner")){
 				if (player.getGuild() == null){
@@ -221,9 +230,12 @@ public class GuildCommand implements CommandExecutor {
 					return true;
 				}
 				
-				guild.setOwner(target);
-				
 				player.sendPrefixedMessage("Guilds", target.getName() + " is now the owner of " + guild.getName());
+				
+				Ublisk.runAsync(() -> {
+					guild.setOwner(target);
+				});
+				
 				return true;
 			} else {
 				return false;
@@ -247,8 +259,12 @@ public class GuildCommand implements CommandExecutor {
 				return true;
 			}
 			
-			guild.setDescription(description);
 			player.sendPrefixedMessage("Guilds", "You have changed your guild's description to " + StringUtils.addDotIfNecessary(description));
+			
+			Ublisk.runAsync(() -> {
+				guild.setDescription(description);
+			});
+			
 			return true;
 		} else {
 			return false;
