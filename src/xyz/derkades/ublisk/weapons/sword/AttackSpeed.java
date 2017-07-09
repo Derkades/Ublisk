@@ -15,7 +15,7 @@ public enum AttackSpeed {
 	/**
 	 * NBT value of 3.0;
 	 */
-	FAST("Fast", 3);
+	FAST("Fast", 3.5);
 	
 	private String name;
 	private double speed;
