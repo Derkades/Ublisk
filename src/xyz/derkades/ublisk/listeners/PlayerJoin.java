@@ -5,10 +5,6 @@ import static org.bukkit.ChatColor.BOLD;
 import static org.bukkit.ChatColor.DARK_AQUA;
 import static org.bukkit.ChatColor.RESET;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.UUID;
 
 import org.bukkit.ChatColor;
@@ -24,11 +20,8 @@ import xyz.derkades.ublisk.Town;
 import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
 import xyz.derkades.ublisk.permission.Permission;
-import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.URunnable;
-import xyz.derkades.ublisk.utils.Ublisk;
-import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.settings.Setting;
 
 public class PlayerJoin implements Listener {
