@@ -5,6 +5,10 @@ import static org.bukkit.ChatColor.BOLD;
 import static org.bukkit.ChatColor.DARK_AQUA;
 import static org.bukkit.ChatColor.RESET;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.UUID;
 
 import org.bukkit.ChatColor;
@@ -20,8 +24,11 @@ import xyz.derkades.ublisk.Town;
 import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
 import xyz.derkades.ublisk.permission.Permission;
+import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.URunnable;
+import xyz.derkades.ublisk.utils.Ublisk;
+import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.settings.Setting;
 
 public class PlayerJoin implements Listener {
@@ -95,6 +102,45 @@ public class PlayerJoin implements Listener {
 						+ "Welcome to Ublisk! If you find any bugs, please report them using /bug [description].");
 			}
 		}.runLater(4);
+		
+		Ublisk.runAsync(() -> {
+			Connection connection = null;
+			
+			PreparedStatement check = null;
+			ResultSet checkResult = null;
+			
+			PreparedStatement insert = null;
+			try {				
+				connection = Ublisk.getDatabaseConnection("Player join insert");
+				
+				check = connection.prepareStatement("SELECT EXISTS(SELECT * FROM player_info_2 WHERE uuid=?) AS `exists`");
+				checkResult = check.executeQuery();
+				checkResult.next();
+			
+				boolean exists = checkResult.getBoolean("exists");
+				
+				Logger.log(LogLevel.DEBUG, "Exists: " + exists);
+				
+				if (!exists) {
+					insert = connection.prepareStatement("INSERT INTO `player_info_2) (uuid, name, xp) VALUES (?, ?, ?)");
+					insert.setString(1, uuid.toString());
+					insert.setString(2, pn);
+					insert.setInt(3, 0);
+					insert.execute();
+				}
+			} catch (SQLException e) {
+				Ublisk.exception(e, PlayerJoin.class);
+			} finally {
+				try {
+					if (connection != null) connection.close();
+					if (check != null) check.close();
+					if (checkResult != null) checkResult.close();
+					if (insert != null) insert.close();
+				} catch (SQLException e) {
+					Ublisk.exception(e, PlayerJoin.class);
+				}
+			}
+		});
 	}
 
 }
