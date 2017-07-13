@@ -2,7 +2,7 @@ package xyz.derkades.ublisk;
 
 public enum Helper {
 	
-	ROBINMC("RobinMC (Robin)", 
+	DERKADES("Derkades (Robin)", 
 			"https://goo.gl/Aay9Ry", 
 			"Plugin development, bug testing, landscaping, a bit of building, textures, quests, abilities, music"),
 	
