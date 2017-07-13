@@ -114,6 +114,7 @@ public class PlayerJoin implements Listener {
 				connection = Ublisk.getDatabaseConnection("Player join insert");
 				
 				check = connection.prepareStatement("SELECT EXISTS(SELECT * FROM player_info_2 WHERE uuid=?) AS `exists`");
+				check.setString(1, uuid.toString());
 				checkResult = check.executeQuery();
 				checkResult.next();
 			
@@ -132,7 +133,6 @@ public class PlayerJoin implements Listener {
 				Ublisk.exception(e, PlayerJoin.class);
 			} finally {
 				try {
-					if (connection != null) connection.close();
 					if (check != null) check.close();
 					if (checkResult != null) checkResult.close();
 					if (insert != null) insert.close();
