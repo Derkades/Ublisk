@@ -40,7 +40,7 @@ public class GuildCommand implements CommandExecutor {
 					player.sendPrefixedMessage("Guilds", "You joined " + guild.getName() + "!");
 					
 					for (UPlayer guildMember : guild.getMembers()){
-						if (guildMember.isOnline()){
+						if (guildMember.isOnline() && guildMember.getUniqueId() != player.getUniqueId()){
 							guildMember.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + player.getName() + " has joined your guild!");
 						}
 					}
