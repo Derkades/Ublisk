@@ -103,7 +103,7 @@ public class PlayerJoin implements Listener {
 			}
 		}.runLater(4);
 		
-		Ublisk.runAsync(() -> {
+		/*Ublisk.runAsync(() -> {
 			Connection connection = null;
 			
 			PreparedStatement check = null;
@@ -140,7 +140,7 @@ public class PlayerJoin implements Listener {
 					Ublisk.exception(e, PlayerJoin.class);
 				}
 			}
-		});
+		});*/
 	}
 
 }

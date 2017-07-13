@@ -96,8 +96,11 @@ public class CustomXP extends UModule {
 			statement = connection.prepareStatement("SELECT xp FROM player_info_2 WHERE uuid=?");
 			statement.setString(1, player.getUniqueId().toString());
 			result = statement.executeQuery();
-			result.next();
-			xp = result.getInt("xp");
+			if (result.next()) {
+				xp = result.getInt("xp");
+			} else {
+				xp = 0;
+			}
 		} catch (SQLException e){
 			e.printStackTrace();
 		} finally {
