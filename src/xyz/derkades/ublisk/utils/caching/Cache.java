@@ -8,6 +8,8 @@ import java.util.Map.Entry;
 
 public class Cache {
 	
+	public static int[] CACHED_OBJECTS_STATISTIC = new int[]{0, 0};
+	
 	private static final Map<String, CacheObject> CACHE_OBJECT_MAP = new HashMap<>();
 	
 	/**
@@ -37,12 +39,17 @@ public class Cache {
 	public static Object getCachedObject(String identifier){
 		CacheObject cache = CACHE_OBJECT_MAP.get(identifier);
 		
-		if (cache == null) return null;
+		if (cache == null) {
+			CACHED_OBJECTS_STATISTIC[1]++;
+			return null;
+		}
 		
 		if (System.currentTimeMillis() - cache.timeCreated > cache.timeout){
 			CACHE_OBJECT_MAP.remove(identifier);
+			CACHED_OBJECTS_STATISTIC[1]++;
 			return null;
 		} else {
+			CACHED_OBJECTS_STATISTIC[0]++;
 			return cache.object;
 		}
 	}
