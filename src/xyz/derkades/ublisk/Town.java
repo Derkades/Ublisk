@@ -19,7 +19,7 @@ public enum Town {
 	// x < 100 x > 22 z < -10 z > 90
 	INTRODUCTION("Introduction", TownType.AREA, WeatherType.CLEAR, "ComptineDunAutreEte.nbs", 100, 22, -10, -90, 69, 67, 5),
 	GLAENOR("Glaenor", TownType.TOWN_SMALL, WeatherType.CLEAR, "Glaenor.nbs", 175, 100, 17, -120, 116, 68, -86),
-	RHOCUS("Rhocus", TownType.TOWN_BIG, WeatherType.CLEAR, "Rhocus.nbs", 200, 100, 400, 240, 174, 82, 313),
+	RHOCUS("Rhocus", TownType.TOWN_BIG, WeatherType.CLEAR, "Rhocus.nbs", 240, 100, 400, 240, 174, 82, 313),
 	NO_NAME("NoName", TownType.CAPITAL, WeatherType.CLEAR, null, 645, 516, 60, -70, 604, 74, -41),
 	DAWN_POINT("Dawn Point", TownType.CAPITAL, WeatherType.CLEAR, null, 1195, 1060, -220, -360, 1152, 69, -319);
 	
