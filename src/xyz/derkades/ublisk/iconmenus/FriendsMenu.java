@@ -72,12 +72,14 @@ public class FriendsMenu extends Menu {
 			return false;
 		} else { //Clicked item is a player
 			//OfflinePlayer friend = Ublisk.getOfflinePlayer(event.getName());
-			OfflinePlayer friend = player.getFriends().get(event.getPosition());
+			OfflinePlayer offlineFriend = player.getFriends().get(event.getPosition());
 			
-			if (friend == null) player.sendMessage("error");
+			if (offlineFriend == null) player.sendMessage("error");
+			
+			UPlayer friend = new UPlayer(offlineFriend);
 			
 			player.sendMessage(
-					player.getDisplayName(ChatColor.DARK_AQUA, true),
+					friend.getDisplayName(ChatColor.DARK_AQUA, true),
 					new ComponentBuilder(" - ")
 							.color(ChatColor.DARK_GRAY)
 							.bold(true)
