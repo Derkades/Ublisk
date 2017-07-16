@@ -41,6 +41,7 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import xyz.derkades.derkutils.Cooldown;
 import xyz.derkades.ublisk.DataFile;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Message;
@@ -752,8 +753,6 @@ public class UPlayer {
 		}
 		return hasItems;
 	}
-	
-	private static final Map<UUID, List<String>> ABILITIES_COOLDOWN = new HashMap<>();
 
 	/**
 	 * Checks if the player has enough mana and if their level is high enough (also for cooldown). If both or one of these conditions is not true, it will send message(s). Null value is permitted.
@@ -769,28 +768,14 @@ public class UPlayer {
 			return;
 		}
 		
-		UUID uuid = this.getUniqueId();
+		long timeLeft = Cooldown.getCooldown(ability.getName() + this.getUniqueId());
 		
-		if (ABILITIES_COOLDOWN.containsKey(uuid) && ABILITIES_COOLDOWN.get(uuid).contains(ability.getName())){
-			this.sendPrefixedMessage(ChatColor.RED + "You can't do this ability yet. Please wait a few seconds.");
+		if (timeLeft != 0){
+			this.sendPrefixedMessage(String.format(ChatColor.RED + "You can't do this ability yet. Please wait %s seconds.", timeLeft));
 			return;
 		}
 		
-		List<String> cooldownAbilities;
-		if (ABILITIES_COOLDOWN.containsKey(uuid))
-			 cooldownAbilities = ABILITIES_COOLDOWN.get(uuid);
-		else cooldownAbilities = new ArrayList<>();
-		
-		cooldownAbilities.add(ability.getName());
-		ABILITIES_COOLDOWN.put(uuid, cooldownAbilities);
-		
-		new URunnable(){
-			public void run(){
-				List<String> list = ABILITIES_COOLDOWN.get(uuid);
-				list.remove(ability.getName());
-				ABILITIES_COOLDOWN.put(uuid, list);
-			}
-		}.runLater(ability.getCooldown());
+		Cooldown.addCooldown(ability.getName() + this.getUniqueId(), ability.getCooldown());
 
 		if (ability.getMinimumLevel() > player.getLevel()) {
 			this.sendMessage(Message.ABILITY_NOT_ENOUGH_LEVEL);

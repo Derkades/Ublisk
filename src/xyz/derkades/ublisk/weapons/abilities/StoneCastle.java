@@ -18,7 +18,7 @@ import xyz.derkades.ublisk.utils.shapes.Shapes;
 public class StoneCastle extends Ability {
 	
 	public StoneCastle() {
-		super(1, 0, 15*20);
+		super(1, 0, 15_000);
 	}
 	
 	private static final int PERIOD = 5;

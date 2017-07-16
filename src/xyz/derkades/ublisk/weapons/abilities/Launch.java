@@ -11,7 +11,7 @@ import xyz.derkades.ublisk.utils.Ublisk;
 public class Launch extends Ability {
 
 	public Launch() {
-		super(1, 1, 7*20);
+		super(1, 1, 7_000);
 	}
 
 	@Override

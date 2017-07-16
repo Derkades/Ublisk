@@ -15,7 +15,7 @@ import xyz.derkades.ublisk.utils.Ublisk.Explosion;
 public class TestAbility extends Ability {
 
 	public TestAbility() {
-		super(5, 0, 2*20);
+		super(5, 0, 2_000);
 	}
 
 	@Override

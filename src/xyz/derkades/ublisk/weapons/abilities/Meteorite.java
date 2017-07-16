@@ -17,7 +17,7 @@ public class Meteorite extends Ability {
 	private int damage;
 	
 	public Meteorite(int damage) {
-		super(4, 0, 4*20);
+		super(4, 0, 4_000);
 		this.damage = damage;
 	}
 
