@@ -15,9 +15,9 @@ import xyz.derkades.ublisk.utils.Ublisk;
 import xyz.derkades.ublisk.utils.shapes.Direction;
 import xyz.derkades.ublisk.utils.shapes.Shapes;
 
-public class StoneCastle extends Ability {
+public class SmokeShield extends Ability {
 	
-	public StoneCastle() {
+	public SmokeShield() {
 		super(1, 0, 15_000);
 	}
 	
