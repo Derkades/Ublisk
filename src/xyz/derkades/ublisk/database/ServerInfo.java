@@ -76,8 +76,8 @@ public class ServerInfo {
 						+ "chunks_loaded=chunks_loaded+?," //17
 						+ "open_issues=?," //18
 						+ "closed_issues=?, " //19
-						+ "cached_yes=?, " //20
-						+ "cached_no=?"); //21
+						+ "cached_yes=cached_yes+?, " //20
+						+ "cached_no=cached_no+?"); //21
 			
 			statement.setString(1, DUMMY);
 			statement.setString(2, time);
