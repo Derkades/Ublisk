@@ -771,7 +771,7 @@ public class UPlayer {
 		long timeLeft = Cooldown.getCooldown(ability.getName() + this.getUniqueId());
 		
 		if (timeLeft != 0){
-			this.sendPrefixedMessage(String.format(ChatColor.RED + "You can't do this ability yet. Please wait %s seconds.", timeLeft));
+			this.sendPrefixedMessage(String.format(ChatColor.RED + "You can't do this ability yet. Please wait %s seconds.", timeLeft / 1000));
 			return;
 		}
 		
