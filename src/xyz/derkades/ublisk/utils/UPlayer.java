@@ -775,8 +775,6 @@ public class UPlayer {
 			return;
 		}
 		
-		Cooldown.addCooldown(ability.getName() + this.getUniqueId(), ability.getCooldown());
-
 		if (ability.getMinimumLevel() > player.getLevel()) {
 			this.sendMessage(Message.ABILITY_NOT_ENOUGH_LEVEL);
 			return;
@@ -790,6 +788,7 @@ public class UPlayer {
 		if (ability.run(this)){
 			//If the ability casted successfully
 			PlayerInfo.ABILITIES.put(this.getUniqueId(), PlayerInfo.ABILITIES.get(this.getUniqueId()) + 1);
+			Cooldown.addCooldown(ability.getName() + this.getUniqueId(), ability.getCooldown());
 			this.setMana(this.getMana() - ability.getMana());
 		}
 	}
