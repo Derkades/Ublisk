@@ -50,7 +50,7 @@ public class ServerInfo {
 		PreparedStatement statement = null;
 		
 		try {
-			connection = Ublisk.getDatabaseConnection("Player info 2 sync");
+			connection = Ublisk.getDatabaseConnection("Server info sync");
 			
 			statement = connection.prepareStatement(
 						"INSERT INTO " + TABLE_NAME + " "
