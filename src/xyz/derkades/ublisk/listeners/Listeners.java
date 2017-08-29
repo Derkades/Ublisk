@@ -23,8 +23,7 @@ public class Listeners {
 	}
 	
 	private enum Enum {
-		
-		BREAK_BLOCK(new BreakBlock()),
+
 		CHUNK_LOAD(new ChunkLoad()),
 		ENTITY_EXPLODE(new EntityExplode()),
 		INV_CLICK(new InventoryClick()),

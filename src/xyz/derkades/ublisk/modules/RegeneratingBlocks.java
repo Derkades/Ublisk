@@ -1,22 +1,21 @@
-package xyz.derkades.ublisk.listeners;
+package xyz.derkades.ublisk.modules;
 
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import net.md_5.bungee.api.ChatColor;
-import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Var;
 import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
+import xyz.derkades.ublisk.utils.URunnable;
 
-public class BreakBlock implements Listener {
+public class RegeneratingBlocks extends UModule {
 	
 	private static final Material[] REGENERATING_MATERIALS = new Material[]{
 			Material.IRON_ORE,
@@ -25,13 +24,8 @@ public class BreakBlock implements Listener {
 	
 	private static final int REGENERATE_TIME = 30;
 	
-	@EventHandler
-	public void onBreakBlock(BlockBreakEvent event){
-		
-		if (event.isCancelled()){
-			return;
-		}
-		
+	@EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
+	public void onBreakBlock(BlockBreakEvent event){		
 		final Player player = event.getPlayer();
 		final PlayerInventory inv = player.getInventory();
 		
@@ -52,13 +46,14 @@ public class BreakBlock implements Listener {
 				Logger.log(LogLevel.INFO, "Regenerating block broken at (" + block.getX() + ", " + block.getY() + ", " + block.getZ() + ") by " + player.getName());
 				
 				final Material originalMaterial = block.getType();
-				new BukkitRunnable(){
-					public void run(){
+				new URunnable() {
+					public void run() {
 						block.setType(originalMaterial);
 					}
-				}.runTaskLater(Main.getInstance(), REGENERATE_TIME * 20);
+				}.runLater(REGENERATE_TIME * 20);
 			}
 		}	
 	}
+
 
 }
