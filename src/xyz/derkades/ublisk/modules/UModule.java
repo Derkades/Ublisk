@@ -26,7 +26,7 @@ public abstract class UModule implements Listener {
 			new FriendsBossBar(),
 			new GitHubModule(),
 			new Loot(),
-			new FormatChat(),
+			new Chat(),
 			new PlayerFreeze(),
 			new PlayerLoginRoom(),
 			new PlayerLogins(),

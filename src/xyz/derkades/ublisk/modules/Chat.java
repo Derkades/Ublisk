@@ -16,7 +16,7 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.Ublisk;
 
-public class FormatChat extends UModule {
+public class Chat extends UModule {
 	
 	// TODO Use arraylist instead
 	public static final Map<UUID, Boolean> IS_MUTED = new HashMap<>();

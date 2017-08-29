@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import xyz.derkades.ublisk.Message;
-import xyz.derkades.ublisk.modules.FormatChat;
+import xyz.derkades.ublisk.modules.Chat;
 import xyz.derkades.ublisk.permission.Permission;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
@@ -42,15 +42,15 @@ public class MuteCommand implements CommandExecutor {
 			UUID uuid = target.getUniqueId();
 			String targetName = target.getName();
 			String playerName = player.getName();
-			if (FormatChat.IS_MUTED.get(uuid)){
+			if (Chat.IS_MUTED.get(uuid)){
 				player.sendPrefixedMessage("Chat", targetName + " has been unmuted.");
 				target.sendPrefixedMessage("Chat", "You have been unmuted by " + playerName);
-				FormatChat.IS_MUTED.put(uuid, false);
+				Chat.IS_MUTED.put(uuid, false);
 				return true;
 			} else {
 				player.sendPrefixedMessage("Chat", targetName + " has been muted.");
 				target.sendPrefixedMessage("Chat", "You have been muted by " + playerName);
-				FormatChat.IS_MUTED.put(uuid, true);
+				Chat.IS_MUTED.put(uuid, true);
 				return true;
 			}
 		} else if (args.length == 2 && args[0].equalsIgnoreCase("soft")){
@@ -66,15 +66,15 @@ public class MuteCommand implements CommandExecutor {
 			UUID uuid = target.getUniqueId();
 			String targetName = target.getName();
 			String playerName = player.getName();
-			if (FormatChat.IS_SOFT_MUTED.get(uuid)){
+			if (Chat.IS_SOFT_MUTED.get(uuid)){
 				player.sendPrefixedMessage("Chat", targetName + " has been un-soft-muted.");
 				target.sendPrefixedMessage("Chat", "You have been un-soft-muted by " + playerName);
-				FormatChat.IS_MUTED.put(uuid, false);
+				Chat.IS_MUTED.put(uuid, false);
 				return true;
 			} else {
 				player.sendPrefixedMessage("Chat", targetName + " has been soft-muted.");
 				target.sendPrefixedMessage("Chat", "You have been soft-muted by " + playerName);
-				FormatChat.IS_MUTED.put(uuid, true);
+				Chat.IS_MUTED.put(uuid, true);
 				return true;
 			}
 		} else {

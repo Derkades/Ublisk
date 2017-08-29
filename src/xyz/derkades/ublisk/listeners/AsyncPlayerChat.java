@@ -8,7 +8,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.chat.Trigger;
 import xyz.derkades.ublisk.database.PlayerInfo;
-import xyz.derkades.ublisk.modules.FormatChat;
+import xyz.derkades.ublisk.modules.Chat;
 import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.UPlayer;
@@ -19,7 +19,7 @@ public class AsyncPlayerChat implements Listener {
 	public void onChat(AsyncPlayerChatEvent event){		
 		UPlayer player = new UPlayer(event);
 		
-		if (FormatChat.IS_MUTED.get(player.getUniqueId())){
+		if (Chat.IS_MUTED.get(player.getUniqueId())){
 			player.sendMessage(Message.CANT_CHAT_MUTED);
 			event.setCancelled(true);
 			return;
