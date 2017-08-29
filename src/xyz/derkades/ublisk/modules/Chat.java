@@ -13,8 +13,13 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
+import xyz.derkades.ublisk.Message;
+import xyz.derkades.ublisk.chat.Trigger;
+import xyz.derkades.ublisk.database.PlayerInfo;
+import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.Ublisk;
+import xyz.derkades.ublisk.utils.Logger.LogLevel;
 
 public class Chat extends UModule {
 	
@@ -43,11 +48,23 @@ public class Chat extends UModule {
 		}
 	}
 	
-	@EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onChat(AsyncPlayerChatEvent event){
 		event.setCancelled(true); // Don't send chat message, we'll send a custom message
 		
 		UPlayer player = new UPlayer(event);
+		
+		if (Chat.IS_MUTED.get(player.getUniqueId())){
+			player.sendMessage(Message.CANT_CHAT_MUTED);
+			event.setCancelled(true);
+			return;
+		}
+		
+		for (Trigger trigger : Trigger.values()){
+			if (event.getMessage().equals(trigger.getTrigger())){
+				event.setMessage(trigger.getMessage());
+			}
+		}
 		
 		ChatColor chatColor = ChatColor.WHITE;
 		if (IS_SOFT_MUTED.get(player.getUniqueId()))
@@ -72,6 +89,15 @@ public class Chat extends UModule {
 				.create());
 		
 		Ublisk.getServer().spigot().broadcast(message);		
+	}
+
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void log(AsyncPlayerChatEvent event){
+		UPlayer player = new UPlayer(event);
+
+		player.tracker(PlayerInfo.CHAT_MESSAGES);
+		
+		Logger.log(LogLevel.CHAT, player.getName(), event.getMessage());
 	}
 
 }

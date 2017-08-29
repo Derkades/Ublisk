@@ -24,7 +24,6 @@ public class Listeners {
 	
 	private enum Enum {
 		
-		CHAT(new AsyncPlayerChat()),
 		BREAK_BLOCK(new BreakBlock()),
 		CHUNK_LOAD(new ChunkLoad()),
 		ENTITY_EXPLODE(new EntityExplode()),
