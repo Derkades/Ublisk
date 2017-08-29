@@ -180,7 +180,9 @@ public class UPlayer {
 	 * This will throw an UnsupportedOperationException if the player is offline. 
 	 * The use of this method is discouraged and should be avoided whenever possible
 	 * @return Bukkit player
+	 * @deprecated Use {@link #bukkit()}
 	 */
+	@Deprecated
 	public Player getPlayer() {
 		if (player == null) {
 			throw new UnsupportedOperationException("The player is not online");
@@ -684,12 +686,28 @@ public class UPlayer {
 		return CustomHealth.getMaxHealth(this);
 	}
 	
+	public void setHealthScale(double scale) {
+		player.setHealthScale(scale);
+	}
+	
 	public void heal(){
 		this.givePotionEffect(PotionEffectType.REGENERATION, 20, 255);
 	}
 
 	public Spigot spigot() {
 		return player.spigot();
+	}
+	
+	/**
+	 * This will throw an UnsupportedOperationException if the player is offline. 
+	 * @return Bukkit player
+	 */
+	public Player bukkit() {
+		if (player == null) {
+			throw new UnsupportedOperationException("The player is not online");
+		}
+		
+		return player;
 	}
 
 	public void setResourcePack(String pack) {
@@ -988,6 +1006,10 @@ public class UPlayer {
 	
 	public boolean isBanned(){
 		return offline.isBanned();
+	}
+	
+	public String getIP() {
+		return player.getAddress().toString().split(":")[0];
 	}
 
 	@Override

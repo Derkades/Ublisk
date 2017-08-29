@@ -79,7 +79,7 @@ public class Scoreboard extends UModule {
 		@Override
 		public void run() {
 			for (UPlayer player : Ublisk.getOnlinePlayers()) {
-				Scoreboard.getScoreboard(player).showTo(player.getPlayer());
+				Scoreboard.getScoreboard(player).showTo(player.bukkit());
 			}
 		}
 		

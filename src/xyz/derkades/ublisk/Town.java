@@ -113,7 +113,7 @@ public enum Town {
 		
 		SongPlayer songPlayer = new RadioSongPlayer(song);
 		songPlayer.setAutoDestroy(true);
-		songPlayer.addPlayer(player.getPlayer());
+		songPlayer.addPlayer(player.bukkit());
 		songPlayer.setPlaying(true);
 	}
 	

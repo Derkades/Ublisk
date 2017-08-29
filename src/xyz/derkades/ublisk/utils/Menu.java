@@ -6,7 +6,7 @@ import xyz.derkades.ublisk.Main;
 public abstract class Menu extends IconMenu {
 
 	public Menu(String name, int size, UPlayer player) {
-		super(Main.getInstance(), name, size, player.getPlayer());
+		super(Main.getInstance(), name, size, player.bukkit());
 	}
 
 }

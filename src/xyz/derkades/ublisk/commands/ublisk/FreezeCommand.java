@@ -7,11 +7,11 @@ public class FreezeCommand extends UbliskCommand {
 
 	@Override
 	protected void onCommand(UPlayer player, String[] args) {
-		if (PlayerFreeze.isFrozen(player.getPlayer())){
-			PlayerFreeze.setFrozen(player.getPlayer(), false);
+		if (PlayerFreeze.isFrozen(player.bukkit())){ // TODO Use UPlaye
+			PlayerFreeze.setFrozen(player.bukkit(), false);
 			player.sendMessage("unfrozen");
 		} else {
-			PlayerFreeze.setFrozen(player.getPlayer(), true);
+			PlayerFreeze.setFrozen(player.bukkit(), true);
 			player.sendMessage("frozen");
 		}
 	}

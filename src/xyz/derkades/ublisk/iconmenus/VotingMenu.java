@@ -45,7 +45,7 @@ public class VotingMenu extends Menu {
 				return false;
 			} else {
 				player.setVotingPoints(player.getVotingPoints() - 3);
-				Voting.openVotingBox(player.getPlayer());
+				Voting.openVotingBox(player.bukkit()); // TODO Use UPlayer
 				return true;
 			}
 		}

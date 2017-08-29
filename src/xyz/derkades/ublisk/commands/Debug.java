@@ -4,7 +4,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.PlayerInventory;
 
 import xyz.derkades.ublisk.DataFile;
 import xyz.derkades.ublisk.Main;
@@ -62,8 +61,8 @@ public class Debug implements CommandExecutor {
 							player.sendMessage(Message.PLAYER_NOT_FOUND);
 							return true;
 						}
-						PlayerInventory inv = target.getPlayer().getInventory();
-						player.getPlayer().openInventory(inv);
+						
+						player.bukkit().openInventory(target.bukkit().getInventory());
 						return true;
 					} else if (args[0].equals("skull")) {
 						player.getInventory().addItem(new Item(args[1]));

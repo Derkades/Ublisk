@@ -371,7 +371,7 @@ public class Ublisk {
 	 */
 	public static void showBossBar(BossBar bar, long timeout, List<UPlayer> players) {
 		for (UPlayer player : players) {
-			bar.addPlayer(player.getPlayer());
+			bar.addPlayer(player.bukkit());
 		}
 		
 		new URunnable() {

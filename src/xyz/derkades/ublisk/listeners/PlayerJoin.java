@@ -51,8 +51,9 @@ public class PlayerJoin implements Listener {
 		
 		player.tracker(PlayerInfo.JOIN_COUNT);
 
-		String ip = player.getPlayer().getAddress().toString();
-		ip = ip.replace("/", "");
+		//String ip = player.getPlayer().getAddress().toString();
+		//ip = ip.replace("/", "");
+		String ip = player.getIP();
 		DataFile.IP.getConfig().set("ip." + uuid, ip);
 
 		player.updateXPBar();

@@ -118,7 +118,7 @@ public class FriendsBossBar extends UModule {
 				for (UPlayer friend : player.getOnlineFriends()){
 					BossBar bar = Ublisk.createBossBar(friend.getName() + "'s health", BarColor.RED, BarStyle.SOLID);
 					bar.removeAll();
-					bar.addPlayer(player.getPlayer());
+					bar.addPlayer(player.bukkit());
 					bar.setProgress(friend.getHealth() / (float) friend.getMaxHealth());
 					barList.add(new FriendsBar(friend.getUniqueId(), bar));
 				}

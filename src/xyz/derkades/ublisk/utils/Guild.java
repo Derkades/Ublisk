@@ -439,11 +439,7 @@ public class Guild {
 		this.name = newName;
 	}
 	
-	public synchronized void setOwner(UPlayer player){
-		setOwner(player.getPlayer());
-	}
-	
-	public synchronized void setOwner(OfflinePlayer newOwner){
+	public synchronized void setOwner(UPlayer newOwner){
 		Connection connection = null;
 		PreparedStatement statement = null;
 		

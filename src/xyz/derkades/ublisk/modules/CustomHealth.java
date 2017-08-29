@@ -46,7 +46,7 @@ public class CustomHealth extends UModule {
 		
 		int totalHealth = health + bonusHealth;
 		player.setAttribute(Attribute.GENERIC_MAX_HEALTH, totalHealth);
-		player.getPlayer().setHealthScale(20);
+		player.setHealthScale(20);
 	}
 	
 	public static int getMaxHealth(UPlayer player){
