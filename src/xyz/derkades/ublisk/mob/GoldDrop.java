@@ -7,12 +7,12 @@ import xyz.derkades.ublisk.money.MoneyItem;
 
 public enum GoldDrop {
 	
-	LEVEL1(new MobDrop(MoneyItem.DUST.getItem(), 50)
+	LEVEL1(new MobDrop(new MoneyItem(MoneyItem.Type.DUST), 50)
 			),
-	LEVEL2(new MobDrop(MoneyItem.DUST.getItem(), 0, 3)
+	LEVEL2(new MobDrop(new MoneyItem(MoneyItem.Type.DUST), 0, 3)
 			),
-	LEVEL3(new MobDrop(MoneyItem.DUST.getItem(), 0, 5),
-			new MobDrop(MoneyItem.DUST.getItem(), 0, 3)
+	LEVEL3(new MobDrop(new MoneyItem(MoneyItem.Type.DUST), 0, 5),
+			new MobDrop(new MoneyItem(MoneyItem.Type.DUST), 0, 3)
 			);
 	
 	private MobDrop[] drops;

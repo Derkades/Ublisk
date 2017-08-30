@@ -1,84 +1,97 @@
 package xyz.derkades.ublisk.money;
 
-import org.bukkit.Material;
-
 import net.md_5.bungee.api.ChatColor;
+import xyz.derkades.ublisk.utils.inventory.CustomItem;
 import xyz.derkades.ublisk.utils.inventory.Item;
 
-public enum MoneyItem {
+public class MoneyItem extends CustomItem {
 	
-	/**
-	 * Gold dust ($1)
-	 */
-	DUST("Gold Dust", Material.GLOWSTONE_DUST, 1),
+	private Type type;
 	
-	/**
-	 * Gold nugget ($10)
-	 */
-	NUGGET("Gold Nugget", Material.GOLD_NUGGET, 10),
-	
-	/**
-	 * Gold coin ($100)
-	 */
-	COIN("Gold Coin", Material.CHORUS_FRUIT_POPPED, 100),
-	
-	/**
-	 * Gold chunk ($500)
-	 */
-	CHUNK("Gold Chunk", Material.INK_SACK, 500),
-	
-	/**
-	 * Gold bar ($1000)
-	 */
-	/* FOO */ BAR("Gold Bar", Material.GOLD_INGOT, 1000),
-	
-	/**
-	 * Gold block ($1000)
-	 */
-	BLOCK("Gold Block", Material.GOLD_BLOCK, 10000);
-	
-	private String name;
-	private Material material;
-	private int value;
-	
-	MoneyItem(String name, Material material, int value){
-		this.name = name;
-		this.value = value;
-		this.material = material;
-	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public int getValue(){
-		return value;
-	}
-	
-	public Item getItem(){
-		return getItem(1);
-	}
-	
-	public Item getItem(int amount){
-		int damage = 0;
-		if (this == MoneyItem.CHUNK){
-			damage = 11; //Yellow dye
-		}
+	public MoneyItem(Type type) {
+		super(type.toString());
 		
-		return new Item(material)
-				.setName(ChatColor.GOLD + name)
-				.setLore(ChatColor.YELLOW + "Value: $" + value)
-				.setDamage(damage)
-				.setAmount(amount);
+		this.setName(ChatColor.GOLD + type.getName());
+		this.setLore(ChatColor.YELLOW + "Value: $" + type.getValue());
+	}
+	
+	public Type getMoneyType() {
+		return type;
+	}
+	
+	public int getValue() {
+		return type.getValue();
 	}
 	
 	public static MoneyItem fromItem(Item item){
-		for (MoneyItem money : MoneyItem.values()){
-			if (money.getItem().getType() == item.getType()){
-				return money;
+		CustomItem customItem = CustomItem.fromItem(item);
+		Type type = Type.valueOf(customItem.getIdentifier());
+		return new MoneyItem(type);
+	}
+	
+	public static boolean isMoneyItem(Item item) {
+		try {
+			CustomItem customItem = CustomItem.fromItem(item);
+			
+			for (Type type : Type.values()) {
+				if (type.toString().equals(customItem.getIdentifier())) {
+					return true;
+				}
 			}
+			
+			return false;
+		} catch (IllegalArgumentException e) {
+			return false;
 		}
-		return null;
+	}
+	
+	public enum Type {
+		
+		/**
+		 * Gold dust ($1)
+		 */
+		DUST("Gold Dust", 1),
+		
+		/**
+		 * Gold nugget ($10)
+		 */
+		NUGGET("Gold Nugget", 10),
+		
+		/**
+		 * Gold coin ($100)
+		 */
+		COIN("Gold Coin", 100),
+		
+		/**
+		 * Gold chunk ($500)
+		 */
+		CHUNK("Gold Chunk", 500),
+		
+		/**
+		 * Gold bar ($1000)
+		 */
+		/* FOO */ BAR("Gold Bar", 1000),
+		
+		/**
+		 * Gold block ($1000)
+		 */
+		BLOCK("Gold Block", 10000);
+		
+		private String name;
+		private int value;
+		
+		Type(String name, int value){
+			this.name = name;
+			this.value = value;
+		}
+		
+		public String getName() {
+			return name;
+		}
+		
+		public int getValue() {
+			return value;
+		}
 	}
 
 }

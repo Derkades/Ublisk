@@ -42,15 +42,15 @@ public class Merek extends NPC {
 		if (inv.containsItems(
 				new Item(Material.LOG, 10), 
 				new Item(Material.STRING, 16), 
-				MoneyItem.DUST.getItem(10))){
+				new MoneyItem(MoneyItem.Type.DUST).setAmount(10))){
 			qp.sendMessage("Great! Now go to Ulric to craft a weapon.");
 		} else if (inv.containsItems(
 				new Item(Material.STRING, 16), 
-				MoneyItem.DUST.getItem(10))){
+				new MoneyItem(MoneyItem.Type.DUST).setAmount(10))){
 			qp.sendMessage("Finally get 10 wood logs at the saw");
 		} else if (inv.containsItems(
 				new Item(Material.WOOL, 4), 
-				MoneyItem.DUST.getItem(10))){
+				new MoneyItem(MoneyItem.Type.DUST).setAmount(10))){
 			qp.sendMessage("Great job, now please break down your wool into 16 string by using the windmill.");
 		} else if (inv.contains(Material.GOLD_NUGGET, 10)){
 			qp.sendMessage("Now bring me 4 wool by killing sheep.");

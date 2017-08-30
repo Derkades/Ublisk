@@ -19,7 +19,7 @@ public class MainMenu extends Menu {
 		items.put(1, new ItemBuilder(Material.PAPER).name("Voting").create());
 		items.put(2, new ItemBuilder(player.getName()).name("Friends").create());
 		items.put(3, new ItemBuilder("MHF_Question").name("Help").lore("Help for commands and more").create());
-		items.put(4, new ItemBuilder(MoneyItem.BAR.getItem()).name("Bank").lore("This will later be removed and", "replaced with a proper bank").create());
+		items.put(4, new ItemBuilder(new MoneyItem(MoneyItem.Type.BAR).getItemStack()).name("Bank").lore("This will later be removed and", "replaced with a proper bank").create());
 	}
 
 	@Override

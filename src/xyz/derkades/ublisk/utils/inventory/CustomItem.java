@@ -11,8 +11,19 @@ public class CustomItem extends Item {
 	
 	public CustomItem(String identifier){
 		super(CUSTOM_ITEM);
-		
+		this.setIdentifier(identifier);
+	}
+	
+	public void setIdentifier(String identifier) {
 		this.setNBTValue(UbliskNBT.IDENTIFIER.toString(), new NBTTagString(identifier));
+	}
+	
+	public String getIdentifier() {
+		if (this.getNBT().hasKey(UbliskNBT.IDENTIFIER.toString())) {
+			return this.getNBT().getString(UbliskNBT.IDENTIFIER.toString());
+		} else {
+			return null;
+		}
 	}
 	
 	private CustomItem(String identifier, boolean hasNbt) {
