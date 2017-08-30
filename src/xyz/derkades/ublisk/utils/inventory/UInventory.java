@@ -33,11 +33,7 @@ public class UInventory {
 	}
 	
 	/**
-	 * @return 
-	 * <ul>
-	 * 	<li>Item in off hand if no item in main hand</li>
-	 * 	<li>Item in main hand otherwise</li>
-	 * </ul>
+	 * @return Item in main hand or the item in offhand if the item in main hand is empty.
 	 */
 	public Item getItemInHand(){
 		if (inv.getItemInMainHand().getType() == Material.AIR){
@@ -47,10 +43,16 @@ public class UInventory {
 		}
 	}
 	
-	public boolean contains(Item item){
-		return inv.contains(item.getItemStack());
+	/**
+	 * Checks if the inventory contains at least one of an ItemStack matching the given item.
+	 */
+	public boolean contains(Item item) {
+		return this.contains(item, 1);
 	}
 	
+	/**
+	 * Checks if the inventory contains at least <i>amount</i> of <i>item</i>
+	 */
 	public boolean contains(Item item, int amount){
 		return inv.containsAtLeast(item.getItemStack(), amount);
 	}
@@ -59,14 +61,23 @@ public class UInventory {
 		return inv.contains(item.getItemStack(), amount);
 	}
 	
+	/**
+	 * Checks if the inventory contains any items with the given material.
+	 */
 	public boolean contains(Material material){
 		return inv.contains(material);
 	}
 	
+	/**
+	 * Checks if the inventory contains at least <i>amount</i> items with the given material.
+	 */
 	public boolean contains(Material material, int amount){
 		return inv.contains(material, amount);
 	}
 	
+	/**
+	 * Checks if the inventory contains items with all given materials.
+	 */
 	public boolean containsMaterials(Material... materials){
 		for (Material material : materials){
 			if (!inv.contains(material)){
@@ -78,11 +89,11 @@ public class UInventory {
 	
 	/**
 	 * @param items List of items the inventory should contain
-	 * @return True if the player's inventory contains at least x of the item. Amount is specified by setting item.setAmount() prior to calling this method.
+	 * @return True if the player's inventory contains at least {@link Item#getAmount()} of all items.
 	 */
 	public boolean containsItems(Item... items){
 		for (Item item : items){
-			if (!inv.contains(item.getType(), item.getAmount())){
+			if (!this.contains(item.getType(), item.getAmount())){
 				return false;
 			}
 		}
@@ -105,7 +116,8 @@ public class UInventory {
 	}
 	
 	/**
-	 * {@link #addItem(Item)}
+	 * Adds a new ItemStack with the specified material and amount to the player inventory.
+	 * @see #addItem(Item)
 	 */
 	public UInventory addItem(Material material, int amount){
 		return this.addItem(new Item(material, amount));
