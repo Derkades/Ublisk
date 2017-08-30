@@ -15,7 +15,15 @@ public class CustomItem extends Item {
 		this.setNBTValue(UbliskNBT.IDENTIFIER.toString(), new NBTTagString(identifier));
 	}
 	
-	public static CustomItem getCustomItemFromItem(Item item){
+	private CustomItem(String identifier, boolean hasNbt) {
+		super(CUSTOM_ITEM);
+		
+		if (!hasNbt) {	
+			throw new AssertionError("This constructor is only used internally and should always have hasNbt=true.");
+		}
+	}
+	
+	public static CustomItem fromItem(Item item){
 		if (item.getType() != CUSTOM_ITEM){
 			throw new IllegalArgumentException("The provided item is not a custom item.");
 		}
@@ -28,7 +36,7 @@ public class CustomItem extends Item {
 		
 		String identifier = nbt.getString(UbliskNBT.IDENTIFIER.toString());
 		
-		return new CustomItem(identifier);
+		return new CustomItem(identifier, true);
 	}
 
 }
