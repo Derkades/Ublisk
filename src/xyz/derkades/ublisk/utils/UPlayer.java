@@ -779,7 +779,7 @@ public class UPlayer {
 	 */
 	public void doAbility(Ability ability) {
 		if (ability == null) {
-			throw new IllegalArgumentException("Ability is cannot be null.");
+			throw new IllegalArgumentException("Ability cannot be null.");
 		}
 		
 		if (!this.abilitiesEnabled()){
