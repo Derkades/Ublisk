@@ -46,26 +46,15 @@ public class Guild {
 			return (boolean) cache;
 		}
 		
-		Connection connection = null;
-		PreparedStatement query = null;
-		ResultSet resultSet = null;
+		ResultSet result = null;
 		boolean contains = true;
-		try {
-			connection = Ublisk.getDatabaseConnection("Guilds check (" + name + ")");
-			query = connection.prepareStatement("SELECT * FROM `guilds` WHERE name=?;");
+		try (Connection connection = Ublisk.getDatabaseConnection("Guilds check (\" + name + \")");
+				PreparedStatement query = connection.prepareStatement("SELECT * FROM `guilds` WHERE name=?;")){
 			query.setString(1, name);
-			resultSet = query.executeQuery();
-			contains = resultSet.next();
+			result = query.executeQuery();
+			contains = result.next();
 		} catch (SQLException e) {
-			Logger.log(LogLevel.SEVERE, "Unable to connect to database for getting guild");
-			e.printStackTrace();
-		} finally {
-			try {
-				if (query != null) query.close();
-				if (resultSet != null) resultSet.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			Ublisk.exception(e, getClass());
 		}
 		
 		Cache.addCachedObject("exists:" + this.getName(), contains, 300);
