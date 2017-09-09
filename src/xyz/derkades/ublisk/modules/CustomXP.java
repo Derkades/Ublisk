@@ -15,6 +15,8 @@ import org.bukkit.entity.Player;
 
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.utils.Guild;
+import xyz.derkades.ublisk.utils.Logger;
+import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.URunnable;
 import xyz.derkades.ublisk.utils.Ublisk;
@@ -130,6 +132,7 @@ public class CustomXP extends UModule {
 		int fullProgressXP = getRequiredXP(level + 1);
 		int currentXP = getXP(player);
 		float progress = (currentXP - zeroProgressXP) / (float) (fullProgressXP - zeroProgressXP);
+		Logger.log(LogLevel.DEBUG, progress);
 		player.setExp(progress);
 	}
 	
