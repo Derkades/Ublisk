@@ -859,7 +859,7 @@ public class UPlayer {
 	 * @return The player's guild, or <kbd>null</kbd> if the player is not in a guild.
 	 */
 	public Guild getGuild(){
-		return Guild.getGuild(player);
+		return Guild.getGuild(this);
 	}
 	
 	/**
@@ -875,7 +875,7 @@ public class UPlayer {
 	}
 	
 	public void leaveGuild(){
-		Guild.leaveGuild(player);
+		Guild.leaveGuild(this);
 	}
 	
 	public boolean isOnGround() {

@@ -9,6 +9,7 @@ import static org.bukkit.ChatColor.YELLOW;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -91,6 +92,32 @@ public class Ublisk {
 		}
 	}
 	
+	public static PreparedStatement prepareStatement(String reason, String sql) throws SQLException {
+		Connection connection = Ublisk.getDatabaseConnection(reason);
+		return connection.prepareStatement(sql);
+	}
+	
+	public static PreparedStatement prepareStatement(String reason, String sql, Object... parameters) throws SQLException {
+		PreparedStatement statement = Ublisk.prepareStatement(reason, sql);
+		
+		int i = 1;
+		for (Object parameter : parameters) {
+			if (parameter instanceof String) {
+				statement.setString(i, (String) parameter);
+			} else if (parameter instanceof Integer) {
+				statement.setInt(i, (int) parameter);
+			} else if (parameter instanceof Double) {
+				statement.setDouble(i, (double) parameter);
+			} else {
+				throw new IllegalArgumentException("Data type not supported");
+			}
+			
+			i++;
+		}
+		
+		return statement;
+	}
+	
 	public static void closeDatabaseConnection() {
 		if (DATABASE_CONNECTION != null) {
 			try {
@@ -98,6 +125,8 @@ public class Ublisk {
 			} catch (SQLException e) {
 				Ublisk.exception(e, Ublisk.class);
 			}
+		} else {
+			Logger.log(LogLevel.WARNING, "Database connection is null?");
 		}
 	}
 	

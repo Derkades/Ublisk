@@ -1,6 +1,6 @@
 package xyz.derkades.ublisk.utils;
 
-import java.sql.Connection;
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,8 +48,7 @@ public class Guild {
 		
 		ResultSet result = null;
 		boolean contains = true;
-		try (Connection connection = Ublisk.getDatabaseConnection("Guilds check (\" + name + \")");
-				PreparedStatement query = connection.prepareStatement("SELECT * FROM `guilds` WHERE name=?;")){
+		try (PreparedStatement query = Ublisk.prepareStatement("Guilds check (" + name + ")", "SELECT * FROM `guilds` WHERE name=?")){
 			query.setString(1, name);
 			result = query.executeQuery();
 			contains = result.next();
@@ -78,23 +77,13 @@ public class Guild {
 		if (owner == null)
 			throw new IllegalArgumentException("Owner cannot be null");
 		
-		Connection connection = null;
-		PreparedStatement insert = null;
-		try {
-			connection = Ublisk.getDatabaseConnection("Create guild (" + this.getName() + ")");
-			insert = connection.prepareStatement("INSERT INTO `guilds` (name, owner) values(?, ?);");
+		try (PreparedStatement insert = Ublisk.prepareStatement("Create guild " + this.getName(), 
+				"INSERT INTO `guilds` (name, owner) values(?, ?);")){
 			insert.setString(1, this.getName());
 			insert.setString(2, owner.getUniqueId().toString());
 			insert.execute();
 		} catch (SQLException e) {
-			Logger.log(LogLevel.SEVERE, "Unable to connect to database for creating guild");
-			e.printStackTrace();
-		} finally {
-			try {
-				insert.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 		
 		owner.setGuild(this);
@@ -146,28 +135,14 @@ public class Guild {
 			return (int) cache;
 		}
 		
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet result = null;
-		
 		int points = 0;
-		try {
-			connection = Ublisk.getDatabaseConnection("Guild points " + this.getName());
-			statement = connection.prepareStatement("SELECT `points` FROM `guilds` WHERE name=?");
-			statement.setString(1, this.getName());
-			result = statement.executeQuery();
+		try (PreparedStatement select = Ublisk.prepareStatement("Guild points " + this.getName(), 
+				"SELECT `points` FROM `guilds` WHERE name=?", this.getName());
+				ResultSet result = select.executeQuery()){
 			result.next();
 			points = result.getInt("points");
 		} catch (SQLException e){
-			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to get guild points for " + this.getName());
-			e.printStackTrace();
-		} finally {
-			try {
-				if (result != null) result.close();
-				if (statement != null) statement.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 		
 		Cache.addCachedObject("points:" + this.getName(), points, 300);
@@ -176,23 +151,12 @@ public class Guild {
 	}
 	
 	public synchronized void setPoints(int points){		
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = Ublisk.getDatabaseConnection("Guild points " + this.getName());
-			statement = connection.prepareStatement("UPDATE `guilds` SET points=? WHERE name=?;");
-			statement.setInt(1, points);
-			statement.setString(2, this.getName());
+		try (PreparedStatement statement = Ublisk.prepareStatement("Guild points " + this.getName(), 
+				"UPDATE `guilds` SET points=? WHERE name=?",
+				points, this.getName())){
 			statement.executeUpdate();
 		} catch (SQLException e){
-			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to set guild points for " + this.getName());
-			e.printStackTrace();
-		} finally {
-			try {
-				if (statement != null) statement.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 		
 		Cache.addCachedObject("points:" + this.getName(), points, 300);
@@ -204,23 +168,12 @@ public class Guild {
 	 * @param playerName Name of the player who got the points for the guild
 	 */
 	public synchronized void addPoints(int points, String playerName){
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = Ublisk.getDatabaseConnection("Add points " + this.getName());
-			statement = connection.prepareStatement("UPDATE `guilds` SET points=points+? WHERE name=?");
-			statement.setInt(1, points);
-			statement.setString(2, this.getName());
+		try (PreparedStatement statement = Ublisk.prepareStatement("Add points " + this.getName(), 
+				"UPDATE `guilds` SET points=points+? WHERE name=?",
+				points, this.getName())){
 			statement.executeUpdate();
 		} catch (SQLException e){
-			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to add guild points for " + this.getName());
-			e.printStackTrace();
-		} finally {
-			try {
-				if (statement != null) statement.close();
-			} catch (SQLException e){
-				e.printStackTrace();
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 		
 		Cache.removeCachedObject("points:" + this.getName());
@@ -237,50 +190,27 @@ public class Guild {
 	public synchronized List<UPlayer> getMembers(){	
 		List<UPlayer> list = new ArrayList<>();
 		
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet result = null;
-		try {
-			connection = Ublisk.getDatabaseConnection("Get guild members");
-			statement = connection.prepareStatement("SELECT `uuid` FROM `player_info_2` WHERE `guild` = ?;");
-			statement.setString(1, this.getName());
-			result = statement.executeQuery();
+		try (PreparedStatement statement = Ublisk.prepareStatement("Get guild members " + this.getName(), 
+				"SELECT uuid FROM player_info_2 WHERE guild=?", this.getName());
+				ResultSet result = statement.executeQuery()) {
 			while (result.next()){
 				UUID uuid = UUID.fromString(result.getString("uuid"));
 				OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
 				list.add(new UPlayer(player));
 			}
 		} catch (SQLException e){
-			e.printStackTrace();
-		} finally {
-			try {
-				if (result != null) result.close();
-				if (statement != null) statement.close();
-			} catch (SQLException e){
-				e.printStackTrace();
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 
 		return list;
 	}
 	
 	public synchronized void remove(){
-		Connection connection = null;
-		PreparedStatement delete = null;
-		try {
-			connection = Ublisk.getDatabaseConnection("Delete " + this.getName());
-			delete = connection.prepareStatement("DELETE FROM `guilds` WHERE name=?;");
-			delete.setString(1, this.getName());
+		try (PreparedStatement delete = Ublisk.prepareStatement("Delete " + this.getName(), 
+				"DELETE FROM `guilds` WHERE name=?", this.getName())){
 			delete.execute();
 		} catch (SQLException e){
-			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to remove " + this.getName());
-			e.printStackTrace();
-		} finally {
-			try {
-				if (delete != null) delete.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 		
 		Cache.addCachedObject("exists:" + this.getName(), false, 600);
@@ -291,29 +221,15 @@ public class Guild {
 		if (cache != null){
 			return (OfflinePlayer) cache;
 		}
-		
-		Connection connection = null;
-		PreparedStatement query = null;
-		ResultSet result = null;
-		
+
 		String uuid = null;
-		try {
-			connection = Ublisk.getDatabaseConnection("Get guild owner");
-			query = connection.prepareStatement("SELECT `owner` FROM `guilds` WHERE name=?");
-			query.setString(1, this.getName());
-			result = query.executeQuery();
+		try (PreparedStatement statement = Ublisk.prepareStatement("Get guild owner " + this.getName(),
+				"SELECT `owner` FROM `guilds` WHERE name=?", this.getName());
+				ResultSet result = statement.executeQuery()){
 			result.next();
 			uuid = result.getString("owner");
 		} catch (SQLException e){
-			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to get guild points for " + this.getName());
-			e.printStackTrace();
-		} finally {
-			try {
-				if (result != null) result.close();
-				if (query != null) query.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 		
 		OfflinePlayer owner = Bukkit.getOfflinePlayer(UUID.fromString(uuid));
@@ -326,24 +242,12 @@ public class Guild {
 	public synchronized void setDescription(String description){
 		Cache.addCachedObject("description:" + this.getName(), description, 300);
 		
-		Connection connection = null;
-		PreparedStatement statement = null;
-		
-		try {
-			connection = Ublisk.getDatabaseConnection("Guilds description update");
-			statement = connection.prepareStatement("UPDATE guilds SET description=? WHERE name=?");
-			statement.setString(1, description);
-			statement.setString(2, name);
+		try (PreparedStatement statement = Ublisk.prepareStatement("Guilds description set " + this.getName(), 
+				"UPDATE guilds SET description=? WHERE name=?", description, name)){
 			statement.executeUpdate();
 		} catch (SQLException e){
 			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to set description");
 			e.printStackTrace();
-		} finally {
-			try {
-				if (statement != null) statement.close();
-			} catch (SQLException e){
-				e.printStackTrace();
-			}
 		}
 	}
 	
@@ -353,28 +257,14 @@ public class Guild {
 			return (String) cache;
 		}
 		
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet result = null;
-		
 		String description = null;
-		try {
-			connection = Ublisk.getDatabaseConnection("Get description");
-			statement = connection.prepareStatement("SELECT description FROM guilds WHERE name=?");
-			statement.setString(1, name);
-			result = statement.executeQuery();
+		try (PreparedStatement statement = Ublisk.prepareStatement("Get description " + this.getName(),
+				"SELECT description FROM guilds WHERE name=?", this.getName());
+				ResultSet result = statement.executeQuery()){
 			result.next();
 			description = result.getString("description");
 		} catch (SQLException e){
-			Logger.log(LogLevel.SEVERE, "Guilds", "A database error occured while trying to get description for " + this.getName());
-			e.printStackTrace();
-		} finally {
-			try {
-				if (result != null) result.close();
-				if (statement != null) statement.close();
-			} catch (SQLException e){
-				e.printStackTrace();
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 		
 		Cache.addCachedObject("description:" + this.getName(), description, 600);
@@ -382,96 +272,51 @@ public class Guild {
 		return description;
 	}
 	
-	public synchronized void setIconURL(String icon){
-		Connection connection = null;
-		PreparedStatement statement = null;
-		
-		try {
-			connection = Ublisk.getDatabaseConnection("Guilds icon update");
-			statement = connection.prepareStatement("UPDATE guilds SET icon=? WHERE name=?");
-			statement.setString(1, icon);
-			statement.setString(2, name);
+	public synchronized void setIconURL(URL icon){	
+		try (PreparedStatement statement = Ublisk.prepareStatement("Guilds icon update " + this.getName(),
+				"UPDATE guilds SET icon=? WHERE name=?", icon.toString(), name)) {
 			statement.executeUpdate();
 		} catch (SQLException e){
-			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to set icon");
-			e.printStackTrace();
-		} finally {
-			try {
-				if (statement != null) statement.close();
-			} catch (SQLException e){
-				e.printStackTrace();
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 	}
 	
+	/**
+	 * Changes guild name. Check if there is another guild with this name before calling this method.
+	 * @param newName
+	 */
 	public synchronized void rename(String newName){
-		Connection connection = null;
-		PreparedStatement statement = null;
-		
-		try {
-			connection = Ublisk.getDatabaseConnection("Guilds name change");
-			statement = connection.prepareStatement("UPDATE guilds SET name=? WHERE name=?");
-			statement.setString(1, newName);
-			statement.setString(2, name);
+		try (PreparedStatement statement = Ublisk.prepareStatement("Name change " + this.getName(), 
+				"UPDATE guilds SET name=? WHERE name=?", newName, this.getName())){
 			statement.executeUpdate();
 		} catch (SQLException e){
-			Logger.log(LogLevel.SEVERE, "Guilds", "Database error while trying to change guild name");
-			e.printStackTrace();
-		} finally {
-			try {
-				if (statement != null) statement.close();
-			} catch (SQLException e){
-				e.printStackTrace();
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 		
 		this.name = newName;
 	}
 	
 	public synchronized void setOwner(UPlayer newOwner){
-		Connection connection = null;
-		PreparedStatement statement = null;
-		
-		try {
-			connection = Ublisk.getDatabaseConnection(this.getName() + " set owner to " + newOwner.getName());
-			statement = connection.prepareStatement("UPDATE guilds SET owner=? WHERE name=?");
-			statement.setString(1, newOwner.getUniqueId().toString());
-			statement.setString(2, this.getName());
+		try (PreparedStatement statement = Ublisk.prepareStatement("Owner change " + this.getName(), 
+				"UPDATE guilds SET owner=? WHERE name=?", newOwner.getUniqueId().toString(), this.getName())){
 			statement.executeUpdate();
 		} catch (SQLException e){
-			e.printStackTrace();
-		} finally {
-			try {
-				if (statement != null) statement.close();
-			} catch (SQLException e){
-				e.printStackTrace();
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 		
 		Cache.addCachedObject("owner:" + this.getName(), newOwner);
 	}
 
 	public synchronized static List<Guild> getGuildsList() {
-		Connection connection = null;
-		PreparedStatement query = null;
-		ResultSet result = null;
 		List<String> names = null; 
-		try {
-			connection = Ublisk.getDatabaseConnection("Guilds list");
-			query = connection.prepareStatement("SELECT * FROM `guilds` ORDER BY `points`;");
-			result = query.executeQuery();
+		
+		try (PreparedStatement statement = Ublisk.prepareStatement("Guild list ",
+				"SELECT * FROM guilds ORDER BY points");
+				ResultSet result = statement.executeQuery()){
 			names = ListUtils.getStringListFromResultSet(result, "name");
 		} catch (SQLException e){
-			Logger.log(LogLevel.SEVERE, "Unable to connect to database for getting guild list");
-			e.printStackTrace();
-		} finally {
-			try {
-				if (result != null) result.close();
-				if (query != null) query.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}		
+			Ublisk.exception(e, Guild.class);
+		}	
 		
 		List<Guild> guilds = new ArrayList<Guild>();
 		
@@ -484,27 +329,15 @@ public class Guild {
 	}
 	
 	public synchronized static List<Guild> getGuildsList(int limit) {
-		Connection connection = null;
-		PreparedStatement query = null;
-		ResultSet result = null;
 		List<String> names = null; 
-		try {
-			connection = Ublisk.getDatabaseConnection("Guilds list");
-			query = connection.prepareStatement("SELECT * FROM `guilds` ORDER BY `points` LIMIT ?;");
-			query.setInt(1, limit);
-			result = query.executeQuery();
+		
+		try (PreparedStatement statement = Ublisk.prepareStatement("Guild list ",
+				"SELECT * FROM guilds ORDER BY points LIMIT ?", limit);
+				ResultSet result = statement.executeQuery()){
 			names = ListUtils.getStringListFromResultSet(result, "name");
 		} catch (SQLException e){
-			Logger.log(LogLevel.SEVERE, "Unable to connect to database for getting guild list");
-			e.printStackTrace();
-		} finally {
-			try {
-				if (result != null) result.close();
-				if (query != null) query.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}		
+			Ublisk.exception(e, Guild.class);
+		}	
 		
 		List<Guild> guilds = new ArrayList<Guild>();
 		
@@ -540,34 +373,18 @@ public class Guild {
 	 * Gets the guild the player is in
 	 * @return A guild if player is in a guild, null if the player is not in a guild.
 	 */
-	public static Guild getGuild(OfflinePlayer player) {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet result = null;
-		
+	public static Guild getGuild(UPlayer player) {
 		String guildName = null;
-		try {
-			connection = Ublisk.getDatabaseConnection("Get player guild");
-			statement = connection.prepareStatement("SELECT * FROM `player_info_2` WHERE uuid=?;");
-			statement.setString(1, player.getUniqueId().toString());
-			result = statement.executeQuery();
+		try (PreparedStatement statement = Ublisk.prepareStatement("Get guild for " + player.getName(),
+				"SELECT * FROM " + PlayerInfo.TABLE_NAME + " WHERE uuid=?", player.getUniqueId().toString());
+				ResultSet result = statement.executeQuery()) {
 			result.next();
 			guildName = result.getString("guild");
 		} catch (SQLException e){
-			e.printStackTrace();
-			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				if (result != null) result.close();
-				if (statement != null) statement.close();
-			} catch (SQLException e){
-				throw new RuntimeException(e.getMessage());
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 		
-		if (guildName == null) return null;
-		
-		if (guildName.equalsIgnoreCase("None")) return null;
+		if (guildName == null || guildName.equalsIgnoreCase("None")) return null;
 		
 		Guild guild = new Guild(guildName);
 		
@@ -578,51 +395,31 @@ public class Guild {
 		}
 	}
 	
-	public static void leaveGuild(OfflinePlayer player){
-		Guild guild = getGuild(player);	
+	public static void leaveGuild(UPlayer player){
+		Guild guild = getGuild(player);
+		
 		if (guild == null){
 			throw new UnsupportedOperationException("Player is not in a guild");
 		}
 		
 		if (!guild.exists()){
-			throw new UnsupportedOperationException("The player's guild no longer exists");
+			throw new UnsupportedOperationException("The player's guild longer exists");
 		}
 		
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = Ublisk.getDatabaseConnection("Leave guild");
-			statement = connection.prepareStatement("UPDATE " + PlayerInfo.TABLE_NAME + " SET guild='None' WHERE uuid=?;");
-			statement.setString(1, player.getUniqueId().toString());
+		try (PreparedStatement statement = Ublisk.prepareStatement("Leave guild " + player.getName(),
+				"UPDATE " + PlayerInfo.TABLE_NAME + " SET guild='None' WHERE uuid=?", player.getUniqueId().toString())){
 			statement.executeUpdate();
 		} catch (SQLException e){
-			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				if (statement != null) statement.close();
-			} catch (SQLException e){
-				throw new RuntimeException(e.getMessage());
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 	}
 	
 	public static void setGuild(Guild guild, OfflinePlayer player){
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = Ublisk.getDatabaseConnection("Set guild");
-			statement = connection.prepareStatement("UPDATE " + PlayerInfo.TABLE_NAME + " SET guild=? WHERE uuid=?;");
-			statement.setString(1, guild.getName());
-			statement.setString(2, player.getUniqueId().toString());
+		try (PreparedStatement statement = Ublisk.prepareStatement("Set guild " + player.getName(), 
+				"UPDATE " + PlayerInfo.TABLE_NAME + " SET guild=? WHERE uuid=?", guild.getName(), player.getUniqueId().toString())){
 			statement.executeUpdate();
 		} catch (SQLException e){
-			throw new RuntimeException(e.getMessage());
-		} finally {
-			try {
-				if (statement != null) statement.close();
-			} catch (SQLException e){
-				throw new RuntimeException(e.getMessage());
-			}
+			Ublisk.exception(e, Guild.class);
 		}
 	}
 
