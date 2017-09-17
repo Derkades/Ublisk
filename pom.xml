@@ -11,7 +11,7 @@
 		<jdk.version>1.8</jdk.version>
 		<github.version>1.85</github.version>
 		<worldedit.version>6.1.5</worldedit.version>
-		<spigot.version>1.12-R0.1-SNAPSHOT</spigot.version>
+		<spigot.version>1.12.1-R0.1-SNAPSHOT</spigot.version>
 		<slf4jVersion>1.6.1</slf4jVersion>
 	</properties>
 	

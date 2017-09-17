@@ -77,6 +77,7 @@ public class Item {
 		return this;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public Item setSkullOwner(String playerName){
 		if (item.getItemMeta() instanceof SkullMeta){
 			SkullMeta meta = (SkullMeta) item.getItemMeta();
