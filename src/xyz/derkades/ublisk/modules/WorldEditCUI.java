@@ -1,30 +1,8 @@
 package xyz.derkades.ublisk.modules;
 
-import java.util.HashMap;
-import java.util.UUID;
-
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.scheduler.BukkitRunnable;
-
-import com.sk89q.worldedit.bukkit.WorldEditPlugin;
-import com.sk89q.worldedit.bukkit.selections.Selection;
-
-import net.minecraft.server.v1_12_R1.BlockPosition;
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
-import net.minecraft.server.v1_12_R1.TileEntityStructure;
-import xyz.derkades.ublisk.Main;
-
 public class WorldEditCUI extends UModule {
 	
+	/*
 	public static HashMap<UUID, CUIBlock> blockStates;
 	public static WorldEditPlugin worldEditPlugin;
 	public static boolean STOP_UPDATING;
@@ -171,5 +149,5 @@ public class WorldEditCUI extends UModule {
 			this.location = block.getLocation();
 			this.locationTop = top;
 		}
-	}
+	}*/
 }
