@@ -1,15 +1,14 @@
 package xyz.derkades.ublisk.database;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
 import xyz.derkades.ublisk.utils.Logger;
+import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.Ublisk;
-import xyz.derkades.ublisk.utils.Logger.LogLevel;
 
 public class AddTrackersInfoToQueue extends BukkitRunnable {
 
@@ -38,14 +37,8 @@ public class AddTrackersInfoToQueue extends BukkitRunnable {
 		
 		list.add(new BukkitRunnable(){
 			public void run(){
-				
-				try {
-					ServerInfo.syncWithDatabase();
-					Logger.log(LogLevel.INFO, "Synced server info.");
-				} catch (SQLException e) {
-					e.printStackTrace();
-					Logger.log(LogLevel.SEVERE, "An error occured while attempting to sync server info: " + e.getMessage());
-				}
+				ServerInfo.syncWithDatabase();
+				Logger.log(LogLevel.INFO, "Synced server info.");
 			}
 		});
 		
