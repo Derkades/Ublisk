@@ -1,7 +1,5 @@
 package xyz.derkades.ublisk;
 
-import java.sql.SQLException;
-
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -131,11 +129,7 @@ public class Main extends JavaPlugin {
 		// Clear remaining tasks in sync queue
 		SyncQueue.clear();
 		
-		try {
-			ServerInfo.syncWithDatabase();
-		} catch (SQLException e) {
-			Ublisk.exception(e, getClass());
-		}
+		ServerInfo.syncWithDatabase();
 		
 		Ublisk.closeDatabaseConnection();
 		
