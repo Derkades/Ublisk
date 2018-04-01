@@ -19,6 +19,7 @@ import java.util.Properties;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Particle;
 import org.bukkit.Server;
@@ -416,6 +417,15 @@ public class Ublisk {
 	
 	public static void runSync(Runnable runnable) {
 		Bukkit.getScheduler().runTask(Main.getInstance(), runnable);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static void fakeBlockChange(Location location, Material material, int data, int range) {
+		for (UPlayer player : Ublisk.getOnlinePlayers()) {
+			if (player.getLocation().distanceSquared(location) < Math.pow(range, 2)) {
+				player.bukkit().sendBlockChange(location, material, (byte) data);
+			}
+		}
 	}
 
 }
