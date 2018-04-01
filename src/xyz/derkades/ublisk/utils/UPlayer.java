@@ -1008,6 +1008,22 @@ public class UPlayer {
 		return offline.isBanned();
 	}
 	
+	public double getDistance(UPlayer player) {
+		return this.getDistance(player.getLocation());
+	}
+	
+	public double getDistanceSquared(UPlayer player) {
+		return this.getDistanceSquared(player.getLocation());
+	}
+	
+	public double getDistance(Location location) {
+		return this.getLocation().distance(location);
+	}
+	
+	public double getDistanceSquared(Location location) {
+		return this.getLocation().distanceSquared(location);
+	}
+	
 	public String getIP() {
 		return player.getAddress().toString().split(":")[0];
 	}
