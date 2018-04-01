@@ -67,6 +67,8 @@ import xyz.derkades.ublisk.utils.settings.Setting;
 import xyz.derkades.ublisk.weapons.abilities.Ability;
 
 public class UPlayer {
+	
+	public static Map<UUID, Long> LAST_WALK_TIME = new HashMap<>();
 
 	final private Player player;
 	final private OfflinePlayer offline;
@@ -1026,6 +1028,16 @@ public class UPlayer {
 	
 	public String getIP() {
 		return player.getAddress().toString().split(":")[0];
+	}
+	
+	public boolean isMoving() {
+		if (LAST_WALK_TIME.containsKey(this.getUniqueId())) {
+			long time = System.currentTimeMillis() - LAST_WALK_TIME.get(this.getUniqueId());
+			if (time < 100) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override
