@@ -52,7 +52,7 @@ public class PlayerCommandPreprocess implements Listener {
 		}
 		
 		if ((cmd.equalsIgnoreCase("/rl") || cmd.equalsIgnoreCase("/reload")) && !Var.DEBUG){
-			sender.sendMessage("You can't reload when the server is in debug mode");
+			sender.sendMessage("You can't reload when the server is not in debug mode");
 			event.setCancelled(true);
 		}
 	}
