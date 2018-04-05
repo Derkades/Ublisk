@@ -419,6 +419,14 @@ public class Ublisk {
 		Bukkit.getScheduler().runTask(Main.getInstance(), runnable);
 	}
 	
+	public static void sleep(long millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	@SuppressWarnings("deprecation")
 	public static void fakeBlockChange(Location location, Material material, int data, int range) {
 		for (UPlayer player : Ublisk.getOnlinePlayers()) {
