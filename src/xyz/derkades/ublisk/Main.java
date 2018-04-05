@@ -35,6 +35,8 @@ public class Main extends JavaPlugin {
 		Ublisk.RESTART_ERROR = false;
 		
 		PacketListener.RUNNING = true;
+		
+		Ublisk.openDatabaseConnection();
 
 		Listeners.register();
 
@@ -99,8 +101,6 @@ public class Main extends JavaPlugin {
 		for (UPlayer player : Ublisk.getOnlinePlayers()) {
 			PlayerInfo.resetHashMaps(player);
 		}
-	
-		Ublisk.openDatabaseConnection();
 	}
 	
 	@Override
