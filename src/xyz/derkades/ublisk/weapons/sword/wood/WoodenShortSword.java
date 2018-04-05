@@ -3,7 +3,7 @@ package xyz.derkades.ublisk.weapons.sword.wood;
 import org.bukkit.Material;
 
 import xyz.derkades.ublisk.weapons.WeaponRarity;
-import xyz.derkades.ublisk.weapons.abilities.ChannelTest;
+import xyz.derkades.ublisk.weapons.abilities.BlockLift;
 import xyz.derkades.ublisk.weapons.sword.AttackSpeed;
 import xyz.derkades.ublisk.weapons.sword.Sword;
 
