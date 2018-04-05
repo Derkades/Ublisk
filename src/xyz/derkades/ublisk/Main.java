@@ -60,7 +60,7 @@ public class Main extends JavaPlugin {
 		for (UModule module : UModule.ALL_MODULES){
 			try {
 				module.initialize();
-			} catch (Exception e){
+			} catch (Exception | ExceptionInInitializerError e){
 				Logger.log(LogLevel.SEVERE, "Modules", "An error occured while initializing " + module.getClass().getSimpleName() + ": " + e.getMessage());
 				e.printStackTrace();
 			}
