@@ -55,8 +55,8 @@ public class ServerInfo {
 						+ "database_requests=database_requests+?,"
 						+ "chunks_loaded=chunks_loaded+?,"
 						+ "open_issues=?,"
-						+ "closed_issues=?, "
-						+ "cached_yes=cached_yes+?, " 
+						+ "closed_issues=?,"
+						+ "cached_yes=cached_yes+?," 
 						+ "cached_no=cached_no+?",
 					
 						time,
