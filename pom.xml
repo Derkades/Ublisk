@@ -84,24 +84,6 @@
 			<version>${spigot.version}</version>
 			<scope>provided</scope>
 		</dependency>
- 
-		 <dependency> <!-- Discord Java API -->
-			<groupId>com.github.austinv11</groupId>
-			<artifactId>Discord4J</artifactId>
-			<version>2.6.1</version>
-		</dependency>
-
-		<dependency> <!-- SLF4J -->
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4jVersion}</version>
-		</dependency>
-
-		<dependency> <!-- SLF4J -->
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>${slf4jVersion}</version>
-		</dependency>
 
 		<dependency> <!-- Derkutils -->
 			<groupId>xyz.derkades</groupId>
