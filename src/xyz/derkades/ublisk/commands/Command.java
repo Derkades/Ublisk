@@ -1,6 +1,11 @@
 package xyz.derkades.ublisk.commands;
 
+import java.lang.reflect.Field;
+
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.SimpleCommandMap;
+import org.bukkit.plugin.SimplePluginManager;
 
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.commands.ublisk.UbliskCommand;
@@ -43,8 +48,28 @@ public enum Command {
 	private CommandExecutor getExecutor() {
 		return exec;
 	}
+	
+	private static void unregisterExistingCommands() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+		String[] commands = {"u"};
+		
+		SimplePluginManager spm = (SimplePluginManager) Bukkit.getServer().getPluginManager();
+		Field f = SimplePluginManager.class.getDeclaredField("commandMap");
+		f.setAccessible(true);
+		SimpleCommandMap scm = (SimpleCommandMap) f.get(spm);
+		f.setAccessible(false);
+		
+		for (String command : commands) {
+			Bukkit.getPluginCommand(command).unregister(scm);
+		}
+	}
 
 	public static void registerAll() {
+		try {
+			unregisterExistingCommands();
+		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
+        
 		Logger.log(LogLevel.INFO, "Commands", "Registering commands...");
 		for (Command cmd : Command.values()) {
 			Logger.log(LogLevel.DEBUG, "Commands",
