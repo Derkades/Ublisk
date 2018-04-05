@@ -4,7 +4,7 @@ version: 6.9
 author: Derkades
 authors: [Jerrijn, Sander, Casper]
 description: Ublisk plugin
-depend: [Votifier, WorldEdit]
+depend: [Votifier, WorldEdit, FastAsyncWorldEdit]
 website: http://ublisk.robinmc.com/
 
 commands:
