@@ -9,7 +9,7 @@ import org.bukkit.World;
 
 public class Var {
 	
-	public static boolean DEBUG = true;
+	public static boolean DEBUG = false;
 	
 	/**
 	 * Ublisk main world. Do not change unless you know what you are doing.
