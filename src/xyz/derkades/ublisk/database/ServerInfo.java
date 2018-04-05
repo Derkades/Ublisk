@@ -102,7 +102,7 @@ public class ServerInfo {
 			statement.setInt(20, cachedYes);
 			statement.setInt(21, cachedNo);
 			
-		
+			statement.execute();
 		} catch (SQLException e){
 			Ublisk.exception(e, ServerInfo.class);
 		}
