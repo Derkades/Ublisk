@@ -12,8 +12,8 @@ import xyz.derkades.ublisk.utils.UPlayer;
 
 public class PlayerMove implements Listener {
 	
-	@EventHandler
-	public void onMove(PlayerMoveEvent event){
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void trackWalkedBlocks(PlayerMoveEvent event){
 		if (!event.getPlayer().isOnGround()){
 			return;
 		}
