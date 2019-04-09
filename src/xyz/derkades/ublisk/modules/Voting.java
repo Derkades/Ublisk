@@ -92,7 +92,7 @@ public class Voting extends UModule {
 					.setName(ChatColor.GOLD + "" + ChatColor.BOLD + "Gold: " + gold)
 					.setAmount(gold);
 			
-			Item xpItem = new Item(Material.EXP_BOTTLE)
+			Item xpItem = new Item(Material.EXPERIENCE_BOTTLE)
 					.setName(ChatColor.GREEN + "" + ChatColor.BOLD + "XP: " + xp)
 					.setAmount(xp);
 			

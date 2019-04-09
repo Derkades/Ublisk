@@ -3,6 +3,7 @@ package xyz.derkades.ublisk.iconmenus;
 import org.bukkit.Material;
 
 import xyz.derkades.derkutils.bukkit.ItemBuilder;
+import xyz.derkades.derkutils.bukkit.menu.OptionClickEvent;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.modules.Voting;
 import xyz.derkades.ublisk.utils.Menu;

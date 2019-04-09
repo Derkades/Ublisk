@@ -1,5 +1,7 @@
 package xyz.derkades.ublisk.modules;
 
+import java.util.Arrays;
+
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,14 +13,14 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import xyz.derkades.ublisk.Var;
+import xyz.derkades.ublisk.utils.MaterialLists;
 
 public class ResetDoors extends UModule {
 	
 	@EventHandler(priority=EventPriority.LOW)
 	public void resetDoors(PlayerInteractEvent event){
 		if (event.getAction() == Action.RIGHT_CLICK_BLOCK &&
-				(event.getClickedBlock().getType() == Material.TRAP_DOOR ||
-				event.getClickedBlock().getType() == Material.IRON_TRAPDOOR)){
+				Arrays.asList(MaterialLists.TRAPDOORS).contains(event.getClickedBlock().getType())){
 			
 			final Block block = event.getClickedBlock();
 			Player player = event.getPlayer();

@@ -16,9 +16,11 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import xyz.derkades.derkutils.ListUtils;
 import xyz.derkades.derkutils.Random;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Var;
+import xyz.derkades.ublisk.utils.MaterialLists;
 import xyz.derkades.ublisk.utils.Ublisk;
 
 public class MobSpawn {
@@ -28,24 +30,21 @@ public class MobSpawn {
 	 */
 	private static final List<Material> MOB_SPAWNING_AIR_BLOCKS = Arrays.asList(
 			Material.AIR, 
-			Material.LONG_GRASS,
+			Material.TALL_GRASS,
+			Material.GRASS,
 			Material.CHORUS_FLOWER,
-			Material.YELLOW_FLOWER,
+			Material.DANDELION,
 			Material.TORCH,
-			Material.SUGAR_CANE_BLOCK
+			Material.SUGAR_CANE
 			);
 	
 	/**
 	 * Do not spawn mobs on top of these blocks
 	 */
-	private static final List<Material> MOB_SPAWNING_CANCEL = Arrays.asList(
-			Material.FENCE,
-			Material.FENCE_GATE,
-			Material.COBBLE_WALL,
-			Material.WATER,
-			Material.STATIONARY_WATER,
-			Material.LEAVES,
-			Material.LEAVES_2
+	private static final List<Material> MOB_SPAWNING_CANCEL = ListUtils.addToList(
+			MaterialLists.PARTIAL_BLOCKS,
+			MaterialLists.FLUIDS,
+			MaterialLists.LEAVES
 			);
 	
 	/**

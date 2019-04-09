@@ -3,6 +3,7 @@ package xyz.derkades.ublisk.iconmenus.help;
 import org.bukkit.Material;
 
 import net.md_5.bungee.api.ChatColor;
+import xyz.derkades.derkutils.bukkit.menu.OptionClickEvent;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.iconmenus.MainMenu;
 import xyz.derkades.ublisk.utils.ItemBuilder;
@@ -14,8 +15,7 @@ public class HelpMenu extends Menu {
 	public HelpMenu(UPlayer player) {
 		super("Help", 2*9, player);
 		
-		items.put(0, new ItemBuilder(Material.INK_SACK)
-				.data(8)
+		items.put(0, new ItemBuilder(Material.LIGHT_GRAY_DYE)
 				.name(ChatColor.DARK_AQUA + "Commands")
 				.lore(ChatColor.GRAY + "Help for commands")
 				.create());

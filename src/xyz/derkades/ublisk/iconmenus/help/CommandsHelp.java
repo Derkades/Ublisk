@@ -10,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import net.md_5.bungee.api.ChatColor;
+import xyz.derkades.derkutils.bukkit.menu.OptionClickEvent;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.utils.ItemBuilder;
 import xyz.derkades.ublisk.utils.Menu;
@@ -39,8 +40,7 @@ public class CommandsHelp extends Menu {
 			String[] usageLines = getUsage(entry.getValue()).split("\n");
 			for (String usageLine : usageLines) loreLines.add(ChatColor.RED + usageLine);
 			
-			ItemStack icon = new ItemBuilder(Material.INK_SACK)
-					.data(8)
+			ItemStack icon = new ItemBuilder(Material.LIGHT_GRAY_DYE)
 					.name(entry.getKey() + " - /" + entry.getValue())
 					.lore(loreLines)
 					.create();

@@ -13,6 +13,7 @@ import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import xyz.derkades.derkutils.bukkit.ItemBuilder;
+import xyz.derkades.derkutils.bukkit.menu.OptionClickEvent;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.utils.Menu;
 import xyz.derkades.ublisk.utils.UPlayer;
@@ -50,7 +51,7 @@ public class FriendsMenu extends Menu {
 			 displayName = GOLD + "Show friend's health: " + GREEN + BOLD + "Enabled";
 		else displayName = GOLD + "Show friend's health: " + RED + BOLD + "Disabled";
 		
-		ItemStack friendsHealth = new ItemBuilder(Material.SPECKLED_MELON).name(displayName).create();
+		ItemStack friendsHealth = new ItemBuilder(Material.GLISTERING_MELON_SLICE).name(displayName).create();
 		items.put(18, friendsHealth);
 	}
 	
@@ -59,7 +60,7 @@ public class FriendsMenu extends Menu {
 		UPlayer player = new UPlayer(event);
 		Material item = event.getItemStack().getType();
 
-		if (item == Material.SPECKLED_MELON){
+		if (item == Material.GLISTERING_MELON_SLICE){
 			if (player.getSetting(Setting.FRIENDS_SHOW_HEALTH)){
 				player.setSetting(Setting.FRIENDS_SHOW_HEALTH, false);
 				player.sendMessage(Message.FRIEND_HEALTH_DISABLED);

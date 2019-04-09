@@ -1,6 +1,6 @@
 package xyz.derkades.ublisk.utils;
 
-import xyz.derkades.derkutils.bukkit.IconMenu;
+import xyz.derkades.derkutils.bukkit.menu.IconMenu;
 import xyz.derkades.ublisk.Main;
 
 public abstract class Menu extends IconMenu {

@@ -3,8 +3,8 @@ package xyz.derkades.ublisk.weapons.sword;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
-import net.minecraft.server.v1_12_R1.NBTTagList;
+import net.minecraft.server.v1_13_R2.NBTTagCompound;
+import net.minecraft.server.v1_13_R2.NBTTagList;
 import xyz.derkades.ublisk.utils.inventory.Item;
 import xyz.derkades.ublisk.weapons.Weapon;
 import xyz.derkades.ublisk.weapons.WeaponRarity;

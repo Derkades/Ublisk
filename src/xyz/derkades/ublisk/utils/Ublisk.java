@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Properties;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
@@ -356,8 +357,16 @@ public class Ublisk {
 		return false;
 	}
 	
+	@Deprecated
 	public static void setGameRule(String rule, String value){
 		boolean success = Var.WORLD.setGameRuleValue(rule, value);
+		if (!success){
+			throw new IllegalArgumentException("Either the gamerule or value specified is wrong.");
+		}
+	}
+	
+	public static <T> void setGameRule(GameRule<T> key, T value) {
+		boolean success = Var.WORLD.setGameRule(key, value);
 		if (!success){
 			throw new IllegalArgumentException("Either the gamerule or value specified is wrong.");
 		}

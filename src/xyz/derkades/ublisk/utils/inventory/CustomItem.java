@@ -2,8 +2,8 @@ package xyz.derkades.ublisk.utils.inventory;
 
 import org.bukkit.Material;
 
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
-import net.minecraft.server.v1_12_R1.NBTTagString;
+import net.minecraft.server.v1_13_R2.NBTTagCompound;
+import net.minecraft.server.v1_13_R2.NBTTagString;
 
 public class CustomItem extends Item {
 	

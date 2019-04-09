@@ -5,15 +5,15 @@ import java.util.List;
 
 import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_13_R2.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import net.minecraft.server.v1_12_R1.NBTBase;
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
-import net.minecraft.server.v1_12_R1.NBTTagInt;
+import net.minecraft.server.v1_13_R2.NBTBase;
+import net.minecraft.server.v1_13_R2.NBTTagCompound;
+import net.minecraft.server.v1_13_R2.NBTTagInt;
 
 public class Item {
 	
@@ -24,8 +24,8 @@ public class Item {
 	}
 	
 	public Item(String skullOwner){
-		item = new ItemStack(Material.SKULL_ITEM);
-		this.setDamage(3);
+		item = new ItemStack(Material.PLAYER_HEAD);
+		//this.setDamage(3);
 		this.setSkullOwner(skullOwner);
 	}
 	
@@ -50,11 +50,13 @@ public class Item {
 		return item.getAmount();
 	}
 	
+	@Deprecated
 	public Item setDamage(int i){
 		item.setDurability((short) i);
 		return this;
 	}
 	
+	@Deprecated
 	public int getDamage(){
 		return item.getDurability();
 	}
@@ -98,7 +100,7 @@ public class Item {
 	}
 	
 	public NBTTagCompound getNBT(){
-		net.minecraft.server.v1_12_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
+		net.minecraft.server.v1_13_R2.ItemStack nms = CraftItemStack.asNMSCopy(item);
 		NBTTagCompound compound = nms.getTag();
 		if (compound == null){
 			return new NBTTagCompound();
@@ -108,7 +110,7 @@ public class Item {
 	}
 	
 	public Item setNBT(NBTTagCompound nbtTagCompound){
-		net.minecraft.server.v1_12_R1.ItemStack nms = CraftItemStack.asNMSCopy(item);
+		net.minecraft.server.v1_13_R2.ItemStack nms = CraftItemStack.asNMSCopy(item);
 		nms.setTag(nbtTagCompound);
 		item = CraftItemStack.asBukkitCopy(nms);
 		return this;

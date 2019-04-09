@@ -13,19 +13,7 @@ import xyz.derkades.ublisk.utils.UPlayer;
 
 public abstract class UbliskCommand {
 	
-	/*
-	Spawn loot:	
-	Loot.getRandomLoot().spawn();
-	}, "Spawn a loot chest", "loot"),
-	
-	SPAWN_ALL_LOOT
-			for (LootChest loot : Loot.getLootChests()){
-				loot.spawn();
-			}
-	}, "Spawns ALL loot chests. Avoid using this.", "lootall" */
-	
 	private static final UbliskCommand[] COMMANDS = {
-			new BlockIdCommand(),
 			new CustomItemCommand(),
 			new DebugCommand(),
 			new EntityListCommand(),

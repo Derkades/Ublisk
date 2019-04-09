@@ -4,6 +4,7 @@ import org.bukkit.Material;
 
 import net.md_5.bungee.api.ChatColor;
 import xyz.derkades.derkutils.bukkit.ItemBuilder;
+import xyz.derkades.derkutils.bukkit.menu.OptionClickEvent;
 import xyz.derkades.ublisk.utils.Menu;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.Ublisk;
@@ -17,15 +18,15 @@ public class SettingsMenu extends Menu {
 		int slot = 0;
 		for (Setting setting : Setting.values()){
 			//If setting is on, set dye color to green, otherwise to gray
-			short damage;
+			
+			Material material;
 			if (player.getSetting(setting)){
-				damage = 10;
+				material = Material.LIME_DYE;
 			} else {
-				damage = 8;
+				material = Material.LIGHT_GRAY_DYE;
 			}
 			
-			items.put(slot, new ItemBuilder(Material.INK_SACK)
-					.data(damage)
+			items.put(slot, new ItemBuilder(material)
 					.name(setting.getName())
 					.lore(setting.getInfo())
 					.create());

@@ -2,6 +2,7 @@ package xyz.derkades.ublisk.iconmenus;
 
 import org.bukkit.Material;
 
+import xyz.derkades.derkutils.bukkit.menu.OptionClickEvent;
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.iconmenus.help.HelpMenu;
 import xyz.derkades.ublisk.money.BankMenu;
@@ -15,7 +16,7 @@ public class MainMenu extends Menu {
 	public MainMenu(UPlayer player) {
 		super("Main menu", 9, player);
 		
-		items.put(0, new ItemBuilder(Material.REDSTONE_COMPARATOR).name("Settings").lore("Toggle various options on and off").create());
+		items.put(0, new ItemBuilder(Material.COMPARATOR).name("Settings").lore("Toggle various options on and off").create());
 		items.put(1, new ItemBuilder(Material.PAPER).name("Voting").create());
 		items.put(2, new ItemBuilder(player.getName()).name("Friends").create());
 		items.put(3, new ItemBuilder("MHF_Question").name("Help").lore("Help for commands and more").create());
