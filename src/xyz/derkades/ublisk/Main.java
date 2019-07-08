@@ -22,7 +22,7 @@ import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.URunnable;
 import xyz.derkades.ublisk.utils.Ublisk;
 import xyz.derkades.ublisk.utils.caching.Cache;
-import xyz.derkades.ublisk.utils.version_helper.V1_12_R1;
+import xyz.derkades.ublisk.utils.version_helper.V1_14_R1;
 
 public class Main extends JavaPlugin {
 
@@ -68,7 +68,7 @@ public class Main extends JavaPlugin {
 		
 		Bukkit.clearRecipes();
 		
-		Ublisk.NMS = new V1_12_R1();
+		Ublisk.NMS = new V1_14_R1();
 		
 		new SidebarAPI().onEnable();
 		

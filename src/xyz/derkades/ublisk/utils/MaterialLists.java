@@ -7,8 +7,12 @@ import org.bukkit.Material;
 
 import xyz.derkades.derkutils.ListUtils;
 
+/**
+ * @deprecated Use derkutils
+ */
+@Deprecated
 public class MaterialLists {
-	
+
 	public static final List<Material> TRAPDOORS = Arrays.asList(
 			Material.ACACIA_TRAPDOOR,
 			Material.BIRCH_TRAPDOOR,
@@ -18,7 +22,7 @@ public class MaterialLists {
 			Material.OAK_TRAPDOOR,
 			Material.SPRUCE_TRAPDOOR
 	);
-	
+
 	public static final List<Material> FENCES = Arrays.asList(
 			Material.ACACIA_FENCE,
 			Material.BIRCH_FENCE,
@@ -28,7 +32,7 @@ public class MaterialLists {
 			Material.OAK_FENCE,
 			Material.SPRUCE_FENCE
 	);
-	
+
 	public static final List<Material> FENCE_GATES = Arrays.asList(
 			Material.ACACIA_FENCE_GATE,
 			Material.BIRCH_FENCE_GATE,
@@ -37,12 +41,12 @@ public class MaterialLists {
 			Material.OAK_FENCE_GATE,
 			Material.SPRUCE_FENCE_GATE
 	);
-	
+
 	public static final List<Material> WALLS = Arrays.asList(
-			Material.COBBLESTONE_WALL, 
+			Material.COBBLESTONE_WALL,
 			Material.MOSSY_COBBLESTONE_WALL
 	);
-	
+
 	public static final List<Material> DOORS = Arrays.asList(
 			Material.ACACIA_DOOR,
 			Material.BIRCH_DOOR,
@@ -51,17 +55,17 @@ public class MaterialLists {
 			Material.OAK_DOOR,
 			Material.SPRUCE_DOOR
 	);
-	
+
 	public static final List<Material> STAINED_GLASS_PANES = Arrays.asList();
-	
+
 	public static final List<Material> GLASS_PANES = Arrays.asList();
-	
+
 	public static final List<Material> TORCHES = Arrays.asList(
-			Material.TORCH, 
-			Material.REDSTONE_TORCH, 
-			Material.REDSTONE_WALL_TORCH, 
+			Material.TORCH,
+			Material.REDSTONE_TORCH,
+			Material.REDSTONE_WALL_TORCH,
 			Material.WALL_TORCH);
-	
+
 	public static final List<Material> LEAVES = Arrays.asList(
 			Material.ACACIA_LEAVES,
 			Material.BIRCH_LEAVES,
@@ -70,14 +74,14 @@ public class MaterialLists {
 			Material.OAK_LEAVES,
 			Material.SPRUCE_LEAVES
 	);
-	
+
 	private static final List<Material> internal_OTHER_PARTIAL_BLOCKS = Arrays.asList(
 			Material.ANVIL,
 			Material.GLASS,
 			Material.END_ROD,
-			Material.SIGN
+			Material.OAK_SIGN // TODO Add all types of signs
 	);
-	
+
 	public static final List<Material> PARTIAL_BLOCKS = ListUtils.addToList(
 			TRAPDOORS,
 			FENCES,
@@ -88,11 +92,11 @@ public class MaterialLists {
 			GLASS_PANES,
 			internal_OTHER_PARTIAL_BLOCKS
 	);
-	
+
 	public static final List<Material> FLUIDS = Arrays.asList(
 			Material.WATER,
 			Material.LAVA);
-	
+
 	public static final List<Material> WOOLS = Arrays.asList(
 			Material.BLACK_WOOL,
 			Material.BLUE_WOOL,
@@ -110,14 +114,14 @@ public class MaterialLists {
 			Material.RED_WOOL,
 			Material.WHITE_WOOL,
 			Material.YELLOW_WOOL);
-	
+
 	public static final List<Material> DYES = Arrays.asList(
 			Material.INK_SAC,
 			Material.LAPIS_LAZULI,
 			Material.COCOA_BEANS,
 			Material.CYAN_DYE,
 			Material.GRAY_DYE,
-			Material.CACTUS_GREEN,
+			Material.GREEN_DYE,
 			Material.LIGHT_BLUE_DYE,
 			Material.LIGHT_GRAY_DYE,
 			Material.LIME_DYE,
@@ -125,8 +129,8 @@ public class MaterialLists {
 			Material.ORANGE_DYE,
 			Material.PINK_DYE,
 			Material.PURPLE_DYE,
-			Material.ROSE_RED,
+			Material.RED_DYE,
 			Material.BONE_MEAL,
-			Material.DANDELION_YELLOW);
-	
+			Material.YELLOW_DYE);
+
 }

@@ -31,20 +31,20 @@ import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
 import xyz.derkades.ublisk.utils.inventory.Item;
 
 public class Voting extends UModule {
-	
+
 	public static final int VOTE_XP_MIN = 20;
 	public static final int VOTE_XP_MAX = 100;
-	
+
 	public static final int VOTE_GOLD_MIN = 0;
 	public static final int VOTE_GOLD_MAX = 50;
-	
+
 	public static final int VOTE_LIFE_MIN = 0;
 	public static final int VOTE_LIFE_MAX = 2;
 
 	public static Location oldPlayerLocation = null;
 	public static Player playerOpeningBox = null;
 
-	public static void openVotingBox(Player player) {
+	public static void openVotingBox(final Player player) {
 		playerOpeningBox = player;
 		oldPlayerLocation = player.getLocation();
 		player.teleport(new Location(Var.WORLD, 3.5, 71, -62.5, 0, 0));
@@ -62,97 +62,98 @@ public class Voting extends UModule {
 		return Random.getRandomInteger(VOTE_LIFE_MIN, VOTE_LIFE_MAX);
 	}
 
-	public static boolean isVotingChest(Block block) {
-		Location loc = block.getLocation();
+	public static boolean isVotingChest(final Block block) {
+		final Location loc = block.getLocation();
 		return loc.getBlockX() == 3 && loc.getBlockY() == 71 && loc.getBlockZ() == -55;
 	}
-	
+
 	@EventHandler(priority = EventPriority.HIGH)
-	public void onVoteBoxOpen(PlayerInteractEvent event){
+	public void onVoteBoxOpen(final PlayerInteractEvent event){
 		if (event.getAction() != Action.RIGHT_CLICK_BLOCK){
 			return;
 		}
-		
-		UPlayer player = new UPlayer(event);
-		
+
+		final UPlayer player = new UPlayer(event);
+
 		if (player.isSneaking()){
 			return;
 		}
 
-		Block block = event.getClickedBlock();
+		final Block block = event.getClickedBlock();
 		if (Voting.isVotingChest(block)){
-			Chest chest = (Chest) block.getState();
-			Inventory inv = chest.getInventory();
-			
-			int gold = Voting.getRandomGold();
-			int xp = Voting.getRandomXP();
-			int life = Voting.getRandomLife();
-			
-			Item goldItem = new Item(Material.GOLD_NUGGET)
+			final Chest chest = (Chest) block.getState();
+			final Inventory inv = chest.getInventory();
+
+			final int gold = Voting.getRandomGold();
+			final int xp = Voting.getRandomXP();
+			final int life = Voting.getRandomLife();
+
+			final Item goldItem = new Item(Material.GOLD_NUGGET)
 					.setName(ChatColor.GOLD + "" + ChatColor.BOLD + "Gold: " + gold)
 					.setAmount(gold);
-			
-			Item xpItem = new Item(Material.EXPERIENCE_BOTTLE)
+
+			final Item xpItem = new Item(Material.EXPERIENCE_BOTTLE)
 					.setName(ChatColor.GREEN + "" + ChatColor.BOLD + "XP: " + xp)
 					.setAmount(xp);
-			
-			Item lifeItem = new Item(Material.NETHER_STAR)
+
+			final Item lifeItem = new Item(Material.NETHER_STAR)
 					.setName(ChatColor.BOLD + "Life Crystals: " + life)
 					.setAmount(life);
-			
+
 			inv.setItem(12, goldItem.getItemStack());
 			inv.setItem(13, xpItem.getItemStack());
 			inv.setItem(14, lifeItem.getItemStack());
-			
+
 			if (gold !=0){
 				player.getInventory().addItem(Material.GOLD_NUGGET, gold);
 			}
-			
+
 			if (xp != 0){
 				player.addXP(xp);
 			}
-			
+
 			if (life != 0){
 				player.setLifeCrystals(player.getLifeCrystals() + life);
 			}
-			
+
 			player.tracker(PlayerInfo.VOTE_BOX);
-			
+
 			Logger.log(LogLevel.DEBUG, "Voting", "Gold: " + gold + " | XP: " + xp + " | Life: " + life);
 		}
 	}
-	
+
 	@EventHandler(priority = EventPriority.HIGH)
-	public void onItemMove(InventoryMoveItemEvent event){
-		event.setCancelled(playerOpeningBox != null && 
-				event.getInitiator().getHolder() instanceof Player && 
+	public void onItemMove(final InventoryMoveItemEvent event){
+		event.setCancelled(playerOpeningBox != null &&
+				event.getInitiator().getHolder() instanceof Player &&
 				((Player) event.getInitiator().getHolder()).getName().equals(playerOpeningBox.getName()));
 	}
-	
+
 	@EventHandler(priority = EventPriority.HIGH)
-	public void onVote(VotifierEvent event){
-		Vote vote = event.getVote();
+	public void onVote(final VotifierEvent event){
+		final Vote vote = event.getVote();
 		UPlayer player;
 		try {
 			player = new UPlayer(vote.getUsername());
-		} catch (PlayerNotFoundException e) {
+		} catch (final PlayerNotFoundException e) {
 			e.printStackTrace(); //TODO Deal with player not online exception
 			return;
 		}
-		
-		int points = Random.getRandomInteger(1, 3);
+
+		final int points = Random.getRandomInteger(1, 3);
 		player.setVotingPoints(player.getVotingPoints() + points);
 		Ublisk.broadcastPrefixedMessage(player.getName() + " has voted and got " + points + " points! Vote at " + Var.VOTE_URL);
 		Logger.log(LogLevel.INFO, "Vote", player.getName() + " has voted at " + vote.getServiceName() + " (" + vote.getAddress() + ") and got " + points + " points.");
 	}
-	
+
 	@EventHandler
 	public void onInvClose(final InventoryCloseEvent event){
-		if (event.getInventory().getName().contains("Box") && !event.getInventory().getName().contains("Shulker")){
+		if (event.getView().getTitle().contains("Box") && !event.getView().getTitle().contains("Shulker")){
 			Voting.playerOpeningBox = null;
 			new BukkitRunnable(){
+				@Override
 				public void run(){
-					HumanEntity human = event.getPlayer();
+					final HumanEntity human = event.getPlayer();
 					human.teleport(Voting.oldPlayerLocation);
 					Voting.oldPlayerLocation = null;
 				}

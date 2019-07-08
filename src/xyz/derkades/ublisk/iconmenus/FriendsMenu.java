@@ -12,53 +12,53 @@ import org.bukkit.inventory.ItemStack;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
-import xyz.derkades.derkutils.bukkit.ItemBuilder;
 import xyz.derkades.derkutils.bukkit.menu.OptionClickEvent;
 import xyz.derkades.ublisk.Message;
+import xyz.derkades.ublisk.utils.ItemBuilder;
 import xyz.derkades.ublisk.utils.Menu;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.settings.Setting;
 
 public class FriendsMenu extends Menu {
 
-	public FriendsMenu(UPlayer player) {
+	public FriendsMenu(final UPlayer player) {
 		super("Friends", 3*9, player);
-				
+
 		if (player.getFriends().isEmpty()){
-			ItemStack head = new ItemBuilder(player.getName()).name(GOLD + "You don't have any friends!").create();
-			items.put(0, head);
+			final ItemStack head = new ItemBuilder(player).name(GOLD + "You don't have any friends!").create();
+			this.items.put(0, head);
 		} else {
 			int i = 0;
-			for (OfflinePlayer friend : player.getFriends()){
-				ItemStack head = new ItemBuilder(player.getName())
+			for (final OfflinePlayer friend : player.getFriends()){
+				final ItemStack head = new ItemBuilder(player)
 						.name(ChatColor.DARK_AQUA + friend.getName())
 						.lore(ChatColor.GRAY + "Click for more info")
 						.create();
-				
-				items.put(i, head);
-				
+
+				this.items.put(i, head);
+
 				i++;
-				
+
 				if (i > 17){
 					break;
-				}	
+				}
 			}
 		}
-		
+
 		String displayName;
-		
+
 		if (player.getSetting(Setting.FRIENDS_SHOW_HEALTH))
 			 displayName = GOLD + "Show friend's health: " + GREEN + BOLD + "Enabled";
 		else displayName = GOLD + "Show friend's health: " + RED + BOLD + "Disabled";
-		
-		ItemStack friendsHealth = new ItemBuilder(Material.GLISTERING_MELON_SLICE).name(displayName).create();
-		items.put(18, friendsHealth);
+
+		final ItemStack friendsHealth = new ItemBuilder(Material.GLISTERING_MELON_SLICE).name(displayName).create();
+		this.items.put(18, friendsHealth);
 	}
-	
+
 	@Override
-	public boolean onOptionClick(OptionClickEvent event) {
-		UPlayer player = new UPlayer(event);
-		Material item = event.getItemStack().getType();
+	public boolean onOptionClick(final OptionClickEvent event) {
+		final UPlayer player = new UPlayer(event);
+		final Material item = event.getItemStack().getType();
 
 		if (item == Material.GLISTERING_MELON_SLICE){
 			if (player.getSetting(Setting.FRIENDS_SHOW_HEALTH)){
@@ -73,12 +73,12 @@ public class FriendsMenu extends Menu {
 			return false;
 		} else { //Clicked item is a player
 			//OfflinePlayer friend = Ublisk.getOfflinePlayer(event.getName());
-			OfflinePlayer offlineFriend = player.getFriends().get(event.getPosition());
-			
+			final OfflinePlayer offlineFriend = player.getFriends().get(event.getPosition());
+
 			if (offlineFriend == null) player.sendMessage("error");
-			
-			UPlayer friend = new UPlayer(offlineFriend);
-			
+
+			final UPlayer friend = new UPlayer(offlineFriend);
+
 			player.sendMessage(
 					friend.getDisplayName(ChatColor.DARK_AQUA, true),
 					new ComponentBuilder(" - ")
@@ -91,7 +91,7 @@ public class FriendsMenu extends Menu {
 							.event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/friend remove " + friend.getName()))
 							.create()
 					);
-			
+
 			return true;
 		}
 	}

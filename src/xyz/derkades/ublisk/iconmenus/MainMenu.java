@@ -1,5 +1,6 @@
 package xyz.derkades.ublisk.iconmenus;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 
 import xyz.derkades.derkutils.bukkit.menu.OptionClickEvent;
@@ -13,19 +14,20 @@ import xyz.derkades.ublisk.utils.UPlayer;
 
 public class MainMenu extends Menu {
 
-	public MainMenu(UPlayer player) {
+	public MainMenu(final UPlayer player) {
 		super("Main menu", 9, player);
-		
-		items.put(0, new ItemBuilder(Material.COMPARATOR).name("Settings").lore("Toggle various options on and off").create());
-		items.put(1, new ItemBuilder(Material.PAPER).name("Voting").create());
-		items.put(2, new ItemBuilder(player.getName()).name("Friends").create());
-		items.put(3, new ItemBuilder("MHF_Question").name("Help").lore("Help for commands and more").create());
-		items.put(4, new ItemBuilder(new MoneyItem(MoneyItem.Type.BAR).getItemStack()).name("Bank").lore("This will later be removed and", "replaced with a proper bank").create());
+
+		this.items.put(0, new ItemBuilder(Material.COMPARATOR).name("Settings").lore("Toggle various options on and off").create());
+		this.items.put(1, new ItemBuilder(Material.PAPER).name("Voting").create());
+		this.items.put(2, new ItemBuilder(player).name("Friends").create());
+		// TODO Use UUID
+		this.items.put(3, new ItemBuilder(Bukkit.getOfflinePlayer("MHF_Question")).name("Help").lore("Help for commands and more").create());
+		this.items.put(4, new ItemBuilder(new MoneyItem(MoneyItem.Type.BAR).getItemStack()).name("Bank").lore("This will later be removed and", "replaced with a proper bank").create());
 	}
 
 	@Override
-	public boolean onOptionClick(OptionClickEvent event) {
-		String name = event.getName().toLowerCase();
+	public boolean onOptionClick(final OptionClickEvent event) {
+		final String name = event.getName().toLowerCase();
 		final UPlayer player = new UPlayer(event.getPlayer());
 
 		if (name.equals("settings")){
@@ -41,7 +43,7 @@ public class MainMenu extends Menu {
 		} else {
 			player.sendMessage(Message.ERROR_MENU);
 		}
-		
+
 		return false;
 	}
 

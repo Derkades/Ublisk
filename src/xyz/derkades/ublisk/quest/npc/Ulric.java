@@ -12,7 +12,7 @@ import xyz.derkades.ublisk.quest.QuestParticipant;
 import xyz.derkades.ublisk.utils.UPlayer;
 
 public class Ulric extends NPC {
-	
+
 	@Override
 	public String getName() {
 		return "Ulric";
@@ -32,22 +32,22 @@ public class Ulric extends NPC {
 	public boolean canWalk() {
 		return false;
 	}
-	
+
 	@Override
-	public void talk(UPlayer player){
-		QuestParticipant qp = player.getQuestParticipant(Quest.INTRODUCTION, this);
+	public void talk(final UPlayer player){
+		final QuestParticipant qp = player.getQuestParticipant(Quest.INTRODUCTION, this);
 		//UInventory inv = qp.getInventory();
-		
-		if (qp.inventoryContains(new ItemStack(Material.LOG, 10),
+
+		if (qp.inventoryContains(new ItemStack(Material.OAK_LOG, 10),
 			new ItemStack(Material.STRING, 16),
 			new ItemStack(Material.GOLD_NUGGET, 10))){
-			
+
 			qp.sendMessage("me do not work");
 			/*if (player.getClazz() != Clazz.SWORDSMAN){
 				player.sendMessage("As of right now, only swordsman is implemented. Please choose swordsman from the classes menu");
 				return;
 			}
-			
+
 			inv.addItem(new Item(new BasicWoodenSword().getItemStack()));
 			inv.remove(Material.LOG, 10);
 			inv.remove(Material.STRING, 16);

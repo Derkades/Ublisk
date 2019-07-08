@@ -10,34 +10,34 @@ import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.utils.UPlayer;
 
 public class InventoryClick implements Listener {
-	
+
 	@EventHandler(ignoreCancelled = false, priority = EventPriority.MONITOR)
-	public void tracker(InventoryClickEvent event){
-		UPlayer player = new UPlayer(event.getWhoClicked());
+	public void tracker(final InventoryClickEvent event){
+		final UPlayer player = new UPlayer(event.getWhoClicked());
 		player.tracker(PlayerInfo.INV_CLICK);
 	}
-	
-	@EventHandler
-	public void onItemClick(InventoryClickEvent event){
 
-		UPlayer player = new UPlayer(event.getWhoClicked());
-		
+	@EventHandler
+	public void onItemClick(final InventoryClickEvent event){
+
+		final UPlayer player = new UPlayer(event.getWhoClicked());
+
 		if (player.isInBuilderMode()){
 			return;
 		}
-		
-		if (event.getInventory() != null && event.getInventory().getName() != null && event.getInventory().getName().contains("Box")){
+
+		if (event.getInventory() != null && event.getView().getTitle() != null && event.getView().getTitle().contains("Box")){
 			event.setCancelled(true);
 			return;
 		}
-		
-		Material[] cancel = {
+
+		final Material[] cancel = {
 				Material.NETHER_STAR,
 				Material.CHEST
 				};
-		
-		Material clicked = event.getCurrentItem().getType();
-		for (Material material : cancel){
+
+		final Material clicked = event.getCurrentItem().getType();
+		for (final Material material : cancel){
 			if (clicked.equals(material)){
 				event.setCancelled(true);
 			}
