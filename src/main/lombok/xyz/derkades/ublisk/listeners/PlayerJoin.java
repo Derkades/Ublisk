@@ -25,50 +25,50 @@ import xyz.derkades.ublisk.utils.URunnable;
 import xyz.derkades.ublisk.utils.settings.Setting;
 
 public class PlayerJoin implements Listener {
-	
+
 	@EventHandler
-	public void onJoin(PlayerJoinEvent event){
+	public void onJoin(final PlayerJoinEvent event){
 		final UPlayer player = new UPlayer(event);
-		String pn = player.getName();
-		UUID uuid = player.getUniqueId();
-		
+		final String pn = player.getName();
+		final UUID uuid = player.getUniqueId();
+
 		PlayerInfo.resetHashMaps(player);
-		
+
 		player.setCollidable(false);
-		
+
 		event.setJoinMessage(DARK_AQUA + "" + BOLD + pn + RESET + AQUA + " has joined");
-		
+
 		player.givePotionEffect(PotionEffectType.BLINDNESS, 1*20, 0);
 		player.givePotionEffect(PotionEffectType.NIGHT_VISION, 1*20, 0);
-		
+
 		player.sendTitle(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Ublisk", ChatColor.YELLOW + "Welcome back, " + pn + "!");
-		
+
 		if (player.getSetting(Setting.PLAY_MUSIC)){
-			Town town = player.getTown();
+			final Town town = player.getTown();
 			if (town != null)
 				town.playThemeToPlayer(player);
 		}
-		
+
 		player.tracker(PlayerInfo.JOIN_COUNT);
 
 		//String ip = player.getPlayer().getAddress().toString();
 		//ip = ip.replace("/", "");
-		String ip = player.getIP();
+		final String ip = player.getIP();
 		DataFile.IP.getConfig().set("ip." + uuid, ip);
 
 		player.updateXPBar();
 
 		// Disable builder mode if the player no longer has permission
-		if (!player.hasPermission(Permission.BUILDER_MODE)){
+		if (!player.hasPermission("ublisk.builder"){
 			player.setBuilderModeEnabled(false);
 		}
-		
+
 		if (player.isInBuilderMode()){
 			player.setGameMode(GameMode.CREATIVE);
 		} else {
 			player.setGameMode(GameMode.ADVENTURE);
 		}
-		
+
 		player.setFlying(false);
 
 		player.setAttribute(Attribute.GENERIC_ATTACK_SPEED, 0.7);
@@ -79,11 +79,11 @@ public class PlayerJoin implements Listener {
 				player.sendSpacers(10);
 
 				final String[] fancyStrings = new String[] {
-						"                       ", 
-						" # # ##  #   # ### # # ", 
+						"                       ",
+						" # # ##  #   # ### # # ",
 						" # # # # #   # #   # # ",
-						" # # ##  #   # ### ##  ", 
-						" # # # # #   #   # ##  ", 
+						" # # ##  #   # ### ##  ",
+						" # # # # #   #   # ##  ",
 						" ### ##  ### # ### # # ",
 						"                       "
 				};
@@ -96,26 +96,26 @@ public class PlayerJoin implements Listener {
 						+ "Welcome to Ublisk! If you find any bugs, please report them using /bug [description].");
 			}
 		}.runLater(4);
-		
+
 		/*Ublisk.runAsync(() -> {
 			Connection connection = null;
-			
+
 			PreparedStatement check = null;
 			ResultSet checkResult = null;
-			
+
 			PreparedStatement insert = null;
-			try {				
+			try {
 				connection = Ublisk.getDatabaseConnection("Player join insert");
-				
+
 				check = connection.prepareStatement("SELECT EXISTS(SELECT * FROM player_info_2 WHERE uuid=?) AS `exists`");
 				check.setString(1, uuid.toString());
 				checkResult = check.executeQuery();
 				checkResult.next();
-			
+
 				boolean exists = checkResult.getBoolean("exists");
-				
+
 				Logger.log(LogLevel.DEBUG, "Exists: " + exists);
-				
+
 				if (!exists) {
 					insert = connection.prepareStatement("INSERT INTO `player_info_2) (uuid, name, xp) VALUES (?, ?, ?)");
 					insert.setString(1, uuid.toString());

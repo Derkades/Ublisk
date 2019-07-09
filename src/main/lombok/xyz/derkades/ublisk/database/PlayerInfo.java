@@ -12,14 +12,14 @@ import java.util.UUID;
 import org.bukkit.OfflinePlayer;
 
 import xyz.derkades.ublisk.utils.Logger;
+import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.Ublisk;
-import xyz.derkades.ublisk.utils.Logger.LogLevel;
 
 public class PlayerInfo {
-	
+
 	public static final String TABLE_NAME = "player_info_2";
-	
+
 	public static final Map<UUID, Integer> RIGHT_CLICKED = new HashMap<>();
 	public static final Map<UUID, Integer> LEFT_CLICKED = new HashMap<>();
 	public static final Map<UUID, Integer> JOIN_COUNT = new HashMap<>();
@@ -34,9 +34,9 @@ public class PlayerInfo {
 	public static final Map<UUID, Integer> BLOCKS_WALKED = new HashMap<>();
 	public static final Map<UUID, Integer> SECONDS_AFK = new HashMap<>();
 	public static final Map<UUID, Integer> SECONDS_NOT_AFK = new HashMap<>();
-	
-	public static void resetHashMaps(UPlayer player){
-		UUID uuid = player.getUniqueId();
+
+	public static void resetHashMaps(final UPlayer player){
+		final UUID uuid = player.getUniqueId();
 		RIGHT_CLICKED.put(uuid, 0);
 		LEFT_CLICKED.put(uuid, 0);
 		JOIN_COUNT.put(uuid, 0);
@@ -52,81 +52,81 @@ public class PlayerInfo {
 		SECONDS_AFK.put(uuid, 0);
 		SECONDS_NOT_AFK.put(uuid, 0);
 	}
-	
-	public static void syncWithDatabase(UPlayer player){
+
+	public static void syncWithDatabase(final UPlayer player){
 		try {
-			UUID uuid = player.getUniqueId();
-			String name = player.getName();
-			int xp = player.getXP();
-			String rank = player.getGroup().getName();
-			String lastSeenDate = player.getLastSeenDate();
-			int level = player.getLevel();
-			String lastTown = player.getLastTown().getName();
-			
-			List<String> friendNames = new ArrayList<String>();
-			for (OfflinePlayer friend : player.getFriends())
+			final UUID uuid = player.getUniqueId();
+			final String name = player.getName();
+			final int xp = player.getXP();
+			final String rank = "rank"; // TODO get rank from vault, or remove
+			final String lastSeenDate = player.getLastSeenDate();
+			final int level = player.getLevel();
+			final String lastTown = player.getLastTown().getName();
+
+			final List<String> friendNames = new ArrayList<>();
+			for (final OfflinePlayer friend : player.getFriends())
 				friendNames.add(friend.getName());
-			String friends = String.join(", ", friendNames);
-			
-			int rightClicked = RIGHT_CLICKED.get(uuid);
-			int leftClicked = LEFT_CLICKED.get(uuid);
-			int joinCount = JOIN_COUNT.get(uuid);
-			int mobKills = MOB_KILLS.get(uuid);
-			int lootFound = LOOT_FOUND.get(uuid);
-			int chatMessages = CHAT_MESSAGES.get(uuid);
-			int votingBoxesOpened = VOTE_BOX.get(uuid);
-			int inventoryClicks = INV_CLICK.get(uuid);
-			int entityClicks = ENTITY_CLICK.get(uuid);
-			int commandsExecuted = COMMANDS_EXECUTED.get(uuid);
-			int abilities = ABILITIES.get(uuid);
-			int blocksWalked = BLOCKS_WALKED.get(uuid);
-			int secondsAFK = SECONDS_AFK.get(uuid);
-			int secondsNotAFK = SECONDS_NOT_AFK.get(uuid);
-			
-			executeQuery(uuid, 
-					name, 
-					xp, 
-					rank, 
-					lastSeenDate, 
-					level, 
-					lastTown, 
+			final String friends = String.join(", ", friendNames);
+
+			final int rightClicked = RIGHT_CLICKED.get(uuid);
+			final int leftClicked = LEFT_CLICKED.get(uuid);
+			final int joinCount = JOIN_COUNT.get(uuid);
+			final int mobKills = MOB_KILLS.get(uuid);
+			final int lootFound = LOOT_FOUND.get(uuid);
+			final int chatMessages = CHAT_MESSAGES.get(uuid);
+			final int votingBoxesOpened = VOTE_BOX.get(uuid);
+			final int inventoryClicks = INV_CLICK.get(uuid);
+			final int entityClicks = ENTITY_CLICK.get(uuid);
+			final int commandsExecuted = COMMANDS_EXECUTED.get(uuid);
+			final int abilities = ABILITIES.get(uuid);
+			final int blocksWalked = BLOCKS_WALKED.get(uuid);
+			final int secondsAFK = SECONDS_AFK.get(uuid);
+			final int secondsNotAFK = SECONDS_NOT_AFK.get(uuid);
+
+			executeQuery(uuid,
+					name,
+					xp,
+					rank,
+					lastSeenDate,
+					level,
+					lastTown,
 					friends,
-					rightClicked, 
-					leftClicked, 
-					joinCount, 
-					mobKills, 
-					lootFound, 
-					chatMessages, 
-					votingBoxesOpened, 
-					inventoryClicks, 
-					entityClicks, 
+					rightClicked,
+					leftClicked,
+					joinCount,
+					mobKills,
+					lootFound,
+					chatMessages,
+					votingBoxesOpened,
+					inventoryClicks,
+					entityClicks,
 					commandsExecuted,
 					abilities,
 					blocksWalked,
 					secondsAFK,
 					secondsNotAFK);
-			
+
 			resetHashMaps(player);
-		} catch (SQLException e){
+		} catch (final SQLException e){
 			Logger.log(LogLevel.SEVERE, "An error occured while syncing player info for " + player.getName() + ": " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
-	
-	private static void executeQuery(UUID uuid, String name, 
-			int xp, String rank, String lastSeenDate, 
-			int level, String lastTown, String friends, int rightClicked, int leftClicked, 
-			int joinCount, int mobKills, int lootFound, int chatMessages, 
-			int voteBoxes, int inventoryClicks, int entityClicks,int commandsExecuted,
-			int abilities, int blocksWalked, int secondsAFK, int secondsNotAFK) 
+
+	private static void executeQuery(final UUID uuid, final String name,
+			final int xp, final String rank, final String lastSeenDate,
+			final int level, final String lastTown, final String friends, final int rightClicked, final int leftClicked,
+			final int joinCount, final int mobKills, final int lootFound, final int chatMessages,
+			final int voteBoxes, final int inventoryClicks, final int entityClicks,final int commandsExecuted,
+			final int abilities, final int blocksWalked, final int secondsAFK, final int secondsNotAFK)
 					throws SQLException {
-		
+
 		Connection connection = null;
 		PreparedStatement statement = null;
-		
+
 		try {
 			connection = Ublisk.getDatabaseConnection("Player info 2 sync");
-			
+
 			statement = connection.prepareStatement(
 						"INSERT INTO " + TABLE_NAME + " "
 						+ "(uuid, " //1
@@ -153,7 +153,7 @@ public class PlayerInfo {
 						+ "seconds_afk," //21
 						+ "seconds_not_afk) " //22
 						+ "VALUES (?, ?, ?, 'None', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-						
+
 						+ "ON DUPLICATE KEY UPDATE "
 						+ "name=?," //23
 						+ "xp=?," //24
@@ -176,7 +176,7 @@ public class PlayerInfo {
 						+ "blocks_walked=blocks_walked+?," //41
 						+ "seconds_afk=seconds_afk+?," //42
 						+ "seconds_not_afk=seconds_not_afk+?;"); //43
-			
+
 			statement.setString(1, uuid.toString());
 			statement.setString(2, name);
 			statement.setInt(3, xp);
@@ -199,7 +199,7 @@ public class PlayerInfo {
 			statement.setInt(20, blocksWalked);
 			statement.setInt(21, secondsAFK);
 			statement.setInt(22, secondsNotAFK);
-			
+
 			statement.setString(23, name);
 			statement.setInt(24, xp);
 			statement.setString(25, rank);
@@ -221,15 +221,15 @@ public class PlayerInfo {
 			statement.setInt(41, blocksWalked);
 			statement.setInt(42, secondsAFK);
 			statement.setInt(43, secondsNotAFK);
-			
+
 			statement.execute();
-			
-		} catch (SQLException e){
+
+		} catch (final SQLException e){
 			throw e;
 		} finally {
 			if (statement != null) statement.close();
 		}
-		
+
 	}
 
 }

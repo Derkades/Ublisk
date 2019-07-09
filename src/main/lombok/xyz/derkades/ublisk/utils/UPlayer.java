@@ -56,11 +56,6 @@ import xyz.derkades.ublisk.modules.FriendsBossBar;
 import xyz.derkades.ublisk.modules.PlayerFreeze;
 import xyz.derkades.ublisk.modules.VoteRestart;
 import xyz.derkades.ublisk.money.Money;
-import xyz.derkades.ublisk.permission.Permission;
-import xyz.derkades.ublisk.permission.PermissionGroup;
-import xyz.derkades.ublisk.quest.NPC;
-import xyz.derkades.ublisk.quest.Quest;
-import xyz.derkades.ublisk.quest.QuestParticipant;
 import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
 import xyz.derkades.ublisk.utils.inventory.InvUtils;
 import xyz.derkades.ublisk.utils.inventory.UInventory;
@@ -238,21 +233,8 @@ public class UPlayer {
 		return this.getVotingPoints() >= i;
 	}
 
-	public PermissionGroup getGroup() {
-		final PermissionGroup group = PermissionGroup.fromString(DataFile.PERMISSIONS.getConfig().getString("groups." + this.getUniqueId()));
-		if (group == null){
-			return PermissionGroup.DEFAULT;
-		} else {
-			return group;
-		}
-	}
-
-	public void setGroup(final PermissionGroup group) {
-		DataFile.PERMISSIONS.getConfig().set("groups." + this.getUniqueId(), group.getName().toLowerCase());
-	}
-
-	public boolean hasPermission(final Permission permission) {
-		return this.getGroup().getPermissions().contains(permission);
+	public boolean hasPermission(final String permission) {
+		return this.player.hasPermission(permission);
 	}
 
 	public Location getLocation() {
@@ -269,10 +251,6 @@ public class UPlayer {
 
 	public void teleport(final double x, final double y, final double z, final int pitch, final int yaw) {
 		this.teleport(new Location(Var.WORLD, x, y, z, pitch, yaw));
-	}
-
-	public QuestParticipant getQuestParticipant(final Quest quest, final NPC npc) {
-		return new QuestParticipant(this.player, quest, npc);
 	}
 
 	public UUID getUniqueId() {

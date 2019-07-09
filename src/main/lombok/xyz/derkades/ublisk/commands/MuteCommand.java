@@ -9,39 +9,38 @@ import org.bukkit.entity.Player;
 
 import xyz.derkades.ublisk.Message;
 import xyz.derkades.ublisk.modules.Chat;
-import xyz.derkades.ublisk.permission.Permission;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
 
 public class MuteCommand implements CommandExecutor {
-	
+
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
-		
+	public boolean onCommand(final CommandSender sender, final Command cmd, final String label, final String[] args){
+
 		if (!(sender instanceof Player)){
 			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 			return true;
 		}
-		
-		UPlayer player = new UPlayer(sender);
-		
-		if (player.hasPermission(Permission.COMMAND_MUTE)){
+
+		final UPlayer player = new UPlayer(sender);
+
+		if (player.hasPermission("ublisk.mute")){
 			player.sendMessage(Message.NO_PERMISSION);
 			return true;
 		}
-		
+
 		if (args.length == 1){
 			UPlayer target;
 			try {
 				target = new UPlayer(args[0]);
-			} catch (PlayerNotFoundException e) {
+			} catch (final PlayerNotFoundException e) {
 				player.sendMessage(Message.PLAYER_NOT_FOUND);
 				return true;
 			}
-			
-			UUID uuid = target.getUniqueId();
-			String targetName = target.getName();
-			String playerName = player.getName();
+
+			final UUID uuid = target.getUniqueId();
+			final String targetName = target.getName();
+			final String playerName = player.getName();
 			if (Chat.IS_MUTED.get(uuid)){
 				player.sendPrefixedMessage("Chat", targetName + " has been unmuted.");
 				target.sendPrefixedMessage("Chat", "You have been unmuted by " + playerName);
@@ -55,17 +54,17 @@ public class MuteCommand implements CommandExecutor {
 			}
 		} else if (args.length == 2 && args[0].equalsIgnoreCase("soft")){
 			UPlayer target;
-			
+
 			try {
 				target = new UPlayer(args[1]);
-			} catch (PlayerNotFoundException e){
+			} catch (final PlayerNotFoundException e){
 				player.sendMessage(Message.PLAYER_NOT_FOUND);
 				return true;
 			}
-			
-			UUID uuid = target.getUniqueId();
-			String targetName = target.getName();
-			String playerName = player.getName();
+
+			final UUID uuid = target.getUniqueId();
+			final String targetName = target.getName();
+			final String playerName = player.getName();
 			if (Chat.IS_SOFT_MUTED.get(uuid)){
 				player.sendPrefixedMessage("Chat", targetName + " has been un-soft-muted.");
 				target.sendPrefixedMessage("Chat", "You have been un-soft-muted by " + playerName);

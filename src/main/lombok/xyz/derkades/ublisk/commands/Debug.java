@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import xyz.derkades.ublisk.DataFile;
 import xyz.derkades.ublisk.Main;
 import xyz.derkades.ublisk.Message;
-import xyz.derkades.ublisk.permission.Permission;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
 import xyz.derkades.ublisk.utils.inventory.Item;
@@ -16,20 +15,20 @@ import xyz.derkades.ublisk.utils.inventory.Item;
 public class Debug implements CommandExecutor {
 
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	public boolean onCommand(final CommandSender sender, final Command cmd, final String label, final String[] args) {
 		if (sender instanceof Player) {
-			UPlayer player = new UPlayer(sender);
-			if (player.hasPermission(Permission.COMMAND_DEBUG)) {
+			final UPlayer player = new UPlayer(sender);
+			if (player.hasPermission("ublisk.debug")) {
 				if (args.length == 2) {
 					if (args[0].equalsIgnoreCase("xp")) {
-						int xp = Integer.parseInt(args[1]);
+						final int xp = Integer.parseInt(args[1]);
 						player.setXP(xp);
 						return true;
 					} else if (args[0].equals("refreshxp")) {
 						UPlayer target;
 						try {
 							target = new UPlayer(args[1]);
-						} catch (PlayerNotFoundException e) {
+						} catch (final PlayerNotFoundException e) {
 							player.sendMessage("player not found");
 							return true;
 						}
@@ -40,14 +39,14 @@ public class Debug implements CommandExecutor {
 						player.sendMessage("Level: " + target.getLevel());
 						return true;
 					} else if (args[0].equals("life")) {
-						int life = Integer.parseInt(args[1]);
+						final int life = Integer.parseInt(args[1]);
 						player.setLifeCrystals(life);
 						return true;
 					} else if (args[0].equals("vote")) {
 						UPlayer target;
 						try {
 							target = new UPlayer(args[1]);
-						} catch (PlayerNotFoundException e) {
+						} catch (final PlayerNotFoundException e) {
 							player.sendMessage("player not found");
 							return true;
 						}
@@ -57,11 +56,11 @@ public class Debug implements CommandExecutor {
 						UPlayer target;
 						try {
 							target = new UPlayer(args[1]);
-						} catch (PlayerNotFoundException e) {
+						} catch (final PlayerNotFoundException e) {
 							player.sendMessage(Message.PLAYER_NOT_FOUND);
 							return true;
 						}
-						
+
 						player.bukkit().openInventory(target.bukkit().getInventory());
 						return true;
 					} else if (args[0].equals("skull")) {
@@ -79,7 +78,7 @@ public class Debug implements CommandExecutor {
 					}
 				} else if (args.length == 1){
 					if (args[0].equals("save")){
-						for (DataFile file : DataFile.values()){
+						for (final DataFile file : DataFile.values()){
 							file.save();
 						}
 						return true;

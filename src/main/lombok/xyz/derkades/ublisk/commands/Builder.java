@@ -6,13 +6,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import xyz.derkades.ublisk.Message;
-import xyz.derkades.ublisk.permission.Permission;
 import xyz.derkades.ublisk.utils.UPlayer;
 
 public class Builder implements CommandExecutor {
 
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	public boolean onCommand(final CommandSender sender, final Command cmd, final String label, final String[] args) {
 		if (!(sender instanceof Player)) {
 			sender.sendMessage(Message.NOT_A_PLAYER.toString());
 			return true;
@@ -23,9 +22,9 @@ public class Builder implements CommandExecutor {
 			return true;
 		}
 
-		UPlayer player = new UPlayer(sender);
+		final UPlayer player = new UPlayer(sender);
 
-		if (!player.hasPermission(Permission.BUILDER_MODE)) {
+		if (!player.hasPermission("ublisk.builder")) {
 			player.sendMessage(Message.NO_PERMISSION);
 			return true;
 		}
