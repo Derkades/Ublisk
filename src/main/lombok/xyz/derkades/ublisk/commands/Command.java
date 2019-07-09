@@ -29,36 +29,36 @@ public enum Command {
 	MUTE("mute", new MuteCommand()),
 	REPLY("reply", new ReplyCommand()),
 	STATS("stats", new StatsCommand()),
-	SUGGEST("suggest", new SuggestCommand()),
-	
+	//SUGGEST("suggest", new SuggestCommand()),
+
 	UBLISK("ublisk", new UbliskCommand.Executor());
 
 	private String cmd;
 	private CommandExecutor exec;
 
-	Command(String cmd, CommandExecutor exec) {
+	Command(final String cmd, final CommandExecutor exec) {
 		this.cmd = cmd;
 		this.exec = exec;
 	}
 
 	private String getCommand() {
-		return cmd;
+		return this.cmd;
 	}
 
 	private CommandExecutor getExecutor() {
-		return exec;
+		return this.exec;
 	}
-	
+
 	private static void unregisterExistingCommands() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
-		String[] commands = {"u"};
-		
-		SimplePluginManager spm = (SimplePluginManager) Bukkit.getServer().getPluginManager();
-		Field f = SimplePluginManager.class.getDeclaredField("commandMap");
+		final String[] commands = {"u"};
+
+		final SimplePluginManager spm = (SimplePluginManager) Bukkit.getServer().getPluginManager();
+		final Field f = SimplePluginManager.class.getDeclaredField("commandMap");
 		f.setAccessible(true);
-		SimpleCommandMap scm = (SimpleCommandMap) f.get(spm);
+		final SimpleCommandMap scm = (SimpleCommandMap) f.get(spm);
 		f.setAccessible(false);
-		
-		for (String command : commands) {
+
+		for (final String command : commands) {
 			Bukkit.getPluginCommand(command).unregister(scm);
 		}
 	}
@@ -69,16 +69,16 @@ public enum Command {
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-        
+
 		Logger.log(LogLevel.INFO, "Commands", "Registering commands...");
-		for (Command cmd : Command.values()) {
+		for (final Command cmd : Command.values()) {
 			Logger.log(LogLevel.DEBUG, "Commands",
 					"Registered command with class " + cmd.getExecutor().getClass().getSimpleName());
-			String command = cmd.getCommand();
-			CommandExecutor executor = cmd.getExecutor();
+			final String command = cmd.getCommand();
+			final CommandExecutor executor = cmd.getExecutor();
 			try {
 				Main.getInstance().getCommand(command).setExecutor(executor);
-			} catch (NullPointerException e) {
+			} catch (final NullPointerException e) {
 				Logger.log(LogLevel.SEVERE, "Commands",
 						"The command /" + cmd.getCommand() + " is not specified in the plugin.yml file");
 			}
