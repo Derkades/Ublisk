@@ -36,6 +36,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -542,6 +543,7 @@ public class UPlayer {
 		return Money.get(this.player) >= amount;
 	}
 
+	@Deprecated
 	public void sendActionBarMessage(final String message, final long time) {
 		new URunnable (){
 
@@ -560,6 +562,10 @@ public class UPlayer {
 			}
 
 		}.runTimer(1);
+	}
+
+	public void sendActionBarMessage(final BaseComponent[] components) {
+		this.player.spigot().sendMessage(ChatMessageType.ACTION_BAR, components);
 	}
 
 	public void playNotMovingParticle(final Particle particle, final double x, final double y, final double z) {
@@ -665,8 +671,13 @@ public class UPlayer {
 		DataFile.TOWN.getConfig().set("last-town." + this.getUniqueId(), town.getName());
 	}
 
+	@Deprecated
 	public void sendTitle(final String title, final String subtitle) {
 		Ublisk.NMS.sendTitle(this.player, title, subtitle);
+	}
+
+	public void sendTitle(final BaseComponent[] components) {
+		this.player.spigot().sendMessage(ChatMessageType.SYSTEM, components);
 	}
 
 	public void sendTitle(final String title) {

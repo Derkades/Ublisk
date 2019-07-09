@@ -1,28 +1,24 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>xyz.derkades</groupId>
 	<artifactId>ublisk</artifactId>
-	
-	<version>1.0.0</version>
+
+	<version>dev</version>
 	<name>Ublisk</name>
 
 	<properties>
 		<jdk.version>1.8</jdk.version>
 		<github.version>1.85</github.version>
-		<worldedit.version>6.1.5</worldedit.version>
-		<spigot.version>1.14.3-R0.1-SNAPSHOT</spigot.version>
-		<slf4jVersion>1.6.1</slf4jVersion>
 	</properties>
-	
+
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+		<sourceDirectory>src/main/lombok</sourceDirectory>
 		<resources>
 			<resource>
-				<directory>src</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
+				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
 
@@ -34,7 +30,7 @@
 				<version>2.9</version>
 				<configuration>
 					<downloadSources>true</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
+					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
 
@@ -56,12 +52,57 @@
 					<createDependencyReducedPom>false</createDependencyReducedPom>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok-maven-plugin</artifactId>
+				<version>1.18.6.0</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>delombok</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
+		
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.projectlombok</groupId>
+										<artifactId>lombok-maven-plugin</artifactId>
+										<versionRange>[1.18.6.0,)</versionRange>
+										<goals>
+											<goal>delombok</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 
 	</build>
 
 	<!-- Dependencies -->
-	
+
 	<dependencies>
 		<dependency> <!-- GitHub API -->
 			<groupId>org.kohsuke</groupId>
@@ -69,17 +110,10 @@
 			<version>${github.version}</version>
 		</dependency>
 
-		<dependency> <!-- WorldEdit -->
-			<groupId>com.sk89q.worldedit</groupId>
-			<artifactId>worldedit-bukkit</artifactId>
-			<version>${worldedit.version}</version>
-			<scope>provided</scope>
-		</dependency>
-
 		<dependency> <!-- Spigot (this includes Spigot API, Bukkit API, Craftbukkit and NMS) -->
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot</artifactId>
-			<version>${spigot.version}</version>
+			<version>1.14.3-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -89,53 +123,32 @@
 			<version>1.5.1</version>
 		</dependency>
 
-		<dependency> <!-- NuVotifier -->
-			<groupId>com.vexsoftware</groupId>
-			<artifactId>nuvotifier-universal</artifactId>
-			<version>2.3.4</version>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.8</version>
 			<scope>provided</scope>
-		</dependency>		
+		</dependency>
 
 	</dependencies>
 
 	<!-- Repositories -->
-	
+
 	<repositories>
 
 		<repository>
-			<id>sk89q</id>
-			<url>http://maven.sk89q.com/repo</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-
-		<!--<repository>
 			<id>spigot-repo</id>
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-		</repository>-->
+		</repository>
 
 		<repository>
 			<id>jcenter</id>
 			<url>http://jcenter.bintray.com</url>
 		</repository>
-		
+
 		<repository>
 			<id>jitpack.io</id>
 			<url>https://jitpack.io</url>
-		</repository>
-
-		<repository>
-			<id>derkades</id>
-			<url>https://derkades.xyz/maven</url>
-		</repository>
-
-		<repository>
-			<id>vex</id>
-			<url>https://dl.bintray.com/nuvotifier/maven/</url>
 		</repository>
 
 	</repositories>

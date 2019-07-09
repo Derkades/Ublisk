@@ -15,9 +15,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.vexsoftware.votifier.model.Vote;
-import com.vexsoftware.votifier.model.VotifierEvent;
-
 import net.md_5.bungee.api.ChatColor;
 import xyz.derkades.derkutils.Random;
 import xyz.derkades.ublisk.Main;
@@ -26,8 +23,6 @@ import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.utils.Logger;
 import xyz.derkades.ublisk.utils.Logger.LogLevel;
 import xyz.derkades.ublisk.utils.UPlayer;
-import xyz.derkades.ublisk.utils.Ublisk;
-import xyz.derkades.ublisk.utils.exception.PlayerNotFoundException;
 import xyz.derkades.ublisk.utils.inventory.Item;
 
 public class Voting extends UModule {
@@ -129,7 +124,7 @@ public class Voting extends UModule {
 				((Player) event.getInitiator().getHolder()).getName().equals(playerOpeningBox.getName()));
 	}
 
-	@EventHandler(priority = EventPriority.HIGH)
+	/*@EventHandler(priority = EventPriority.HIGH) TODO Add command to give vote points
 	public void onVote(final VotifierEvent event){
 		final Vote vote = event.getVote();
 		UPlayer player;
@@ -144,7 +139,7 @@ public class Voting extends UModule {
 		player.setVotingPoints(player.getVotingPoints() + points);
 		Ublisk.broadcastPrefixedMessage(player.getName() + " has voted and got " + points + " points! Vote at " + Var.VOTE_URL);
 		Logger.log(LogLevel.INFO, "Vote", player.getName() + " has voted at " + vote.getServiceName() + " (" + vote.getAddress() + ") and got " + points + " points.");
-	}
+	}*/
 
 	@EventHandler
 	public void onInvClose(final InventoryCloseEvent event){

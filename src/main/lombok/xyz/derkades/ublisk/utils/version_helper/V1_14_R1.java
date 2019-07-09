@@ -21,6 +21,7 @@ import net.minecraft.server.v1_14_R1.IChatBaseComponent;
 import net.minecraft.server.v1_14_R1.IChatBaseComponent.ChatSerializer;
 import net.minecraft.server.v1_14_R1.PacketPlayOutChat;
 
+@Deprecated
 public class V1_14_R1 implements NMS {
 
 	@Override
@@ -41,6 +42,7 @@ public class V1_14_R1 implements NMS {
 		((CraftCreature) creature).getHandle().setGoalTarget(entityLiving, TargetReason.CLOSEST_PLAYER, false);
 	}
 
+	@Deprecated
 	@Override
 	public void sendActionBarMessage(final Player player, final String message) {
 		final IChatBaseComponent dummyComponent = ChatSerializer.a("{\"text\":\"herobrine1337\"}");
@@ -50,11 +52,13 @@ public class V1_14_R1 implements NMS {
 		craftPlayer.getHandle().playerConnection.sendPacket(packet);
 	}
 
+	@Deprecated
 	@Override
 	public void sendTitle(final Player player, final String title, final String subtitle) {
 		((CraftPlayer) player).sendTitle(title, subtitle);
 	}
 
+	@Deprecated
 	@Override
 	public void setChestName(final Chest chest, final String name) {
 		final CraftChest craftChest = (CraftChest) chest;
