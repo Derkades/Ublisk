@@ -22,8 +22,6 @@ commands:
   credits:
     description: Credits
     usage: /<command> [arguments]
-  suggest:
-    aliases: [contact, todo, suggestfeature, newfeature, features, feature, newfeatures, suggestfeatures, suggestion, suggestions, bug, bugs, reportbug, bugreport, admincontact, ownercontant, ask, apply, operatorhelp, ophelp, helpop, askop, askoperator, askmod, askadmin, askowner]
   afk:
     aliases: [away, brb, awayfromkeyboard, back]
     description: I have no idea what to put here
@@ -33,14 +31,6 @@ commands:
     aliases: [friend, f, friendlist, friendslist]
   mute:
     aliases: [holdyourbekpls, stfu]
-  msg:
-    aliases: [w, write, tell, pm, mail, email, m, msg, message, privatem, pmessage,t]
-    description: Send private messages
-    usage: |
-      /tell [player] [message] - Send a player a private message
-      /r [message] - Quickly reply to the last person who sent you a message
-  reply:
-    aliases: [r]
   builder:
     usage: /<command>
   guild:

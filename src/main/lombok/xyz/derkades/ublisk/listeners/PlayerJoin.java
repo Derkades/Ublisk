@@ -19,7 +19,6 @@ import xyz.derkades.ublisk.DataFile;
 import xyz.derkades.ublisk.Town;
 import xyz.derkades.ublisk.database.PlayerInfo;
 import xyz.derkades.ublisk.ext.com.bobacadodl.imgmessage.ImageChar;
-import xyz.derkades.ublisk.permission.Permission;
 import xyz.derkades.ublisk.utils.UPlayer;
 import xyz.derkades.ublisk.utils.URunnable;
 import xyz.derkades.ublisk.utils.settings.Setting;
@@ -59,7 +58,7 @@ public class PlayerJoin implements Listener {
 		player.updateXPBar();
 
 		// Disable builder mode if the player no longer has permission
-		if (!player.hasPermission("ublisk.builder"){
+		if (!player.hasPermission("ublisk.builder")){
 			player.setBuilderModeEnabled(false);
 		}
 
@@ -75,6 +74,7 @@ public class PlayerJoin implements Listener {
 
 		new URunnable() {
 
+			@Override
 			public void run() {
 				player.sendSpacers(10);
 
@@ -87,7 +87,7 @@ public class PlayerJoin implements Listener {
 						" ### ##  ### # ### # # ",
 						"                       "
 				};
-				for (String string : fancyStrings) {
+				for (final String string : fancyStrings) {
 					player.sendMessage(string
 							.replace("#", ChatColor.AQUA + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar())
 							.replace(" ", ChatColor.DARK_AQUA + "" + ChatColor.BOLD + ImageChar.DARK_SHADE.getChar()));

@@ -1,29 +1,8 @@
 package xyz.derkades.ublisk.modules;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-
-import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import xyz.derkades.derkutils.ListUtils;
-import xyz.derkades.ublisk.Message;
-import xyz.derkades.ublisk.chat.Trigger;
-import xyz.derkades.ublisk.database.PlayerInfo;
-import xyz.derkades.ublisk.utils.Logger;
-import xyz.derkades.ublisk.utils.Logger.LogLevel;
-import xyz.derkades.ublisk.utils.UPlayer;
-import xyz.derkades.ublisk.utils.Ublisk;
-
 public class Chat extends UModule {
 
-	// TODO Use arraylist instead
+	/*// TODO Use arraylist instead
 	public static final Map<UUID, Boolean> IS_MUTED = new HashMap<>();
 	public static final Map<UUID, Boolean> IS_SOFT_MUTED = new HashMap<>();
 
@@ -99,6 +78,6 @@ public class Chat extends UModule {
 		player.tracker(PlayerInfo.CHAT_MESSAGES);
 
 		Logger.log(LogLevel.CHAT, player.getName(), event.getMessage());
-	}
+	}*/
 
 }

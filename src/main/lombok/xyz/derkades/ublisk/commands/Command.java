@@ -25,11 +25,7 @@ public enum Command {
 	GUILDS("guild", new GuildCommand()),
 	HELP("help", new Help()),
 	MENU("menu", new Menu()),
-	MSG("msg", new MsgCommand()),
-	MUTE("mute", new MuteCommand()),
-	REPLY("reply", new ReplyCommand()),
 	STATS("stats", new StatsCommand()),
-	//SUGGEST("suggest", new SuggestCommand()),
 
 	UBLISK("ublisk", new UbliskCommand.Executor());
 

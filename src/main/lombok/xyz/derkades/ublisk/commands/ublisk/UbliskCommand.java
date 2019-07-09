@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 
 import net.md_5.bungee.api.ChatColor;
 import xyz.derkades.ublisk.Message;
-import xyz.derkades.ublisk.permission.PermissionGroup;
 import xyz.derkades.ublisk.utils.UPlayer;
 
 public abstract class UbliskCommand {
@@ -49,11 +48,6 @@ public abstract class UbliskCommand {
 			}
 
 			final UPlayer player = new UPlayer(sender);
-
-			if (player.getGroup() != PermissionGroup.BUILDER && player.getGroup() != PermissionGroup.MODERATOR && player.getGroup() != PermissionGroup.OWNER){
-				player.sendMessage("u no has permisions");
-				return true;
-			}
 
 			if (args.length == 0){
 				player.sendMessage("/u <command>");
