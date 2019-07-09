@@ -15,6 +15,7 @@ import net.minecraft.server.v1_14_R1.NBTBase;
 import net.minecraft.server.v1_14_R1.NBTTagCompound;
 import net.minecraft.server.v1_14_R1.NBTTagInt;
 
+@Deprecated
 public class Item {
 
 	private ItemStack item;
@@ -79,7 +80,6 @@ public class Item {
 		return this;
 	}
 
-	@SuppressWarnings("deprecation")
 	public Item setSkullOwner(final String playerName){
 		if (this.item.getItemMeta() instanceof SkullMeta){
 			final SkullMeta meta = (SkullMeta) this.item.getItemMeta();

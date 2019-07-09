@@ -9,6 +9,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public enum DataFile {
 
 	QUESTS("quests"),
+	QUESTS_2("quests2"),
 	SETTINGS("settings"),
 	FRIENDS("friends"),
 	IP("ip"),
@@ -23,38 +24,39 @@ public enum DataFile {
 
 	private File file;
 
-	DataFile(String name) {
+	DataFile(final String name) {
 		this.file = new File(Main.getInstance().getDataFolder() + File.separator + "data", name + ".yml");
 	}
 
 	private YamlConfiguration config;
 
 	public void reload() {
-		config = YamlConfiguration.loadConfiguration(file);
+		this.config = YamlConfiguration.loadConfiguration(this.file);
 	}
 
 	public YamlConfiguration getConfig() {
-		if (config == null)
-			reload();
-		return config;
+		if (this.config == null)
+			this.reload();
+		return this.config;
 	}
 
 	public void save() {
 		try {
-			getConfig().save(file);
-		} catch (IOException e) {
+			this.getConfig().save(this.file);
+		} catch (final IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static class SaveFiles extends BukkitRunnable {
-		
+
+		@Override
 		public void run(){
-			for (DataFile dataFile : DataFile.values()){
+			for (final DataFile dataFile : DataFile.values()){
 				dataFile.save();
 			}
 		}
-		
+
 	}
 
 }
